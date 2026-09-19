@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="DuelMove" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "air_heavy"
+display_name = "空中重斩"
+kind = "heavy"
+level = "high"
+startup = 9
+active = 6
+recovery = 17
+damage = 80
+hitstun = 25
+blockstun = 15
+hitstop = 6
+push = 3
+box = Rect2(6, -49, 60, 49)

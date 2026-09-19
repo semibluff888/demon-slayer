@@ -1,0 +1,34 @@
+{
+  "id": "tanjiro-crouch_heavy-v2",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "3072x1536",
+  "route": "CPA via bundled image_gen.py",
+  "started_utc": "2026-09-19T14:56:36.4164252Z",
+  "prompt": "output/imagegen/anime-v2/prompts/tanjiro-crouch_heavy-v2.txt",
+  "output": "output/imagegen/anime-v2/raw/tanjiro-crouch_heavy-v2.png",
+  "references": [
+    "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png",
+    "output/imagegen/anime-v2/raw/tanjiro-guard_low.png"
+  ],
+  "price_verified": false,
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-09-19T14:57:26.9102164Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "0aaefb5ba67d3049ed2a89d774c23f69a3e8f9d27663d2bc20992b1da88e10f7",
+  "source_mode": "RGBA",
+  "source_alpha_range": [
+    0,
+    254
+  ],
+  "review": {
+    "status": "accepted_for_local_delivery",
+    "reviewed_utc": "2026-09-19T15:06:33.831728+00:00",
+    "evidence": "artifacts/visual-acceptance.md"
+  }
+}

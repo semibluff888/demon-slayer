@@ -1,0 +1,27 @@
+{
+  "id": "zenitsu-model",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x1152",
+  "route": "CPA via bundled image_gen.py",
+  "started_utc": "2026-09-19T12:27:58.7160966Z",
+  "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-model.txt",
+  "output": "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png",
+  "references": [],
+  "price_verified": false,
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-09-19T12:28:38.3173348Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "b7fbf4ae36d756e869bf7d768d321086881e80a0013931baf83a7b3a67c4326c",
+  "source_mode": "RGB",
+  "review": {
+    "status": "accepted_for_local_delivery",
+    "reviewed_utc": "2026-09-19T15:06:33.831728+00:00",
+    "evidence": "artifacts/visual-acceptance.md"
+  }
+}

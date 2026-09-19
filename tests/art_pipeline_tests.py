@@ -1,0 +1,85 @@
+"""Validate real delivered artwork, packing and provenance without service access."""
+import hashlib
+import json
+from pathlib import Path
+import unittest
+from PIL import Image, ImageChops
+
+ROOT = Path(__file__).resolve().parents[1]
+EXPECTED = {'idle':6, 'walk':8, 'walk_back':8, 'crouch':3, 'jump':6, 'guard':3,
+            'guard_low':3, 'hit':4, 'knockdown':5, 'throw':6, 'victory':6,
+            'stand_light':6, 'stand_heavy':6, 'crouch_light':6, 'crouch_heavy':6,
+            'air_light':6, 'air_heavy':6}
+
+class ArtworkTests(unittest.TestCase):
+    def test_all_clips_are_real_distinct_frames_and_fit_atlas(self):
+        for character in ('tanjiro', 'zenitsu'):
+            directory = ROOT / 'art/characters' / character
+            atlas = json.loads((directory / 'atlas.json').read_text(encoding='utf-8'))
+            expected = dict(EXPECTED)
+            expected.update({'water_slash':9, 'water_wheel':9} if character == 'tanjiro' else {'iai':9, 'thunder':9})
+            self.assertEqual(set(atlas['clips']), set(expected))
+            self.assertEqual(sum(len(c['frames']) for c in atlas['clips'].values()), 112)
+            pages = {}
+            for clip, count in expected.items():
+                info = atlas['clips'][clip]
+                self.assertEqual(len(info['frames']), count)
+                hashes = set()
+                for frame in info['frames']:
+                    path = directory / frame['texture']
+                    if str(path) not in pages:
+                        pages[str(path)] = Image.open(path).convert('RGBA')
+                    page = pages[str(path)]
+                    x,y,w,h = frame['region']
+                    self.assertGreaterEqual(min(x,y), 2)
+                    self.assertLessEqual(x+w+2, page.width)
+                    self.assertLessEqual(y+h+2, page.height)
+                    ox,oy = frame['offset']
+                    self.assertGreaterEqual(min(ox,oy), 0)
+                    self.assertLessEqual(ox+w, atlas['canvas_size'][0])
+                    self.assertLessEqual(oy+h, atlas['canvas_size'][1])
+                    image = page.crop((x,y,x+w,y+h))
+                    self.assertIsNotNone(image.getbbox())
+                    hashes.add(hashlib.sha256(image.tobytes()).hexdigest())
+                self.assertEqual(len(hashes), count, character + '/' + clip + ' must not duplicate static poses')
+            idle_height = max(f['region'][3] for f in atlas['clips']['idle']['frames'])
+            sweep_height = max(f['region'][3] for f in atlas['clips']['crouch_heavy']['frames'])
+            self.assertLess(sweep_height, idle_height * 0.82,
+                            character + '/crouch_heavy must stay low through windup and recovery')
+            for page in pages.values():
+                r,g,b,a = page.split()
+                residual = ImageChops.subtract(ImageChops.darker(r,b),g).point(lambda v:255 if v>135 else 0)
+                opaque = a.point(lambda v:255 if v>200 else 0)
+                self.assertIsNone(ImageChops.multiply(residual,opaque).getbbox(), 'Opaque chroma-key residue')
+                page.close()
+
+    def test_local_assets_and_provenance(self):
+        for character in ('tanjiro','zenitsu'):
+            path = ROOT / 'art/characters' / character
+            with Image.open(path / 'portrait.png') as portrait:
+                self.assertEqual(portrait.mode, 'RGBA')
+                self.assertEqual(portrait.getchannel('A').getextrema(), (0,255))
+            with Image.open(path / 'avatar.png') as avatar:
+                self.assertEqual(avatar.size, (192,192))
+            for clip in list(EXPECTED)+(['water_slash','water_wheel'] if character=='tanjiro' else ['iai','thunder']):
+                with Image.open(ROOT/'output/imagegen/anime-v2/review'/(character+'-'+clip+'.gif')) as preview:
+                    self.assertTrue(preview.is_animated)
+                    self.assertEqual(preview.n_frames, EXPECTED.get(clip,9))
+                    self.assertGreater(preview.info.get('duration',0),0)
+                # Later targeted replacements are represented by their real imports.
+                candidates = list((ROOT/'output/imagegen/anime-v2/imports').glob(character+'-'+clip+'*.json'))
+                self.assertTrue(candidates, character+'/'+clip)
+                for spec in candidates:
+                    data = json.loads(spec.read_text(encoding='utf-8'))
+                    scales = {f['scale'] for f in data['frames']}
+                    self.assertEqual(len(scales),1,'A clip must use a single physical scale')
+                    for frame in data['frames']:
+                        self.assertTrue((ROOT/frame['source']).is_file())
+        for layer in ('sky','temple','wisteria','floor','foreground'):
+            with Image.open(ROOT/'art/stages/wisteria'/ (layer+'.png')) as image:
+                self.assertEqual(image.size, (2048,1152))
+        for effect in ('water-slash','water-wheel','thunder','impact'):
+            self.assertTrue((ROOT/'art/effects'/(effect+'.png')).is_file())
+
+if __name__ == '__main__':
+    unittest.main(verbosity=2)

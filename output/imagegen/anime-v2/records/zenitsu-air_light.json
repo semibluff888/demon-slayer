@@ -1,0 +1,29 @@
+{
+  "id": "zenitsu-air_light",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "3072x1536",
+  "route": "CPA via bundled image_gen.py",
+  "started_utc": "2026-09-19T14:00:02.4976662Z",
+  "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-air_light.txt",
+  "output": "output\\imagegen\\anime-v2\\raw\\zenitsu-air_light.png",
+  "references": [
+    "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+  ],
+  "price_verified": false,
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-09-19T14:11:01.2714393Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "fbc08652a9feae23a88ca9f99cd87843d9f680e9f3be7d4ff7c27bcb29f4c7aa",
+  "source_mode": "RGB",
+  "review": {
+    "status": "accepted_for_local_delivery",
+    "reviewed_utc": "2026-09-19T15:06:33.831728+00:00",
+    "evidence": "artifacts/visual-acceptance.md"
+  }
+}

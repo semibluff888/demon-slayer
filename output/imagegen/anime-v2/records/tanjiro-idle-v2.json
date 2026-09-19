@@ -1,0 +1,30 @@
+{
+  "id": "tanjiro-idle-v2",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "3072x1536",
+  "route": "CPA via bundled image_gen.py",
+  "started_utc": "2026-09-19T13:55:12.7306196Z",
+  "prompt": "output/imagegen/anime-v2/prompts/tanjiro-idle-v2.txt",
+  "output": "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png",
+  "references": [
+    "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png",
+    "output/imagegen/anime-v2/raw/tanjiro-stand_light.png"
+  ],
+  "price_verified": false,
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-09-19T13:56:04.2952077Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "689fb401341e83dddd9acadb8aece4f588346f92c3a3c23c1a966e619f2ffa4c",
+  "source_mode": "RGB",
+  "review": {
+    "status": "accepted_for_local_delivery",
+    "reviewed_utc": "2026-09-19T15:06:33.831728+00:00",
+    "evidence": "artifacts/visual-acceptance.md"
+  }
+}

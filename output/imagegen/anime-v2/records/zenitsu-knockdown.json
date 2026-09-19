@@ -1,0 +1,29 @@
+{
+  "id": "zenitsu-knockdown",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "3072x1536",
+  "route": "CPA via bundled image_gen.py",
+  "started_utc": "2026-09-19T13:40:02.6727235Z",
+  "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-knockdown.txt",
+  "output": "output\\imagegen\\anime-v2\\raw\\zenitsu-knockdown.png",
+  "references": [
+    "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+  ],
+  "price_verified": false,
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-09-19T13:40:41.0126196Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "84d9a0ff61864bc5041eb508e2998cbd889ef88091b85ce546034b31e907acf8",
+  "source_mode": "RGB",
+  "review": {
+    "status": "accepted_for_local_delivery",
+    "reviewed_utc": "2026-09-19T15:06:33.831728+00:00",
+    "evidence": "artifacts/visual-acceptance.md"
+  }
+}

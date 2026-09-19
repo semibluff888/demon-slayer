@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="DuelMove" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "stand_light"
+display_name = "轻斩"
+kind = "light"
+level = "mid"
+startup = 5
+active = 3
+recovery = 11
+damage = 45
+hitstun = 20
+blockstun = 11
+hitstop = 4
+push = 1.5
+box = Rect2(10, -47, 43, 24)

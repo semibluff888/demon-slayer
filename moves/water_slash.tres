@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="DuelMove" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "water_slash"
+display_name = "水之呼吸 · 水面斩"
+kind = "skill"
+level = "mid"
+startup = 10
+active = 5
+recovery = 22
+damage = 110
+hitstun = 28
+blockstun = 17
+hitstop = 7
+push = 5
+box = Rect2(9, -51, 84, 33)

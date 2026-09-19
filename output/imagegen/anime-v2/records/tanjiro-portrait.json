@@ -1,0 +1,29 @@
+{
+  "id": "tanjiro-portrait",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "1024x1536",
+  "route": "CPA via bundled image_gen.py",
+  "started_utc": "2026-09-19T12:30:02.2876670Z",
+  "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-portrait.txt",
+  "output": "output\\imagegen\\anime-v2\\raw\\tanjiro-portrait.png",
+  "references": [
+    "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
+  ],
+  "price_verified": false,
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-09-19T12:30:44.4064594Z",
+  "actual_size": [
+    1024,
+    1536
+  ],
+  "sha256": "3674731831bf7c80c844bbe61685973edf89ac462ccddc34df7d029b315f1acb",
+  "source_mode": "RGB",
+  "review": {
+    "status": "accepted_for_local_delivery",
+    "reviewed_utc": "2026-09-19T15:06:33.831728+00:00",
+    "evidence": "artifacts/visual-acceptance.md"
+  }
+}

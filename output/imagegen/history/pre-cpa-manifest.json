@@ -1,0 +1,19 @@
+{
+  "project": "月下对决 / HD anime visual remake",
+  "status": "blocked_art_generation",
+  "requested_route": "Codex built-in image_gen via imagegen skill",
+  "capability_check": "imagegen skill is installed; no callable image_gen tool is exposed in this session",
+  "generated_assets": [],
+  "requests_sent": 0,
+  "api_spend_usd": 0,
+  "previous_api_budget_usd": 30,
+  "previous_api_correction_reserve_usd": 6,
+  "pricing_verified": false,
+  "notes": "User chose built-in generation after the missing API key was reported. No CLI fallback or paid request was made. Do not treat layout placeholders as generated artwork.",
+  "pending": {
+    "tanjiro": ["approved model sheet", "portrait", "idle", "walk", "walk_back", "crouch", "jump", "guard", "guard_low", "hit", "knockdown", "throw", "victory", "stand_light", "stand_heavy", "crouch_light", "crouch_heavy", "air_light", "air_heavy", "water_slash", "water_wheel"],
+    "zenitsu": ["approved model sheet", "portrait", "idle", "walk", "walk_back", "crouch", "jump", "guard", "guard_low", "hit", "knockdown", "throw", "victory", "stand_light", "stand_heavy", "crouch_light", "crouch_heavy", "air_light", "air_heavy", "iai", "thunder"],
+    "stage": ["sky.png", "temple.png", "wisteria.png", "floor.png", "foreground.png"],
+    "acceptance": ["identity consistency", "hands and sword grip", "frame continuity", "alpha edge cleanup", "feet alignment", "1080p performance with final art"]
+  }
+}

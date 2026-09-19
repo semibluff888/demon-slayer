@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="DuelMove" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "air_light"
+display_name = "空中轻斩"
+kind = "light"
+level = "high"
+startup = 5
+active = 5
+recovery = 12
+damage = 45
+hitstun = 21
+blockstun = 12
+hitstop = 4
+push = 2
+box = Rect2(7, -43, 42, 41)

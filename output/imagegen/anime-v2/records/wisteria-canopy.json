@@ -1,0 +1,29 @@
+{
+  "id": "wisteria-canopy",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x1152",
+  "route": "CPA via bundled image_gen.py",
+  "started_utc": "2026-09-19T12:33:14.0338776Z",
+  "prompt": "output\\imagegen\\anime-v2\\prompts\\wisteria-canopy.txt",
+  "output": "output\\imagegen\\anime-v2\\raw\\wisteria-canopy.png",
+  "references": [
+    "output/imagegen/anime-v2/raw/wisteria-master.png"
+  ],
+  "price_verified": false,
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-09-19T12:33:41.6932999Z",
+  "actual_size": [
+    1672,
+    941
+  ],
+  "sha256": "4611118ee7c6acf28315fa3c41163bced58938921dcac44f066ff2f18eafd97d",
+  "source_mode": "RGB",
+  "review": {
+    "status": "accepted_for_local_delivery",
+    "reviewed_utc": "2026-09-19T15:06:33.831728+00:00",
+    "evidence": "artifacts/visual-acceptance.md"
+  }
+}

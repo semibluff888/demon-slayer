@@ -1,0 +1,22 @@
+{
+  "character": "tanjiro",
+  "canvas_size": [768, 768],
+  "feet_anchor": [384, 704],
+  "source_height": 600,
+  "scale": 1.0,
+  "clips": {
+    "stand_light": {
+      "loop": false,
+      "fps": 12,
+      "phase_breaks": [2, 4],
+      "frames": [
+        {"source": "raw/stand-light.png", "crop": [0, 0, 768, 768], "foot": [384, 704]},
+        {"source": "raw/stand-light.png", "crop": [768, 0, 768, 768], "foot": [384, 704]},
+        {"source": "raw/stand-light.png", "crop": [1536, 0, 768, 768], "foot": [384, 704]},
+        {"source": "raw/stand-light.png", "crop": [0, 768, 768, 768], "foot": [384, 704]},
+        {"source": "raw/stand-light.png", "crop": [768, 768, 768, 768], "foot": [384, 704]},
+        {"source": "raw/stand-light.png", "crop": [1536, 768, 768, 768], "foot": [384, 704]}
+      ]
+    }
+  }
+}

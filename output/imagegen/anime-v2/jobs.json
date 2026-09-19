@@ -1,0 +1,964 @@
+[
+  {
+    "id": "tanjiro-model",
+    "group": "foundation",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-model.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png",
+    "size": "2048x1152",
+    "references": [],
+    "metadata": {}
+  },
+  {
+    "id": "zenitsu-model",
+    "group": "foundation",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-model.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png",
+    "size": "2048x1152",
+    "references": [],
+    "metadata": {}
+  },
+  {
+    "id": "wisteria-master",
+    "group": "foundation",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\wisteria-master.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\wisteria-master.png",
+    "size": "2048x1152",
+    "references": [],
+    "metadata": {}
+  },
+  {
+    "id": "tanjiro-portrait",
+    "group": "portraits",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-portrait.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\tanjiro-portrait.png",
+    "size": "1024x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
+    ],
+    "metadata": {}
+  },
+  {
+    "id": "tanjiro-idle",
+    "group": "animation-tanjiro",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-idle.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\tanjiro-idle.png",
+    "size": "3072x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "idle",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": true,
+      "fps": 12
+    }
+  },
+  {
+    "id": "tanjiro-walk",
+    "group": "animation-tanjiro",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-walk.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\tanjiro-walk.png",
+    "size": "3072x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "walk",
+      "count": 8,
+      "columns": 4,
+      "rows": 2,
+      "loop": true,
+      "fps": 12
+    }
+  },
+  {
+    "id": "tanjiro-walk_back",
+    "group": "animation-tanjiro",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-walk_back.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\tanjiro-walk_back.png",
+    "size": "3072x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "walk_back",
+      "count": 8,
+      "columns": 4,
+      "rows": 2,
+      "loop": true,
+      "fps": 12
+    }
+  },
+  {
+    "id": "tanjiro-crouch",
+    "group": "animation-tanjiro",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-crouch.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\tanjiro-crouch.png",
+    "size": "2304x768",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "crouch",
+      "count": 3,
+      "columns": 3,
+      "rows": 1,
+      "loop": false,
+      "fps": 12
+    }
+  },
+  {
+    "id": "tanjiro-jump",
+    "group": "animation-tanjiro",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-jump.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\tanjiro-jump.png",
+    "size": "3072x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "jump",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12
+    }
+  },
+  {
+    "id": "tanjiro-guard",
+    "group": "animation-tanjiro",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-guard.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\tanjiro-guard.png",
+    "size": "2304x768",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "guard",
+      "count": 3,
+      "columns": 3,
+      "rows": 1,
+      "loop": false,
+      "fps": 12
+    }
+  },
+  {
+    "id": "tanjiro-guard_low",
+    "group": "animation-tanjiro",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-guard_low.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\tanjiro-guard_low.png",
+    "size": "2304x768",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "guard_low",
+      "count": 3,
+      "columns": 3,
+      "rows": 1,
+      "loop": false,
+      "fps": 12
+    }
+  },
+  {
+    "id": "tanjiro-hit",
+    "group": "animation-tanjiro",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-hit.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\tanjiro-hit.png",
+    "size": "2048x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "hit",
+      "count": 4,
+      "columns": 2,
+      "rows": 2,
+      "loop": false,
+      "fps": 12
+    }
+  },
+  {
+    "id": "tanjiro-knockdown",
+    "group": "animation-tanjiro",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-knockdown.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\tanjiro-knockdown.png",
+    "size": "3072x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "knockdown",
+      "count": 5,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12
+    }
+  },
+  {
+    "id": "tanjiro-throw",
+    "group": "animation-tanjiro",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-throw.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\tanjiro-throw.png",
+    "size": "3072x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "throw",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12
+    }
+  },
+  {
+    "id": "tanjiro-victory",
+    "group": "animation-tanjiro",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-victory.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\tanjiro-victory.png",
+    "size": "3072x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "victory",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12
+    }
+  },
+  {
+    "id": "tanjiro-stand_light",
+    "group": "animation-tanjiro",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-stand_light.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\tanjiro-stand_light.png",
+    "size": "3072x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "stand_light",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12
+    }
+  },
+  {
+    "id": "tanjiro-stand_heavy",
+    "group": "animation-tanjiro",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-stand_heavy.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\tanjiro-stand_heavy.png",
+    "size": "3072x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "stand_heavy",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12
+    }
+  },
+  {
+    "id": "tanjiro-crouch_light",
+    "group": "animation-tanjiro",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-crouch_light.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\tanjiro-crouch_light.png",
+    "size": "3072x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "crouch_light",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12
+    }
+  },
+  {
+    "id": "tanjiro-crouch_heavy",
+    "group": "failed-attempts",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-crouch_heavy.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\tanjiro-crouch_heavy.png",
+    "size": "3072x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "crouch_heavy",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12
+    }
+  },
+  {
+    "id": "tanjiro-crouch_heavy-r1",
+    "group": "animation-tanjiro",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-crouch_heavy.txt",
+    "out": "output/imagegen/anime-v2/raw/tanjiro-crouch_heavy-r1.png",
+    "size": "3072x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "crouch_heavy",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "replaces": "tanjiro-crouch_heavy",
+      "reason": "Synchronous 504 with no image or status identifier; manually reviewed after requests ended"
+    }
+  },
+  {
+    "id": "tanjiro-air_light",
+    "group": "animation-tanjiro",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-air_light.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\tanjiro-air_light.png",
+    "size": "3072x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "air_light",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12
+    }
+  },
+  {
+    "id": "tanjiro-air_heavy",
+    "group": "animation-tanjiro",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-air_heavy.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\tanjiro-air_heavy.png",
+    "size": "3072x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "air_heavy",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12
+    }
+  },
+  {
+    "id": "tanjiro-water_slash",
+    "group": "animation-tanjiro",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-water_slash.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\tanjiro-water_slash.png",
+    "size": "3072x2304",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "water_slash",
+      "count": 9,
+      "columns": 3,
+      "rows": 3,
+      "loop": false,
+      "fps": 12
+    }
+  },
+  {
+    "id": "tanjiro-water_wheel",
+    "group": "animation-tanjiro",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-water_wheel.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\tanjiro-water_wheel.png",
+    "size": "3072x2304",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "water_wheel",
+      "count": 9,
+      "columns": 3,
+      "rows": 3,
+      "loop": false,
+      "fps": 12
+    }
+  },
+  {
+    "id": "zenitsu-portrait",
+    "group": "portraits",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-portrait.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\zenitsu-portrait.png",
+    "size": "1024x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+    ],
+    "metadata": {}
+  },
+  {
+    "id": "zenitsu-idle",
+    "group": "animation-zenitsu",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-idle.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\zenitsu-idle.png",
+    "size": "3072x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "idle",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": true,
+      "fps": 12
+    }
+  },
+  {
+    "id": "zenitsu-walk",
+    "group": "animation-zenitsu",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-walk.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\zenitsu-walk.png",
+    "size": "3072x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "walk",
+      "count": 8,
+      "columns": 4,
+      "rows": 2,
+      "loop": true,
+      "fps": 12
+    }
+  },
+  {
+    "id": "zenitsu-walk_back",
+    "group": "animation-zenitsu",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-walk_back.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\zenitsu-walk_back.png",
+    "size": "3072x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "walk_back",
+      "count": 8,
+      "columns": 4,
+      "rows": 2,
+      "loop": true,
+      "fps": 12
+    }
+  },
+  {
+    "id": "zenitsu-crouch",
+    "group": "animation-zenitsu",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-crouch.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\zenitsu-crouch.png",
+    "size": "2304x768",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "crouch",
+      "count": 3,
+      "columns": 3,
+      "rows": 1,
+      "loop": false,
+      "fps": 12
+    }
+  },
+  {
+    "id": "zenitsu-jump",
+    "group": "animation-zenitsu",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-jump.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\zenitsu-jump.png",
+    "size": "3072x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "jump",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12
+    }
+  },
+  {
+    "id": "zenitsu-guard",
+    "group": "animation-zenitsu",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-guard.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\zenitsu-guard.png",
+    "size": "2304x768",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "guard",
+      "count": 3,
+      "columns": 3,
+      "rows": 1,
+      "loop": false,
+      "fps": 12
+    }
+  },
+  {
+    "id": "zenitsu-guard_low",
+    "group": "animation-zenitsu",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-guard_low.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\zenitsu-guard_low.png",
+    "size": "2304x768",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "guard_low",
+      "count": 3,
+      "columns": 3,
+      "rows": 1,
+      "loop": false,
+      "fps": 12
+    }
+  },
+  {
+    "id": "zenitsu-hit",
+    "group": "animation-zenitsu",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-hit.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\zenitsu-hit.png",
+    "size": "2048x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "hit",
+      "count": 4,
+      "columns": 2,
+      "rows": 2,
+      "loop": false,
+      "fps": 12
+    }
+  },
+  {
+    "id": "zenitsu-knockdown",
+    "group": "animation-zenitsu",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-knockdown.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\zenitsu-knockdown.png",
+    "size": "3072x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "knockdown",
+      "count": 5,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12
+    }
+  },
+  {
+    "id": "zenitsu-throw",
+    "group": "animation-zenitsu",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-throw.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\zenitsu-throw.png",
+    "size": "3072x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "throw",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12
+    }
+  },
+  {
+    "id": "zenitsu-victory",
+    "group": "animation-zenitsu",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-victory.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\zenitsu-victory.png",
+    "size": "3072x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "victory",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12
+    }
+  },
+  {
+    "id": "zenitsu-stand_light",
+    "group": "animation-zenitsu",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-stand_light.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\zenitsu-stand_light.png",
+    "size": "3072x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "stand_light",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12
+    }
+  },
+  {
+    "id": "zenitsu-stand_heavy",
+    "group": "animation-zenitsu",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-stand_heavy.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\zenitsu-stand_heavy.png",
+    "size": "3072x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "stand_heavy",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12
+    }
+  },
+  {
+    "id": "zenitsu-crouch_light",
+    "group": "failed-attempts",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-crouch_light.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\zenitsu-crouch_light.png",
+    "size": "3072x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "crouch_light",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12
+    }
+  },
+  {
+    "id": "zenitsu-crouch_light-r1",
+    "group": "animation-zenitsu",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-crouch_light.txt",
+    "out": "output/imagegen/anime-v2/raw/zenitsu-crouch_light-r1.png",
+    "size": "3072x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "crouch_light",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "replaces": "zenitsu-crouch_light",
+      "reason": "Synchronous 504 with no image or status identifier; manually reviewed after requests ended"
+    }
+  },
+  {
+    "id": "zenitsu-crouch_heavy",
+    "group": "animation-zenitsu",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-crouch_heavy.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\zenitsu-crouch_heavy.png",
+    "size": "3072x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "crouch_heavy",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12
+    }
+  },
+  {
+    "id": "zenitsu-air_light",
+    "group": "animation-zenitsu",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-air_light.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\zenitsu-air_light.png",
+    "size": "3072x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "air_light",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12
+    }
+  },
+  {
+    "id": "zenitsu-air_heavy",
+    "group": "animation-zenitsu",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-air_heavy.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\zenitsu-air_heavy.png",
+    "size": "3072x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "air_heavy",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12
+    }
+  },
+  {
+    "id": "zenitsu-iai",
+    "group": "animation-zenitsu",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-iai.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\zenitsu-iai.png",
+    "size": "3072x2304",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "iai",
+      "count": 9,
+      "columns": 3,
+      "rows": 3,
+      "loop": false,
+      "fps": 12
+    }
+  },
+  {
+    "id": "zenitsu-thunder",
+    "group": "animation-zenitsu",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-thunder.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\zenitsu-thunder.png",
+    "size": "3072x2304",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "thunder",
+      "count": 9,
+      "columns": 3,
+      "rows": 3,
+      "loop": false,
+      "fps": 12
+    }
+  },
+  {
+    "id": "wisteria-sky",
+    "group": "stage",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\wisteria-sky.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\wisteria-sky.png",
+    "size": "2048x1152",
+    "references": [
+      "output/imagegen/anime-v2/raw/wisteria-master.png"
+    ],
+    "metadata": {}
+  },
+  {
+    "id": "wisteria-canopy",
+    "group": "stage",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\wisteria-canopy.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\wisteria-canopy.png",
+    "size": "2048x1152",
+    "references": [
+      "output/imagegen/anime-v2/raw/wisteria-master.png"
+    ],
+    "metadata": {}
+  },
+  {
+    "id": "wisteria-foreground",
+    "group": "stage",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\wisteria-foreground.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\wisteria-foreground.png",
+    "size": "2048x1152",
+    "references": [
+      "output/imagegen/anime-v2/raw/wisteria-master.png"
+    ],
+    "metadata": {}
+  },
+  {
+    "id": "fx-water-slash",
+    "group": "effects",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\fx-water-slash.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\fx-water-slash.png",
+    "size": "1536x1024",
+    "references": [],
+    "metadata": {}
+  },
+  {
+    "id": "fx-water-wheel",
+    "group": "effects",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\fx-water-wheel.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\fx-water-wheel.png",
+    "size": "1024x1024",
+    "references": [],
+    "metadata": {}
+  },
+  {
+    "id": "fx-thunder",
+    "group": "effects",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\fx-thunder.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\fx-thunder.png",
+    "size": "1536x1024",
+    "references": [],
+    "metadata": {}
+  },
+  {
+    "id": "fx-impact",
+    "group": "effects",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\fx-impact.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\fx-impact.png",
+    "size": "1536x1024",
+    "references": [],
+    "metadata": {}
+  },
+  {
+    "id": "tanjiro-idle-v2",
+    "group": "refinement",
+    "prompt": "output/imagegen/anime-v2/prompts/tanjiro-idle-v2.txt",
+    "out": "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png",
+    "size": "3072x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png",
+      "output/imagegen/anime-v2/raw/tanjiro-stand_light.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "idle",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": true,
+      "fps": 12
+    }
+  },
+  {
+    "id": "tanjiro-walk-v2",
+    "group": "refinement",
+    "prompt": "output/imagegen/anime-v2/prompts/tanjiro-walk-v2.txt",
+    "out": "output/imagegen/anime-v2/raw/tanjiro-walk-v2.png",
+    "size": "3072x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png",
+      "output/imagegen/anime-v2/raw/tanjiro-stand_light.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "walk",
+      "count": 8,
+      "columns": 4,
+      "rows": 2,
+      "loop": true,
+      "fps": 12
+    }
+  },
+  {
+    "id": "tanjiro-crouch_heavy-v2",
+    "group": "low-sweep-refinement",
+    "prompt": "output/imagegen/anime-v2/prompts/tanjiro-crouch_heavy-v2.txt",
+    "out": "output/imagegen/anime-v2/raw/tanjiro-crouch_heavy-v2.png",
+    "size": "3072x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png",
+      "output/imagegen/anime-v2/raw/tanjiro-guard_low.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "crouch_heavy",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12
+    }
+  },
+  {
+    "id": "zenitsu-crouch_heavy-v2",
+    "group": "low-sweep-refinement",
+    "prompt": "output/imagegen/anime-v2/prompts/zenitsu-crouch_heavy-v2.txt",
+    "out": "output/imagegen/anime-v2/raw/zenitsu-crouch_heavy-v2.png",
+    "size": "3072x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png",
+      "output/imagegen/anime-v2/raw/zenitsu-guard_low.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "crouch_heavy",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12
+    }
+  }
+]

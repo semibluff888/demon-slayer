@@ -1,0 +1,23 @@
+{
+  "id": "zenitsu-crouch_light",
+  "status": "uncertain",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "3072x1536",
+  "route": "CPA via bundled image_gen.py",
+  "started_utc": "2026-09-19T13:43:52.0464822Z",
+  "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-crouch_light.txt",
+  "output": "output\\imagegen\\anime-v2\\raw\\zenitsu-crouch_light.png",
+  "references": [
+    "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+  ],
+  "price_verified": false,
+  "cost": null,
+  "accepted": false,
+  "error_type": "RuntimeException",
+  "review": {
+    "status": "no_delivered_output",
+    "billing_status": "unknown",
+    "note": "Original synchronous request failed with gateway timeout. Explicit replacement request retained separately."
+  }
+}

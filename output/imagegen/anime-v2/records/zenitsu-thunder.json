@@ -1,0 +1,29 @@
+{
+  "id": "zenitsu-thunder",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "3072x2304",
+  "route": "CPA via bundled image_gen.py",
+  "started_utc": "2026-09-19T14:08:24.5131833Z",
+  "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-thunder.txt",
+  "output": "output\\imagegen\\anime-v2\\raw\\zenitsu-thunder.png",
+  "references": [
+    "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+  ],
+  "price_verified": false,
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-09-19T14:09:11.8988839Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "80862c9414034b41d85a446d255e521f123cd47c3d7d83119ece826e53cd621a",
+  "source_mode": "RGB",
+  "review": {
+    "status": "accepted_for_local_delivery",
+    "reviewed_utc": "2026-09-19T15:06:33.831728+00:00",
+    "evidence": "artifacts/visual-acceptance.md"
+  }
+}

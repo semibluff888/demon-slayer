@@ -1,0 +1,22 @@
+Use case: stylized-concept
+Asset: production sprite animation contact sheet.
+Premium Japanese anime fighting game production art. Beautiful sophisticated hand-drawn anime,
+precise dark ink contours, elegant normal human proportions (6.5 to 7 heads, NOT chibi),
+two-tone cel shading, refined expressive faces, richly detailed but consistent costume.
+Subtle cool moonlight rim from upper right, neutral soft key light. Colorful clear local colors.
+No photorealism, no 3D, no text, numbers, labels, logos, watermark, UI or ground shadow.
+Zenitsu Agatsuma from Demon Slayer: recognizable golden-yellow hair with orange tips,
+choppy geometric bob, amber eyes, yellow-orange haori with small pale white triangular motifs,
+dark Demon Slayer uniform, white belt, pale calf wraps and dark sandals. One Nichirin katana,
+one scabbard at left hip. Focused calm youthful face. Keep triangle pattern scale consistent.
+Input image 1 is strict identity/costume/style reference, not the output layout.
+Draw EXACTLY 6 full-body sequential animation frames, arranged 3 columns by 2 rows, chronological left to right then top to bottom.
+Use an exact regular grid without drawn grid lines. Every cell has equal dimensions. Any unused final cell stays empty magenta.
+All frames face RIGHT, same camera and body scale. Standing figure is 500 pixels tall in a 768-pixel-high cell.
+Feet on a common baseline at 89% of cell height (except airborne and rotating poses). Center torso at 40% of cell width.
+Do not enlarge crouched or horizontal poses: they are the SAME person at the SAME scale.
+Keep the entire hair, costume, hands, blade and scabbard inside its cell with empty margins; no overlap between cells.
+Movement: Six consecutive unarmed throwing motion keyframes facing right: reach forward with empty left hand, grasp an imaginary opponent, turn hip, pull and release rightward, follow-through, recover. Only this one character is drawn, no opponent. Sword remains safely in right hand or scabbard.
+Each frame must be an actual successive pose with coherent anatomy and sword grip, never repeat identical drawings.
+Pure SOLID HOT MAGENTA #ff00ff across all empty background and gutters. No shadow, text, numbers, effects or extra characters.
+Preserve the supplied model identity, costume pattern, lighting and refined line art in EVERY drawing.

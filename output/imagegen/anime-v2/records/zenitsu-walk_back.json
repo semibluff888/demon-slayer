@@ -1,0 +1,29 @@
+{
+  "id": "zenitsu-walk_back",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "3072x1536",
+  "route": "CPA via bundled image_gen.py",
+  "started_utc": "2026-09-19T12:33:45.8793975Z",
+  "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-walk_back.txt",
+  "output": "output\\imagegen\\anime-v2\\raw\\zenitsu-walk_back.png",
+  "references": [
+    "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+  ],
+  "price_verified": false,
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-09-19T12:34:35.8084681Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "649ce0f1531ccf980d6b966d2b7301477e7530583670af407472d5e57ec5b56d",
+  "source_mode": "RGB",
+  "review": {
+    "status": "accepted_for_local_delivery",
+    "reviewed_utc": "2026-09-19T15:06:33.831728+00:00",
+    "evidence": "artifacts/visual-acceptance.md"
+  }
+}

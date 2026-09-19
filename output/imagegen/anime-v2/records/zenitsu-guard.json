@@ -1,0 +1,29 @@
+{
+  "id": "zenitsu-guard",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2304x768",
+  "route": "CPA via bundled image_gen.py",
+  "started_utc": "2026-09-19T13:38:26.7358883Z",
+  "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-guard.txt",
+  "output": "output\\imagegen\\anime-v2\\raw\\zenitsu-guard.png",
+  "references": [
+    "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+  ],
+  "price_verified": false,
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-09-19T13:38:59.9748954Z",
+  "actual_size": [
+    1881,
+    836
+  ],
+  "sha256": "3fbd03999c2fdd90f104252f62280e975e7e055f84df8e9d194cba194390fc6c",
+  "source_mode": "RGB",
+  "review": {
+    "status": "accepted_for_local_delivery",
+    "reviewed_utc": "2026-09-19T15:06:33.831728+00:00",
+    "evidence": "artifacts/visual-acceptance.md"
+  }
+}

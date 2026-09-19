@@ -1,0 +1,29 @@
+{
+  "id": "wisteria-sky",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x1152",
+  "route": "CPA via bundled image_gen.py",
+  "started_utc": "2026-09-19T12:32:39.8859970Z",
+  "prompt": "output\\imagegen\\anime-v2\\prompts\\wisteria-sky.txt",
+  "output": "output\\imagegen\\anime-v2\\raw\\wisteria-sky.png",
+  "references": [
+    "output/imagegen/anime-v2/raw/wisteria-master.png"
+  ],
+  "price_verified": false,
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-09-19T12:33:14.0302728Z",
+  "actual_size": [
+    1672,
+    941
+  ],
+  "sha256": "a8d2c85a9c6395243d603ae9867ceba0b0a8e816f074445fce9c8fcd1742cc7c",
+  "source_mode": "RGB",
+  "review": {
+    "status": "accepted_for_local_delivery",
+    "reviewed_utc": "2026-09-19T15:06:33.831728+00:00",
+    "evidence": "artifacts/visual-acceptance.md"
+  }
+}

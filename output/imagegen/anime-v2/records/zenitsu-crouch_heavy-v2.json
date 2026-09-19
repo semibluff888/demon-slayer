@@ -1,0 +1,34 @@
+{
+  "id": "zenitsu-crouch_heavy-v2",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "3072x1536",
+  "route": "CPA via bundled image_gen.py",
+  "started_utc": "2026-09-19T14:57:26.9130792Z",
+  "prompt": "output/imagegen/anime-v2/prompts/zenitsu-crouch_heavy-v2.txt",
+  "output": "output/imagegen/anime-v2/raw/zenitsu-crouch_heavy-v2.png",
+  "references": [
+    "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png",
+    "output/imagegen/anime-v2/raw/zenitsu-guard_low.png"
+  ],
+  "price_verified": false,
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-09-19T14:58:25.3860084Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "9c57393db4cec2a85cd01bc0132847bccd6a226b2de1cccdc86b06bbc15c46a7",
+  "source_mode": "RGBA",
+  "source_alpha_range": [
+    0,
+    254
+  ],
+  "review": {
+    "status": "accepted_for_local_delivery",
+    "reviewed_utc": "2026-09-19T15:06:33.831728+00:00",
+    "evidence": "artifacts/visual-acceptance.md"
+  }
+}
