@@ -1,9 +1,12 @@
-[gd_resource type="Resource" script_class="DuelMove" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="DuelMove" load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://scripts/move_data.gd" id="1"]
 
+[ext_resource type="Resource" path="res://resources/presentation/body.tres" id="2"]
+
 [resource]
 script = ExtResource("1")
+presentation = ExtResource("2")
 display_name = "轻体术"
 kind = "light"
 level = "mid"
@@ -16,7 +19,7 @@ blockstun = 11
 hitstop = 4
 push = 0.55
 stance = "stand"
-animation_id = "stand_light"
+animation_id = "body_stand_light"
 effect_id = "body"
 knockdown = false
 box = Rect2(7, -52, 35, 37)

@@ -10,6 +10,9 @@ var cpu: bool = true
 var training: RefCounted
 var input_device: String = "keyboard:0"
 var meter_flash: Array[float] = [0.0, 0.0]
+var meter_error: Array[float] = [0.0, 0.0]
+var meter_spent: Array[int] = [0, 0]
+var spent_time: Array[float] = [0.0, 0.0]
 var frozen: bool = false
 var input_hints: Array[String] = ["WASD / FG · VB", "↑↓←→ / JK · NM"]
 var trailing: Array[float] = [1000.0, 1000.0]
@@ -36,6 +39,9 @@ func reset_effects() -> void:
 	callout_time.assign([0.0, 0.0])
 	time = 0
 	meter_flash.assign([0.0, 0.0])
+	meter_error.assign([0.0, 0.0])
+	meter_spent.assign([0, 0])
+	spent_time.assign([0.0, 0.0])
 
 func consume(events: Array) -> void:
 	for event: Dictionary in events:
@@ -44,10 +50,14 @@ func consume(events: Array) -> void:
 			callouts[slot] = combat.moves[event.move].display_name
 			callout_time[slot] = 1.4
 		elif event.type == "meter_empty":
+			meter_error[event.attacker] = 0.6
 			callouts[event.attacker] = "呼吸槽不足 · 需要 %d 格" % int(event.cost / 100)
 			callout_time[event.attacker] = 1.2
 		elif event.type == "meter":
 			meter_flash[event.attacker] = 0.35
+			if int(event.amount) < 0:
+				meter_spent[event.attacker] = -int(event.amount)
+				spent_time[event.attacker] = 0.9
 		elif event.type == "throw_tech":
 			callouts.assign(["拆投", "拆投"])
 			callout_time.assign([0.8, 0.8])
@@ -59,6 +69,8 @@ func _process(delta: float) -> void:
 		time += delta
 		for i in range(2):
 			meter_flash[i] = maxf(0, meter_flash[i] - delta)
+			meter_error[i] = maxf(0, meter_error[i] - delta)
+			spent_time[i] = maxf(0, spent_time[i] - delta)
 			trailing[i] = move_toward(trailing[i], combat.fighters[i].hp, delta * 270)
 			callout_time[i] = maxf(0, callout_time[i] - delta)
 	queue_redraw()
@@ -135,8 +147,10 @@ func _draw() -> void:
 			draw_rect(Rect2(meter_x, 117, 126, 9), Color("172537"))
 			var fill_amount := clampf((f.meter - stock * 100) / 100.0, 0, 1)
 			draw_rect(Rect2(meter_x, 117, 126 * fill_amount, 9), accent.lightened(meter_flash[i] * 0.7))
-			draw_rect(Rect2(meter_x, 117, 126, 9), Color(GOLD, 0.55), false, 1)
+			draw_rect(Rect2(meter_x, 117, 126, 9), Color("ed7f89") if meter_error[i] > 0 else Color(GOLD, 0.55), false, 1.5 if meter_error[i] > 0 else 1.0)
 		_text("呼吸 %d / 3" % int(f.meter / 100), Vector2(x, 145), 13, GOLD)
+		if spent_time[i] > 0:
+			_text("−%d 格" % int(meter_spent[i] / 100), Vector2(x + 128, 145), 14, Color(GOLD,minf(1,spent_time[i]*3)))
 		if f.meter >= 300:
 			_text("MAX", Vector2(x + 358, 145), 14, accent)
 		if f.combo_display > 0 and f.combo > 1:

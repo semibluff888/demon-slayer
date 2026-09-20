@@ -1,9 +1,12 @@
-[gd_resource type="Resource" script_class="DuelMove" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="DuelMove" load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://scripts/move_data.gd" id="1"]
 
+[ext_resource type="Resource" path="res://resources/presentation/body.tres" id="2"]
+
 [resource]
 script = ExtResource("1")
+presentation = ExtResource("2")
 display_name = "重体术"
 kind = "heavy"
 level = "mid"
@@ -16,7 +19,7 @@ blockstun = 15
 hitstop = 6
 push = 0.9
 stance = "stand"
-animation_id = "stand_heavy"
+animation_id = "body_stand_heavy"
 effect_id = "body"
 knockdown = false
 box = Rect2(7, -52, 52, 37)

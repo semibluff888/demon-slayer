@@ -14,15 +14,23 @@ EXPECTED = {'idle':6, 'walk':8, 'walk_back':8, 'crouch':3, 'jump':6, 'guard':3,
             'air_light':6, 'air_heavy':6, 'dash_forward':8, 'dash_back':8,
             'jump_forward':8, 'jump_back':8, 'throw_success':12, 'thrown':12}
 
+EXPECTED.update({'body_'+s+'_'+w:(6 if w=='light' else 9) for s in ('stand','crouch','air') for w in ('light','heavy')})
+EXPECTED.update({'roll_forward':12,'roll_back':12,'throw_forward':12,'thrown_forward':12,'throw_tech':6})
+
+def clip_counts(character):
+    result = dict(EXPECTED)
+    result.update({'water_slash':9,'water_wheel':9} if character=='tanjiro' else {'iai':9,'thunder':9,'body_crouch_heavy':8})
+    result.update({'water_vortex':12,'water_dragon':15,'sun_arc':12} if character=='tanjiro' else {'iai_return':12,'sixfold':18,'godspeed':15})
+    return result
+
 class ArtworkTests(unittest.TestCase):
     def test_all_clips_are_real_distinct_frames_and_fit_atlas(self):
         for character in ('tanjiro', 'zenitsu'):
             directory = ROOT / 'art/characters' / character
             atlas = json.loads((directory / 'atlas.json').read_text(encoding='utf-8'))
-            expected = dict(EXPECTED)
-            expected.update({'water_slash':9, 'water_wheel':9} if character == 'tanjiro' else {'iai':9, 'thunder':9})
+            expected = clip_counts(character)
             self.assertEqual(set(atlas['clips']), set(expected))
-            self.assertEqual(sum(len(c['frames']) for c in atlas['clips'].values()), 168)
+            self.assertEqual(sum(len(c['frames']) for c in atlas['clips'].values()), sum(expected.values()))
             pages = {}
             for clip, count in expected.items():
                 info = atlas['clips'][clip]
@@ -64,7 +72,7 @@ class ArtworkTests(unittest.TestCase):
                 self.assertEqual(portrait.getchannel('A').getextrema(), (0,255))
             with Image.open(path / 'avatar.png') as avatar:
                 self.assertEqual(avatar.size, (192,192))
-            for clip in list(EXPECTED)+(['water_slash','water_wheel'] if character=='tanjiro' else ['iai','thunder']):
+            for clip in clip_counts(character):
                 # Later targeted replacements are represented by their real imports.
                 candidates = list((ROOT/'output/imagegen/anime-v2/imports').glob(character+'-'+clip+'*.json'))
                 self.assertTrue(candidates, character+'/'+clip)
@@ -88,10 +96,10 @@ class ArtworkTests(unittest.TestCase):
         if not CHECK_PREVIEWS:
             self.skipTest('Local previews are not versioned; rebuild art and pass --with-previews to validate them.')
         for character in ('tanjiro','zenitsu'):
-            for clip in list(EXPECTED)+(['water_slash','water_wheel'] if character=='tanjiro' else ['iai','thunder']):
+            for clip in clip_counts(character):
                 with Image.open(ROOT/'output/imagegen/anime-v2/review'/(character+'-'+clip+'.gif')) as preview:
                     self.assertTrue(preview.is_animated)
-                    self.assertEqual(preview.n_frames, EXPECTED.get(clip,9))
+                    self.assertEqual(preview.n_frames, clip_counts(character)[clip])
                     self.assertGreater(preview.info.get('duration',0),0)
 
 if __name__ == '__main__':

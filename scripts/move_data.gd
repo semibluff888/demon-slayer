@@ -22,6 +22,7 @@ extends Resource
 @export var stance: String = "stand"
 @export var animation_id: String = ""
 @export var effect_id: String = ""
+@export var presentation: Resource
 @export var cancel_targets: PackedStringArray = []
 @export var meter_cost: int = 0
 @export var freeze_frames: int = 0
@@ -49,6 +50,18 @@ func segment(frame: int) -> int:
 		if frame >= hit_frames[n]:
 			return n
 	return -1
+
+func segment_start(index: int) -> int:
+	return hit_frames[index] if not hit_frames.is_empty() else startup
+
+func segment_end(index: int) -> int:
+	return hit_frames[index + 1] if index + 1 < hit_frames.size() else startup + active
+
+func segment_progress(frame: int) -> float:
+	var index := segment(frame)
+	if index < 0:
+		return 0.0
+	return float(frame - segment_start(index)) / maxi(1, segment_end(index) - segment_start(index) - 1)
 
 func hit_count() -> int:
 	return maxi(1, hit_frames.size())

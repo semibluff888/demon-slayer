@@ -1,9 +1,12 @@
-[gd_resource type="Resource" script_class="DuelMove" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="DuelMove" load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://scripts/move_data.gd" id="1"]
 
+[ext_resource type="Resource" path="res://resources/presentation/water_vortex.tres" id="2"]
+
 [resource]
 script = ExtResource("1")
+presentation = ExtResource("2")
 display_name = "水之呼吸·陆之型 扭转漩涡·重"
 kind = "skill"
 startup = 15
@@ -17,8 +20,9 @@ push = 0.6
 box = Rect2(-8, -55, 94, 49)
 cancel_targets = PackedStringArray("super", "max")
 cancel_window = 26
-animation_id = "water_wheel"
+animation_id = "water_vortex"
 travel = 1.6
 startup_travel = 0.0
 hit_frames = PackedInt32Array(15, 22)
+effect_id = "water_vortex"
 id = "tanjiro_214D"

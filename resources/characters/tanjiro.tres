@@ -33,6 +33,7 @@ role = "均衡 · 控距衔接"
 accent = Color(0.396, 0.796, 0.831, 1)
 walk_speed = 2.15
 visual_directory = "res://art/characters/tanjiro/"
+state_animations = {"roll_forward": "roll_forward", "roll_back": "roll_back", "throw_forward": "throw_forward", "throw_back": "throw_success", "thrown_forward": "thrown_forward", "thrown_back": "thrown", "throw_tech": "throw_tech"}
 normals = {
 "5A": ExtResource("2"),
 "5B": ExtResource("3"),

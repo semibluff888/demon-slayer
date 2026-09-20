@@ -1,0 +1,30 @@
+{
+  "id": "zenitsu-body_stand_heavy-phase2-v1",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "1536x1536",
+  "route": "CPA via bundled image_gen.py",
+  "started_utc": "2026-09-20T12:45:06.9186607Z",
+  "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-body_stand_heavy-phase2-v1.txt",
+  "output": "output\\imagegen\\anime-v2\\raw\\zenitsu-body_stand_heavy-phase2-v1.png",
+  "references": [
+    "output/imagegen/anime-v2/raw/zenitsu-model.png",
+    "output/imagegen/anime-v2/raw/zenitsu-idle.png"
+  ],
+  "price_verified": false,
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-09-20T12:45:49.1388900Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "d947d09424500c28557cbf92624779968185de5e858a16553ec6c8d883d7dd97",
+  "review": {
+    "status": "accepted_for_phase2_actions_feedback",
+    "reviewed_utc": "2026-09-20T14:17:13.276504+00:00",
+    "evidence": "docs/phase2-acceptance.md",
+    "capture_gallery": "artifacts/phase2/index.html"
+  }
+}

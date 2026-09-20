@@ -1,0 +1,30 @@
+{
+  "id": "tanjiro-body_crouch_light-phase2-v1",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "1536x1024",
+  "route": "CPA via bundled image_gen.py",
+  "started_utc": "2026-09-20T13:05:56.0546122Z",
+  "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-body_crouch_light-phase2-v1.txt",
+  "output": "output\\imagegen\\anime-v2\\raw\\tanjiro-body_crouch_light-phase2-v1.png",
+  "references": [
+    "output/imagegen/anime-v2/raw/tanjiro-model.png",
+    "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
+  ],
+  "price_verified": false,
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-09-20T13:06:40.7900038Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "3604383e9bf0844dd7b9d693a631f01ebc8a8aa53dc65dfc90c127af1c1b399a",
+  "review": {
+    "status": "accepted_for_phase2_actions_feedback",
+    "reviewed_utc": "2026-09-20T14:17:13.276504+00:00",
+    "evidence": "docs/phase2-acceptance.md",
+    "capture_gallery": "artifacts/phase2/index.html"
+  }
+}

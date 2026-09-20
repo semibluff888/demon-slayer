@@ -48,6 +48,8 @@ var throw_frame: int = 0
 var throw_facing: int = 1
 var throw_back: bool = true
 var throw_invulnerable: int = 0
+# Presentation reaction follows the existing stun clock; never adds recovery.
+var reaction: String = ""
 var combo: int = 0
 var combo_damage: int = 0
 var combo_display: int = 0

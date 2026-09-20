@@ -20,6 +20,10 @@ func _init() -> void:
 		visual.element_name = definition.element_name
 		visual.accent = definition.accent
 		visual.asset_directory = definition.visual_directory
+		visual.state_animations = definition.state_animations.duplicate()
+		for clip: String in visual.state_animations.values():
+			if not clip in visual.required_move_clips:
+				visual.required_move_clips.append(clip)
 		for move in definition.all_moves():
 			if not move.clip_id() in visual.required_move_clips:
 				visual.required_move_clips.append(move.clip_id())

@@ -1,0 +1,30 @@
+{
+  "id": "zenitsu-roll_back-phase2-v1",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x1536",
+  "route": "CPA via bundled image_gen.py",
+  "started_utc": "2026-09-20T13:07:46.2578755Z",
+  "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-roll_back-phase2-v1.txt",
+  "output": "output\\imagegen\\anime-v2\\raw\\zenitsu-roll_back-phase2-v1.png",
+  "references": [
+    "output/imagegen/anime-v2/raw/zenitsu-model.png",
+    "output/imagegen/anime-v2/raw/zenitsu-idle.png"
+  ],
+  "price_verified": false,
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-09-20T13:08:35.7196318Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "553ffd488b83de96d13e20cd40c07c3817a88ce0d6b89853c33c5aca33a52c7b",
+  "review": {
+    "status": "accepted_for_phase2_actions_feedback",
+    "reviewed_utc": "2026-09-20T14:17:13.276504+00:00",
+    "evidence": "docs/phase2-acceptance.md",
+    "capture_gallery": "artifacts/phase2/index.html"
+  }
+}

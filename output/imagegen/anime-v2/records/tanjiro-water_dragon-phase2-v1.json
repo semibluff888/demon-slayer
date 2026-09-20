@@ -1,0 +1,30 @@
+{
+  "id": "tanjiro-water_dragon-phase2-v1",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2560x1536",
+  "route": "CPA via bundled image_gen.py",
+  "started_utc": "2026-09-20T13:32:29.6101439Z",
+  "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-water_dragon-phase2-v1.txt",
+  "output": "output\\imagegen\\anime-v2\\raw\\tanjiro-water_dragon-phase2-v1.png",
+  "references": [
+    "output/imagegen/anime-v2/raw/tanjiro-model.png",
+    "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
+  ],
+  "price_verified": false,
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-09-20T13:33:22.1728538Z",
+  "actual_size": [
+    1619,
+    971
+  ],
+  "sha256": "41ede424ccde0865c816a806295f81c616c15d559941d05fb555f37703e3f1d6",
+  "review": {
+    "status": "accepted_for_phase2_actions_feedback",
+    "reviewed_utc": "2026-09-20T14:17:13.276504+00:00",
+    "evidence": "docs/phase2-acceptance.md",
+    "capture_gallery": "artifacts/phase2/index.html"
+  }
+}

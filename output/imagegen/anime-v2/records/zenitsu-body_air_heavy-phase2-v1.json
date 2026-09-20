@@ -1,0 +1,30 @@
+{
+  "id": "zenitsu-body_air_heavy-phase2-v1",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "1536x1536",
+  "route": "CPA via bundled image_gen.py",
+  "started_utc": "2026-09-20T13:06:11.3821837Z",
+  "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-body_air_heavy-phase2-v1.txt",
+  "output": "output\\imagegen\\anime-v2\\raw\\zenitsu-body_air_heavy-phase2-v1.png",
+  "references": [
+    "output/imagegen/anime-v2/raw/zenitsu-model.png",
+    "output/imagegen/anime-v2/raw/zenitsu-idle.png"
+  ],
+  "price_verified": false,
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-09-20T13:06:55.7105878Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "4558dac66d1949547d51e7b477ae1bd2cc32e55d5dd30ad4bde5ec8ee201a059",
+  "review": {
+    "status": "accepted_for_phase2_actions_feedback",
+    "reviewed_utc": "2026-09-20T14:17:13.276504+00:00",
+    "evidence": "docs/phase2-acceptance.md",
+    "capture_gallery": "artifacts/phase2/index.html"
+  }
+}

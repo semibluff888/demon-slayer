@@ -1383,5 +1383,946 @@
         0.875
       ]
     }
+  },
+  {
+    "id": "tanjiro-body_stand_light-phase2-v1",
+    "group": "phase2-basics-tanjiro",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-body_stand_light-phase2-v1.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\tanjiro-body_stand_light-phase2-v1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/anime-v2/raw/tanjiro-model.png",
+      "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "body_stand_light",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 18,
+      "anchor_mode": "feet",
+      "root_fraction": 0.5,
+      "standing_fraction": 0.68359375,
+      "phase_breaks": [
+        2,
+        4
+      ],
+      "timeline": [],
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "tanjiro-body_stand_heavy-phase2-v1",
+    "group": "phase2-basics-tanjiro",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-body_stand_heavy-phase2-v1.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\tanjiro-body_stand_heavy-phase2-v1.png",
+    "size": "1536x1536",
+    "references": [
+      "output/imagegen/anime-v2/raw/tanjiro-model.png",
+      "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "body_stand_heavy",
+      "count": 9,
+      "columns": 3,
+      "rows": 3,
+      "loop": false,
+      "fps": 18,
+      "anchor_mode": "feet",
+      "root_fraction": 0.5,
+      "standing_fraction": 0.68359375,
+      "phase_breaks": [
+        3,
+        6
+      ],
+      "timeline": [],
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "tanjiro-body_crouch_light-phase2-v1",
+    "group": "phase2-basics-tanjiro",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-body_crouch_light-phase2-v1.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\tanjiro-body_crouch_light-phase2-v1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/anime-v2/raw/tanjiro-model.png",
+      "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "body_crouch_light",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 18,
+      "anchor_mode": "feet",
+      "root_fraction": 0.5,
+      "standing_fraction": 0.68359375,
+      "phase_breaks": [
+        2,
+        4
+      ],
+      "timeline": [],
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "tanjiro-body_crouch_heavy-phase2-v1",
+    "group": "phase2-basics-tanjiro",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-body_crouch_heavy-phase2-v1.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\tanjiro-body_crouch_heavy-phase2-v1.png",
+    "size": "1536x1536",
+    "references": [
+      "output/imagegen/anime-v2/raw/tanjiro-model.png",
+      "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "body_crouch_heavy",
+      "count": 9,
+      "columns": 3,
+      "rows": 3,
+      "loop": false,
+      "fps": 18,
+      "anchor_mode": "feet",
+      "root_fraction": 0.5,
+      "standing_fraction": 0.68359375,
+      "phase_breaks": [
+        3,
+        6
+      ],
+      "timeline": [],
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "tanjiro-body_air_light-phase2-v1",
+    "group": "phase2-basics-tanjiro",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-body_air_light-phase2-v1.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\tanjiro-body_air_light-phase2-v1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/anime-v2/raw/tanjiro-model.png",
+      "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "body_air_light",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 18,
+      "anchor_mode": "pelvis",
+      "root_fraction": 0.5,
+      "standing_fraction": 0.68359375,
+      "phase_breaks": [
+        2,
+        4
+      ],
+      "timeline": [],
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "tanjiro-body_air_heavy-phase2-v1",
+    "group": "phase2-basics-tanjiro",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-body_air_heavy-phase2-v1.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\tanjiro-body_air_heavy-phase2-v1.png",
+    "size": "1536x1536",
+    "references": [
+      "output/imagegen/anime-v2/raw/tanjiro-model.png",
+      "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "body_air_heavy",
+      "count": 9,
+      "columns": 3,
+      "rows": 3,
+      "loop": false,
+      "fps": 18,
+      "anchor_mode": "pelvis",
+      "root_fraction": 0.5,
+      "standing_fraction": 0.68359375,
+      "phase_breaks": [
+        3,
+        6
+      ],
+      "timeline": [],
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "tanjiro-roll_forward-phase2-v1",
+    "group": "phase2-basics-tanjiro",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-roll_forward-phase2-v1.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\tanjiro-roll_forward-phase2-v1.png",
+    "size": "2048x1536",
+    "references": [
+      "output/imagegen/anime-v2/raw/tanjiro-model.png",
+      "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "roll_forward",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 18,
+      "anchor_mode": "feet",
+      "root_fraction": 0.5,
+      "standing_fraction": 0.68359375,
+      "phase_breaks": [
+        4,
+        8
+      ],
+      "timeline": [
+        0,
+        1,
+        2,
+        4,
+        6,
+        9,
+        12,
+        15,
+        18,
+        20,
+        23,
+        26
+      ],
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "tanjiro-roll_back-phase2-v1",
+    "group": "phase2-basics-tanjiro",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-roll_back-phase2-v1.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\tanjiro-roll_back-phase2-v1.png",
+    "size": "2048x1536",
+    "references": [
+      "output/imagegen/anime-v2/raw/tanjiro-model.png",
+      "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "roll_back",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 18,
+      "anchor_mode": "feet",
+      "root_fraction": 0.5,
+      "standing_fraction": 0.68359375,
+      "phase_breaks": [
+        4,
+        8
+      ],
+      "timeline": [
+        0,
+        1,
+        2,
+        4,
+        6,
+        9,
+        12,
+        15,
+        18,
+        20,
+        23,
+        26
+      ],
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "tanjiro-throw_forward-phase2-v1",
+    "group": "phase2-basics-tanjiro",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-throw_forward-phase2-v1.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\tanjiro-throw_forward-phase2-v1.png",
+    "size": "2048x1536",
+    "references": [
+      "output/imagegen/anime-v2/raw/tanjiro-model.png",
+      "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "throw_forward",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 18,
+      "anchor_mode": "feet",
+      "root_fraction": 0.5,
+      "standing_fraction": 0.68359375,
+      "phase_breaks": [
+        4,
+        8
+      ],
+      "timeline": [
+        0,
+        3,
+        5,
+        8,
+        10,
+        13,
+        15,
+        18,
+        20,
+        23,
+        26,
+        29
+      ],
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "tanjiro-thrown_forward-phase2-v1",
+    "group": "phase2-basics-tanjiro",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-thrown_forward-phase2-v1.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\tanjiro-thrown_forward-phase2-v1.png",
+    "size": "2048x1536",
+    "references": [
+      "output/imagegen/anime-v2/raw/tanjiro-model.png",
+      "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "thrown_forward",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 18,
+      "anchor_mode": "pelvis",
+      "root_fraction": 0.5,
+      "standing_fraction": 0.68359375,
+      "phase_breaks": [
+        4,
+        8
+      ],
+      "timeline": [
+        0,
+        3,
+        5,
+        8,
+        10,
+        13,
+        15,
+        18,
+        20,
+        23,
+        26,
+        29
+      ],
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "tanjiro-throw_tech-phase2-v1",
+    "group": "phase2-basics-tanjiro",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-throw_tech-phase2-v1.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\tanjiro-throw_tech-phase2-v1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/anime-v2/raw/tanjiro-model.png",
+      "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "throw_tech",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 18,
+      "anchor_mode": "feet",
+      "root_fraction": 0.5,
+      "standing_fraction": 0.68359375,
+      "phase_breaks": [
+        2,
+        4
+      ],
+      "timeline": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10
+      ],
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "tanjiro-water_vortex-phase2-v1",
+    "group": "phase2-specials-tanjiro",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-water_vortex-phase2-v1.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\tanjiro-water_vortex-phase2-v1.png",
+    "size": "2048x1536",
+    "references": [
+      "output/imagegen/anime-v2/raw/tanjiro-model.png",
+      "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "water_vortex",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 18,
+      "anchor_mode": "feet",
+      "root_fraction": 0.5,
+      "standing_fraction": 0.68359375,
+      "phase_breaks": [
+        3,
+        9
+      ],
+      "timeline": [],
+      "segment_sync": true
+    }
+  },
+  {
+    "id": "tanjiro-water_dragon-phase2-v1",
+    "group": "phase2-specials-tanjiro",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-water_dragon-phase2-v1.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\tanjiro-water_dragon-phase2-v1.png",
+    "size": "2560x1536",
+    "references": [
+      "output/imagegen/anime-v2/raw/tanjiro-model.png",
+      "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "water_dragon",
+      "count": 15,
+      "columns": 5,
+      "rows": 3,
+      "loop": false,
+      "fps": 18,
+      "anchor_mode": "feet",
+      "root_fraction": 0.5,
+      "standing_fraction": 0.68359375,
+      "phase_breaks": [
+        3,
+        11
+      ],
+      "timeline": [],
+      "segment_sync": true
+    }
+  },
+  {
+    "id": "tanjiro-sun_arc-phase2-v1",
+    "group": "phase2-specials-tanjiro",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-sun_arc-phase2-v1.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\tanjiro-sun_arc-phase2-v1.png",
+    "size": "2048x1536",
+    "references": [
+      "output/imagegen/anime-v2/raw/tanjiro-model.png",
+      "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "sun_arc",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 18,
+      "anchor_mode": "pelvis",
+      "root_fraction": 0.5,
+      "standing_fraction": 0.68359375,
+      "phase_breaks": [
+        4,
+        7
+      ],
+      "timeline": [],
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "zenitsu-body_stand_light-phase2-v1",
+    "group": "phase2-basics-zenitsu",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-body_stand_light-phase2-v1.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\zenitsu-body_stand_light-phase2-v1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/anime-v2/raw/zenitsu-model.png",
+      "output/imagegen/anime-v2/raw/zenitsu-idle.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "body_stand_light",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 18,
+      "anchor_mode": "feet",
+      "root_fraction": 0.5,
+      "standing_fraction": 0.68359375,
+      "phase_breaks": [
+        2,
+        4
+      ],
+      "timeline": [],
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "zenitsu-body_stand_heavy-phase2-v1",
+    "group": "phase2-basics-zenitsu",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-body_stand_heavy-phase2-v1.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\zenitsu-body_stand_heavy-phase2-v1.png",
+    "size": "1536x1536",
+    "references": [
+      "output/imagegen/anime-v2/raw/zenitsu-model.png",
+      "output/imagegen/anime-v2/raw/zenitsu-idle.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "body_stand_heavy",
+      "count": 9,
+      "columns": 3,
+      "rows": 3,
+      "loop": false,
+      "fps": 18,
+      "anchor_mode": "feet",
+      "root_fraction": 0.5,
+      "standing_fraction": 0.68359375,
+      "phase_breaks": [
+        3,
+        6
+      ],
+      "timeline": [],
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "zenitsu-body_crouch_light-phase2-v1",
+    "group": "phase2-basics-zenitsu",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-body_crouch_light-phase2-v1.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\zenitsu-body_crouch_light-phase2-v1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/anime-v2/raw/zenitsu-model.png",
+      "output/imagegen/anime-v2/raw/zenitsu-idle.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "body_crouch_light",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 18,
+      "anchor_mode": "feet",
+      "root_fraction": 0.5,
+      "standing_fraction": 0.68359375,
+      "phase_breaks": [
+        2,
+        4
+      ],
+      "timeline": [],
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "zenitsu-body_crouch_heavy-phase2-v1",
+    "group": "phase2-basics-zenitsu",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-body_crouch_heavy-phase2-v1.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\zenitsu-body_crouch_heavy-phase2-v1.png",
+    "size": "1536x1536",
+    "references": [
+      "output/imagegen/anime-v2/raw/zenitsu-model.png",
+      "output/imagegen/anime-v2/raw/zenitsu-idle.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "body_crouch_heavy",
+      "count": 9,
+      "columns": 3,
+      "rows": 3,
+      "loop": false,
+      "fps": 18,
+      "anchor_mode": "feet",
+      "root_fraction": 0.5,
+      "standing_fraction": 0.68359375,
+      "phase_breaks": [
+        2,
+        5
+      ],
+      "timeline": [],
+      "segment_sync": false,
+      "frame_order": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "editorial_note": "Source frame 0 is upright; omit it so held crouch never pops up on 2D. All remaining eight drawings form a continuous low sweep."
+    }
+  },
+  {
+    "id": "zenitsu-body_air_light-phase2-v1",
+    "group": "phase2-basics-zenitsu",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-body_air_light-phase2-v1.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\zenitsu-body_air_light-phase2-v1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/anime-v2/raw/zenitsu-model.png",
+      "output/imagegen/anime-v2/raw/zenitsu-idle.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "body_air_light",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 18,
+      "anchor_mode": "pelvis",
+      "root_fraction": 0.5,
+      "standing_fraction": 0.68359375,
+      "phase_breaks": [
+        2,
+        4
+      ],
+      "timeline": [],
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "zenitsu-body_air_heavy-phase2-v1",
+    "group": "phase2-basics-zenitsu",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-body_air_heavy-phase2-v1.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\zenitsu-body_air_heavy-phase2-v1.png",
+    "size": "1536x1536",
+    "references": [
+      "output/imagegen/anime-v2/raw/zenitsu-model.png",
+      "output/imagegen/anime-v2/raw/zenitsu-idle.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "body_air_heavy",
+      "count": 9,
+      "columns": 3,
+      "rows": 3,
+      "loop": false,
+      "fps": 18,
+      "anchor_mode": "pelvis",
+      "root_fraction": 0.5,
+      "standing_fraction": 0.68359375,
+      "phase_breaks": [
+        3,
+        6
+      ],
+      "timeline": [],
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "zenitsu-roll_forward-phase2-v1",
+    "group": "phase2-basics-zenitsu",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-roll_forward-phase2-v1.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\zenitsu-roll_forward-phase2-v1.png",
+    "size": "2048x1536",
+    "references": [
+      "output/imagegen/anime-v2/raw/zenitsu-model.png",
+      "output/imagegen/anime-v2/raw/zenitsu-idle.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "roll_forward",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 18,
+      "anchor_mode": "feet",
+      "root_fraction": 0.5,
+      "standing_fraction": 0.68359375,
+      "phase_breaks": [
+        4,
+        8
+      ],
+      "timeline": [
+        0,
+        1,
+        2,
+        4,
+        6,
+        9,
+        12,
+        15,
+        18,
+        20,
+        23,
+        26
+      ],
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "zenitsu-roll_back-phase2-v1",
+    "group": "phase2-basics-zenitsu",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-roll_back-phase2-v1.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\zenitsu-roll_back-phase2-v1.png",
+    "size": "2048x1536",
+    "references": [
+      "output/imagegen/anime-v2/raw/zenitsu-model.png",
+      "output/imagegen/anime-v2/raw/zenitsu-idle.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "roll_back",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 18,
+      "anchor_mode": "feet",
+      "root_fraction": 0.5,
+      "standing_fraction": 0.68359375,
+      "phase_breaks": [
+        4,
+        8
+      ],
+      "timeline": [
+        0,
+        1,
+        2,
+        4,
+        6,
+        9,
+        12,
+        15,
+        18,
+        20,
+        23,
+        26
+      ],
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "zenitsu-throw_forward-phase2-v1",
+    "group": "phase2-basics-zenitsu",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-throw_forward-phase2-v1.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\zenitsu-throw_forward-phase2-v1.png",
+    "size": "2048x1536",
+    "references": [
+      "output/imagegen/anime-v2/raw/zenitsu-model.png",
+      "output/imagegen/anime-v2/raw/zenitsu-idle.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "throw_forward",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 18,
+      "anchor_mode": "feet",
+      "root_fraction": 0.5,
+      "standing_fraction": 0.68359375,
+      "phase_breaks": [
+        4,
+        8
+      ],
+      "timeline": [
+        0,
+        3,
+        5,
+        8,
+        10,
+        13,
+        15,
+        18,
+        20,
+        23,
+        26,
+        29
+      ],
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "zenitsu-thrown_forward-phase2-v1",
+    "group": "phase2-basics-zenitsu",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-thrown_forward-phase2-v1.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\zenitsu-thrown_forward-phase2-v1.png",
+    "size": "2048x1536",
+    "references": [
+      "output/imagegen/anime-v2/raw/zenitsu-model.png",
+      "output/imagegen/anime-v2/raw/zenitsu-idle.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "thrown_forward",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 18,
+      "anchor_mode": "pelvis",
+      "root_fraction": 0.5,
+      "standing_fraction": 0.68359375,
+      "phase_breaks": [
+        4,
+        8
+      ],
+      "timeline": [
+        0,
+        3,
+        5,
+        8,
+        10,
+        13,
+        15,
+        18,
+        20,
+        23,
+        26,
+        29
+      ],
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "zenitsu-throw_tech-phase2-v1",
+    "group": "phase2-basics-zenitsu",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-throw_tech-phase2-v1.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\zenitsu-throw_tech-phase2-v1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/anime-v2/raw/zenitsu-model.png",
+      "output/imagegen/anime-v2/raw/zenitsu-idle.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "throw_tech",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 18,
+      "anchor_mode": "feet",
+      "root_fraction": 0.5,
+      "standing_fraction": 0.68359375,
+      "phase_breaks": [
+        2,
+        4
+      ],
+      "timeline": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10
+      ],
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "zenitsu-iai_return-phase2-v1",
+    "group": "phase2-specials-zenitsu",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-iai_return-phase2-v1.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\zenitsu-iai_return-phase2-v1.png",
+    "size": "2048x1536",
+    "references": [
+      "output/imagegen/anime-v2/raw/zenitsu-model.png",
+      "output/imagegen/anime-v2/raw/zenitsu-idle.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "iai_return",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 18,
+      "anchor_mode": "feet",
+      "root_fraction": 0.5,
+      "standing_fraction": 0.68359375,
+      "phase_breaks": [
+        3,
+        9
+      ],
+      "timeline": [],
+      "segment_sync": true
+    }
+  },
+  {
+    "id": "zenitsu-sixfold-phase2-v1",
+    "group": "phase2-specials-zenitsu",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-sixfold-phase2-v1.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\zenitsu-sixfold-phase2-v1.png",
+    "size": "3072x1536",
+    "references": [
+      "output/imagegen/anime-v2/raw/zenitsu-model.png",
+      "output/imagegen/anime-v2/raw/zenitsu-idle.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "sixfold",
+      "count": 18,
+      "columns": 6,
+      "rows": 3,
+      "loop": false,
+      "fps": 18,
+      "anchor_mode": "feet",
+      "root_fraction": 0.5,
+      "standing_fraction": 0.68359375,
+      "phase_breaks": [
+        3,
+        15
+      ],
+      "timeline": [],
+      "segment_sync": true
+    }
+  },
+  {
+    "id": "zenitsu-godspeed-phase2-v1",
+    "group": "phase2-specials-zenitsu",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-godspeed-phase2-v1.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\zenitsu-godspeed-phase2-v1.png",
+    "size": "2560x1536",
+    "references": [
+      "output/imagegen/anime-v2/raw/zenitsu-model.png",
+      "output/imagegen/anime-v2/raw/zenitsu-idle.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "godspeed",
+      "count": 15,
+      "columns": 5,
+      "rows": 3,
+      "loop": false,
+      "fps": 18,
+      "anchor_mode": "feet",
+      "root_fraction": 0.5,
+      "standing_fraction": 0.68359375,
+      "phase_breaks": [
+        4,
+        10
+      ],
+      "timeline": [],
+      "segment_sync": true
+    }
   }
 ]

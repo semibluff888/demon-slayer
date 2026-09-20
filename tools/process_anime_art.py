@@ -8,6 +8,7 @@ import argparse
 import hashlib
 import json
 import math
+import os
 from pathlib import Path
 from PIL import Image, ImageChops, ImageDraw, ImageFont, ImageMath, ImageFilter
 
@@ -247,7 +248,7 @@ def process_clip(job, calibration):
             root_y = (i // columns + pelvis[1]) * cell_h - crop[1]
             foot = (root_x, root_y + (34.0 / 70.0) * source_standing)
             # The final victim frames are grounded on their back.
-            if meta['clip'] == 'thrown' and i >= 8:
+            if (meta['clip'].startswith('thrown') and i >= 8) or i in config.get('ground_frames', []):
                 foot = (root_x, measured_contact[1])
         else:
             foot = config.get('feet', {}).get(str(i), (root_x, measured_contact[1]))
@@ -269,8 +270,9 @@ def process_clip(job, calibration):
         frames.append(canvas)
         entries.append(dict(source=job['out'], crop=crop, measured_feet=foot, silhouette_contact=measured_contact, scale=scale,
                             normalized_bounds=list(canvas.getbbox()), source_cell_size=[cell_w, cell_h], anchor_mode=anchor_mode))
-    save_json(OUT / 'imports' / (job['id'] + '.json'), dict(standing_height=source_standing, canvas_size=CANVAS, feet_anchor=ANCHOR, frames=entries))
-    return frames
+    order = meta.get('frame_order', list(range(count)))
+    save_json(OUT / 'imports' / (job['id'] + '.json'), dict(standing_height=source_standing, canvas_size=CANVAS, feet_anchor=ANCHOR, frame_order=order, frames=entries))
+    return [frames[i] for i in order]
 
 def previews(character, clips):
     REVIEW.mkdir(parents=True, exist_ok=True)
@@ -308,6 +310,13 @@ def previews(character, clips):
         draw.text((x+9, y+6), clip, fill='#e2ca9a', font=font)
     overview.save(REVIEW / (character+'-overview.jpg'), quality=94)
 
+def save_atlas_page(image, path):
+    # Write a complete PNG before replacing the previous build; a failed encode
+    # must never leave an atlas truncated while the editor is watching it.
+    temporary = path.with_suffix('.building.png')
+    image.save(temporary, format='PNG')
+    os.replace(str(temporary), str(path))
+
 def pack(character, clips):
     target = ART / 'characters' / character
     target.mkdir(parents=True, exist_ok=True)
@@ -316,9 +325,10 @@ def pack(character, clips):
     for clip, info in clips.items():
         count = len(info['images'])
         atlas['clips'][clip] = dict(loop=info['meta']['loop'], fps=info['meta']['fps'],
-                                   phase_breaks=[count//3, count*2//3], frames=[None]*count,
+                                   phase_breaks=info['meta'].get('phase_breaks',[count//3, count*2//3]), frames=[None]*count,
+                                   segment_sync=info['meta'].get('segment_sync',False),
                                    anchor_mode=info['meta'].get('anchor_mode','feet'),
-                                   timeline=([0,3,5,8,10,13,15,18,20,23,26,29] if clip in ('throw_success','thrown') else []))
+                                   timeline=info['meta'].get('timeline', [0,3,5,8,10,13,15,18,20,23,26,29] if clip in ('throw_success','thrown') else []))
         for i, image in enumerate(info['images']):
             bbox = image.getbbox()
             sprites.append((clip, i, image.crop(bbox), bbox[:2]))
@@ -331,7 +341,7 @@ def pack(character, clips):
         if x+image.width+2 > PAGE:
             x, y, row_h = 2, y+row_h+4, 0
         if y+image.height+2 > PAGE:
-            page.save(target / ('atlas-{}.png'.format(page_index)))
+            save_atlas_page(page, target / ('atlas-{}.png'.format(page_index)))
             page_index += 1
             page = Image.new('RGBA', (PAGE, PAGE))
             x = y = 2
@@ -340,7 +350,7 @@ def pack(character, clips):
         atlas['clips'][clip]['frames'][i] = dict(texture='atlas-{}.png'.format(page_index), region=[x, y, image.width, image.height], offset=list(offset))
         x += image.width+4
         row_h = max(row_h, image.height)
-    page.save(target / ('atlas-{}.png'.format(page_index)))
+    save_atlas_page(page, target / ('atlas-{}.png'.format(page_index)))
     save_json(target / 'atlas.json', atlas)
     print('{}: {} clips, {} original frames, {} atlas pages'.format(character, len(clips), len(sprites), page_index+1))
 

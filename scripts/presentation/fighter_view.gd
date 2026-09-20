@@ -58,6 +58,8 @@ func sync(delta: float, freeze_pose: bool) -> void:
 		# through the start of the crouch animation again.
 		if desired == "crouch" and clip == "guard_low" and visual.frames != null and visual.frames.has_animation(desired):
 			clock_ticks = maxi(0, visual.frames.get_frame_count(desired) - 1) * 3
+		afterimages.clear()
+		trail_clock = 0
 		clip = desired
 		restart_requested = false
 	previous_move_frame = fighter.move_frame if fighter.move != null else -1
@@ -72,9 +74,12 @@ func sync(delta: float, freeze_pose: bool) -> void:
 	if visual.frames != null and visual.frames.has_animation(clip) and visual.frames.get_frame_count(clip) > 0:
 		frame_index = _frame_index()
 		texture = visual.frames.get_frame_texture(clip, frame_index)
-	if not freeze_pose and texture != null and clip == "thunder" and fighter.hitbox().has_area() and trail_clock >= 0.035:
-		afterimages.append({"texture": texture, "x": fighter.x, "y": fighter.y, "facing": fighter.facing, "life": 0.16})
-		if afterimages.size() > 6:
+	var profile: Resource = fighter.move.presentation if fighter.move != null else null
+	if combat.phase != "fight":
+		afterimages.clear()
+	if not freeze_pose and combat.phase == "fight" and texture != null and profile != null and profile.trail_count > 0 and fighter.hitbox().has_area() and trail_clock >= 0.05:
+		afterimages.append({"texture": texture, "x": fighter.x, "y": fighter.y, "facing": fighter.facing, "life": 0.10, "color":profile.color, "alpha":profile.trail_alpha})
+		if afterimages.size() > profile.trail_count:
 			afterimages.pop_front()
 		trail_clock = 0
 	queue_redraw()
@@ -82,14 +87,16 @@ func sync(delta: float, freeze_pose: bool) -> void:
 func _clip() -> String:
 	if combat.phase == "match_end" and combat.match_winner == fighter.slot:
 		return "victory"
+	if fighter.reaction == "throw_tech" and fighter.stun > 0:
+		return _state_clip("throw_tech", "guard")
 	if fighter.throw_role == "thrower":
-		return "throw_success"
+		return _state_clip("throw_back" if fighter.throw_back else "throw_forward", "throw_success")
 	if fighter.throw_role == "victim" or (fighter.state == "knockdown" and fighter.throw_frame >= Arena.THROW_IMPACT_TICK):
-		return "thrown"
+		return _state_clip("thrown_back" if fighter.throw_back else "thrown_forward", "thrown")
 	if fighter.move != null:
 		return fighter.move.clip_id()
 	if fighter.roll_frame >= 0:
-		return "jump_back" if fighter.roll_direction * fighter.facing < 0 else "jump_forward"
+		return _state_clip("roll_back" if fighter.roll_direction * fighter.facing < 0 else "roll_forward", "jump_back" if fighter.roll_direction * fighter.facing < 0 else "jump_forward")
 	if fighter.state == "dash":
 		return "dash_back" if fighter.dash_back else "dash_forward"
 	if fighter.state == "air" and fighter.flip_jump and not fighter.air_used_move:
@@ -108,18 +115,34 @@ func _clip() -> String:
 		"knockdown": return "knockdown"
 	return "idle"
 
+func _state_clip(key: String, fallback: String) -> String:
+	return visual.state_animations.get(key, fallback)
+
+func _timeline_frame(tick: int, count: int) -> int:
+	var timeline: Array = visual.clip_metadata.get(clip, {}).get("timeline", [])
+	for n in range(mini(count, timeline.size()) - 1, -1, -1):
+		if tick >= int(timeline[n]):
+			return n
+	return 0
+
 func _frame_index() -> int:
 	var count: int = visual.frames.get_frame_count(clip)
 	# Hold the relaxed drawing; the other idle poses shift the cloth and weight sharply.
 	# Smooth breathing below is anchored at the feet and freezes with the pose clock.
 	if clip == "idle":
 		return 0
-	if clip in ["throw_success", "thrown"]:
+	if fighter.reaction == "throw_tech" and fighter.stun > 0:
+		return mini(count - 1, int((16 - fighter.stun) * float(count) / 16))
+	if not fighter.throw_role.is_empty() or (fighter.state == "knockdown" and fighter.throw_frame >= Arena.THROW_IMPACT_TICK):
+		if not visual.clip_metadata.get(clip, {}).get("timeline", []).is_empty():
+			return _timeline_frame(fighter.throw_frame, count)
 		if fighter.throw_frame >= Arena.THROW_IMPACT_TICK:
 			return mini(count - 1, 8 + int((fighter.throw_frame - Arena.THROW_IMPACT_TICK) / 3))
 		return mini(7, int(fighter.throw_frame / 20.0 * 8))
 	if fighter.roll_frame >= 0:
-		return mini(count - 1, int(fighter.roll_frame * float(count) / 28))
+		if visual.clip_metadata.get(clip, {}).get("timeline", []).is_empty():
+			return mini(count - 1, int(fighter.roll_frame * float(count) / 28))
+		return _timeline_frame(fighter.roll_frame, count)
 	if clip in ["dash_forward", "dash_back"]:
 		var duration: int = Arena.DASH_BACK_TICKS if fighter.dash_back else Arena.DASH_FORWARD_TICKS
 		return mini(count - 1, int((fighter.dash_frame - 1) * float(count) / duration))
@@ -133,6 +156,11 @@ func _frame_index() -> int:
 		if fighter.move_frame < move.startup:
 			return mini(first - 1, int(float(fighter.move_frame) / move.startup * first))
 		if fighter.move_frame < move.startup + move.active:
+			if visual.clip_metadata.get(clip, {}).get("segment_sync", false):
+				var segment: int = move.segment(fighter.move_frame)
+				var group_start := first + int(segment * float(second - first) / move.hit_count())
+				var group_end := first + int((segment + 1) * float(second - first) / move.hit_count())
+				return mini(group_end - 1, group_start + int(move.segment_progress(fighter.move_frame) * (group_end - group_start)))
 			return mini(count - 1, first + int(float(fighter.move_frame - move.startup) / move.active * maxi(1, second - first)))
 		return mini(count - 1, second + int(float(fighter.move_frame - move.startup - move.active) / move.recovery * maxi(1, count - second)))
 	if clip == "jump":
@@ -178,7 +206,7 @@ func _draw() -> void:
 		var factor: float = visual.canonical_height / visual.source_height
 		for ghost: Dictionary in afterimages:
 			draw_set_transform(Vector2(ghost.x - fighter.x, ghost.y - fighter.y), 0, Vector2(ghost.facing, 1))
-			draw_texture_rect(ghost.texture, Rect2(-visual.feet_anchor * factor, ghost.texture.get_size() * factor), false, Color(1, 0.8, 0.35, ghost.life * 2.0))
+			draw_texture_rect(ghost.texture, Rect2(-visual.feet_anchor * factor, ghost.texture.get_size() * factor), false, Color(ghost.color, ghost.alpha * ghost.life / 0.10))
 		draw_set_transform(Vector2.ZERO, 0, Vector2(pose_facing(), 1))
 		var pose_factor := _pose_scale() * factor
 		var rect := Rect2(-visual.feet_anchor * pose_factor, texture.get_size() * pose_factor)
@@ -192,7 +220,7 @@ func _draw() -> void:
 		draw_colored_polygon(PackedVector2Array([Vector2(-2, 3), Vector2(2, 3), Vector2(0, 5)]), player_accent)
 
 func pose_facing() -> int:
-	if clip in ["throw_success", "thrown"]:
+	if not fighter.throw_role.is_empty() or (fighter.state == "knockdown" and fighter.throw_frame >= Arena.THROW_IMPACT_TICK):
 		return fighter.throw_facing
 	if clip in ["jump_forward", "jump_back"]:
 		return fighter.facing if fighter.roll_frame >= 0 else fighter.jump_facing

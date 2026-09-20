@@ -1,0 +1,30 @@
+{
+  "id": "zenitsu-sixfold-phase2-v1",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "3072x1536",
+  "route": "CPA via bundled image_gen.py",
+  "started_utc": "2026-09-20T13:32:46.3674775Z",
+  "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-sixfold-phase2-v1.txt",
+  "output": "output\\imagegen\\anime-v2\\raw\\zenitsu-sixfold-phase2-v1.png",
+  "references": [
+    "output/imagegen/anime-v2/raw/zenitsu-model.png",
+    "output/imagegen/anime-v2/raw/zenitsu-idle.png"
+  ],
+  "price_verified": false,
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-09-20T13:33:36.7802152Z",
+  "actual_size": [
+    1774,
+    887
+  ],
+  "sha256": "c88e4777a88e6c0f37bf282d805036f8fcc83099a0b5343b03e14d4456888f66",
+  "review": {
+    "status": "accepted_for_phase2_actions_feedback",
+    "reviewed_utc": "2026-09-20T14:17:13.276504+00:00",
+    "evidence": "docs/phase2-acceptance.md",
+    "capture_gallery": "artifacts/phase2/index.html"
+  }
+}

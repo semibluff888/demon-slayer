@@ -1,0 +1,30 @@
+{
+  "id": "tanjiro-body_air_heavy-phase2-v1",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "1536x1536",
+  "route": "CPA via bundled image_gen.py",
+  "started_utc": "2026-09-20T13:07:56.9760919Z",
+  "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-body_air_heavy-phase2-v1.txt",
+  "output": "output\\imagegen\\anime-v2\\raw\\tanjiro-body_air_heavy-phase2-v1.png",
+  "references": [
+    "output/imagegen/anime-v2/raw/tanjiro-model.png",
+    "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
+  ],
+  "price_verified": false,
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-09-20T13:08:41.0085927Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "b640d055327f3ffb1192cac333e42927edd6a4d2536c1013b8b23be4be3236f9",
+  "review": {
+    "status": "accepted_for_phase2_actions_feedback",
+    "reviewed_utc": "2026-09-20T14:17:13.276504+00:00",
+    "evidence": "docs/phase2-acceptance.md",
+    "capture_gallery": "artifacts/phase2/index.html"
+  }
+}

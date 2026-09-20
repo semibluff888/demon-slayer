@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MovePresentation" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/presentation/move_presentation.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+shape = "godspeed"
+color = Color(0.8, 0.89, 1.0, 1)
+sound_key = "thunder"
+trail_count = 2
+trail_alpha = 0.12

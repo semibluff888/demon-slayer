@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MovePresentation" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/presentation/move_presentation.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+shape = "water_dragon"
+color = Color(0.38, 0.83, 1.0, 1)
+sound_key = "water_slash"
+trail_count = 1
+trail_alpha = 0.12

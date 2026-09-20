@@ -346,5 +346,243 @@
     "standing_height": 358.38,
     "root_fraction": 0.5,
     "note": "Registered against existing idle head/hand/limb proportions; one fixed scale across the entire clip. Rotating poses use a pelvis root."
+  },
+  "zenitsu-body_stand_light-phase2-v1": {
+    "standing_height": 477.866,
+    "root_fraction": 0.5,
+    "note": "Measured source frame0 upright anatomy against accepted idle (326/328px). One fixed scale for entire source."
+  },
+  "zenitsu-body_stand_heavy-phase2-v1": {
+    "standing_height": 336.89,
+    "root_fraction": 0.5,
+    "note": "Measured source frame0 upright anatomy against accepted idle (326/328px). One fixed scale for entire source."
+  },
+  "zenitsu-body_crouch_light-phase2-v1": {
+    "standing_height": 533.2992,
+    "root_fraction": 0.5,
+    "note": "Same-scale head/hand/limb review against accepted idle; fixed clip-wide correction. Evidence: artifacts/phase2/anatomy-review.jpg. No per-pose scaling.",
+    "phase2_anatomy_correction": 1.12
+  },
+  "tanjiro-body_stand_light-phase2-v1": {
+    "standing_height": 484.969,
+    "root_fraction": 0.5,
+    "note": "Measured source frame0 upright anatomy against accepted idle (326/328px). One fixed scale for entire source."
+  },
+  "tanjiro-body_stand_heavy-phase2-v1": {
+    "standing_height": 336.871,
+    "root_fraction": 0.5,
+    "note": "Measured source frame0 upright anatomy against accepted idle (326/328px). One fixed scale for entire source."
+  },
+  "tanjiro-body_crouch_light-phase2-v1": {
+    "standing_height": 547.584,
+    "root_fraction": 0.5,
+    "note": "Same-scale head/hand/limb review against accepted idle; fixed clip-wide correction. Evidence: artifacts/phase2/anatomy-review.jpg. No per-pose scaling.",
+    "phase2_anatomy_correction": 1.15
+  },
+  "tanjiro-body_crouch_heavy-phase2-v1": {
+    "standing_height": 396.8,
+    "root_fraction": 0.5,
+    "note": "Same-scale head/hand/limb review against accepted idle; fixed clip-wide correction. Evidence: artifacts/phase2/anatomy-review.jpg. No per-pose scaling.",
+    "phase2_anatomy_correction": 1.25
+  },
+  "tanjiro-body_air_light-phase2-v1": {
+    "standing_height": 533.2992,
+    "root_fraction": 0.5,
+    "note": "Same-scale head/hand/limb review against accepted idle; fixed clip-wide correction. Evidence: artifacts/phase2/anatomy-review.jpg. No per-pose scaling.",
+    "phase2_anatomy_correction": 1.12
+  },
+  "zenitsu-body_crouch_heavy-phase2-v1": {
+    "standing_height": 380.928,
+    "root_fraction": 0.5,
+    "note": "Same-scale head/hand/limb review against accepted idle; fixed clip-wide correction. Evidence: artifacts/phase2/anatomy-review.jpg. No per-pose scaling.",
+    "phase2_anatomy_correction": 1.2
+  },
+  "zenitsu-body_air_light-phase2-v1": {
+    "standing_height": 533.2992,
+    "root_fraction": 0.5,
+    "note": "Same-scale head/hand/limb review against accepted idle; fixed clip-wide correction. Evidence: artifacts/phase2/anatomy-review.jpg. No per-pose scaling.",
+    "phase2_anatomy_correction": 1.12
+  },
+  "zenitsu-body_air_heavy-phase2-v1": {
+    "standing_height": 374.57919999999996,
+    "root_fraction": 0.5,
+    "note": "Same-scale head/hand/limb review against accepted idle; fixed clip-wide correction. Evidence: artifacts/phase2/anatomy-review.jpg. No per-pose scaling.",
+    "phase2_anatomy_correction": 1.18
+  },
+  "zenitsu-roll_forward-phase2-v1": {
+    "standing_height": 335.854,
+    "root_fraction": 0.5,
+    "note": "Measured source frame0 upright anatomy against accepted idle (326/328px). One fixed scale for entire source."
+  },
+  "tanjiro-body_air_heavy-phase2-v1": {
+    "standing_height": 438.06719999999996,
+    "root_fraction": 0.5,
+    "note": "Same-scale head/hand/limb review against accepted idle; fixed clip-wide correction. Evidence: artifacts/phase2/anatomy-review.jpg. No per-pose scaling.",
+    "phase2_anatomy_correction": 1.38
+  },
+  "tanjiro-roll_forward-phase2-v1": {
+    "standing_height": 332.699,
+    "root_fraction": 0.5,
+    "note": "Measured source frame0 upright anatomy against accepted idle (326/328px). One fixed scale for entire source."
+  },
+  "tanjiro-roll_back-phase2-v1": {
+    "standing_height": 356.687,
+    "root_fraction": 0.5,
+    "note": "Measured source frame0 upright anatomy against accepted idle (326/328px). One fixed scale for entire source."
+  },
+  "tanjiro-throw_forward-phase2-v1": {
+    "standing_height": 337.914,
+    "root_fraction": 0.5,
+    "note": "Measured source frame0 upright anatomy against accepted idle (326/328px). One fixed scale for entire source."
+  },
+  "zenitsu-roll_back-phase2-v1": {
+    "standing_height": 341.037,
+    "root_fraction": 0.5,
+    "note": "Measured source frame0 upright anatomy against accepted idle (326/328px). One fixed scale for entire source."
+  },
+  "zenitsu-throw_forward-phase2-v1": {
+    "standing_height": 317.195,
+    "root_fraction": 0.5,
+    "note": "Measured source frame0 upright anatomy against accepted idle (326/328px). One fixed scale for entire source."
+  },
+  "zenitsu-thrown_forward-phase2-v1": {
+    "standing_height": 386.646,
+    "root_fraction": 0.5,
+    "note": "Measured source frame0 upright anatomy against accepted idle (326/328px). One fixed scale for entire source.",
+    "pelvis": {
+      "0": [
+        0.46,
+        0.61
+      ],
+      "1": [
+        0.47,
+        0.62
+      ],
+      "2": [
+        0.51,
+        0.59
+      ],
+      "3": [
+        0.49,
+        0.64
+      ],
+      "4": [
+        0.5,
+        0.55
+      ],
+      "5": [
+        0.54,
+        0.56
+      ],
+      "6": [
+        0.59,
+        0.64
+      ],
+      "7": [
+        0.51,
+        0.73
+      ]
+    }
+  },
+  "zenitsu-throw_tech-phase2-v1": {
+    "standing_height": 477.866,
+    "root_fraction": 0.5,
+    "note": "Measured source frame0 upright anatomy against accepted idle (326/328px). One fixed scale for entire source."
+  },
+  "tanjiro-thrown_forward-phase2-v1": {
+    "root_fraction": 0.5,
+    "standing_height": 385.89,
+    "note": "Measured source frame0 upright anatomy against accepted idle (326/328px). One fixed scale for entire source.",
+    "pelvis": {
+      "0": [
+        0.48,
+        0.57
+      ],
+      "1": [
+        0.48,
+        0.57
+      ],
+      "2": [
+        0.49,
+        0.62
+      ],
+      "3": [
+        0.52,
+        0.6
+      ],
+      "4": [
+        0.48,
+        0.54
+      ],
+      "5": [
+        0.54,
+        0.55
+      ],
+      "6": [
+        0.55,
+        0.61
+      ],
+      "7": [
+        0.51,
+        0.63
+      ]
+    }
+  },
+  "tanjiro-throw_tech-phase2-v1": {
+    "root_fraction": 0.5,
+    "standing_height": 492.27,
+    "note": "Measured source frame0 upright anatomy against accepted idle (326/328px). One fixed scale for entire source."
+  },
+  "tanjiro-water_vortex-phase2-v1": {
+    "standing_height": 336.66,
+    "root_fraction": 0.5,
+    "note": "Phase two: one anatomy scale across the full sequential source; common root and contact baseline."
+  },
+  "tanjiro-water_dragon-phase2-v1": {
+    "standing_height": 301.01000000000005,
+    "root_fraction": 0.5,
+    "note": "Phase two: one anatomy scale across the full sequential source; common root and contact baseline."
+  },
+  "tanjiro-sun_arc-phase2-v1": {
+    "standing_height": 317.44,
+    "root_fraction": 0.5,
+    "note": "Pelvis root during the circular flip; exact measured floor contact during preparation and landing. Single source scale retained.",
+    "ground_frames": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "pelvis": {
+      "5": [
+        0.53,
+        0.53
+      ],
+      "6": [
+        0.5,
+        0.6
+      ]
+    }
+  },
+  "zenitsu-iai_return-phase2-v1": {
+    "standing_height": 331.707,
+    "root_fraction": 0.5,
+    "note": "Upright source frame0 anatomy matched to accepted idle height328px; one scale for all sequential frames."
+  },
+  "zenitsu-sixfold-phase2-v1": {
+    "standing_height": 294.39,
+    "root_fraction": 0.5,
+    "note": "Upright source frame0 anatomy matched to accepted idle height328px; one scale for all sequential frames."
+  },
+  "zenitsu-godspeed-phase2-v1": {
+    "standing_height": 341.037,
+    "root_fraction": 0.5,
+    "note": "Upright source frame0 anatomy matched to accepted idle height328px; one scale for all sequential frames."
   }
 }

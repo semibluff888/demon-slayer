@@ -58,14 +58,14 @@ func _ready() -> void:
 	add_child(debug_layer)
 
 func _process(delta: float) -> void:
-	if not paused:
+	if not paused and combat.hitstop == 0 and combat.super_freeze == 0:
 		time += delta
 	var battle: bool = screen == "battle" and combat.fighters.size() == 2
 	stage.menu_mode = not battle
 	stage.freeze = paused
 	hud.visible = screen == "battle"
 	effects.visible = battle
-	effects.freeze = paused or combat.super_freeze > 0
+	effects.freeze = paused or combat.hitstop > 0 or combat.super_freeze > 0
 	shadow_layer.visible = battle
 	debug_layer.visible = battle and debug_boxes
 	for i in range(2):
@@ -76,7 +76,7 @@ func _process(delta: float) -> void:
 		var f = combat.fighters[i]
 		fighters[i].fighter = f
 		fighters[i].visual = catalog.characters[f.character]
-		fighters[i].sync(delta, paused or combat.hitstop > 0 or combat.super_freeze > 0)
+		fighters[i].sync(delta, paused or combat.hitstop > 0 or combat.super_freeze > 0 or combat.phase != "fight")
 	if not paused:
 		camera.update(combat.fighters, delta)
 		camera.shake = Vector2(sin(time * 79), cos(time * 93)) * effects.trauma * 11

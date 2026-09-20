@@ -1,0 +1,30 @@
+{
+  "id": "zenitsu-throw_tech-phase2-v1",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "1536x1024",
+  "route": "CPA via bundled image_gen.py",
+  "started_utc": "2026-09-20T13:10:08.2094832Z",
+  "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-throw_tech-phase2-v1.txt",
+  "output": "output\\imagegen\\anime-v2\\raw\\zenitsu-throw_tech-phase2-v1.png",
+  "references": [
+    "output/imagegen/anime-v2/raw/zenitsu-model.png",
+    "output/imagegen/anime-v2/raw/zenitsu-idle.png"
+  ],
+  "price_verified": false,
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-09-20T13:10:51.6386274Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "e72be2993caf3cabe00b82e2d534b76665fd39a60c9bfe8ec1baaa6c89f9acd1",
+  "review": {
+    "status": "accepted_for_phase2_actions_feedback",
+    "reviewed_utc": "2026-09-20T14:17:13.276504+00:00",
+    "evidence": "docs/phase2-acceptance.md",
+    "capture_gallery": "artifacts/phase2/index.html"
+  }
+}

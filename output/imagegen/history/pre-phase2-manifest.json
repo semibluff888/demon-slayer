@@ -1,0 +1,1729 @@
+{
+  "revision": "visual-polish-v4",
+  "generated_utc": "2026-09-20T04:27:22.743233+00:00",
+  "route": "CPA / gpt-image-2 via existing image_gen.py",
+  "gameplay_changes": [
+    "fixed scale and world camera",
+    "960-unit arena and maximum separation",
+    "double-tap forward/back dash",
+    "somersault jumps with air attack interruption",
+    "synchronized side-switch shoulder throw"
+  ],
+  "stage": {
+    "revision": "visual-polish-v4",
+    "size": [
+      4608,
+      1152
+    ],
+    "world_width": 960,
+    "render_size": [
+      3168,
+      792
+    ],
+    "layers": [
+      "panorama"
+    ],
+    "parallax": [
+      1.0
+    ],
+    "source": "output/imagegen/anime-v2/raw/wisteria-continuous-v4.png",
+    "source_size": [
+      2172,
+      724
+    ],
+    "source_sha256": "071480a980c3c3b3118dec1a2fd7feaaf1e9f51ec99389048340b846f19a72c1",
+    "composition": "One continuous painting; one moon and aligned reflection; all surfaces share the world transform.",
+    "local_finish": {
+      "moon_from": [
+        1312,
+        161
+      ],
+      "moon_to": [
+        1312,
+        248
+      ],
+      "crop_top": 90,
+      "crop_height": 543,
+      "terrace_back_fraction": 0.72
+    }
+  },
+  "characters": {
+    "tanjiro": {
+      "clips": 25,
+      "frames": 168,
+      "scale": 0.20588235294117646
+    },
+    "zenitsu": {
+      "clips": 25,
+      "frames": 168,
+      "scale": 0.20588235294117646
+    }
+  },
+  "sources": [
+    {
+      "key": "tanjiro-model",
+      "id": "tanjiro-model",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-model.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png",
+      "requested_size": "2048x1152",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [],
+      "sha256": "3ac5972a96da9f89d07c42ccf5d46d78d355ad1f8f16db1e424b8f0b8b49e144",
+      "cost": null
+    },
+    {
+      "key": "zenitsu-model",
+      "id": "zenitsu-model",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-model.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png",
+      "requested_size": "2048x1152",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [],
+      "sha256": "b7fbf4ae36d756e869bf7d768d321086881e80a0013931baf83a7b3a67c4326c",
+      "cost": null
+    },
+    {
+      "key": "wisteria-master",
+      "id": "wisteria-master",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\wisteria-master.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\wisteria-master.png",
+      "requested_size": "2048x1152",
+      "actual_size": [
+        1672,
+        941
+      ],
+      "references": [],
+      "sha256": "6450fa9e70d5f4dd7c93ee777f4e0755cd185e53e67236a8607a7269b72a3862",
+      "cost": null,
+      "used_by_current_stage": false,
+      "superseded_by": "wisteria-continuous-v4"
+    },
+    {
+      "key": "tanjiro-portrait",
+      "id": "tanjiro-portrait",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-portrait.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-portrait.png",
+      "requested_size": "1024x1536",
+      "actual_size": [
+        1024,
+        1536
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
+      ],
+      "sha256": "3674731831bf7c80c844bbe61685973edf89ac462ccddc34df7d029b315f1acb",
+      "cost": null
+    },
+    {
+      "key": "tanjiro/idle",
+      "id": "tanjiro-idle-v2",
+      "prompt": "output/imagegen/anime-v2/prompts/tanjiro-idle-v2.txt",
+      "source": "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png",
+      "requested_size": "3072x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png",
+        "output/imagegen/anime-v2/raw/tanjiro-stand_light.png"
+      ],
+      "sha256": "689fb401341e83dddd9acadb8aece4f588346f92c3a3c23c1a966e619f2ffa4c",
+      "cost": null
+    },
+    {
+      "key": "tanjiro/walk",
+      "id": "tanjiro-walk-v2",
+      "prompt": "output/imagegen/anime-v2/prompts/tanjiro-walk-v2.txt",
+      "source": "output/imagegen/anime-v2/raw/tanjiro-walk-v2.png",
+      "requested_size": "3072x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png",
+        "output/imagegen/anime-v2/raw/tanjiro-stand_light.png"
+      ],
+      "sha256": "a3721d1ba565b1ec286edafe9acb178e69acb2b6197771263a6228029efd128c",
+      "cost": null
+    },
+    {
+      "key": "tanjiro/walk_back",
+      "id": "tanjiro-walk_back",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-walk_back.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-walk_back.png",
+      "requested_size": "3072x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
+      ],
+      "sha256": "808470d5734945ce2f8f9b0e1d9e126f184a246994a5b365a83da92bdaeefb4f",
+      "cost": null
+    },
+    {
+      "key": "tanjiro/crouch",
+      "id": "tanjiro-crouch",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-crouch.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-crouch.png",
+      "requested_size": "2304x768",
+      "actual_size": [
+        1881,
+        836
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
+      ],
+      "sha256": "db6735b4e512f704e069c1dc666892d8453ba7c9b948666b349ada4055c76448",
+      "cost": null
+    },
+    {
+      "key": "tanjiro/jump",
+      "id": "tanjiro-jump",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-jump.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-jump.png",
+      "requested_size": "3072x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
+      ],
+      "sha256": "1634b22f66f6fe260f0b1d85e7a22dc8f7408556c3dfcc06668946086b4c406f",
+      "cost": null
+    },
+    {
+      "key": "tanjiro/guard",
+      "id": "tanjiro-guard",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-guard.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-guard.png",
+      "requested_size": "2304x768",
+      "actual_size": [
+        1881,
+        836
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
+      ],
+      "sha256": "b33a2378d4d6bfab9f393631a8d99db962023a059415f157ad704d3a4c9353a9",
+      "cost": null
+    },
+    {
+      "key": "tanjiro/guard_low",
+      "id": "tanjiro-guard_low",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-guard_low.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-guard_low.png",
+      "requested_size": "2304x768",
+      "actual_size": [
+        1881,
+        836
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
+      ],
+      "sha256": "72088f659dcd5a9e0a4c7952e01b0b4f19d7c7b4bc70e02b67e7d7ce2fc24b30",
+      "cost": null
+    },
+    {
+      "key": "tanjiro/hit",
+      "id": "tanjiro-hit",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-hit.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-hit.png",
+      "requested_size": "2048x1536",
+      "actual_size": [
+        1448,
+        1086
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
+      ],
+      "sha256": "479f120abda06a1a4120a5e0217c95ca1c8410d441a9f1f18be02c400438e2ae",
+      "cost": null
+    },
+    {
+      "key": "tanjiro/knockdown",
+      "id": "tanjiro-knockdown",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-knockdown.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-knockdown.png",
+      "requested_size": "3072x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
+      ],
+      "sha256": "b5beef192b39a48f6048377dce5d334da0af7880891eb6a500052c1ee8d3458e",
+      "cost": null
+    },
+    {
+      "key": "tanjiro/throw",
+      "id": "tanjiro-throw-movement-v3",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-throw-movement-v3.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-throw-movement-v3.png",
+      "requested_size": "2304x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png",
+        "output\\imagegen\\anime-v2\\raw\\tanjiro-idle-v2.png"
+      ],
+      "sha256": "68bafe79274f07e8486b112fc529eff599fcfe6ab3514589744e59f49f8b86e7",
+      "cost": null
+    },
+    {
+      "key": "tanjiro/victory",
+      "id": "tanjiro-victory",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-victory.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-victory.png",
+      "requested_size": "3072x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
+      ],
+      "sha256": "a5bfdb6b6f98d6dcdfea778153e1ea8bd1ce9b57db1af60b763c6c19b1492833",
+      "cost": null
+    },
+    {
+      "key": "tanjiro/stand_light",
+      "id": "tanjiro-stand_light",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-stand_light.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-stand_light.png",
+      "requested_size": "3072x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
+      ],
+      "sha256": "a337d05dd64abfceda04be5d75047f7f4c467e5574f7dec489cc288f04d9c521",
+      "cost": null
+    },
+    {
+      "key": "tanjiro/stand_heavy",
+      "id": "tanjiro-stand_heavy",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-stand_heavy.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-stand_heavy.png",
+      "requested_size": "3072x1536",
+      "actual_size": [
+        1448,
+        1086
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
+      ],
+      "sha256": "21000e82d4003626d24daaa8e1114f84e8e04d2942b94d4c4a09743699b29d2c",
+      "cost": null
+    },
+    {
+      "key": "tanjiro/crouch_light",
+      "id": "tanjiro-crouch_light",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-crouch_light.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-crouch_light.png",
+      "requested_size": "3072x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
+      ],
+      "sha256": "2e5a055eb0255e9717597a7a6ecf6e469462e650a1022937fd47541771e7c8a1",
+      "cost": null
+    },
+    {
+      "key": "tanjiro/crouch_heavy",
+      "id": "tanjiro-crouch_heavy-v2",
+      "prompt": "output/imagegen/anime-v2/prompts/tanjiro-crouch_heavy-v2.txt",
+      "source": "output/imagegen/anime-v2/raw/tanjiro-crouch_heavy-v2.png",
+      "requested_size": "3072x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png",
+        "output/imagegen/anime-v2/raw/tanjiro-guard_low.png"
+      ],
+      "sha256": "0aaefb5ba67d3049ed2a89d774c23f69a3e8f9d27663d2bc20992b1da88e10f7",
+      "cost": null
+    },
+    {
+      "key": "tanjiro/air_light",
+      "id": "tanjiro-air_light",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-air_light.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-air_light.png",
+      "requested_size": "3072x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
+      ],
+      "sha256": "f596ff3ec8d9e4fb57b905a1df54ff222dc1c6fb0ebae15ad58809943d6f0081",
+      "cost": null
+    },
+    {
+      "key": "tanjiro/air_heavy",
+      "id": "tanjiro-air_heavy",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-air_heavy.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-air_heavy.png",
+      "requested_size": "3072x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
+      ],
+      "sha256": "f9e26ebfbeadf0fc3493652a32cae1503e79ca02212bbe15c5fd1bc6ddfa7e65",
+      "cost": null
+    },
+    {
+      "key": "tanjiro/water_slash",
+      "id": "tanjiro-water_slash",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-water_slash.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-water_slash.png",
+      "requested_size": "3072x2304",
+      "actual_size": [
+        1182,
+        1330
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
+      ],
+      "sha256": "de5ec1b9ad1018882f6989d3402e2a787cfcd0121713f31d9fe0f705032b8f29",
+      "cost": null
+    },
+    {
+      "key": "tanjiro/water_wheel",
+      "id": "tanjiro-water_wheel",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-water_wheel.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-water_wheel.png",
+      "requested_size": "3072x2304",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
+      ],
+      "sha256": "d78ff90dcb64f85d2521966689b3fd91625e80c86bc87bce4b54ae5e80ad5e07",
+      "cost": null
+    },
+    {
+      "key": "zenitsu-portrait",
+      "id": "zenitsu-portrait",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-portrait.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-portrait.png",
+      "requested_size": "1024x1536",
+      "actual_size": [
+        1024,
+        1536
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+      ],
+      "sha256": "545059d2e2fe1078bc26f35646fecb2fc7bee1ef1ee29ceb3fbd4b50a4251dbb",
+      "cost": null
+    },
+    {
+      "key": "zenitsu/idle",
+      "id": "zenitsu-idle",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-idle.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-idle.png",
+      "requested_size": "3072x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+      ],
+      "sha256": "43a9454271da255fb6a36b7d78d25f08b990f2a595724c25a6ee5498a54c11d8",
+      "cost": null
+    },
+    {
+      "key": "zenitsu/walk",
+      "id": "zenitsu-walk",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-walk.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-walk.png",
+      "requested_size": "3072x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+      ],
+      "sha256": "0afbde83ac690334417ceecacc69e78e278443e1c10f50f6878952bd9b33f18b",
+      "cost": null
+    },
+    {
+      "key": "zenitsu/walk_back",
+      "id": "zenitsu-walk_back",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-walk_back.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-walk_back.png",
+      "requested_size": "3072x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+      ],
+      "sha256": "649ce0f1531ccf980d6b966d2b7301477e7530583670af407472d5e57ec5b56d",
+      "cost": null
+    },
+    {
+      "key": "zenitsu/crouch",
+      "id": "zenitsu-crouch",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-crouch.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-crouch.png",
+      "requested_size": "2304x768",
+      "actual_size": [
+        1881,
+        836
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+      ],
+      "sha256": "63bc4f2994fc7527c4df61fa72f1518835d50e5a9a28e48dff39b553897e577f",
+      "cost": null
+    },
+    {
+      "key": "zenitsu/jump",
+      "id": "zenitsu-jump",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-jump.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-jump.png",
+      "requested_size": "3072x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+      ],
+      "sha256": "1bd209b5c57f81b074709d2249a5dbe8c1082363d2b548011ee8be077fca6f11",
+      "cost": null
+    },
+    {
+      "key": "zenitsu/guard",
+      "id": "zenitsu-guard",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-guard.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-guard.png",
+      "requested_size": "2304x768",
+      "actual_size": [
+        1881,
+        836
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+      ],
+      "sha256": "3fbd03999c2fdd90f104252f62280e975e7e055f84df8e9d194cba194390fc6c",
+      "cost": null
+    },
+    {
+      "key": "zenitsu/guard_low",
+      "id": "zenitsu-guard_low",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-guard_low.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-guard_low.png",
+      "requested_size": "2304x768",
+      "actual_size": [
+        1881,
+        836
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+      ],
+      "sha256": "3cfc8adb3c14a84766091e15adfaac1c342fb2da4b204790c9f0c625c5f7cdab",
+      "cost": null
+    },
+    {
+      "key": "zenitsu/hit",
+      "id": "zenitsu-hit",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-hit.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-hit.png",
+      "requested_size": "2048x1536",
+      "actual_size": [
+        1024,
+        1536
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+      ],
+      "sha256": "4653884815f1d9c99def804800d2c17039017627bd452e1048f642fbca77784a",
+      "cost": null
+    },
+    {
+      "key": "zenitsu/knockdown",
+      "id": "zenitsu-knockdown",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-knockdown.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-knockdown.png",
+      "requested_size": "3072x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+      ],
+      "sha256": "84d9a0ff61864bc5041eb508e2998cbd889ef88091b85ce546034b31e907acf8",
+      "cost": null
+    },
+    {
+      "key": "zenitsu/throw",
+      "id": "zenitsu-throw-movement-v3",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-throw-movement-v3.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-throw-movement-v3.png",
+      "requested_size": "2304x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png",
+        "output\\imagegen\\anime-v2\\raw\\zenitsu-idle.png"
+      ],
+      "sha256": "a22a8826d8f0c9a694483b4f70f847c80958045f96c4b907c8d0a8c5470232cb",
+      "cost": null
+    },
+    {
+      "key": "zenitsu/victory",
+      "id": "zenitsu-victory",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-victory.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-victory.png",
+      "requested_size": "3072x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+      ],
+      "sha256": "0c66e02ac89e514dcfa619e0648e7653b1fc939117384fcf72920a9a47020a9c",
+      "cost": null
+    },
+    {
+      "key": "zenitsu/stand_light",
+      "id": "zenitsu-stand_light",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-stand_light.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-stand_light.png",
+      "requested_size": "3072x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+      ],
+      "sha256": "40945c7e64267328e9b5607c349afd63ae9759ae54c91756bc4f9929f4097306",
+      "cost": null
+    },
+    {
+      "key": "zenitsu/stand_heavy",
+      "id": "zenitsu-stand_heavy",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-stand_heavy.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-stand_heavy.png",
+      "requested_size": "3072x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+      ],
+      "sha256": "656d1b6ac8fa4fb919eee72808b0f06c981bb4b6e6e6a7b9918894407245a8c0",
+      "cost": null
+    },
+    {
+      "key": "zenitsu/crouch_light",
+      "id": "zenitsu-crouch_light-r1",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-crouch_light.txt",
+      "source": "output/imagegen/anime-v2/raw/zenitsu-crouch_light-r1.png",
+      "requested_size": "3072x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+      ],
+      "sha256": "4b3cea98528dfeb74e10b5d2b14624d9e5b9ff1c413cd09a065ba15457370653",
+      "cost": null
+    },
+    {
+      "key": "zenitsu/crouch_heavy",
+      "id": "zenitsu-crouch_heavy-v2",
+      "prompt": "output/imagegen/anime-v2/prompts/zenitsu-crouch_heavy-v2.txt",
+      "source": "output/imagegen/anime-v2/raw/zenitsu-crouch_heavy-v2.png",
+      "requested_size": "3072x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png",
+        "output/imagegen/anime-v2/raw/zenitsu-guard_low.png"
+      ],
+      "sha256": "9c57393db4cec2a85cd01bc0132847bccd6a226b2de1cccdc86b06bbc15c46a7",
+      "cost": null
+    },
+    {
+      "key": "zenitsu/air_light",
+      "id": "zenitsu-air_light",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-air_light.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-air_light.png",
+      "requested_size": "3072x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+      ],
+      "sha256": "fbc08652a9feae23a88ca9f99cd87843d9f680e9f3be7d4ff7c27bcb29f4c7aa",
+      "cost": null
+    },
+    {
+      "key": "zenitsu/air_heavy",
+      "id": "zenitsu-air_heavy",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-air_heavy.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-air_heavy.png",
+      "requested_size": "3072x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+      ],
+      "sha256": "d6997706072463e276324cfec8ba2423f08592cd68bb1921a4fbf18276210df7",
+      "cost": null
+    },
+    {
+      "key": "zenitsu/iai",
+      "id": "zenitsu-iai",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-iai.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-iai.png",
+      "requested_size": "3072x2304",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+      ],
+      "sha256": "40e0b5357d42fa67690b87c3bc99a8968491a849813fc7ffcd81ae3b74b4452a",
+      "cost": null
+    },
+    {
+      "key": "zenitsu/thunder",
+      "id": "zenitsu-thunder",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-thunder.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-thunder.png",
+      "requested_size": "3072x2304",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
+      ],
+      "sha256": "80862c9414034b41d85a446d255e521f123cd47c3d7d83119ece826e53cd621a",
+      "cost": null
+    },
+    {
+      "key": "wisteria-sky",
+      "id": "wisteria-sky",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\wisteria-sky.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\wisteria-sky.png",
+      "requested_size": "2048x1152",
+      "actual_size": [
+        1672,
+        941
+      ],
+      "references": [
+        "output/imagegen/anime-v2/raw/wisteria-master.png"
+      ],
+      "sha256": "a8d2c85a9c6395243d603ae9867ceba0b0a8e816f074445fce9c8fcd1742cc7c",
+      "cost": null,
+      "used_by_current_stage": false,
+      "superseded_by": "wisteria-continuous-v4"
+    },
+    {
+      "key": "wisteria-canopy",
+      "id": "wisteria-canopy",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\wisteria-canopy.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\wisteria-canopy.png",
+      "requested_size": "2048x1152",
+      "actual_size": [
+        1672,
+        941
+      ],
+      "references": [
+        "output/imagegen/anime-v2/raw/wisteria-master.png"
+      ],
+      "sha256": "4611118ee7c6acf28315fa3c41163bced58938921dcac44f066ff2f18eafd97d",
+      "cost": null,
+      "used_by_current_stage": false,
+      "superseded_by": "wisteria-continuous-v4"
+    },
+    {
+      "key": "wisteria-foreground",
+      "id": "wisteria-foreground",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\wisteria-foreground.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\wisteria-foreground.png",
+      "requested_size": "2048x1152",
+      "actual_size": [
+        1672,
+        941
+      ],
+      "references": [
+        "output/imagegen/anime-v2/raw/wisteria-master.png"
+      ],
+      "sha256": "fd809ba2125ae99348c2e3d5952173fbc4084ff392dca7a9a5d4e800bf1b0bcf",
+      "cost": null,
+      "used_by_current_stage": false,
+      "superseded_by": "wisteria-continuous-v4"
+    },
+    {
+      "key": "fx-water-slash",
+      "id": "fx-water-slash",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\fx-water-slash.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\fx-water-slash.png",
+      "requested_size": "1536x1024",
+      "actual_size": [
+        1774,
+        887
+      ],
+      "references": [],
+      "sha256": "8a49df4521ca9bf2844d994280803d98bad10eac4d70043a2896d5307bd50143",
+      "cost": null
+    },
+    {
+      "key": "fx-water-wheel",
+      "id": "fx-water-wheel",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\fx-water-wheel.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\fx-water-wheel.png",
+      "requested_size": "1024x1024",
+      "actual_size": [
+        1254,
+        1254
+      ],
+      "references": [],
+      "sha256": "f9bc0c6f49f3dc49c714b353b3e4e3aa8f7c9ffa2695785a215f7988ec746987",
+      "cost": null
+    },
+    {
+      "key": "fx-thunder",
+      "id": "fx-thunder",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\fx-thunder.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\fx-thunder.png",
+      "requested_size": "1536x1024",
+      "actual_size": [
+        2172,
+        724
+      ],
+      "references": [],
+      "sha256": "e81e35c417a8973d3f46f3c4e90465a41e4b21abb6863f325f7a68195eac2a55",
+      "cost": null
+    },
+    {
+      "key": "fx-impact",
+      "id": "fx-impact",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\fx-impact.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\fx-impact.png",
+      "requested_size": "1536x1024",
+      "actual_size": [
+        1254,
+        1254
+      ],
+      "references": [],
+      "sha256": "fb881ee956a50d9568beca78380c480b2764d2d35581bedbb7c482fce95c96cc",
+      "cost": null
+    },
+    {
+      "key": "tanjiro/dash_forward",
+      "id": "tanjiro-dash_forward-movement-v3",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-dash_forward-movement-v3.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-dash_forward-movement-v3.png",
+      "requested_size": "3072x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png",
+        "output\\imagegen\\anime-v2\\raw\\tanjiro-idle-v2.png"
+      ],
+      "sha256": "a44b47708e75bcbd770c4e7430438db3d5e4b6d1b87f79c39a1ae6df0795345a",
+      "cost": null
+    },
+    {
+      "key": "tanjiro/dash_back",
+      "id": "tanjiro-dash_back-movement-v3",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-dash_back-movement-v3.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-dash_back-movement-v3.png",
+      "requested_size": "3072x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png",
+        "output\\imagegen\\anime-v2\\raw\\tanjiro-idle-v2.png"
+      ],
+      "sha256": "36b9fd377947f681df1ad5cd8e928c701e8ab5f5c4eaddc5f7f844f430b753fa",
+      "cost": null
+    },
+    {
+      "key": "tanjiro/jump_forward",
+      "id": "tanjiro-jump_forward-movement-v3",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-jump_forward-movement-v3.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-jump_forward-movement-v3.png",
+      "requested_size": "3072x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png",
+        "output\\imagegen\\anime-v2\\raw\\tanjiro-idle-v2.png"
+      ],
+      "sha256": "4ddf657aa4afee3d4d4f7da8d99e83437a43dda0fc3d00740c862cccf6bcbdfc",
+      "cost": null
+    },
+    {
+      "key": "tanjiro/jump_back",
+      "id": "tanjiro-jump_back-movement-v3",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-jump_back-movement-v3.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-jump_back-movement-v3.png",
+      "requested_size": "3072x1536",
+      "actual_size": [
+        1254,
+        1254
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png",
+        "output\\imagegen\\anime-v2\\raw\\tanjiro-idle-v2.png"
+      ],
+      "sha256": "6570bc65a5b9d0d52972a30fc4ce774e6c39ea35f8807bf94561cb9faf5405d7",
+      "cost": null
+    },
+    {
+      "key": "tanjiro/throw_success",
+      "id": "tanjiro-throw_success-movement-v3",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-throw_success-movement-v3.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-throw_success-movement-v3.png",
+      "requested_size": "3072x2304",
+      "actual_size": [
+        1254,
+        1254
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png",
+        "output\\imagegen\\anime-v2\\raw\\tanjiro-idle-v2.png"
+      ],
+      "sha256": "5ebd6f1d2338cf1646e5283e2db92a1fb6d46f19bb7a3de4cf5815d9bef349f4",
+      "cost": null
+    },
+    {
+      "key": "tanjiro/thrown",
+      "id": "tanjiro-thrown-movement-v3",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-thrown-movement-v3.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-thrown-movement-v3.png",
+      "requested_size": "3072x2304",
+      "actual_size": [
+        1448,
+        1086
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png",
+        "output\\imagegen\\anime-v2\\raw\\tanjiro-idle-v2.png"
+      ],
+      "sha256": "ef6e0b1abf50b2ba74decadd49f872c22936119f5430ca91fd37f21c758ebe72",
+      "cost": null
+    },
+    {
+      "key": "zenitsu/dash_forward",
+      "id": "zenitsu-dash_forward-movement-v3",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-dash_forward-movement-v3.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-dash_forward-movement-v3.png",
+      "requested_size": "3072x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png",
+        "output\\imagegen\\anime-v2\\raw\\zenitsu-idle.png"
+      ],
+      "sha256": "da9c1fc35abf37f589a6e44e6d8c343459d8772bf4ae8ae68b514eeaacd144a3",
+      "cost": null
+    },
+    {
+      "key": "zenitsu/dash_back",
+      "id": "zenitsu-dash_back-movement-v3",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-dash_back-movement-v3.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-dash_back-movement-v3.png",
+      "requested_size": "3072x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png",
+        "output\\imagegen\\anime-v2\\raw\\zenitsu-idle.png"
+      ],
+      "sha256": "8b0660c6082ecb4488b9571796abeeec967277bb62661ddb94bc61f798b17c8a",
+      "cost": null
+    },
+    {
+      "key": "zenitsu/jump_forward",
+      "id": "zenitsu-jump_forward-movement-v3",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-jump_forward-movement-v3.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-jump_forward-movement-v3.png",
+      "requested_size": "3072x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png",
+        "output\\imagegen\\anime-v2\\raw\\zenitsu-idle.png"
+      ],
+      "sha256": "87cdb86bc64f03937098b6f57754fcab64866dd8825207fc096481fef248e41a",
+      "cost": null
+    },
+    {
+      "key": "zenitsu/jump_back",
+      "id": "zenitsu-jump_back-movement-v3",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-jump_back-movement-v3.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-jump_back-movement-v3.png",
+      "requested_size": "3072x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png",
+        "output\\imagegen\\anime-v2\\raw\\zenitsu-idle.png"
+      ],
+      "sha256": "f330dd147ca93d83d967713fbf3165814455a7169cc51baec9792745f14218c1",
+      "cost": null
+    },
+    {
+      "key": "zenitsu/throw_success",
+      "id": "zenitsu-throw_success-movement-v3",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-throw_success-movement-v3.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-throw_success-movement-v3.png",
+      "requested_size": "3072x2304",
+      "actual_size": [
+        1254,
+        1254
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png",
+        "output\\imagegen\\anime-v2\\raw\\zenitsu-idle.png"
+      ],
+      "sha256": "57df4730afa317765c23e91a4bbbb01a3414b886b29800ff3c4bf8a7128d8f9c",
+      "cost": null
+    },
+    {
+      "key": "zenitsu/thrown",
+      "id": "zenitsu-thrown-movement-v3",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-thrown-movement-v3.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-thrown-movement-v3.png",
+      "requested_size": "3072x2304",
+      "actual_size": [
+        1448,
+        1086
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png",
+        "output\\imagegen\\anime-v2\\raw\\zenitsu-idle.png"
+      ],
+      "sha256": "dc432eb29c88b09a57c1bca333ac6183dd097589ff0b6912a6ace58062cd9cee",
+      "cost": null
+    },
+    {
+      "key": "wisteria-left-movement-v3",
+      "id": "wisteria-left-movement-v3",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\wisteria-left-movement-v3.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\wisteria-left-movement-v3.png",
+      "requested_size": "1792x1152",
+      "actual_size": [
+        1565,
+        1005
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\references\\wisteria-left-movement-v3.png",
+        "art/stages/wisteria/menu.jpg"
+      ],
+      "sha256": "0267e6ca620252aa9ad272ec42769f15799395840f9084894631b63942f2de41",
+      "cost": null,
+      "used_by_current_stage": false,
+      "superseded_by": "wisteria-continuous-v4"
+    },
+    {
+      "key": "wisteria-right-movement-v3",
+      "id": "wisteria-right-movement-v3",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\wisteria-right-movement-v3.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\wisteria-right-movement-v3.png",
+      "requested_size": "1792x1152",
+      "actual_size": [
+        1565,
+        1005
+      ],
+      "references": [
+        "output\\imagegen\\anime-v2\\references\\wisteria-right-movement-v3.png",
+        "art/stages/wisteria/menu.jpg"
+      ],
+      "sha256": "2ea8b98d8fc87daef009b746769b54044be760f162c5bf06600acbc2a7ca62a0",
+      "cost": null,
+      "used_by_current_stage": false,
+      "superseded_by": "wisteria-continuous-v4"
+    },
+    {
+      "key": "wisteria-continuous-v4",
+      "id": "wisteria-continuous-v4",
+      "prompt": "output/imagegen/anime-v2/prompts/wisteria-continuous-v4.txt",
+      "source": "output/imagegen/anime-v2/raw/wisteria-continuous-v4.png",
+      "references": [
+        "output/imagegen/anime-v2/references/wisteria-continuous-v4.png"
+      ],
+      "requested_size": "3840x1280",
+      "actual_size": [
+        2172,
+        724
+      ],
+      "sha256": "071480a980c3c3b3118dec1a2fd7feaaf1e9f51ec99389048340b846f19a72c1",
+      "cost": null,
+      "used_by_current_stage": true
+    }
+  ],
+  "inventory": [
+    {
+      "path": "art/characters/tanjiro/atlas-0.png",
+      "bytes": 3719353,
+      "sha256": "37e48c065248c007249ca24a2990d7f21c89ccb5381a275928354ef373096c75",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "art/characters/tanjiro/atlas-1.png",
+      "bytes": 3914878,
+      "sha256": "541d1a154df552e50b9944b756c27d263b9e15c123d728e9712d8c172953779b",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "art/characters/tanjiro/atlas-2.png",
+      "bytes": 3701427,
+      "sha256": "f62a5bc768d96a64b4ca0aa8e11d6e699079fc3b4f220ae373487688986d120d",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "art/characters/tanjiro/atlas-3.png",
+      "bytes": 3457697,
+      "sha256": "31edc2a5a61785c7fef78a1e70ac5003a0945b6b5a9801fb73dc3b0d8099f600",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "art/characters/tanjiro/atlas.json",
+      "bytes": 45784,
+      "sha256": "4b74cb5fe0715cf97c2e20be43150998b3c9e7d1e851dfc2a3d340c7ae229921"
+    },
+    {
+      "path": "art/characters/tanjiro/avatar.png",
+      "bytes": 47992,
+      "sha256": "ceb23230a175d2f30784fcdbf69a84093acf318d60538a969bf7aa45aad1fd1d",
+      "size": [
+        192,
+        192
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "art/characters/tanjiro/portrait.png",
+      "bytes": 1023300,
+      "sha256": "b7015af7579acfb1e8372cd31d4e69c00295fe65ed0327a498e952fffdd49d9c",
+      "size": [
+        945,
+        1509
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "art/characters/zenitsu/atlas-0.png",
+      "bytes": 4724309,
+      "sha256": "3258a85a3673660d06047254245c3316cda64d592cdf52a7daefa4929e776a40",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "art/characters/zenitsu/atlas-1.png",
+      "bytes": 3828392,
+      "sha256": "1e5a3ba27ecf6a754be22c8489fa59abfabe9b3149a894f2e10ba058d46e52d1",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "art/characters/zenitsu/atlas-2.png",
+      "bytes": 4426792,
+      "sha256": "d10accbcd4264e29118d12d45b59d4418437da18f59ca84f21e61c300fb2050d",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "art/characters/zenitsu/atlas-3.png",
+      "bytes": 1073880,
+      "sha256": "72936b889525276f85dbe43529ee36114e50b34d936af85ab14b799ced85f406",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "art/characters/zenitsu/atlas.json",
+      "bytes": 45786,
+      "sha256": "e7b75f0469deeedea0262be691a26a2c88dcb74d547f0bd30100b32a0da69c03"
+    },
+    {
+      "path": "art/characters/zenitsu/avatar.png",
+      "bytes": 50354,
+      "sha256": "7083d85266c3e97e69432a4474c14ec77ebd8a498b464eeb9e31afad6847d22a",
+      "size": [
+        192,
+        192
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "art/characters/zenitsu/portrait.png",
+      "bytes": 1065609,
+      "sha256": "e92a1a18a549c342f3880cd147955af50d3da6b2e7cd1b25915a1bd370ab81cc",
+      "size": [
+        913,
+        1480
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "art/effects/impact.png",
+      "bytes": 917098,
+      "sha256": "01a79b3ce016390d02532e6832d680052c454872b67f56d829599f339b6baab6",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "art/effects/thunder.png",
+      "bytes": 305588,
+      "sha256": "50fe4aea46f1574b539486207ab16ff47b18cd99c52425b438062b800d5b9caf",
+      "size": [
+        1024,
+        341
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "art/effects/water-slash.png",
+      "bytes": 434988,
+      "sha256": "03a9d4317b8a36e7147cbfcc5ce7537c81af064da13f977852fa21f8f3255799",
+      "size": [
+        1024,
+        512
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "art/effects/water-wheel.png",
+      "bytes": 1245809,
+      "sha256": "953194ab6947e7b013d196f31d590ad0b99a8ba6501324840f98f69c1697b451",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "art/fonts/NotoSansSC-ui.ttf",
+      "bytes": 77952,
+      "sha256": "7b27da7ac193a491f9be98b1cf970fa39315284df99ccbb51914d7e6a9ed0b94"
+    },
+    {
+      "path": "art/fonts/NotoSerifSC-title.ttf",
+      "bytes": 105468,
+      "sha256": "1f32566f0866e3672d0d6df6050d2b79681191c545c4e69cf7086a99c55ff71e"
+    },
+    {
+      "path": "art/stages/wisteria/floor.png",
+      "bytes": 9639103,
+      "sha256": "3f8f24bcaca1beca72952375daa5eb44b926bf67cbc7ff7fb3759f629e10a9e0",
+      "size": [
+        4608,
+        1152
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "art/stages/wisteria/foreground.png",
+      "bytes": 449020,
+      "sha256": "74eb91bfa00b20d546440af80d5e54d5f8aeb5e53faed0531f7ec2dee819bf2a",
+      "size": [
+        4608,
+        1152
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "art/stages/wisteria/menu.jpg",
+      "bytes": 646353,
+      "sha256": "9a8394ca995c9aab1f723cf6bcad60b9ebf5a260e80cfc4aa73079668c9158b8",
+      "size": [
+        2048,
+        1152
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "art/stages/wisteria/panorama.png",
+      "bytes": 7070114,
+      "sha256": "ab3d9d43cc38e652f4d6e792ba493bfc3dbb1c0f6cb909129996264e469b26b7",
+      "size": [
+        4608,
+        1152
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "art/stages/wisteria/sky.png",
+      "bytes": 7653588,
+      "sha256": "a94356574c4f2a008e7add83fa33206d6d82cc7fb96a5721c239fec88a3e614f",
+      "size": [
+        4608,
+        1152
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "art/stages/wisteria/stage.json",
+      "bytes": 751,
+      "sha256": "a5e7fcb0a3fd5e32975dcc53285f0d83af90f6c221b68fe3e0402106412eeb92"
+    },
+    {
+      "path": "art/stages/wisteria/temple.png",
+      "bytes": 9639147,
+      "sha256": "b43d9c27e170c974823c7b5025653da8f46fa2e0e4a0929bb4bc0224a6ea1813",
+      "size": [
+        4608,
+        1152
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "art/stages/wisteria/wisteria.png",
+      "bytes": 1296815,
+      "sha256": "575a99247ef293a8206a952914888d42d89ce0b211d5401b5851fb44c95c0330",
+      "size": [
+        4608,
+        1152
+      ],
+      "mode": "RGBA"
+    }
+  ],
+  "tests": {
+    "combat": {
+      "passed": 191,
+      "failed": 0,
+      "log": "artifacts/combat_tests.log"
+    },
+    "movement": {
+      "passed": 321,
+      "failed": 0,
+      "log": "artifacts/movement_tests.log"
+    },
+    "ui": {
+      "passed": 180,
+      "failed": 0,
+      "log": "artifacts/ui_tests.log"
+    },
+    "presentation": {
+      "passed": 1672,
+      "failed": 0,
+      "log": "artifacts/presentation_tests.log"
+    }
+  },
+  "frame_rate_hash": {
+    "fps": [
+      30,
+      60,
+      144
+    ],
+    "sha256": "ee782c661216521f47f1478ab4f8adca87fb9a92bbe1bf18de343dd8c817e972"
+  },
+  "known_limits": [
+    "Physical gamepad not connected; sticks, deadzone, dpad and mixed-device matches verified with simulated input.",
+    "Source service can return dimensions different from request; both dimensions recorded. Unknown billing remains null."
+  ],
+  "visual_changes": [
+    "Idle-referenced head, hand and limb scale calibration across motion clips.",
+    "Continuous 3.2-second idle breathing, +/-0.3% around planted feet.",
+    "One continuous panorama and one shared world transform; no overlapping sky or plant panels."
+  ],
+  "previous_revision_performance": {
+    "all_art_ready": true,
+    "frames": 1800,
+    "gpu": "NVIDIA GeForce RTX 3080 Ti",
+    "mean_fps": 165.092918421811,
+    "mean_frame_ms": 6.05719499999999,
+    "p95_frame_ms": 6.109,
+    "p99_frame_ms": 6.144,
+    "scope": "final local anime art, 1080p, 1800 rendered AI-versus-AI combat frames"
+  },
+  "previous_revision_videos": [
+    {
+      "path": "artifacts/movement-960.mp4",
+      "bytes": 11255770,
+      "sha256": "582418256de44b4283f24272899b751e8f3915c08e2eeaa7f31649a1eb181756",
+      "cues": [
+        {
+          "scenario": "scroll_left",
+          "start_frame": 0
+        },
+        {
+          "scenario": "scroll_right",
+          "start_frame": 45
+        },
+        {
+          "scenario": "separation",
+          "start_frame": 90
+        },
+        {
+          "scenario": "dash",
+          "start_frame": 120
+        },
+        {
+          "scenario": "front_flip",
+          "start_frame": 141
+        },
+        {
+          "scenario": "back_flip",
+          "start_frame": 162
+        },
+        {
+          "scenario": "air_attack",
+          "start_frame": 183
+        },
+        {
+          "scenario": "throw_tanjiro",
+          "start_frame": 204
+        },
+        {
+          "scenario": "throw_zenitsu",
+          "start_frame": 225
+        },
+        {
+          "scenario": "throw_left_corner",
+          "start_frame": 246
+        },
+        {
+          "scenario": "throw_right_corner",
+          "start_frame": 267
+        },
+        {
+          "scenario": "throw_mirror",
+          "start_frame": 288
+        }
+      ],
+      "fps": 15,
+      "frames": 309,
+      "resolution": [
+        960,
+        540
+      ]
+    },
+    {
+      "path": "artifacts/movement-1280.mp4",
+      "bytes": 14489617,
+      "sha256": "2fd0e7c8be7af51035d89a2598c55718ec94ceb6cb9ee95398d40c62c0303253",
+      "cues": [
+        {
+          "scenario": "scroll_left",
+          "start_frame": 0
+        },
+        {
+          "scenario": "scroll_right",
+          "start_frame": 45
+        },
+        {
+          "scenario": "separation",
+          "start_frame": 90
+        },
+        {
+          "scenario": "dash",
+          "start_frame": 120
+        },
+        {
+          "scenario": "front_flip",
+          "start_frame": 141
+        },
+        {
+          "scenario": "back_flip",
+          "start_frame": 162
+        },
+        {
+          "scenario": "air_attack",
+          "start_frame": 183
+        },
+        {
+          "scenario": "throw_tanjiro",
+          "start_frame": 204
+        },
+        {
+          "scenario": "throw_zenitsu",
+          "start_frame": 225
+        },
+        {
+          "scenario": "throw_left_corner",
+          "start_frame": 246
+        },
+        {
+          "scenario": "throw_right_corner",
+          "start_frame": 267
+        },
+        {
+          "scenario": "throw_mirror",
+          "start_frame": 288
+        }
+      ],
+      "fps": 15,
+      "frames": 309,
+      "resolution": [
+        1280,
+        720
+      ]
+    },
+    {
+      "path": "artifacts/movement-1920.mp4",
+      "bytes": 21347022,
+      "sha256": "c62ea11d4dd1e8d5e36ca750b9ea36b38dac17d6c89b3f263b67c98896e76719",
+      "cues": [
+        {
+          "scenario": "scroll_left",
+          "start_frame": 0
+        },
+        {
+          "scenario": "scroll_right",
+          "start_frame": 45
+        },
+        {
+          "scenario": "separation",
+          "start_frame": 90
+        },
+        {
+          "scenario": "dash",
+          "start_frame": 120
+        },
+        {
+          "scenario": "front_flip",
+          "start_frame": 141
+        },
+        {
+          "scenario": "back_flip",
+          "start_frame": 162
+        },
+        {
+          "scenario": "air_attack",
+          "start_frame": 183
+        },
+        {
+          "scenario": "throw_tanjiro",
+          "start_frame": 204
+        },
+        {
+          "scenario": "throw_zenitsu",
+          "start_frame": 225
+        },
+        {
+          "scenario": "throw_left_corner",
+          "start_frame": 246
+        },
+        {
+          "scenario": "throw_right_corner",
+          "start_frame": 267
+        },
+        {
+          "scenario": "throw_mirror",
+          "start_frame": 288
+        }
+      ],
+      "fps": 15,
+      "frames": 309,
+      "resolution": [
+        1920,
+        1080
+      ]
+    }
+  ],
+  "videos": [
+    {
+      "path": "artifacts/visual-polish/preview.mp4",
+      "sha256": "e1812fcbbca2fe005591d62609af3fff1d91b1456454c89a0de4ad86b506a8b3",
+      "bytes": 8246593,
+      "cues": [
+        {
+          "character": "tanjiro",
+          "scenario": "idle",
+          "start_frame": 0
+        },
+        {
+          "character": "tanjiro",
+          "scenario": "walk",
+          "start_frame": 68
+        },
+        {
+          "character": "tanjiro",
+          "scenario": "walk_back",
+          "start_frame": 92
+        },
+        {
+          "character": "tanjiro",
+          "scenario": "dash_forward",
+          "start_frame": 116
+        },
+        {
+          "character": "tanjiro",
+          "scenario": "dash_back",
+          "start_frame": 140
+        },
+        {
+          "character": "tanjiro",
+          "scenario": "jump_forward",
+          "start_frame": 164
+        },
+        {
+          "character": "tanjiro",
+          "scenario": "jump_back",
+          "start_frame": 188
+        },
+        {
+          "character": "tanjiro",
+          "scenario": "air_light",
+          "start_frame": 212
+        },
+        {
+          "character": "tanjiro",
+          "scenario": "air_heavy",
+          "start_frame": 236
+        },
+        {
+          "character": "tanjiro",
+          "scenario": "forward_skill",
+          "start_frame": 260
+        },
+        {
+          "character": "zenitsu",
+          "scenario": "idle",
+          "start_frame": 284
+        },
+        {
+          "character": "zenitsu",
+          "scenario": "walk",
+          "start_frame": 352
+        },
+        {
+          "character": "zenitsu",
+          "scenario": "walk_back",
+          "start_frame": 376
+        },
+        {
+          "character": "zenitsu",
+          "scenario": "dash_forward",
+          "start_frame": 400
+        },
+        {
+          "character": "zenitsu",
+          "scenario": "dash_back",
+          "start_frame": 424
+        },
+        {
+          "character": "zenitsu",
+          "scenario": "jump_forward",
+          "start_frame": 448
+        },
+        {
+          "character": "zenitsu",
+          "scenario": "jump_back",
+          "start_frame": 472
+        },
+        {
+          "character": "zenitsu",
+          "scenario": "air_light",
+          "start_frame": 496
+        },
+        {
+          "character": "zenitsu",
+          "scenario": "air_heavy",
+          "start_frame": 520
+        },
+        {
+          "character": "zenitsu",
+          "scenario": "forward_skill",
+          "start_frame": 544
+        }
+      ],
+      "fps": 20,
+      "frames": 568
+    }
+  ],
+  "calibration": {
+    "path": "output/imagegen/anime-v2/calibration.json",
+    "sha256": "faaab39d83f62092f8c46a9f06f5cd8dd4596117e2026f3136bd025031c5fe70"
+  }
+}

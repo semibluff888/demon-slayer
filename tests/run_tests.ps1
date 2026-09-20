@@ -41,6 +41,8 @@ Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script',
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/combo_practice_tests.gd') -Expected 'COMBO / PRACTICE TESTS: \d+ passed, 0 failed' | Out-Null
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/ui_tests.gd') -Expected 'UI TESTS: \d+ passed, 0 failed' | Out-Null
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/presentation_tests.gd') -Expected 'PRESENTATION TESTS: \d+ passed, 0 failed' | Out-Null
+Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/phase2_basics_tests.gd') -Expected 'PHASE TWO BASICS: \d+ passed, 0 failed' | Out-Null
+Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/phase2_feedback_tests.gd') -Expected 'PHASE TWO FEEDBACK: \d+ passed, 0 failed' | Out-Null
 
 $hashes = @()
 foreach ($fps in @(30, 60, 144)) {
@@ -54,6 +56,7 @@ if (($hashes | Select-Object -Unique).Count -ne 1 -or $hashes[0].Length -ne 64) 
 if ($Capture) {
     Invoke-DuelCheck -EngineArgs @('--path', $projectRoot, '--audio-driver', 'Dummy', '--script', 'res://tests/ui_tests.gd', '--', '--capture') -Expected 'UI TESTS: \d+ passed, 0 failed' | Out-Null
     Invoke-DuelCheck -EngineArgs @('--path', $projectRoot, '--audio-driver', 'Dummy', '--script', 'res://tests/presentation_tests.gd', '--', '--capture') -Expected 'PRESENTATION TESTS: \d+ passed, 0 failed' | Out-Null
+    Invoke-DuelCheck -EngineArgs @('--path', $projectRoot, '--audio-driver', 'Dummy', '--script', 'res://tools/capture_phase2_matrix.gd') -Expected 'PHASE TWO MATRIX: \d+ screenshots, 0 failed' | Out-Null
 }
 $artPython = Join-Path $projectRoot '.venv/Scripts/python.exe'
 if (Test-Path -LiteralPath $artPython) {

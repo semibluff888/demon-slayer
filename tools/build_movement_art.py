@@ -24,7 +24,11 @@ def calibrate():
    with Image.open(ROOT/job['out']) as im:
     cell_h=im.height/job['metadata']['rows']
    current=calibration.setdefault(job['id'],{})
-   if 'movement-v3' in job['id']:
+   if 'phase2-' in job['id']:
+    current.setdefault('standing_height',cell_h*0.93)
+    current.setdefault('root_fraction',0.5)
+    current.setdefault('note','Phase two: one anatomy scale across the full sequential source; common root and contact baseline.')
+   elif 'movement-v3' in job['id']:
     fraction = 1.05 if clip.startswith('dash') else 1.08 if clip.startswith('jump_') else 0.99 if clip=='thrown' else 0.93
     current.setdefault('standing_height',cell_h*fraction)
     current['root_fraction']=0.5

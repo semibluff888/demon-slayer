@@ -1,14 +1,8 @@
 {
-  "revision": "visual-polish-v4",
-  "generated_utc": "2026-09-20T04:27:22.743233+00:00",
+  "revision": "phase2-actions-feedback-v1",
+  "generated_utc": "2026-09-20T14:17:13.276504+00:00",
   "route": "CPA / gpt-image-2 via existing image_gen.py",
-  "gameplay_changes": [
-    "fixed scale and world camera",
-    "960-unit arena and maximum separation",
-    "double-tap forward/back dash",
-    "somersault jumps with air attack interruption",
-    "synchronized side-switch shoulder throw"
-  ],
+  "gameplay_changes": [],
   "stage": {
     "revision": "visual-polish-v4",
     "size": [
@@ -49,13 +43,31 @@
   },
   "characters": {
     "tanjiro": {
-      "clips": 25,
-      "frames": 168,
+      "clips": 39,
+      "frames": 306,
+      "pages": 7,
+      "canvas_size": [
+        1024,
+        640
+      ],
+      "feet_anchor": [
+        448,
+        568
+      ],
       "scale": 0.20588235294117646
     },
     "zenitsu": {
-      "clips": 25,
-      "frames": 168,
+      "clips": 39,
+      "frames": 311,
+      "pages": 6,
+      "canvas_size": [
+        1024,
+        640
+      ],
+      "feet_anchor": [
+        448,
+        568
+      ],
       "scale": 0.20588235294117646
     }
   },
@@ -1118,13 +1130,573 @@
       "sha256": "071480a980c3c3b3118dec1a2fd7feaaf1e9f51ec99389048340b846f19a72c1",
       "cost": null,
       "used_by_current_stage": true
+    },
+    {
+      "key": "tanjiro/body_stand_light",
+      "id": "tanjiro-body_stand_light-phase2-v1",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-body_stand_light-phase2-v1.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-body_stand_light-phase2-v1.png",
+      "requested_size": "1536x1024",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output/imagegen/anime-v2/raw/tanjiro-model.png",
+        "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
+      ],
+      "sha256": "078e5a48472d2405e1fb6fa8fd560592a7ff4abf4bf56a500c733aeac3c0b4f7",
+      "cost": null,
+      "source_drawings": 6,
+      "selected_drawings": 6,
+      "import": "output/imagegen/anime-v2/imports/tanjiro-body_stand_light-phase2-v1.json"
+    },
+    {
+      "key": "tanjiro/body_stand_heavy",
+      "id": "tanjiro-body_stand_heavy-phase2-v1",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-body_stand_heavy-phase2-v1.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-body_stand_heavy-phase2-v1.png",
+      "requested_size": "1536x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output/imagegen/anime-v2/raw/tanjiro-model.png",
+        "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
+      ],
+      "sha256": "19c4e5243760b40041f824e4bcfe1c1bd83d64e890089c71597ff6b679f6bf8c",
+      "cost": null,
+      "source_drawings": 9,
+      "selected_drawings": 9,
+      "import": "output/imagegen/anime-v2/imports/tanjiro-body_stand_heavy-phase2-v1.json"
+    },
+    {
+      "key": "tanjiro/body_crouch_light",
+      "id": "tanjiro-body_crouch_light-phase2-v1",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-body_crouch_light-phase2-v1.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-body_crouch_light-phase2-v1.png",
+      "requested_size": "1536x1024",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output/imagegen/anime-v2/raw/tanjiro-model.png",
+        "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
+      ],
+      "sha256": "3604383e9bf0844dd7b9d693a631f01ebc8a8aa53dc65dfc90c127af1c1b399a",
+      "cost": null,
+      "source_drawings": 6,
+      "selected_drawings": 6,
+      "import": "output/imagegen/anime-v2/imports/tanjiro-body_crouch_light-phase2-v1.json"
+    },
+    {
+      "key": "tanjiro/body_crouch_heavy",
+      "id": "tanjiro-body_crouch_heavy-phase2-v1",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-body_crouch_heavy-phase2-v1.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-body_crouch_heavy-phase2-v1.png",
+      "requested_size": "1536x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output/imagegen/anime-v2/raw/tanjiro-model.png",
+        "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
+      ],
+      "sha256": "36bd52e948127ff8779adc18787472bab8d0a96f82c3e95c59998e49aba3860f",
+      "cost": null,
+      "source_drawings": 9,
+      "selected_drawings": 9,
+      "import": "output/imagegen/anime-v2/imports/tanjiro-body_crouch_heavy-phase2-v1.json"
+    },
+    {
+      "key": "tanjiro/body_air_light",
+      "id": "tanjiro-body_air_light-phase2-v1",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-body_air_light-phase2-v1.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-body_air_light-phase2-v1.png",
+      "requested_size": "1536x1024",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output/imagegen/anime-v2/raw/tanjiro-model.png",
+        "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
+      ],
+      "sha256": "ab60fce6f52e6a2302e5b37343b26c49e8affa05641a9a366717a3b6941717be",
+      "cost": null,
+      "source_drawings": 6,
+      "selected_drawings": 6,
+      "import": "output/imagegen/anime-v2/imports/tanjiro-body_air_light-phase2-v1.json"
+    },
+    {
+      "key": "tanjiro/body_air_heavy",
+      "id": "tanjiro-body_air_heavy-phase2-v1",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-body_air_heavy-phase2-v1.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-body_air_heavy-phase2-v1.png",
+      "requested_size": "1536x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output/imagegen/anime-v2/raw/tanjiro-model.png",
+        "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
+      ],
+      "sha256": "b640d055327f3ffb1192cac333e42927edd6a4d2536c1013b8b23be4be3236f9",
+      "cost": null,
+      "source_drawings": 9,
+      "selected_drawings": 9,
+      "import": "output/imagegen/anime-v2/imports/tanjiro-body_air_heavy-phase2-v1.json"
+    },
+    {
+      "key": "tanjiro/roll_forward",
+      "id": "tanjiro-roll_forward-phase2-v1",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-roll_forward-phase2-v1.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-roll_forward-phase2-v1.png",
+      "requested_size": "2048x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output/imagegen/anime-v2/raw/tanjiro-model.png",
+        "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
+      ],
+      "sha256": "3dee55d8909a69eb4c460538fac7e127f2e435277af1021d8d5d7dc84745bd30",
+      "cost": null,
+      "source_drawings": 12,
+      "selected_drawings": 12,
+      "import": "output/imagegen/anime-v2/imports/tanjiro-roll_forward-phase2-v1.json"
+    },
+    {
+      "key": "tanjiro/roll_back",
+      "id": "tanjiro-roll_back-phase2-v1",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-roll_back-phase2-v1.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-roll_back-phase2-v1.png",
+      "requested_size": "2048x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output/imagegen/anime-v2/raw/tanjiro-model.png",
+        "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
+      ],
+      "sha256": "972e1c373529b1fb01624921a4f7b6dc13a1082d5053d4efc8db2b766995284b",
+      "cost": null,
+      "source_drawings": 12,
+      "selected_drawings": 12,
+      "import": "output/imagegen/anime-v2/imports/tanjiro-roll_back-phase2-v1.json"
+    },
+    {
+      "key": "tanjiro/throw_forward",
+      "id": "tanjiro-throw_forward-phase2-v1",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-throw_forward-phase2-v1.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-throw_forward-phase2-v1.png",
+      "requested_size": "2048x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output/imagegen/anime-v2/raw/tanjiro-model.png",
+        "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
+      ],
+      "sha256": "fb287bcb5f093d937a34379d7859df56d765a8cfa697ef531d7a8cd41c5988d4",
+      "cost": null,
+      "source_drawings": 12,
+      "selected_drawings": 12,
+      "import": "output/imagegen/anime-v2/imports/tanjiro-throw_forward-phase2-v1.json"
+    },
+    {
+      "key": "tanjiro/thrown_forward",
+      "id": "tanjiro-thrown_forward-phase2-v1",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-thrown_forward-phase2-v1.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-thrown_forward-phase2-v1.png",
+      "requested_size": "2048x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output/imagegen/anime-v2/raw/tanjiro-model.png",
+        "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
+      ],
+      "sha256": "3e3211ab7292958e226e57762c272ab4f86dde48f3752ac793dbe8216c64a619",
+      "cost": null,
+      "source_drawings": 12,
+      "selected_drawings": 12,
+      "import": "output/imagegen/anime-v2/imports/tanjiro-thrown_forward-phase2-v1.json"
+    },
+    {
+      "key": "tanjiro/throw_tech",
+      "id": "tanjiro-throw_tech-phase2-v1",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-throw_tech-phase2-v1.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-throw_tech-phase2-v1.png",
+      "requested_size": "1536x1024",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output/imagegen/anime-v2/raw/tanjiro-model.png",
+        "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
+      ],
+      "sha256": "e615f95d5461209caa5006a377c489d4cb58e2206872852899811732549c2ae2",
+      "cost": null,
+      "source_drawings": 6,
+      "selected_drawings": 6,
+      "import": "output/imagegen/anime-v2/imports/tanjiro-throw_tech-phase2-v1.json"
+    },
+    {
+      "key": "tanjiro/water_vortex",
+      "id": "tanjiro-water_vortex-phase2-v1",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-water_vortex-phase2-v1.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-water_vortex-phase2-v1.png",
+      "requested_size": "2048x1536",
+      "actual_size": [
+        1448,
+        1086
+      ],
+      "references": [
+        "output/imagegen/anime-v2/raw/tanjiro-model.png",
+        "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
+      ],
+      "sha256": "492f732aa7cfed84174083172696e30c566f058eadba9b997cd448b12071674a",
+      "cost": null,
+      "source_drawings": 12,
+      "selected_drawings": 12,
+      "import": "output/imagegen/anime-v2/imports/tanjiro-water_vortex-phase2-v1.json"
+    },
+    {
+      "key": "tanjiro/water_dragon",
+      "id": "tanjiro-water_dragon-phase2-v1",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-water_dragon-phase2-v1.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-water_dragon-phase2-v1.png",
+      "requested_size": "2560x1536",
+      "actual_size": [
+        1619,
+        971
+      ],
+      "references": [
+        "output/imagegen/anime-v2/raw/tanjiro-model.png",
+        "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
+      ],
+      "sha256": "41ede424ccde0865c816a806295f81c616c15d559941d05fb555f37703e3f1d6",
+      "cost": null,
+      "source_drawings": 15,
+      "selected_drawings": 15,
+      "import": "output/imagegen/anime-v2/imports/tanjiro-water_dragon-phase2-v1.json"
+    },
+    {
+      "key": "tanjiro/sun_arc",
+      "id": "tanjiro-sun_arc-phase2-v1",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-sun_arc-phase2-v1.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-sun_arc-phase2-v1.png",
+      "requested_size": "2048x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output/imagegen/anime-v2/raw/tanjiro-model.png",
+        "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
+      ],
+      "sha256": "f422ff1430cac5f57eb47e34c6f2f1cfdb0c855000ff609891ae8bd2f0710d90",
+      "cost": null,
+      "source_drawings": 12,
+      "selected_drawings": 12,
+      "import": "output/imagegen/anime-v2/imports/tanjiro-sun_arc-phase2-v1.json"
+    },
+    {
+      "key": "zenitsu/body_stand_light",
+      "id": "zenitsu-body_stand_light-phase2-v1",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-body_stand_light-phase2-v1.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-body_stand_light-phase2-v1.png",
+      "requested_size": "1536x1024",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output/imagegen/anime-v2/raw/zenitsu-model.png",
+        "output/imagegen/anime-v2/raw/zenitsu-idle.png"
+      ],
+      "sha256": "7bc022062ce28e07240b0ef0a592c3ba3ed67664361a75f67cd541e1a80511f1",
+      "cost": null,
+      "source_drawings": 6,
+      "selected_drawings": 6,
+      "import": "output/imagegen/anime-v2/imports/zenitsu-body_stand_light-phase2-v1.json"
+    },
+    {
+      "key": "zenitsu/body_stand_heavy",
+      "id": "zenitsu-body_stand_heavy-phase2-v1",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-body_stand_heavy-phase2-v1.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-body_stand_heavy-phase2-v1.png",
+      "requested_size": "1536x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output/imagegen/anime-v2/raw/zenitsu-model.png",
+        "output/imagegen/anime-v2/raw/zenitsu-idle.png"
+      ],
+      "sha256": "d947d09424500c28557cbf92624779968185de5e858a16553ec6c8d883d7dd97",
+      "cost": null,
+      "source_drawings": 9,
+      "selected_drawings": 9,
+      "import": "output/imagegen/anime-v2/imports/zenitsu-body_stand_heavy-phase2-v1.json"
+    },
+    {
+      "key": "zenitsu/body_crouch_light",
+      "id": "zenitsu-body_crouch_light-phase2-v1",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-body_crouch_light-phase2-v1.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-body_crouch_light-phase2-v1.png",
+      "requested_size": "1536x1024",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output/imagegen/anime-v2/raw/zenitsu-model.png",
+        "output/imagegen/anime-v2/raw/zenitsu-idle.png"
+      ],
+      "sha256": "1b3627ed231ec2454e463a8c921d7b3eea18ba1b59368b651c481ddc465e51a5",
+      "cost": null,
+      "source_drawings": 6,
+      "selected_drawings": 6,
+      "import": "output/imagegen/anime-v2/imports/zenitsu-body_crouch_light-phase2-v1.json"
+    },
+    {
+      "key": "zenitsu/body_crouch_heavy",
+      "id": "zenitsu-body_crouch_heavy-phase2-v1",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-body_crouch_heavy-phase2-v1.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-body_crouch_heavy-phase2-v1.png",
+      "requested_size": "1536x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output/imagegen/anime-v2/raw/zenitsu-model.png",
+        "output/imagegen/anime-v2/raw/zenitsu-idle.png"
+      ],
+      "sha256": "107951f43e3221fece167095495f0436b233c01a756a897dd49397f3d4aca9b7",
+      "cost": null,
+      "source_drawings": 9,
+      "selected_drawings": 8,
+      "import": "output/imagegen/anime-v2/imports/zenitsu-body_crouch_heavy-phase2-v1.json"
+    },
+    {
+      "key": "zenitsu/body_air_light",
+      "id": "zenitsu-body_air_light-phase2-v1",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-body_air_light-phase2-v1.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-body_air_light-phase2-v1.png",
+      "requested_size": "1536x1024",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output/imagegen/anime-v2/raw/zenitsu-model.png",
+        "output/imagegen/anime-v2/raw/zenitsu-idle.png"
+      ],
+      "sha256": "2aed6c62822795d909efd4241fa09b5348da8460f7052a313374f3732710fc99",
+      "cost": null,
+      "source_drawings": 6,
+      "selected_drawings": 6,
+      "import": "output/imagegen/anime-v2/imports/zenitsu-body_air_light-phase2-v1.json"
+    },
+    {
+      "key": "zenitsu/body_air_heavy",
+      "id": "zenitsu-body_air_heavy-phase2-v1",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-body_air_heavy-phase2-v1.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-body_air_heavy-phase2-v1.png",
+      "requested_size": "1536x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output/imagegen/anime-v2/raw/zenitsu-model.png",
+        "output/imagegen/anime-v2/raw/zenitsu-idle.png"
+      ],
+      "sha256": "4558dac66d1949547d51e7b477ae1bd2cc32e55d5dd30ad4bde5ec8ee201a059",
+      "cost": null,
+      "source_drawings": 9,
+      "selected_drawings": 9,
+      "import": "output/imagegen/anime-v2/imports/zenitsu-body_air_heavy-phase2-v1.json"
+    },
+    {
+      "key": "zenitsu/roll_forward",
+      "id": "zenitsu-roll_forward-phase2-v1",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-roll_forward-phase2-v1.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-roll_forward-phase2-v1.png",
+      "requested_size": "2048x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output/imagegen/anime-v2/raw/zenitsu-model.png",
+        "output/imagegen/anime-v2/raw/zenitsu-idle.png"
+      ],
+      "sha256": "2c76df811a36a2f6b0f4b9c5cf71b2cb0c340d8c13a2c09eae6cd2f5f1623dce",
+      "cost": null,
+      "source_drawings": 12,
+      "selected_drawings": 12,
+      "import": "output/imagegen/anime-v2/imports/zenitsu-roll_forward-phase2-v1.json"
+    },
+    {
+      "key": "zenitsu/roll_back",
+      "id": "zenitsu-roll_back-phase2-v1",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-roll_back-phase2-v1.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-roll_back-phase2-v1.png",
+      "requested_size": "2048x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output/imagegen/anime-v2/raw/zenitsu-model.png",
+        "output/imagegen/anime-v2/raw/zenitsu-idle.png"
+      ],
+      "sha256": "553ffd488b83de96d13e20cd40c07c3817a88ce0d6b89853c33c5aca33a52c7b",
+      "cost": null,
+      "source_drawings": 12,
+      "selected_drawings": 12,
+      "import": "output/imagegen/anime-v2/imports/zenitsu-roll_back-phase2-v1.json"
+    },
+    {
+      "key": "zenitsu/throw_forward",
+      "id": "zenitsu-throw_forward-phase2-v1",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-throw_forward-phase2-v1.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-throw_forward-phase2-v1.png",
+      "requested_size": "2048x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output/imagegen/anime-v2/raw/zenitsu-model.png",
+        "output/imagegen/anime-v2/raw/zenitsu-idle.png"
+      ],
+      "sha256": "6337d669b548ef0fca79e3e02a4f31ba46f80629fd947ad788a0177aa48a1249",
+      "cost": null,
+      "source_drawings": 12,
+      "selected_drawings": 12,
+      "import": "output/imagegen/anime-v2/imports/zenitsu-throw_forward-phase2-v1.json"
+    },
+    {
+      "key": "zenitsu/thrown_forward",
+      "id": "zenitsu-thrown_forward-phase2-v1",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-thrown_forward-phase2-v1.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-thrown_forward-phase2-v1.png",
+      "requested_size": "2048x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output/imagegen/anime-v2/raw/zenitsu-model.png",
+        "output/imagegen/anime-v2/raw/zenitsu-idle.png"
+      ],
+      "sha256": "10d6fd4d2ebdf4a15f7f51defc11df71378da6647c20ffbb0de21a10931e8af2",
+      "cost": null,
+      "source_drawings": 12,
+      "selected_drawings": 12,
+      "import": "output/imagegen/anime-v2/imports/zenitsu-thrown_forward-phase2-v1.json"
+    },
+    {
+      "key": "zenitsu/throw_tech",
+      "id": "zenitsu-throw_tech-phase2-v1",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-throw_tech-phase2-v1.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-throw_tech-phase2-v1.png",
+      "requested_size": "1536x1024",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output/imagegen/anime-v2/raw/zenitsu-model.png",
+        "output/imagegen/anime-v2/raw/zenitsu-idle.png"
+      ],
+      "sha256": "e72be2993caf3cabe00b82e2d534b76665fd39a60c9bfe8ec1baaa6c89f9acd1",
+      "cost": null,
+      "source_drawings": 6,
+      "selected_drawings": 6,
+      "import": "output/imagegen/anime-v2/imports/zenitsu-throw_tech-phase2-v1.json"
+    },
+    {
+      "key": "zenitsu/iai_return",
+      "id": "zenitsu-iai_return-phase2-v1",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-iai_return-phase2-v1.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-iai_return-phase2-v1.png",
+      "requested_size": "2048x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output/imagegen/anime-v2/raw/zenitsu-model.png",
+        "output/imagegen/anime-v2/raw/zenitsu-idle.png"
+      ],
+      "sha256": "a51fcaf7833d312413099b0cfff383d1e1528185cc76ce16f6c1b14e9ca5d87c",
+      "cost": null,
+      "source_drawings": 12,
+      "selected_drawings": 12,
+      "import": "output/imagegen/anime-v2/imports/zenitsu-iai_return-phase2-v1.json"
+    },
+    {
+      "key": "zenitsu/sixfold",
+      "id": "zenitsu-sixfold-phase2-v1",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-sixfold-phase2-v1.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-sixfold-phase2-v1.png",
+      "requested_size": "3072x1536",
+      "actual_size": [
+        1774,
+        887
+      ],
+      "references": [
+        "output/imagegen/anime-v2/raw/zenitsu-model.png",
+        "output/imagegen/anime-v2/raw/zenitsu-idle.png"
+      ],
+      "sha256": "c88e4777a88e6c0f37bf282d805036f8fcc83099a0b5343b03e14d4456888f66",
+      "cost": null,
+      "source_drawings": 18,
+      "selected_drawings": 18,
+      "import": "output/imagegen/anime-v2/imports/zenitsu-sixfold-phase2-v1.json"
+    },
+    {
+      "key": "zenitsu/godspeed",
+      "id": "zenitsu-godspeed-phase2-v1",
+      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-godspeed-phase2-v1.txt",
+      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-godspeed-phase2-v1.png",
+      "requested_size": "2560x1536",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "references": [
+        "output/imagegen/anime-v2/raw/zenitsu-model.png",
+        "output/imagegen/anime-v2/raw/zenitsu-idle.png"
+      ],
+      "sha256": "6abac09544cd632bad2aba4e424592c4ce9de40403cbfb27bb94e7247c385e8c",
+      "cost": null,
+      "source_drawings": 15,
+      "selected_drawings": 15,
+      "import": "output/imagegen/anime-v2/imports/zenitsu-godspeed-phase2-v1.json"
     }
   ],
   "inventory": [
     {
       "path": "art/characters/tanjiro/atlas-0.png",
-      "bytes": 3719353,
-      "sha256": "37e48c065248c007249ca24a2990d7f21c89ccb5381a275928354ef373096c75",
+      "bytes": 3950096,
+      "sha256": "cf6037338c6b4a0805528e37515442bf3014b8e9edd1f7a454f923859b89a456",
       "size": [
         2048,
         2048
@@ -1133,8 +1705,8 @@
     },
     {
       "path": "art/characters/tanjiro/atlas-1.png",
-      "bytes": 3914878,
-      "sha256": "541d1a154df552e50b9944b756c27d263b9e15c123d728e9712d8c172953779b",
+      "bytes": 4203566,
+      "sha256": "3d87c1aa7f9551d060303d63ea4dec1b1e8d50fe70af9ea8b708fecfa1b5e61b",
       "size": [
         2048,
         2048
@@ -1143,8 +1715,8 @@
     },
     {
       "path": "art/characters/tanjiro/atlas-2.png",
-      "bytes": 3701427,
-      "sha256": "f62a5bc768d96a64b4ca0aa8e11d6e699079fc3b4f220ae373487688986d120d",
+      "bytes": 3811255,
+      "sha256": "4e51fd8dbf7e76360cdd1037dbddb244d80c7f1e4de768afe4a76358d11bbee8",
       "size": [
         2048,
         2048
@@ -1153,8 +1725,38 @@
     },
     {
       "path": "art/characters/tanjiro/atlas-3.png",
-      "bytes": 3457697,
-      "sha256": "31edc2a5a61785c7fef78a1e70ac5003a0945b6b5a9801fb73dc3b0d8099f600",
+      "bytes": 4049451,
+      "sha256": "c61714eeaab79aaf371aa35d8b880e6ab290c75ca02ce42ba6f677f75a91cebe",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "art/characters/tanjiro/atlas-4.png",
+      "bytes": 4158063,
+      "sha256": "f9f47014ef9676b7b180706bd5eab903c3016c90e393b173d0522c532fd9069f",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "art/characters/tanjiro/atlas-5.png",
+      "bytes": 4556700,
+      "sha256": "08eea8c4c205f54c544124468ec065af2445cd2a41f47ff4ec47acbe9756ae5b",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "art/characters/tanjiro/atlas-6.png",
+      "bytes": 3544416,
+      "sha256": "0ec802f11544a774cacf76955ed82699a4c38775e78496048203d71c451cc134",
       "size": [
         2048,
         2048
@@ -1163,8 +1765,8 @@
     },
     {
       "path": "art/characters/tanjiro/atlas.json",
-      "bytes": 45784,
-      "sha256": "4b74cb5fe0715cf97c2e20be43150998b3c9e7d1e851dfc2a3d340c7ae229921"
+      "bytes": 83645,
+      "sha256": "58cbe4849b33a48d09b70f2b223af69e43a95b7e96a3be03703027d4a931d493"
     },
     {
       "path": "art/characters/tanjiro/avatar.png",
@@ -1188,8 +1790,8 @@
     },
     {
       "path": "art/characters/zenitsu/atlas-0.png",
-      "bytes": 4724309,
-      "sha256": "3258a85a3673660d06047254245c3316cda64d592cdf52a7daefa4929e776a40",
+      "bytes": 4968601,
+      "sha256": "cf6353357860f874771176ecfbe1528fd9c78dd72a4f667392b76e198b933ba5",
       "size": [
         2048,
         2048
@@ -1198,8 +1800,8 @@
     },
     {
       "path": "art/characters/zenitsu/atlas-1.png",
-      "bytes": 3828392,
-      "sha256": "1e5a3ba27ecf6a754be22c8489fa59abfabe9b3149a894f2e10ba058d46e52d1",
+      "bytes": 4617565,
+      "sha256": "be56d7181bc8f5c539de5907ec61c36124b08e36a12e6e5142bb71de029a5000",
       "size": [
         2048,
         2048
@@ -1208,8 +1810,8 @@
     },
     {
       "path": "art/characters/zenitsu/atlas-2.png",
-      "bytes": 4426792,
-      "sha256": "d10accbcd4264e29118d12d45b59d4418437da18f59ca84f21e61c300fb2050d",
+      "bytes": 3952516,
+      "sha256": "0aad31ef3f7302257df8f65231751c42710017a0bca007f24f06dbe44f818a7e",
       "size": [
         2048,
         2048
@@ -1218,8 +1820,28 @@
     },
     {
       "path": "art/characters/zenitsu/atlas-3.png",
-      "bytes": 1073880,
-      "sha256": "72936b889525276f85dbe43529ee36114e50b34d936af85ab14b799ced85f406",
+      "bytes": 4374660,
+      "sha256": "1c7ad241400d4be133c1a44256c17d7bd525b615e4d8507e376ca0a7c54971c0",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "art/characters/zenitsu/atlas-4.png",
+      "bytes": 4514467,
+      "sha256": "8b11d6b510168f9735a0e97d04cc3e066645f9435c18a7713e895121218e518c",
+      "size": [
+        2048,
+        2048
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "art/characters/zenitsu/atlas-5.png",
+      "bytes": 4347873,
+      "sha256": "a128b6b5a2041d02273d0a379b70c61c6e2e9de3ea7ac7edcc6274902bf93425",
       "size": [
         2048,
         2048
@@ -1228,8 +1850,8 @@
     },
     {
       "path": "art/characters/zenitsu/atlas.json",
-      "bytes": 45786,
-      "sha256": "e7b75f0469deeedea0262be691a26a2c88dcb74d547f0bd30100b32a0da69c03"
+      "bytes": 84842,
+      "sha256": "8853b85e05b2ee660130c727fb74d580098b278bbd16843abe6375d3dc4f8042"
     },
     {
       "path": "art/characters/zenitsu/avatar.png",
@@ -1293,13 +1915,13 @@
     },
     {
       "path": "art/fonts/NotoSansSC-ui.ttf",
-      "bytes": 77952,
-      "sha256": "7b27da7ac193a491f9be98b1cf970fa39315284df99ccbb51914d7e6a9ed0b94"
+      "bytes": 104844,
+      "sha256": "7106a8db64e1f5cde732c9a55d1546e14ece1ab069a4d3edc717d9f15ecf7f2a"
     },
     {
       "path": "art/fonts/NotoSerifSC-title.ttf",
-      "bytes": 105468,
-      "sha256": "1f32566f0866e3672d0d6df6050d2b79681191c545c4e69cf7086a99c55ff71e"
+      "bytes": 141756,
+      "sha256": "c34bac52afac938c1c03959086f8ad258a87ba53a50d5ddf9da5ffae35a4c468"
     },
     {
       "path": "art/stages/wisteria/floor.png",
@@ -1378,25 +2000,55 @@
     }
   ],
   "tests": {
-    "combat": {
-      "passed": 191,
+    "input_tests": {
+      "passed": 392,
+      "failed": 0,
+      "log": "artifacts/input_tests.log"
+    },
+    "combat_tests": {
+      "passed": 352,
       "failed": 0,
       "log": "artifacts/combat_tests.log"
     },
-    "movement": {
-      "passed": 321,
+    "movement_tests": {
+      "passed": 455,
       "failed": 0,
       "log": "artifacts/movement_tests.log"
     },
-    "ui": {
-      "passed": 180,
+    "combo_practice_tests": {
+      "passed": 160,
+      "failed": 0,
+      "log": "artifacts/combo_practice_tests.log"
+    },
+    "ui_tests": {
+      "passed": 327,
       "failed": 0,
       "log": "artifacts/ui_tests.log"
     },
-    "presentation": {
-      "passed": 1672,
+    "presentation_tests": {
+      "passed": 2234,
       "failed": 0,
       "log": "artifacts/presentation_tests.log"
+    },
+    "phase2_basics_tests": {
+      "passed": 6878,
+      "failed": 0,
+      "log": "artifacts/phase2_basics_tests.log"
+    },
+    "phase2_feedback_tests": {
+      "passed": 1176,
+      "failed": 0,
+      "log": "artifacts/phase2_feedback_tests.log"
+    },
+    "ui_tests-rendered": {
+      "passed": 338,
+      "failed": 0,
+      "log": "artifacts/ui_tests-rendered.log"
+    },
+    "presentation_tests-rendered": {
+      "passed": 2440,
+      "failed": 0,
+      "log": "artifacts/presentation_tests-rendered.log"
     }
   },
   "frame_rate_hash": {
@@ -1405,325 +2057,173 @@
       60,
       144
     ],
-    "sha256": "ee782c661216521f47f1478ab4f8adca87fb9a92bbe1bf18de343dd8c817e972"
+    "logic_frames": 1800,
+    "sha256": "ba6949ae22fecb2bdbdc8ed4080348bde1f3228efcc0b197a138ca66bb63a764"
   },
   "known_limits": [
-    "Physical gamepad not connected; sticks, deadzone, dpad and mixed-device matches verified with simulated input.",
-    "Source service can return dimensions different from request; both dimensions recorded. Unknown billing remains null."
+    "No physical gamepad connected. Local keyboard / virtual controller events and actual OpenGL rendering were tested; no physical-device playtest or acoustic playback review claimed.",
+    "Zenitsu upward and return iai cuts are game interpretations.",
+    "Generated source dimensions can differ from requested dimensions; both retained. Unknown CPA billing remains null.",
+    "Recordings use actual engine frames with exported Godot PCM mixed from the same 60Hz events, including pause intervals; not screen/microphone capture."
   ],
   "visual_changes": [
-    "Idle-referenced head, hand and limb scale calibration across motion clips.",
-    "Continuous 3.2-second idle breathing, +/-0.3% around planted feet.",
-    "One continuous panorama and one shared world transform; no overlapping sky or plant panels."
-  ],
-  "previous_revision_performance": {
-    "all_art_ready": true,
-    "frames": 1800,
-    "gpu": "NVIDIA GeForce RTX 3080 Ti",
-    "mean_fps": 165.092918421811,
-    "mean_frame_ms": 6.05719499999999,
-    "p95_frame_ms": 6.109,
-    "p99_frame_ms": 6.144,
-    "scope": "final local anime art, 1080p, 1800 rendered AI-versus-AI combat frames"
-  },
-  "previous_revision_videos": [
-    {
-      "path": "artifacts/movement-960.mp4",
-      "bytes": 11255770,
-      "sha256": "582418256de44b4283f24272899b751e8f3915c08e2eeaa7f31649a1eb181756",
-      "cues": [
-        {
-          "scenario": "scroll_left",
-          "start_frame": 0
-        },
-        {
-          "scenario": "scroll_right",
-          "start_frame": 45
-        },
-        {
-          "scenario": "separation",
-          "start_frame": 90
-        },
-        {
-          "scenario": "dash",
-          "start_frame": 120
-        },
-        {
-          "scenario": "front_flip",
-          "start_frame": 141
-        },
-        {
-          "scenario": "back_flip",
-          "start_frame": 162
-        },
-        {
-          "scenario": "air_attack",
-          "start_frame": 183
-        },
-        {
-          "scenario": "throw_tanjiro",
-          "start_frame": 204
-        },
-        {
-          "scenario": "throw_zenitsu",
-          "start_frame": 225
-        },
-        {
-          "scenario": "throw_left_corner",
-          "start_frame": 246
-        },
-        {
-          "scenario": "throw_right_corner",
-          "start_frame": 267
-        },
-        {
-          "scenario": "throw_mirror",
-          "start_frame": 288
-        }
-      ],
-      "fps": 15,
-      "frames": 309,
-      "resolution": [
-        960,
-        540
-      ]
-    },
-    {
-      "path": "artifacts/movement-1280.mp4",
-      "bytes": 14489617,
-      "sha256": "2fd0e7c8be7af51035d89a2598c55718ec94ceb6cb9ee95398d40c62c0303253",
-      "cues": [
-        {
-          "scenario": "scroll_left",
-          "start_frame": 0
-        },
-        {
-          "scenario": "scroll_right",
-          "start_frame": 45
-        },
-        {
-          "scenario": "separation",
-          "start_frame": 90
-        },
-        {
-          "scenario": "dash",
-          "start_frame": 120
-        },
-        {
-          "scenario": "front_flip",
-          "start_frame": 141
-        },
-        {
-          "scenario": "back_flip",
-          "start_frame": 162
-        },
-        {
-          "scenario": "air_attack",
-          "start_frame": 183
-        },
-        {
-          "scenario": "throw_tanjiro",
-          "start_frame": 204
-        },
-        {
-          "scenario": "throw_zenitsu",
-          "start_frame": 225
-        },
-        {
-          "scenario": "throw_left_corner",
-          "start_frame": 246
-        },
-        {
-          "scenario": "throw_right_corner",
-          "start_frame": 267
-        },
-        {
-          "scenario": "throw_mirror",
-          "start_frame": 288
-        }
-      ],
-      "fps": 15,
-      "frames": 309,
-      "resolution": [
-        1280,
-        720
-      ]
-    },
-    {
-      "path": "artifacts/movement-1920.mp4",
-      "bytes": 21347022,
-      "sha256": "c62ea11d4dd1e8d5e36ca750b9ea36b38dac17d6c89b3f263b67c98896e76719",
-      "cues": [
-        {
-          "scenario": "scroll_left",
-          "start_frame": 0
-        },
-        {
-          "scenario": "scroll_right",
-          "start_frame": 45
-        },
-        {
-          "scenario": "separation",
-          "start_frame": 90
-        },
-        {
-          "scenario": "dash",
-          "start_frame": 120
-        },
-        {
-          "scenario": "front_flip",
-          "start_frame": 141
-        },
-        {
-          "scenario": "back_flip",
-          "start_frame": 162
-        },
-        {
-          "scenario": "air_attack",
-          "start_frame": 183
-        },
-        {
-          "scenario": "throw_tanjiro",
-          "start_frame": 204
-        },
-        {
-          "scenario": "throw_zenitsu",
-          "start_frame": 225
-        },
-        {
-          "scenario": "throw_left_corner",
-          "start_frame": 246
-        },
-        {
-          "scenario": "throw_right_corner",
-          "start_frame": 267
-        },
-        {
-          "scenario": "throw_mirror",
-          "start_frame": 288
-        }
-      ],
-      "fps": 15,
-      "frames": 309,
-      "resolution": [
-        1920,
-        1080
-      ]
-    }
+    "28 dedicated chronological pose sources; 281 new selected drawings",
+    "Logic-stage and hit-segment animation synchronization",
+    "Dedicated water, lightning and fire silhouettes; restrained layered MAX effects",
+    "Hit/block/whiff/throw escape/meter feedback and deterministic local PCM",
+    "Freeze and reset handling for animation, trails, effects and audio",
+    "16 world-unit camera overscan inside the existing panorama; horizontal throw victims remain visible at true boundaries"
   ],
   "videos": [
     {
-      "path": "artifacts/visual-polish/preview.mp4",
-      "sha256": "e1812fcbbca2fe005591d62609af3fff1d91b1456454c89a0de4ad86b506a8b3",
-      "bytes": 8246593,
-      "cues": [
-        {
-          "character": "tanjiro",
-          "scenario": "idle",
-          "start_frame": 0
-        },
-        {
-          "character": "tanjiro",
-          "scenario": "walk",
-          "start_frame": 68
-        },
-        {
-          "character": "tanjiro",
-          "scenario": "walk_back",
-          "start_frame": 92
-        },
-        {
-          "character": "tanjiro",
-          "scenario": "dash_forward",
-          "start_frame": 116
-        },
-        {
-          "character": "tanjiro",
-          "scenario": "dash_back",
-          "start_frame": 140
-        },
-        {
-          "character": "tanjiro",
-          "scenario": "jump_forward",
-          "start_frame": 164
-        },
-        {
-          "character": "tanjiro",
-          "scenario": "jump_back",
-          "start_frame": 188
-        },
-        {
-          "character": "tanjiro",
-          "scenario": "air_light",
-          "start_frame": 212
-        },
-        {
-          "character": "tanjiro",
-          "scenario": "air_heavy",
-          "start_frame": 236
-        },
-        {
-          "character": "tanjiro",
-          "scenario": "forward_skill",
-          "start_frame": 260
-        },
-        {
-          "character": "zenitsu",
-          "scenario": "idle",
-          "start_frame": 284
-        },
-        {
-          "character": "zenitsu",
-          "scenario": "walk",
-          "start_frame": 352
-        },
-        {
-          "character": "zenitsu",
-          "scenario": "walk_back",
-          "start_frame": 376
-        },
-        {
-          "character": "zenitsu",
-          "scenario": "dash_forward",
-          "start_frame": 400
-        },
-        {
-          "character": "zenitsu",
-          "scenario": "dash_back",
-          "start_frame": 424
-        },
-        {
-          "character": "zenitsu",
-          "scenario": "jump_forward",
-          "start_frame": 448
-        },
-        {
-          "character": "zenitsu",
-          "scenario": "jump_back",
-          "start_frame": 472
-        },
-        {
-          "character": "zenitsu",
-          "scenario": "air_light",
-          "start_frame": 496
-        },
-        {
-          "character": "zenitsu",
-          "scenario": "air_heavy",
-          "start_frame": 520
-        },
-        {
-          "character": "zenitsu",
-          "scenario": "forward_skill",
-          "start_frame": 544
-        }
+      "path": "artifacts/phase2/basics.mp4",
+      "bytes": 13658485,
+      "sha256": "f1f8dc5a1a099afee3d3d917664384b107a30561943b9815536d967b448cab3c",
+      "fps": 30,
+      "frames": 1248,
+      "seconds": 41.6,
+      "resolution": [
+        1280,
+        720
       ],
-      "fps": 20,
-      "frames": 568
+      "cases": 26,
+      "cues": "artifacts/phase2/basics/cues.json",
+      "audio": {
+        "events": 74,
+        "pause_intervals": 2,
+        "peak": 0.127256838546168,
+        "sample_rate": 22050,
+        "method": "Godot-generated PCM mixed offline from these exact 60Hz event timestamps, preserving audio pause intervals"
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1280,
+            "height": 720,
+            "r_frame_rate": "30/1"
+          },
+          {
+            "codec_name": "aac",
+            "sample_rate": "22050",
+            "r_frame_rate": "0/0"
+          }
+        ],
+        "format": {
+          "duration": "41.600000",
+          "size": "13658485"
+        }
+      }
+    },
+    {
+      "path": "artifacts/phase2/specials.mp4",
+      "bytes": 19878190,
+      "sha256": "21765626b44a3a94d583bf06312595f7d9601a420805cf2b79afb16505812bad",
+      "fps": 30,
+      "frames": 1872,
+      "seconds": 62.4,
+      "resolution": [
+        1280,
+        720
+      ],
+      "cases": 24,
+      "cues": "artifacts/phase2/specials/cues.json",
+      "audio": {
+        "events": 122,
+        "pause_intervals": 2,
+        "peak": 0.15371217352268263,
+        "sample_rate": 22050,
+        "method": "Godot-generated PCM mixed offline from these exact 60Hz event timestamps, preserving audio pause intervals"
+      },
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1280,
+            "height": 720,
+            "r_frame_rate": "30/1"
+          },
+          {
+            "codec_name": "aac",
+            "sample_rate": "22050",
+            "r_frame_rate": "0/0"
+          }
+        ],
+        "format": {
+          "duration": "62.400000",
+          "size": "19878190"
+        }
+      }
     }
   ],
   "calibration": {
     "path": "output/imagegen/anime-v2/calibration.json",
-    "sha256": "faaab39d83f62092f8c46a9f06f5cd8dd4596117e2026f3136bd025031c5fe70"
+    "sha256": "e174fb4613a0c773db9e1c107c5427a75091829ed40ca6ac78b95c244a7dca43"
+  },
+  "previous_manifest": "output/imagegen/history/pre-phase2-manifest.json",
+  "performance": {
+    "before": {
+      "all_art_ready": true,
+      "frames": 1800,
+      "gpu": "NVIDIA GeForce RTX 3080 Ti",
+      "mean_fps": 165.0915253659,
+      "mean_frame_ms": 6.0572461111111,
+      "p95_frame_ms": 6.095,
+      "p99_frame_ms": 6.133,
+      "scope": "final local anime art, 1080p, 1800 rendered AI-versus-AI combat frames"
+    },
+    "after": {
+      "all_art_ready": true,
+      "frames": 1800,
+      "gpu": "NVIDIA GeForce RTX 3080 Ti",
+      "mean_fps": 165.097218873144,
+      "mean_frame_ms": 6.05703722222222,
+      "p95_frame_ms": 6.099,
+      "p99_frame_ms": 6.141,
+      "scope": "final local anime art, 1080p, 1800 rendered AI-versus-AI combat frames"
+    },
+    "difference_ms": {
+      "mean_frame_ms": -0.00020888888887959922,
+      "p95_frame_ms": 0.004000000000000448,
+      "p99_frame_ms": 0.008000000000000007
+    },
+    "method": "Same 1080p / OpenGL / GPU / 1800 rendered AI-versus-AI frame harness; no concurrent capture or encoding. Frame time includes scheduling and display pacing, not an isolated GPU timestamp."
+  },
+  "authoring": {
+    "jobs": "output/imagegen/anime-v2/jobs.json",
+    "jobs_sha256": "516d6c2227bda51d14ff8b081c7a6a1aa5c93b22fd1b98e45cb3193b1fa8d6c1",
+    "rebuild_verification": "artifacts/phase2/rebuild-verification.json",
+    "files_byte_identical": 157,
+    "commands": [
+      "python tools/build_movement_art.py --part animation",
+      "python tools/build_presentation_data.py",
+      "python tools/build_combat_data.py",
+      "python tools/subset_fonts.py"
+    ]
+  },
+  "parameter_audit": {
+    "path": "artifacts/phase2/parameter-audit.json",
+    "moves": 42,
+    "gameplay_parameter_changes": [],
+    "excluded_presentation_fields": [
+      "animation_id",
+      "effect_id",
+      "presentation"
+    ],
+    "baseline": "output/imagegen/history/pre-phase2-gameplay.json"
+  },
+  "rendered_matrix": {
+    "captures": 192,
+    "widths": [
+      960,
+      1280,
+      1920
+    ],
+    "index": "artifacts/phase2/matrix/captures.json",
+    "method": "Actual Godot OpenGL; held commands; exact LEFT/RIGHT boundary; same-character duels"
   }
 }

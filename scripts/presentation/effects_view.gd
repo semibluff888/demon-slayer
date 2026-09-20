@@ -11,16 +11,11 @@ const CUT_CURVES := {
 	"air_heavy": [Vector2(5, -62), Vector2(87, -51), Vector2(43, 2)],
 }
 const CUT_SEGMENTS: int = 32
-# Blade anchors for the three active drawings (atlas frames 3, 4, 5),
-# relative to the feet at canonical scale. Facing is applied once.
-const SKILL_TIPS := {
-	"water_slash": [Vector2(40, -18), Vector2(54, -40), Vector2(32, -40)],
-}
-
 var camera: RefCounted
 var combat: RefCounted
 var sparks: Array[Dictionary] = []
 var rings: Array[Dictionary] = []
+var pulses: Array[Dictionary] = []
 var time: float = 0
 var trauma: float = 0
 var freeze: bool = false
@@ -36,25 +31,49 @@ func _ready() -> void:
 			textures[id] = load(path)
 
 func consume(events: Array) -> void:
+	# A tech also emits clash for the combat contract; render one clear escape cue.
+	var tech := events.any(func(event: Dictionary) -> bool: return event.type == "throw_tech")
 	for event: Dictionary in events:
-		if event.type not in ["hit", "throw", "block", "clash"]:
+		if event.type == "round_end":
+			reset_effects()
+			return
+		if event.type == "throw_tech":
+			pulses.append({"kind":"tech", "at":event.position, "life":0.30, "duration":0.30, "color":Color("a8f3ef")})
+			continue
+		if event.type == "meter_empty" or (event.type == "meter" and int(event.amount) < 0):
+			var f = combat.fighters[event.attacker]
+			pulses.append({"kind":"empty" if event.type == "meter_empty" else "spend", "at":Vector2(f.x,f.y-4), "life":0.32, "duration":0.32,
+				"color":Color("ed7f89") if event.type == "meter_empty" else Color("edd7a2")})
+			continue
+		if event.type not in ["hit", "throw", "block", "clash"] or (tech and event.type == "clash"):
 			continue
 		var blocked: bool = event.type in ["block", "clash"]
+		var move: Resource = combat.moves.get(event.get("move", ""))
+		var segment: int = event.get("segment", 0)
+		var repeated: bool = move != null and move.hit_count() > 1 and segment > 0 and segment < move.hit_count() - 1
+		var intensity := 0.42 if repeated else (0.70 if move != null and move.kind == "light" else 1.0)
 		var color := Color("9ccbdd") if blocked else (Color("f9a075") if event.type == "throw" else Color("ffe1a2"))
-		for n in range(12 if not blocked else 7):
+		if not blocked and move != null and move.presentation != null and move.kind in ["skill","super","max"]:
+			color = move.presentation.color.lightened(0.35)
+		for n in range(4 if repeated else (6 if blocked else 9)):
 			var angle: float = float(n) * 2.399 + time
-			var speed: float = 35 + n % 5 * 17
-			sparks.append({"at": event.position, "velocity": Vector2(cos(angle), sin(angle)) * speed, "life": 0.15 + n % 3 * 0.06, "color": color, "length": 2 + n % 4})
-		while sparks.size() > 72:
+			var speed: float = (28 + n % 5 * 12) * intensity
+			sparks.append({"at": event.position, "velocity": Vector2(cos(angle), sin(angle)) * speed, "life": 0.12 + n % 3 * 0.035, "color": color, "length": 1 + n % 3})
+		while sparks.size() > 48:
 			sparks.pop_front()
-		rings.append({"at": event.position, "life": 0.22, "color": color, "block": blocked, "throw": event.type == "throw"})
-		if rings.size() > 8:
+		rings.append({"at": event.position, "life":0.18, "color":color, "block":blocked, "throw":event.type == "throw", "intensity":intensity,
+			"facing":int(combat.fighters[event.attacker].facing) if event.has("attacker") else 1})
+		if rings.size() > 5:
 			rings.pop_front()
-		trauma = maxf(trauma, 0.09 if blocked else 0.23)
+		trauma = maxf(trauma, (0.04 if blocked else 0.16) * intensity)
+	while pulses.size() > 6:
+		pulses.pop_front()
+	queue_redraw()
 
 func reset_effects() -> void:
 	sparks.clear()
 	rings.clear()
+	pulses.clear()
 	trauma = 0
 	time = 0
 
@@ -71,6 +90,9 @@ func _process(delta: float) -> void:
 	for ring: Dictionary in rings:
 		ring.life -= delta
 	rings = rings.filter(func(p: Dictionary) -> bool: return p.life > 0)
+	for pulse: Dictionary in pulses:
+		pulse.life -= delta
+	pulses = pulses.filter(func(p: Dictionary) -> bool: return p.life > 0)
 	queue_redraw()
 
 func _effect(id: String, bounds: Rect2, color: Color = Color.WHITE, uv_rotation: float = 0.0) -> void:
@@ -88,36 +110,6 @@ func _effect(id: String, bounds: Rect2, color: Color = Color.WHITE, uv_rotation:
 		uvs.append((corner - Vector2.ONE * 0.5).rotated(uv_rotation) + Vector2.ONE * 0.5)
 	draw_polygon(vertices, PackedColorArray([color]), uvs, textures[id])
 
-func _blade_effect(id: String, fighter: RefCounted, color: Color) -> void:
-	if not textures.has(id):
-		return
-	var move: Resource = fighter.move
-	var bounds: Rect2 = move.box
-	# Use the same three-pose timing as FighterView, including held drawings.
-	var pose := mini(2, int(float(fighter.move_frame - move.startup) / move.active * 3))
-	var tip: Vector2 = SKILL_TIPS[move.effect()][pose]
-	if move.effect() == "water_slash":
-		tip.x += 8 # The crest curls just past the metal blade.
-	tip = tip.clamp(bounds.position + Vector2(4, 4), bounds.end - Vector2(4, 4))
-	# Move the bright head to the blade while pinning the faint perimeter to the
-	# attack box. A 3x3 texture mesh keeps the reach stable as the blade swings.
-	var source_x := [0.0, 0.82, 1.0]
-	var source_y := [0.0, 0.5, 1.0]
-	var target_x := [bounds.position.x, tip.x, bounds.end.x]
-	var target_y := [bounds.position.y, tip.y, bounds.end.y]
-	var corners := PackedVector2Array([Vector2.ZERO, Vector2.RIGHT, Vector2.ONE, Vector2.DOWN])
-	for row in range(2):
-		for column in range(2):
-			var vertices := PackedVector2Array()
-			var uvs := PackedVector2Array()
-			for corner in corners:
-				var x := column + int(corner.x)
-				var y := row + int(corner.y)
-				vertices.append(Vector2(target_x[x], target_y[y]))
-				# 180 degrees puts the broad water crest in front.
-				uvs.append(Vector2(1.0 - source_x[x], 1.0 - source_y[y]))
-			draw_polygon(vertices, PackedColorArray([color]), uvs, textures[id])
-
 func _lightning(tail: Vector2, tip: Vector2, width: float, color: Color, tail_opacity: float = 1.0) -> void:
 	if not textures.has("thunder"):
 		return
@@ -132,8 +124,8 @@ func _lightning(tail: Vector2, tip: Vector2, width: float, color: Color, tail_op
 func _thunder_dash(attack: Rect2, strength: float) -> void:
 	# The spear ends at the active forward reach; the broad rear wake conveys speed.
 	var tip := Vector2(attack.end.x, attack.get_center().y)
-	var length := attack.size.x * 2.5
-	_lightning(tip - Vector2(length, 0), tip, attack.size.y * 1.7, Color(1, 0.95, 0.72, strength), 0.58)
+	var length := attack.size.x + 28
+	_lightning(tip - Vector2(length, 0), tip, attack.size.y * 0.75, Color(1, 0.95, 0.72, strength), 0.25)
 
 func _iai_slash(attack: Rect2, strength: float) -> void:
 	# Keep a straight 45-degree upstroke. Move it outward along the blade and
@@ -186,57 +178,147 @@ func _draw_cut_ribbon(points: PackedVector2Array, normals: PackedVector2Array, t
 			indices.append_array(PackedInt32Array([first, first + 1, first + 3, first + 1, first + 4, first + 3]))
 	RenderingServer.canvas_item_add_triangle_array(get_canvas_item(), indices, vertices, colors)
 
+func _ellipse(bounds: Rect2, start: float, length: float, color: Color, width: float) -> void:
+	var points := PackedVector2Array()
+	for n in range(37):
+		var angle := start + length * n / 36.0
+		points.append(bounds.get_center() + Vector2(cos(angle),sin(angle)) * bounds.size * 0.5)
+	draw_polyline(points, color, width, true)
+
+func _profile_shape(move: Resource) -> String:
+	return move.presentation.shape if move.presentation != null else move.effect()
+
+func _charge(fighter: RefCounted, color: Color) -> void:
+	var move: Resource = fighter.move
+	if not move.is_super() or fighter.move_frame >= move.startup:
+		return
+	var max_move: bool = move.kind == "max"
+	var ready: float = 1.0 - float(combat.super_freeze) / maxi(1,move.freeze_frames)
+	var radius := 19.0 + ready * (13.0 if max_move else 7.0)
+	_ellipse(Rect2(-radius,-7,radius*2,11), -0.5, PI*1.5, Color(color,0.45),1.0)
+	if max_move:
+		_ellipse(Rect2(-radius-4,-10,radius*2+8,17),1.8,PI*1.4,Color(color.lightened(0.6),0.34),0.7)
+		for side in [-1,1]:
+			draw_line(Vector2(side*12,-12),Vector2(side*18,-38),Color(color,0.18),1.0,true)
+
+func _water_dragon(attack: Rect2, progress: float, segment: int, color: Color) -> void:
+	var points := PackedVector2Array()
+	var normals := PackedVector2Array()
+	var taper := PackedFloat32Array()
+	for n in range(41):
+		var u := n / 40.0
+		var angle := u * TAU + segment * 0.8 - progress * 1.1
+		points.append(Vector2(lerpf(attack.position.x,attack.end.x-5,u),attack.get_center().y+sin(angle)*attack.size.y*0.31))
+		normals.append(Vector2(-cos(angle)*0.25,1).normalized())
+		taper.append(sin(u*PI)*0.8+0.15)
+	_draw_cut_ribbon(points,normals,taper,6.0,Color(color,0.24))
+	_draw_cut_ribbon(points,normals,taper,2.0,Color(color.lightened(0.5),0.48))
+	_draw_cut_ribbon(points,normals,taper,0.55,Color("defbff"))
+	var head: Vector2 = points[-3]
+	_effect("water-slash",Rect2(head-Vector2(12,12),Vector2(18,24)),Color(color,0.45),PI)
+
+func _draw_attack(fighter: RefCounted) -> void:
+	var move: Resource = fighter.move
+	var color: Color = move.presentation.color if move.presentation != null else Color("c4e7ff")
+	_charge(fighter,color)
+	var segment: int = move.segment(fighter.move_frame)
+	if segment < 0:
+		return
+	var progress: float = move.segment_progress(fighter.move_frame)
+	var strength := 0.38 + sin(progress * PI) * 0.22
+	var attack: Rect2 = move.box
+	var shape := _profile_shape(move)
+	match shape:
+		"water_slash":
+			# The detached projectile is the only hitbox. A small spray marks release.
+			_effect("water-slash",Rect2(17,-45,22,24),Color(color,0.25),PI)
+		"water_wheel":
+			_effect("water-wheel",attack,Color(color,strength*0.60),-progress*TAU)
+			_ellipse(attack.grow(-3),-progress*TAU,PI*1.35,Color(color.lightened(0.5),0.62),1.4)
+		"water_vortex":
+			var plane := Rect2(attack.position.x,-35,attack.size.x,27)
+			_effect("water-wheel",plane,Color(color,0.28),progress*TAU)
+			_ellipse(plane.grow(-2),progress*TAU,PI*1.55,Color(color.lightened(0.45),0.57),1.7)
+			_ellipse(Rect2(plane.position+Vector2(7,-7),plane.size-Vector2(14,4)),-progress*TAU,PI,Color(color,0.25),0.8)
+		"water_dragon":
+			_water_dragon(attack,progress,segment,color)
+		"sun_arc", "flame":
+			var angle := -1.7+progress*TAU
+			_ellipse(attack.grow(-5),angle-0.25,PI*1.65,Color(0.95,0.13,0.025,0.27),5.0)
+			_ellipse(attack.grow(-6),angle,PI*1.45,Color(1,0.46,0.075,0.64),2.7)
+			_ellipse(attack.grow(-7),angle+0.08,PI*1.15,Color(1,0.87,0.46,0.85),0.9)
+			for n in range(6):
+				var a := angle+n*0.5
+				var at := attack.get_center()+Vector2(cos(a),sin(a))*attack.size*0.40
+				draw_line(at,at-Vector2(cos(a),sin(a))*3,Color(1,0.60,0.1,0.4),1.0,true)
+		"body":
+			var at := Vector2(minf(attack.end.x-7,attack.get_center().x+3),attack.get_center().y)
+			draw_arc(at,6+progress*3,-0.6,0.6,10,Color(color,0.24),0.7,true)
+		"thunder":
+			_thunder_dash(attack,strength)
+		"iai":
+			_iai_slash(attack,strength)
+		"iai_return":
+			var center := attack.get_center()
+			_lightning(Vector2(attack.position.x,center.y+8),Vector2(attack.end.x,center.y-7 if segment==0 else center.y+3),15,Color(color,strength),0.35)
+		"sixfold":
+			var height: float = [-0.18,0.18,-0.28,0.0,0.24,-0.05][segment % 6]
+			var tip := Vector2(attack.end.x,attack.get_center().y+height*attack.size.y)
+			_lightning(Vector2(attack.position.x-12,attack.get_center().y-height*12),tip,18,Color(color,strength),0.32)
+		"godspeed":
+			var y: float = attack.get_center().y
+			_lightning(Vector2(attack.position.x-18,y+3),Vector2(attack.end.x,y-3),23,Color(color,0.55),0.23)
+			_lightning(Vector2(attack.position.x,y+13),Vector2(attack.end.x-3,y-7),9,Color(1,0.79,0.35,0.42),0.20)
+		"blade":
+			_draw_normal_cut(move.effect(),progress)
+		_:
+			_draw_normal_cut(move.effect(),progress)
+
 func _draw() -> void:
 	if camera == null or combat == null:
 		return
-	for fighter in combat.fighters:
-		# Round-end poses retain their move frame; their sword effects must not linger.
-		if combat.phase != "fight" or fighter.move == null or not fighter.hitbox().has_area():
-			continue
-		var facing: float = fighter.facing
-		var origin: Vector2 = camera.point(Vector2(fighter.x, fighter.y))
-		draw_set_transform(origin, 0, Vector2(camera.zoom * facing, camera.zoom))
-		var progress: float = float(fighter.move_frame - fighter.move.startup) / maxi(1, fighter.move.active - 1)
-		var strength := 0.57 + sin(progress * PI) * 0.40
-		# All skill placement starts from the same local box combat mirrors into the world.
-		var attack: Rect2 = fighter.move.box
-		match fighter.move.effect():
-			"water_slash":
-				# Put the broad crest beyond the blade, with the fine wake toward the hand.
-				_blade_effect("water-slash", fighter, Color(0.85, 0.98, 1, strength))
-			"water_wheel":
-				_effect("water-wheel", attack, Color(0.88, 0.99, 1, strength), -progress * 1.3)
-			"flame":
-				_effect("water-wheel", attack, Color(1, 0.28, 0.04, strength), -progress * 1.8)
-			"body":
-				draw_arc(attack.get_center(), 8 + progress * 8, -1.2, 1.2, 12, Color(1, 0.86, 0.55, strength), 1.4, true)
-			"thunder":
-				_thunder_dash(attack, strength)
-			"iai":
-				_iai_slash(attack, strength)
-			_:
-				_draw_normal_cut(fighter.move.effect(), progress)
-	for projectile in combat.projectiles:
-		var at: Vector2 = camera.point(Vector2(projectile.x, projectile.y))
-		draw_set_transform(at, 0, Vector2(camera.zoom * projectile.facing, camera.zoom))
-		var bounds: Rect2 = combat.moves[projectile.move].projectile_box
-		_effect("water-slash", bounds.grow(4), Color(0.65, 0.96, 1, 0.95), PI)
+	if combat.phase == "fight":
+		for fighter in combat.fighters:
+			if fighter.move == null:
+				continue
+			draw_set_transform(camera.point(Vector2(fighter.x,fighter.y)),0,Vector2(camera.zoom*fighter.facing,camera.zoom))
+			_draw_attack(fighter)
+		for projectile in combat.projectiles:
+			draw_set_transform(camera.point(Vector2(projectile.x,projectile.y)),0,Vector2(camera.zoom*projectile.facing,camera.zoom))
+			var bounds: Rect2 = combat.moves[projectile.move].projectile_box
+			# A vertical crest stays inside the projectile's exact collision envelope.
+			_effect("water-slash",bounds,Color(0.48,0.87,1,0.60),PI)
+			_ellipse(bounds.grow(-1),-1.15,2.3,Color(0.82,0.98,1,0.68),1.0)
 	draw_set_transform(Vector2.ZERO)
 	for spark: Dictionary in sparks:
 		var at: Vector2 = camera.point(spark.at)
 		var color: Color = spark.color
-		color.a = clampf(spark.life / 0.15, 0, 1)
-		var direction: Vector2 = spark.velocity.normalized()
-		draw_line(at, at - direction * spark.length * camera.zoom, color, 1.2, true)
+		color.a = clampf(spark.life/0.18,0,0.7)
+		draw_line(at,at-spark.velocity.normalized()*spark.length*camera.zoom,color,1.0,true)
 	for ring: Dictionary in rings:
 		var at: Vector2 = camera.point(ring.at)
-		var amount: float = 1.0 - ring.life / 0.22
+		var amount: float = 1.0-ring.life/0.18
 		var color: Color = ring.color
-		color.a = (1 - amount) * 0.75
+		color.a = (1-amount)*0.55*ring.intensity
 		if not ring.block:
-			var diameter: float = (36 + amount * 31) * camera.zoom
-			_effect("impact", Rect2(at - Vector2.ONE * diameter / 2, Vector2.ONE * diameter), color)
+			var diameter: float = (24+amount*17)*camera.zoom*ring.intensity
+			_effect("impact",Rect2(at-Vector2.ONE*diameter/2,Vector2.ONE*diameter),color)
 		else:
-			draw_arc(at, (6 + amount * 12) * camera.zoom, -1.4, 1.4, 25, color, 2, true)
+			var angle: float = PI if ring.facing > 0 else 0.0
+			draw_arc(at,(5+amount*6)*camera.zoom,angle-1.1,angle+1.1,20,color,1.5,true)
 		if ring.throw:
-			draw_arc(at, (9 + amount * 18) * camera.zoom, 0, TAU, 32, color, 1.1, true)
+			draw_arc(at,(8+amount*14)*camera.zoom,0,TAU,28,color,1.0,true)
+	for pulse: Dictionary in pulses:
+		var at: Vector2 = camera.point(pulse.at)
+		var progress: float = 1-pulse.life/pulse.duration
+		var color: Color = Color(pulse.color,(1-progress)*0.70)
+		if pulse.kind == "tech":
+			for side in [-1,1]:
+				var end: Vector2 = at+Vector2(side*(9+progress*13)*camera.zoom,0)
+				draw_line(at+Vector2(side*4*camera.zoom,0),end,color,1.6,true)
+				draw_arc(end,4*camera.zoom,-1.0,1.0,12,color,1.0,true)
+		elif pulse.kind == "spend":
+			_ellipse(Rect2(at-Vector2(24,3)*camera.zoom,Vector2(48,6)*camera.zoom),0,TAU,color,1.0)
+		else:
+			for n in range(3):
+				draw_line(at+Vector2(-8+n*6,-3)*camera.zoom,at+Vector2(-8+n*6,-7)*camera.zoom,color,1.7,true)

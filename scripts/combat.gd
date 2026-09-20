@@ -245,6 +245,7 @@ func _advance(f: Fighter) -> void:
 		_stop_dash(f)
 		f.stun -= 1
 		if f.stun == 0:
+			f.reaction = ""
 			if f.state == "knockdown":
 				f.throw_invulnerable = 8
 			f.state = "idle" if f.grounded else "air"
@@ -291,6 +292,9 @@ func _advance(f: Fighter) -> void:
 		if f.move_frame < f.move.startup:
 			f.x += f.move.startup_travel * f.facing
 		elif f.move_frame < f.move.startup + f.move.active:
+			var segment := f.move.segment(f.move_frame)
+			if segment >= 0 and f.move_frame == f.move.segment_start(segment):
+				events.append({"type":"strike", "attacker":f.slot, "move":f.move.id, "instance":f.attack_instance, "segment":segment})
 			f.x += f.move.travel * f.facing
 			if f.move.projectile_speed != 0 and not f.projectile_spawned:
 				_spawn_projectile(f)
@@ -506,6 +510,7 @@ func _resolve_contact(contact: Dictionary) -> void:
 	d.roll_frame = -1
 	d.air_used_move = true
 	d.throw_frame = 0
+	d.reaction = ""
 	d.move = null
 	d.clear_buffer()
 	if contact.blocked:
@@ -516,7 +521,7 @@ func _resolve_contact(contact: Dictionary) -> void:
 			d.hp = maxi(1, d.hp - maxi(1, int(attack.segment_damage(contact.segment) * 0.08)))
 		if first_contact:
 			_change_meter(d, 3)
-		events.append({"type": "block", "position": contact.position, "attacker": contact.attacker})
+		events.append({"type": "block", "position": contact.position, "attacker": contact.attacker, "move":attack.id, "instance":instance, "segment":contact.segment})
 	else:
 		if not a.combo_active:
 			a.combo = 0
@@ -551,7 +556,7 @@ func _resolve_contact(contact: Dictionary) -> void:
 			_change_meter(a, int(damage * 0.25))
 		_change_meter(d, int(damage * 0.15))
 		events.append({"type": "hit", "position": contact.position, "attacker": contact.attacker,
-			"damage": damage, "instance": instance, "segment": contact.segment})
+			"damage": damage, "instance": instance, "segment": contact.segment, "move":attack.id})
 	hitstop = maxi(hitstop, attack.hitstop)
 
 func _change_meter(f: Fighter, amount: int) -> void:
@@ -689,6 +694,8 @@ func _start_throw(contact: Dictionary) -> void:
 		f.knockdown_pending = false
 		f.throw_frame = 0
 		f.throw_facing = direction
+		f.throw_back = a.throw_back
+		f.reaction = ""
 	a.throw_role = "thrower"
 	d.throw_role = "victim"
 	a.state = "throwing"
@@ -706,6 +713,7 @@ func _tech_throw() -> void:
 		f.grounded = true
 		f.vy = 0
 		f.state = "block"
+		f.reaction = "throw_tech"
 		f.stun = 16
 		f.throw_invulnerable = 8
 		f.vx = -f.facing * 3.0
@@ -714,7 +722,7 @@ func _tech_throw() -> void:
 	throw_link.clear()
 	hitstop = 5
 	events.append({"type": "clash", "position": Vector2((fighters[0].x + fighters[1].x) / 2, FLOOR_Y - 35)})
-	events.append({"type": "throw_tech"})
+	events.append({"type": "throw_tech", "position": Vector2((fighters[0].x + fighters[1].x) / 2, FLOOR_Y - 35)})
 
 func _advance_throw() -> void:
 	throw_link.frame += 1

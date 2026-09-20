@@ -15,6 +15,7 @@ extends Resource
 @export var canonical_height: float = 70.0
 @export var phases: Dictionary = {}
 var clip_metadata: Dictionary = {}
+var state_animations: Dictionary = {}
 var asset_directory: String = ""
 var required_move_clips: Array[String] = []
 var art_ready: bool = false

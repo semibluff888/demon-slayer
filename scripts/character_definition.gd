@@ -10,6 +10,8 @@ extends Resource
 @export var visual_directory: String = ""
 @export var normals: Dictionary = {}
 @export var motions: Dictionary = {}
+# Dedicated state clips are enabled by authored character resources after art validation.
+@export var state_animations: Dictionary = {}
 @export var throw_move: Resource
 @export var move_list: Array[Dictionary] = []
 @export var combos: PackedStringArray = ["2B → 2A → 5C → 236A", "j.C → 5A → 5C → 214B",

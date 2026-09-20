@@ -19,9 +19,13 @@ def value(v):
     return str(v)
 
 def move_resource(data):
+    profile = data.pop("_presentation", "")
     path = MOVES / (data["id"] + ".tres")
     text = '[gd_resource type="Resource" script_class="DuelMove" load_steps=2 format=3]\n\n'
     text += '[ext_resource type="Script" path="res://scripts/move_data.gd" id="1"]\n\n[resource]\nscript = ExtResource("1")\n'
+    if profile:
+        text = text.replace("load_steps=2", "load_steps=3").replace("[resource]", f'[ext_resource type="Resource" path="res://resources/presentation/{profile}.tres" id="2"]\n\n[resource]')
+        text += 'presentation = ExtResource("2")\n'
     text += "".join(f"{k} = {value(v)}\n" for k,v in data.items())
     path.write_text(text, encoding="utf-8")
     return "res://moves/core/" + path.name
@@ -29,7 +33,22 @@ def move_resource(data):
 def packed(items):
     return Raw("PackedStringArray(" + ", ".join(value(x) for x in items) + ")")
 
-def make_roster():
+def make_roster(phase2=False, specials=False):
+    from build_presentation_data import build
+    build()
+    phase2 = phase2 or specials
+    if phase2:
+        required = {"body_" + stance + "_" + weight for stance in ("stand", "crouch", "air") for weight in ("light", "heavy")}
+        required.update(["roll_forward", "roll_back", "throw_forward", "thrown_forward", "throw_tech"])
+        for cid in ("tanjiro", "zenitsu"):
+            atlas = json.loads((ROOT / "art/characters" / cid / "atlas.json").read_text(encoding="utf-8"))
+            if specials:
+                required_specials = {"water_vortex", "water_dragon", "sun_arc"} if cid=="tanjiro" else {"iai_return", "sixfold", "godspeed"}
+            else:
+                required_specials = set()
+            missing = (required | required_specials) - set(atlas["clips"])
+            if missing:
+                raise SystemExit("Build and validate phase-two art first: " + cid + " missing " + ", ".join(sorted(missing)))
     MOVES.mkdir(parents=True, exist_ok=True)
     CHARS.mkdir(parents=True, exist_ok=True)
     profiles = [
@@ -48,6 +67,12 @@ def make_roster():
         cid = profile["id"]
         normal_refs, motion_refs, all_refs = {}, {}, []
         def add(key, data, collection):
+            if specials:
+                mapping = ({"214B":"water_vortex", "214D":"water_vortex", "super":"water_dragon", "max":"sun_arc"} if cid=="tanjiro" else {"214B":"iai_return", "214D":"iai_return", "super":"sixfold", "max":"godspeed"})
+                if key in mapping:
+                    data["animation_id"] = mapping[key]
+                    data["effect_id"] = mapping[key]
+                data["_presentation"] = ("body" if key in ["5B","5D","2B","2D","jB","jD"] else "blade") if collection is normal_refs else data.get("effect_id",data["animation_id"])
             data["id"] = cid + "_" + key
             ref = len(all_refs) + 2
             all_refs.append((ref, move_resource(data)))
@@ -56,7 +81,7 @@ def make_roster():
             for button in "ABCD":
                 light = button in "AB"
                 body = button in "BD"
-                clip = stance + ("_light" if light else "_heavy")
+                clip = ("body_" if body and phase2 else "") + stance + ("_light" if light else "_heavy")
                 dmg = {"A":45, "B":32, "C":80, "D":76}[button]
                 startup = {"A":5, "B":4, "C":9, "D":10}[button]
                 if stance == "crouch":
@@ -132,6 +157,8 @@ def make_roster():
         text += '\n[resource]\nscript = ExtResource("1")\n'
         text += "".join(f"{k} = {value(v)}\n" for k,v in profile.items() if k not in ["specials","descriptions"])
         text += f'visual_directory = "res://art/characters/{cid}/"\n'
+        if phase2:
+            text += 'state_animations = {"roll_forward": "roll_forward", "roll_back": "roll_back", "throw_forward": "throw_forward", "throw_back": "throw_success", "thrown_forward": "thrown_forward", "thrown_back": "thrown", "throw_tech": "throw_tech"}\n'
         def refs(items):
             return "{\n" + ",\n".join(f'{value(key)}: ExtResource("{ref}")' for key,ref in items.items()) + "\n}"
         text += "normals = " + refs(normal_refs) + "\n"
@@ -145,5 +172,11 @@ def make_roster():
         (CHARS / (cid+".tres")).write_text(text,encoding="utf-8")
 
 if __name__ == "__main__":
-    make_roster()
+    import argparse
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--phase2", action="store_true", help="Enable validated dedicated body/state clips")
+    parser.add_argument("--specials", action="store_true", help="Enable validated phase-two specials and presentation profiles")
+    parser.add_argument("--basics-only", action="store_true", help="Reproduce the first-batch checkpoint without dedicated specials")
+    args = parser.parse_args()
+    make_roster(True, not args.basics_only)
     print("Authored 42 combat moves and 2 character definitions.")

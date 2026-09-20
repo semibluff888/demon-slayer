@@ -58,14 +58,12 @@ func _physics_process(_delta: float) -> void:
 	if mode == "practice":
 		practice_controller.after_step(combat)
 	view.consume(combat.events)
-	for event in combat.events:
-		sound.play(event.type)
-		if event.type == "swing":
-			sound.play(event.get("effect", ""))
+	sound.consume(combat.events,combat)
 	if previous_phase == "round_end" and combat.phase == "intro":
 		ai.reset()
 		router.reset(devices)
 		view.reset_effects()
+		sound.reset_audio()
 	if combat.phase == "match_end":
 		show_result()
 
@@ -107,6 +105,9 @@ func _change_screen(next_screen: String) -> void:
 	view.screen = next_screen
 	view.characters = characters
 	view.paused = paused
+	sound.set_paused(paused)
+	if next_screen in ["title","setup","result"]:
+		sound.reset_audio()
 	gui.clear()
 
 func show_title() -> void:
@@ -149,6 +150,7 @@ func start_match() -> void:
 	if mode == "practice":
 		practice_controller.reset(combat)
 	view.reset_effects()
+	sound.reset_audio()
 	view.cpu = mode == "cpu"
 	view.hud.training = practice_controller if mode == "practice" else null
 	view.hud.input_device = devices[0]
@@ -178,6 +180,7 @@ func set_paused(value: bool, reason: String = "") -> void:
 		return
 	paused = value
 	view.paused = value
+	sound.set_paused(value)
 	_reset_inputs()
 	pause_reason = reason
 	gui.clear()
@@ -217,6 +220,7 @@ func reset_practice() -> void:
 	practice_controller.reset(combat)
 	_reset_inputs()
 	view.reset_effects()
+	sound.reset_audio()
 
 func _devices_ready() -> bool:
 	return router.connected(devices[0]) and (mode != "local" or router.connected(devices[1]))
