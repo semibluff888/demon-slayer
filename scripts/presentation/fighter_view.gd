@@ -54,6 +54,10 @@ func sync(delta: float, freeze_pose: bool) -> void:
 	var renewed_stun: bool = fighter.state in ["hit", "block", "knockdown"] and fighter.stun > previous_stun
 	if desired != clip or restart_requested or repeat_move or renewed_stun:
 		clock_ticks = 0
+		# Releasing back keeps an already crouched fighter low instead of standing
+		# through the start of the crouch animation again.
+		if desired == "crouch" and clip == "guard_low" and visual.frames != null and visual.frames.has_animation(desired):
+			clock_ticks = maxi(0, visual.frames.get_frame_count(desired) - 1) * 3
 		clip = desired
 		restart_requested = false
 	previous_move_frame = fighter.move_frame if fighter.move != null else -1
@@ -88,6 +92,9 @@ func _clip() -> String:
 		return "dash_back" if fighter.dash_back else "dash_forward"
 	if fighter.state == "air" and fighter.flip_jump and not fighter.air_used_move:
 		return "jump_back" if fighter.jump_back else "jump_forward"
+	# Blockstun ends in idle for one tick; retain the held crouch on that tick.
+	if fighter.grounded and fighter.crouching and fighter.stun == 0 and fighter.state in ["idle", "crouch"]:
+		return "guard_low" if fighter.down and fighter.axis == -fighter.facing else "crouch"
 	if landing_ticks > 0 and fighter.state == "idle":
 		return "jump"
 	match fighter.state:
@@ -133,6 +140,9 @@ func _frame_index() -> int:
 			return mini(count - 1, 1)
 		return mini(count - 1, 2 if fighter.vy < 2 else 3)
 	if clip in ["guard", "guard_low"]:
+		# The first drawing is preparation; impact drawings require a real block.
+		if fighter.state != "block":
+			return 0
 		return mini(count - 1, 1 + int(clock_ticks / 5))
 	if clip == "crouch":
 		return mini(count - 1, int(clock_ticks / 3))
