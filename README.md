@@ -119,6 +119,8 @@ D:\Godot_v4.7.1-stable_win64.exe\Godot_v4.7.1-stable_win64.exe
 
 本次视觉修正可用 `--fixed-fps 60 --script res://tools/capture_visual_polish.gd` 重录，输出到 `artifacts/visual-polish/`。`tools/build_continuous_stage.py` 从已保存原图离线重建连续背景；无需再次生成图片。
 
+技能特效根据实际攻击框调整位置与尺寸：水面斩的水花随刀尖移动，水车在判定范围内旋转；善逸突进保留前尖后散的雷光，尖锋对齐攻击前沿、尾迹淡化，居合斩保留斜向上 45° 光带并缩短、外移到刀尖附近。可用 `--fixed-fps 60 --script res://tools/capture_skill_effects.gd` 重录四种技能的左右朝向、起始／中间／末尾有效姿势及判定框叠图，输出到 `artifacts/skill-effects/after/`。
+
 ## Git 提交范围
 
 提交游戏源码、测试、构建工具、`art/` 成品资源、Godot `.uid` 和资源旁的 `.import` 设置，以及美术原图、提示词、标定、请求记录和清单。`output/imagegen/anime-v2/raw/` 是离线重建必需的原始素材，不是临时缓存。

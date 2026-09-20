@@ -1,7 +1,7 @@
 extends Node2D
 ## Attack effects follow the actual move phase without changing combat timing.
-# Curved sword sweeps are presentation coordinates relative to the feet, facing right.
-# Keep them independent of the rectangular hitboxes used by combat.
+# Sword ribbons follow the drawn blade. Skill reach is guided by move.box;
+# lightning keeps its pointed silhouette and a softer movement wake.
 const CUT_CURVES := {
 	"stand_light": [Vector2(13, -43), Vector2(38, -60), Vector2(61, -40)],
 	"stand_heavy": [Vector2(9, -70), Vector2(96, -65), Vector2(45, -16)],
@@ -11,6 +11,11 @@ const CUT_CURVES := {
 	"air_heavy": [Vector2(5, -62), Vector2(87, -51), Vector2(43, 2)],
 }
 const CUT_SEGMENTS: int = 32
+# Blade anchors for the three active drawings (atlas frames 3, 4, 5),
+# relative to the feet at canonical scale. Facing is applied once.
+const SKILL_TIPS := {
+	"water_slash": [Vector2(40, -18), Vector2(54, -40), Vector2(32, -40)],
+}
 
 var camera: RefCounted
 var combat: RefCounted
@@ -68,9 +73,76 @@ func _process(delta: float) -> void:
 	rings = rings.filter(func(p: Dictionary) -> bool: return p.life > 0)
 	queue_redraw()
 
-func _effect(id: String, bounds: Rect2, color: Color = Color.WHITE) -> void:
-	if textures.has(id):
+func _effect(id: String, bounds: Rect2, color: Color = Color.WHITE, uv_rotation: float = 0.0) -> void:
+	if not textures.has(id):
+		return
+	if is_zero_approx(uv_rotation):
 		draw_texture_rect(textures[id], bounds, false, color)
+		return
+	# Rotate inside the attack envelope instead of rotating a quad past its edges.
+	var corners := PackedVector2Array([Vector2.ZERO, Vector2.RIGHT, Vector2.ONE, Vector2.DOWN])
+	var vertices := PackedVector2Array()
+	var uvs := PackedVector2Array()
+	for corner in corners:
+		vertices.append(bounds.position + corner * bounds.size)
+		uvs.append((corner - Vector2.ONE * 0.5).rotated(uv_rotation) + Vector2.ONE * 0.5)
+	draw_polygon(vertices, PackedColorArray([color]), uvs, textures[id])
+
+func _blade_effect(id: String, fighter: RefCounted, color: Color) -> void:
+	if not textures.has(id):
+		return
+	var move: Resource = fighter.move
+	var bounds: Rect2 = move.box
+	# Use the same three-pose timing as FighterView, including held drawings.
+	var pose := mini(2, int(float(fighter.move_frame - move.startup) / move.active * 3))
+	var tip: Vector2 = SKILL_TIPS[move.id][pose]
+	if move.id == "water_slash":
+		tip.x += 8 # The crest curls just past the metal blade.
+	tip = tip.clamp(bounds.position + Vector2(4, 4), bounds.end - Vector2(4, 4))
+	# Move the bright head to the blade while pinning the faint perimeter to the
+	# attack box. A 3x3 texture mesh keeps the reach stable as the blade swings.
+	var source_x := [0.0, 0.82, 1.0]
+	var source_y := [0.0, 0.5, 1.0]
+	var target_x := [bounds.position.x, tip.x, bounds.end.x]
+	var target_y := [bounds.position.y, tip.y, bounds.end.y]
+	var corners := PackedVector2Array([Vector2.ZERO, Vector2.RIGHT, Vector2.ONE, Vector2.DOWN])
+	for row in range(2):
+		for column in range(2):
+			var vertices := PackedVector2Array()
+			var uvs := PackedVector2Array()
+			for corner in corners:
+				var x := column + int(corner.x)
+				var y := row + int(corner.y)
+				vertices.append(Vector2(target_x[x], target_y[y]))
+				# 180 degrees puts the broad water crest in front.
+				uvs.append(Vector2(1.0 - source_x[x], 1.0 - source_y[y]))
+			draw_polygon(vertices, PackedColorArray([color]), uvs, textures[id])
+
+func _lightning(tail: Vector2, tip: Vector2, width: float, color: Color, tail_opacity: float = 1.0) -> void:
+	if not textures.has("thunder"):
+		return
+	# Preserve the original texture: branches at the tail, a needle at the front.
+	var direction := (tip - tail).normalized()
+	var normal := Vector2(-direction.y, direction.x) * width * 0.5
+	var vertices := PackedVector2Array([tail - normal, tip - normal, tip + normal, tail + normal])
+	var uvs := PackedVector2Array([Vector2.ZERO, Vector2.RIGHT, Vector2.ONE, Vector2.DOWN])
+	var faded := Color(color, color.a * tail_opacity)
+	draw_polygon(vertices, PackedColorArray([faded, color, color, faded]), uvs, textures.thunder)
+
+func _thunder_dash(attack: Rect2, strength: float) -> void:
+	# The spear ends at the active forward reach; the broad rear wake conveys speed.
+	var tip := Vector2(attack.end.x, attack.get_center().y)
+	var length := attack.size.x * 2.5
+	_lightning(tip - Vector2(length, 0), tip, attack.size.y * 1.7, Color(1, 0.95, 0.72, strength), 0.58)
+
+func _iai_slash(attack: Rect2, strength: float) -> void:
+	# Keep a straight 45-degree upstroke. Move it outward along the blade and
+	# shorten it so the broad base clears the feet; only the fine tip glows past reach.
+	var center := attack.get_center() + Vector2(12, 4)
+	var direction := Vector2(1, -1).normalized()
+	var half_length := attack.size.y * 0.51
+	_lightning(center - direction * half_length, center + direction * half_length,
+		attack.size.x * 0.4, Color(1, 0.89, 0.59, strength * 0.9))
 
 func _draw_normal_cut(id: String, progress: float) -> void:
 	if not CUT_CURVES.has(id):
@@ -126,19 +198,18 @@ func _draw() -> void:
 		draw_set_transform(origin, 0, Vector2(camera.zoom * facing, camera.zoom))
 		var progress: float = float(fighter.move_frame - fighter.move.startup) / maxi(1, fighter.move.active - 1)
 		var strength := 0.57 + sin(progress * PI) * 0.40
+		# All skill placement starts from the same local box combat mirrors into the world.
+		var attack: Rect2 = fighter.move.box
 		match fighter.move.id:
 			"water_slash":
-				_effect("water-slash", Rect2(0, -71 + progress * 8, 112, 75), Color(0.85, 0.98, 1, strength))
+				# Put the broad crest beyond the blade, with the fine wake toward the hand.
+				_blade_effect("water-slash", fighter, Color(0.85, 0.98, 1, strength))
 			"water_wheel":
-				var center: Vector2 = camera.point(Vector2(fighter.x + 28 * facing, fighter.y - 46))
-				draw_set_transform(center, progress * 1.3 * facing, Vector2(camera.zoom * facing, camera.zoom))
-				_effect("water-wheel", Rect2(-46, -46, 92, 92), Color(0.88, 0.99, 1, strength))
+				_effect("water-wheel", attack, Color(0.88, 0.99, 1, strength), -progress * 1.3)
 			"thunder":
-				_effect("thunder", Rect2(-101, -66, 194, 68), Color(1, 0.95, 0.72, strength))
-				draw_line(Vector2(-70, -5), Vector2(61, -5), Color(1, 0.72, 0.2, 0.43), 0.8, true)
+				_thunder_dash(attack, strength)
 			"iai":
-				draw_set_transform(camera.point(Vector2(fighter.x + 32 * facing, fighter.y - 43)), -0.9 * facing, Vector2(camera.zoom * facing, camera.zoom))
-				_effect("thunder", Rect2(-46, -15, 92, 30), Color(1, 0.89, 0.59, strength * 0.82))
+				_iai_slash(attack, strength)
 			_:
 				_draw_normal_cut(fighter.move.id, progress)
 	draw_set_transform(Vector2.ZERO)
