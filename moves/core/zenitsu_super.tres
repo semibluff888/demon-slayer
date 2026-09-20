@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="DuelMove" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+display_name = "霹雳一闪·六连"
+kind = "super"
+startup = 8
+active = 36
+recovery = 34
+damage = 280
+hitstun = 35
+blockstun = 15
+hitstop = 4
+push = 0.35
+meter_cost = 100
+freeze_frames = 12
+travel = 4.2
+knockdown = true
+hit_frames = PackedInt32Array(8, 14, 20, 26, 32, 38)
+animation_id = "thunder"
+effect_id = "thunder"
+box = Rect2(-8, -82, 124, 77)
+id = "zenitsu_super"

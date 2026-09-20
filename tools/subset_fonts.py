@@ -6,7 +6,7 @@ from fontTools.varLib.instancer import instantiateVariableFont
 
 ROOT = Path(__file__).resolve().parents[1]
 text = ''.join(chr(i) for i in range(32, 127)) + '滅対水雷壹贰→←↑↓＋：·凝神拔刀胜负平局再决连击秒'
-for directory in ('scripts', 'moves'):
+for directory in ('scripts', 'moves', 'resources'):
     for source in (ROOT / directory).rglob('*'):
         if source.suffix in ('.gd', '.tres'):
             text += source.read_text(encoding='utf-8-sig')

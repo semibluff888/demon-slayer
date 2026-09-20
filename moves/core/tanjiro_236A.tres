@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="DuelMove" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+display_name = "水之呼吸·壹之型 水面斩·轻"
+kind = "skill"
+startup = 10
+active = 3
+recovery = 24
+damage = 105
+hitstun = 34
+blockstun = 16
+hitstop = 6
+push = 0.6
+box = Rect2(8, -48, 65, 32)
+cancel_targets = PackedStringArray("super", "max")
+cancel_window = 26
+animation_id = "water_slash"
+projectile_speed = 4.2
+projectile_lifetime = 36
+id = "tanjiro_236A"

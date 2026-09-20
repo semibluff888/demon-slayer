@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="DuelMove" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+display_name = "霹雳一闪·神速"
+kind = "max"
+startup = 11
+active = 18
+recovery = 42
+damage = 445
+hitstun = 35
+blockstun = 15
+hitstop = 4
+push = 0.35
+meter_cost = 300
+freeze_frames = 18
+travel = 4.2
+knockdown = true
+hit_frames = PackedInt32Array(11, 17, 23)
+animation_id = "thunder"
+effect_id = "thunder"
+box = Rect2(-8, -82, 124, 77)
+id = "zenitsu_max"

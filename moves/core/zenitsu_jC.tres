@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="DuelMove" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+display_name = "空中重斩"
+kind = "heavy"
+level = "high"
+startup = 10
+active = 4
+recovery = 18
+damage = 75
+hitstun = 30
+blockstun = 15
+hitstop = 6
+push = 0.9
+stance = "air"
+animation_id = "air_heavy"
+effect_id = "air_heavy"
+knockdown = false
+box = Rect2(7, -46, 63, 54)
+cancel_targets = PackedStringArray()
+id = "zenitsu_jC"

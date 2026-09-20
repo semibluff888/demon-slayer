@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="DuelMove" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+display_name = "近身投"
+kind = "throw"
+level = "throw"
+startup = 5
+active = 2
+recovery = 29
+damage = 100
+hitstun = 34
+blockstun = 0
+hitstop = 7
+push = 4
+box = Rect2(0, -48, 44, 48)
+knockdown = true
+animation_id = "throw"
+id = "zenitsu_throw"

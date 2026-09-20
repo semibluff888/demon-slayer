@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="DuelMove" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+display_name = "居合·上撩·轻"
+kind = "skill"
+startup = 7
+active = 9
+recovery = 29
+damage = 100
+hitstun = 34
+blockstun = 16
+hitstop = 6
+push = 0.6
+box = Rect2(2, -90, 59, 83)
+cancel_targets = PackedStringArray("super", "max")
+cancel_window = 26
+animation_id = "iai"
+lift = -3.4
+travel = 1.0
+anti_air_until = 9
+id = "zenitsu_623A"

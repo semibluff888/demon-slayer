@@ -69,7 +69,7 @@ func _test_animation() -> void:
 	actor.visual = visual
 	root.add_child(actor)
 	model.phase = "fight"
-	actor.fighter.move = model.moves.stand_light
+	actor.fighter.move = model.catalog.characters.tanjiro.normals["5A"]
 	var move = actor.fighter.move
 	for pair in [[0, 0], [move.startup - 1, 1], [move.startup, 2], [move.startup + move.active - 1, 3], [move.startup + move.active, 4], [move.total_frames() - 1, 5]]:
 		actor.fighter.move_frame = pair[0]
@@ -119,7 +119,7 @@ func _test_animation() -> void:
 	check(actor.clip == "jump" and actor.frame_index == 4, "ordinary landing shows compression without extra gameplay stun")
 	actor.sync(0.06, false)
 	check(actor.frame_index == 5, "landing decompresses before returning to idle")
-	actor.fighter.move = model.moves.stand_light
+	actor.fighter.move = model.catalog.characters.tanjiro.normals["5A"]
 	actor.fighter.move_frame = move.total_frames() - 1
 	actor.sync(0.1, false)
 	actor.consume([{"type": "swing", "attacker": 0}], 0)
@@ -140,7 +140,7 @@ func _test_animation() -> void:
 	f.jump_back = true
 	actor.sync(0, false)
 	check(actor.clip == "jump_back", "back jump uses its own somersault drawings")
-	f.move = model.moves.air_light
+	f.move = model.catalog.characters.tanjiro.normals.jA
 	f.move_frame = 0
 	f.air_used_move = true
 	actor.sync(0, false)
@@ -287,6 +287,28 @@ func _render_checks() -> void:
 		game.set_paused(false)
 		game.combat.phase = "fight"
 		await _save("fight-%d" % resolution.x, resolution)
+		game.choose_mode("practice")
+		game.start_match()
+		await _save("practice-%d" % resolution.x, resolution)
+		game.combat.step([{"y": 1}, {}])
+		for n in range(3):
+			game.combat.step([{"x": 1, "y": 1, "buttons": 1}, {}])
+		await _save("practice-input-hint-%d" % resolution.x, resolution)
+		game.reset_practice()
+		game.combat.fighters[0].facing = -1
+		game.combat.fighters[0].x = 550
+		await _save("practice-input-left-%d" % resolution.x, resolution)
+		game.show_practice_options()
+		await _save("practice-options-%d" % resolution.x, resolution)
+		game.set_paused(false)
+		game.show_help()
+		game.gui._help_page("moves")
+		await _save("moves-%d" % resolution.x, resolution)
+		game.gui._help_page("normals")
+		await _save("normals-%d" % resolution.x, resolution)
+		game.close_help()
+		game.mode = "local"
+		game.start_match()
 		game.combat.phase = "match_end"
 		game.combat.match_winner = 0 if resolution.x == 960 else 1
 		game.combat.wins.assign([2, 1] if resolution.x == 960 else [1, 2])
@@ -298,35 +320,27 @@ func _render_checks() -> void:
 	game.combat.fighters[0].x = 285
 	game.combat.fighters[1].x = 363
 	await _save("duel-neutral", root.size)
-	var cases := ["water_slash", "water_wheel", "iai", "thunder", "throw", "stand_light", "stand_heavy", "crouch_light", "crouch_heavy", "air_light", "air_heavy"]
-	for id in cases:
-		var character := "zenitsu" if id in ["iai", "thunder"] else "tanjiro"
-		game.combat.new_match(character, "zenitsu")
-		game.view.reset_effects()
-		game.combat.phase = "fight"
-		var a = game.combat.fighters[0]
-		var b = game.combat.fighters[1]
-		a.x = 285
-		b.x = 320 if id == "throw" else 363
-		if id.begins_with("air"):
-			a.y = 241
-			a.grounded = false
-			a.vy = -2
-		var command := Combat.neutral()
-		command.down = id.begins_with("crouch")
-		command.x = 1 if id in ["water_wheel", "thunder"] else 0
-		command.skill = id in ["water_slash", "water_wheel", "iai", "thunder"]
-		command.light = id.ends_with("light")
-		command.heavy = id.ends_with("heavy")
-		command.throw = id == "throw"
-		game.combat.step([command, Combat.neutral()])
-		game.view.consume(game.combat.events)
-		check(a.move != null and a.move.id == id, "render case entered actual move: " + id)
-		var move = game.combat.moves[id]
-		for n in range(move.startup):
-			game.combat.step([Combat.neutral(), Combat.neutral()])
+	for character in game.combat.catalog.characters:
+		for move in game.combat.catalog.characters[character].all_moves():
+			game.combat.new_match(character, "zenitsu")
+			game.view.reset_effects()
+			game.combat.phase = "fight"
+			var a = game.combat.fighters[0]
+			var b = game.combat.fighters[1]
+			a.x = 285
+			b.x = 320 if move.kind == "throw" else 343
+			a.meter = 300
+			if move.stance == "air":
+				a.y = 241
+				a.grounded = false
+				a.vy = -2
+			game.combat._begin_move(a, move)
 			game.view.consume(game.combat.events)
-		await _save("move-" + id, root.size)
+			check(a.move == move, "render case entered resource: " + move.id)
+			for n in range(move.startup + move.freeze_frames + 1):
+				game.combat.step([Combat.neutral(), Combat.neutral()])
+				game.view.consume(game.combat.events)
+			await _save("move-" + move.id, root.size)
 	for character in ["tanjiro", "zenitsu"]:
 		game.characters.assign([character, character])
 		game.start_match()

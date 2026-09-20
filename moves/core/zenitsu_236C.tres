@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="DuelMove" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+display_name = "雷之呼吸·壹之型 霹雳一闪·重"
+kind = "skill"
+startup = 14
+active = 12
+recovery = 29
+damage = 130
+hitstun = 34
+blockstun = 16
+hitstop = 6
+push = 0.6
+box = Rect2(5, -55, 76, 49)
+cancel_targets = PackedStringArray("super", "max")
+cancel_window = 26
+animation_id = "thunder"
+travel = 7.5
+id = "zenitsu_236C"

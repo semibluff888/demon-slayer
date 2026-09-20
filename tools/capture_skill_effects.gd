@@ -32,13 +32,17 @@ func _run() -> void:
 			fighter.facing = facing
 			opponent.facing = -facing
 			game.view.camera.reset(game.combat.fighters)
-			var move = game.combat.moves[id]
+			var motion := "623" if id in ["water_wheel", "iai"] else "236"
+			var move = game.combat.definition(fighter).motions[motion + "A"]
+			fighter.input.last_facing = facing
 			var samples := [move.startup, move.startup + int(move.active / 2), move.startup + move.active - 1]
-			for tick in range(move.startup + move.active + 2):
+			for tick in range(move.startup + move.active + 8):
 				var command := Combat.neutral()
-				if tick == 0:
-					command.skill = true
-					command.x = facing if id in ["water_wheel", "thunder"] else 0
+				if tick < 3:
+					var direction := int(motion[tick])
+					command.x = ((direction - 1) % 3 - 1) * facing
+					command.y = 1 - int((direction - 1) / 3)
+					command.buttons = 1 if tick == 2 else 0
 				game.combat.step([command, Combat.neutral()])
 				await process_frame
 				if fighter.move != null and fighter.move_frame in samples:

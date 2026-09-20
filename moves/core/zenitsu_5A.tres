@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="DuelMove" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+display_name = "轻斩"
+kind = "light"
+level = "mid"
+startup = 5
+active = 3
+recovery = 11
+damage = 45
+hitstun = 25
+blockstun = 11
+hitstop = 4
+push = 0.55
+stance = "stand"
+animation_id = "stand_light"
+effect_id = "stand_light"
+knockdown = false
+box = Rect2(7, -52, 44, 37)
+cancel_targets = PackedStringArray("light", "heavy", "skill", "super", "max")
+id = "zenitsu_5A"

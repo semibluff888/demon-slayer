@@ -15,6 +15,8 @@ extends Resource
 @export var canonical_height: float = 70.0
 @export var phases: Dictionary = {}
 var clip_metadata: Dictionary = {}
+var asset_directory: String = ""
+var required_move_clips: Array[String] = []
 var art_ready: bool = false
 
 const REQUIRED_CLIPS: Array[String] = ["idle", "walk", "walk_back", "crouch", "jump",
@@ -23,7 +25,7 @@ const REQUIRED_CLIPS: Array[String] = ["idle", "walk", "walk_back", "crouch", "j
 	"dash_forward", "dash_back", "jump_forward", "jump_back", "throw_success", "thrown"]
 
 func load_local_assets() -> void:
-	var directory := "res://art/characters/%s/" % character_id
+	var directory := asset_directory if not asset_directory.is_empty() else "res://art/characters/%s/" % character_id
 	if ResourceLoader.exists(directory + "portrait.png"):
 		portrait = load(directory + "portrait.png")
 	if ResourceLoader.exists(directory + "avatar.png"):
@@ -62,7 +64,7 @@ func load_local_assets() -> void:
 
 func missing_clips() -> Array[String]:
 	var required := REQUIRED_CLIPS.duplicate()
-	required.append_array(["water_slash", "water_wheel"] if character_id == "tanjiro" else ["iai", "thunder"])
+	required.append_array(required_move_clips)
 	var missing: Array[String] = []
 	for clip: String in required:
 		if frames == null or not frames.has_animation(clip) or frames.get_frame_count(clip) == 0:

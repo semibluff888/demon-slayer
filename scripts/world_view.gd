@@ -11,7 +11,7 @@ var characters: Array[String] = ["tanjiro", "zenitsu"]
 var debug_boxes: bool = false
 var cpu: bool = true
 var paused: bool = false
-var input_hints: Array[String] = ["WASD / FGHR", "↑↓←→ / JKLU"]
+var input_hints: Array[String] = ["WASD / FG · VB", "↑↓←→ / JK · NM"]
 var camera := Camera.new()
 var stage: Node2D
 var effects: Node2D
@@ -65,7 +65,7 @@ func _process(delta: float) -> void:
 	stage.freeze = paused
 	hud.visible = screen == "battle"
 	effects.visible = battle
-	effects.freeze = paused
+	effects.freeze = paused or combat.super_freeze > 0
 	shadow_layer.visible = battle
 	debug_layer.visible = battle and debug_boxes
 	for i in range(2):
@@ -76,7 +76,7 @@ func _process(delta: float) -> void:
 		var f = combat.fighters[i]
 		fighters[i].fighter = f
 		fighters[i].visual = catalog.characters[f.character]
-		fighters[i].sync(delta, paused or combat.hitstop > 0)
+		fighters[i].sync(delta, paused or combat.hitstop > 0 or combat.super_freeze > 0)
 	if not paused:
 		camera.update(combat.fighters, delta)
 		camera.shake = Vector2(sin(time * 79), cos(time * 93)) * effects.trauma * 11
@@ -116,6 +116,8 @@ func _draw_shadows() -> void:
 	shadow_layer.draw_set_transform(Vector2.ZERO)
 
 func _draw_debug() -> void:
+	for projectile in combat.projectiles:
+		debug_layer.draw_rect(camera.rect(combat.projectile_box(projectile)), Color(1, 0.7, 0.2), false, 1.5)
 	for f in combat.fighters:
 		for pair in [[f.hurtbox(), Color(0.3, 0.8, 1, 0.7)], [f.hitbox(), Color(1, 0.3, 0.2, 0.8)], [f.pushbox(), Color(0.3, 1, 0.5, 0.6)]]:
 			if pair[0].has_area():

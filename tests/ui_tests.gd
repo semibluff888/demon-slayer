@@ -53,8 +53,8 @@ func _run() -> void:
 	_click("p2_zenitsu")
 	_click("start")
 	check(game.screen == "battle" and game.combat.phase == "intro", "start button begins ready sequence")
-	var before: Dictionary = game.combat.snapshot()
 	game.set_paused(true)
+	var before: Dictionary = game.combat.snapshot()
 	for n in range(30):
 		game._physics_process(1.0 / 60)
 	check(game.combat.snapshot() == before, "pause freezes the entire combat state")
@@ -66,9 +66,9 @@ func _run() -> void:
 	# Render a real active water slash and contact; no hand-painted screenshot.
 	game.combat.fighters[0].x = 268
 	game.combat.fighters[1].x = 341
-	Input.action_press("p1_skill")
+	Input.action_press("p1_a")
 	game._physics_process(1.0 / 60)
-	Input.action_release("p1_skill")
+	Input.action_release("p1_a")
 	for n in range(10):
 		game._physics_process(1.0 / 60)
 	await _capture("05-fight")
@@ -92,8 +92,8 @@ func _run() -> void:
 			if selected_mode != "cpu":
 				var b: Dictionary = human2.command(game.combat.fighters[1].observable(), game.combat.fighters[0].observable())
 				if selected_mode == "virtual_pad":
-					game.router.simulated = game.router.pad_held(float(b.x), -1.0 if b.jump else (1.0 if b.down else 0.0),
-						{JOY_BUTTON_X: b.light, JOY_BUTTON_Y: b.heavy, JOY_BUTTON_A: b.skill, JOY_BUTTON_B: b.throw})
+					game.router.simulated = game.router.pad_held(float(b.x), float(b.y),
+						{JOY_BUTTON_X: int(b.buttons) & 1 != 0, JOY_BUTTON_Y: int(b.buttons) & 4 != 0, JOY_BUTTON_A: int(b.buttons) & 2 != 0, JOY_BUTTON_B: int(b.buttons) & 8 != 0})
 				else:
 					_drive_keyboard(2, b)
 			game._physics_process(1.0 / 60)
@@ -118,6 +118,17 @@ func _run() -> void:
 	check(game.paused and game._devices_ready(), "reconnect waits for manual resume")
 	game.set_paused(false)
 	check(not game.paused, "reconnected match can resume")
+	game.combat.fighters[0].buffer_action = {"type": "normal", "button": "A", "x": 0, "y": 0}
+	game.combat.fighters[0].buffer_left = 6
+	game.router.simulated = {"x": 0, "y": 0, "buttons": 1}
+
+	game.set_paused(true)
+	check(game.combat.fighters[0].buffer_left == 0, "pausing discards pending combat action")
+	game.set_paused(false)
+	check(game.router.read(1, "pad:99").buttons == 0, "reconnect/resume suppresses a held gamepad attack")
+	game.router.simulated = Combat.neutral()
+	game.router.read(1, "pad:99")
+
 	game.show_setup()
 	game.devices.assign(["keyboard:0", "keyboard:0"])
 	game._validate_setup()
@@ -125,6 +136,35 @@ func _run() -> void:
 	game.devices.assign(["keyboard:0", "keyboard:1"])
 	game._validate_setup()
 	check(not game.start_button.disabled, "two keyboard groups are valid independent inputs")
+	game.choose_mode("practice")
+	_click("start")
+	check(game.mode == "practice" and game.combat.practice and game.combat.fighters[0].meter == 300, "practice entry creates real training session")
+	_test_practice_input_hints()
+	await _capture("08-practice")
+	_click("practice_options")
+	check(game.paused, "practice options pause combat")
+	game.gui.actions.practice_guard.select(3)
+	game.gui.actions.practice_guard.item_selected.emit(3)
+	game.gui.actions.practice_meter.select(3)
+	game.gui.actions.practice_meter.item_selected.emit(3)
+	check(game.practice_controller.guard_mode == 3 and game.practice_controller.meter_mode == 3, "native practice selectors change guard and resource")
+	await _capture("09-practice-options")
+	_click("resume")
+	game.set_paused(true)
+	_click("move_list")
+	check(game.screen == "help" and game.paused, "move list opens from a paused match")
+	_click("guide_moves")
+	await _capture("10-move-list")
+	_click("guide_normals")
+	await _capture("11-normal-list")
+	_click("home")
+	check(game.screen == "battle" and not game.paused and game.combat.practice, "guide returns to the same practice session")
+	var key := InputEventKey.new()
+	key.keycode = KEY_BACKSPACE
+	key.pressed = true
+	game.combat.fighters[0].x = 300
+	game._unhandled_input(key)
+	check(game.combat.fighters[0].x == 430, "Backspace resets practice positions")
 	game.show_title()
 	await _test_native_menu_input()
 	for failure in failures:
@@ -186,22 +226,21 @@ func _key(code: Key) -> void:
 	await process_frame
 
 func _drive_keyboard(player: int, command: Dictionary) -> void:
-	var values := command.duplicate()
-	values.left = command.x < 0
-	values.right = command.x > 0
-	for action in ["left", "right", "down", "jump", "light", "heavy", "skill", "throw"]:
+	var values := {"left": command.x < 0, "right": command.x > 0, "down": command.y > 0, "up": command.y < 0}
+	for n in range(4):
+		values["abcd"[n]] = (int(command.buttons) & (1 << n)) != 0
+	for action in values:
 		var name := "p%d_%s" % [player, action]
 		if values[action]:
 			Input.action_press(name)
 		else:
 			Input.action_release(name)
 
-func _click(text: String) -> void:
-	for child in game.gui.get_children():
-		if child is Button and child.name == text:
-			child.pressed.emit()
-			return
-	check(false, "button exists: " + text)
+func _click(id: String) -> void:
+	if game.gui.actions.has(id):
+		game.gui.actions[id].pressed.emit()
+	else:
+		check(false, "button exists: " + id)
 
 func _capture(name: String) -> void:
 	if capture:
@@ -218,3 +257,32 @@ func _capture(name: String) -> void:
 		var result := root.get_texture().get_image().save_png(path)
 		check(result == OK, "screenshot saved: " + name)
 
+
+func _test_practice_input_hints() -> void:
+	for device in ["keyboard:0", "keyboard:1", "pad:99"]:
+		game.devices[0] = device
+		game.start_match()
+		check(game.view.hud.input_device == device, "practice HUD follows assigned device")
+		for facing in [1, -1]:
+			game.combat.fighters[0].facing = facing
+			var hints: Array = game.view.hud.practice_hints()
+			var forward := ("D" if facing > 0 else "A") if device == "keyboard:0" else ("→" if facing > 0 else "←")
+			var back := ("A" if facing > 0 else "D") if device == "keyboard:0" else ("←" if facing > 0 else "→")
+			check(hints[0].contains(forward + " +") and hints[1].contains(back + " +"), "practice motion hints mirror with facing")
+			var slash := "F / V" if device == "keyboard:0" else ("J / N" if device == "keyboard:1" else "X / Y")
+			var body := "G / B" if device == "keyboard:0" else ("K / M" if device == "keyboard:1" else "A / B")
+			check(hints[0].contains(slash) and hints[1].contains(body), "practice shows physical attacks, not logical letters")
+			for n in range(hints.size()):
+				var font_size := 16 if n < 2 else 13
+				check(game.catalog.body_font.get_string_size(hints[n], HORIZONTAL_ALIGNMENT_LEFT, -1, font_size).x <= 435,
+					"physical key hint fits its HUD column without shrinking")
+	game.devices[0] = "keyboard:0"
+	game.start_match()
+	game.combat.step([{"y": 1}, {}])
+	for n in range(3):
+		game.combat.step([{"x": 1, "y": 1, "buttons": 1}, {}])
+	check(game.view.hud.practice_feedback().contains("松开S"), "an actual incomplete quarter-circle gives the right key correction")
+	game.set_paused(true)
+	check(game.combat.fighters[0].input.feedback.is_empty(), "pause clears practice diagnosis")
+	game.set_paused(false)
+	game.reset_practice()

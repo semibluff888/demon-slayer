@@ -66,7 +66,7 @@ func reveal() -> void:
 	transition = create_tween()
 	transition.tween_property(self, "modulate:a", 1.0, 0.24).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	var focusable: Array[Control] = []
-	for child in get_children():
+	for child in actions.values():
 		if child is BaseButton and child.focus_mode != Control.FOCUS_NONE and not child.disabled:
 			focusable.append(child)
 	for i in range(focusable.size()):
@@ -79,8 +79,8 @@ func reveal() -> void:
 
 func title() -> void:
 	rect(Rect2(0, 0, 1280, 720), Color(0.025, 0.035, 0.075, 0.08))
-	portrait("zenitsu", Rect2(872, 118, 365, 553), false, true)
-	portrait("tanjiro", Rect2(522, 58, 491, 655), true, true)
+	portrait(catalog.characters.keys()[-1], Rect2(872, 118, 365, 553), false, true)
+	portrait(catalog.characters.keys()[0], Rect2(522, 58, 491, 655), true, true)
 	texture(shades.left, Rect2(0, 0, 800, 720))
 	texture(shades.bottom, Rect2(0, 604, 1280, 116))
 	rect(Rect2(56, 50, 35, 35), RED)
@@ -95,8 +95,9 @@ func title() -> void:
 	cpu.grab_focus()
 	var local := button("mode_local", "本 地 双 人", Rect2(61, 506, 372, 59), func(): app.choose_mode("local"), false, true)
 	local.kicker = "02"
-	button("help", "操作指南", Rect2(61, 595, 179, 39), app.show_help, false, false, 17)
-	button("sound", "声音  /  " + ("关" if app.sound.muted else "开"), Rect2(258, 595, 175, 39), func(): app.sound.toggle(); app.show_title(), false, false, 17)
+	button("mode_practice", "自由练习", Rect2(61, 576, 372, 45), func(): app.choose_mode("practice"), false, true, 21)
+	button("help", "操作指南", Rect2(61, 635, 179, 39), app.show_help, false, false, 17)
+	button("sound", "声音  /  " + ("关" if app.sound.muted else "开"), Rect2(258, 635, 175, 39), func(): app.sound.toggle(); app.show_title(), false, false, 17)
 	label("一对一对决    ·    六十秒一局    ·    三局两胜", Rect2(61, 675, 533, 22), 13, MUTED)
 	label("藤袭之庭", Rect2(1012, 657, 210, 31), 24, PAPER, true, HORIZONTAL_ALIGNMENT_RIGHT)
 	label("月夜  /  紫藤庭院", Rect2(1012, 692, 210, 18), 12, GOLD, false, HORIZONTAL_ALIGNMENT_RIGHT)
@@ -107,7 +108,7 @@ func setup() -> void:
 	texture(shades.bottom, Rect2(0, 409, 1280, 311))
 	label("选择剑士", Rect2(47, 23, 440, 62), 43, PAPER, true)
 	label("S E L E C T   Y O U R   F I G H T E R", Rect2(51, 90, 513, 22), 12, GOLD)
-	label("玩家对电脑" if app.mode == "cpu" else "本地双人对战", Rect2(866, 42, 364, 28), 17, MUTED, false, HORIZONTAL_ALIGNMENT_RIGHT)
+	label("自由练习" if app.mode == "practice" else ("玩家对电脑" if app.mode == "cpu" else "本地双人对战"), Rect2(866, 42, 364, 28), 17, MUTED, false, HORIZONTAL_ALIGNMENT_RIGHT)
 	rule(Vector2(51, 123), 1178, Color(GOLD, 0.34))
 	for i in range(2):
 		var visual = catalog.characters[app.characters[i]]
@@ -116,17 +117,28 @@ func setup() -> void:
 		portrait(app.characters[i], Rect2(217 if left else 741, 125, 321, 389), left)
 		var tx := 54.0 if left else 1068.0
 		var align := HORIZONTAL_ALIGNMENT_LEFT if left else HORIZONTAL_ALIGNMENT_RIGHT
-		label("PLAYER 01" if left else ("COMPUTER" if app.mode == "cpu" else "PLAYER 02"), Rect2(tx, 145, 165, 22), 12, visual.accent, false, align)
+		label("PLAYER 01" if left else ("DUMMY" if app.mode == "practice" else ("COMPUTER" if app.mode == "cpu" else "PLAYER 02")), Rect2(tx, 145, 165, 22), 12, visual.accent, false, align)
 		label(visual.display_name, Rect2(tx - (17 if not left else 0), 184, 182, 45), 32, PAPER, true, align)
 		label(visual.element_name, Rect2(tx, 245, 165, 29), 20, visual.accent, false, align)
-		label("均衡 · 中距离" if app.characters[i] == "tanjiro" else "迅速 · 突进", Rect2(tx, 280, 165, 25), 16, MUTED, false, align)
+		label(app.combat.catalog.characters[app.characters[i]].role, Rect2(tx, 280, 165, 25), 16, MUTED, false, align)
 		rule(Vector2(tx, 326), 161, Color(visual.accent, 0.48))
-		label("技能\n前＋技能", Rect2(tx, 348, 165, 65), 13, MUTED, false, align)
-		label("水面斩\n水车" if app.characters[i] == "tanjiro" else "居合斩\n霹雳一闪", Rect2(tx, 421, 165, 66), 20, PAPER, true, align)
-		for j in range(2):
-			var id := "tanjiro" if j == 0 else "zenitsu"
+		label("236 牵制 / 突进\n623 对空 / 214 回旋", Rect2(tx, 348, 165, 65), 13, MUTED, false, align)
+		label("1格超必杀\n3格 MAX 超必杀", Rect2(tx, 421, 165, 66), 20, PAPER, true, align)
+		var roster: Array = catalog.characters.keys()
+		var scroll := ScrollContainer.new()
+		scroll.position = Vector2(x, 516)
+		scroll.size = Vector2(502, 70)
+		scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+		add_child(scroll)
+		var cards := HBoxContainer.new()
+		cards.add_theme_constant_override("separation", 12)
+		scroll.add_child(cards)
+		for j in range(roster.size()):
+			var id: String = roster[j]
 			var card_visual = catalog.characters[id]
 			var card := button("p%d_%s" % [i + 1, id], card_visual.display_name, Rect2(x + j * 258, 520, 242, 54), func(): app.select_character(i, id), false, false, 18)
+			card.reparent(cards)
+			card.custom_minimum_size = Vector2(242, 54)
 			card.accent = card_visual.accent.darkened(0.65)
 			card.selected = app.characters[i] == id
 			card.portrait_texture = card_visual.avatar
@@ -141,8 +153,8 @@ func setup() -> void:
 		label("P%d" % (i + 1), Rect2(218 + i * 488, 606, 51, 24), 15, MUTED)
 		var option := device_option("device_p%d" % (i + 1), Rect2(269 + i * 488, 598, 386, 40))
 		app.setup_options.append(option)
-		if i == 1 and app.mode == "cpu":
-			option.add_item("电脑对手  ·  普通")
+		if i == 1 and app.mode != "local":
+			option.add_item("练习木桩" if app.mode == "practice" else "电脑对手  ·  普通")
 			option.disabled = true
 		else:
 			var selected_index := -1
@@ -172,24 +184,29 @@ func portrait(id: String, bounds: Rect2, flip: bool = false, moving: bool = fals
 		decorative.append({"node": node, "origin": bounds.position, "phase": decorative.size() * 1.7})
 
 func battle() -> void:
+	if app.mode == "practice":
+		button("practice_options", "练习设置 F3", Rect2(930, 682, 179, 29), app.show_practice_options, false, false, 13).focus_mode = Control.FOCUS_NONE
 	button("pause", "暂停  Esc", Rect2(1122, 682, 126, 29), func(): app.set_paused(true), false, false, 13).focus_mode = Control.FOCUS_NONE
 
 func pause(reason: String) -> void:
 	rect(Rect2(0, 0, 1280, 720), Color(0.018, 0.03, 0.065, 0.72))
-	panel(Rect2(399, 116, 482, 488))
-	label("P A U S E", Rect2(434, 155, 412, 23), 14, GOLD, false, HORIZONTAL_ALIGNMENT_CENTER)
-	label("暂收刀锋", Rect2(424, 199, 432, 67), 45, PAPER, true, HORIZONTAL_ALIGNMENT_CENTER)
-	rule(Vector2(603, 290), 74, RED)
-	label(reason if not reason.is_empty() else "呼吸片刻，再次拔刀。", Rect2(426, 311, 428, 57), 17, MUTED, false, HORIZONTAL_ALIGNMENT_CENTER)
-	var resume := button("resume", "继续对战", Rect2(449, 394, 382, 52), func(): app.set_paused(false), true, true)
+	panel(Rect2(399, 77, 482, 566))
+	label("P A U S E", Rect2(434, 111, 412, 23), 14, GOLD, false, HORIZONTAL_ALIGNMENT_CENTER)
+	label("暂收刀锋", Rect2(424, 149, 432, 67), 45, PAPER, true, HORIZONTAL_ALIGNMENT_CENTER)
+	label(reason if not reason.is_empty() else "呼吸片刻，再次拔刀。", Rect2(426, 232, 428, 57), 17, MUTED, false, HORIZONTAL_ALIGNMENT_CENTER)
+	var resume := button("resume", "继续练习" if app.mode == "practice" else "继续对战", Rect2(449, 310, 382, 49), func(): app.set_paused(false), true, true)
 	resume.disabled = not app._devices_ready()
-	button("restart", "重新开始比赛", Rect2(449, 463, 382, 45), app.start_match, false, false, 19)
-	button("setup", "返回选人 / 调整设备", Rect2(449, 524, 382, 43), app.show_setup, false, false, 18)
+	button("restart", "重置练习" if app.mode == "practice" else "重新开始比赛", Rect2(449, 376, 382, 43), app.start_match, false, false, 19)
+	button("move_list", "招式表 / 操作指南", Rect2(449, 434, 382, 43), app.show_help, false, false, 19)
+	if app.mode == "practice":
+		button("practice_options", "木桩与气槽设置", Rect2(449, 492, 382, 43), app.show_practice_options, false, false, 19)
+	button("setup", "返回选人 / 调整设备", Rect2(449, 559, 382, 43), app.show_setup, false, false, 18)
 	if resume.disabled:
 		actions.setup.grab_focus()
 	else:
 		resume.grab_focus()
 	reveal()
+
 
 func result() -> void:
 	rect(Rect2(0, 0, 1280, 720), Color(0.025, 0.035, 0.075, 0.40))
@@ -222,34 +239,100 @@ func _draw_result_sparks() -> void:
 		at.y -= amount * 37
 		result_sparks.draw_line(at, at - Vector2(cos(angle), sin(angle)) * (3 + i % 4), Color(GOLD, (1 - amount) * 0.75), 1, true)
 
-func help() -> void:
-	rect(Rect2(0, 0, 1280, 720), Color(0.02, 0.035, 0.07, 0.85))
-	label("剑士心得", Rect2(48, 28, 536, 73), 48, PAPER, true)
-	label("掌握距离，让每一次出刀都有意义。", Rect2(52, 113, 1125, 31), 20, MUTED)
-	panel(Rect2(50, 181, 553, 414))
-	panel(Rect2(627, 181, 604, 414))
-	label("壹  /  移动与按键", Rect2(74, 199, 506, 43), 26, Color("82d4de"), true)
-	var rows := [["移动 / 跳跃", "WASD / W", "方向键 / ↑"], ["轻攻击", "F", "J"], ["重攻击", "G", "K"], ["呼吸法", "H", "L"], ["近身投技", "R", "U"]]
-	label("键盘  P1", Rect2(274, 257, 132, 25), 14, GOLD, false, HORIZONTAL_ALIGNMENT_CENTER)
-	label("键盘  P2", Rect2(435, 257, 132, 25), 14, GOLD, false, HORIZONTAL_ALIGNMENT_CENTER)
-	for i in range(rows.size()):
-		var y := 297 + i * 47
-		label(rows[i][0], Rect2(77, y, 174, 31), 18, PAPER)
-		keycap(rows[i][1], Rect2(274, y, 132, 32))
-		keycap(rows[i][2], Rect2(435, y, 132, 32))
-	label("手柄  十字键 / 摇杆  ·  X 轻攻  Y 重攻  A 技能  B 投技", Rect2(75, 536, 508, 25), 14, MUTED)
-	label("双击前 / 后短冲刺，可接攻击或跳跃；冲刺不能防御。", Rect2(75, 566, 508, 24), 14, GOLD)
-	label("贰  /  攻防与呼吸法", Rect2(654, 199, 549, 43), 26, GOLD, true)
-	var lessons := [["守", "后退防御，蹲下＋后退防御下段。\n跳跃攻击需站立防御，近身投技破解防御。"], ["连", "轻攻 → 重攻 → 技能\n命中或被防时衔接，空挥不能取消。"], ["技", "技能释放一招，朝前＋技能释放另一招。\n空中可轻攻 / 重攻，背摔需站立近身并交换站位。"]]
-	for i in range(lessons.size()):
-		var y := 282 + i * 95
-		rect(Rect2(655, y + 6, 38, 40), Color(RED, 0.37))
-		label(lessons[i][0], Rect2(655, y + 6, 38, 40), 23, GOLD, true, HORIZONTAL_ALIGNMENT_CENTER)
-		label(lessons[i][1], Rect2(714, y, 492, 72), 18, PAPER)
-	label("方向按角色朝向解释。选人页可分配键盘或手柄。", Rect2(52, 610, 1176, 27), 16, MUTED)
-	button("home", "返回主菜单", Rect2(51, 661, 248, 42), app.show_title, true, true, 18).grab_focus()
-	label("Esc / Start  暂停     F1  判定框     M  静音", Rect2(577, 663, 653, 32), 15, MUTED, false, HORIZONTAL_ALIGNMENT_RIGHT)
+func help(page: String = "basics", character_id: String = "") -> void:
+	rect(Rect2(0, 0, 1280, 720), Color(0.02, 0.035, 0.07, 0.9))
+	label("剑士心得", Rect2(48, 25, 560, 64), 43, PAPER, true)
+	label("A 轻斩 · B 轻体术 · C 重斩 · D 重体术  /  方向随朝向解释", Rect2(52, 104, 1176, 30), 19, MUTED)
+	if page == "basics":
+		panel(Rect2(50, 164, 553, 461))
+		panel(Rect2(627, 164, 604, 461))
+		label("壹 / 按键与移动", Rect2(75, 181, 508, 42), 25, Color("82d4de"), true)
+		var rows := [["移动 / 跳跃", "WASD", "方向键"], ["A 轻斩", "F", "J"], ["B 轻体术", "G", "K"], ["C 重斩", "V", "N"], ["D 重体术", "B", "M"]]
+		label("键盘 P1", Rect2(280, 233, 123, 24), 15, GOLD, false, HORIZONTAL_ALIGNMENT_CENTER)
+		label("键盘 P2", Rect2(439, 233, 123, 24), 15, GOLD, false, HORIZONTAL_ALIGNMENT_CENTER)
+		for i in range(rows.size()):
+			var y := 273 + i * 43
+			label(rows[i][0], Rect2(77, y, 181, 31), 18)
+			keycap(rows[i][1], Rect2(280, y, 123, 32))
+			keycap(rows[i][2], Rect2(439, y, 123, 32))
+		label("手柄：X / A / Y / B 对应逻辑 A / B / C / D", Rect2(75, 501, 508, 27), 16, MUTED)
+		label("朝右：236 = S → D＋F/V；214 = S → A＋G/B。\n先松S；朝左交换A/D。双击前后可短冲刺。", Rect2(75, 547, 508, 56), 16, GOLD)
+		label("贰 / 攻防与资源", Rect2(652, 181, 553, 42), 25, GOLD, true)
+		var lessons := [
+			"后方向站防，后下方向蹲防；跳攻站防、下段蹲防。",
+			"近身 6+D 前投 / 4+D 背投，抓取后 7 帧内 D 拆投。",
+			"A+B 前滚 / 4+A+B 后滚；可躲打击，但全程可被投。",
+			"236 / 214 可省斜方向，0.5秒完成；攻击可晚0.2秒。",
+			"轻技 → 重技 → 必杀 → 超杀；空挥不能取消。",
+			"236236+A/C 超杀耗 1 格；236236+A+C MAX 耗 3 格。",
+			"命中、受击和防御涨气；空挥不涨，连段伤害递减。"]
+		for i in range(lessons.size()):
+			label(lessons[i], Rect2(654, 244 + i * 48, 549, 39), 17, PAPER)
+	else:
+		if character_id.is_empty():
+			character_id = app.characters[0]
+		var definition = app.combat.catalog.characters[character_id]
+		var selector := device_option("guide_character", Rect2(865, 41, 365, 43))
+		var ids: Array = app.combat.catalog.characters.keys()
+		for id in ids:
+			selector.add_item(app.combat.catalog.characters[id].display_name)
+		selector.select(ids.find(character_id))
+		selector.item_selected.connect(func(index: int): _help_page(page, ids[index]))
+		panel(Rect2(50, 160, 1180, 471))
+		if page == "moves":
+			for i in range(definition.move_list.size()):
+				var row: Dictionary = definition.move_list[i]
+				var y := 174 + i * 62
+				label(row.input, Rect2(75, y, 246, 43), 22, definition.accent)
+				label(row.name, Rect2(330, y, 860, 29), 22, PAPER, true)
+				label(row.description, Rect2(333, y + 28, 855, 24), 15, MUTED)
+				rule(Vector2(75, y + 57), 1115, Color(GOLD, 0.18))
+			label("示例连段 / j. 为空中，5 为站立，2 为蹲下", Rect2(75, 497, 1115, 26), 17, GOLD)
+			for i in range(definition.combos.size()):
+				label(definition.combos[i], Rect2(76 + (i % 2) * 571, 538 + int(i / 2) * 39, 554, 30), 18)
+		else:
+			var keys: Array = definition.normals.keys()
+			for i in range(keys.size()):
+				var move: Resource = definition.normals[keys[i]]
+				var x := 76 + int(i / 6) * 576
+				var y := 179 + (i % 6) * 69
+				label(keys[i], Rect2(x, y, 67, 32), 24, definition.accent)
+				label(move.display_name, Rect2(x + 83, y, 426, 30), 20, PAPER, true)
+				var guard := "站防" if move.level == "high" else ("蹲防" if move.level == "low" else "站蹲均可防")
+				label("起手 %d 帧 / 伤害 %d / %s%s" % [move.startup, move.damage, guard, " / 扫倒终结" if move.knockdown else ""],
+					Rect2(x + 84, y + 32, 427, 24), 15, MUTED)
+	button("home", "返回对战" if app.help_return == "battle" else "返回主菜单", Rect2(51, 660, 224, 42), app.close_help, true, true, 18).grab_focus()
+	button("guide_basics", "基础攻防", Rect2(296, 660, 180, 42), func(): _help_page("basics"), false, false, 18)
+	button("guide_normals", "普通技", Rect2(491, 660, 165, 42), func(): _help_page("normals", character_id), false, false, 18)
+	button("guide_moves", "必杀与奥义", Rect2(671, 660, 210, 42), func(): _help_page("moves", character_id), false, false, 18)
+	label("F1 判定框 / F2 静音", Rect2(916, 667, 314, 27), 15, MUTED, false, HORIZONTAL_ALIGNMENT_RIGHT)
 	reveal()
+
+func _help_page(page: String, id: String = "") -> void:
+	clear()
+	help(page, id)
+
+func training_options() -> void:
+	rect(Rect2(0, 0, 1280, 720), Color(0.018, 0.03, 0.065, 0.78))
+	panel(Rect2(318, 115, 644, 495))
+	label("练习设置", Rect2(350, 145, 580, 62), 38, PAPER, true)
+	label("木桩防御", Rect2(355, 247, 156, 42), 21, GOLD)
+	var guard := device_option("practice_guard", Rect2(530, 247, 392, 43))
+	for item in ["站立不防", "站立防御", "蹲下防御", "首击后防（检验真连）"]:
+		guard.add_item(item)
+	guard.select(app.practice_controller.guard_mode)
+	guard.item_selected.connect(func(index: int): app.practice_controller.guard_mode = index; app.practice_controller.first_hit = false)
+	label("呼吸槽", Rect2(355, 323, 156, 42), 21, GOLD)
+	var meter := device_option("practice_meter", Rect2(530, 323, 392, 43))
+	for item in ["0 格", "1 格", "3 格", "无限气"]:
+		meter.add_item(item)
+	meter.select(app.practice_controller.meter_mode)
+	meter.item_selected.connect(func(index: int): app.practice_controller.meter_mode = index; app.practice_controller.apply_meter(app.combat))
+	label("连段结束后自动补血；Backspace 重置位置和气槽。", Rect2(355, 399, 567, 38), 17, MUTED)
+	button("resume", "继续练习", Rect2(355, 469, 267, 49), func(): app.set_paused(false), true, true, 21).grab_focus()
+	button("practice_reset", "重置位置", Rect2(649, 469, 273, 49), func(): app.reset_practice(); app.set_paused(false), false, false, 21)
+	reveal()
+
 
 func keycap(value: String, bounds: Rect2) -> void:
 	rect(bounds, Color("242d43"))

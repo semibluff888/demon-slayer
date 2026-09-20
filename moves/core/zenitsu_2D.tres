@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="DuelMove" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+display_name = "下段重体术"
+kind = "heavy"
+level = "low"
+startup = 12
+active = 4
+recovery = 24
+damage = 85
+hitstun = 30
+blockstun = 15
+hitstop = 6
+push = 0.9
+stance = "crouch"
+animation_id = "crouch_heavy"
+effect_id = "body"
+knockdown = true
+box = Rect2(7, -27, 50, 26)
+cancel_targets = PackedStringArray()
+id = "zenitsu_2D"

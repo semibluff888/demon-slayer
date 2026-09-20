@@ -1,0 +1,65 @@
+[gd_resource type="Resource" script_class="CharacterDefinition" load_steps=23 format=3]
+
+[ext_resource type="Script" path="res://scripts/character_definition.gd" id="1"]
+[ext_resource type="Resource" path="res://moves/core/tanjiro_5A.tres" id="2"]
+[ext_resource type="Resource" path="res://moves/core/tanjiro_5B.tres" id="3"]
+[ext_resource type="Resource" path="res://moves/core/tanjiro_5C.tres" id="4"]
+[ext_resource type="Resource" path="res://moves/core/tanjiro_5D.tres" id="5"]
+[ext_resource type="Resource" path="res://moves/core/tanjiro_2A.tres" id="6"]
+[ext_resource type="Resource" path="res://moves/core/tanjiro_2B.tres" id="7"]
+[ext_resource type="Resource" path="res://moves/core/tanjiro_2C.tres" id="8"]
+[ext_resource type="Resource" path="res://moves/core/tanjiro_2D.tres" id="9"]
+[ext_resource type="Resource" path="res://moves/core/tanjiro_jA.tres" id="10"]
+[ext_resource type="Resource" path="res://moves/core/tanjiro_jB.tres" id="11"]
+[ext_resource type="Resource" path="res://moves/core/tanjiro_jC.tres" id="12"]
+[ext_resource type="Resource" path="res://moves/core/tanjiro_jD.tres" id="13"]
+[ext_resource type="Resource" path="res://moves/core/tanjiro_236A.tres" id="14"]
+[ext_resource type="Resource" path="res://moves/core/tanjiro_236C.tres" id="15"]
+[ext_resource type="Resource" path="res://moves/core/tanjiro_623A.tres" id="16"]
+[ext_resource type="Resource" path="res://moves/core/tanjiro_623C.tres" id="17"]
+[ext_resource type="Resource" path="res://moves/core/tanjiro_214B.tres" id="18"]
+[ext_resource type="Resource" path="res://moves/core/tanjiro_214D.tres" id="19"]
+[ext_resource type="Resource" path="res://moves/core/tanjiro_super.tres" id="20"]
+[ext_resource type="Resource" path="res://moves/core/tanjiro_max.tres" id="21"]
+[ext_resource type="Resource" path="res://moves/core/tanjiro_throw.tres" id="22"]
+
+[resource]
+script = ExtResource("1")
+id = "tanjiro"
+display_name = "灶门炭治郎"
+epithet = "心怀温柔，挥刀向前"
+element_name = "水之呼吸"
+role = "均衡 · 控距衔接"
+accent = Color(0.396, 0.796, 0.831, 1)
+walk_speed = 2.15
+visual_directory = "res://art/characters/tanjiro/"
+normals = {
+"5A": ExtResource("2"),
+"5B": ExtResource("3"),
+"5C": ExtResource("4"),
+"5D": ExtResource("5"),
+"2A": ExtResource("6"),
+"2B": ExtResource("7"),
+"2C": ExtResource("8"),
+"2D": ExtResource("9"),
+"jA": ExtResource("10"),
+"jB": ExtResource("11"),
+"jC": ExtResource("12"),
+"jD": ExtResource("13")
+}
+motions = {
+"236A": ExtResource("14"),
+"236C": ExtResource("15"),
+"623A": ExtResource("16"),
+"623C": ExtResource("17"),
+"214B": ExtResource("18"),
+"214D": ExtResource("19"),
+"super": ExtResource("20"),
+"max": ExtResource("21")
+}
+throw_move = ExtResource("22")
+move_list = Array[Dictionary]([{"input": "236 + A/C", "name": "水之呼吸·壹之型 水面斩", "description": "短程水刃；轻快重远"},
+{"input": "623 + A/C", "name": "水之呼吸·贰之型 水车", "description": "上升迎击；对空保护"},
+{"input": "214 + B/D", "name": "水之呼吸·陆之型 扭转漩涡", "description": "回旋多段；近身衔接"},
+{"input": "236236 + A/C", "name": "水之呼吸·拾之型 生生流转", "description": "多段水龙斩 · 1格"},
+{"input": "236236 + A+C", "name": "火之神神乐·碧罗之天", "description": "大圆弧斩 · 3格 MAX"}])

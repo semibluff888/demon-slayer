@@ -87,7 +87,9 @@ func _clip() -> String:
 	if fighter.throw_role == "victim" or (fighter.state == "knockdown" and fighter.throw_frame >= Arena.THROW_IMPACT_TICK):
 		return "thrown"
 	if fighter.move != null:
-		return fighter.move.id
+		return fighter.move.clip_id()
+	if fighter.roll_frame >= 0:
+		return "jump_back" if fighter.roll_direction * fighter.facing < 0 else "jump_forward"
 	if fighter.state == "dash":
 		return "dash_back" if fighter.dash_back else "dash_forward"
 	if fighter.state == "air" and fighter.flip_jump and not fighter.air_used_move:
@@ -116,12 +118,14 @@ func _frame_index() -> int:
 		if fighter.throw_frame >= Arena.THROW_IMPACT_TICK:
 			return mini(count - 1, 8 + int((fighter.throw_frame - Arena.THROW_IMPACT_TICK) / 3))
 		return mini(7, int(fighter.throw_frame / 20.0 * 8))
+	if fighter.roll_frame >= 0:
+		return mini(count - 1, int(fighter.roll_frame * float(count) / 28))
 	if clip in ["dash_forward", "dash_back"]:
 		var duration: int = Arena.DASH_BACK_TICKS if fighter.dash_back else Arena.DASH_FORWARD_TICKS
 		return mini(count - 1, int((fighter.dash_frame - 1) * float(count) / duration))
 	if clip in ["jump_forward", "jump_back"]:
 		return mini(count - 1, int(fighter.air_ticks * float(count) / 37))
-	if fighter.move != null and clip == fighter.move.id:
+	if fighter.move != null and clip == fighter.move.clip_id():
 		var cuts: Array = visual.phases.get(clip, [maxi(1, count / 3), maxi(2, count * 2 / 3)])
 		var first := clampi(int(cuts[0]), 1, count)
 		var second := clampi(int(cuts[1]), first, count)
@@ -191,5 +195,5 @@ func pose_facing() -> int:
 	if clip in ["throw_success", "thrown"]:
 		return fighter.throw_facing
 	if clip in ["jump_forward", "jump_back"]:
-		return fighter.jump_facing
+		return fighter.facing if fighter.roll_frame >= 0 else fighter.jump_facing
 	return fighter.facing

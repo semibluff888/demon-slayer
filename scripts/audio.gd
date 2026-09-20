@@ -11,7 +11,7 @@ func _ready() -> void:
 		voice.volume_db = -15.0
 		add_child(voice)
 		voices.append(voice)
-	for kind in ["hit", "block", "swing", "select", "fight", "round_end", "throw", "clash", "water_slash", "water_wheel", "iai", "thunder"]:
+	for kind in ["hit", "block", "swing", "select", "fight", "round_end", "throw", "clash", "water_slash", "water_wheel", "iai", "thunder", "super", "roll", "meter_empty", "throw_tech", "flame"]:
 		streams[kind] = _make_sound(kind)
 
 func play(kind: String) -> void:
@@ -42,13 +42,16 @@ func _make_sound(kind: String) -> AudioStreamWAV:
 		var envelope := pow(1.0 - progress, 2.0) * minf(t * 500.0, 1.0)
 		var value: float
 		match kind:
-			"swing": value = noise.randf_range(-1.0, 1.0) * 0.22 * sin(progress * PI)
+			"swing", "roll": value = noise.randf_range(-1.0, 1.0) * 0.22 * sin(progress * PI)
 			"hit": value = sin(TAU * (140.0 * t - 250.0 * t * t)) * 0.65 + noise.randf_range(-0.3, 0.3)
 			"throw": value = sin(TAU * (85.0 * t - 95.0 * t * t)) * 0.75 + noise.randf_range(-0.2, 0.2) * exp(-t * 30)
 			"water_slash", "water_wheel": value = noise.randf_range(-0.25, 0.25) * sin(progress * PI) + sin(TAU * (370 * t - 230 * t * t)) * 0.18
 			"iai": value = sin(TAU * (2600 * t - 7000 * t * t)) * 0.25 + noise.randf_range(-0.12, 0.12)
 			"thunder": value = noise.randf_range(-0.5, 0.5) * pow(1 - progress, 2) + sin(TAU * 62 * t) * 0.35
-			"block", "clash": value = sin(TAU * 1200.0 * t) * 0.35 + sin(TAU * 1760.0 * t) * 0.2
+			"super": value = (sin(TAU * (360 * t + 1600 * t * t)) + sin(TAU * 720 * t)) * 0.32
+			"flame": value = noise.randf_range(-0.45, 0.45) + sin(TAU * 95 * t) * 0.3
+			"meter_empty": value = sin(TAU * 170 * t) * 0.2
+			"block", "clash", "throw_tech": value = sin(TAU * 1200.0 * t) * 0.35 + sin(TAU * 1760.0 * t) * 0.2
 			"select": value = sin(TAU * 660.0 * t) * 0.35
 			_: value = (sin(TAU * 440.0 * t) + sin(TAU * 660.0 * t)) * 0.25
 		var sample := int(clampf(value * envelope, -1.0, 1.0) * 32767)

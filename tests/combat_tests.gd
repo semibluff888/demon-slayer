@@ -1,258 +1,360 @@
 extends SceneTree
 const Combat = preload("res://scripts/combat.gd")
-const Router = preload("res://scripts/input_router.gd")
+const Commands = preload("res://scripts/command_recognizer.gd")
 const AI = preload("res://scripts/ai_controller.gd")
-var passed: int = 0
+const Definition = preload("res://scripts/character_definition.gd")
+const Support = preload("res://tests/combat_test_support.gd")
+var s := Support.new()
+var passed := 0
 var failures: Array[String] = []
 
+func check(ok: bool, message: String) -> void:
+	if ok:
+		passed += 1
+	else:
+		failures.append(message)
+
 func _initialize() -> void:
-	_resources_and_movement()
-	_hits_blocks_and_throws()
-	_buffer_and_combos()
-	_trades_and_rounds()
-	_inputs_and_ai()
-	_full_matches()
+	_resources()
+	_guards()
+	_meters()
+	_projectiles()
+	_cancels()
+	_edge_cases()
+	_rounds()
+	_ai()
 	for failure in failures:
 		printerr("FAIL: ", failure)
 	print("COMBAT TESTS: %d passed, %d failed" % [passed, failures.size()])
 	quit(0 if failures.is_empty() else 1)
 
-func check(condition: bool, message: String) -> void:
-	if condition:
-		passed += 1
-	else:
-		failures.append(message)
-
-func command(values: Dictionary = {}) -> Dictionary:
-	var result := Combat.neutral()
-	result.merge(values, true)
-	return result
-
-func duel(x1: float = 260, x2: float = 300) -> Combat:
+func _resources() -> void:
 	var model := Combat.new()
+	for id in model.catalog.characters:
+		var definition: Resource = model.catalog.characters[id]
+		check(definition.normals.size() == 12 and definition.motions.size() == 8, "complete four-button roster: " + id)
+		for move in definition.all_moves():
+			check(move.startup > 0 and move.active > 0 and move.recovery > 0 and not move.clip_id().is_empty(), "valid frame data and visual mapping: " + move.id)
+		for notation in ["5A","5B","5C","5D","2A","2B","2C","2D","236A","236C","623A","623C","214B","214D","236236A","236236AC"]:
+			model = s.duel(id)
+			model.fighters[0].meter = 300
+			s.input(model, notation)
+			s.advance(model, 160)
+			check(model.fighters[1].hp < 1000, "real command hits: " + id + "/" + notation)
+			check(model.fighters[0].move == null, "move completes: " + id + "/" + notation)
+	# A third definition shares existing resources without any core character branch.
+	var fixture := Definition.new()
+	fixture.id = "fixture"
+	fixture.normals = model.catalog.characters.tanjiro.normals
+	fixture.motions = model.catalog.characters.tanjiro.motions
+	fixture.throw_move = model.catalog.characters.tanjiro.throw_move
+	fixture.walk_speed = 3.0
+	model.catalog.register(fixture)
+	model.new_match("fixture", "fixture")
 	model.phase = "fight"
-	model.fighters[0].x = x1
-	model.fighters[1].x = x2
-	return model
+	var before: float = model.fighters[0].x
+	s.tick(model, {"x": 1})
+	check(model.fighters[0].x == before + 3, "new character consumes data-defined movement")
+	s.input(model, "236A")
+	check(model.fighters[0].move != null, "new character uses registered command table")
 
-func advance(model: Combat, count: int, a: Dictionary = {}, b: Dictionary = {}) -> void:
-	for tick in range(count):
-		model.step([command(a), command(b)])
-
-func attack(model: Combat, input: Dictionary, defender: Dictionary = {}, count: int = 35) -> void:
-	model.step([command(input), command(defender)])
-	advance(model, count, {}, defender)
-
-func _resources_and_movement() -> void:
-	var model := duel()
-	check(model.moves.size() == 11, "all eleven moves load")
-	for move in model.moves.values():
-		check(move.active > 0 and move.startup > 0 and move.recovery > 0 and move.box.has_area(), "valid move: " + move.id)
-	advance(model, 90, {"x": 1}, {"x": -1})
-	check(model.fighters[1].x - model.fighters[0].x >= 25.99, "grounded bodies cannot overlap")
-	model = duel(28, 54)
-	advance(model, 90, {"x": -1}, {"x": -1})
-	check(model.fighters[0].x >= 28 and model.fighters[1].x >= 54, "left corner conserves push separation")
-	model = duel(906, 932)
-	advance(model, 90, {"x": 1}, {"x": 1})
-	check(model.fighters[1].x <= 932 and model.fighters[0].x <= 906, "right corner conserves push separation")
-	model = duel(260, 302)
-	model.step([command({"jump": true, "x": 1}), command()])
-	var crossed := false
-	var minimum_y: float = model.fighters[0].y
-	for n in range(55):
-		model.step([command({"x": 1, "jump": n == 7}), command()])
-		minimum_y = minf(minimum_y, model.fighters[0].y)
-		if model.fighters[0].x > model.fighters[1].x:
-			crossed = true
-	check(crossed and model.fighters[0].facing == -1 and model.fighters[1].facing == 1, "jump crosses opponent and flips both facings")
-	check(model.fighters[0].grounded and minimum_y > 210, "single jump cannot double jump")
-	print("PASS movement / data")
-
-func _hits_blocks_and_throws() -> void:
-	var model := duel()
-	attack(model, {"light": true}, {}, 60)
-	check(model.fighters[1].hp == 955, "one light attack deals damage exactly once")
-	model = duel(895, 932)
-	attack(model, {"light": true}, {"x": 1})
-	check(model.fighters[1].hp == 1000, "standing back blocks mid")
-	model = duel(895, 932)
-	attack(model, {"light": true}, {"x": 1, "down": true})
-	check(model.fighters[1].hp == 1000, "crouch back blocks mid")
-	model = duel(895, 932)
-	attack(model, {"light": true, "down": true}, {"x": 1})
-	check(model.fighters[1].hp == 960, "standing guard loses to low")
-	model = duel(895, 932)
-	attack(model, {"light": true, "down": true}, {"x": 1, "down": true})
-	check(model.fighters[1].hp == 1000, "crouch guard blocks low")
-	for duck in [false, true]:
-		model = duel(895, 932)
-		model.fighters[0].grounded = false
-		model.fighters[0].y = 245
-		attack(model, {"heavy": true}, {"x": 1, "down": duck})
-		check(model.fighters[1].hp == (920 if duck else 1000), "air heavy requires standing guard: %s" % duck)
-	model = duel(900, 932)
-	attack(model, {"throw": true}, {"x": 1})
-	check(model.fighters[1].hp == 900, "throw defeats grounded guard")
-	model = duel(900, 932)
-	model.step([command({"throw": true}), command({"jump": true})])
-	advance(model, 15)
-	check(model.fighters[1].hp == 1000 and model.fighters[0].move != null, "jump evades throw and whiff has recovery")
-	model = duel(895, 932)
+func _guards() -> void:
+	for facing in [-1, 1]:
+		for pair in [["5A", false, true], ["5A", true, true], ["2B", false, false], ["2B", true, true]]:
+			var model = s.duel("tanjiro", facing)
+			var guard := {"x": facing, "y": 1 if pair[1] else 0}
+			s.input(model, pair[0], guard)
+			s.advance(model, 45, {}, guard)
+			check((model.fighters[1].hp == 1000) == pair[2], "standing/crouching guard " + str(pair) + " facing " + str(facing))
+	var model = s.duel()
+	s.input(model, "5A")
+	s.advance(model, 90, {"buttons": Commands.A})
+	check(model.fighters[1].hp == 955, "held attack and active frames cannot duplicate damage")
+	model = s.duel()
 	model.fighters[1].hp = 1
-	attack(model, {"skill": true}, {"x": 1})
-	check(model.fighters[1].hp == 1, "special chip cannot defeat a blocking opponent")
-	model = duel(300, 260)
-	attack(model, {"skill": true, "x": -1}, {}, 1)
-	check(model.fighters[0].move.id == "water_wheel", "forward skill is relative to facing left")
-	print("PASS hits / guards / throws")
+	s.input(model, "236A", {"x": 1})
+	s.advance(model, 75, {}, {"x": 1})
+	check(model.fighters[1].hp == 1 and model.phase == "fight", "special chip cannot KO")
+	for crouch in [false, true]:
+		model = s.duel()
+		var f = model.fighters[0]
+		f.grounded = false
+		f.y -= 38
+		f.vy = -1
+		model._begin_move(f, model.definition(f).normals.jC)
+		f.move_frame = f.move.startup
+		s.tick(model, {}, {"x": 1, "y": 1 if crouch else 0})
+		check((model.fighters[1].hp < 1000) == crouch, "jump attack requires standing guard")
+	model = s.duel()
+	s.input(model, "2D")
+	s.wait_contact(model)
+	check(model.fighters[1].state == "knockdown", "2D is a knockdown finisher")
+	var hp: int = model.fighters[1].hp
+	model._begin_move(model.fighters[0], model.definition(model.fighters[0]).normals["5C"])
+	model.fighters[0].move_frame = model.fighters[0].move.startup
+	model.hitstop = 0
+	s.tick(model)
+	check(model.fighters[1].hp == hp, "knocked down opponent cannot be hit again")
 
-func _buffer_and_combos() -> void:
-	var model := duel()
-	model.step([command({"light": true}), command()])
-	for tick in range(25):
-		model.step([command(), command()])
-		if model.fighters[1].hp < 1000:
-			break
-	check(model.hitstop > 0, "contact starts hitstop")
-	var frozen: float = model.fighters[1].x
-	model.step([command({"heavy": true}), command()])
-	check(model.fighters[1].x == frozen, "hitstop freezes motion while accepting input")
-	var heavy_seen := false
-	var skill_queued := false
-	for tick in range(110):
-		var c := command()
-		if model.fighters[0].move != null and model.fighters[0].move.id == "stand_heavy":
-			heavy_seen = true
-			if model.fighters[0].connected and not skill_queued:
-				c.skill = true
-				skill_queued = true
-		model.step([c, command()])
-	check(heavy_seen and skill_queued and model.fighters[1].hp == 765, "light-heavy-skill chain connects for 235 damage")
-	check(model.fighters[0].combo == 3, "chain is counted as three hits")
-	model = duel(150, 500)
-	model.step([command({"light": true}), command()])
-	advance(model, 6)
-	model.step([command({"heavy": true}), command()])
-	advance(model, 7)
-	check(model.fighters[0].move.id == "stand_light", "whiffed normal cannot cancel")
-	advance(model, 35)
-	check(model.fighters[0].move == null, "expired command cannot fire after recovery")
-	model = duel()
-	model.fighters[0].stun = 3
+func _meters() -> void:
+	var model = s.duel()
+	s.input(model, "5A")
+	s.wait_contact(model)
+	check(model.fighters[0].meter == 11 and model.fighters[1].meter == 6, "meter derives from actual landed damage")
+	model = s.duel()
+	model.fighters[1].x += 230
+	s.input(model, "5C")
+	s.advance(model, 70)
+	check(model.fighters[0].meter == 0, "whiff grants no meter")
+	model = s.duel()
+	s.input(model, "214B", {"x": 1})
+	s.advance(model, 85, {}, {"x": 1})
+	check(model.fighters[1].meter == 3 and model.fighters[0].meter == 0, "multi-hit block grants once per attack")
+	for pair in [["236236A", 99, false, 99], ["236236A", 100, true, 0],
+		["236236AC", 299, false, 299], ["236236AC", 300, true, 0]]:
+		model = s.duel()
+		model.fighters[0].meter = pair[1]
+		s.input(model, pair[0])
+		s.advance(model, 150)
+		check((model.fighters[1].hp < 1000) == pair[2], "exact resource boundary: " + str(pair))
+		check(model.fighters[0].meter == pair[3], "deduct once, never refund super, no downgrade: " + str(pair))
+		if not pair[2]:
+			check(model.fighters[0].last_move.is_empty(), "insufficient MAX does not cast a normal or cheaper special")
+	model = s.duel()
+	model.fighters[0].meter = 297
+	s.input(model, "5A")
+	s.wait_contact(model)
+	check(model.fighters[0].meter == 300, "meter clamps at three stocks")
+	model = s.duel()
+	model.fighters[1].hp = 2
+	s.input(model, "5C")
+	s.advance(model, 15)
+	check(model.fighters[0].meter == 0, "overkill does not farm meter")
+	model = s.duel()
+	model.fighters[0].meter = 300
+	s.input(model, "236236A")
+	check(model.super_freeze > 0, "super freeze belongs to simulation")
+	var remaining: int = model.remaining
+	var frame: int = model.fighters[0].move_frame
+	s.tick(model)
+	check(model.remaining == remaining and model.fighters[0].move_frame == frame, "super freeze pauses timer and motion")
+
+func _projectiles() -> void:
+	var model = s.duel()
+	model.fighters[1].x += 125
+	s.input(model, "236A")
+	while model.projectiles.is_empty() and model.ticks < 30:
+		s.tick(model)
+	check(model.projectiles.size() == 1, "water slash spawns an independent projectile")
+	model.fighters[0].move = null
 	model.fighters[0].state = "hit"
-	model.step([command({"light": true}), command()])
-	advance(model, 3)
-	check(model.fighters[0].move != null, "six-frame buffer carries input out of hitstun")
-	model = duel(895, 932)
-	model.step([command({"light": true}), command({"x": 1})])
-	for tick in range(30):
-		model.step([command(), command({"x": 1})])
+	model.fighters[0].stun = 40
+	s.advance(model, 55)
+	check(model.fighters[1].hp < 1000 and model.projectiles.is_empty(), "already emitted projectile survives owner interruption and hits once")
+	model = s.duel()
+	model.fighters[1].character = "tanjiro"
+	model.fighters[1].x += 100
+	for f in model.fighters:
+		model._begin_move(f, model.definition(f).motions["236A"])
+	s.advance(model, 60)
+	check(model.projectiles.is_empty() and model.fighters[0].hp == 1000 and model.fighters[1].hp == 1000, "opposing projectiles clash")
+	model = s.duel()
+	model.fighters[1].x += 280
+	s.input(model, "236A")
+	s.advance(model, 45)
+	check(model.fighters[1].hp == 1000 and model.projectiles.is_empty(), "short-range projectile expires")
+	model = s.duel("zenitsu")
+	s.input(model, "236A")
+	s.advance(model, 25)
+	check(model.projectiles.is_empty(), "Zenitsu 236 remains a physical dash")
+	for id in ["tanjiro", "zenitsu"]:
+		model = s.duel(id)
+		model.fighters[0].meter = 100
+		s.input(model, "236236A")
+		s.advance(model, 160)
+		check(model.fighters[0].combo == (4 if id == "tanjiro" else 6), "super resolves every segment once: " + id)
+		check(model.fighters[1].hp == 720, "raw multi-hit super sums to its authored damage")
+
+func _cancels() -> void:
+	var model = s.duel()
+	model.fighters[1].x += 230
+	s.input(model, "5A")
+	s.input(model, "5C")
+	check(model.fighters[0].move.id.ends_with("_5A"), "whiff cannot cancel")
+	model = s.duel()
+	s.input(model, "5A", {"x": 1})
+	for n in range(18):
 		if model.fighters[0].connected:
 			break
-	model.step([command({"heavy": true}), command({"x": 1})])
-	advance(model, 7, {}, {"x": 1})
-	check(model.fighters[0].move != null and model.fighters[0].move.id == "stand_heavy", "blocked contact enables chain cancel")
-	print("PASS buffers / combos")
+		s.tick(model, {}, {"x": 1})
+	s.input(model, "5C", {"x": 1})
+	s.advance(model, 7, {}, {"x": 1})
+	check(model.fighters[0].last_move.ends_with("_5C"), "normal block contact permits chain cancel")
+	model = s.duel()
+	s.input(model, "5A")
+	s.wait_contact(model)
+	s.input(model, "5A")
+	s.advance(model, 9)
+	check(model.fighters[0].attack_instance == 1, "same ground normal cannot repeat inside hitstun")
+	model = s.duel()
+	model.fighters[0].state = "hit"
+	model.fighters[0].stun = 5
+	s.input(model, "5A")
+	s.advance(model, 4)
+	check(model.fighters[0].move != null, "action buffer survives ending hitstun")
+	model = s.duel()
+	s.input(model, "5A")
+	s.wait_contact(model)
+	model.hitstop = 10
+	s.input(model, "5C")
+	s.advance(model, 12)
+	check(model.fighters[0].last_move.ends_with("_5C"), "hitstop accepts buffered cancels without aging their execution window")
+	# Artificial airborne dummy isolates the per-combo juggle limit from gravity.
+	model = s.duel()
+	var dummy = model.fighters[1]
+	dummy.grounded = false
+	dummy.y -= 25
+	for n in range(4):
+		var f = model.fighters[0]
+		model._begin_move(f, model.definition(f).normals["5A"])
+		f.move_frame = f.move.startup
+		dummy.y = Combat.FLOOR_Y - 25
+		dummy.vy = 0
+		model.hitstop = 0
+		s.tick(model)
+	check(model.fighters[0].combo == 3, "airborne target accepts initial hit and only two extra attack instances")
 
-func _trades_and_rounds() -> void:
-	var model := duel()
-	model.step([command({"light": true}), command({"light": true})])
-	advance(model, 8)
+func _rounds() -> void:
+	var model = s.duel()
+	s.tick(model, {"buttons": Commands.A}, {"buttons": Commands.A})
+	s.advance(model, 12)
 	check(model.fighters[0].hp == 955 and model.fighters[1].hp == 955, "same-frame strikes trade symmetrically")
-	model = duel(280, 310)
-	model.step([command({"throw": true}), command({"throw": true})])
-	advance(model, 8)
-	check(model.fighters[0].hp == 1000 and model.fighters[1].hp == 1000, "simultaneous throws clash")
-	model = duel()
-	model.fighters[0].hp = 45
-	model.fighters[1].hp = 45
-	model.step([command({"light": true}), command({"light": true})])
-	advance(model, 8)
-	check(model.phase == "round_end" and model.reason == "DOUBLE K.O." and model.wins == [0, 0], "double KO awards no round")
-	advance(model, 220)
-	check(model.round_number == 1 and model.fighters[0].hp == 1000 and model.fighters[1].hp == 1000, "draw replays same round at full health")
-	model = duel()
+	model = s.duel()
+	for f in model.fighters:
+		f.hp = 45
+	s.tick(model, {"buttons": Commands.A}, {"buttons": Commands.A})
+	s.advance(model, 12)
+	check(model.reason == "DOUBLE K.O." and model.wins == [0,0], "double KO awards neither side")
+	model = s.duel()
+	model.round_open_meter.assign([70, 90])
+	model.fighters[0].meter = 200
+	model.fighters[1].meter = 250
 	model.remaining = 1
-	model.fighters[0].hp = 500
-	model.fighters[1].hp = 700
-	advance(model, 1)
-	check(model.reason == "TIME UP" and model.wins == [0, 1], "timeout awards higher remaining health")
-	model = duel()
+	s.tick(model)
+	s.advance(model, 125)
+	check(model.fighters[0].meter == 70 and model.fighters[1].meter == 90, "draw restores round-opening meter")
+	model = s.duel()
+	model.fighters[0].hp = 800
+	model.fighters[1].hp = 500
+	model.fighters[0].meter = 130
+	model.fighters[1].meter = 190
 	model.remaining = 1
-	advance(model, 1)
-	check(model.reason == "DRAW" and model.wins == [0, 0], "equal health timeout is a draw")
-	model = duel()
-	for round_index in range(2):
-		model.phase = "fight"
-		model.fighters[1].hp = 0
-		advance(model, 1)
-		advance(model, 125)
-	check(model.phase == "match_end" and model.match_winner == 0 and model.wins == [2, 0], "first to two rounds wins match")
-	model.fighters[0].buffer_left = 6
-	model.fighters[0].move = model.moves.thunder
+	s.tick(model)
+	check(model.round_winner == 0 and model.reason == "TIME UP", "timeout awards higher HP")
+	s.advance(model, 125)
+	check(model.fighters[0].meter == 130 and model.fighters[1].meter == 190, "both sides carry meter between decisive rounds")
+	model.phase = "fight"
+	model.fighters[1].hp = 0
+	s.tick(model)
+	s.advance(model, 125)
+	check(model.phase == "match_end" and model.match_winner == 0, "first to two wins the match")
 	model.new_match("zenitsu", "zenitsu")
-	check(model.wins == [0, 0] and model.remaining == 3600 and model.phase == "intro" and model.hitstop == 0, "rematch resets scores, timer, phase and hitstop")
-	check(model.fighters[0].move == null and model.fighters[0].buffer_left == 0 and model.fighters[0].x == 366, "rematch clears movement and pending attacks")
-	check(model.fighters[0].character == "zenitsu" and model.fighters[1].character == "zenitsu", "mirror matches retain selected characters")
-	print("PASS trades / rounds / resets")
+	check(model.fighters[0].meter == 0 and model.projectiles.is_empty() and model.super_freeze == 0 and model.wins == [0,0], "new match clears resource and transient state")
 
-func _inputs_and_ai() -> void:
-	var router := Router.new()
-	var held := command({"light": true, "jump": true, "x": 1})
-	var first := router.command_from_held(0, held)
-	var second := router.command_from_held(0, held)
-	check(first.light and first.jump and not second.light and not second.jump and second.x == 1, "buttons are edges; direction remains held")
-	var pad := router.pad_held(0.1, -0.8, {JOY_BUTTON_X: true, JOY_BUTTON_A: true})
-	check(pad.x == 0 and pad.jump and pad.light and pad.skill, "gamepad deadzone and face buttons map correctly")
-	pad = router.pad_held(0.0, 0.0, {JOY_BUTTON_DPAD_LEFT: true, JOY_BUTTON_DPAD_DOWN: true, JOY_BUTTON_Y: true, JOY_BUTTON_B: true})
-	check(pad.x == -1 and pad.down and pad.heavy and pad.throw, "gamepad d-pad and other face buttons map correctly")
-	Input.action_press("p1_light")
-	check(router.sample("keyboard:0").light and not router.sample("keyboard:1").light, "keyboard groups are isolated")
-	router.reset(["keyboard:0", "keyboard:1"])
-	check(not router.read(0, "keyboard:0").light, "screen transitions suppress already-held buttons")
-	Input.action_release("p1_light")
-	var physical := InputEventKey.new()
-	physical.physical_keycode = KEY_F
-	physical.keycode = KEY_F
-	physical.pressed = true
-	Input.parse_input_event(physical)
-	Input.flush_buffered_events()
-	check(router.sample("keyboard:0").light, "physical F key reaches the configured P1 light action")
-	physical = physical.duplicate()
-	physical.pressed = false
-	Input.parse_input_event(physical)
-	Input.flush_buffered_events()
-	check(not router.sample("keyboard:0").light, "physical key release clears the action")
-	check(not router.connected("pad:999"), "missing gamepad is detected")
-	var model := duel()
-	var ai := AI.new(22)
-	for n in range(12):
-		check(ai.command(model.fighters[1].observable(), model.fighters[0].observable()) == command(), "AI waits for reaction history")
-	var ai2 := AI.new(22)
-	ai.reset()
-	for n in range(120):
-		check(ai.command(model.fighters[1].observable(), model.fighters[0].observable()) == ai2.command(model.fighters[1].observable(), model.fighters[0].observable()), "AI decisions reproducible at tick %d" % n)
-	# Drive an actual duel through keyboard input + simulated gamepad commands.
-	model = duel()
-	router = Router.new()
-	Input.action_press("p1_light")
-	model.step([router.read(0, "keyboard:0"), router.command_from_held(1, router.pad_held(0, 0, {JOY_BUTTON_X: true}))])
-	Input.action_release("p1_light")
-	advance(model, 8)
-	check(model.fighters[0].hp == 955 and model.fighters[1].hp == 955, "keyboard and simulated gamepad can complete a simultaneous exchange")
-	print("PASS keyboard / virtual gamepad / AI")
-
-func _full_matches() -> void:
-	for pair in [["tanjiro", "zenitsu"], ["zenitsu", "tanjiro"], ["tanjiro", "tanjiro"], ["zenitsu", "zenitsu"]]:
-		var model := Combat.new()
+func _ai() -> void:
+	var model = s.duel()
+	var a := AI.new(41)
+	var b := AI.new(41)
+	for n in range(160):
+		var one := a.command(model.fighters[0].observable(), model.fighters[1].observable())
+		var two := b.command(model.fighters[0].observable(), model.fighters[1].observable())
+		check(one == two, "AI seed is reproducible")
+		if n < 12:
+			check(one == Combat.neutral(), "AI waits for observation history")
+	for pair in [["tanjiro","zenitsu"], ["zenitsu","tanjiro"], ["tanjiro","tanjiro"], ["zenitsu","zenitsu"]]:
+		model = Combat.new()
 		model.new_match(pair[0], pair[1])
-		var a := AI.new(10)
-		var b := AI.new(82)
+		a = AI.new(10)
+		b = AI.new(82)
 		var ticks := 0
 		while model.phase != "match_end" and ticks < 40000:
 			model.step([a.command(model.fighters[0].observable(), model.fighters[1].observable()),
 				b.command(model.fighters[1].observable(), model.fighters[0].observable())])
 			ticks += 1
-		check(model.phase == "match_end" and model.wins.max() == 2, "full match completes: %s/%s" % pair)
-		print("MATCH %s vs %s: %s after %d ticks" % [pair[0], pair[1], model.wins, ticks])
+		check(model.phase == "match_end" and model.wins.max() == 2, "complete AI match: " + str(pair))
+		print("MATCH ", pair, " ", model.wins, " ticks=", ticks)
+
+
+
+func _edge_cases() -> void:
+	var model = s.duel()
+	model.fighters[0].meter = 100
+	s.input(model, "236A", {"x": 1})
+	for n in range(40):
+		if model.fighters[0].connected:
+			break
+		s.tick(model, {}, {"x": 1})
+	s.input(model, "236236A", {"x": 1})
+	s.advance(model, 50, {}, {"x": 1})
+	check(model.fighters[0].meter == 100 and not model.fighters[0].last_move.ends_with("_super"), "blocked special cannot cancel into super")
+	model = s.duel()
+	model.fighters[0].meter = 100
+	s.input(model, "5C")
+	s.wait_contact(model)
+	s.input(model, "236236A")
+	check(s.wait_contact(model), "confirmed heavy can skip special and cancel directly to super")
+	s.advance(model, 130)
+	check(model.fighters[0].meter < 100 and model.fighters[0].last_move.ends_with("_super"), "direct normal-to-super spends resource")
+	model = s.duel()
+	model.fighters[1].x += 280
+	s.input(model, "236C")
+	while model.fighters[0].move != null:
+		s.tick(model)
+	check(model.projectiles.size() == 1, "heavy water blade can outlive its owner's recovery")
+	var instance: int = model.next_instance
+	s.input(model, "236A")
+	s.advance(model, 3)
+	check(model.projectiles.size() == 1 and model.next_instance == instance, "existing blade prevents a second projectile cast")
+	model = s.duel()
+	var a = model.fighters[0]
+	var d = model.fighters[1]
+	model._begin_move(a, model.definition(a).motions["236A"])
+	model._spawn_projectile(a)
+	var projectile: Dictionary = model.projectiles[0]
+	projectile.x = d.x - projectile.vx
+	d.roll_frame = 4
+	d.roll_direction = 0
+	d.state = "roll"
+	s.tick(model)
+	check(d.hp == 1000 and model.projectiles.size() == 1, "rolling through a projectile neither takes damage nor consumes it")
+	# Mixed projectile/strike contact must trade regardless of owner slot.
+	for owner in [0,1]:
+		model = s.duel()
+		a = model.fighters[owner]
+		d = model.fighters[1-owner]
+		a.character = "tanjiro"
+		model._begin_move(a, model.definition(a).motions["236A"])
+		model._spawn_projectile(a)
+		projectile = model.projectiles[0]
+		projectile.x = d.x - projectile.vx
+		model._begin_move(d, model.definition(d).normals["5A"])
+		d.move_frame = d.move.startup
+		s.tick(model)
+		check(a.hp == 955 and d.hp == 895, "projectile and normal trade in either player slot")
+	model = s.duel()
+	model.hitstop = 9
+	s.input(model, "236236AC")
+	check(not model.fighters[0].buffer_action.is_empty(), "motion can wait during hitstop")
+	model.clear_inputs([{"buttons": 5}, Combat.neutral()])
+	s.advance(model, 20, {"buttons": 5})
+	check(model.fighters[0].move == null and model.fighters[0].buffer_action.is_empty(), "pause reset clears pending super and suppresses already-held chord")
+	model = s.duel()
+	model.fighters[0].meter = 300
+	s.input(model, "236236AC")
+	s.input(model, "5A")
+	check(not model.fighters[0].buffer_action.is_empty(), "super freeze accepts the next input")
+	model.remaining = 1
+	model.super_freeze = 0
+	s.tick(model)
+	check(model.phase == "round_end" and model.projectiles.is_empty() and model.super_freeze == 0, "round end clears projectile and super-freeze state")
+	check(model.fighters[0].buffer_action.is_empty() and model.fighters[0].input.directions.is_empty(), "round end clears queued input and directions")

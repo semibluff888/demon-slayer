@@ -95,8 +95,8 @@ func _blade_effect(id: String, fighter: RefCounted, color: Color) -> void:
 	var bounds: Rect2 = move.box
 	# Use the same three-pose timing as FighterView, including held drawings.
 	var pose := mini(2, int(float(fighter.move_frame - move.startup) / move.active * 3))
-	var tip: Vector2 = SKILL_TIPS[move.id][pose]
-	if move.id == "water_slash":
+	var tip: Vector2 = SKILL_TIPS[move.effect()][pose]
+	if move.effect() == "water_slash":
 		tip.x += 8 # The crest curls just past the metal blade.
 	tip = tip.clamp(bounds.position + Vector2(4, 4), bounds.end - Vector2(4, 4))
 	# Move the bright head to the blade while pinning the faint perimeter to the
@@ -200,18 +200,27 @@ func _draw() -> void:
 		var strength := 0.57 + sin(progress * PI) * 0.40
 		# All skill placement starts from the same local box combat mirrors into the world.
 		var attack: Rect2 = fighter.move.box
-		match fighter.move.id:
+		match fighter.move.effect():
 			"water_slash":
 				# Put the broad crest beyond the blade, with the fine wake toward the hand.
 				_blade_effect("water-slash", fighter, Color(0.85, 0.98, 1, strength))
 			"water_wheel":
 				_effect("water-wheel", attack, Color(0.88, 0.99, 1, strength), -progress * 1.3)
+			"flame":
+				_effect("water-wheel", attack, Color(1, 0.28, 0.04, strength), -progress * 1.8)
+			"body":
+				draw_arc(attack.get_center(), 8 + progress * 8, -1.2, 1.2, 12, Color(1, 0.86, 0.55, strength), 1.4, true)
 			"thunder":
 				_thunder_dash(attack, strength)
 			"iai":
 				_iai_slash(attack, strength)
 			_:
-				_draw_normal_cut(fighter.move.id, progress)
+				_draw_normal_cut(fighter.move.effect(), progress)
+	for projectile in combat.projectiles:
+		var at: Vector2 = camera.point(Vector2(projectile.x, projectile.y))
+		draw_set_transform(at, 0, Vector2(camera.zoom * projectile.facing, camera.zoom))
+		var bounds: Rect2 = combat.moves[projectile.move].projectile_box
+		_effect("water-slash", bounds.grow(4), Color(0.65, 0.96, 1, 0.95), PI)
 	draw_set_transform(Vector2.ZERO)
 	for spark: Dictionary in sparks:
 		var at: Vector2 = camera.point(spark.at)

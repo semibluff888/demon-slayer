@@ -1,5 +1,5 @@
 extends SceneTree
-## Reproducible engine recording. Commands go through real input edge/double-tap routing.
+## Reproducible engine recording. Commands go through real held input and model command recognition.
 const Main = preload("res://scenes/main.tscn")
 const Combat = preload("res://scripts/combat.gd")
 const Router = preload("res://scripts/input_router.gd")
@@ -63,12 +63,13 @@ func _run() -> void:
 						held.x = -1
 				elif scenario in ["front_flip","back_flip","air_attack"]:
 					if tick == 12:
-						held.jump = true
+						held.y = -1
 						held.x = -1 if scenario=="back_flip" else 1
 					if scenario=="air_attack" and tick==27:
-						held.heavy = true
+						held.buttons = 4
 				elif scenario.begins_with("throw") and tick==12:
-					held.throw = true
+					held.buttons = 8
+					held.x = -a.facing
 				game.combat.step([router.command_from_held(0,held),router.command_from_held(1,other)])
 				game.view.consume(game.combat.events)
 				await process_frame

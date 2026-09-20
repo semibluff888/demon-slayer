@@ -23,9 +23,12 @@ func _run() -> void:
 		game.combat.fighters[1].x = 320 if id == "water_wheel" else 350
 		for tick in range(108):
 			var command := Combat.neutral()
-			if tick == 24:
-				command.skill = true
-				command.x = 1 if id in ["water_wheel", "thunder"] else 0
+			if tick in [22, 23, 24]:
+				var motion := "623" if id in ["water_wheel", "iai"] else "236"
+				var direction := int(motion[tick - 22])
+				command.x = (direction - 1) % 3 - 1
+				command.y = 1 - int((direction - 1) / 3)
+				command.buttons = 1 if tick == 24 else 0
 			game.combat.step([command, Combat.neutral()])
 			game.view.consume(game.combat.events)
 			await process_frame

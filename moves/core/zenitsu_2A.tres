@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="DuelMove" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+display_name = "下段轻斩"
+kind = "light"
+level = "low"
+startup = 5
+active = 3
+recovery = 11
+damage = 40
+hitstun = 25
+blockstun = 11
+hitstop = 4
+push = 0.55
+stance = "crouch"
+animation_id = "crouch_light"
+effect_id = "crouch_light"
+knockdown = false
+box = Rect2(7, -27, 44, 26)
+cancel_targets = PackedStringArray("light", "heavy", "skill", "super", "max")
+id = "zenitsu_2A"

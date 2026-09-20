@@ -1,6 +1,8 @@
 extends RefCounted
 const Character = preload("res://scripts/presentation/character_visual.gd")
 const Stage = preload("res://scripts/presentation/stage_visual.gd")
+const CombatData = preload("res://scripts/combat_catalog.gd")
+var data := CombatData.new()
 var characters: Dictionary = {}
 var stage := Stage.new()
 var body_font: Font
@@ -9,17 +11,20 @@ var title_font: Font
 func _init() -> void:
 	body_font = _font("res://art/fonts/NotoSansSC-ui.ttf", "Microsoft YaHei UI", 450)
 	title_font = _font("res://art/fonts/NotoSerifSC-title.ttf", "KaiTi", 700)
-	var water := Character.new()
-	water.load_local_assets()
-	characters["tanjiro"] = water
-	var thunder := Character.new()
-	thunder.character_id = "zenitsu"
-	thunder.display_name = "我妻善逸"
-	thunder.epithet = "雷鸣一瞬，意志不息"
-	thunder.element_name = "雷之呼吸"
-	thunder.accent = Color("f0c578")
-	thunder.load_local_assets()
-	characters["zenitsu"] = thunder
+	for id in data.characters:
+		var definition = data.characters[id]
+		var visual := Character.new()
+		visual.character_id = id
+		visual.display_name = definition.display_name
+		visual.epithet = definition.epithet
+		visual.element_name = definition.element_name
+		visual.accent = definition.accent
+		visual.asset_directory = definition.visual_directory
+		for move in definition.all_moves():
+			if not move.clip_id() in visual.required_move_clips:
+				visual.required_move_clips.append(move.clip_id())
+		visual.load_local_assets()
+		characters[id] = visual
 	stage.load_local_assets()
 
 func _font(path: String, fallback: String, weight: int) -> Font:

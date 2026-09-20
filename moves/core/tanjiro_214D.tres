@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="DuelMove" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+display_name = "水之呼吸·陆之型 扭转漩涡·重"
+kind = "skill"
+startup = 15
+active = 14
+recovery = 30
+damage = 125
+hitstun = 34
+blockstun = 16
+hitstop = 6
+push = 0.6
+box = Rect2(-8, -55, 94, 49)
+cancel_targets = PackedStringArray("super", "max")
+cancel_window = 26
+animation_id = "water_wheel"
+travel = 1.6
+startup_travel = 0.0
+hit_frames = PackedInt32Array(15, 22)
+id = "tanjiro_214D"

@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="DuelMove" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+display_name = "空中轻体术"
+kind = "light"
+level = "high"
+startup = 5
+active = 3
+recovery = 11
+damage = 35
+hitstun = 25
+blockstun = 11
+hitstop = 4
+push = 0.55
+stance = "air"
+animation_id = "air_light"
+effect_id = "body"
+knockdown = false
+box = Rect2(7, -46, 35, 54)
+cancel_targets = PackedStringArray()
+id = "zenitsu_jB"

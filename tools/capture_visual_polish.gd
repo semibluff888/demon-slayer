@@ -38,14 +38,16 @@ func _run() -> void:
 					held.x = -1 if scenario == "dash_back" else 1
 				elif scenario in ["jump_forward", "jump_back", "air_light", "air_heavy"]:
 					if tick == 12:
-						held.jump = true
+						held.y = -1
 						held.x = -1 if scenario == "jump_back" else 1
 					if tick == 27:
-						held.light = scenario == "air_light"
-						held.heavy = scenario == "air_heavy"
-				elif scenario == "forward_skill" and tick == 12:
-					held.x = 1
-					held.skill = true
+						held.buttons = 1 if scenario == "air_light" else (4 if scenario == "air_heavy" else 0)
+				elif scenario == "forward_skill" and tick in [10, 11, 12]:
+					var motion := "623" if character == "tanjiro" else "236"
+					var direction := int(motion[tick - 10])
+					held.x = (direction - 1) % 3 - 1
+					held.y = 1 - int((direction - 1) / 3)
+					held.buttons = 1 if tick == 12 else 0
 				game.combat.step([router.command_from_held(0, held), Combat.neutral()])
 				game.view.consume(game.combat.events)
 				await process_frame
