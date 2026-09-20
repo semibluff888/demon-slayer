@@ -1,4 +1,7 @@
 extends Node2D
+const Arena = preload("res://scripts/arena_rules.gd")
+const IDLE_BREATH_SECONDS: float = 3.2
+const IDLE_BREATH_AMOUNT: float = 0.003
 var fighter: RefCounted
 var visual: Resource
 var combat: RefCounted
@@ -75,8 +78,16 @@ func sync(delta: float, freeze_pose: bool) -> void:
 func _clip() -> String:
 	if combat.phase == "match_end" and combat.match_winner == fighter.slot:
 		return "victory"
+	if fighter.throw_role == "thrower":
+		return "throw_success"
+	if fighter.throw_role == "victim" or (fighter.state == "knockdown" and fighter.throw_frame >= Arena.THROW_IMPACT_TICK):
+		return "thrown"
 	if fighter.move != null:
 		return fighter.move.id
+	if fighter.state == "dash":
+		return "dash_back" if fighter.dash_back else "dash_forward"
+	if fighter.state == "air" and fighter.flip_jump and not fighter.air_used_move:
+		return "jump_back" if fighter.jump_back else "jump_forward"
 	if landing_ticks > 0 and fighter.state == "idle":
 		return "jump"
 	match fighter.state:
@@ -90,6 +101,19 @@ func _clip() -> String:
 
 func _frame_index() -> int:
 	var count: int = visual.frames.get_frame_count(clip)
+	# Hold the relaxed drawing; the other idle poses shift the cloth and weight sharply.
+	# Smooth breathing below is anchored at the feet and freezes with the pose clock.
+	if clip == "idle":
+		return 0
+	if clip in ["throw_success", "thrown"]:
+		if fighter.throw_frame >= Arena.THROW_IMPACT_TICK:
+			return mini(count - 1, 8 + int((fighter.throw_frame - Arena.THROW_IMPACT_TICK) / 3))
+		return mini(7, int(fighter.throw_frame / 20.0 * 8))
+	if clip in ["dash_forward", "dash_back"]:
+		var duration: int = Arena.DASH_BACK_TICKS if fighter.dash_back else Arena.DASH_FORWARD_TICKS
+		return mini(count - 1, int((fighter.dash_frame - 1) * float(count) / duration))
+	if clip in ["jump_forward", "jump_back"]:
+		return mini(count - 1, int(fighter.air_ticks * float(count) / 37))
 	if fighter.move != null and clip == fighter.move.id:
 		var cuts: Array = visual.phases.get(clip, [maxi(1, count / 3), maxi(2, count * 2 / 3)])
 		var first := clampi(int(cuts[0]), 1, count)
@@ -103,6 +127,8 @@ func _frame_index() -> int:
 	if clip == "jump":
 		if fighter.grounded:
 			return mini(count - 1, 4 if fighter.state == "landing" or landing_ticks > 3 else 5)
+		if fighter.air_used_move:
+			return mini(count - 1, 3)
 		if fighter.vy < -5:
 			return mini(count - 1, 1)
 		return mini(count - 1, 2 if fighter.vy < 2 else 3)
@@ -116,15 +142,20 @@ func _frame_index() -> int:
 func visual_bounds() -> Rect2:
 	if texture == null or visual == null:
 		return Rect2(-36, -84, 72, 84)
-	var factor: float = visual.canonical_height / visual.source_height
+	var factor: Vector2 = _pose_scale() * visual.canonical_height / visual.source_height
 	var bounds := Rect2(Vector2.ZERO, texture.get_size())
 	if texture is AtlasTexture:
 		bounds = Rect2(texture.margin.position, texture.region.size)
 	bounds.position = (bounds.position - visual.feet_anchor) * factor
 	bounds.size *= factor
-	if fighter.facing < 0:
+	if pose_facing() < 0:
 		bounds.position.x = -bounds.end.x
 	return bounds
+
+func _pose_scale() -> Vector2:
+	if clip == "idle":
+		return Vector2(1, 1 + sin(clock_ticks / 60.0 * TAU / IDLE_BREATH_SECONDS) * IDLE_BREATH_AMOUNT)
+	return Vector2.ONE
 
 func _draw() -> void:
 	if fighter == null:
@@ -134,8 +165,9 @@ func _draw() -> void:
 		for ghost: Dictionary in afterimages:
 			draw_set_transform(Vector2(ghost.x - fighter.x, ghost.y - fighter.y), 0, Vector2(ghost.facing, 1))
 			draw_texture_rect(ghost.texture, Rect2(-visual.feet_anchor * factor, ghost.texture.get_size() * factor), false, Color(1, 0.8, 0.35, ghost.life * 2.0))
-		draw_set_transform(Vector2.ZERO, 0, Vector2(fighter.facing, 1))
-		var rect := Rect2(-visual.feet_anchor * factor, texture.get_size() * factor)
+		draw_set_transform(Vector2.ZERO, 0, Vector2(pose_facing(), 1))
+		var pose_factor := _pose_scale() * factor
+		var rect := Rect2(-visual.feet_anchor * pose_factor, texture.get_size() * pose_factor)
 		# A restrained rim distinguishes mirrors without recoloring the costume.
 		if combat.fighters[0].character == combat.fighters[1].character:
 			for offset in [Vector2(-0.45, 0), Vector2(0.45, 0)]:
@@ -144,3 +176,10 @@ func _draw() -> void:
 		draw_set_transform(Vector2.ZERO)
 	if show_player_mark:
 		draw_colored_polygon(PackedVector2Array([Vector2(-2, 3), Vector2(2, 3), Vector2(0, 5)]), player_accent)
+
+func pose_facing() -> int:
+	if clip in ["throw_success", "thrown"]:
+		return fighter.throw_facing
+	if clip in ["jump_forward", "jump_back"]:
+		return fighter.jump_facing
+	return fighter.facing

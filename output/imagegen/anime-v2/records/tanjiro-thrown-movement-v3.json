@@ -1,0 +1,29 @@
+{
+  "id": "tanjiro-thrown-movement-v3",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "3072x2304",
+  "route": "CPA via bundled image_gen.py",
+  "started_utc": "2026-09-20T02:16:52.3299052Z",
+  "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-thrown-movement-v3.txt",
+  "output": "output\\imagegen\\anime-v2\\raw\\tanjiro-thrown-movement-v3.png",
+  "references": [
+    "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png",
+    "output\\imagegen\\anime-v2\\raw\\tanjiro-idle-v2.png"
+  ],
+  "price_verified": false,
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-09-20T02:17:39.9572109Z",
+  "actual_size": [
+    1448,
+    1086
+  ],
+  "sha256": "ef6e0b1abf50b2ba74decadd49f872c22936119f5430ca91fd37f21c758ebe72",
+  "review": {
+    "status": "accepted_for_movement_revision",
+    "reviewed_utc": "2026-09-20T03:03:14.989326+00:00",
+    "evidence": "artifacts/visual-acceptance.md"
+  }
+}

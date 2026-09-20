@@ -24,20 +24,35 @@ var buffer: String = ""
 var buffer_forward: bool = false
 var buffer_left: int = 0
 var jump_buffer: int = 0
+var dash_direction: int = 0
+var dash_request: int = 0
+var dash_frame: int = 0
+var dash_ticks: int = 0
+var dash_back: bool = false
+var air_ticks: int = 0
+var air_used_move: bool = false
+var jump_facing: int = 1
+var jump_back: bool = false
+var flip_jump: bool = false
+var throw_role: String = ""
+var throw_frame: int = 0
+var throw_facing: int = 1
 var combo: int = 0
 var combo_display: int = 0
 
 func hurtbox() -> Rect2:
-	if state == "knockdown" or hp <= 0:
+	if state == "knockdown" or hp <= 0 or not throw_role.is_empty():
 		return Rect2()
 	var height := 34.0 if crouching and grounded else 57.0
 	return Rect2(x - 12, y - height, 24, height)
 
 func pushbox() -> Rect2:
+	if not throw_role.is_empty():
+		return Rect2()
 	return Rect2(x - 13, y - 44, 26, 44)
 
 func hitbox() -> Rect2:
-	if move == null or move_frame < move.startup or move_frame >= move.startup + move.active:
+	if not throw_role.is_empty() or move == null or move_frame < move.startup or move_frame >= move.startup + move.active:
 		return Rect2()
 	var rect: Rect2 = move.box
 	if facing < 0:

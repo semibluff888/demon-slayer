@@ -6,5 +6,345 @@
   "zenitsu-crouch_heavy-v2": {
     "standing_height": 550,
     "note": "Single clip scale matched to the existing idle head/hand anatomy; all six low sweep poses share this physical scale."
+  },
+  "tanjiro-idle-v2": {
+    "standing_height": 476.16,
+    "note": "Idle-referenced clip-wide anatomy calibration; no pose-dependent scaling."
+  },
+  "tanjiro-walk-v2": {
+    "standing_height": 440.888889,
+    "note": "Compared head, hand and limb proportions with the relaxed idle key pose at identical canvas scale. One fixed anatomical scale for all frames; crouch and somersault silhouettes stay naturally compressed.",
+    "anatomy_revision": "visual-polish-v4",
+    "review_scale_correction": 1.08
+  },
+  "tanjiro-walk_back": {
+    "standing_height": 453.485714,
+    "note": "Compared head, hand and limb proportions with the relaxed idle key pose at identical canvas scale. One fixed anatomical scale for all frames; crouch and somersault silhouettes stay naturally compressed.",
+    "anatomy_revision": "visual-polish-v4",
+    "review_scale_correction": 1.05
+  },
+  "tanjiro-crouch": {
+    "standing_height": 777.48,
+    "note": "Idle-referenced clip-wide anatomy calibration; no pose-dependent scaling."
+  },
+  "tanjiro-jump": {
+    "standing_height": 501.221053,
+    "note": "Compared head, hand and limb proportions with the relaxed idle key pose at identical canvas scale. One fixed anatomical scale for all frames; crouch and somersault silhouettes stay naturally compressed.",
+    "anatomy_revision": "visual-polish-v4",
+    "review_scale_correction": 0.95
+  },
+  "tanjiro-guard": {
+    "standing_height": 777.48,
+    "note": "Idle-referenced clip-wide anatomy calibration; no pose-dependent scaling."
+  },
+  "tanjiro-guard_low": {
+    "standing_height": 809.875,
+    "note": "Idle-referenced clip-wide anatomy calibration; no pose-dependent scaling."
+  },
+  "tanjiro-hit": {
+    "standing_height": 504.99,
+    "note": "Idle-referenced clip-wide anatomy calibration; no pose-dependent scaling."
+  },
+  "tanjiro-knockdown": {
+    "standing_height": 476.16,
+    "note": "Idle-referenced clip-wide anatomy calibration; no pose-dependent scaling."
+  },
+  "tanjiro-throw-movement-v3": {
+    "standing_height": 476.16,
+    "root_fraction": 0.5,
+    "note": "Registered against existing idle head/hand/limb proportions; one fixed scale across the entire clip. Rotating poses use a pelvis root."
+  },
+  "tanjiro-victory": {
+    "standing_height": 476.16,
+    "note": "Idle-referenced clip-wide anatomy calibration; no pose-dependent scaling."
+  },
+  "tanjiro-stand_light": {
+    "standing_height": 476.16,
+    "note": "Idle-referenced clip-wide anatomy calibration; no pose-dependent scaling."
+  },
+  "tanjiro-stand_heavy": {
+    "standing_height": 504.99,
+    "note": "Idle-referenced clip-wide anatomy calibration; no pose-dependent scaling."
+  },
+  "tanjiro-crouch_light": {
+    "standing_height": 541.0909090909091,
+    "note": "Idle-referenced clip-wide anatomy calibration; no pose-dependent scaling."
+  },
+  "tanjiro-air_light": {
+    "standing_height": 517.565217,
+    "note": "Compared head, hand and limb proportions with the relaxed idle key pose at identical canvas scale. One fixed anatomical scale for all frames; crouch and somersault silhouettes stay naturally compressed.",
+    "anatomy_revision": "visual-polish-v4",
+    "review_scale_correction": 0.92
+  },
+  "tanjiro-air_heavy": {
+    "standing_height": 512.0,
+    "note": "Compared head, hand and limb proportions with the relaxed idle key pose at identical canvas scale. One fixed anatomical scale for all frames; crouch and somersault silhouettes stay naturally compressed.",
+    "anatomy_revision": "visual-polish-v4",
+    "review_scale_correction": 0.93
+  },
+  "tanjiro-water_slash": {
+    "standing_height": 425.0515463917526,
+    "note": "Idle-referenced clip-wide anatomy calibration; no pose-dependent scaling."
+  },
+  "tanjiro-water_wheel": {
+    "standing_height": 375.091575,
+    "note": "Compared head, hand and limb proportions with the relaxed idle key pose at identical canvas scale. One fixed anatomical scale for all frames; crouch and somersault silhouettes stay naturally compressed.",
+    "anatomy_revision": "visual-polish-v4",
+    "review_scale_correction": 0.93
+  },
+  "tanjiro-dash_forward-movement-v3": {
+    "standing_height": 444.297521,
+    "root_fraction": 0.5,
+    "note": "Compared head, hand and limb proportions with the relaxed idle key pose at identical canvas scale. One fixed anatomical scale for all frames; crouch and somersault silhouettes stay naturally compressed.",
+    "anatomy_revision": "visual-polish-v4",
+    "review_scale_correction": 1.21
+  },
+  "tanjiro-dash_back-movement-v3": {
+    "standing_height": 484.324324,
+    "root_fraction": 0.5,
+    "note": "Compared head, hand and limb proportions with the relaxed idle key pose at identical canvas scale. One fixed anatomical scale for all frames; crouch and somersault silhouettes stay naturally compressed.",
+    "anatomy_revision": "visual-polish-v4",
+    "review_scale_correction": 1.11
+  },
+  "tanjiro-jump_forward-movement-v3": {
+    "standing_height": 442.368,
+    "root_fraction": 0.5,
+    "note": "Compared head, hand and limb proportions with the relaxed idle key pose at identical canvas scale. One fixed anatomical scale for all frames; crouch and somersault silhouettes stay naturally compressed.",
+    "pelvis": {
+      "0": [
+        0.36,
+        0.55
+      ],
+      "1": [
+        0.39,
+        0.54
+      ],
+      "2": [
+        0.48,
+        0.48
+      ],
+      "3": [
+        0.57,
+        0.42
+      ],
+      "4": [
+        0.51,
+        0.38
+      ],
+      "5": [
+        0.51,
+        0.45
+      ],
+      "6": [
+        0.49,
+        0.53
+      ],
+      "7": [
+        0.6,
+        0.62
+      ]
+    },
+    "anatomy_revision": "visual-polish-v4",
+    "review_scale_correction": 1.25
+  },
+  "tanjiro-jump_back-movement-v3": {
+    "standing_height": 423.225,
+    "root_fraction": 0.5,
+    "note": "Compared head, hand and limb proportions with the relaxed idle key pose at identical canvas scale. One fixed anatomical scale for all frames; crouch and somersault silhouettes stay naturally compressed.",
+    "anatomy_revision": "visual-polish-v4",
+    "review_scale_correction": 1.6
+  },
+  "tanjiro-throw_success-movement-v3": {
+    "standing_height": 388.74,
+    "root_fraction": 0.5,
+    "note": "Registered against existing idle head/hand/limb proportions; one fixed scale across the entire clip. Rotating poses use a pelvis root.",
+    "mirror_frames": [
+      4,
+      7,
+      8,
+      9
+    ]
+  },
+  "tanjiro-thrown-movement-v3": {
+    "standing_height": 358.38,
+    "root_fraction": 0.5,
+    "note": "Registered against existing idle head/hand/limb proportions; one fixed scale across the entire clip. Rotating poses use a pelvis root.",
+    "pelvis": {
+      "0": [
+        0.52,
+        0.65
+      ],
+      "1": [
+        0.6,
+        0.65
+      ],
+      "2": [
+        0.52,
+        0.67
+      ],
+      "3": [
+        0.64,
+        0.68
+      ],
+      "4": [
+        0.64,
+        0.37
+      ],
+      "5": [
+        0.55,
+        0.52
+      ],
+      "6": [
+        0.49,
+        0.51
+      ],
+      "7": [
+        0.53,
+        0.42
+      ],
+      "8": [
+        0.59,
+        0.52
+      ],
+      "9": [
+        0.56,
+        0.56
+      ],
+      "10": [
+        0.55,
+        0.69
+      ],
+      "11": [
+        0.55,
+        0.76
+      ]
+    }
+  },
+  "zenitsu-idle": {
+    "standing_height": 476.16,
+    "note": "Idle-referenced clip-wide anatomy calibration; no pose-dependent scaling."
+  },
+  "zenitsu-walk": {
+    "standing_height": 476.16,
+    "note": "Idle-referenced clip-wide anatomy calibration; no pose-dependent scaling."
+  },
+  "zenitsu-walk_back": {
+    "standing_height": 476.16,
+    "note": "Idle-referenced clip-wide anatomy calibration; no pose-dependent scaling."
+  },
+  "zenitsu-crouch": {
+    "standing_height": 777.48,
+    "note": "Idle-referenced clip-wide anatomy calibration; no pose-dependent scaling."
+  },
+  "zenitsu-jump": {
+    "standing_height": 517.565217,
+    "note": "Compared head, hand and limb proportions with the relaxed idle key pose at identical canvas scale. One fixed anatomical scale for all frames; crouch and somersault silhouettes stay naturally compressed.",
+    "anatomy_revision": "visual-polish-v4",
+    "review_scale_correction": 0.92
+  },
+  "zenitsu-guard": {
+    "standing_height": 777.48,
+    "note": "Idle-referenced clip-wide anatomy calibration; no pose-dependent scaling."
+  },
+  "zenitsu-guard_low": {
+    "standing_height": 801.5257731958764,
+    "note": "Idle-referenced clip-wide anatomy calibration; no pose-dependent scaling."
+  },
+  "zenitsu-hit": {
+    "standing_height": 714.24,
+    "note": "Idle-referenced clip-wide anatomy calibration; no pose-dependent scaling."
+  },
+  "zenitsu-knockdown": {
+    "standing_height": 476.16,
+    "note": "Idle-referenced clip-wide anatomy calibration; no pose-dependent scaling."
+  },
+  "zenitsu-throw-movement-v3": {
+    "standing_height": 476.16,
+    "root_fraction": 0.5,
+    "note": "Registered against existing idle head/hand/limb proportions; one fixed scale across the entire clip. Rotating poses use a pelvis root."
+  },
+  "zenitsu-victory": {
+    "standing_height": 476.16,
+    "note": "Idle-referenced clip-wide anatomy calibration; no pose-dependent scaling."
+  },
+  "zenitsu-stand_light": {
+    "standing_height": 476.16,
+    "note": "Idle-referenced clip-wide anatomy calibration; no pose-dependent scaling."
+  },
+  "zenitsu-stand_heavy": {
+    "standing_height": 476.16,
+    "note": "Idle-referenced clip-wide anatomy calibration; no pose-dependent scaling."
+  },
+  "zenitsu-crouch_light-r1": {
+    "standing_height": 506.5531914893618,
+    "note": "Idle-referenced clip-wide anatomy calibration; no pose-dependent scaling."
+  },
+  "zenitsu-air_light": {
+    "standing_height": 541.090909,
+    "note": "Compared head, hand and limb proportions with the relaxed idle key pose at identical canvas scale. One fixed anatomical scale for all frames; crouch and somersault silhouettes stay naturally compressed.",
+    "anatomy_revision": "visual-polish-v4",
+    "review_scale_correction": 0.88
+  },
+  "zenitsu-air_heavy": {
+    "standing_height": 440.888889,
+    "note": "Compared head, hand and limb proportions with the relaxed idle key pose at identical canvas scale. One fixed anatomical scale for all frames; crouch and somersault silhouettes stay naturally compressed.",
+    "anatomy_revision": "visual-polish-v4",
+    "review_scale_correction": 1.08
+  },
+  "zenitsu-iai": {
+    "standing_height": 359.42029,
+    "note": "Compared head, hand and limb proportions with the relaxed idle key pose at identical canvas scale. One fixed anatomical scale for all frames; crouch and somersault silhouettes stay naturally compressed.",
+    "anatomy_revision": "visual-polish-v4",
+    "review_scale_correction": 0.92
+  },
+  "zenitsu-thunder": {
+    "standing_height": 396.403596,
+    "note": "Compared head, hand and limb proportions with the relaxed idle key pose at identical canvas scale. One fixed anatomical scale for all frames; crouch and somersault silhouettes stay naturally compressed.",
+    "anatomy_revision": "visual-polish-v4",
+    "review_scale_correction": 0.88
+  },
+  "zenitsu-dash_forward-movement-v3": {
+    "standing_height": 467.478261,
+    "root_fraction": 0.5,
+    "note": "Compared head, hand and limb proportions with the relaxed idle key pose at identical canvas scale. One fixed anatomical scale for all frames; crouch and somersault silhouettes stay naturally compressed.",
+    "anatomy_revision": "visual-polish-v4",
+    "review_scale_correction": 1.15
+  },
+  "zenitsu-dash_back-movement-v3": {
+    "standing_height": 488.727273,
+    "root_fraction": 0.5,
+    "note": "Compared head, hand and limb proportions with the relaxed idle key pose at identical canvas scale. One fixed anatomical scale for all frames; crouch and somersault silhouettes stay naturally compressed.",
+    "anatomy_revision": "visual-polish-v4",
+    "review_scale_correction": 1.1
+  },
+  "zenitsu-jump_forward-movement-v3": {
+    "standing_height": 460.8,
+    "root_fraction": 0.5,
+    "note": "Compared head, hand and limb proportions with the relaxed idle key pose at identical canvas scale. One fixed anatomical scale for all frames; crouch and somersault silhouettes stay naturally compressed.",
+    "anatomy_revision": "visual-polish-v4",
+    "review_scale_correction": 1.2
+  },
+  "zenitsu-jump_back-movement-v3": {
+    "standing_height": 460.8,
+    "root_fraction": 0.5,
+    "note": "Compared head, hand and limb proportions with the relaxed idle key pose at identical canvas scale. One fixed anatomical scale for all frames; crouch and somersault silhouettes stay naturally compressed.",
+    "anatomy_revision": "visual-polish-v4",
+    "review_scale_correction": 1.2
+  },
+  "zenitsu-throw_success-movement-v3": {
+    "standing_height": 388.74,
+    "root_fraction": 0.5,
+    "note": "Registered against existing idle head/hand/limb proportions; one fixed scale across the entire clip. Rotating poses use a pelvis root.",
+    "mirror_frames": [
+      4,
+      7,
+      8,
+      9
+    ]
+  },
+  "zenitsu-thrown-movement-v3": {
+    "standing_height": 358.38,
+    "root_fraction": 0.5,
+    "note": "Registered against existing idle head/hand/limb proportions; one fixed scale across the entire clip. Rotating poses use a pelvis root."
   }
 }

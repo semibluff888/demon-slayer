@@ -102,6 +102,10 @@ def vertical_mask(size, start, end, reverse=False):
     return mask
 
 def stages():
+    if (RAW / 'wisteria-continuous-v4.png').exists():
+        from build_movement_art import extended_stage
+        extended_stage()
+        return
     required = ['wisteria-master', 'wisteria-sky', 'wisteria-canopy', 'wisteria-foreground']
     if not all((RAW / (name + '.png')).exists() for name in required):
         return
@@ -234,8 +238,19 @@ def process_clip(job, calibration):
         measured_contact = foot_anchor(frame, bbox)
         # A planted-foot midpoint jumps whenever the trailing foot lifts. Keep the
         # horizontal root fixed to the source cell; only ground contact sets Y.
-        root_x = (i % columns + config.get('root_fraction', 0.42)) * cell_w - crop[0]
-        foot = config.get('feet', {}).get(str(i), (root_x, measured_contact[1]))
+        root_x = (i % columns + config.get('root_fraction', meta.get('root_fraction', 0.42))) * cell_w - crop[0]
+        anchor_mode = meta.get('anchor_mode', 'feet')
+        if anchor_mode == 'pelvis':
+            # Anatomical root, not the moving bottom of a rotating silhouette.
+            pelvis = config.get('pelvis', {}).get(str(i), [0.5, 0.55])
+            root_x = (i % columns + pelvis[0]) * cell_w - crop[0]
+            root_y = (i // columns + pelvis[1]) * cell_h - crop[1]
+            foot = (root_x, root_y + (34.0 / 70.0) * source_standing)
+            # The final victim frames are grounded on their back.
+            if meta['clip'] == 'thrown' and i >= 8:
+                foot = (root_x, measured_contact[1])
+        else:
+            foot = config.get('feet', {}).get(str(i), (root_x, measured_contact[1]))
         # Sheet margins stay outside the packed runtime texture. Same scale for ALL poses.
         frame = frame.crop(bbox)
         scaled = frame.resize((max(1, round(frame.width*scale)), max(1, round(frame.height*scale))), Image.Resampling.LANCZOS)
@@ -244,13 +259,21 @@ def process_clip(job, calibration):
             raise ValueError('Clipped artwork: {} frame {} at {} size {}'.format(job['id'], i, at, scaled.size))
         canvas = Image.new('RGBA', CANVAS)
         canvas.alpha_composite(scaled, at)
+        if i in config.get('mirror_frames', []):
+            # Register a turning thrower's leftward release to the shared back-throw path.
+            from PIL import ImageOps
+            mirrored = ImageOps.mirror(canvas)
+            shifted = Image.new('RGBA', CANVAS)
+            shifted.alpha_composite(mirrored, (2*ANCHOR[0]-CANVAS[0], 0))
+            canvas = shifted
         frames.append(canvas)
         entries.append(dict(source=job['out'], crop=crop, measured_feet=foot, silhouette_contact=measured_contact, scale=scale,
-                            normalized_bounds=list(canvas.getbbox()), source_cell_size=[cell_w, cell_h]))
+                            normalized_bounds=list(canvas.getbbox()), source_cell_size=[cell_w, cell_h], anchor_mode=anchor_mode))
     save_json(OUT / 'imports' / (job['id'] + '.json'), dict(standing_height=source_standing, canvas_size=CANVAS, feet_anchor=ANCHOR, frames=entries))
     return frames
 
 def previews(character, clips):
+    REVIEW.mkdir(parents=True, exist_ok=True)
     # Full motion preview and chronological contact sheets are separate QA surfaces.
     font = ImageFont.load_default()
     index_rows = []
@@ -293,7 +316,9 @@ def pack(character, clips):
     for clip, info in clips.items():
         count = len(info['images'])
         atlas['clips'][clip] = dict(loop=info['meta']['loop'], fps=info['meta']['fps'],
-                                   phase_breaks=[count//3, count*2//3], frames=[None]*count)
+                                   phase_breaks=[count//3, count*2//3], frames=[None]*count,
+                                   anchor_mode=info['meta'].get('anchor_mode','feet'),
+                                   timeline=([0,3,5,8,10,13,15,18,20,23,26,29] if clip in ('throw_success','thrown') else []))
         for i, image in enumerate(info['images']):
             bbox = image.getbbox()
             sprites.append((clip, i, image.crop(bbox), bbox[:2]))
@@ -326,12 +351,14 @@ def animations(only=None):
         if only and character != only:
             continue
         clips = {}
+        latest = {}
         for job in jobs:
             if job['metadata'].get('character') != character or job['group'] == 'failed-attempts' or not (ROOT / job['out']).exists():
                 continue
             record = load_json(OUT / 'records' / (job['id'] + '.json'), {})
-            if record.get('status') != 'generated':
-                continue
+            if record.get('status') == 'generated':
+                latest[job['metadata']['clip']] = job
+        for job in latest.values():
             frames = process_clip(job, calibration)
             clips[job['metadata']['clip']] = dict(images=frames, meta=job['metadata'])
         if clips:

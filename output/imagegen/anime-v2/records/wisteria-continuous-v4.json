@@ -1,0 +1,29 @@
+{
+  "id": "wisteria-continuous-v4",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "3840x1280",
+  "route": "CPA via bundled image_gen.py",
+  "started_utc": "2026-09-20T04:08:28.9439294Z",
+  "prompt": "output/imagegen/anime-v2/prompts/wisteria-continuous-v4.txt",
+  "output": "output/imagegen/anime-v2/raw/wisteria-continuous-v4.png",
+  "references": [
+    "output/imagegen/anime-v2/references/wisteria-continuous-v4.png"
+  ],
+  "price_verified": false,
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-09-20T04:09:07.8657311Z",
+  "actual_size": [
+    2172,
+    724
+  ],
+  "sha256": "071480a980c3c3b3118dec1a2fd7feaaf1e9f51ec99389048340b846f19a72c1",
+  "review": {
+    "status": "accepted_for_visual_polish_v4",
+    "reviewed_utc": "2026-09-20T04:27:22.743233+00:00",
+    "evidence": "artifacts/visual-polish/review.md",
+    "local_finish": "tools/build_continuous_stage.py"
+  }
+}

@@ -1,8 +1,44 @@
-.godot/
-artifacts/
-build/
-*.tmp
-.venv/
-output/font-sources/
-output/imagegen/raw/
+# Godot caches and exports. Keep .uid and per-asset .import sidecars in Git.
+/.godot/
+/.import/
+/.export/
+/build/
+/dist/
+/exports/
+
+# Local Python environments and caches.
+/.venv/
+/venv/
 __pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Reproducible captures, logs, review images and temporary files.
+/artifacts/
+/tmp/
+/output/imagegen/anime-v2/review/
+/output/font-sources/
+/output/imagegen/raw/
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+*~
+
+# Machine-local environment files; keep shareable examples.
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+
+# OS metadata.
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Intentionally tracked: art/, anime-v2/raw/, prompts/, records/, imports/,
+# calibration, job/asset manifests and source references for offline rebuilds.

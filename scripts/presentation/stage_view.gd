@@ -1,26 +1,25 @@
 extends Node2D
-## Five local painted layers. Static surfaces are cached by Sprite2D, not redrawn as geometry.
+const Arena = preload("res://scripts/arena_rules.gd")
+## One continuous painting: moon, reflections, architecture and floor stay registered.
 var visual: Resource
 var camera: RefCounted
 var time: float = 0.0
 var menu_mode: bool = false
 var freeze: bool = false
 var layers: Array[Sprite2D] = []
-var lanterns: Array[Sprite2D] = []
 var atmosphere: Node2D
 var particles: Array[Dictionary] = []
 var glow: GradientTexture2D
 
 func _ready() -> void:
-	for i in range(5):
+	for i in range(visual.layers.size()):
 		var layer := Sprite2D.new()
 		layer.centered = false
 		if visual != null and i < visual.layers.size():
 			layer.texture = visual.layers[i]
 		if layer.texture != null:
-			layer.scale = Vector2(1408, 792) / layer.texture.get_size()
-		layer.position = Vector2(-64, -36)
-		layer.z_index = 12 if i == 4 else 0
+			layer.scale = visual.render_size / layer.texture.get_size()
+		layer.position = Vector2(640 - visual.render_size.x * 0.5, -36)
 		add_child(layer)
 		layers.append(layer)
 	var light := Gradient.new()
@@ -33,14 +32,6 @@ func _ready() -> void:
 	glow.fill_to = Vector2(1, 0.5)
 	glow.width = 128
 	glow.height = 128
-	for at in [Vector2(69, 395), Vector2(1202, 395)]:
-		var lantern := Sprite2D.new()
-		lantern.texture = glow
-		lantern.position = at
-		lantern.scale = Vector2(1.9, 1.8)
-		lantern.modulate = Color(1, 0.64, 0.3, 0.13)
-		add_child(lantern)
-		lanterns.append(lantern)
 	atmosphere = Node2D.new()
 	atmosphere.z_index = 13
 	atmosphere.draw.connect(_draw_atmosphere)
@@ -54,15 +45,7 @@ func _process(delta: float) -> void:
 	if freeze:
 		return
 	time += delta
-	var center: float = 320 if menu_mode or camera == null else camera.center_x
-	for i in range(layers.size()):
-		# Temple and floor share a transform so architectural contact never separates.
-		var factor: float = [0.04, 0.12, 0.22, 0.12, 0.28][i]
-		var shift := (center - 320) * factor
-		var drift := sin(time * 0.075) * (2.5 if i == 2 else 0.7) if menu_mode else 0.0
-		layers[i].position = Vector2(-64 - shift + drift, -36)
-	for i in range(lanterns.size()):
-		lanterns[i].modulate.a = 0.12 + sin(time * 1.4 + i * 1.8) * 0.018
+	sync_camera()
 	atmosphere.queue_redraw()
 
 func _draw_atmosphere() -> void:
@@ -79,4 +62,13 @@ func _draw_atmosphere() -> void:
 		atmosphere.draw_texture_rect(glow, Rect2(-140 + i * 502 + drift, 482 + i % 2 * 61, 802, 134), false, Color(0.52, 0.62, 0.85, 0.085))
 
 func draw_foreground(_canvas: Node2D) -> void:
-	pass # Foreground Sprite2D uses z_index=12 to avoid rebuilding an identical draw list.
+	pass # Foreground is painted into the continuous scene; no cutout overlays.
+
+func sync_camera() -> void:
+	if visual == null:
+		return
+	var center: float = Arena.CENTER if menu_mode or camera == null else camera.center_x
+	var shake: Vector2 = Vector2.ZERO if menu_mode or camera == null else camera.shake
+	var shift := (center - Arena.CENTER) * Arena.ZOOM
+	for i in range(layers.size()):
+		layers[i].position = Vector2(640 - visual.render_size.x * 0.5 - shift * visual.parallax_factors[i], -36) + shake

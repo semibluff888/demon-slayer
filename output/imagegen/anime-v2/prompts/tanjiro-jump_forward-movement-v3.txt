@@ -1,0 +1,17 @@
+Use case: stylized-concept
+Asset: animation sprites for the existing 2D fighting game.
+Premium Japanese anime fighting game production art. Beautiful sophisticated hand-drawn anime,
+precise dark ink contours, elegant normal human proportions (6.5 to 7 heads, NOT chibi),
+two-tone cel shading, refined expressive faces, richly detailed but consistent costume.
+Subtle cool moonlight rim from upper right, neutral soft key light. Colorful clear local colors.
+No photorealism, no 3D, no text, numbers, labels, logos, watermark, UI or ground shadow.
+Tanjiro Kamado from Demon Slayer: recognizable burgundy spiky swept hair, forehead scar,
+burgundy eyes, hanafuda earrings, green-and-black checkerboard haori over dark Demon Slayer uniform,
+white belt, pale calf wraps and dark sandals. One black Nichirin katana, black scabbard at left hip.
+Determined, compassionate youthful face. Keep checker squares the same scale in every frame.
+Image 1 is identity/costume reference; image 2 is the strict HEAD, HAND and LIMB PROPORTION reference. Match its anatomy; never chibi.
+Draw EXACTLY 8 separate full-body frames in an invisible regular 4-column by 2-row grid, chronological row-major order.
+Requested cells are 768 x 768. Unbent standing body height is 500 pixels, head approximately 72 pixels high in EVERY cell. Crouching and rotation NEVER enlarge the head or limbs.
+Keep entire hair, hands, feet, sword and scabbard separated from neighboring cells. Do not include a drawn floor, effects, labels or grid lines. Grounded pelvis x=50%%, feet baseline y=90%%.
+Motion: Eight phases of one CLOCKWISE FORWARD TUCKED SOMERSAULT when facing right: 1 launch rising upright, 2 tuck knees chest and lean head forward, 3 torso horizontal head right feet left, 4 fully upside down head below pelvis, 5 tucked horizontal head left feet right, 6 unfold through diagonal, 7 extend feet beneath hips for descent, 8 upright landing anticipation. Exactly one complete forward rotation, visibly upside down in frame 4. Sword safely sheathed. Keep PELVIS centered at 50% width / 55% height in EVERY cell; do not align rotating feet to a baseline.
+Pure uniform HOT MAGENTA #ff00ff backdrop across all empty pixels, no shadows or gradients. The ONLY figures are the 8 frames of this ONE character. Every pose distinct.

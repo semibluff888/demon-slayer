@@ -148,6 +148,7 @@ func set_paused(value: bool, reason: String = "") -> void:
 		return
 	paused = value
 	view.paused = value
+	router.reset(devices)
 	pause_reason = reason
 	gui.clear()
 	if not paused:

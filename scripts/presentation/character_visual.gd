@@ -14,11 +14,13 @@ extends Resource
 @export var source_height: float = 600.0
 @export var canonical_height: float = 70.0
 @export var phases: Dictionary = {}
+var clip_metadata: Dictionary = {}
 var art_ready: bool = false
 
 const REQUIRED_CLIPS: Array[String] = ["idle", "walk", "walk_back", "crouch", "jump",
 	"guard", "guard_low", "hit", "knockdown", "throw", "victory", "stand_light", "stand_heavy",
-	"crouch_light", "crouch_heavy", "air_light", "air_heavy"]
+	"crouch_light", "crouch_heavy", "air_light", "air_heavy",
+	"dash_forward", "dash_back", "jump_forward", "jump_back", "throw_success", "thrown"]
 
 func load_local_assets() -> void:
 	var directory := "res://art/characters/%s/" % character_id
@@ -39,6 +41,7 @@ func load_local_assets() -> void:
 	frames.remove_animation("default")
 	for clip: String in parsed.get("clips", {}):
 		var info: Dictionary = parsed.clips[clip]
+		clip_metadata[clip] = info
 		frames.add_animation(clip)
 		frames.set_animation_loop(clip, info.get("loop", false))
 		frames.set_animation_speed(clip, float(info.get("fps", 12)))

@@ -1,15 +1,18 @@
 """Validate real delivered artwork, packing and provenance without service access."""
 import hashlib
 import json
+import sys
 from pathlib import Path
 import unittest
 from PIL import Image, ImageChops
 
 ROOT = Path(__file__).resolve().parents[1]
+CHECK_PREVIEWS = False
 EXPECTED = {'idle':6, 'walk':8, 'walk_back':8, 'crouch':3, 'jump':6, 'guard':3,
             'guard_low':3, 'hit':4, 'knockdown':5, 'throw':6, 'victory':6,
             'stand_light':6, 'stand_heavy':6, 'crouch_light':6, 'crouch_heavy':6,
-            'air_light':6, 'air_heavy':6}
+            'air_light':6, 'air_heavy':6, 'dash_forward':8, 'dash_back':8,
+            'jump_forward':8, 'jump_back':8, 'throw_success':12, 'thrown':12}
 
 class ArtworkTests(unittest.TestCase):
     def test_all_clips_are_real_distinct_frames_and_fit_atlas(self):
@@ -19,7 +22,7 @@ class ArtworkTests(unittest.TestCase):
             expected = dict(EXPECTED)
             expected.update({'water_slash':9, 'water_wheel':9} if character == 'tanjiro' else {'iai':9, 'thunder':9})
             self.assertEqual(set(atlas['clips']), set(expected))
-            self.assertEqual(sum(len(c['frames']) for c in atlas['clips'].values()), 112)
+            self.assertEqual(sum(len(c['frames']) for c in atlas['clips'].values()), 168)
             pages = {}
             for clip, count in expected.items():
                 info = atlas['clips'][clip]
@@ -62,10 +65,6 @@ class ArtworkTests(unittest.TestCase):
             with Image.open(path / 'avatar.png') as avatar:
                 self.assertEqual(avatar.size, (192,192))
             for clip in list(EXPECTED)+(['water_slash','water_wheel'] if character=='tanjiro' else ['iai','thunder']):
-                with Image.open(ROOT/'output/imagegen/anime-v2/review'/(character+'-'+clip+'.gif')) as preview:
-                    self.assertTrue(preview.is_animated)
-                    self.assertEqual(preview.n_frames, EXPECTED.get(clip,9))
-                    self.assertGreater(preview.info.get('duration',0),0)
                 # Later targeted replacements are represented by their real imports.
                 candidates = list((ROOT/'output/imagegen/anime-v2/imports').glob(character+'-'+clip+'*.json'))
                 self.assertTrue(candidates, character+'/'+clip)
@@ -75,11 +74,28 @@ class ArtworkTests(unittest.TestCase):
                     self.assertEqual(len(scales),1,'A clip must use a single physical scale')
                     for frame in data['frames']:
                         self.assertTrue((ROOT/frame['source']).is_file())
-        for layer in ('sky','temple','wisteria','floor','foreground'):
+        stage = json.loads((ROOT/'art/stages/wisteria/stage.json').read_text(encoding='utf-8'))
+        self.assertEqual(stage['layers'], ['panorama'])
+        self.assertEqual(stage['parallax'], [1.0])
+        self.assertEqual(hashlib.sha256((ROOT/stage['source']).read_bytes()).hexdigest(), stage['source_sha256'])
+        for layer in stage['layers']:
             with Image.open(ROOT/'art/stages/wisteria'/ (layer+'.png')) as image:
-                self.assertEqual(image.size, (2048,1152))
+                self.assertEqual(image.size, (4608,1152))
         for effect in ('water-slash','water-wheel','thunder','impact'):
             self.assertTrue((ROOT/'art/effects'/(effect+'.png')).is_file())
 
+    def test_generated_previews(self):
+        if not CHECK_PREVIEWS:
+            self.skipTest('Local previews are not versioned; rebuild art and pass --with-previews to validate them.')
+        for character in ('tanjiro','zenitsu'):
+            for clip in list(EXPECTED)+(['water_slash','water_wheel'] if character=='tanjiro' else ['iai','thunder']):
+                with Image.open(ROOT/'output/imagegen/anime-v2/review'/(character+'-'+clip+'.gif')) as preview:
+                    self.assertTrue(preview.is_animated)
+                    self.assertEqual(preview.n_frames, EXPECTED.get(clip,9))
+                    self.assertGreater(preview.info.get('duration',0),0)
+
 if __name__ == '__main__':
+    if '--with-previews' in sys.argv:
+        CHECK_PREVIEWS = True
+        sys.argv.remove('--with-previews')
     unittest.main(verbosity=2)

@@ -72,18 +72,18 @@ func _process(delta: float) -> void:
 		fighters[i].visible = battle
 	if not battle:
 		return
-	var artwork: Array[Rect2] = []
 	for i in range(2):
 		var f = combat.fighters[i]
 		fighters[i].fighter = f
 		fighters[i].visual = catalog.characters[f.character]
 		fighters[i].sync(delta, paused or combat.hitstop > 0)
-		artwork.append(fighters[i].visual_bounds())
 	if not paused:
-		camera.update(combat.fighters, delta, artwork)
+		camera.update(combat.fighters, delta)
 		camera.shake = Vector2(sin(time * 79), cos(time * 93)) * effects.trauma * 11
+	stage.sync_camera()
 	for i in range(2):
 		var f = combat.fighters[i]
+		fighters[i].z_index = 3 if f.throw_role == "victim" and f.throw_frame >= 8 else 2
 		fighters[i].position = camera.point(Vector2(f.x, f.y))
 		fighters[i].scale = Vector2.ONE * camera.zoom
 	hud.cpu = cpu

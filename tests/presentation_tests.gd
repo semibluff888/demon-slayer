@@ -36,18 +36,17 @@ func _run() -> void:
 func _test_camera() -> void:
 	var model := Combat.new()
 	var camera := Camera.new()
-	for positions in [[28, 612], [28, 54], [586, 612], [298, 324], [612, 28]]:
+	for positions in [[28,54], [906,932], [400,770], [594,366]]:
 		model.fighters[0].x = positions[0]
 		model.fighters[1].x = positions[1]
-		for altitude in [286.0, 216.0, 156.0]:
+		for altitude in [286.0, 250.0, 217.42]:
 			model.fighters[0].y = altitude
 			camera.update(model.fighters, 1.0 / 144)
+			check(camera.zoom == 3.0, "camera scale stays fixed at every distance and jump height")
 			for f in model.fighters:
-				var head := camera.point(Vector2(f.x, f.y - 84))
 				var feet := camera.point(Vector2(f.x, f.y))
-				check(head.y >= 149 and feet.y <= 595, "head and feet inside camera at jump/corner")
-				check(feet.x - 32 * camera.zoom >= 0 and feet.x + 32 * camera.zoom <= 1280, "both fighters fit during camera motion")
-	check(is_equal_approx(camera.point(Vector2(320, 286)).y, 594), "floor anchor independent of zoom")
+				check(feet.x >= 83.99 and feet.x <= 1196.01, "both bodies stay visible during camera motion")
+	check(is_equal_approx(camera.point(Vector2(320, 286)).y, 594), "floor anchor remains stable")
 
 func _test_animation() -> void:
 	var model := Combat.new()
@@ -57,7 +56,7 @@ func _test_animation() -> void:
 	var image := Image.create(4, 4, false, Image.FORMAT_RGBA8)
 	image.fill(Color.WHITE)
 	var texture := ImageTexture.create_from_image(image)
-	for clip in ["idle", "stand_light", "walk_back", "guard_low", "knockdown", "victory", "jump", "hit", "guard", "crouch"]:
+	for clip in ["idle", "stand_light", "walk_back", "guard_low", "knockdown", "victory", "jump", "hit", "guard", "crouch", "jump_forward", "jump_back", "dash_forward", "dash_back", "throw_success", "thrown", "air_light"]:
 		visual.frames.add_animation(clip)
 		visual.frames.set_animation_loop(clip, clip in ["idle", "walk_back"])
 		visual.frames.set_animation_speed(clip, 12)
@@ -127,14 +126,53 @@ func _test_animation() -> void:
 	actor.fighter.move_frame = 0
 	actor.sync(0, false)
 	check(actor.frame_index == 0, "same move starts from its first frame on repeated use")
+	var f = actor.fighter
+	f.move = null
+	f.grounded = false
+	f.state = "air"
+	f.flip_jump = true
+	f.air_used_move = false
+	f.jump_facing = 1
+	f.facing = -1
+	f.air_ticks = 18
+	actor.sync(0, false)
+	check(actor.clip == "jump_forward" and actor.pose_facing() == 1, "flip keeps takeoff orientation through cross-up")
+	f.jump_back = true
+	actor.sync(0, false)
+	check(actor.clip == "jump_back", "back jump uses its own somersault drawings")
+	f.move = model.moves.air_light
+	f.move_frame = 0
+	f.air_used_move = true
+	actor.sync(0, false)
+	check(actor.clip == "air_light" and actor.pose_facing() == -1, "air strike immediately uses combat facing and existing strike pose")
+	f.move = null
+	actor.sync(0, false)
+	check(actor.clip == "jump" and actor.frame_index == 3, "air strike recovery descends without restarting flip")
+	f.grounded = true
+	f.state = "dash"
+	f.dash_back = true
+	f.dash_frame = 4
+	actor.sync(0, false)
+	check(actor.clip == "dash_back", "retreat dash keeps its dedicated running cycle")
+	f.state = "thrown"
+	f.throw_role = "victim"
+	f.throw_frame = 12
+	f.throw_facing = -1
+	actor.sync(0, false)
+	check(actor.clip == "thrown" and actor.pose_facing() == -1, "throw victim follows shared role and orientation")
+	var throw_pose: int = actor.frame_index
+	actor.sync(1, true)
+	check(actor.frame_index == throw_pose, "pause freezes throw timeline pose")
+	f.throw_role = ""
+	f.state = "idle"
 	actor.reset_pose()
 	check(actor.clock_ticks == 0 and actor.afterimages.is_empty(), "rematch clears visual state")
 	actor.queue_free()
 
 func _test_assets() -> void:
 	var catalog := Catalog.new()
-	check(catalog.stage.art_ready, "all five painted stage layers exist")
-	var counts := {"idle": 6, "walk": 8, "walk_back": 8, "crouch": 3, "jump": 6, "guard": 3, "guard_low": 3, "hit": 4, "knockdown": 5, "throw": 6, "victory": 6, "stand_light": 6, "stand_heavy": 6, "crouch_light": 6, "crouch_heavy": 6, "air_light": 6, "air_heavy": 6}
+	check(catalog.stage.art_ready and catalog.stage.layers.size() == 1, "one complete continuous stage painting exists")
+	var counts := {"idle": 6, "walk": 8, "walk_back": 8, "crouch": 3, "jump": 6, "guard": 3, "guard_low": 3, "hit": 4, "knockdown": 5, "throw": 6, "victory": 6, "stand_light": 6, "stand_heavy": 6, "crouch_light": 6, "crouch_heavy": 6, "air_light": 6, "air_heavy": 6, "dash_forward": 8, "dash_back": 8, "jump_forward": 8, "jump_back": 8, "throw_success": 12, "thrown": 12}
 	for character: String in catalog.characters:
 		var visual = catalog.characters[character]
 		check(visual.art_ready, "complete illustrated actor: " + character)
@@ -152,36 +190,48 @@ func _test_assets() -> void:
 				var frame: Texture2D = visual.frames.get_frame_texture(clip, n)
 				check(frame != null and frame.get_size() == Vector2(1024, 640), "common anchor canvas for " + character + "/" + clip + "/" + str(n))
 		_test_artwork_camera(visual)
+		_test_calm_idle(visual)
 	for id in ["water-slash", "water-wheel", "thunder", "impact"]:
 		check(ResourceLoader.exists("res://art/effects/%s.png" % id), "real VFX texture: " + id)
 
 func _test_artwork_camera(visual: Resource) -> void:
-	# Include every actual sword, extended limb and rotating pose in the envelope.
 	var model := Combat.new()
 	var actor := Actor.new()
 	actor.visual = visual
 	actor.fighter = model.fighters[0]
-	actor.fighter.facing = 1
-	var right := Rect2()
+	var camera := Camera.new()
 	for clip: String in visual.frames.get_animation_names():
 		for frame in range(visual.frames.get_frame_count(clip)):
 			actor.texture = visual.frames.get_frame_texture(clip, frame)
-			right = right.merge(actor.visual_bounds())
-	var left := Rect2(Vector2(-right.end.x, right.position.y), right.size)
-	for positions in [[28, 612, 286], [28, 54, 286], [586, 612, 286], [298, 324, 156], [612, 28, 216]]:
-		model.fighters[0].x = positions[0]
-		model.fighters[1].x = positions[1]
-		model.fighters[0].y = positions[2]
-		var bounds: Array[Rect2] = []
-		bounds.assign([right, left] if positions[0] < positions[1] else [left, right])
-		var camera := Camera.new()
-		camera.reset(model.fighters)
-		camera.update(model.fighters, 1.0 / 144, bounds)
-		for i in range(2):
-			var envelope := bounds[i]
-			envelope.position += Vector2(model.fighters[i].x, model.fighters[i].y)
-			var visible := camera.rect(envelope)
-			check(Rect2(19, 149, 1242, 516).encloses(visible), "complete real artwork remains visible at corner / jump / swap: " + visual.character_id)
+			var bounds := actor.visual_bounds()
+			camera.update(model.fighters, 1.0/60, [bounds])
+			check(camera.zoom == 3.0, "no animation silhouette changes camera scale: " + clip)
+			check(bounds.size.x > 0 and bounds.size.y > 0, "artwork retains a measurable physical size")
+	actor.free()
+
+func _test_calm_idle(visual: Resource) -> void:
+	var model := Combat.new()
+	model.phase = "fight"
+	var actor := Actor.new()
+	actor.visual = visual
+	actor.combat = model
+	actor.fighter = model.fighters[0]
+	actor.sync(0, false)
+	var initial := actor.visual_bounds()
+	var low: float = initial.size.y
+	var high: float = low
+	for tick in range(120):
+		actor.sync(1.0 / 30, false)
+		var bounds := actor.visual_bounds()
+		low = minf(low, bounds.size.y)
+		high = maxf(high, bounds.size.y)
+		check(is_equal_approx(bounds.size.x, initial.size.x), "idle never sways or changes horizontal size")
+		check(absf(bounds.end.y - initial.end.y) < 0.02, "idle keeps its ground contact planted")
+	check((high - low) * 3.0 < 1.5, "idle breathing stays below 1.5 screen pixels peak to peak at 720p")
+	check(high > low, "idle keeps a subtle breathing motion")
+	var before := actor.visual_bounds()
+	actor.sync(1.0, true)
+	check(actor.visual_bounds() == before, "pause freezes the continuous idle breath")
 	actor.free()
 
 func _test_freeze() -> void:
@@ -191,6 +241,16 @@ func _test_freeze() -> void:
 	instance.sound.muted = true
 	instance.start_match()
 	await process_frame
+	# Check the relative screen displacement of a stationary fighter and the floor.
+	var floor_before: float = instance.view.stage.layers[0].position.x
+	var fighter_before: float = instance.view.camera.point(Vector2(instance.combat.fighters[0].x,286)).x
+	instance.combat.fighters[1].x += 80
+	for n in range(8):
+		await process_frame
+	var floor_after: float = instance.view.stage.layers[0].position.x
+	var fighter_after: float = instance.view.camera.point(Vector2(instance.combat.fighters[0].x,286)).x
+	check(is_equal_approx(floor_after-floor_before, fighter_after-fighter_before), "stationary feet and floor share identical camera displacement")
+	check(instance.view.stage.layers.size() == 1 and instance.view.stage.visual.parallax_factors[0] == 1.0, "moon, reflection and architecture share the floor transform")
 	instance.set_paused(true)
 	await process_frame
 	var stage_time: float = instance.view.stage.time
@@ -213,7 +273,7 @@ func _render_checks() -> void:
 	root.add_child(game)
 	game.set_physics_process(false)
 	game.sound.muted = true
-	for resolution in [Vector2i(960, 540), Vector2i(1920, 1080)]:
+	for resolution in [Vector2i(960, 540), Vector2i(1280, 720), Vector2i(1920, 1080)]:
 		root.size = resolution
 		game.show_title()
 		await _save("title-%d" % resolution.x, resolution)

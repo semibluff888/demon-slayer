@@ -1,0 +1,29 @@
+{
+  "id": "wisteria-left-movement-v3",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "1792x1152",
+  "route": "CPA via bundled image_gen.py",
+  "started_utc": "2026-09-20T02:22:43.3446056Z",
+  "prompt": "output\\imagegen\\anime-v2\\prompts\\wisteria-left-movement-v3.txt",
+  "output": "output\\imagegen\\anime-v2\\raw\\wisteria-left-movement-v3.png",
+  "references": [
+    "output\\imagegen\\anime-v2\\references\\wisteria-left-movement-v3.png",
+    "art/stages/wisteria/menu.jpg"
+  ],
+  "price_verified": false,
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-09-20T02:23:20.1303508Z",
+  "actual_size": [
+    1565,
+    1005
+  ],
+  "sha256": "0267e6ca620252aa9ad272ec42769f15799395840f9084894631b63942f2de41",
+  "review": {
+    "status": "accepted_for_movement_revision",
+    "reviewed_utc": "2026-09-20T03:03:14.989326+00:00",
+    "evidence": "artifacts/visual-acceptance.md"
+  }
+}

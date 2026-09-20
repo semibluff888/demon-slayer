@@ -1,0 +1,38 @@
+{
+  "revision": "visual-polish-v4",
+  "size": [
+    4608,
+    1152
+  ],
+  "world_width": 960,
+  "render_size": [
+    3168,
+    792
+  ],
+  "layers": [
+    "panorama"
+  ],
+  "parallax": [
+    1.0
+  ],
+  "source": "output/imagegen/anime-v2/raw/wisteria-continuous-v4.png",
+  "source_size": [
+    2172,
+    724
+  ],
+  "source_sha256": "071480a980c3c3b3118dec1a2fd7feaaf1e9f51ec99389048340b846f19a72c1",
+  "composition": "One continuous painting; one moon and aligned reflection; all surfaces share the world transform.",
+  "local_finish": {
+    "moon_from": [
+      1312,
+      161
+    ],
+    "moon_to": [
+      1312,
+      248
+    ],
+    "crop_top": 90,
+    "crop_height": 543,
+    "terrace_back_fraction": 0.72
+  }
+}

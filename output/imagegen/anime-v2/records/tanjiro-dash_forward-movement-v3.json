@@ -1,0 +1,29 @@
+{
+  "id": "tanjiro-dash_forward-movement-v3",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "3072x1536",
+  "route": "CPA via bundled image_gen.py",
+  "started_utc": "2026-09-20T02:12:21.0633720Z",
+  "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-dash_forward-movement-v3.txt",
+  "output": "output\\imagegen\\anime-v2\\raw\\tanjiro-dash_forward-movement-v3.png",
+  "references": [
+    "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png",
+    "output\\imagegen\\anime-v2\\raw\\tanjiro-idle-v2.png"
+  ],
+  "price_verified": false,
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-09-20T02:13:01.2187859Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "a44b47708e75bcbd770c4e7430438db3d5e4b6d1b87f79c39a1ae6df0795345a",
+  "review": {
+    "status": "accepted_for_movement_revision",
+    "reviewed_utc": "2026-09-20T03:03:14.989326+00:00",
+    "evidence": "artifacts/visual-acceptance.md"
+  }
+}

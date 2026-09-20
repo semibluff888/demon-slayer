@@ -960,5 +960,428 @@
       "loop": false,
       "fps": 12
     }
+  },
+  {
+    "id": "tanjiro-dash_forward-movement-v3",
+    "group": "movement-v3",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-dash_forward-movement-v3.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\tanjiro-dash_forward-movement-v3.png",
+    "size": "3072x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png",
+      "output\\imagegen\\anime-v2\\raw\\tanjiro-idle-v2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "dash_forward",
+      "count": 8,
+      "columns": 4,
+      "rows": 2,
+      "loop": true,
+      "fps": 24,
+      "anchor_mode": "feet",
+      "pelvis_fraction": [
+        0.5,
+        0.55
+      ],
+      "root_fraction": 0.5,
+      "standing_fraction": 0.6510416666666666
+    }
+  },
+  {
+    "id": "tanjiro-dash_back-movement-v3",
+    "group": "movement-v3",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-dash_back-movement-v3.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\tanjiro-dash_back-movement-v3.png",
+    "size": "3072x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png",
+      "output\\imagegen\\anime-v2\\raw\\tanjiro-idle-v2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "dash_back",
+      "count": 8,
+      "columns": 4,
+      "rows": 2,
+      "loop": true,
+      "fps": 24,
+      "anchor_mode": "feet",
+      "pelvis_fraction": [
+        0.5,
+        0.55
+      ],
+      "root_fraction": 0.5,
+      "standing_fraction": 0.6510416666666666
+    }
+  },
+  {
+    "id": "tanjiro-jump_forward-movement-v3",
+    "group": "movement-v3",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-jump_forward-movement-v3.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\tanjiro-jump_forward-movement-v3.png",
+    "size": "3072x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png",
+      "output\\imagegen\\anime-v2\\raw\\tanjiro-idle-v2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "jump_forward",
+      "count": 8,
+      "columns": 4,
+      "rows": 2,
+      "loop": false,
+      "fps": 16,
+      "anchor_mode": "pelvis",
+      "pelvis_fraction": [
+        0.5,
+        0.55
+      ],
+      "root_fraction": 0.5,
+      "standing_fraction": 0.6510416666666666
+    }
+  },
+  {
+    "id": "tanjiro-jump_back-movement-v3",
+    "group": "movement-v3",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-jump_back-movement-v3.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\tanjiro-jump_back-movement-v3.png",
+    "size": "3072x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png",
+      "output\\imagegen\\anime-v2\\raw\\tanjiro-idle-v2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "jump_back",
+      "count": 8,
+      "columns": 4,
+      "rows": 2,
+      "loop": false,
+      "fps": 16,
+      "anchor_mode": "pelvis",
+      "pelvis_fraction": [
+        0.5,
+        0.55
+      ],
+      "root_fraction": 0.5,
+      "standing_fraction": 0.6510416666666666
+    }
+  },
+  {
+    "id": "tanjiro-throw-movement-v3",
+    "group": "movement-v3",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-throw-movement-v3.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\tanjiro-throw-movement-v3.png",
+    "size": "2304x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png",
+      "output\\imagegen\\anime-v2\\raw\\tanjiro-idle-v2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "throw",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 16,
+      "anchor_mode": "feet",
+      "pelvis_fraction": [
+        0.5,
+        0.55
+      ],
+      "root_fraction": 0.5,
+      "standing_fraction": 0.6510416666666666
+    }
+  },
+  {
+    "id": "tanjiro-throw_success-movement-v3",
+    "group": "movement-v3",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-throw_success-movement-v3.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\tanjiro-throw_success-movement-v3.png",
+    "size": "3072x2304",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png",
+      "output\\imagegen\\anime-v2\\raw\\tanjiro-idle-v2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "throw_success",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 16,
+      "anchor_mode": "feet",
+      "pelvis_fraction": [
+        0.5,
+        0.55
+      ],
+      "root_fraction": 0.5,
+      "standing_fraction": 0.6510416666666666
+    }
+  },
+  {
+    "id": "tanjiro-thrown-movement-v3",
+    "group": "movement-v3",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-thrown-movement-v3.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\tanjiro-thrown-movement-v3.png",
+    "size": "3072x2304",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png",
+      "output\\imagegen\\anime-v2\\raw\\tanjiro-idle-v2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "thrown",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 16,
+      "anchor_mode": "pelvis",
+      "pelvis_fraction": [
+        0.5,
+        0.55
+      ],
+      "root_fraction": 0.5,
+      "standing_fraction": 0.6510416666666666
+    }
+  },
+  {
+    "id": "zenitsu-dash_forward-movement-v3",
+    "group": "movement-v3",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-dash_forward-movement-v3.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\zenitsu-dash_forward-movement-v3.png",
+    "size": "3072x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png",
+      "output\\imagegen\\anime-v2\\raw\\zenitsu-idle.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "dash_forward",
+      "count": 8,
+      "columns": 4,
+      "rows": 2,
+      "loop": true,
+      "fps": 24,
+      "anchor_mode": "feet",
+      "pelvis_fraction": [
+        0.5,
+        0.55
+      ],
+      "root_fraction": 0.5,
+      "standing_fraction": 0.6510416666666666
+    }
+  },
+  {
+    "id": "zenitsu-dash_back-movement-v3",
+    "group": "movement-v3",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-dash_back-movement-v3.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\zenitsu-dash_back-movement-v3.png",
+    "size": "3072x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png",
+      "output\\imagegen\\anime-v2\\raw\\zenitsu-idle.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "dash_back",
+      "count": 8,
+      "columns": 4,
+      "rows": 2,
+      "loop": true,
+      "fps": 24,
+      "anchor_mode": "feet",
+      "pelvis_fraction": [
+        0.5,
+        0.55
+      ],
+      "root_fraction": 0.5,
+      "standing_fraction": 0.6510416666666666
+    }
+  },
+  {
+    "id": "zenitsu-jump_forward-movement-v3",
+    "group": "movement-v3",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-jump_forward-movement-v3.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\zenitsu-jump_forward-movement-v3.png",
+    "size": "3072x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png",
+      "output\\imagegen\\anime-v2\\raw\\zenitsu-idle.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "jump_forward",
+      "count": 8,
+      "columns": 4,
+      "rows": 2,
+      "loop": false,
+      "fps": 16,
+      "anchor_mode": "pelvis",
+      "pelvis_fraction": [
+        0.5,
+        0.55
+      ],
+      "root_fraction": 0.5,
+      "standing_fraction": 0.6510416666666666
+    }
+  },
+  {
+    "id": "zenitsu-jump_back-movement-v3",
+    "group": "movement-v3",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-jump_back-movement-v3.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\zenitsu-jump_back-movement-v3.png",
+    "size": "3072x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png",
+      "output\\imagegen\\anime-v2\\raw\\zenitsu-idle.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "jump_back",
+      "count": 8,
+      "columns": 4,
+      "rows": 2,
+      "loop": false,
+      "fps": 16,
+      "anchor_mode": "pelvis",
+      "pelvis_fraction": [
+        0.5,
+        0.55
+      ],
+      "root_fraction": 0.5,
+      "standing_fraction": 0.6510416666666666
+    }
+  },
+  {
+    "id": "zenitsu-throw-movement-v3",
+    "group": "movement-v3",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-throw-movement-v3.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\zenitsu-throw-movement-v3.png",
+    "size": "2304x1536",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png",
+      "output\\imagegen\\anime-v2\\raw\\zenitsu-idle.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "throw",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 16,
+      "anchor_mode": "feet",
+      "pelvis_fraction": [
+        0.5,
+        0.55
+      ],
+      "root_fraction": 0.5,
+      "standing_fraction": 0.6510416666666666
+    }
+  },
+  {
+    "id": "zenitsu-throw_success-movement-v3",
+    "group": "movement-v3",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-throw_success-movement-v3.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\zenitsu-throw_success-movement-v3.png",
+    "size": "3072x2304",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png",
+      "output\\imagegen\\anime-v2\\raw\\zenitsu-idle.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "throw_success",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 16,
+      "anchor_mode": "feet",
+      "pelvis_fraction": [
+        0.5,
+        0.55
+      ],
+      "root_fraction": 0.5,
+      "standing_fraction": 0.6510416666666666
+    }
+  },
+  {
+    "id": "zenitsu-thrown-movement-v3",
+    "group": "movement-v3",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-thrown-movement-v3.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\zenitsu-thrown-movement-v3.png",
+    "size": "3072x2304",
+    "references": [
+      "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png",
+      "output\\imagegen\\anime-v2\\raw\\zenitsu-idle.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "thrown",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 16,
+      "anchor_mode": "pelvis",
+      "pelvis_fraction": [
+        0.5,
+        0.55
+      ],
+      "root_fraction": 0.5,
+      "standing_fraction": 0.6510416666666666
+    }
+  },
+  {
+    "id": "wisteria-left-movement-v3",
+    "group": "movement-stage-v3",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\wisteria-left-movement-v3.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\wisteria-left-movement-v3.png",
+    "size": "1792x1152",
+    "references": [
+      "output\\imagegen\\anime-v2\\references\\wisteria-left-movement-v3.png",
+      "art/stages/wisteria/menu.jpg"
+    ],
+    "metadata": {
+      "stage_extension": "left"
+    }
+  },
+  {
+    "id": "wisteria-right-movement-v3",
+    "group": "movement-stage-v3",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\wisteria-right-movement-v3.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\wisteria-right-movement-v3.png",
+    "size": "1792x1152",
+    "references": [
+      "output\\imagegen\\anime-v2\\references\\wisteria-right-movement-v3.png",
+      "art/stages/wisteria/menu.jpg"
+    ],
+    "metadata": {
+      "stage_extension": "right"
+    }
+  },
+  {
+    "id": "wisteria-continuous-v4",
+    "group": "visual-polish-v4",
+    "prompt": "output/imagegen/anime-v2/prompts/wisteria-continuous-v4.txt",
+    "out": "output/imagegen/anime-v2/raw/wisteria-continuous-v4.png",
+    "size": "3840x1280",
+    "references": [
+      "output/imagegen/anime-v2/references/wisteria-continuous-v4.png"
+    ],
+    "metadata": {
+      "stage_panorama": true,
+      "crop_vertical": [
+        0.125,
+        0.875
+      ]
+    }
   }
 ]

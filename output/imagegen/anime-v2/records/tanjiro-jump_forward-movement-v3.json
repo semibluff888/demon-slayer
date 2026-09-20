@@ -1,0 +1,29 @@
+{
+  "id": "tanjiro-jump_forward-movement-v3",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "3072x1536",
+  "route": "CPA via bundled image_gen.py",
+  "started_utc": "2026-09-20T02:13:43.0740026Z",
+  "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-jump_forward-movement-v3.txt",
+  "output": "output\\imagegen\\anime-v2\\raw\\tanjiro-jump_forward-movement-v3.png",
+  "references": [
+    "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png",
+    "output\\imagegen\\anime-v2\\raw\\tanjiro-idle-v2.png"
+  ],
+  "price_verified": false,
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-09-20T02:14:26.4100089Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "4ddf657aa4afee3d4d4f7da8d99e83437a43dda0fc3d00740c862cccf6bcbdfc",
+  "review": {
+    "status": "accepted_for_movement_revision",
+    "reviewed_utc": "2026-09-20T03:03:14.989326+00:00",
+    "evidence": "artifacts/visual-acceptance.md"
+  }
+}
