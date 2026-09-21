@@ -42,12 +42,28 @@
     "note": "Idle-referenced clip-wide anatomy calibration; no pose-dependent scaling."
   },
   "tanjiro-hit": {
-    "standing_height": 504.99,
-    "note": "Idle-referenced clip-wide anatomy calibration; no pose-dependent scaling."
+    "standing_height": 543.0,
+    "note": "Idle-referenced head and torso scale across all four hit-reaction drawings; one fixed scale with the original measured ground contact.",
+    "scale_review": {
+      "revision": "character-scale-20260921",
+      "reference": "tanjiro-idle-v2",
+      "reference_frame": 0,
+      "previous_standing_height": 504.99,
+      "multiplier": 0.93,
+      "reason": "Slightly oversized head and upper body during impact, recoil and recovery; preserve the natural backward lean and foot contact."
+    }
   },
   "tanjiro-knockdown": {
-    "standing_height": 476.16,
-    "note": "Idle-referenced clip-wide anatomy calibration; no pose-dependent scaling."
+    "standing_height": 506.553191,
+    "note": "Idle-referenced head, torso and limb review across preparation, action and recovery. One fixed anatomical scale per source clip; retain measured feet/pelvis anchors.",
+    "scale_review": {
+      "revision": "character-scale-20260921",
+      "reference": "tanjiro-idle-v2",
+      "reference_frame": 0,
+      "previous_standing_height": 476.16,
+      "multiplier": 0.94,
+      "reason": "Oversized head and torso in the falling and prone drawings."
+    }
   },
   "tanjiro-throw-movement-v3": {
     "standing_height": 476.16,
@@ -67,8 +83,16 @@
     "note": "Idle-referenced clip-wide anatomy calibration; no pose-dependent scaling."
   },
   "tanjiro-crouch_light": {
-    "standing_height": 541.0909090909091,
-    "note": "Idle-referenced clip-wide anatomy calibration; no pose-dependent scaling."
+    "standing_height": 601.212121,
+    "note": "Idle-referenced head, torso and limb review across preparation, action and recovery. One fixed anatomical scale per source clip; retain measured feet/pelvis anchors.",
+    "scale_review": {
+      "revision": "character-scale-20260921",
+      "reference": "tanjiro-idle-v2",
+      "reference_frame": 0,
+      "previous_standing_height": 541.0909090909091,
+      "multiplier": 0.9,
+      "reason": "Oversized head and torso in the low slash; compare with idle and crouch, not silhouette height."
+    }
   },
   "tanjiro-air_light": {
     "standing_height": 517.565217,
@@ -259,9 +283,17 @@
     "note": "Idle-referenced clip-wide anatomy calibration; no pose-dependent scaling."
   },
   "zenitsu-throw-movement-v3": {
-    "standing_height": 476.16,
+    "standing_height": 529.066667,
     "root_fraction": 0.5,
-    "note": "Registered against existing idle head/hand/limb proportions; one fixed scale across the entire clip. Rotating poses use a pelvis root."
+    "note": "Idle-referenced head, torso and limb review across preparation, action and recovery. One fixed anatomical scale per source clip; retain measured feet/pelvis anchors.",
+    "scale_review": {
+      "revision": "character-scale-20260921",
+      "reference": "zenitsu-idle",
+      "reference_frame": 0,
+      "previous_standing_height": 476.16,
+      "multiplier": 0.9,
+      "reason": "Oversized head and shoulders in the grab preparation."
+    }
   },
   "zenitsu-victory": {
     "standing_height": 476.16,
@@ -286,10 +318,18 @@
     "review_scale_correction": 0.88
   },
   "zenitsu-air_heavy": {
-    "standing_height": 440.888889,
-    "note": "Compared head, hand and limb proportions with the relaxed idle key pose at identical canvas scale. One fixed anatomical scale for all frames; crouch and somersault silhouettes stay naturally compressed.",
+    "standing_height": 489.876543,
+    "note": "Idle-referenced head, torso and limb review across preparation, action and recovery. One fixed anatomical scale per source clip; retain measured feet/pelvis anchors.",
     "anatomy_revision": "visual-polish-v4",
-    "review_scale_correction": 1.08
+    "review_scale_correction": 1.08,
+    "scale_review": {
+      "revision": "character-scale-20260921",
+      "reference": "zenitsu-idle",
+      "reference_frame": 0,
+      "previous_standing_height": 440.888889,
+      "multiplier": 0.9,
+      "reason": "Oversized head and torso in the airborne heavy slash; sword extension is not a body-height reference."
+    }
   },
   "zenitsu-iai": {
     "standing_height": 359.42029,
@@ -298,10 +338,18 @@
     "review_scale_correction": 0.92
   },
   "zenitsu-thunder": {
-    "standing_height": 396.403596,
-    "note": "Compared head, hand and limb proportions with the relaxed idle key pose at identical canvas scale. One fixed anatomical scale for all frames; crouch and somersault silhouettes stay naturally compressed.",
+    "standing_height": 421.705953,
+    "note": "Idle-referenced head, torso and limb review across preparation, action and recovery. One fixed anatomical scale per source clip; retain measured feet/pelvis anchors.",
     "anatomy_revision": "visual-polish-v4",
-    "review_scale_correction": 0.88
+    "review_scale_correction": 0.88,
+    "scale_review": {
+      "revision": "character-scale-20260921",
+      "reference": "zenitsu-idle",
+      "reference_frame": 0,
+      "previous_standing_height": 396.403596,
+      "multiplier": 0.94,
+      "reason": "Slightly oversized crouched anatomy during the dash; keep the separate lightning effects at their combat range."
+    }
   },
   "zenitsu-dash_forward-movement-v3": {
     "standing_height": 467.478261,
@@ -353,9 +401,17 @@
     "note": "Measured source frame0 upright anatomy against accepted idle (326/328px). One fixed scale for entire source."
   },
   "zenitsu-body_stand_heavy-phase2-v1": {
-    "standing_height": 336.89,
+    "standing_height": 391.732558,
     "root_fraction": 0.5,
-    "note": "Measured source frame0 upright anatomy against accepted idle (326/328px). One fixed scale for entire source."
+    "note": "Idle-referenced head, torso and limb review across preparation, action and recovery. One fixed anatomical scale per source clip; retain measured feet/pelvis anchors.",
+    "scale_review": {
+      "revision": "character-scale-20260921",
+      "reference": "zenitsu-idle",
+      "reference_frame": 0,
+      "previous_standing_height": 336.89,
+      "multiplier": 0.86,
+      "reason": "Oversized head, shoulder and kicking leg in the heavy body attack."
+    }
   },
   "zenitsu-body_crouch_light-phase2-v1": {
     "standing_height": 533.2992,
@@ -380,10 +436,18 @@
     "phase2_anatomy_correction": 1.15
   },
   "tanjiro-body_crouch_heavy-phase2-v1": {
-    "standing_height": 396.8,
+    "standing_height": 466.823529,
     "root_fraction": 0.5,
-    "note": "Same-scale head/hand/limb review against accepted idle; fixed clip-wide correction. Evidence: artifacts/phase2/anatomy-review.jpg. No per-pose scaling.",
-    "phase2_anatomy_correction": 1.25
+    "note": "Idle-referenced head, torso and limb review across preparation, action and recovery. One fixed anatomical scale per source clip; retain measured feet/pelvis anchors.",
+    "phase2_anatomy_correction": 1.25,
+    "scale_review": {
+      "revision": "character-scale-20260921",
+      "reference": "tanjiro-idle-v2",
+      "reference_frame": 0,
+      "previous_standing_height": 396.8,
+      "multiplier": 0.85,
+      "reason": "Oversized head, torso and extended leg in the sweep; keep the crouched silhouette low."
+    }
   },
   "tanjiro-body_air_light-phase2-v1": {
     "standing_height": 533.2992,
@@ -392,10 +456,18 @@
     "phase2_anatomy_correction": 1.12
   },
   "zenitsu-body_crouch_heavy-phase2-v1": {
-    "standing_height": 380.928,
+    "standing_height": 414.052174,
     "root_fraction": 0.5,
-    "note": "Same-scale head/hand/limb review against accepted idle; fixed clip-wide correction. Evidence: artifacts/phase2/anatomy-review.jpg. No per-pose scaling.",
-    "phase2_anatomy_correction": 1.2
+    "note": "Idle-referenced head, torso and limb review across preparation, action and recovery. One fixed anatomical scale per source clip; retain measured feet/pelvis anchors.",
+    "phase2_anatomy_correction": 1.2,
+    "scale_review": {
+      "revision": "character-scale-20260921",
+      "reference": "zenitsu-idle",
+      "reference_frame": 0,
+      "previous_standing_height": 380.928,
+      "multiplier": 0.92,
+      "reason": "Oversized head, torso and extended leg in the sweep; keep the crouched silhouette low."
+    }
   },
   "zenitsu-body_air_light-phase2-v1": {
     "standing_height": 533.2992,
@@ -410,20 +482,44 @@
     "phase2_anatomy_correction": 1.18
   },
   "zenitsu-roll_forward-phase2-v1": {
-    "standing_height": 335.854,
+    "standing_height": 373.171111,
     "root_fraction": 0.5,
-    "note": "Measured source frame0 upright anatomy against accepted idle (326/328px). One fixed scale for entire source."
+    "note": "Idle-referenced head, torso and limb review across preparation, action and recovery. One fixed anatomical scale per source clip; retain measured feet/pelvis anchors.",
+    "scale_review": {
+      "revision": "character-scale-20260921",
+      "reference": "zenitsu-idle",
+      "reference_frame": 0,
+      "previous_standing_height": 335.854,
+      "multiplier": 0.9,
+      "reason": "Oversized head and torso during the roll, including preparation and recovery."
+    }
   },
   "tanjiro-body_air_heavy-phase2-v1": {
-    "standing_height": 438.06719999999996,
+    "standing_height": 398.242909,
     "root_fraction": 0.5,
-    "note": "Same-scale head/hand/limb review against accepted idle; fixed clip-wide correction. Evidence: artifacts/phase2/anatomy-review.jpg. No per-pose scaling.",
-    "phase2_anatomy_correction": 1.38
+    "note": "Idle-referenced head, torso and limb review across preparation, action and recovery. One fixed anatomical scale per source clip; retain measured feet/pelvis anchors.",
+    "phase2_anatomy_correction": 1.38,
+    "scale_review": {
+      "revision": "character-scale-20260921",
+      "reference": "tanjiro-idle-v2",
+      "reference_frame": 0,
+      "previous_standing_height": 438.06719999999996,
+      "multiplier": 1.1,
+      "reason": "Over-reduced airborne kick anatomy; restore head and limb scale about the existing pelvis root."
+    }
   },
   "tanjiro-roll_forward-phase2-v1": {
-    "standing_height": 332.699,
+    "standing_height": 353.935106,
     "root_fraction": 0.5,
-    "note": "Measured source frame0 upright anatomy against accepted idle (326/328px). One fixed scale for entire source."
+    "note": "Idle-referenced head, torso and limb review across preparation, action and recovery. One fixed anatomical scale per source clip; retain measured feet/pelvis anchors.",
+    "scale_review": {
+      "revision": "character-scale-20260921",
+      "reference": "tanjiro-idle-v2",
+      "reference_frame": 0,
+      "previous_standing_height": 332.699,
+      "multiplier": 0.94,
+      "reason": "Oversized head and torso during the roll, including preparation and recovery."
+    }
   },
   "tanjiro-roll_back-phase2-v1": {
     "standing_height": 356.687,
@@ -436,19 +532,35 @@
     "note": "Measured source frame0 upright anatomy against accepted idle (326/328px). One fixed scale for entire source."
   },
   "zenitsu-roll_back-phase2-v1": {
-    "standing_height": 341.037,
+    "standing_height": 362.805319,
     "root_fraction": 0.5,
-    "note": "Measured source frame0 upright anatomy against accepted idle (326/328px). One fixed scale for entire source."
+    "note": "Idle-referenced head, torso and limb review across preparation, action and recovery. One fixed anatomical scale per source clip; retain measured feet/pelvis anchors.",
+    "scale_review": {
+      "revision": "character-scale-20260921",
+      "reference": "zenitsu-idle",
+      "reference_frame": 0,
+      "previous_standing_height": 341.037,
+      "multiplier": 0.94,
+      "reason": "Slightly oversized head and torso during the back roll."
+    }
   },
   "zenitsu-throw_forward-phase2-v1": {
-    "standing_height": 317.195,
+    "standing_height": 352.438889,
     "root_fraction": 0.5,
-    "note": "Measured source frame0 upright anatomy against accepted idle (326/328px). One fixed scale for entire source."
+    "note": "Idle-referenced head, torso and limb review across preparation, action and recovery. One fixed anatomical scale per source clip; retain measured feet/pelvis anchors.",
+    "scale_review": {
+      "revision": "character-scale-20260921",
+      "reference": "zenitsu-idle",
+      "reference_frame": 0,
+      "previous_standing_height": 317.195,
+      "multiplier": 0.9,
+      "reason": "Oversized head and shoulders through the forward throw."
+    }
   },
   "zenitsu-thrown_forward-phase2-v1": {
-    "standing_height": 386.646,
+    "standing_height": 420.267391,
     "root_fraction": 0.5,
-    "note": "Measured source frame0 upright anatomy against accepted idle (326/328px). One fixed scale for entire source.",
+    "note": "Idle-referenced head, torso and limb review across preparation, action and recovery. One fixed anatomical scale per source clip; retain measured feet/pelvis anchors.",
     "pelvis": {
       "0": [
         0.46,
@@ -482,6 +594,14 @@
         0.51,
         0.73
       ]
+    },
+    "scale_review": {
+      "revision": "character-scale-20260921",
+      "reference": "zenitsu-idle",
+      "reference_frame": 0,
+      "previous_standing_height": 386.646,
+      "multiplier": 0.92,
+      "reason": "Oversized head and torso in the forward-throw reaction; retain pelvis registration and grounded impact frames."
     }
   },
   "zenitsu-throw_tech-phase2-v1": {
@@ -544,9 +664,9 @@
     "note": "Phase two: one anatomy scale across the full sequential source; common root and contact baseline."
   },
   "tanjiro-sun_arc-phase2-v1": {
-    "standing_height": 317.44,
+    "standing_height": 369.116279,
     "root_fraction": 0.5,
-    "note": "Pelvis root during the circular flip; exact measured floor contact during preparation and landing. Single source scale retained.",
+    "note": "Idle-referenced head, torso and limb review across preparation, action and recovery. One fixed anatomical scale per source clip; retain measured feet/pelvis anchors.",
     "ground_frames": [
       0,
       1,
@@ -568,12 +688,28 @@
         0.5,
         0.6
       ]
+    },
+    "scale_review": {
+      "revision": "character-scale-20260921",
+      "reference": "tanjiro-idle-v2",
+      "reference_frame": 0,
+      "previous_standing_height": 317.44,
+      "multiplier": 0.86,
+      "reason": "Oversized head and torso in the MAX windup and flip; the separately rendered flame arc supplies the larger spectacle."
     }
   },
   "zenitsu-iai_return-phase2-v1": {
-    "standing_height": 331.707,
+    "standing_height": 356.674194,
     "root_fraction": 0.5,
-    "note": "Upright source frame0 anatomy matched to accepted idle height328px; one scale for all sequential frames."
+    "note": "Idle-referenced head, torso and limb review across preparation, action and recovery. One fixed anatomical scale per source clip; retain measured feet/pelvis anchors.",
+    "scale_review": {
+      "revision": "character-scale-20260921",
+      "reference": "zenitsu-idle",
+      "reference_frame": 0,
+      "previous_standing_height": 331.707,
+      "multiplier": 0.93,
+      "reason": "Slightly oversized head and upper body during the return slash."
+    }
   },
   "zenitsu-sixfold-phase2-v1": {
     "standing_height": 294.39,
