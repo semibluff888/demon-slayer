@@ -1,0 +1,23 @@
+{
+  "id": "zenitsu-battle-portrait",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "1024x1024",
+  "route": "CPA via bundled image_gen.py",
+  "started_utc": "2026-09-20T17:50:05.1055411Z",
+  "prompt": "output\\imagegen\\battle-v5\\prompts\\zenitsu-battle-portrait.txt",
+  "output": "output\\imagegen\\battle-v5\\raw\\zenitsu-battle-portrait.png",
+  "references": [
+    "art/characters/zenitsu/portrait.png"
+  ],
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-09-20T17:50:56.8351694Z",
+  "actual_size": [
+    1152,
+    1365
+  ],
+  "sha256": "a585308b6392f00fab3e699387006ea7893e8417ce03e5b354064c3a093e7621",
+  "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+}

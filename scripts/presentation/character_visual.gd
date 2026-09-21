@@ -8,6 +8,7 @@ extends Resource
 @export var accent: Color = Color("65cbd4")
 @export var portrait: Texture2D
 @export var avatar: Texture2D
+@export var battle_portrait: Texture2D
 @export var portrait_focus: Vector2 = Vector2(0.5, 0.25)
 @export var frames: SpriteFrames
 @export var feet_anchor: Vector2 = Vector2(384, 704)
@@ -31,6 +32,8 @@ func load_local_assets() -> void:
 		portrait = load(directory + "portrait.png")
 	if ResourceLoader.exists(directory + "avatar.png"):
 		avatar = load(directory + "avatar.png")
+	if ResourceLoader.exists(directory + "battle-portrait.png"):
+		battle_portrait = load(directory + "battle-portrait.png")
 	var manifest_path := directory + "atlas.json"
 	if not FileAccess.file_exists(manifest_path):
 		return

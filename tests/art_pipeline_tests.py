@@ -85,9 +85,29 @@ class ArtworkTests(unittest.TestCase):
         stage = json.loads((ROOT/'art/stages/wisteria/stage.json').read_text(encoding='utf-8'))
         self.assertEqual(stage['layers'], ['panorama'])
         self.assertEqual(stage['parallax'], [1.0])
-        self.assertEqual(hashlib.sha256((ROOT/stage['source']).read_bytes()).hexdigest(), stage['source_sha256'])
-        for layer in stage['layers']:
-            with Image.open(ROOT/'art/stages/wisteria'/ (layer+'.png')) as image:
+        if stage.get('revision') == 'battle-v5':
+            self.assertEqual(stage['size'], [9600,2400])
+            self.assertEqual(len(stage['tiles']), 4)
+            self.assertEqual(len(stage['sources']), 21)
+            for source in stage['sources']:
+                self.assertEqual(hashlib.sha256((ROOT/source['path']).read_bytes()).hexdigest(), source['sha256'])
+                self.assertGreaterEqual(source['actual_size'][0], source['target_rect'][2])
+                self.assertGreaterEqual(source['actual_size'][1], source['target_rect'][3])
+            for tile in stage['tiles']:
+                with Image.open(ROOT/'art/stages/wisteria'/tile['texture']) as image:
+                    self.assertEqual(image.size, (2416,2416))
+            for cid in ('tanjiro','zenitsu'):
+                with Image.open(ROOT/'art/characters'/cid/'battle-portrait.png') as image:
+                    self.assertEqual(image.size, (1024,1024))
+                    self.assertEqual(image.mode, 'RGBA')
+                    self.assertEqual(image.getchannel('A').getextrema(), (0,255))
+            for name in ('water-slash','water-wheel','thunder','water-dragon','sun-flame-arc'):
+                with Image.open(ROOT/'art/effects'/(name+'-body.png')) as image:
+                    self.assertEqual(image.mode, 'RGBA')
+                    self.assertEqual(image.getchannel('A').getextrema()[0], 0)
+        else:
+            self.assertEqual(hashlib.sha256((ROOT/stage['source']).read_bytes()).hexdigest(), stage['source_sha256'])
+            with Image.open(ROOT/'art/stages/wisteria/panorama.png') as image:
                 self.assertEqual(image.size, (4608,1152))
         for effect in ('water-slash','water-wheel','thunder','impact'):
             self.assertTrue((ROOT/'art/effects'/(effect+'.png')).is_file())

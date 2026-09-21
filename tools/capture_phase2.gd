@@ -25,7 +25,7 @@ func _run() -> void:
 	root.add_child(game)
 	game.set_physics_process(false)
 	game.sound.muted = true
-	for node in [game.view, game.view.effects, game.view.hud, game.view.stage]:
+	for node in [game.view, game.view.effects, game.view.hud, game.view.stage, game.view.super_view]:
 		node.set_process(false)
 	DirAccess.make_dir_recursive_absolute(directory+"/audio")
 	for kind: String in game.sound.streams:
@@ -109,6 +109,7 @@ func _run() -> void:
 				game.view._process(1.0/60)
 				game.view.effects._process(1.0/60)
 				game.view.hud._process(1.0/60)
+				game.view.super_view._process(1.0/60)
 				game.view.stage._process(1.0/60)
 				await process_frame
 				await RenderingServer.frame_post_draw

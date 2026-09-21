@@ -1,0 +1,23 @@
+{
+  "id": "water-dragon",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "1536x1024",
+  "route": "CPA via bundled image_gen.py",
+  "started_utc": "2026-09-20T17:50:56.9302560Z",
+  "prompt": "output\\imagegen\\battle-v5\\prompts\\water-dragon.txt",
+  "output": "output\\imagegen\\battle-v5\\raw\\water-dragon.png",
+  "references": [
+    "art/effects/water-wheel.png"
+  ],
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-09-20T17:51:31.4629173Z",
+  "actual_size": [
+    1254,
+    1254
+  ],
+  "sha256": "c848bef2ec45bb6dce280eb7ef5c6bc4015e548165b98b351aa4c1471c6d7a94",
+  "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+}

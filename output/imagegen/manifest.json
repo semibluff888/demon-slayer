@@ -1,46 +1,9 @@
 {
-  "revision": "phase2-actions-feedback-v1",
-  "generated_utc": "2026-09-20T14:17:13.276504+00:00",
+  "revision": "battle-ui-v5",
+  "generated_utc": "2026-09-20T18:26:36.366169+00:00",
   "route": "CPA / gpt-image-2 via existing image_gen.py",
+  "previous_manifest": "output/imagegen/history/pre-battle-v5-manifest.json",
   "gameplay_changes": [],
-  "stage": {
-    "revision": "visual-polish-v4",
-    "size": [
-      4608,
-      1152
-    ],
-    "world_width": 960,
-    "render_size": [
-      3168,
-      792
-    ],
-    "layers": [
-      "panorama"
-    ],
-    "parallax": [
-      1.0
-    ],
-    "source": "output/imagegen/anime-v2/raw/wisteria-continuous-v4.png",
-    "source_size": [
-      2172,
-      724
-    ],
-    "source_sha256": "071480a980c3c3b3118dec1a2fd7feaaf1e9f51ec99389048340b846f19a72c1",
-    "composition": "One continuous painting; one moon and aligned reflection; all surfaces share the world transform.",
-    "local_finish": {
-      "moon_from": [
-        1312,
-        161
-      ],
-      "moon_to": [
-        1312,
-        248
-      ],
-      "crop_top": 90,
-      "crop_height": 543,
-      "terrace_back_fraction": 0.72
-    }
-  },
   "characters": {
     "tanjiro": {
       "clips": 39,
@@ -71,1625 +34,1231 @@
       "scale": 0.20588235294117646
     }
   },
-  "sources": [
+  "stage": {
+    "revision": "battle-v5",
+    "size": [
+      9600,
+      2400
+    ],
+    "world_width": 960,
+    "render_size": [
+      3168,
+      792
+    ],
+    "layers": [
+      "panorama"
+    ],
+    "parallax": [
+      1.0
+    ],
+    "tiles": [
+      {
+        "texture": "panorama-0.png",
+        "rect": [
+          0,
+          0,
+          2400,
+          2400
+        ],
+        "region": [
+          8,
+          8,
+          2400,
+          2400
+        ]
+      },
+      {
+        "texture": "panorama-1.png",
+        "rect": [
+          2400,
+          0,
+          2400,
+          2400
+        ],
+        "region": [
+          8,
+          8,
+          2400,
+          2400
+        ]
+      },
+      {
+        "texture": "panorama-2.png",
+        "rect": [
+          4800,
+          0,
+          2400,
+          2400
+        ],
+        "region": [
+          8,
+          8,
+          2400,
+          2400
+        ]
+      },
+      {
+        "texture": "panorama-3.png",
+        "rect": [
+          7200,
+          0,
+          2400,
+          2400
+        ],
+        "region": [
+          8,
+          8,
+          2400,
+          2400
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "path": "output/imagegen/battle-v5/raw/stage-0-0.png",
+        "sha256": "aa63f6e202ca2a9974527d2e4fda9301bb2aac9c310459691b3b16f71ba6dfc5",
+        "actual_size": [
+          1536,
+          1024
+        ],
+        "target_rect": [
+          0,
+          0,
+          1536,
+          1024
+        ],
+        "registration": [
+          [
+            0.9994013905525208,
+            0.0002594596007838845,
+            -0.23373661935329437
+          ],
+          [
+            0.0003154536825604737,
+            0.9996755719184875,
+            -0.3485080599784851
+          ]
+        ],
+        "correlation": 0.9580929877724388
+      },
+      {
+        "path": "output/imagegen/battle-v5/raw/stage-0-1.png",
+        "sha256": "5562c592d703d2dd7e068be07f4f2ee82f2030c897f8757e417e5f84acd9ed7d",
+        "actual_size": [
+          1536,
+          1024
+        ],
+        "target_rect": [
+          1344,
+          0,
+          1536,
+          1024
+        ],
+        "registration": [
+          [
+            1.000017762184143,
+            0.0004968529683537781,
+            -0.27710339426994324
+          ],
+          [
+            0.00023645912006031722,
+            0.996304988861084,
+            1.7893623113632202
+          ]
+        ],
+        "correlation": 0.9567091945489047
+      },
+      {
+        "path": "output/imagegen/battle-v5/raw/stage-0-2.png",
+        "sha256": "ae505f1eba3bc2d3977ac3dfe4ae23e93b8f0d4c191bdaee27abd6d281ddefaa",
+        "actual_size": [
+          1536,
+          1024
+        ],
+        "target_rect": [
+          2688,
+          0,
+          1536,
+          1024
+        ],
+        "registration": [
+          [
+            1.0000945329666138,
+            0.00021624378859996796,
+            0.19733348488807678
+          ],
+          [
+            -3.4537028113845736e-05,
+            0.9981527924537659,
+            1.0940232276916504
+          ]
+        ],
+        "correlation": 0.9560842922375034
+      },
+      {
+        "path": "output/imagegen/battle-v5/raw/stage-0-3.png",
+        "sha256": "256d550503fd10b4b3ec0b6b19ca59eb908aea6569bf623102d9f9e3b33029d8",
+        "actual_size": [
+          1536,
+          1024
+        ],
+        "target_rect": [
+          4032,
+          0,
+          1536,
+          1024
+        ],
+        "registration": [
+          [
+            0.9995489716529846,
+            0.0008227244834415615,
+            0.4723246693611145
+          ],
+          [
+            0.00023500854149460793,
+            0.996630072593689,
+            1.8649979829788208
+          ]
+        ],
+        "correlation": 0.9560454664536578
+      },
+      {
+        "path": "output/imagegen/battle-v5/raw/stage-0-4.png",
+        "sha256": "6a0ae910c8c8b5aba66176f3a41d47b939bf3af3a287223831695bbf5280d3c0",
+        "actual_size": [
+          1536,
+          1024
+        ],
+        "target_rect": [
+          5376,
+          0,
+          1536,
+          1024
+        ],
+        "registration": [
+          [
+            0.9999901056289673,
+            -0.00012178417091490701,
+            0.1320093870162964
+          ],
+          [
+            -2.2829848603578284e-05,
+            0.9985219836235046,
+            0.5743830800056458
+          ]
+        ],
+        "correlation": 0.9430090758960995
+      },
+      {
+        "path": "output/imagegen/battle-v5/raw/stage-0-5.png",
+        "sha256": "7cc0a75dba79850ebd3e2a99ee29c8c3f02100faa832e8adaa08965c2456246a",
+        "actual_size": [
+          1536,
+          1024
+        ],
+        "target_rect": [
+          6720,
+          0,
+          1536,
+          1024
+        ],
+        "registration": [
+          [
+            0.999214231967926,
+            0.0016671151388436556,
+            0.6865036487579346
+          ],
+          [
+            -0.0003458255378063768,
+            0.9991385340690613,
+            0.6455424427986145
+          ]
+        ],
+        "correlation": 0.9567772659365715
+      },
+      {
+        "path": "output/imagegen/battle-v5/raw/stage-0-6.png",
+        "sha256": "16bbcc81700d2b9365f7bba0eb6c38b1c8f204e28bfb7f164e0b62c1315b1819",
+        "actual_size": [
+          1536,
+          1024
+        ],
+        "target_rect": [
+          8064,
+          0,
+          1536,
+          1024
+        ],
+        "registration": [
+          [
+            0.9999744892120361,
+            0.0003720874374266714,
+            0.07193690538406372
+          ],
+          [
+            4.881841960013844e-05,
+            0.9995800852775574,
+            0.020127227529883385
+          ]
+        ],
+        "correlation": 0.9657998626167308
+      },
+      {
+        "path": "output/imagegen/battle-v5/raw/stage-1-0.png",
+        "sha256": "08fab8a7d1362067b8892d96315dd3d3565ab6f9c273125122426ec349ea4155",
+        "actual_size": [
+          1536,
+          1024
+        ],
+        "target_rect": [
+          0,
+          688,
+          1536,
+          1024
+        ],
+        "registration": [
+          [
+            0.9995297789573669,
+            -0.000274771882686764,
+            0.21911276876926422
+          ],
+          [
+            0.00021654111333191395,
+            0.9998250603675842,
+            0.006636165082454681
+          ]
+        ],
+        "correlation": 0.9402742254455116
+      },
+      {
+        "path": "output/imagegen/battle-v5/raw/stage-1-1.png",
+        "sha256": "cbe0d4507e64373e10204dc176b9f8982565d1900aed031b042a95b1769b7432",
+        "actual_size": [
+          1536,
+          1024
+        ],
+        "target_rect": [
+          1344,
+          688,
+          1536,
+          1024
+        ],
+        "registration": [
+          [
+            1.0003777742385864,
+            0.0012811915948987007,
+            0.05553211271762848
+          ],
+          [
+            0.00012257843627594411,
+            0.9998489022254944,
+            0.032466255128383636
+          ]
+        ],
+        "correlation": 0.9442812222551258
+      },
+      {
+        "path": "output/imagegen/battle-v5/raw/stage-1-2.png",
+        "sha256": "60acd399396070177f338e9d23630b89ba7fc65a7fb13462202adad0554e781b",
+        "actual_size": [
+          1536,
+          1024
+        ],
+        "target_rect": [
+          2688,
+          688,
+          1536,
+          1024
+        ],
+        "registration": [
+          [
+            1.000164270401001,
+            -0.00026020765653811395,
+            -0.09688781946897507
+          ],
+          [
+            0.00015352325863204896,
+            1.0000505447387695,
+            -0.4122348427772522
+          ]
+        ],
+        "correlation": 0.9422527000934213
+      },
+      {
+        "path": "output/imagegen/battle-v5/raw/stage-1-3.png",
+        "sha256": "3fb6e96afba53be61ff29a4867fc80c764a8a8c38550d42536435bdc602eafce",
+        "actual_size": [
+          1536,
+          1024
+        ],
+        "target_rect": [
+          4032,
+          688,
+          1536,
+          1024
+        ],
+        "registration": [
+          [
+            0.9994646906852722,
+            7.965406257426366e-05,
+            0.5741980075836182
+          ],
+          [
+            7.255638774950057e-05,
+            0.9983278512954712,
+            1.152920126914978
+          ]
+        ],
+        "correlation": 0.9621756369320673
+      },
+      {
+        "path": "output/imagegen/battle-v5/raw/stage-1-4.png",
+        "sha256": "7d1302d5f58fde64f84924dc6cb324dbb93ce789ccb15b6dc00d625e60685d27",
+        "actual_size": [
+          1536,
+          1024
+        ],
+        "target_rect": [
+          5376,
+          688,
+          1536,
+          1024
+        ],
+        "registration": [
+          [
+            1.0002295970916748,
+            -6.808590842410922e-05,
+            0.7230437994003296
+          ],
+          [
+            4.8067322495626286e-06,
+            1.0003842115402222,
+            -0.1043701097369194
+          ]
+        ],
+        "correlation": 0.9591992652895767
+      },
+      {
+        "path": "output/imagegen/battle-v5/raw/stage-1-5.png",
+        "sha256": "f7e73023896a997523db5c9509843b859057fa8af0bdaea04da2fa04f2787be5",
+        "actual_size": [
+          1536,
+          1024
+        ],
+        "target_rect": [
+          6720,
+          688,
+          1536,
+          1024
+        ],
+        "registration": [
+          [
+            0.9999557137489319,
+            -0.0004751420929096639,
+            1.3495814800262451
+          ],
+          [
+            -0.00014283510972745717,
+            0.9987444877624512,
+            0.8022677898406982
+          ]
+        ],
+        "correlation": 0.9564126912752345
+      },
+      {
+        "path": "output/imagegen/battle-v5/raw/stage-1-6.png",
+        "sha256": "2303a1bc1b27dea24a84cf050c3ef005e780696c8d40c9257ed01977d879a083",
+        "actual_size": [
+          1536,
+          1024
+        ],
+        "target_rect": [
+          8064,
+          688,
+          1536,
+          1024
+        ],
+        "registration": [
+          [
+            1.0003485679626465,
+            -4.292929224902764e-05,
+            -0.23012299835681915
+          ],
+          [
+            -9.455379040446132e-05,
+            1.0003682374954224,
+            -0.2579180598258972
+          ]
+        ],
+        "correlation": 0.9683024126856967
+      },
+      {
+        "path": "output/imagegen/battle-v5/raw/stage-2-0.png",
+        "sha256": "8589e95fe9a5f47b9d1ccc1b35ca47d29998dd07414b3d46862cda5d268a478d",
+        "actual_size": [
+          1536,
+          1024
+        ],
+        "target_rect": [
+          0,
+          1376,
+          1536,
+          1024
+        ],
+        "registration": [
+          [
+            0.9994856119155884,
+            -0.00010240530536975712,
+            -0.18263669312000275
+          ],
+          [
+            0.00026840606005862355,
+            0.999988853931427,
+            -0.01314479485154152
+          ]
+        ],
+        "correlation": 0.9684178084990014
+      },
+      {
+        "path": "output/imagegen/battle-v5/raw/stage-2-1.png",
+        "sha256": "12ce4ca0c11a2ef3adacc3fba01a9aa2f15b715ae5555c3ead45525cf9a5ddb8",
+        "actual_size": [
+          1536,
+          1024
+        ],
+        "target_rect": [
+          1344,
+          1376,
+          1536,
+          1024
+        ],
+        "registration": [
+          [
+            0.9996329545974731,
+            -0.00015112105756998062,
+            0.3019845485687256
+          ],
+          [
+            5.599078940576874e-05,
+            0.9998270869255066,
+            0.33673787117004395
+          ]
+        ],
+        "correlation": 0.9375890100979349
+      },
+      {
+        "path": "output/imagegen/battle-v5/raw/stage-2-2.png",
+        "sha256": "ca2b334ed24f8ae25d33dc76b0d62c268f50faebeebf54c0ac38cdf13c988e9f",
+        "actual_size": [
+          1536,
+          1024
+        ],
+        "target_rect": [
+          2688,
+          1376,
+          1536,
+          1024
+        ],
+        "registration": [
+          [
+            0.9993182420730591,
+            -0.00023462426906917244,
+            0.37883231043815613
+          ],
+          [
+            0.000144530349643901,
+            1.0011894702911377,
+            -0.10438723862171173
+          ]
+        ],
+        "correlation": 0.9596659154555232
+      },
+      {
+        "path": "output/imagegen/battle-v5/raw/stage-2-3.png",
+        "sha256": "bfc711dad7ac50ac7938603351e998f71c377ac3b00d7eb54ba5af2787540aab",
+        "actual_size": [
+          1536,
+          1024
+        ],
+        "target_rect": [
+          4032,
+          1376,
+          1536,
+          1024
+        ],
+        "registration": [
+          [
+            0.999366044998169,
+            0.00010227994789602235,
+            0.4811413288116455
+          ],
+          [
+            -0.00022431409161072224,
+            0.9993867874145508,
+            0.7302826642990112
+          ]
+        ],
+        "correlation": 0.9394089923157165
+      },
+      {
+        "path": "output/imagegen/battle-v5/raw/stage-2-4.png",
+        "sha256": "8ba70fd6aea4edc74fac13cb4fc8c49e384fb37cf4f119c4a1b9c1be63641687",
+        "actual_size": [
+          1536,
+          1024
+        ],
+        "target_rect": [
+          5376,
+          1376,
+          1536,
+          1024
+        ],
+        "registration": [
+          [
+            1.0000115633010864,
+            -0.00020421166846062988,
+            -0.26904383301734924
+          ],
+          [
+            0.00012775212235283107,
+            1.0008130073547363,
+            -0.11939225345849991
+          ]
+        ],
+        "correlation": 0.9709386736650175
+      },
+      {
+        "path": "output/imagegen/battle-v5/raw/stage-2-5.png",
+        "sha256": "28d52126554f8bf299a4b4e6b6f47195b192c083900506701ede343208a0d573",
+        "actual_size": [
+          1536,
+          1024
+        ],
+        "target_rect": [
+          6720,
+          1376,
+          1536,
+          1024
+        ],
+        "registration": [
+          [
+            0.9998105764389038,
+            -0.0004055007884744555,
+            0.04255885258316994
+          ],
+          [
+            0.00014617167471442372,
+            0.9991671442985535,
+            0.6286243796348572
+          ]
+        ],
+        "correlation": 0.966909046396721
+      },
+      {
+        "path": "output/imagegen/battle-v5/raw/stage-2-6.png",
+        "sha256": "8b025aa83f41d4e44472e777fdcea14553e4ef49f42a503c531a0f98d27480b6",
+        "actual_size": [
+          1536,
+          1024
+        ],
+        "target_rect": [
+          8064,
+          1376,
+          1536,
+          1024
+        ],
+        "registration": [
+          [
+            0.9993954300880432,
+            -8.943855937104672e-05,
+            0.6814357042312622
+          ],
+          [
+            0.00014169016503728926,
+            0.9983810782432556,
+            0.657107412815094
+          ]
+        ],
+        "correlation": 0.9726007051813044
+      }
+    ],
+    "detail_strategy": "21 native-resolution registered detail repaints; original composition used only for geometry and low-frequency illumination. No source upscaling.",
+    "composition": "One continuous painting and shared world transform; moon, reflection, architecture and floor stay registered."
+  },
+  "artwork_records": "output/imagegen/battle-v5/manifest.json",
+  "new_sources": [
     {
-      "key": "tanjiro-model",
-      "id": "tanjiro-model",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-model.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png",
-      "requested_size": "2048x1152",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [],
-      "sha256": "3ac5972a96da9f89d07c42ccf5d46d78d355ad1f8f16db1e424b8f0b8b49e144",
-      "cost": null
-    },
-    {
-      "key": "zenitsu-model",
-      "id": "zenitsu-model",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-model.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png",
-      "requested_size": "2048x1152",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [],
-      "sha256": "b7fbf4ae36d756e869bf7d768d321086881e80a0013931baf83a7b3a67c4326c",
-      "cost": null
-    },
-    {
-      "key": "wisteria-master",
-      "id": "wisteria-master",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\wisteria-master.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\wisteria-master.png",
-      "requested_size": "2048x1152",
-      "actual_size": [
-        1672,
-        941
-      ],
-      "references": [],
-      "sha256": "6450fa9e70d5f4dd7c93ee777f4e0755cd185e53e67236a8607a7269b72a3862",
-      "cost": null,
-      "used_by_current_stage": false,
-      "superseded_by": "wisteria-continuous-v4"
-    },
-    {
-      "key": "tanjiro-portrait",
-      "id": "tanjiro-portrait",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-portrait.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-portrait.png",
-      "requested_size": "1024x1536",
-      "actual_size": [
-        1024,
-        1536
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
-      ],
-      "sha256": "3674731831bf7c80c844bbe61685973edf89ac462ccddc34df7d029b315f1acb",
-      "cost": null
-    },
-    {
-      "key": "tanjiro/idle",
-      "id": "tanjiro-idle-v2",
-      "prompt": "output/imagegen/anime-v2/prompts/tanjiro-idle-v2.txt",
-      "source": "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png",
-      "requested_size": "3072x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png",
-        "output/imagegen/anime-v2/raw/tanjiro-stand_light.png"
-      ],
-      "sha256": "689fb401341e83dddd9acadb8aece4f588346f92c3a3c23c1a966e619f2ffa4c",
-      "cost": null
-    },
-    {
-      "key": "tanjiro/walk",
-      "id": "tanjiro-walk-v2",
-      "prompt": "output/imagegen/anime-v2/prompts/tanjiro-walk-v2.txt",
-      "source": "output/imagegen/anime-v2/raw/tanjiro-walk-v2.png",
-      "requested_size": "3072x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png",
-        "output/imagegen/anime-v2/raw/tanjiro-stand_light.png"
-      ],
-      "sha256": "a3721d1ba565b1ec286edafe9acb178e69acb2b6197771263a6228029efd128c",
-      "cost": null
-    },
-    {
-      "key": "tanjiro/walk_back",
-      "id": "tanjiro-walk_back",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-walk_back.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-walk_back.png",
-      "requested_size": "3072x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
-      ],
-      "sha256": "808470d5734945ce2f8f9b0e1d9e126f184a246994a5b365a83da92bdaeefb4f",
-      "cost": null
-    },
-    {
-      "key": "tanjiro/crouch",
-      "id": "tanjiro-crouch",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-crouch.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-crouch.png",
-      "requested_size": "2304x768",
-      "actual_size": [
-        1881,
-        836
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
-      ],
-      "sha256": "db6735b4e512f704e069c1dc666892d8453ba7c9b948666b349ada4055c76448",
-      "cost": null
-    },
-    {
-      "key": "tanjiro/jump",
-      "id": "tanjiro-jump",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-jump.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-jump.png",
-      "requested_size": "3072x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
-      ],
-      "sha256": "1634b22f66f6fe260f0b1d85e7a22dc8f7408556c3dfcc06668946086b4c406f",
-      "cost": null
-    },
-    {
-      "key": "tanjiro/guard",
-      "id": "tanjiro-guard",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-guard.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-guard.png",
-      "requested_size": "2304x768",
-      "actual_size": [
-        1881,
-        836
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
-      ],
-      "sha256": "b33a2378d4d6bfab9f393631a8d99db962023a059415f157ad704d3a4c9353a9",
-      "cost": null
-    },
-    {
-      "key": "tanjiro/guard_low",
-      "id": "tanjiro-guard_low",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-guard_low.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-guard_low.png",
-      "requested_size": "2304x768",
-      "actual_size": [
-        1881,
-        836
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
-      ],
-      "sha256": "72088f659dcd5a9e0a4c7952e01b0b4f19d7c7b4bc70e02b67e7d7ce2fc24b30",
-      "cost": null
-    },
-    {
-      "key": "tanjiro/hit",
-      "id": "tanjiro-hit",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-hit.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-hit.png",
-      "requested_size": "2048x1536",
-      "actual_size": [
-        1448,
-        1086
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
-      ],
-      "sha256": "479f120abda06a1a4120a5e0217c95ca1c8410d441a9f1f18be02c400438e2ae",
-      "cost": null
-    },
-    {
-      "key": "tanjiro/knockdown",
-      "id": "tanjiro-knockdown",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-knockdown.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-knockdown.png",
-      "requested_size": "3072x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
-      ],
-      "sha256": "b5beef192b39a48f6048377dce5d334da0af7880891eb6a500052c1ee8d3458e",
-      "cost": null
-    },
-    {
-      "key": "tanjiro/throw",
-      "id": "tanjiro-throw-movement-v3",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-throw-movement-v3.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-throw-movement-v3.png",
-      "requested_size": "2304x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png",
-        "output\\imagegen\\anime-v2\\raw\\tanjiro-idle-v2.png"
-      ],
-      "sha256": "68bafe79274f07e8486b112fc529eff599fcfe6ab3514589744e59f49f8b86e7",
-      "cost": null
-    },
-    {
-      "key": "tanjiro/victory",
-      "id": "tanjiro-victory",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-victory.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-victory.png",
-      "requested_size": "3072x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
-      ],
-      "sha256": "a5bfdb6b6f98d6dcdfea778153e1ea8bd1ce9b57db1af60b763c6c19b1492833",
-      "cost": null
-    },
-    {
-      "key": "tanjiro/stand_light",
-      "id": "tanjiro-stand_light",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-stand_light.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-stand_light.png",
-      "requested_size": "3072x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
-      ],
-      "sha256": "a337d05dd64abfceda04be5d75047f7f4c467e5574f7dec489cc288f04d9c521",
-      "cost": null
-    },
-    {
-      "key": "tanjiro/stand_heavy",
-      "id": "tanjiro-stand_heavy",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-stand_heavy.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-stand_heavy.png",
-      "requested_size": "3072x1536",
-      "actual_size": [
-        1448,
-        1086
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
-      ],
-      "sha256": "21000e82d4003626d24daaa8e1114f84e8e04d2942b94d4c4a09743699b29d2c",
-      "cost": null
-    },
-    {
-      "key": "tanjiro/crouch_light",
-      "id": "tanjiro-crouch_light",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-crouch_light.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-crouch_light.png",
-      "requested_size": "3072x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
-      ],
-      "sha256": "2e5a055eb0255e9717597a7a6ecf6e469462e650a1022937fd47541771e7c8a1",
-      "cost": null
-    },
-    {
-      "key": "tanjiro/crouch_heavy",
-      "id": "tanjiro-crouch_heavy-v2",
-      "prompt": "output/imagegen/anime-v2/prompts/tanjiro-crouch_heavy-v2.txt",
-      "source": "output/imagegen/anime-v2/raw/tanjiro-crouch_heavy-v2.png",
-      "requested_size": "3072x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png",
-        "output/imagegen/anime-v2/raw/tanjiro-guard_low.png"
-      ],
-      "sha256": "0aaefb5ba67d3049ed2a89d774c23f69a3e8f9d27663d2bc20992b1da88e10f7",
-      "cost": null
-    },
-    {
-      "key": "tanjiro/air_light",
-      "id": "tanjiro-air_light",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-air_light.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-air_light.png",
-      "requested_size": "3072x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
-      ],
-      "sha256": "f596ff3ec8d9e4fb57b905a1df54ff222dc1c6fb0ebae15ad58809943d6f0081",
-      "cost": null
-    },
-    {
-      "key": "tanjiro/air_heavy",
-      "id": "tanjiro-air_heavy",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-air_heavy.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-air_heavy.png",
-      "requested_size": "3072x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
-      ],
-      "sha256": "f9e26ebfbeadf0fc3493652a32cae1503e79ca02212bbe15c5fd1bc6ddfa7e65",
-      "cost": null
-    },
-    {
-      "key": "tanjiro/water_slash",
-      "id": "tanjiro-water_slash",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-water_slash.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-water_slash.png",
-      "requested_size": "3072x2304",
-      "actual_size": [
-        1182,
-        1330
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
-      ],
-      "sha256": "de5ec1b9ad1018882f6989d3402e2a787cfcd0121713f31d9fe0f705032b8f29",
-      "cost": null
-    },
-    {
-      "key": "tanjiro/water_wheel",
-      "id": "tanjiro-water_wheel",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-water_wheel.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-water_wheel.png",
-      "requested_size": "3072x2304",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png"
-      ],
-      "sha256": "d78ff90dcb64f85d2521966689b3fd91625e80c86bc87bce4b54ae5e80ad5e07",
-      "cost": null
-    },
-    {
-      "key": "zenitsu-portrait",
-      "id": "zenitsu-portrait",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-portrait.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-portrait.png",
-      "requested_size": "1024x1536",
-      "actual_size": [
-        1024,
-        1536
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
-      ],
-      "sha256": "545059d2e2fe1078bc26f35646fecb2fc7bee1ef1ee29ceb3fbd4b50a4251dbb",
-      "cost": null
-    },
-    {
-      "key": "zenitsu/idle",
-      "id": "zenitsu-idle",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-idle.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-idle.png",
-      "requested_size": "3072x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
-      ],
-      "sha256": "43a9454271da255fb6a36b7d78d25f08b990f2a595724c25a6ee5498a54c11d8",
-      "cost": null
-    },
-    {
-      "key": "zenitsu/walk",
-      "id": "zenitsu-walk",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-walk.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-walk.png",
-      "requested_size": "3072x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
-      ],
-      "sha256": "0afbde83ac690334417ceecacc69e78e278443e1c10f50f6878952bd9b33f18b",
-      "cost": null
-    },
-    {
-      "key": "zenitsu/walk_back",
-      "id": "zenitsu-walk_back",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-walk_back.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-walk_back.png",
-      "requested_size": "3072x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
-      ],
-      "sha256": "649ce0f1531ccf980d6b966d2b7301477e7530583670af407472d5e57ec5b56d",
-      "cost": null
-    },
-    {
-      "key": "zenitsu/crouch",
-      "id": "zenitsu-crouch",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-crouch.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-crouch.png",
-      "requested_size": "2304x768",
-      "actual_size": [
-        1881,
-        836
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
-      ],
-      "sha256": "63bc4f2994fc7527c4df61fa72f1518835d50e5a9a28e48dff39b553897e577f",
-      "cost": null
-    },
-    {
-      "key": "zenitsu/jump",
-      "id": "zenitsu-jump",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-jump.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-jump.png",
-      "requested_size": "3072x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
-      ],
-      "sha256": "1bd209b5c57f81b074709d2249a5dbe8c1082363d2b548011ee8be077fca6f11",
-      "cost": null
-    },
-    {
-      "key": "zenitsu/guard",
-      "id": "zenitsu-guard",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-guard.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-guard.png",
-      "requested_size": "2304x768",
-      "actual_size": [
-        1881,
-        836
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
-      ],
-      "sha256": "3fbd03999c2fdd90f104252f62280e975e7e055f84df8e9d194cba194390fc6c",
-      "cost": null
-    },
-    {
-      "key": "zenitsu/guard_low",
-      "id": "zenitsu-guard_low",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-guard_low.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-guard_low.png",
-      "requested_size": "2304x768",
-      "actual_size": [
-        1881,
-        836
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
-      ],
-      "sha256": "3cfc8adb3c14a84766091e15adfaac1c342fb2da4b204790c9f0c625c5f7cdab",
-      "cost": null
-    },
-    {
-      "key": "zenitsu/hit",
-      "id": "zenitsu-hit",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-hit.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-hit.png",
-      "requested_size": "2048x1536",
-      "actual_size": [
-        1024,
-        1536
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
-      ],
-      "sha256": "4653884815f1d9c99def804800d2c17039017627bd452e1048f642fbca77784a",
-      "cost": null
-    },
-    {
-      "key": "zenitsu/knockdown",
-      "id": "zenitsu-knockdown",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-knockdown.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-knockdown.png",
-      "requested_size": "3072x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
-      ],
-      "sha256": "84d9a0ff61864bc5041eb508e2998cbd889ef88091b85ce546034b31e907acf8",
-      "cost": null
-    },
-    {
-      "key": "zenitsu/throw",
-      "id": "zenitsu-throw-movement-v3",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-throw-movement-v3.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-throw-movement-v3.png",
-      "requested_size": "2304x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png",
-        "output\\imagegen\\anime-v2\\raw\\zenitsu-idle.png"
-      ],
-      "sha256": "a22a8826d8f0c9a694483b4f70f847c80958045f96c4b907c8d0a8c5470232cb",
-      "cost": null
-    },
-    {
-      "key": "zenitsu/victory",
-      "id": "zenitsu-victory",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-victory.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-victory.png",
-      "requested_size": "3072x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
-      ],
-      "sha256": "0c66e02ac89e514dcfa619e0648e7653b1fc939117384fcf72920a9a47020a9c",
-      "cost": null
-    },
-    {
-      "key": "zenitsu/stand_light",
-      "id": "zenitsu-stand_light",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-stand_light.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-stand_light.png",
-      "requested_size": "3072x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
-      ],
-      "sha256": "40945c7e64267328e9b5607c349afd63ae9759ae54c91756bc4f9929f4097306",
-      "cost": null
-    },
-    {
-      "key": "zenitsu/stand_heavy",
-      "id": "zenitsu-stand_heavy",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-stand_heavy.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-stand_heavy.png",
-      "requested_size": "3072x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
-      ],
-      "sha256": "656d1b6ac8fa4fb919eee72808b0f06c981bb4b6e6e6a7b9918894407245a8c0",
-      "cost": null
-    },
-    {
-      "key": "zenitsu/crouch_light",
-      "id": "zenitsu-crouch_light-r1",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-crouch_light.txt",
-      "source": "output/imagegen/anime-v2/raw/zenitsu-crouch_light-r1.png",
-      "requested_size": "3072x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
-      ],
-      "sha256": "4b3cea98528dfeb74e10b5d2b14624d9e5b9ff1c413cd09a065ba15457370653",
-      "cost": null
-    },
-    {
-      "key": "zenitsu/crouch_heavy",
-      "id": "zenitsu-crouch_heavy-v2",
-      "prompt": "output/imagegen/anime-v2/prompts/zenitsu-crouch_heavy-v2.txt",
-      "source": "output/imagegen/anime-v2/raw/zenitsu-crouch_heavy-v2.png",
-      "requested_size": "3072x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png",
-        "output/imagegen/anime-v2/raw/zenitsu-guard_low.png"
-      ],
-      "sha256": "9c57393db4cec2a85cd01bc0132847bccd6a226b2de1cccdc86b06bbc15c46a7",
-      "cost": null
-    },
-    {
-      "key": "zenitsu/air_light",
-      "id": "zenitsu-air_light",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-air_light.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-air_light.png",
-      "requested_size": "3072x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
-      ],
-      "sha256": "fbc08652a9feae23a88ca9f99cd87843d9f680e9f3be7d4ff7c27bcb29f4c7aa",
-      "cost": null
-    },
-    {
-      "key": "zenitsu/air_heavy",
-      "id": "zenitsu-air_heavy",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-air_heavy.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-air_heavy.png",
-      "requested_size": "3072x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
-      ],
-      "sha256": "d6997706072463e276324cfec8ba2423f08592cd68bb1921a4fbf18276210df7",
-      "cost": null
-    },
-    {
-      "key": "zenitsu/iai",
-      "id": "zenitsu-iai",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-iai.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-iai.png",
-      "requested_size": "3072x2304",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
-      ],
-      "sha256": "40e0b5357d42fa67690b87c3bc99a8968491a849813fc7ffcd81ae3b74b4452a",
-      "cost": null
-    },
-    {
-      "key": "zenitsu/thunder",
-      "id": "zenitsu-thunder",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-thunder.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-thunder.png",
-      "requested_size": "3072x2304",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png"
-      ],
-      "sha256": "80862c9414034b41d85a446d255e521f123cd47c3d7d83119ece826e53cd621a",
-      "cost": null
-    },
-    {
-      "key": "wisteria-sky",
-      "id": "wisteria-sky",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\wisteria-sky.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\wisteria-sky.png",
-      "requested_size": "2048x1152",
-      "actual_size": [
-        1672,
-        941
-      ],
-      "references": [
-        "output/imagegen/anime-v2/raw/wisteria-master.png"
-      ],
-      "sha256": "a8d2c85a9c6395243d603ae9867ceba0b0a8e816f074445fce9c8fcd1742cc7c",
-      "cost": null,
-      "used_by_current_stage": false,
-      "superseded_by": "wisteria-continuous-v4"
-    },
-    {
-      "key": "wisteria-canopy",
-      "id": "wisteria-canopy",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\wisteria-canopy.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\wisteria-canopy.png",
-      "requested_size": "2048x1152",
-      "actual_size": [
-        1672,
-        941
-      ],
-      "references": [
-        "output/imagegen/anime-v2/raw/wisteria-master.png"
-      ],
-      "sha256": "4611118ee7c6acf28315fa3c41163bced58938921dcac44f066ff2f18eafd97d",
-      "cost": null,
-      "used_by_current_stage": false,
-      "superseded_by": "wisteria-continuous-v4"
-    },
-    {
-      "key": "wisteria-foreground",
-      "id": "wisteria-foreground",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\wisteria-foreground.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\wisteria-foreground.png",
-      "requested_size": "2048x1152",
-      "actual_size": [
-        1672,
-        941
-      ],
-      "references": [
-        "output/imagegen/anime-v2/raw/wisteria-master.png"
-      ],
-      "sha256": "fd809ba2125ae99348c2e3d5952173fbc4084ff392dca7a9a5d4e800bf1b0bcf",
-      "cost": null,
-      "used_by_current_stage": false,
-      "superseded_by": "wisteria-continuous-v4"
-    },
-    {
-      "key": "fx-water-slash",
-      "id": "fx-water-slash",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\fx-water-slash.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\fx-water-slash.png",
+      "id": "stage-0-0",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
       "requested_size": "1536x1024",
-      "actual_size": [
-        1774,
-        887
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T17:54:07.3684431Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-0-0.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\stage-0-0.png",
+      "references": [
+        "output\\imagegen\\battle-v5\\references\\stage-0-0.png"
       ],
-      "references": [],
-      "sha256": "8a49df4521ca9bf2844d994280803d98bad10eac4d70043a2896d5307bd50143",
-      "cost": null
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T17:54:33.5335591Z",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "sha256": "aa63f6e202ca2a9974527d2e4fda9301bb2aac9c310459691b3b16f71ba6dfc5",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
     },
     {
-      "key": "fx-water-wheel",
-      "id": "fx-water-wheel",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\fx-water-wheel.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\fx-water-wheel.png",
+      "id": "stage-0-1",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1536x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T17:54:33.6423842Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-0-1.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\stage-0-1.png",
+      "references": [
+        "output\\imagegen\\battle-v5\\references\\stage-0-1.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T17:55:06.9161637Z",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "sha256": "5562c592d703d2dd7e068be07f4f2ee82f2030c897f8757e417e5f84acd9ed7d",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "stage-0-2",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1536x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T17:55:07.0188834Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-0-2.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\stage-0-2.png",
+      "references": [
+        "output\\imagegen\\battle-v5\\references\\stage-0-2.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T17:55:37.0625556Z",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "sha256": "ae505f1eba3bc2d3977ac3dfe4ae23e93b8f0d4c191bdaee27abd6d281ddefaa",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "stage-0-3",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1536x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T17:55:37.2410604Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-0-3.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\stage-0-3.png",
+      "references": [
+        "output\\imagegen\\battle-v5\\references\\stage-0-3.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T17:56:03.6676930Z",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "sha256": "256d550503fd10b4b3ec0b6b19ca59eb908aea6569bf623102d9f9e3b33029d8",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "stage-0-4",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1536x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T17:56:03.8397557Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-0-4.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\stage-0-4.png",
+      "references": [
+        "output\\imagegen\\battle-v5\\references\\stage-0-4.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T17:56:31.2400416Z",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "sha256": "6a0ae910c8c8b5aba66176f3a41d47b939bf3af3a287223831695bbf5280d3c0",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "stage-0-5",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1536x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T17:56:31.4095642Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-0-5.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\stage-0-5.png",
+      "references": [
+        "output\\imagegen\\battle-v5\\references\\stage-0-5.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T17:57:15.2031173Z",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "sha256": "7cc0a75dba79850ebd3e2a99ee29c8c3f02100faa832e8adaa08965c2456246a",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "stage-0-6",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1536x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T17:57:15.3726342Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-0-6.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\stage-0-6.png",
+      "references": [
+        "output\\imagegen\\battle-v5\\references\\stage-0-6.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T17:57:47.0695225Z",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "sha256": "16bbcc81700d2b9365f7bba0eb6c38b1c8f204e28bfb7f164e0b62c1315b1819",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "stage-1-0",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1536x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T17:57:47.2389930Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-1-0.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\stage-1-0.png",
+      "references": [
+        "output\\imagegen\\battle-v5\\references\\stage-1-0.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T17:58:22.3782039Z",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "sha256": "08fab8a7d1362067b8892d96315dd3d3565ab6f9c273125122426ec349ea4155",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "stage-1-1",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1536x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T17:58:22.5600266Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-1-1.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\stage-1-1.png",
+      "references": [
+        "output\\imagegen\\battle-v5\\references\\stage-1-1.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T17:59:12.6060782Z",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "sha256": "cbe0d4507e64373e10204dc176b9f8982565d1900aed031b042a95b1769b7432",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "stage-1-2",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1536x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T17:59:12.7771777Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-1-2.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\stage-1-2.png",
+      "references": [
+        "output\\imagegen\\battle-v5\\references\\stage-1-2.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T17:59:41.0685776Z",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "sha256": "60acd399396070177f338e9d23630b89ba7fc65a7fb13462202adad0554e781b",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "stage-1-3",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1536x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T17:51:56.4585706Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-1-3.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\stage-1-3.png",
+      "references": [
+        "output\\imagegen\\battle-v5\\references\\stage-1-3.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T17:52:20.8154157Z",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "sha256": "3fb6e96afba53be61ff29a4867fc80c764a8a8c38550d42536435bdc602eafce",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "stage-1-4",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1536x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T17:59:41.2428798Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-1-4.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\stage-1-4.png",
+      "references": [
+        "output\\imagegen\\battle-v5\\references\\stage-1-4.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T18:00:30.9758258Z",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "sha256": "7d1302d5f58fde64f84924dc6cb324dbb93ce789ccb15b6dc00d625e60685d27",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "stage-1-5",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1536x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T18:00:31.1456314Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-1-5.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\stage-1-5.png",
+      "references": [
+        "output\\imagegen\\battle-v5\\references\\stage-1-5.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T18:01:16.1610969Z",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "sha256": "f7e73023896a997523db5c9509843b859057fa8af0bdaea04da2fa04f2787be5",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "stage-1-6",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1536x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T18:01:16.3321974Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-1-6.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\stage-1-6.png",
+      "references": [
+        "output\\imagegen\\battle-v5\\references\\stage-1-6.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T18:01:48.7777368Z",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "sha256": "2303a1bc1b27dea24a84cf050c3ef005e780696c8d40c9257ed01977d879a083",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "stage-2-0",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1536x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T18:01:48.9455136Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-2-0.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\stage-2-0.png",
+      "references": [
+        "output\\imagegen\\battle-v5\\references\\stage-2-0.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T18:02:22.4075574Z",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "sha256": "8589e95fe9a5f47b9d1ccc1b35ca47d29998dd07414b3d46862cda5d268a478d",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "stage-2-1",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1536x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T18:02:22.5785431Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-2-1.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\stage-2-1.png",
+      "references": [
+        "output\\imagegen\\battle-v5\\references\\stage-2-1.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T18:02:48.2372748Z",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "sha256": "12ce4ca0c11a2ef3adacc3fba01a9aa2f15b715ae5555c3ead45525cf9a5ddb8",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "stage-2-2",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1536x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T18:02:48.4098883Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-2-2.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\stage-2-2.png",
+      "references": [
+        "output\\imagegen\\battle-v5\\references\\stage-2-2.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T18:03:15.0298772Z",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "sha256": "ca2b334ed24f8ae25d33dc76b0d62c268f50faebeebf54c0ac38cdf13c988e9f",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "stage-2-3",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1536x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T18:03:15.2214432Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-2-3.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\stage-2-3.png",
+      "references": [
+        "output\\imagegen\\battle-v5\\references\\stage-2-3.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T18:03:43.1910185Z",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "sha256": "bfc711dad7ac50ac7938603351e998f71c377ac3b00d7eb54ba5af2787540aab",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "stage-2-4",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1536x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T18:03:43.3613128Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-2-4.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\stage-2-4.png",
+      "references": [
+        "output\\imagegen\\battle-v5\\references\\stage-2-4.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T18:04:20.2886924Z",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "sha256": "8ba70fd6aea4edc74fac13cb4fc8c49e384fb37cf4f119c4a1b9c1be63641687",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "stage-2-5",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1536x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T18:04:20.4630033Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-2-5.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\stage-2-5.png",
+      "references": [
+        "output\\imagegen\\battle-v5\\references\\stage-2-5.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T18:04:46.4672192Z",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "sha256": "28d52126554f8bf299a4b4e6b6f47195b192c083900506701ede343208a0d573",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "stage-2-6",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1536x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T18:04:46.6362834Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-2-6.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\stage-2-6.png",
+      "references": [
+        "output\\imagegen\\battle-v5\\references\\stage-2-6.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T18:05:16.2877876Z",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "sha256": "8b025aa83f41d4e44472e777fdcea14553e4ef49f42a503c531a0f98d27480b6",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "sun-flame-arc",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
       "requested_size": "1024x1024",
-      "actual_size": [
-        1254,
-        1254
-      ],
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T17:51:31.5660201Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\sun-flame-arc.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\sun-flame-arc.png",
       "references": [],
-      "sha256": "f9bc0c6f49f3dc49c714b353b3e4e3aa8f7c9ffa2695785a215f7988ec746987",
-      "cost": null
-    },
-    {
-      "key": "fx-thunder",
-      "id": "fx-thunder",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\fx-thunder.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\fx-thunder.png",
-      "requested_size": "1536x1024",
-      "actual_size": [
-        2172,
-        724
-      ],
-      "references": [],
-      "sha256": "e81e35c417a8973d3f46f3c4e90465a41e4b21abb6863f325f7a68195eac2a55",
-      "cost": null
-    },
-    {
-      "key": "fx-impact",
-      "id": "fx-impact",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\fx-impact.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\fx-impact.png",
-      "requested_size": "1536x1024",
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T17:51:56.3640213Z",
       "actual_size": [
         1254,
         1254
       ],
-      "references": [],
-      "sha256": "fb881ee956a50d9568beca78380c480b2764d2d35581bedbb7c482fce95c96cc",
-      "cost": null
+      "sha256": "18891fff731989751289be9e0b9e10f3441db089e9d470a951bc067cca0f1fd3",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
     },
     {
-      "key": "tanjiro/dash_forward",
-      "id": "tanjiro-dash_forward-movement-v3",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-dash_forward-movement-v3.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-dash_forward-movement-v3.png",
-      "requested_size": "3072x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
+      "id": "tanjiro-battle-portrait",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1024x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T17:49:17.2896433Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\tanjiro-battle-portrait.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\tanjiro-battle-portrait.png",
       "references": [
-        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png",
-        "output\\imagegen\\anime-v2\\raw\\tanjiro-idle-v2.png"
+        "art/characters/tanjiro/portrait.png"
       ],
-      "sha256": "a44b47708e75bcbd770c4e7430438db3d5e4b6d1b87f79c39a1ae6df0795345a",
-      "cost": null
-    },
-    {
-      "key": "tanjiro/dash_back",
-      "id": "tanjiro-dash_back-movement-v3",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-dash_back-movement-v3.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-dash_back-movement-v3.png",
-      "requested_size": "3072x1536",
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T17:50:05.0122790Z",
       "actual_size": [
-        1536,
-        1024
+        1144,
+        1375
       ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png",
-        "output\\imagegen\\anime-v2\\raw\\tanjiro-idle-v2.png"
-      ],
-      "sha256": "36b9fd377947f681df1ad5cd8e928c701e8ab5f5c4eaddc5f7f844f430b753fa",
-      "cost": null
+      "sha256": "27b0fa14706fbee10f7434aa65af9d288fbad75b2a5b211f2d2becb4882ad8bd",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
     },
     {
-      "key": "tanjiro/jump_forward",
-      "id": "tanjiro-jump_forward-movement-v3",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-jump_forward-movement-v3.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-jump_forward-movement-v3.png",
-      "requested_size": "3072x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
+      "id": "water-dragon",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1536x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T17:50:56.9302560Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\water-dragon.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\water-dragon.png",
       "references": [
-        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png",
-        "output\\imagegen\\anime-v2\\raw\\tanjiro-idle-v2.png"
+        "art/effects/water-wheel.png"
       ],
-      "sha256": "4ddf657aa4afee3d4d4f7da8d99e83437a43dda0fc3d00740c862cccf6bcbdfc",
-      "cost": null
-    },
-    {
-      "key": "tanjiro/jump_back",
-      "id": "tanjiro-jump_back-movement-v3",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-jump_back-movement-v3.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-jump_back-movement-v3.png",
-      "requested_size": "3072x1536",
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T17:51:31.4629173Z",
       "actual_size": [
         1254,
         1254
       ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png",
-        "output\\imagegen\\anime-v2\\raw\\tanjiro-idle-v2.png"
-      ],
-      "sha256": "6570bc65a5b9d0d52972a30fc4ce774e6c39ea35f8807bf94561cb9faf5405d7",
-      "cost": null
+      "sha256": "c848bef2ec45bb6dce280eb7ef5c6bc4015e548165b98b351aa4c1471c6d7a94",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
     },
     {
-      "key": "tanjiro/throw_success",
-      "id": "tanjiro-throw_success-movement-v3",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-throw_success-movement-v3.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-throw_success-movement-v3.png",
-      "requested_size": "3072x2304",
-      "actual_size": [
-        1254,
-        1254
-      ],
+      "id": "zenitsu-battle-portrait",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1024x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T17:50:05.1055411Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\zenitsu-battle-portrait.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\zenitsu-battle-portrait.png",
       "references": [
-        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png",
-        "output\\imagegen\\anime-v2\\raw\\tanjiro-idle-v2.png"
+        "art/characters/zenitsu/portrait.png"
       ],
-      "sha256": "5ebd6f1d2338cf1646e5283e2db92a1fb6d46f19bb7a3de4cf5815d9bef349f4",
-      "cost": null
-    },
-    {
-      "key": "tanjiro/thrown",
-      "id": "tanjiro-thrown-movement-v3",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-thrown-movement-v3.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-thrown-movement-v3.png",
-      "requested_size": "3072x2304",
-      "actual_size": [
-        1448,
-        1086
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\tanjiro-model.png",
-        "output\\imagegen\\anime-v2\\raw\\tanjiro-idle-v2.png"
-      ],
-      "sha256": "ef6e0b1abf50b2ba74decadd49f872c22936119f5430ca91fd37f21c758ebe72",
-      "cost": null
-    },
-    {
-      "key": "zenitsu/dash_forward",
-      "id": "zenitsu-dash_forward-movement-v3",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-dash_forward-movement-v3.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-dash_forward-movement-v3.png",
-      "requested_size": "3072x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png",
-        "output\\imagegen\\anime-v2\\raw\\zenitsu-idle.png"
-      ],
-      "sha256": "da9c1fc35abf37f589a6e44e6d8c343459d8772bf4ae8ae68b514eeaacd144a3",
-      "cost": null
-    },
-    {
-      "key": "zenitsu/dash_back",
-      "id": "zenitsu-dash_back-movement-v3",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-dash_back-movement-v3.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-dash_back-movement-v3.png",
-      "requested_size": "3072x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png",
-        "output\\imagegen\\anime-v2\\raw\\zenitsu-idle.png"
-      ],
-      "sha256": "8b0660c6082ecb4488b9571796abeeec967277bb62661ddb94bc61f798b17c8a",
-      "cost": null
-    },
-    {
-      "key": "zenitsu/jump_forward",
-      "id": "zenitsu-jump_forward-movement-v3",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-jump_forward-movement-v3.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-jump_forward-movement-v3.png",
-      "requested_size": "3072x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png",
-        "output\\imagegen\\anime-v2\\raw\\zenitsu-idle.png"
-      ],
-      "sha256": "87cdb86bc64f03937098b6f57754fcab64866dd8825207fc096481fef248e41a",
-      "cost": null
-    },
-    {
-      "key": "zenitsu/jump_back",
-      "id": "zenitsu-jump_back-movement-v3",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-jump_back-movement-v3.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-jump_back-movement-v3.png",
-      "requested_size": "3072x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png",
-        "output\\imagegen\\anime-v2\\raw\\zenitsu-idle.png"
-      ],
-      "sha256": "f330dd147ca93d83d967713fbf3165814455a7169cc51baec9792745f14218c1",
-      "cost": null
-    },
-    {
-      "key": "zenitsu/throw_success",
-      "id": "zenitsu-throw_success-movement-v3",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-throw_success-movement-v3.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-throw_success-movement-v3.png",
-      "requested_size": "3072x2304",
-      "actual_size": [
-        1254,
-        1254
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png",
-        "output\\imagegen\\anime-v2\\raw\\zenitsu-idle.png"
-      ],
-      "sha256": "57df4730afa317765c23e91a4bbbb01a3414b886b29800ff3c4bf8a7128d8f9c",
-      "cost": null
-    },
-    {
-      "key": "zenitsu/thrown",
-      "id": "zenitsu-thrown-movement-v3",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-thrown-movement-v3.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-thrown-movement-v3.png",
-      "requested_size": "3072x2304",
-      "actual_size": [
-        1448,
-        1086
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\raw\\zenitsu-model.png",
-        "output\\imagegen\\anime-v2\\raw\\zenitsu-idle.png"
-      ],
-      "sha256": "dc432eb29c88b09a57c1bca333ac6183dd097589ff0b6912a6ace58062cd9cee",
-      "cost": null
-    },
-    {
-      "key": "wisteria-left-movement-v3",
-      "id": "wisteria-left-movement-v3",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\wisteria-left-movement-v3.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\wisteria-left-movement-v3.png",
-      "requested_size": "1792x1152",
-      "actual_size": [
-        1565,
-        1005
-      ],
-      "references": [
-        "output\\imagegen\\anime-v2\\references\\wisteria-left-movement-v3.png",
-        "art/stages/wisteria/menu.jpg"
-      ],
-      "sha256": "0267e6ca620252aa9ad272ec42769f15799395840f9084894631b63942f2de41",
       "cost": null,
-      "used_by_current_stage": false,
-      "superseded_by": "wisteria-continuous-v4"
-    },
-    {
-      "key": "wisteria-right-movement-v3",
-      "id": "wisteria-right-movement-v3",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\wisteria-right-movement-v3.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\wisteria-right-movement-v3.png",
-      "requested_size": "1792x1152",
+      "accepted": true,
+      "completed_utc": "2026-09-20T17:50:56.8351694Z",
       "actual_size": [
-        1565,
-        1005
+        1152,
+        1365
       ],
-      "references": [
-        "output\\imagegen\\anime-v2\\references\\wisteria-right-movement-v3.png",
-        "art/stages/wisteria/menu.jpg"
-      ],
-      "sha256": "2ea8b98d8fc87daef009b746769b54044be760f162c5bf06600acbc2a7ca62a0",
-      "cost": null,
-      "used_by_current_stage": false,
-      "superseded_by": "wisteria-continuous-v4"
-    },
-    {
-      "key": "wisteria-continuous-v4",
-      "id": "wisteria-continuous-v4",
-      "prompt": "output/imagegen/anime-v2/prompts/wisteria-continuous-v4.txt",
-      "source": "output/imagegen/anime-v2/raw/wisteria-continuous-v4.png",
-      "references": [
-        "output/imagegen/anime-v2/references/wisteria-continuous-v4.png"
-      ],
-      "requested_size": "3840x1280",
-      "actual_size": [
-        2172,
-        724
-      ],
-      "sha256": "071480a980c3c3b3118dec1a2fd7feaaf1e9f51ec99389048340b846f19a72c1",
-      "cost": null,
-      "used_by_current_stage": true
-    },
-    {
-      "key": "tanjiro/body_stand_light",
-      "id": "tanjiro-body_stand_light-phase2-v1",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-body_stand_light-phase2-v1.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-body_stand_light-phase2-v1.png",
-      "requested_size": "1536x1024",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output/imagegen/anime-v2/raw/tanjiro-model.png",
-        "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
-      ],
-      "sha256": "078e5a48472d2405e1fb6fa8fd560592a7ff4abf4bf56a500c733aeac3c0b4f7",
-      "cost": null,
-      "source_drawings": 6,
-      "selected_drawings": 6,
-      "import": "output/imagegen/anime-v2/imports/tanjiro-body_stand_light-phase2-v1.json"
-    },
-    {
-      "key": "tanjiro/body_stand_heavy",
-      "id": "tanjiro-body_stand_heavy-phase2-v1",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-body_stand_heavy-phase2-v1.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-body_stand_heavy-phase2-v1.png",
-      "requested_size": "1536x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output/imagegen/anime-v2/raw/tanjiro-model.png",
-        "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
-      ],
-      "sha256": "19c4e5243760b40041f824e4bcfe1c1bd83d64e890089c71597ff6b679f6bf8c",
-      "cost": null,
-      "source_drawings": 9,
-      "selected_drawings": 9,
-      "import": "output/imagegen/anime-v2/imports/tanjiro-body_stand_heavy-phase2-v1.json"
-    },
-    {
-      "key": "tanjiro/body_crouch_light",
-      "id": "tanjiro-body_crouch_light-phase2-v1",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-body_crouch_light-phase2-v1.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-body_crouch_light-phase2-v1.png",
-      "requested_size": "1536x1024",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output/imagegen/anime-v2/raw/tanjiro-model.png",
-        "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
-      ],
-      "sha256": "3604383e9bf0844dd7b9d693a631f01ebc8a8aa53dc65dfc90c127af1c1b399a",
-      "cost": null,
-      "source_drawings": 6,
-      "selected_drawings": 6,
-      "import": "output/imagegen/anime-v2/imports/tanjiro-body_crouch_light-phase2-v1.json"
-    },
-    {
-      "key": "tanjiro/body_crouch_heavy",
-      "id": "tanjiro-body_crouch_heavy-phase2-v1",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-body_crouch_heavy-phase2-v1.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-body_crouch_heavy-phase2-v1.png",
-      "requested_size": "1536x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output/imagegen/anime-v2/raw/tanjiro-model.png",
-        "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
-      ],
-      "sha256": "36bd52e948127ff8779adc18787472bab8d0a96f82c3e95c59998e49aba3860f",
-      "cost": null,
-      "source_drawings": 9,
-      "selected_drawings": 9,
-      "import": "output/imagegen/anime-v2/imports/tanjiro-body_crouch_heavy-phase2-v1.json"
-    },
-    {
-      "key": "tanjiro/body_air_light",
-      "id": "tanjiro-body_air_light-phase2-v1",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-body_air_light-phase2-v1.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-body_air_light-phase2-v1.png",
-      "requested_size": "1536x1024",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output/imagegen/anime-v2/raw/tanjiro-model.png",
-        "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
-      ],
-      "sha256": "ab60fce6f52e6a2302e5b37343b26c49e8affa05641a9a366717a3b6941717be",
-      "cost": null,
-      "source_drawings": 6,
-      "selected_drawings": 6,
-      "import": "output/imagegen/anime-v2/imports/tanjiro-body_air_light-phase2-v1.json"
-    },
-    {
-      "key": "tanjiro/body_air_heavy",
-      "id": "tanjiro-body_air_heavy-phase2-v1",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-body_air_heavy-phase2-v1.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-body_air_heavy-phase2-v1.png",
-      "requested_size": "1536x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output/imagegen/anime-v2/raw/tanjiro-model.png",
-        "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
-      ],
-      "sha256": "b640d055327f3ffb1192cac333e42927edd6a4d2536c1013b8b23be4be3236f9",
-      "cost": null,
-      "source_drawings": 9,
-      "selected_drawings": 9,
-      "import": "output/imagegen/anime-v2/imports/tanjiro-body_air_heavy-phase2-v1.json"
-    },
-    {
-      "key": "tanjiro/roll_forward",
-      "id": "tanjiro-roll_forward-phase2-v1",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-roll_forward-phase2-v1.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-roll_forward-phase2-v1.png",
-      "requested_size": "2048x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output/imagegen/anime-v2/raw/tanjiro-model.png",
-        "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
-      ],
-      "sha256": "3dee55d8909a69eb4c460538fac7e127f2e435277af1021d8d5d7dc84745bd30",
-      "cost": null,
-      "source_drawings": 12,
-      "selected_drawings": 12,
-      "import": "output/imagegen/anime-v2/imports/tanjiro-roll_forward-phase2-v1.json"
-    },
-    {
-      "key": "tanjiro/roll_back",
-      "id": "tanjiro-roll_back-phase2-v1",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-roll_back-phase2-v1.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-roll_back-phase2-v1.png",
-      "requested_size": "2048x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output/imagegen/anime-v2/raw/tanjiro-model.png",
-        "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
-      ],
-      "sha256": "972e1c373529b1fb01624921a4f7b6dc13a1082d5053d4efc8db2b766995284b",
-      "cost": null,
-      "source_drawings": 12,
-      "selected_drawings": 12,
-      "import": "output/imagegen/anime-v2/imports/tanjiro-roll_back-phase2-v1.json"
-    },
-    {
-      "key": "tanjiro/throw_forward",
-      "id": "tanjiro-throw_forward-phase2-v1",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-throw_forward-phase2-v1.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-throw_forward-phase2-v1.png",
-      "requested_size": "2048x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output/imagegen/anime-v2/raw/tanjiro-model.png",
-        "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
-      ],
-      "sha256": "fb287bcb5f093d937a34379d7859df56d765a8cfa697ef531d7a8cd41c5988d4",
-      "cost": null,
-      "source_drawings": 12,
-      "selected_drawings": 12,
-      "import": "output/imagegen/anime-v2/imports/tanjiro-throw_forward-phase2-v1.json"
-    },
-    {
-      "key": "tanjiro/thrown_forward",
-      "id": "tanjiro-thrown_forward-phase2-v1",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-thrown_forward-phase2-v1.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-thrown_forward-phase2-v1.png",
-      "requested_size": "2048x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output/imagegen/anime-v2/raw/tanjiro-model.png",
-        "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
-      ],
-      "sha256": "3e3211ab7292958e226e57762c272ab4f86dde48f3752ac793dbe8216c64a619",
-      "cost": null,
-      "source_drawings": 12,
-      "selected_drawings": 12,
-      "import": "output/imagegen/anime-v2/imports/tanjiro-thrown_forward-phase2-v1.json"
-    },
-    {
-      "key": "tanjiro/throw_tech",
-      "id": "tanjiro-throw_tech-phase2-v1",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-throw_tech-phase2-v1.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-throw_tech-phase2-v1.png",
-      "requested_size": "1536x1024",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output/imagegen/anime-v2/raw/tanjiro-model.png",
-        "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
-      ],
-      "sha256": "e615f95d5461209caa5006a377c489d4cb58e2206872852899811732549c2ae2",
-      "cost": null,
-      "source_drawings": 6,
-      "selected_drawings": 6,
-      "import": "output/imagegen/anime-v2/imports/tanjiro-throw_tech-phase2-v1.json"
-    },
-    {
-      "key": "tanjiro/water_vortex",
-      "id": "tanjiro-water_vortex-phase2-v1",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-water_vortex-phase2-v1.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-water_vortex-phase2-v1.png",
-      "requested_size": "2048x1536",
-      "actual_size": [
-        1448,
-        1086
-      ],
-      "references": [
-        "output/imagegen/anime-v2/raw/tanjiro-model.png",
-        "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
-      ],
-      "sha256": "492f732aa7cfed84174083172696e30c566f058eadba9b997cd448b12071674a",
-      "cost": null,
-      "source_drawings": 12,
-      "selected_drawings": 12,
-      "import": "output/imagegen/anime-v2/imports/tanjiro-water_vortex-phase2-v1.json"
-    },
-    {
-      "key": "tanjiro/water_dragon",
-      "id": "tanjiro-water_dragon-phase2-v1",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-water_dragon-phase2-v1.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-water_dragon-phase2-v1.png",
-      "requested_size": "2560x1536",
-      "actual_size": [
-        1619,
-        971
-      ],
-      "references": [
-        "output/imagegen/anime-v2/raw/tanjiro-model.png",
-        "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
-      ],
-      "sha256": "41ede424ccde0865c816a806295f81c616c15d559941d05fb555f37703e3f1d6",
-      "cost": null,
-      "source_drawings": 15,
-      "selected_drawings": 15,
-      "import": "output/imagegen/anime-v2/imports/tanjiro-water_dragon-phase2-v1.json"
-    },
-    {
-      "key": "tanjiro/sun_arc",
-      "id": "tanjiro-sun_arc-phase2-v1",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-sun_arc-phase2-v1.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-sun_arc-phase2-v1.png",
-      "requested_size": "2048x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output/imagegen/anime-v2/raw/tanjiro-model.png",
-        "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
-      ],
-      "sha256": "f422ff1430cac5f57eb47e34c6f2f1cfdb0c855000ff609891ae8bd2f0710d90",
-      "cost": null,
-      "source_drawings": 12,
-      "selected_drawings": 12,
-      "import": "output/imagegen/anime-v2/imports/tanjiro-sun_arc-phase2-v1.json"
-    },
-    {
-      "key": "zenitsu/body_stand_light",
-      "id": "zenitsu-body_stand_light-phase2-v1",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-body_stand_light-phase2-v1.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-body_stand_light-phase2-v1.png",
-      "requested_size": "1536x1024",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output/imagegen/anime-v2/raw/zenitsu-model.png",
-        "output/imagegen/anime-v2/raw/zenitsu-idle.png"
-      ],
-      "sha256": "7bc022062ce28e07240b0ef0a592c3ba3ed67664361a75f67cd541e1a80511f1",
-      "cost": null,
-      "source_drawings": 6,
-      "selected_drawings": 6,
-      "import": "output/imagegen/anime-v2/imports/zenitsu-body_stand_light-phase2-v1.json"
-    },
-    {
-      "key": "zenitsu/body_stand_heavy",
-      "id": "zenitsu-body_stand_heavy-phase2-v1",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-body_stand_heavy-phase2-v1.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-body_stand_heavy-phase2-v1.png",
-      "requested_size": "1536x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output/imagegen/anime-v2/raw/zenitsu-model.png",
-        "output/imagegen/anime-v2/raw/zenitsu-idle.png"
-      ],
-      "sha256": "d947d09424500c28557cbf92624779968185de5e858a16553ec6c8d883d7dd97",
-      "cost": null,
-      "source_drawings": 9,
-      "selected_drawings": 9,
-      "import": "output/imagegen/anime-v2/imports/zenitsu-body_stand_heavy-phase2-v1.json"
-    },
-    {
-      "key": "zenitsu/body_crouch_light",
-      "id": "zenitsu-body_crouch_light-phase2-v1",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-body_crouch_light-phase2-v1.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-body_crouch_light-phase2-v1.png",
-      "requested_size": "1536x1024",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output/imagegen/anime-v2/raw/zenitsu-model.png",
-        "output/imagegen/anime-v2/raw/zenitsu-idle.png"
-      ],
-      "sha256": "1b3627ed231ec2454e463a8c921d7b3eea18ba1b59368b651c481ddc465e51a5",
-      "cost": null,
-      "source_drawings": 6,
-      "selected_drawings": 6,
-      "import": "output/imagegen/anime-v2/imports/zenitsu-body_crouch_light-phase2-v1.json"
-    },
-    {
-      "key": "zenitsu/body_crouch_heavy",
-      "id": "zenitsu-body_crouch_heavy-phase2-v1",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-body_crouch_heavy-phase2-v1.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-body_crouch_heavy-phase2-v1.png",
-      "requested_size": "1536x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output/imagegen/anime-v2/raw/zenitsu-model.png",
-        "output/imagegen/anime-v2/raw/zenitsu-idle.png"
-      ],
-      "sha256": "107951f43e3221fece167095495f0436b233c01a756a897dd49397f3d4aca9b7",
-      "cost": null,
-      "source_drawings": 9,
-      "selected_drawings": 8,
-      "import": "output/imagegen/anime-v2/imports/zenitsu-body_crouch_heavy-phase2-v1.json"
-    },
-    {
-      "key": "zenitsu/body_air_light",
-      "id": "zenitsu-body_air_light-phase2-v1",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-body_air_light-phase2-v1.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-body_air_light-phase2-v1.png",
-      "requested_size": "1536x1024",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output/imagegen/anime-v2/raw/zenitsu-model.png",
-        "output/imagegen/anime-v2/raw/zenitsu-idle.png"
-      ],
-      "sha256": "2aed6c62822795d909efd4241fa09b5348da8460f7052a313374f3732710fc99",
-      "cost": null,
-      "source_drawings": 6,
-      "selected_drawings": 6,
-      "import": "output/imagegen/anime-v2/imports/zenitsu-body_air_light-phase2-v1.json"
-    },
-    {
-      "key": "zenitsu/body_air_heavy",
-      "id": "zenitsu-body_air_heavy-phase2-v1",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-body_air_heavy-phase2-v1.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-body_air_heavy-phase2-v1.png",
-      "requested_size": "1536x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output/imagegen/anime-v2/raw/zenitsu-model.png",
-        "output/imagegen/anime-v2/raw/zenitsu-idle.png"
-      ],
-      "sha256": "4558dac66d1949547d51e7b477ae1bd2cc32e55d5dd30ad4bde5ec8ee201a059",
-      "cost": null,
-      "source_drawings": 9,
-      "selected_drawings": 9,
-      "import": "output/imagegen/anime-v2/imports/zenitsu-body_air_heavy-phase2-v1.json"
-    },
-    {
-      "key": "zenitsu/roll_forward",
-      "id": "zenitsu-roll_forward-phase2-v1",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-roll_forward-phase2-v1.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-roll_forward-phase2-v1.png",
-      "requested_size": "2048x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output/imagegen/anime-v2/raw/zenitsu-model.png",
-        "output/imagegen/anime-v2/raw/zenitsu-idle.png"
-      ],
-      "sha256": "2c76df811a36a2f6b0f4b9c5cf71b2cb0c340d8c13a2c09eae6cd2f5f1623dce",
-      "cost": null,
-      "source_drawings": 12,
-      "selected_drawings": 12,
-      "import": "output/imagegen/anime-v2/imports/zenitsu-roll_forward-phase2-v1.json"
-    },
-    {
-      "key": "zenitsu/roll_back",
-      "id": "zenitsu-roll_back-phase2-v1",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-roll_back-phase2-v1.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-roll_back-phase2-v1.png",
-      "requested_size": "2048x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output/imagegen/anime-v2/raw/zenitsu-model.png",
-        "output/imagegen/anime-v2/raw/zenitsu-idle.png"
-      ],
-      "sha256": "553ffd488b83de96d13e20cd40c07c3817a88ce0d6b89853c33c5aca33a52c7b",
-      "cost": null,
-      "source_drawings": 12,
-      "selected_drawings": 12,
-      "import": "output/imagegen/anime-v2/imports/zenitsu-roll_back-phase2-v1.json"
-    },
-    {
-      "key": "zenitsu/throw_forward",
-      "id": "zenitsu-throw_forward-phase2-v1",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-throw_forward-phase2-v1.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-throw_forward-phase2-v1.png",
-      "requested_size": "2048x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output/imagegen/anime-v2/raw/zenitsu-model.png",
-        "output/imagegen/anime-v2/raw/zenitsu-idle.png"
-      ],
-      "sha256": "6337d669b548ef0fca79e3e02a4f31ba46f80629fd947ad788a0177aa48a1249",
-      "cost": null,
-      "source_drawings": 12,
-      "selected_drawings": 12,
-      "import": "output/imagegen/anime-v2/imports/zenitsu-throw_forward-phase2-v1.json"
-    },
-    {
-      "key": "zenitsu/thrown_forward",
-      "id": "zenitsu-thrown_forward-phase2-v1",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-thrown_forward-phase2-v1.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-thrown_forward-phase2-v1.png",
-      "requested_size": "2048x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output/imagegen/anime-v2/raw/zenitsu-model.png",
-        "output/imagegen/anime-v2/raw/zenitsu-idle.png"
-      ],
-      "sha256": "10d6fd4d2ebdf4a15f7f51defc11df71378da6647c20ffbb0de21a10931e8af2",
-      "cost": null,
-      "source_drawings": 12,
-      "selected_drawings": 12,
-      "import": "output/imagegen/anime-v2/imports/zenitsu-thrown_forward-phase2-v1.json"
-    },
-    {
-      "key": "zenitsu/throw_tech",
-      "id": "zenitsu-throw_tech-phase2-v1",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-throw_tech-phase2-v1.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-throw_tech-phase2-v1.png",
-      "requested_size": "1536x1024",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output/imagegen/anime-v2/raw/zenitsu-model.png",
-        "output/imagegen/anime-v2/raw/zenitsu-idle.png"
-      ],
-      "sha256": "e72be2993caf3cabe00b82e2d534b76665fd39a60c9bfe8ec1baaa6c89f9acd1",
-      "cost": null,
-      "source_drawings": 6,
-      "selected_drawings": 6,
-      "import": "output/imagegen/anime-v2/imports/zenitsu-throw_tech-phase2-v1.json"
-    },
-    {
-      "key": "zenitsu/iai_return",
-      "id": "zenitsu-iai_return-phase2-v1",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-iai_return-phase2-v1.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-iai_return-phase2-v1.png",
-      "requested_size": "2048x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output/imagegen/anime-v2/raw/zenitsu-model.png",
-        "output/imagegen/anime-v2/raw/zenitsu-idle.png"
-      ],
-      "sha256": "a51fcaf7833d312413099b0cfff383d1e1528185cc76ce16f6c1b14e9ca5d87c",
-      "cost": null,
-      "source_drawings": 12,
-      "selected_drawings": 12,
-      "import": "output/imagegen/anime-v2/imports/zenitsu-iai_return-phase2-v1.json"
-    },
-    {
-      "key": "zenitsu/sixfold",
-      "id": "zenitsu-sixfold-phase2-v1",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-sixfold-phase2-v1.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-sixfold-phase2-v1.png",
-      "requested_size": "3072x1536",
-      "actual_size": [
-        1774,
-        887
-      ],
-      "references": [
-        "output/imagegen/anime-v2/raw/zenitsu-model.png",
-        "output/imagegen/anime-v2/raw/zenitsu-idle.png"
-      ],
-      "sha256": "c88e4777a88e6c0f37bf282d805036f8fcc83099a0b5343b03e14d4456888f66",
-      "cost": null,
-      "source_drawings": 18,
-      "selected_drawings": 18,
-      "import": "output/imagegen/anime-v2/imports/zenitsu-sixfold-phase2-v1.json"
-    },
-    {
-      "key": "zenitsu/godspeed",
-      "id": "zenitsu-godspeed-phase2-v1",
-      "prompt": "output\\imagegen\\anime-v2\\prompts\\zenitsu-godspeed-phase2-v1.txt",
-      "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-godspeed-phase2-v1.png",
-      "requested_size": "2560x1536",
-      "actual_size": [
-        1536,
-        1024
-      ],
-      "references": [
-        "output/imagegen/anime-v2/raw/zenitsu-model.png",
-        "output/imagegen/anime-v2/raw/zenitsu-idle.png"
-      ],
-      "sha256": "6abac09544cd632bad2aba4e424592c4ce9de40403cbfb27bb94e7247c385e8c",
-      "cost": null,
-      "source_drawings": 15,
-      "selected_drawings": 15,
-      "import": "output/imagegen/anime-v2/imports/zenitsu-godspeed-phase2-v1.json"
+      "sha256": "a585308b6392f00fab3e699387006ea7893e8417ce03e5b354064c3a093e7621",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
     }
   ],
   "inventory": [
@@ -1770,11 +1339,21 @@
     },
     {
       "path": "art/characters/tanjiro/avatar.png",
-      "bytes": 47992,
-      "sha256": "ceb23230a175d2f30784fcdbf69a84093acf318d60538a969bf7aa45aad1fd1d",
+      "bytes": 53605,
+      "sha256": "6ed80f0c53abab9dbf72a2b85038fb8865a57d447920d5555ec6b961180a773d",
       "size": [
         192,
         192
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "art/characters/tanjiro/battle-portrait.png",
+      "bytes": 1006206,
+      "sha256": "5a2ddf53c71d45f0bfa18b3ce6f35e3a2308364a1f842c7b0f5d98f05d3f4109",
+      "size": [
+        1024,
+        1024
       ],
       "mode": "RGBA"
     },
@@ -1855,11 +1434,21 @@
     },
     {
       "path": "art/characters/zenitsu/avatar.png",
-      "bytes": 50354,
-      "sha256": "7083d85266c3e97e69432a4474c14ec77ebd8a498b464eeb9e31afad6847d22a",
+      "bytes": 56201,
+      "sha256": "b0285fa30682d5b0dd016169b838ae7ecd3a79fff700b721429048ddd05cb072",
       "size": [
         192,
         192
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "art/characters/zenitsu/battle-portrait.png",
+      "bytes": 1040818,
+      "sha256": "95b242aeb41874333dfa6186fc452e3ba403360e52fb4e75ada14201f5566625",
+      "size": [
+        1024,
+        1024
       ],
       "mode": "RGBA"
     },
@@ -1884,6 +1473,36 @@
       "mode": "RGB"
     },
     {
+      "path": "art/effects/sun-flame-arc-body.png",
+      "bytes": 1707782,
+      "sha256": "18005dc227478d6765f0003d296b59b098dd4e5f20a09f4e1dbec4faf500f5cd",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "art/effects/sun-flame-arc.png",
+      "bytes": 1440321,
+      "sha256": "cbe5846b2ea2ca96d03a61bb8d53115f02fd6ccfae5a4d6852f0335fc6e55948",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "art/effects/thunder-body.png",
+      "bytes": 365175,
+      "sha256": "79f8a7129936e6d0fb2b37b2c13e5da695c47e0e9e862776e90747db89be1940",
+      "size": [
+        1024,
+        341
+      ],
+      "mode": "RGBA"
+    },
+    {
       "path": "art/effects/thunder.png",
       "bytes": 305588,
       "sha256": "50fe4aea46f1574b539486207ab16ff47b18cd99c52425b438062b800d5b9caf",
@@ -1894,6 +1513,36 @@
       "mode": "RGB"
     },
     {
+      "path": "art/effects/water-dragon-body.png",
+      "bytes": 2062469,
+      "sha256": "898c5a76dda888590fbd9084a43929a29c28b20e27a3e289cecb5448cb2d974e",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "art/effects/water-dragon.png",
+      "bytes": 1760266,
+      "sha256": "0bb8391cf572eb07baf257552a5923247f77c9b4016057841d818a7784a4911c",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "art/effects/water-slash-body.png",
+      "bytes": 491969,
+      "sha256": "60ff84259582fde71fd7b187866e2f609b604e444422c545c7ea09f57d67fe76",
+      "size": [
+        1024,
+        512
+      ],
+      "mode": "RGBA"
+    },
+    {
       "path": "art/effects/water-slash.png",
       "bytes": 434988,
       "sha256": "03a9d4317b8a36e7147cbfcc5ce7537c81af064da13f977852fa21f8f3255799",
@@ -1902,6 +1551,16 @@
         512
       ],
       "mode": "RGB"
+    },
+    {
+      "path": "art/effects/water-wheel-body.png",
+      "bytes": 1464230,
+      "sha256": "3fabd202186857093004d63dd67b326c183dd77829a486080d57d819187f2ead",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA"
     },
     {
       "path": "art/effects/water-wheel.png",
@@ -1915,13 +1574,13 @@
     },
     {
       "path": "art/fonts/NotoSansSC-ui.ttf",
-      "bytes": 104844,
-      "sha256": "7106a8db64e1f5cde732c9a55d1546e14ece1ab069a4d3edc717d9f15ecf7f2a"
+      "bytes": 106728,
+      "sha256": "e3dcb463921600508345f0bbb35114ecdfd652a874a767dae44932938978bada"
     },
     {
       "path": "art/fonts/NotoSerifSC-title.ttf",
-      "bytes": 141756,
-      "sha256": "c34bac52afac938c1c03959086f8ad258a87ba53a50d5ddf9da5ffae35a4c468"
+      "bytes": 144292,
+      "sha256": "4fc11e44e3713e0d59b2520050fd14f79d0fd056be43770264d238ced1f1b5cf"
     },
     {
       "path": "art/stages/wisteria/floor.png",
@@ -1945,8 +1604,8 @@
     },
     {
       "path": "art/stages/wisteria/menu.jpg",
-      "bytes": 646353,
-      "sha256": "9a8394ca995c9aab1f723cf6bcad60b9ebf5a260e80cfc4aa73079668c9158b8",
+      "bytes": 1139564,
+      "sha256": "9b9960eaf4f53a8e6f5700bd3bca8d8b62f64930df47e2254f160f767446825b",
       "size": [
         2048,
         1152
@@ -1954,12 +1613,52 @@
       "mode": "RGB"
     },
     {
-      "path": "art/stages/wisteria/panorama.png",
-      "bytes": 7070114,
-      "sha256": "ab3d9d43cc38e652f4d6e792ba493bfc3dbb1c0f6cb909129996264e469b26b7",
+      "path": "art/stages/wisteria/panorama-0.png",
+      "bytes": 9825502,
+      "sha256": "c73104b2afa782cc97aecb030fcbf20a844db0be0b396127e39746c3fe43e8f1",
       "size": [
-        4608,
-        1152
+        2416,
+        2416
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "art/stages/wisteria/panorama-1.png",
+      "bytes": 8807749,
+      "sha256": "cb64d48d4bf0e2b33f4a6d55295d139fa7b7ad17eef8d09e3547a4f513182303",
+      "size": [
+        2416,
+        2416
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "art/stages/wisteria/panorama-2.png",
+      "bytes": 8852630,
+      "sha256": "1f8c35decfa69e02267542cd798713182f328f2599642ddae87f7a08da959c8b",
+      "size": [
+        2416,
+        2416
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "art/stages/wisteria/panorama-3.png",
+      "bytes": 9266182,
+      "sha256": "8acc88763fc40db4c19f7389ca8795f4171aa137d18e59d4dfebf7419655e359",
+      "size": [
+        2416,
+        2416
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "art/stages/wisteria/panorama.png",
+      "bytes": 36764018,
+      "sha256": "cd6d4a335636ccf4763102f412c044b89461f44674b279c7142e35d5406bf9a8",
+      "size": [
+        9600,
+        2400
       ],
       "mode": "RGB"
     },
@@ -1975,8 +1674,8 @@
     },
     {
       "path": "art/stages/wisteria/stage.json",
-      "bytes": 751,
-      "sha256": "a5e7fcb0a3fd5e32975dcc53285f0d83af90f6c221b68fe3e0402106412eeb92"
+      "bytes": 14645,
+      "sha256": "1221b37facfead39d1e212f8cd1f22bcd3e40ac1f82004397bfe4f016311f1e3"
     },
     {
       "path": "art/stages/wisteria/temple.png",
@@ -1999,231 +1698,55 @@
       "mode": "RGBA"
     }
   ],
-  "tests": {
-    "input_tests": {
-      "passed": 392,
-      "failed": 0,
-      "log": "artifacts/input_tests.log"
-    },
-    "combat_tests": {
-      "passed": 352,
-      "failed": 0,
-      "log": "artifacts/combat_tests.log"
-    },
-    "movement_tests": {
-      "passed": 455,
-      "failed": 0,
-      "log": "artifacts/movement_tests.log"
-    },
-    "combo_practice_tests": {
-      "passed": 160,
-      "failed": 0,
-      "log": "artifacts/combo_practice_tests.log"
-    },
-    "ui_tests": {
-      "passed": 327,
-      "failed": 0,
-      "log": "artifacts/ui_tests.log"
-    },
-    "presentation_tests": {
-      "passed": 2234,
-      "failed": 0,
-      "log": "artifacts/presentation_tests.log"
-    },
-    "phase2_basics_tests": {
-      "passed": 6878,
-      "failed": 0,
-      "log": "artifacts/phase2_basics_tests.log"
-    },
-    "phase2_feedback_tests": {
-      "passed": 1176,
-      "failed": 0,
-      "log": "artifacts/phase2_feedback_tests.log"
-    },
-    "ui_tests-rendered": {
-      "passed": 338,
-      "failed": 0,
-      "log": "artifacts/ui_tests-rendered.log"
-    },
-    "presentation_tests-rendered": {
-      "passed": 2440,
-      "failed": 0,
-      "log": "artifacts/presentation_tests-rendered.log"
-    }
-  },
-  "frame_rate_hash": {
-    "fps": [
-      30,
-      60,
-      144
-    ],
-    "logic_frames": 1800,
-    "sha256": "ba6949ae22fecb2bdbdc8ed4080348bde1f3228efcc0b197a138ca66bb63a764"
-  },
-  "known_limits": [
-    "No physical gamepad connected. Local keyboard / virtual controller events and actual OpenGL rendering were tested; no physical-device playtest or acoustic playback review claimed.",
-    "Zenitsu upward and return iai cuts are game interpretations.",
-    "Generated source dimensions can differ from requested dimensions; both retained. Unknown CPA billing remains null.",
-    "Recordings use actual engine frames with exported Godot PCM mixed from the same 60Hz events, including pause intervals; not screen/microphone capture."
-  ],
-  "visual_changes": [
-    "28 dedicated chronological pose sources; 281 new selected drawings",
-    "Logic-stage and hit-segment animation synchronization",
-    "Dedicated water, lightning and fire silhouettes; restrained layered MAX effects",
-    "Hit/block/whiff/throw escape/meter feedback and deterministic local PCM",
-    "Freeze and reset handling for animation, trails, effects and audio",
-    "16 world-unit camera overscan inside the existing panorama; horizontal throw victims remain visible at true boundaries"
-  ],
-  "videos": [
-    {
-      "path": "artifacts/phase2/basics.mp4",
-      "bytes": 13658485,
-      "sha256": "f1f8dc5a1a099afee3d3d917664384b107a30561943b9815536d967b448cab3c",
-      "fps": 30,
-      "frames": 1248,
-      "seconds": 41.6,
-      "resolution": [
-        1280,
-        720
-      ],
-      "cases": 26,
-      "cues": "artifacts/phase2/basics/cues.json",
-      "audio": {
-        "events": 74,
-        "pause_intervals": 2,
-        "peak": 0.127256838546168,
-        "sample_rate": 22050,
-        "method": "Godot-generated PCM mixed offline from these exact 60Hz event timestamps, preserving audio pause intervals"
-      },
-      "probe": {
-        "programs": [],
-        "stream_groups": [],
-        "streams": [
-          {
-            "codec_name": "h264",
-            "width": 1280,
-            "height": 720,
-            "r_frame_rate": "30/1"
-          },
-          {
-            "codec_name": "aac",
-            "sample_rate": "22050",
-            "r_frame_rate": "0/0"
-          }
-        ],
-        "format": {
-          "duration": "41.600000",
-          "size": "13658485"
-        }
-      }
-    },
-    {
-      "path": "artifacts/phase2/specials.mp4",
-      "bytes": 19878190,
-      "sha256": "21765626b44a3a94d583bf06312595f7d9601a420805cf2b79afb16505812bad",
-      "fps": 30,
-      "frames": 1872,
-      "seconds": 62.4,
-      "resolution": [
-        1280,
-        720
-      ],
-      "cases": 24,
-      "cues": "artifacts/phase2/specials/cues.json",
-      "audio": {
-        "events": 122,
-        "pause_intervals": 2,
-        "peak": 0.15371217352268263,
-        "sample_rate": 22050,
-        "method": "Godot-generated PCM mixed offline from these exact 60Hz event timestamps, preserving audio pause intervals"
-      },
-      "probe": {
-        "programs": [],
-        "stream_groups": [],
-        "streams": [
-          {
-            "codec_name": "h264",
-            "width": 1280,
-            "height": 720,
-            "r_frame_rate": "30/1"
-          },
-          {
-            "codec_name": "aac",
-            "sample_rate": "22050",
-            "r_frame_rate": "0/0"
-          }
-        ],
-        "format": {
-          "duration": "62.400000",
-          "size": "19878190"
-        }
-      }
-    }
-  ],
-  "calibration": {
-    "path": "output/imagegen/anime-v2/calibration.json",
-    "sha256": "e174fb4613a0c773db9e1c107c5427a75091829ed40ca6ac78b95c244a7dca43"
-  },
-  "previous_manifest": "output/imagegen/history/pre-phase2-manifest.json",
   "performance": {
-    "before": {
-      "all_art_ready": true,
-      "frames": 1800,
-      "gpu": "NVIDIA GeForce RTX 3080 Ti",
-      "mean_fps": 165.0915253659,
-      "mean_frame_ms": 6.0572461111111,
-      "p95_frame_ms": 6.095,
-      "p99_frame_ms": 6.133,
-      "scope": "final local anime art, 1080p, 1800 rendered AI-versus-AI combat frames"
-    },
-    "after": {
-      "all_art_ready": true,
-      "frames": 1800,
-      "gpu": "NVIDIA GeForce RTX 3080 Ti",
-      "mean_fps": 165.097218873144,
-      "mean_frame_ms": 6.05703722222222,
-      "p95_frame_ms": 6.099,
-      "p99_frame_ms": 6.141,
-      "scope": "final local anime art, 1080p, 1800 rendered AI-versus-AI combat frames"
-    },
-    "difference_ms": {
-      "mean_frame_ms": -0.00020888888887959922,
-      "p95_frame_ms": 0.004000000000000448,
-      "p99_frame_ms": 0.008000000000000007
-    },
-    "method": "Same 1080p / OpenGL / GPU / 1800 rendered AI-versus-AI frame harness; no concurrent capture or encoding. Frame time includes scheduling and display pacing, not an isolated GPU timestamp."
-  },
-  "authoring": {
-    "jobs": "output/imagegen/anime-v2/jobs.json",
-    "jobs_sha256": "516d6c2227bda51d14ff8b081c7a6a1aa5c93b22fd1b98e45cb3193b1fa8d6c1",
-    "rebuild_verification": "artifacts/phase2/rebuild-verification.json",
-    "files_byte_identical": 157,
-    "commands": [
-      "python tools/build_movement_art.py --part animation",
-      "python tools/build_presentation_data.py",
-      "python tools/build_combat_data.py",
-      "python tools/subset_fonts.py"
+    "method": "Actual OpenGL; 1800 AI combat frames; capture and encoding excluded; includes display pacing.",
+    "runs": [
+      {
+        "frames": 1800,
+        "gpu": "NVIDIA GeForce RTX 3080 Ti",
+        "mean_frame_ms": 2.98895722222223,
+        "p95_frame_ms": 3.617,
+        "p99_frame_ms": 4.113,
+        "resolution": [
+          1920,
+          1080
+        ],
+        "under_60fps_budget": true
+      },
+      {
+        "frames": 1800,
+        "gpu": "NVIDIA GeForce RTX 3080 Ti",
+        "mean_frame_ms": 3.00832888888889,
+        "p95_frame_ms": 3.617,
+        "p99_frame_ms": 4.205,
+        "resolution": [
+          3840,
+          2160
+        ],
+        "under_60fps_budget": true
+      }
     ]
   },
-  "parameter_audit": {
-    "path": "artifacts/phase2/parameter-audit.json",
-    "moves": 42,
-    "gameplay_parameter_changes": [],
-    "excluded_presentation_fields": [
-      "animation_id",
-      "effect_id",
-      "presentation"
-    ],
-    "baseline": "output/imagegen/history/pre-phase2-gameplay.json"
-  },
   "rendered_matrix": {
-    "captures": 192,
+    "captures": 201,
     "widths": [
       960,
       1280,
-      1920
+      1920,
+      2560,
+      3840
     ],
-    "index": "artifacts/phase2/matrix/captures.json",
-    "method": "Actual Godot OpenGL; held commands; exact LEFT/RIGHT boundary; same-character duels"
+    "letterbox": [
+      1600,
+      1000
+    ],
+    "index": "artifacts/battle-v5/matrix/captures.json"
+  },
+  "authoring": {
+    "commands": [
+      ".venv/Scripts/python.exe tools/build_battle_art.py --part all",
+      ".venv/Scripts/python.exe tools/build_presentation_data.py",
+      ".venv/Scripts/python.exe tools/subset_fonts.py"
+    ]
   }
 }

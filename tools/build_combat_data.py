@@ -55,12 +55,12 @@ def make_roster(phase2=False, specials=False):
         dict(id="tanjiro", display_name="灶门炭治郎", epithet="心怀温柔，挥刀向前", element_name="水之呼吸",
              role="均衡 · 控距衔接", accent=Raw('Color(0.396, 0.796, 0.831, 1)'), walk_speed=2.15,
              specials=["水之呼吸·壹之型 水面斩", "水之呼吸·贰之型 水车", "水之呼吸·陆之型 扭转漩涡",
-                       "水之呼吸·拾之型 生生流转", "火之神神乐·碧罗之天"],
+                       "水之呼吸·拾之型·生生流转", "日之呼吸·火之神神乐·碧罗之天"],
              descriptions=["短程水刃；轻快重远", "上升迎击；对空保护", "回旋多段；近身衔接", "多段水龙斩 · 1格", "大圆弧斩 · 3格 MAX"]),
         dict(id="zenitsu", display_name="我妻善逸", epithet="雷鸣一瞬，意志不息", element_name="雷之呼吸",
              role="迅速 · 居合突进", accent=Raw('Color(0.941, 0.773, 0.471, 1)'), walk_speed=2.45,
              specials=["雷之呼吸·壹之型 霹雳一闪", "居合·上撩", "居合·回身斩",
-                       "霹雳一闪·六连", "霹雳一闪·神速"],
+                       "雷之呼吸·壹之型·霹雳一闪·六连", "雷之呼吸·壹之型·霹雳一闪·神速"],
              descriptions=["直线突进；重版更远", "快速对空（演绎技）", "撤步回斩（演绎技）", "六段突进 · 1格", "高速居合 · 3格 MAX"])
     ]
     for profile in profiles:

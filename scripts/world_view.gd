@@ -2,6 +2,7 @@ extends Node2D
 const StageView = preload("res://scripts/presentation/stage_view.gd")
 const FighterView = preload("res://scripts/presentation/fighter_view.gd")
 const EffectsView = preload("res://scripts/presentation/effects_view.gd")
+const SuperView = preload("res://scripts/presentation/super_view.gd")
 const HUDView = preload("res://scripts/presentation/hud_view.gd")
 const Camera = preload("res://scripts/presentation/duel_camera.gd")
 var combat: RefCounted
@@ -16,6 +17,7 @@ var camera := Camera.new()
 var stage: Node2D
 var effects: Node2D
 var hud: Control
+var super_view: Node2D
 var fighters: Array[Node2D] = []
 var shadow_layer: Node2D
 var debug_layer: Node2D
@@ -46,6 +48,12 @@ func _ready() -> void:
 	foreground_layer = Node2D.new()
 	foreground_layer.draw.connect(func(): stage.draw_foreground(foreground_layer))
 	add_child(foreground_layer)
+	super_view = SuperView.new()
+	super_view.combat = combat
+	super_view.catalog = catalog
+	super_view.camera = camera
+	super_view.z_index = 20
+	add_child(super_view)
 	hud = HUDView.new()
 	hud.combat = combat
 	hud.catalog = catalog
@@ -65,6 +73,8 @@ func _process(delta: float) -> void:
 	stage.freeze = paused
 	hud.visible = screen == "battle"
 	effects.visible = battle
+	super_view.visible = battle
+	super_view.paused = paused
 	effects.freeze = paused or combat.hitstop > 0 or combat.super_freeze > 0
 	shadow_layer.visible = battle
 	debug_layer.visible = battle and debug_boxes
@@ -98,6 +108,7 @@ func reset_effects() -> void:
 	if effects != null:
 		effects.reset_effects()
 		hud.reset_effects()
+		super_view.reset_effects()
 	if combat.fighters.size() == 2:
 		camera.reset(combat.fighters)
 
@@ -106,6 +117,7 @@ func consume(events: Array) -> void:
 		fighters[i].consume(events, i)
 	effects.consume(events)
 	hud.consume(events)
+	super_view.consume(events)
 
 func _draw_shadows() -> void:
 	for f in combat.fighters:

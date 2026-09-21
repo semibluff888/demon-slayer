@@ -1,0 +1,23 @@
+{
+  "id": "stage-1-6",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "1536x1024",
+  "route": "CPA via bundled image_gen.py",
+  "started_utc": "2026-09-20T18:01:16.3321974Z",
+  "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-1-6.txt",
+  "output": "output\\imagegen\\battle-v5\\raw\\stage-1-6.png",
+  "references": [
+    "output\\imagegen\\battle-v5\\references\\stage-1-6.png"
+  ],
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-09-20T18:01:48.7777368Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "2303a1bc1b27dea24a84cf050c3ef005e780696c8d40c9257ed01977d879a083",
+  "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+}

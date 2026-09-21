@@ -1,0 +1,826 @@
+{
+  "revision": "battle-v5",
+  "route": "CPA / gpt-image-2",
+  "records": [
+    {
+      "id": "stage-0-0",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1536x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T17:54:07.3684431Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-0-0.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\stage-0-0.png",
+      "references": [
+        "output\\imagegen\\battle-v5\\references\\stage-0-0.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T17:54:33.5335591Z",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "sha256": "aa63f6e202ca2a9974527d2e4fda9301bb2aac9c310459691b3b16f71ba6dfc5",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "stage-0-1",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1536x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T17:54:33.6423842Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-0-1.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\stage-0-1.png",
+      "references": [
+        "output\\imagegen\\battle-v5\\references\\stage-0-1.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T17:55:06.9161637Z",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "sha256": "5562c592d703d2dd7e068be07f4f2ee82f2030c897f8757e417e5f84acd9ed7d",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "stage-0-2",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1536x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T17:55:07.0188834Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-0-2.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\stage-0-2.png",
+      "references": [
+        "output\\imagegen\\battle-v5\\references\\stage-0-2.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T17:55:37.0625556Z",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "sha256": "ae505f1eba3bc2d3977ac3dfe4ae23e93b8f0d4c191bdaee27abd6d281ddefaa",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "stage-0-3",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1536x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T17:55:37.2410604Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-0-3.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\stage-0-3.png",
+      "references": [
+        "output\\imagegen\\battle-v5\\references\\stage-0-3.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T17:56:03.6676930Z",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "sha256": "256d550503fd10b4b3ec0b6b19ca59eb908aea6569bf623102d9f9e3b33029d8",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "stage-0-4",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1536x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T17:56:03.8397557Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-0-4.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\stage-0-4.png",
+      "references": [
+        "output\\imagegen\\battle-v5\\references\\stage-0-4.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T17:56:31.2400416Z",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "sha256": "6a0ae910c8c8b5aba66176f3a41d47b939bf3af3a287223831695bbf5280d3c0",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "stage-0-5",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1536x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T17:56:31.4095642Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-0-5.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\stage-0-5.png",
+      "references": [
+        "output\\imagegen\\battle-v5\\references\\stage-0-5.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T17:57:15.2031173Z",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "sha256": "7cc0a75dba79850ebd3e2a99ee29c8c3f02100faa832e8adaa08965c2456246a",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "stage-0-6",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1536x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T17:57:15.3726342Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-0-6.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\stage-0-6.png",
+      "references": [
+        "output\\imagegen\\battle-v5\\references\\stage-0-6.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T17:57:47.0695225Z",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "sha256": "16bbcc81700d2b9365f7bba0eb6c38b1c8f204e28bfb7f164e0b62c1315b1819",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "stage-1-0",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1536x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T17:57:47.2389930Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-1-0.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\stage-1-0.png",
+      "references": [
+        "output\\imagegen\\battle-v5\\references\\stage-1-0.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T17:58:22.3782039Z",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "sha256": "08fab8a7d1362067b8892d96315dd3d3565ab6f9c273125122426ec349ea4155",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "stage-1-1",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1536x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T17:58:22.5600266Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-1-1.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\stage-1-1.png",
+      "references": [
+        "output\\imagegen\\battle-v5\\references\\stage-1-1.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T17:59:12.6060782Z",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "sha256": "cbe0d4507e64373e10204dc176b9f8982565d1900aed031b042a95b1769b7432",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "stage-1-2",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1536x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T17:59:12.7771777Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-1-2.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\stage-1-2.png",
+      "references": [
+        "output\\imagegen\\battle-v5\\references\\stage-1-2.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T17:59:41.0685776Z",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "sha256": "60acd399396070177f338e9d23630b89ba7fc65a7fb13462202adad0554e781b",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "stage-1-3",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1536x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T17:51:56.4585706Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-1-3.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\stage-1-3.png",
+      "references": [
+        "output\\imagegen\\battle-v5\\references\\stage-1-3.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T17:52:20.8154157Z",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "sha256": "3fb6e96afba53be61ff29a4867fc80c764a8a8c38550d42536435bdc602eafce",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "stage-1-4",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1536x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T17:59:41.2428798Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-1-4.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\stage-1-4.png",
+      "references": [
+        "output\\imagegen\\battle-v5\\references\\stage-1-4.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T18:00:30.9758258Z",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "sha256": "7d1302d5f58fde64f84924dc6cb324dbb93ce789ccb15b6dc00d625e60685d27",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "stage-1-5",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1536x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T18:00:31.1456314Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-1-5.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\stage-1-5.png",
+      "references": [
+        "output\\imagegen\\battle-v5\\references\\stage-1-5.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T18:01:16.1610969Z",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "sha256": "f7e73023896a997523db5c9509843b859057fa8af0bdaea04da2fa04f2787be5",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "stage-1-6",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1536x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T18:01:16.3321974Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-1-6.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\stage-1-6.png",
+      "references": [
+        "output\\imagegen\\battle-v5\\references\\stage-1-6.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T18:01:48.7777368Z",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "sha256": "2303a1bc1b27dea24a84cf050c3ef005e780696c8d40c9257ed01977d879a083",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "stage-2-0",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1536x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T18:01:48.9455136Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-2-0.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\stage-2-0.png",
+      "references": [
+        "output\\imagegen\\battle-v5\\references\\stage-2-0.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T18:02:22.4075574Z",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "sha256": "8589e95fe9a5f47b9d1ccc1b35ca47d29998dd07414b3d46862cda5d268a478d",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "stage-2-1",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1536x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T18:02:22.5785431Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-2-1.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\stage-2-1.png",
+      "references": [
+        "output\\imagegen\\battle-v5\\references\\stage-2-1.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T18:02:48.2372748Z",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "sha256": "12ce4ca0c11a2ef3adacc3fba01a9aa2f15b715ae5555c3ead45525cf9a5ddb8",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "stage-2-2",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1536x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T18:02:48.4098883Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-2-2.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\stage-2-2.png",
+      "references": [
+        "output\\imagegen\\battle-v5\\references\\stage-2-2.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T18:03:15.0298772Z",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "sha256": "ca2b334ed24f8ae25d33dc76b0d62c268f50faebeebf54c0ac38cdf13c988e9f",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "stage-2-3",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1536x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T18:03:15.2214432Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-2-3.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\stage-2-3.png",
+      "references": [
+        "output\\imagegen\\battle-v5\\references\\stage-2-3.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T18:03:43.1910185Z",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "sha256": "bfc711dad7ac50ac7938603351e998f71c377ac3b00d7eb54ba5af2787540aab",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "stage-2-4",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1536x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T18:03:43.3613128Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-2-4.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\stage-2-4.png",
+      "references": [
+        "output\\imagegen\\battle-v5\\references\\stage-2-4.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T18:04:20.2886924Z",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "sha256": "8ba70fd6aea4edc74fac13cb4fc8c49e384fb37cf4f119c4a1b9c1be63641687",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "stage-2-5",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1536x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T18:04:20.4630033Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-2-5.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\stage-2-5.png",
+      "references": [
+        "output\\imagegen\\battle-v5\\references\\stage-2-5.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T18:04:46.4672192Z",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "sha256": "28d52126554f8bf299a4b4e6b6f47195b192c083900506701ede343208a0d573",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "stage-2-6",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1536x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T18:04:46.6362834Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-2-6.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\stage-2-6.png",
+      "references": [
+        "output\\imagegen\\battle-v5\\references\\stage-2-6.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T18:05:16.2877876Z",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "sha256": "8b025aa83f41d4e44472e777fdcea14553e4ef49f42a503c531a0f98d27480b6",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "sun-flame-arc",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1024x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T17:51:31.5660201Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\sun-flame-arc.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\sun-flame-arc.png",
+      "references": [],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T17:51:56.3640213Z",
+      "actual_size": [
+        1254,
+        1254
+      ],
+      "sha256": "18891fff731989751289be9e0b9e10f3441db089e9d470a951bc067cca0f1fd3",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "tanjiro-battle-portrait",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1024x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T17:49:17.2896433Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\tanjiro-battle-portrait.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\tanjiro-battle-portrait.png",
+      "references": [
+        "art/characters/tanjiro/portrait.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T17:50:05.0122790Z",
+      "actual_size": [
+        1144,
+        1375
+      ],
+      "sha256": "27b0fa14706fbee10f7434aa65af9d288fbad75b2a5b211f2d2becb4882ad8bd",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "water-dragon",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1536x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T17:50:56.9302560Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\water-dragon.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\water-dragon.png",
+      "references": [
+        "art/effects/water-wheel.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T17:51:31.4629173Z",
+      "actual_size": [
+        1254,
+        1254
+      ],
+      "sha256": "c848bef2ec45bb6dce280eb7ef5c6bc4015e548165b98b351aa4c1471c6d7a94",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    },
+    {
+      "id": "zenitsu-battle-portrait",
+      "status": "generated",
+      "model": "gpt-image-2",
+      "quality": "high",
+      "requested_size": "1024x1024",
+      "route": "CPA via bundled image_gen.py",
+      "started_utc": "2026-09-20T17:50:05.1055411Z",
+      "prompt": "output\\imagegen\\battle-v5\\prompts\\zenitsu-battle-portrait.txt",
+      "output": "output\\imagegen\\battle-v5\\raw\\zenitsu-battle-portrait.png",
+      "references": [
+        "art/characters/zenitsu/portrait.png"
+      ],
+      "cost": null,
+      "accepted": true,
+      "completed_utc": "2026-09-20T17:50:56.8351694Z",
+      "actual_size": [
+        1152,
+        1365
+      ],
+      "sha256": "a585308b6392f00fab3e699387006ea7893e8417ce03e5b354064c3a093e7621",
+      "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+    }
+  ],
+  "inventory": [
+    {
+      "path": "art/effects/impact.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "sha256": "01a79b3ce016390d02532e6832d680052c454872b67f56d829599f339b6baab6"
+    },
+    {
+      "path": "art/effects/sun-flame-arc-body.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "18005dc227478d6765f0003d296b59b098dd4e5f20a09f4e1dbec4faf500f5cd"
+    },
+    {
+      "path": "art/effects/sun-flame-arc.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "sha256": "cbe5846b2ea2ca96d03a61bb8d53115f02fd6ccfae5a4d6852f0335fc6e55948"
+    },
+    {
+      "path": "art/effects/thunder-body.png",
+      "size": [
+        1024,
+        341
+      ],
+      "mode": "RGBA",
+      "sha256": "79f8a7129936e6d0fb2b37b2c13e5da695c47e0e9e862776e90747db89be1940"
+    },
+    {
+      "path": "art/effects/thunder.png",
+      "size": [
+        1024,
+        341
+      ],
+      "mode": "RGB",
+      "sha256": "50fe4aea46f1574b539486207ab16ff47b18cd99c52425b438062b800d5b9caf"
+    },
+    {
+      "path": "art/effects/water-dragon-body.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "898c5a76dda888590fbd9084a43929a29c28b20e27a3e289cecb5448cb2d974e"
+    },
+    {
+      "path": "art/effects/water-dragon.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGB",
+      "sha256": "0bb8391cf572eb07baf257552a5923247f77c9b4016057841d818a7784a4911c"
+    },
+    {
+      "path": "art/effects/water-slash-body.png",
+      "size": [
+        1024,
+        512
+      ],
+      "mode": "RGBA",
+      "sha256": "60ff84259582fde71fd7b187866e2f609b604e444422c545c7ea09f57d67fe76"
+    },
+    {
+      "path": "art/effects/water-slash.png",
+      "size": [
+        1024,
+        512
+      ],
+      "mode": "RGB",
+      "sha256": "03a9d4317b8a36e7147cbfcc5ce7537c81af064da13f977852fa21f8f3255799"
+    },
+    {
+      "path": "art/effects/water-wheel-body.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "sha256": "3fabd202186857093004d63dd67b326c183dd77829a486080d57d819187f2ead"
+    },
+    {
+      "path": "art/effects/water-wheel.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGB",
+      "sha256": "953194ab6947e7b013d196f31d590ad0b99a8ba6501324840f98f69c1697b451"
+    },
+    {
+      "path": "art/characters/tanjiro/avatar.png",
+      "size": [
+        192,
+        192
+      ],
+      "mode": "RGBA",
+      "sha256": "6ed80f0c53abab9dbf72a2b85038fb8865a57d447920d5555ec6b961180a773d"
+    },
+    {
+      "path": "art/characters/tanjiro/battle-portrait.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "sha256": "5a2ddf53c71d45f0bfa18b3ce6f35e3a2308364a1f842c7b0f5d98f05d3f4109"
+    },
+    {
+      "path": "art/characters/tanjiro/portrait.png",
+      "size": [
+        945,
+        1509
+      ],
+      "mode": "RGBA",
+      "sha256": "b7015af7579acfb1e8372cd31d4e69c00295fe65ed0327a498e952fffdd49d9c"
+    },
+    {
+      "path": "art/characters/zenitsu/avatar.png",
+      "size": [
+        192,
+        192
+      ],
+      "mode": "RGBA",
+      "sha256": "b0285fa30682d5b0dd016169b838ae7ecd3a79fff700b721429048ddd05cb072"
+    },
+    {
+      "path": "art/characters/zenitsu/battle-portrait.png",
+      "size": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "sha256": "95b242aeb41874333dfa6186fc452e3ba403360e52fb4e75ada14201f5566625"
+    },
+    {
+      "path": "art/characters/zenitsu/portrait.png",
+      "size": [
+        913,
+        1480
+      ],
+      "mode": "RGBA",
+      "sha256": "e92a1a18a549c342f3880cd147955af50d3da6b2e7cd1b25915a1bd370ab81cc"
+    },
+    {
+      "path": "art/stages/wisteria/floor.png",
+      "size": [
+        4608,
+        1152
+      ],
+      "mode": "RGBA",
+      "sha256": "3f8f24bcaca1beca72952375daa5eb44b926bf67cbc7ff7fb3759f629e10a9e0"
+    },
+    {
+      "path": "art/stages/wisteria/foreground.png",
+      "size": [
+        4608,
+        1152
+      ],
+      "mode": "RGBA",
+      "sha256": "74eb91bfa00b20d546440af80d5e54d5f8aeb5e53faed0531f7ec2dee819bf2a"
+    },
+    {
+      "path": "art/stages/wisteria/panorama-0.png",
+      "size": [
+        2416,
+        2416
+      ],
+      "mode": "RGB",
+      "sha256": "c73104b2afa782cc97aecb030fcbf20a844db0be0b396127e39746c3fe43e8f1"
+    },
+    {
+      "path": "art/stages/wisteria/panorama-1.png",
+      "size": [
+        2416,
+        2416
+      ],
+      "mode": "RGB",
+      "sha256": "cb64d48d4bf0e2b33f4a6d55295d139fa7b7ad17eef8d09e3547a4f513182303"
+    },
+    {
+      "path": "art/stages/wisteria/panorama-2.png",
+      "size": [
+        2416,
+        2416
+      ],
+      "mode": "RGB",
+      "sha256": "1f8c35decfa69e02267542cd798713182f328f2599642ddae87f7a08da959c8b"
+    },
+    {
+      "path": "art/stages/wisteria/panorama-3.png",
+      "size": [
+        2416,
+        2416
+      ],
+      "mode": "RGB",
+      "sha256": "8acc88763fc40db4c19f7389ca8795f4171aa137d18e59d4dfebf7419655e359"
+    },
+    {
+      "path": "art/stages/wisteria/panorama.png",
+      "size": [
+        9600,
+        2400
+      ],
+      "mode": "RGB",
+      "sha256": "cd6d4a335636ccf4763102f412c044b89461f44674b279c7142e35d5406bf9a8"
+    },
+    {
+      "path": "art/stages/wisteria/sky.png",
+      "size": [
+        4608,
+        1152
+      ],
+      "mode": "RGB",
+      "sha256": "a94356574c4f2a008e7add83fa33206d6d82cc7fb96a5721c239fec88a3e614f"
+    },
+    {
+      "path": "art/stages/wisteria/temple.png",
+      "size": [
+        4608,
+        1152
+      ],
+      "mode": "RGBA",
+      "sha256": "b43d9c27e170c974823c7b5025653da8f46fa2e0e4a0929bb4bc0224a6ea1813"
+    },
+    {
+      "path": "art/stages/wisteria/wisteria.png",
+      "size": [
+        4608,
+        1152
+      ],
+      "mode": "RGBA",
+      "sha256": "575a99247ef293a8206a952914888d42d89ce0b211d5401b5851fb44c95c0330"
+    }
+  ],
+  "rebuild": "python tools/build_battle_art.py --part all",
+  "billing": "Unknown costs remain null."
+}

@@ -16,10 +16,25 @@ PROFILES={
  'godspeed':('godspeed',(0.80,0.89,1.0,1),'thunder',2),
  'throw':('none',(0.9,0.8,0.7,1),'body_swing',0),
 }
+VISUALS={
+ 'water_slash':('water-slash',0.90,0.48,1.1,0),
+ 'water_wheel':('water-wheel',0.88,0.52,1.2,0),
+ 'water_vortex':('water-wheel',0.84,0.45,1.2,0),
+ 'water_dragon':('water-dragon',0.93,0.55,1.5,1),
+ 'sun_arc':('sun-flame-arc',0.95,0.65,1.8,2),
+ 'thunder':('thunder',0.86,0.58,1.1,0),
+ 'iai':('thunder',0.80,0.50,1.0,0),
+ 'iai_return':('thunder',0.80,0.50,1.1,0),
+ 'sixfold':('thunder',0.88,0.62,1.5,1),
+ 'godspeed':('thunder',0.96,0.72,1.8,2),
+}
 def build():
  target=ROOT/'resources/presentation';target.mkdir(parents=True,exist_ok=True)
  for key,(shape,color,sound,trails) in PROFILES.items():
   text='[gd_resource type="Resource" script_class="MovePresentation" load_steps=2 format=3]\n\n[ext_resource type="Script" path="res://scripts/presentation/move_presentation.gd" id="1"]\n\n[resource]\nscript = ExtResource("1")\n'
   text+=f'shape = "{shape}"\ncolor = Color({", ".join(str(x) for x in color)})\nsound_key = "{sound}"\ntrail_count = {trails}\ntrail_alpha = 0.12\n'
+  if key in VISUALS:
+   texture,body,glow,particles,tier=VISUALS[key]
+   text+=f'texture_key = "{texture}"\nbody_opacity = {body}\nglow_strength = {glow}\nparticle_scale = {particles}\nsuper_tier = {tier}\n'
   (target/(key+'.tres')).write_text(text,encoding='utf-8')
 if __name__=='__main__':build()

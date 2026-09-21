@@ -44,6 +44,8 @@ Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script',
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/phase2_basics_tests.gd') -Expected 'PHASE TWO BASICS: \d+ passed, 0 failed' | Out-Null
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/phase2_feedback_tests.gd') -Expected 'PHASE TWO FEEDBACK: \d+ passed, 0 failed' | Out-Null
 
+Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/battle_visual_tests.gd') -Expected 'BATTLE VISUAL TESTS: \d+ passed, 0 failed' | Out-Null
+
 $hashes = @()
 foreach ($fps in @(30, 60, 144)) {
     $logPath = Join-Path $artifactRoot "fps-$fps.log"

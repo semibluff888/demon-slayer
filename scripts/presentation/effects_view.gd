@@ -20,15 +20,21 @@ var time: float = 0
 var trauma: float = 0
 var freeze: bool = false
 var textures: Dictionary = {}
+var body_layer: Node2D
 
 func _ready() -> void:
 	var additive := CanvasItemMaterial.new()
 	additive.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
 	material = additive
-	for id in ["water-slash", "water-wheel", "thunder", "impact"]:
+	for id in ["water-slash", "water-wheel", "thunder", "impact", "water-dragon", "sun-flame-arc", "water-slash-body", "water-wheel-body", "thunder-body", "water-dragon-body", "sun-flame-arc-body"]:
 		var path: String = "res://art/effects/%s.png" % id
 		if ResourceLoader.exists(path):
 			textures[id] = load(path)
+	body_layer = Node2D.new()
+	body_layer.z_index = -1
+	body_layer.material = CanvasItemMaterial.new()
+	body_layer.draw.connect(_draw_body)
+	add_child(body_layer)
 
 func consume(events: Array) -> void:
 	# A tech also emits clash for the combat contract; render one clear escape cue.
@@ -52,14 +58,16 @@ func consume(events: Array) -> void:
 		var segment: int = event.get("segment", 0)
 		var repeated: bool = move != null and move.hit_count() > 1 and segment > 0 and segment < move.hit_count() - 1
 		var intensity := 0.42 if repeated else (0.70 if move != null and move.kind == "light" else 1.0)
+		var effect_scale: float = move.presentation.particle_scale if move != null and move.presentation != null else 1.0
+		intensity *= effect_scale
 		var color := Color("9ccbdd") if blocked else (Color("f9a075") if event.type == "throw" else Color("ffe1a2"))
 		if not blocked and move != null and move.presentation != null and move.kind in ["skill","super","max"]:
 			color = move.presentation.color.lightened(0.35)
-		for n in range(4 if repeated else (6 if blocked else 9)):
+		for n in range(5 if repeated else (7 if blocked else int(12*effect_scale))):
 			var angle: float = float(n) * 2.399 + time
 			var speed: float = (28 + n % 5 * 12) * intensity
 			sparks.append({"at": event.position, "velocity": Vector2(cos(angle), sin(angle)) * speed, "life": 0.12 + n % 3 * 0.035, "color": color, "length": 1 + n % 3})
-		while sparks.size() > 48:
+		while sparks.size() > 112:
 			sparks.pop_front()
 		rings.append({"at": event.position, "life":0.18, "color":color, "block":blocked, "throw":event.type == "throw", "intensity":intensity,
 			"facing":int(combat.fighters[event.attacker].facing) if event.has("attacker") else 1})
@@ -69,6 +77,8 @@ func consume(events: Array) -> void:
 	while pulses.size() > 6:
 		pulses.pop_front()
 	queue_redraw()
+	if body_layer != null:
+		body_layer.queue_redraw()
 
 func reset_effects() -> void:
 	sparks.clear()
@@ -94,6 +104,8 @@ func _process(delta: float) -> void:
 		pulse.life -= delta
 	pulses = pulses.filter(func(p: Dictionary) -> bool: return p.life > 0)
 	queue_redraw()
+	if body_layer != null:
+		body_layer.queue_redraw()
 
 func _effect(id: String, bounds: Rect2, color: Color = Color.WHITE, uv_rotation: float = 0.0) -> void:
 	if not textures.has(id):
@@ -225,7 +237,7 @@ func _draw_attack(fighter: RefCounted) -> void:
 	if segment < 0:
 		return
 	var progress: float = move.segment_progress(fighter.move_frame)
-	var strength := 0.38 + sin(progress * PI) * 0.22
+	var strength: float = (0.62 + sin(progress * PI) * 0.32) * (move.presentation.glow_strength if move.presentation != null else 0.55)
 	var attack: Rect2 = move.box
 	var shape := _profile_shape(move)
 	match shape:
@@ -233,21 +245,25 @@ func _draw_attack(fighter: RefCounted) -> void:
 			# The detached projectile is the only hitbox. A small spray marks release.
 			_effect("water-slash",Rect2(17,-45,22,24),Color(color,0.25),PI)
 		"water_wheel":
-			_effect("water-wheel",attack,Color(color,strength*0.60),-progress*TAU)
+			_effect("water-wheel",attack.grow(5),Color(color,strength*0.45),-progress*TAU)
+			_element_motes(attack,progress,color,16)
 			_ellipse(attack.grow(-3),-progress*TAU,PI*1.35,Color(color.lightened(0.5),0.62),1.4)
 		"water_vortex":
-			var plane := Rect2(attack.position.x,-35,attack.size.x,27)
+			var plane := Rect2(attack.position.x-6,-48,attack.size.x+12,44)
 			_effect("water-wheel",plane,Color(color,0.28),progress*TAU)
 			_ellipse(plane.grow(-2),progress*TAU,PI*1.55,Color(color.lightened(0.45),0.57),1.7)
 			_ellipse(Rect2(plane.position+Vector2(7,-7),plane.size-Vector2(14,4)),-progress*TAU,PI,Color(color,0.25),0.8)
 		"water_dragon":
 			_water_dragon(attack,progress,segment,color)
+			_element_motes(attack,progress,color,24)
+			_effect("water-dragon",attack.grow(7),Color(color,0.20))
 		"sun_arc", "flame":
+			_effect("sun-flame-arc",attack.grow(10),Color(1,0.67,0.35,0.24),-0.75+progress*TAU)
 			var angle := -1.7+progress*TAU
 			_ellipse(attack.grow(-5),angle-0.25,PI*1.65,Color(0.95,0.13,0.025,0.27),5.0)
 			_ellipse(attack.grow(-6),angle,PI*1.45,Color(1,0.46,0.075,0.64),2.7)
 			_ellipse(attack.grow(-7),angle+0.08,PI*1.15,Color(1,0.87,0.46,0.85),0.9)
-			for n in range(6):
+			for n in range(16):
 				var a := angle+n*0.5
 				var at := attack.get_center()+Vector2(cos(a),sin(a))*attack.size*0.40
 				draw_line(at,at-Vector2(cos(a),sin(a))*3,Color(1,0.60,0.1,0.4),1.0,true)
@@ -256,6 +272,7 @@ func _draw_attack(fighter: RefCounted) -> void:
 			draw_arc(at,6+progress*3,-0.6,0.6,10,Color(color,0.24),0.7,true)
 		"thunder":
 			_thunder_dash(attack,strength)
+			_element_motes(attack,progress,color,10)
 		"iai":
 			_iai_slash(attack,strength)
 		"iai_return":
@@ -267,6 +284,7 @@ func _draw_attack(fighter: RefCounted) -> void:
 			_lightning(Vector2(attack.position.x-12,attack.get_center().y-height*12),tip,18,Color(color,strength),0.32)
 		"godspeed":
 			var y: float = attack.get_center().y
+			_element_motes(attack,progress,color,26)
 			_lightning(Vector2(attack.position.x-18,y+3),Vector2(attack.end.x,y-3),23,Color(color,0.55),0.23)
 			_lightning(Vector2(attack.position.x,y+13),Vector2(attack.end.x-3,y-7),9,Color(1,0.79,0.35,0.42),0.20)
 		"blade":
@@ -322,3 +340,86 @@ func _draw() -> void:
 		else:
 			for n in range(3):
 				draw_line(at+Vector2(-8+n*6,-3)*camera.zoom,at+Vector2(-8+n*6,-7)*camera.zoom,color,1.7,true)
+
+func _element_motes(attack: Rect2, progress: float, color: Color, count: int) -> void:
+	for n in range(count):
+		var a := n*2.399+progress*2.2
+		var outward := 0.43+progress*0.18
+		var at := attack.get_center()+Vector2(cos(a),sin(a))*attack.size*outward
+		var alpha := sin(progress*PI)*(0.25+n%3*0.13)
+		draw_line(at,at-Vector2(cos(a),sin(a))*(2+n%4),Color(color.lightened(0.55),alpha),0.8+n%2*0.4,true)
+
+func _draw_body() -> void:
+	if camera == null or combat == null or combat.phase != "fight":
+		return
+	for fighter in combat.fighters:
+		var move: Resource = fighter.move
+		if move == null or move.segment(fighter.move_frame) < 0 or move.presentation == null:
+			continue
+		var profile: Resource = move.presentation
+		var shape := _profile_shape(move)
+		var key: String = profile.texture_key + "-body"
+		if not textures.has(key):
+			continue
+		var progress: float = move.segment_progress(fighter.move_frame)
+		var opacity: float = profile.body_opacity * (0.76 + sin(progress * PI) * 0.24)
+		var attack: Rect2 = move.box
+		var bounds := attack
+		var angle := 0.0
+		body_layer.draw_set_transform(camera.point(Vector2(fighter.x,fighter.y)),0,Vector2(camera.zoom*fighter.facing,camera.zoom))
+		match shape:
+			"water_slash":
+				bounds = Rect2(12,-47,29,29)
+				opacity *= 0.5
+			"water_wheel":
+				bounds = attack.grow(4)
+				angle = -progress * TAU
+			"water_vortex":
+				bounds = Rect2(attack.position.x-6,-48,attack.size.x+12,44)
+				angle = progress*TAU
+			"water_dragon":
+				bounds = attack.grow(5)
+			"sun_arc", "flame":
+				bounds = attack.grow(8)
+				angle = -0.75 + progress * TAU
+			"thunder", "godspeed", "sixfold", "iai", "iai_return":
+				var center := attack.get_center()
+				var tip := Vector2(attack.end.x,center.y)
+				var tail := Vector2(attack.position.x-18,center.y)
+				var thickness := 28.0 if shape=="godspeed" else 22.0
+				if shape=="iai":
+					tail = center + Vector2(-attack.size.y*0.33,attack.size.y*0.33)
+					tip = center + Vector2(attack.size.y*0.33,-attack.size.y*0.33)
+				elif shape=="sixfold":
+					var sign_y: float = [-1.0,1.0,-0.7,0.0,0.7,-0.2][move.segment(fighter.move_frame)%6]
+					tail.y += sign_y*10
+					tip.y -= sign_y*12
+				elif shape=="iai_return":
+					tail.y+=8
+					tip.y-=7
+				_body_ribbon(key,tail,tip,thickness,Color(1,1,1,opacity))
+				continue
+			_:
+				continue
+		_body_texture(key,bounds,opacity,angle)
+	for projectile in combat.projectiles:
+		body_layer.draw_set_transform(camera.point(Vector2(projectile.x,projectile.y)),0,Vector2(camera.zoom*projectile.facing,camera.zoom))
+		_body_texture("water-slash-body",combat.moves[projectile.move].projectile_box,0.93,PI)
+	body_layer.draw_set_transform(Vector2.ZERO)
+
+func _body_texture(key: String, bounds: Rect2, alpha: float, angle: float = 0.0) -> void:
+	if not textures.has(key):
+		return
+	var corners := PackedVector2Array([Vector2.ZERO,Vector2.RIGHT,Vector2.ONE,Vector2.DOWN])
+	var vertices := PackedVector2Array()
+	var uvs := PackedVector2Array()
+	for corner in corners:
+		vertices.append(bounds.position+corner*bounds.size)
+		uvs.append((corner-Vector2.ONE*0.5).rotated(angle)+Vector2.ONE*0.5)
+	body_layer.draw_polygon(vertices,PackedColorArray([Color(1,1,1,alpha)]),uvs,textures[key])
+
+func _body_ribbon(key: String, tail: Vector2, tip: Vector2, width: float, color: Color) -> void:
+	var normal := (tip-tail).normalized().orthogonal()*width*0.5
+	body_layer.draw_polygon(PackedVector2Array([tail-normal,tip-normal,tip+normal,tail+normal]),
+		PackedColorArray([Color(color,color.a*0.30),color,color,Color(color,color.a*0.30)]),
+		PackedVector2Array([Vector2.ZERO,Vector2.RIGHT,Vector2.ONE,Vector2.DOWN]),textures[key])

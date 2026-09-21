@@ -1,0 +1,23 @@
+{
+  "id": "tanjiro-battle-portrait",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "1024x1024",
+  "route": "CPA via bundled image_gen.py",
+  "started_utc": "2026-09-20T17:49:17.2896433Z",
+  "prompt": "output\\imagegen\\battle-v5\\prompts\\tanjiro-battle-portrait.txt",
+  "output": "output\\imagegen\\battle-v5\\raw\\tanjiro-battle-portrait.png",
+  "references": [
+    "art/characters/tanjiro/portrait.png"
+  ],
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-09-20T17:50:05.0122790Z",
+  "actual_size": [
+    1144,
+    1375
+  ],
+  "sha256": "27b0fa14706fbee10f7434aa65af9d288fbad75b2a5b211f2d2becb4882ad8bd",
+  "acceptance": "artifacts/battle-v5/index.html; actual OpenGL captures and source review"
+}

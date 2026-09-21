@@ -28,6 +28,10 @@ def soft_disk(size, inner, outer):
 
 
 def build_stage():
+    if (ROOT/'output/imagegen/battle-v5/stage-accepted.json').exists():
+        from build_battle_art import stage
+        stage()
+        return
     original = Image.open(SOURCE).convert('RGB')
     image = original.copy()
     w, h = image.size

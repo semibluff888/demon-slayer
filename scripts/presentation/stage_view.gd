@@ -15,11 +15,12 @@ func _ready() -> void:
 	for i in range(visual.layers.size()):
 		var layer := Sprite2D.new()
 		layer.centered = false
+		layer.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
 		if visual != null and i < visual.layers.size():
 			layer.texture = visual.layers[i]
 		if layer.texture != null:
-			layer.scale = visual.render_size / layer.texture.get_size()
-		layer.position = Vector2(640 - visual.render_size.x * 0.5, -36)
+			layer.scale = visual.render_size / visual.canvas_size
+		layer.position = Vector2(640 - visual.render_size.x * 0.5, -36) + visual.tile_origins[i] * visual.render_size / visual.canvas_size
 		add_child(layer)
 		layers.append(layer)
 	var light := Gradient.new()
@@ -33,7 +34,7 @@ func _ready() -> void:
 	glow.width = 128
 	glow.height = 128
 	atmosphere = Node2D.new()
-	atmosphere.z_index = 13
+	atmosphere.z_index = 0
 	atmosphere.draw.connect(_draw_atmosphere)
 	add_child(atmosphere)
 	var rng := RandomNumberGenerator.new()
@@ -71,4 +72,4 @@ func sync_camera() -> void:
 	var shake: Vector2 = Vector2.ZERO if menu_mode or camera == null else camera.shake
 	var shift := (center - Arena.CENTER) * Arena.ZOOM
 	for i in range(layers.size()):
-		layers[i].position = Vector2(640 - visual.render_size.x * 0.5 - shift * visual.parallax_factors[i], -36) + shake
+		layers[i].position = Vector2(640 - visual.render_size.x * 0.5 - shift, -36) + visual.tile_origins[i] * visual.render_size / visual.canvas_size + shake

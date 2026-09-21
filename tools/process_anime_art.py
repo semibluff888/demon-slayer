@@ -93,6 +93,9 @@ def portraits():
         bg.save(target / 'avatar.png')
         backdrop_preview(image, REVIEW / (character + '-portrait-edges.jpg'))
         print('Portrait / avatar: ' + character)
+    if (ROOT/'output/imagegen/battle-v5/raw/tanjiro-battle-portrait.png').exists():
+        from build_battle_art import assets
+        assets()
 
 def vertical_mask(size, start, end, reverse=False):
     mask = Image.new('L', size)

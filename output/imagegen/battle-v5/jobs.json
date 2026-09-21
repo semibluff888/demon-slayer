@@ -1,0 +1,472 @@
+[
+  {
+    "id": "tanjiro-battle-portrait",
+    "prompt": "output\\imagegen\\battle-v5\\prompts\\tanjiro-battle-portrait.txt",
+    "out": "output\\imagegen\\battle-v5\\raw\\tanjiro-battle-portrait.png",
+    "size": "1024x1024",
+    "references": [
+      "art/characters/tanjiro/portrait.png"
+    ],
+    "metadata": {
+      "kind": "portrait",
+      "character": "tanjiro"
+    }
+  },
+  {
+    "id": "zenitsu-battle-portrait",
+    "prompt": "output\\imagegen\\battle-v5\\prompts\\zenitsu-battle-portrait.txt",
+    "out": "output\\imagegen\\battle-v5\\raw\\zenitsu-battle-portrait.png",
+    "size": "1024x1024",
+    "references": [
+      "art/characters/zenitsu/portrait.png"
+    ],
+    "metadata": {
+      "kind": "portrait",
+      "character": "zenitsu"
+    }
+  },
+  {
+    "id": "water-dragon",
+    "prompt": "output\\imagegen\\battle-v5\\prompts\\water-dragon.txt",
+    "out": "output\\imagegen\\battle-v5\\raw\\water-dragon.png",
+    "size": "1536x1024",
+    "references": [
+      "art/effects/water-wheel.png"
+    ],
+    "metadata": {
+      "kind": "effect",
+      "effect": "water-dragon"
+    }
+  },
+  {
+    "id": "sun-flame-arc",
+    "prompt": "output\\imagegen\\battle-v5\\prompts\\sun-flame-arc.txt",
+    "out": "output\\imagegen\\battle-v5\\raw\\sun-flame-arc.png",
+    "size": "1024x1024",
+    "references": [],
+    "metadata": {
+      "kind": "effect",
+      "effect": "sun-flame-arc"
+    }
+  },
+  {
+    "id": "stage-0-0",
+    "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-0-0.txt",
+    "out": "output\\imagegen\\battle-v5\\raw\\stage-0-0.png",
+    "size": "1536x1024",
+    "references": [
+      "output\\imagegen\\battle-v5\\references\\stage-0-0.png"
+    ],
+    "metadata": {
+      "kind": "stage",
+      "rect": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "row": 0,
+      "column": 0
+    }
+  },
+  {
+    "id": "stage-0-1",
+    "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-0-1.txt",
+    "out": "output\\imagegen\\battle-v5\\raw\\stage-0-1.png",
+    "size": "1536x1024",
+    "references": [
+      "output\\imagegen\\battle-v5\\references\\stage-0-1.png"
+    ],
+    "metadata": {
+      "kind": "stage",
+      "rect": [
+        1344,
+        0,
+        1536,
+        1024
+      ],
+      "row": 0,
+      "column": 1
+    }
+  },
+  {
+    "id": "stage-0-2",
+    "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-0-2.txt",
+    "out": "output\\imagegen\\battle-v5\\raw\\stage-0-2.png",
+    "size": "1536x1024",
+    "references": [
+      "output\\imagegen\\battle-v5\\references\\stage-0-2.png"
+    ],
+    "metadata": {
+      "kind": "stage",
+      "rect": [
+        2688,
+        0,
+        1536,
+        1024
+      ],
+      "row": 0,
+      "column": 2
+    }
+  },
+  {
+    "id": "stage-0-3",
+    "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-0-3.txt",
+    "out": "output\\imagegen\\battle-v5\\raw\\stage-0-3.png",
+    "size": "1536x1024",
+    "references": [
+      "output\\imagegen\\battle-v5\\references\\stage-0-3.png"
+    ],
+    "metadata": {
+      "kind": "stage",
+      "rect": [
+        4032,
+        0,
+        1536,
+        1024
+      ],
+      "row": 0,
+      "column": 3
+    }
+  },
+  {
+    "id": "stage-0-4",
+    "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-0-4.txt",
+    "out": "output\\imagegen\\battle-v5\\raw\\stage-0-4.png",
+    "size": "1536x1024",
+    "references": [
+      "output\\imagegen\\battle-v5\\references\\stage-0-4.png"
+    ],
+    "metadata": {
+      "kind": "stage",
+      "rect": [
+        5376,
+        0,
+        1536,
+        1024
+      ],
+      "row": 0,
+      "column": 4
+    }
+  },
+  {
+    "id": "stage-0-5",
+    "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-0-5.txt",
+    "out": "output\\imagegen\\battle-v5\\raw\\stage-0-5.png",
+    "size": "1536x1024",
+    "references": [
+      "output\\imagegen\\battle-v5\\references\\stage-0-5.png"
+    ],
+    "metadata": {
+      "kind": "stage",
+      "rect": [
+        6720,
+        0,
+        1536,
+        1024
+      ],
+      "row": 0,
+      "column": 5
+    }
+  },
+  {
+    "id": "stage-0-6",
+    "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-0-6.txt",
+    "out": "output\\imagegen\\battle-v5\\raw\\stage-0-6.png",
+    "size": "1536x1024",
+    "references": [
+      "output\\imagegen\\battle-v5\\references\\stage-0-6.png"
+    ],
+    "metadata": {
+      "kind": "stage",
+      "rect": [
+        8064,
+        0,
+        1536,
+        1024
+      ],
+      "row": 0,
+      "column": 6
+    }
+  },
+  {
+    "id": "stage-1-0",
+    "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-1-0.txt",
+    "out": "output\\imagegen\\battle-v5\\raw\\stage-1-0.png",
+    "size": "1536x1024",
+    "references": [
+      "output\\imagegen\\battle-v5\\references\\stage-1-0.png"
+    ],
+    "metadata": {
+      "kind": "stage",
+      "rect": [
+        0,
+        688,
+        1536,
+        1024
+      ],
+      "row": 1,
+      "column": 0
+    }
+  },
+  {
+    "id": "stage-1-1",
+    "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-1-1.txt",
+    "out": "output\\imagegen\\battle-v5\\raw\\stage-1-1.png",
+    "size": "1536x1024",
+    "references": [
+      "output\\imagegen\\battle-v5\\references\\stage-1-1.png"
+    ],
+    "metadata": {
+      "kind": "stage",
+      "rect": [
+        1344,
+        688,
+        1536,
+        1024
+      ],
+      "row": 1,
+      "column": 1
+    }
+  },
+  {
+    "id": "stage-1-2",
+    "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-1-2.txt",
+    "out": "output\\imagegen\\battle-v5\\raw\\stage-1-2.png",
+    "size": "1536x1024",
+    "references": [
+      "output\\imagegen\\battle-v5\\references\\stage-1-2.png"
+    ],
+    "metadata": {
+      "kind": "stage",
+      "rect": [
+        2688,
+        688,
+        1536,
+        1024
+      ],
+      "row": 1,
+      "column": 2
+    }
+  },
+  {
+    "id": "stage-1-3",
+    "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-1-3.txt",
+    "out": "output\\imagegen\\battle-v5\\raw\\stage-1-3.png",
+    "size": "1536x1024",
+    "references": [
+      "output\\imagegen\\battle-v5\\references\\stage-1-3.png"
+    ],
+    "metadata": {
+      "kind": "stage",
+      "rect": [
+        4032,
+        688,
+        1536,
+        1024
+      ],
+      "row": 1,
+      "column": 3
+    }
+  },
+  {
+    "id": "stage-1-4",
+    "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-1-4.txt",
+    "out": "output\\imagegen\\battle-v5\\raw\\stage-1-4.png",
+    "size": "1536x1024",
+    "references": [
+      "output\\imagegen\\battle-v5\\references\\stage-1-4.png"
+    ],
+    "metadata": {
+      "kind": "stage",
+      "rect": [
+        5376,
+        688,
+        1536,
+        1024
+      ],
+      "row": 1,
+      "column": 4
+    }
+  },
+  {
+    "id": "stage-1-5",
+    "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-1-5.txt",
+    "out": "output\\imagegen\\battle-v5\\raw\\stage-1-5.png",
+    "size": "1536x1024",
+    "references": [
+      "output\\imagegen\\battle-v5\\references\\stage-1-5.png"
+    ],
+    "metadata": {
+      "kind": "stage",
+      "rect": [
+        6720,
+        688,
+        1536,
+        1024
+      ],
+      "row": 1,
+      "column": 5
+    }
+  },
+  {
+    "id": "stage-1-6",
+    "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-1-6.txt",
+    "out": "output\\imagegen\\battle-v5\\raw\\stage-1-6.png",
+    "size": "1536x1024",
+    "references": [
+      "output\\imagegen\\battle-v5\\references\\stage-1-6.png"
+    ],
+    "metadata": {
+      "kind": "stage",
+      "rect": [
+        8064,
+        688,
+        1536,
+        1024
+      ],
+      "row": 1,
+      "column": 6
+    }
+  },
+  {
+    "id": "stage-2-0",
+    "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-2-0.txt",
+    "out": "output\\imagegen\\battle-v5\\raw\\stage-2-0.png",
+    "size": "1536x1024",
+    "references": [
+      "output\\imagegen\\battle-v5\\references\\stage-2-0.png"
+    ],
+    "metadata": {
+      "kind": "stage",
+      "rect": [
+        0,
+        1376,
+        1536,
+        1024
+      ],
+      "row": 2,
+      "column": 0
+    }
+  },
+  {
+    "id": "stage-2-1",
+    "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-2-1.txt",
+    "out": "output\\imagegen\\battle-v5\\raw\\stage-2-1.png",
+    "size": "1536x1024",
+    "references": [
+      "output\\imagegen\\battle-v5\\references\\stage-2-1.png"
+    ],
+    "metadata": {
+      "kind": "stage",
+      "rect": [
+        1344,
+        1376,
+        1536,
+        1024
+      ],
+      "row": 2,
+      "column": 1
+    }
+  },
+  {
+    "id": "stage-2-2",
+    "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-2-2.txt",
+    "out": "output\\imagegen\\battle-v5\\raw\\stage-2-2.png",
+    "size": "1536x1024",
+    "references": [
+      "output\\imagegen\\battle-v5\\references\\stage-2-2.png"
+    ],
+    "metadata": {
+      "kind": "stage",
+      "rect": [
+        2688,
+        1376,
+        1536,
+        1024
+      ],
+      "row": 2,
+      "column": 2
+    }
+  },
+  {
+    "id": "stage-2-3",
+    "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-2-3.txt",
+    "out": "output\\imagegen\\battle-v5\\raw\\stage-2-3.png",
+    "size": "1536x1024",
+    "references": [
+      "output\\imagegen\\battle-v5\\references\\stage-2-3.png"
+    ],
+    "metadata": {
+      "kind": "stage",
+      "rect": [
+        4032,
+        1376,
+        1536,
+        1024
+      ],
+      "row": 2,
+      "column": 3
+    }
+  },
+  {
+    "id": "stage-2-4",
+    "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-2-4.txt",
+    "out": "output\\imagegen\\battle-v5\\raw\\stage-2-4.png",
+    "size": "1536x1024",
+    "references": [
+      "output\\imagegen\\battle-v5\\references\\stage-2-4.png"
+    ],
+    "metadata": {
+      "kind": "stage",
+      "rect": [
+        5376,
+        1376,
+        1536,
+        1024
+      ],
+      "row": 2,
+      "column": 4
+    }
+  },
+  {
+    "id": "stage-2-5",
+    "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-2-5.txt",
+    "out": "output\\imagegen\\battle-v5\\raw\\stage-2-5.png",
+    "size": "1536x1024",
+    "references": [
+      "output\\imagegen\\battle-v5\\references\\stage-2-5.png"
+    ],
+    "metadata": {
+      "kind": "stage",
+      "rect": [
+        6720,
+        1376,
+        1536,
+        1024
+      ],
+      "row": 2,
+      "column": 5
+    }
+  },
+  {
+    "id": "stage-2-6",
+    "prompt": "output\\imagegen\\battle-v5\\prompts\\stage-2-6.txt",
+    "out": "output\\imagegen\\battle-v5\\raw\\stage-2-6.png",
+    "size": "1536x1024",
+    "references": [
+      "output\\imagegen\\battle-v5\\references\\stage-2-6.png"
+    ],
+    "metadata": {
+      "kind": "stage",
+      "rect": [
+        8064,
+        1376,
+        1536,
+        1024
+      ],
+      "row": 2,
+      "column": 6
+    }
+  }
+]

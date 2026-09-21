@@ -15,11 +15,22 @@ isolation, registered stage compositing, packing and contact-sheet/GIF previews.
 Measured crops and anchors are retained in `output/imagegen/anime-v2/imports/`.
 Art does not create collision shapes or change gameplay timing.
 
-The stage uses one 4608x1152 continuous painting (`stages/wisteria/panorama.png`).
-The moon, lake reflection, architecture and pavement share a single Sprite2D and
-world transform. Old sky and foreground cutouts are retained as historical art,
-but are no longer drawn. Ambient petals and fog remain independent effects.
-Four black-backed combat VFX textures use additive compositing.
+The current stage is one 9600x2400 registered detail painting. Twenty-one native
+1536x1024 CPA repaint sources preserve the existing layout. Four 2416x2416
+runtime tiles (including 8px neighboring-pixel gutters) share one world transform.
+The full panorama is an offline master, not a giant runtime texture. Moon,
+reflection, architecture and floor stay registered; atmosphere is independent.
+
+Battle portraits preserve generated native alpha on a 1024px canvas, and 192px
+selection thumbnails derive from the same artwork. Water, fire and lightning
+use normal-alpha bodies plus separate additive light, retaining painted foam
+and flame detail. Four original black-backed VFX textures remain, with new
+water-dragon and sun-flame-arc sources and reproducible body mattes.
+
+Battle-v5 prompts, references, real returned dimensions and SHA-256 live under
+output/imagegen/battle-v5/. Install requirements-art.txt, then rebuild using the
+project virtual environment: python tools/build_battle_art.py --part all.
+The build reads saved sources only and makes no network requests.
 
 Fonts are Noto Sans SC and Noto Serif SC under SIL OFL 1.1. Full license texts are
 in `fonts/`; `tools/subset_fonts.py` rebuilds glyph coverage from game text.

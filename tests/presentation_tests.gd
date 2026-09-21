@@ -171,7 +171,7 @@ func _test_animation() -> void:
 
 func _test_assets() -> void:
 	var catalog := Catalog.new()
-	check(catalog.stage.art_ready and catalog.stage.layers.size() == 1, "one complete continuous stage painting exists")
+	check(catalog.stage.art_ready and catalog.stage.layers.size() == catalog.stage.tile_origins.size(), "one complete continuous stage painting exists")
 	var counts := {"idle": 6, "walk": 8, "walk_back": 8, "crouch": 3, "jump": 6, "guard": 3, "guard_low": 3, "hit": 4, "knockdown": 5, "throw": 6, "victory": 6, "stand_light": 6, "stand_heavy": 6, "crouch_light": 6, "crouch_heavy": 6, "air_light": 6, "air_heavy": 6, "dash_forward": 8, "dash_back": 8, "jump_forward": 8, "jump_back": 8, "throw_success": 12, "thrown": 12}
 	for character: String in catalog.characters:
 		var visual = catalog.characters[character]
@@ -250,7 +250,7 @@ func _test_freeze() -> void:
 	var floor_after: float = instance.view.stage.layers[0].position.x
 	var fighter_after: float = instance.view.camera.point(Vector2(instance.combat.fighters[0].x,286)).x
 	check(is_equal_approx(floor_after-floor_before, fighter_after-fighter_before), "stationary feet and floor share identical camera displacement")
-	check(instance.view.stage.layers.size() == 1 and instance.view.stage.visual.parallax_factors[0] == 1.0, "moon, reflection and architecture share the floor transform")
+	check(instance.view.stage.layers.size() == instance.view.stage.visual.tile_origins.size() and instance.view.stage.visual.parallax_factors[0] == 1.0, "moon, reflection and architecture share the floor transform")
 	instance.set_paused(true)
 	await process_frame
 	var stage_time: float = instance.view.stage.time

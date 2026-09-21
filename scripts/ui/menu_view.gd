@@ -1,9 +1,9 @@
 extends Control
 ## Native controls over the illustrated stage. Artwork contains no interface text.
 const DuelButton = preload("res://scripts/ui/duel_button.gd")
-const PAPER := Color("f5ead7")
-const GOLD := Color("d1b17b")
-const MUTED := Color("b5b2c5")
+const PAPER := Color("fff0c8")
+const GOLD := Color("e6c77f")
+const MUTED := Color("b7bfd0")
 const RED := Color("9f3549")
 var app: Node2D
 var catalog: RefCounted
@@ -185,8 +185,8 @@ func portrait(id: String, bounds: Rect2, flip: bool = false, moving: bool = fals
 
 func battle() -> void:
 	if app.mode == "practice":
-		button("practice_options", "练习设置 F3", Rect2(930, 682, 179, 29), app.show_practice_options, false, false, 13).focus_mode = Control.FOCUS_NONE
-	button("pause", "暂停  Esc", Rect2(1122, 682, 126, 29), func(): app.set_paused(true), false, false, 13).focus_mode = Control.FOCUS_NONE
+		button("practice_options", "练习设置 F3", Rect2(526, 700, 137, 20), app.show_practice_options, false, false, 13).focus_mode = Control.FOCUS_NONE
+	button("pause", "暂停  Esc", Rect2(679, 700, 112, 20), func(): app.set_paused(true), false, false, 13).focus_mode = Control.FOCUS_NONE
 
 func pause(reason: String) -> void:
 	rect(Rect2(0, 0, 1280, 720), Color(0.018, 0.03, 0.065, 0.72))
@@ -328,7 +328,16 @@ func training_options() -> void:
 		meter.add_item(item)
 	meter.select(app.practice_controller.meter_mode)
 	meter.item_selected.connect(func(index: int): app.practice_controller.meter_mode = index; app.practice_controller.apply_meter(app.combat))
-	label("连段结束后自动补血；Backspace 重置位置和气槽。", Rect2(355, 399, 567, 38), 17, MUTED)
+	var details := CheckButton.new()
+	details.text = "展开输入指导与搓招提示"
+	details.position = Vector2(355, 380)
+	details.size = Vector2(567, 42)
+	details.button_pressed = app.view.hud.practice_details
+	details.toggled.connect(func(value: bool): app.view.hud.practice_details = value)
+	details.add_theme_color_override("font_color", PAPER)
+	add_child(details)
+	actions["practice_details"] = details
+	label("连段结束后自动补血；Backspace 重置。", Rect2(355, 431, 567, 30), 16, MUTED)
 	button("resume", "继续练习", Rect2(355, 469, 267, 49), func(): app.set_paused(false), true, true, 21).grab_focus()
 	button("practice_reset", "重置位置", Rect2(649, 469, 273, 49), func(): app.reset_practice(); app.set_paused(false), false, false, 21)
 	reveal()

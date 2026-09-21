@@ -18,7 +18,7 @@ func _run() -> void:
 	root.add_child(game)
 	game.set_physics_process(false)
 	game.sound.muted = true
-	for node in [game.view, game.view.effects, game.view.hud, game.view.stage]:
+	for node in [game.view, game.view.effects, game.view.hud, game.view.stage, game.view.super_view]:
 		node.set_process(false)
 	for width in [960,1280,1920]:
 		root.size = Vector2i(width,width*9/16)
@@ -66,6 +66,7 @@ func _case(width: int, cid: String, facing: int, notation: String) -> void:
 		game.view._process(1.0/60)
 		game.view.effects._process(1.0/60)
 		game.view.hud._process(1.0/60)
+		game.view.super_view._process(1.0/60)
 		game.view.stage._process(1.0/60)
 		var phase := ""
 		if a.move != null:

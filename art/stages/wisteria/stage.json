@@ -1,8 +1,8 @@
 {
-  "revision": "visual-polish-v4",
+  "revision": "battle-v5",
   "size": [
-    4608,
-    1152
+    9600,
+    2400
   ],
   "world_width": 960,
   "render_size": [
@@ -15,24 +15,637 @@
   "parallax": [
     1.0
   ],
-  "source": "output/imagegen/anime-v2/raw/wisteria-continuous-v4.png",
-  "source_size": [
-    2172,
-    724
+  "tiles": [
+    {
+      "texture": "panorama-0.png",
+      "rect": [
+        0,
+        0,
+        2400,
+        2400
+      ],
+      "region": [
+        8,
+        8,
+        2400,
+        2400
+      ]
+    },
+    {
+      "texture": "panorama-1.png",
+      "rect": [
+        2400,
+        0,
+        2400,
+        2400
+      ],
+      "region": [
+        8,
+        8,
+        2400,
+        2400
+      ]
+    },
+    {
+      "texture": "panorama-2.png",
+      "rect": [
+        4800,
+        0,
+        2400,
+        2400
+      ],
+      "region": [
+        8,
+        8,
+        2400,
+        2400
+      ]
+    },
+    {
+      "texture": "panorama-3.png",
+      "rect": [
+        7200,
+        0,
+        2400,
+        2400
+      ],
+      "region": [
+        8,
+        8,
+        2400,
+        2400
+      ]
+    }
   ],
-  "source_sha256": "071480a980c3c3b3118dec1a2fd7feaaf1e9f51ec99389048340b846f19a72c1",
-  "composition": "One continuous painting; one moon and aligned reflection; all surfaces share the world transform.",
-  "local_finish": {
-    "moon_from": [
-      1312,
-      161
-    ],
-    "moon_to": [
-      1312,
-      248
-    ],
-    "crop_top": 90,
-    "crop_height": 543,
-    "terrace_back_fraction": 0.72
-  }
+  "sources": [
+    {
+      "path": "output/imagegen/battle-v5/raw/stage-0-0.png",
+      "sha256": "aa63f6e202ca2a9974527d2e4fda9301bb2aac9c310459691b3b16f71ba6dfc5",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "target_rect": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "registration": [
+        [
+          0.9994013905525208,
+          0.0002594596007838845,
+          -0.23373661935329437
+        ],
+        [
+          0.0003154536825604737,
+          0.9996755719184875,
+          -0.3485080599784851
+        ]
+      ],
+      "correlation": 0.9580929877724388
+    },
+    {
+      "path": "output/imagegen/battle-v5/raw/stage-0-1.png",
+      "sha256": "5562c592d703d2dd7e068be07f4f2ee82f2030c897f8757e417e5f84acd9ed7d",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "target_rect": [
+        1344,
+        0,
+        1536,
+        1024
+      ],
+      "registration": [
+        [
+          1.000017762184143,
+          0.0004968529683537781,
+          -0.27710339426994324
+        ],
+        [
+          0.00023645912006031722,
+          0.996304988861084,
+          1.7893623113632202
+        ]
+      ],
+      "correlation": 0.9567091945489047
+    },
+    {
+      "path": "output/imagegen/battle-v5/raw/stage-0-2.png",
+      "sha256": "ae505f1eba3bc2d3977ac3dfe4ae23e93b8f0d4c191bdaee27abd6d281ddefaa",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "target_rect": [
+        2688,
+        0,
+        1536,
+        1024
+      ],
+      "registration": [
+        [
+          1.0000945329666138,
+          0.00021624378859996796,
+          0.19733348488807678
+        ],
+        [
+          -3.4537028113845736e-05,
+          0.9981527924537659,
+          1.0940232276916504
+        ]
+      ],
+      "correlation": 0.9560842922375034
+    },
+    {
+      "path": "output/imagegen/battle-v5/raw/stage-0-3.png",
+      "sha256": "256d550503fd10b4b3ec0b6b19ca59eb908aea6569bf623102d9f9e3b33029d8",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "target_rect": [
+        4032,
+        0,
+        1536,
+        1024
+      ],
+      "registration": [
+        [
+          0.9995489716529846,
+          0.0008227244834415615,
+          0.4723246693611145
+        ],
+        [
+          0.00023500854149460793,
+          0.996630072593689,
+          1.8649979829788208
+        ]
+      ],
+      "correlation": 0.9560454664536578
+    },
+    {
+      "path": "output/imagegen/battle-v5/raw/stage-0-4.png",
+      "sha256": "6a0ae910c8c8b5aba66176f3a41d47b939bf3af3a287223831695bbf5280d3c0",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "target_rect": [
+        5376,
+        0,
+        1536,
+        1024
+      ],
+      "registration": [
+        [
+          0.9999901056289673,
+          -0.00012178417091490701,
+          0.1320093870162964
+        ],
+        [
+          -2.2829848603578284e-05,
+          0.9985219836235046,
+          0.5743830800056458
+        ]
+      ],
+      "correlation": 0.9430090758960995
+    },
+    {
+      "path": "output/imagegen/battle-v5/raw/stage-0-5.png",
+      "sha256": "7cc0a75dba79850ebd3e2a99ee29c8c3f02100faa832e8adaa08965c2456246a",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "target_rect": [
+        6720,
+        0,
+        1536,
+        1024
+      ],
+      "registration": [
+        [
+          0.999214231967926,
+          0.0016671151388436556,
+          0.6865036487579346
+        ],
+        [
+          -0.0003458255378063768,
+          0.9991385340690613,
+          0.6455424427986145
+        ]
+      ],
+      "correlation": 0.9567772659365715
+    },
+    {
+      "path": "output/imagegen/battle-v5/raw/stage-0-6.png",
+      "sha256": "16bbcc81700d2b9365f7bba0eb6c38b1c8f204e28bfb7f164e0b62c1315b1819",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "target_rect": [
+        8064,
+        0,
+        1536,
+        1024
+      ],
+      "registration": [
+        [
+          0.9999744892120361,
+          0.0003720874374266714,
+          0.07193690538406372
+        ],
+        [
+          4.881841960013844e-05,
+          0.9995800852775574,
+          0.020127227529883385
+        ]
+      ],
+      "correlation": 0.9657998626167308
+    },
+    {
+      "path": "output/imagegen/battle-v5/raw/stage-1-0.png",
+      "sha256": "08fab8a7d1362067b8892d96315dd3d3565ab6f9c273125122426ec349ea4155",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "target_rect": [
+        0,
+        688,
+        1536,
+        1024
+      ],
+      "registration": [
+        [
+          0.9995297789573669,
+          -0.000274771882686764,
+          0.21911276876926422
+        ],
+        [
+          0.00021654111333191395,
+          0.9998250603675842,
+          0.006636165082454681
+        ]
+      ],
+      "correlation": 0.9402742254455116
+    },
+    {
+      "path": "output/imagegen/battle-v5/raw/stage-1-1.png",
+      "sha256": "cbe0d4507e64373e10204dc176b9f8982565d1900aed031b042a95b1769b7432",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "target_rect": [
+        1344,
+        688,
+        1536,
+        1024
+      ],
+      "registration": [
+        [
+          1.0003777742385864,
+          0.0012811915948987007,
+          0.05553211271762848
+        ],
+        [
+          0.00012257843627594411,
+          0.9998489022254944,
+          0.032466255128383636
+        ]
+      ],
+      "correlation": 0.9442812222551258
+    },
+    {
+      "path": "output/imagegen/battle-v5/raw/stage-1-2.png",
+      "sha256": "60acd399396070177f338e9d23630b89ba7fc65a7fb13462202adad0554e781b",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "target_rect": [
+        2688,
+        688,
+        1536,
+        1024
+      ],
+      "registration": [
+        [
+          1.000164270401001,
+          -0.00026020765653811395,
+          -0.09688781946897507
+        ],
+        [
+          0.00015352325863204896,
+          1.0000505447387695,
+          -0.4122348427772522
+        ]
+      ],
+      "correlation": 0.9422527000934213
+    },
+    {
+      "path": "output/imagegen/battle-v5/raw/stage-1-3.png",
+      "sha256": "3fb6e96afba53be61ff29a4867fc80c764a8a8c38550d42536435bdc602eafce",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "target_rect": [
+        4032,
+        688,
+        1536,
+        1024
+      ],
+      "registration": [
+        [
+          0.9994646906852722,
+          7.965406257426366e-05,
+          0.5741980075836182
+        ],
+        [
+          7.255638774950057e-05,
+          0.9983278512954712,
+          1.152920126914978
+        ]
+      ],
+      "correlation": 0.9621756369320673
+    },
+    {
+      "path": "output/imagegen/battle-v5/raw/stage-1-4.png",
+      "sha256": "7d1302d5f58fde64f84924dc6cb324dbb93ce789ccb15b6dc00d625e60685d27",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "target_rect": [
+        5376,
+        688,
+        1536,
+        1024
+      ],
+      "registration": [
+        [
+          1.0002295970916748,
+          -6.808590842410922e-05,
+          0.7230437994003296
+        ],
+        [
+          4.8067322495626286e-06,
+          1.0003842115402222,
+          -0.1043701097369194
+        ]
+      ],
+      "correlation": 0.9591992652895767
+    },
+    {
+      "path": "output/imagegen/battle-v5/raw/stage-1-5.png",
+      "sha256": "f7e73023896a997523db5c9509843b859057fa8af0bdaea04da2fa04f2787be5",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "target_rect": [
+        6720,
+        688,
+        1536,
+        1024
+      ],
+      "registration": [
+        [
+          0.9999557137489319,
+          -0.0004751420929096639,
+          1.3495814800262451
+        ],
+        [
+          -0.00014283510972745717,
+          0.9987444877624512,
+          0.8022677898406982
+        ]
+      ],
+      "correlation": 0.9564126912752345
+    },
+    {
+      "path": "output/imagegen/battle-v5/raw/stage-1-6.png",
+      "sha256": "2303a1bc1b27dea24a84cf050c3ef005e780696c8d40c9257ed01977d879a083",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "target_rect": [
+        8064,
+        688,
+        1536,
+        1024
+      ],
+      "registration": [
+        [
+          1.0003485679626465,
+          -4.292929224902764e-05,
+          -0.23012299835681915
+        ],
+        [
+          -9.455379040446132e-05,
+          1.0003682374954224,
+          -0.2579180598258972
+        ]
+      ],
+      "correlation": 0.9683024126856967
+    },
+    {
+      "path": "output/imagegen/battle-v5/raw/stage-2-0.png",
+      "sha256": "8589e95fe9a5f47b9d1ccc1b35ca47d29998dd07414b3d46862cda5d268a478d",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "target_rect": [
+        0,
+        1376,
+        1536,
+        1024
+      ],
+      "registration": [
+        [
+          0.9994856119155884,
+          -0.00010240530536975712,
+          -0.18263669312000275
+        ],
+        [
+          0.00026840606005862355,
+          0.999988853931427,
+          -0.01314479485154152
+        ]
+      ],
+      "correlation": 0.9684178084990014
+    },
+    {
+      "path": "output/imagegen/battle-v5/raw/stage-2-1.png",
+      "sha256": "12ce4ca0c11a2ef3adacc3fba01a9aa2f15b715ae5555c3ead45525cf9a5ddb8",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "target_rect": [
+        1344,
+        1376,
+        1536,
+        1024
+      ],
+      "registration": [
+        [
+          0.9996329545974731,
+          -0.00015112105756998062,
+          0.3019845485687256
+        ],
+        [
+          5.599078940576874e-05,
+          0.9998270869255066,
+          0.33673787117004395
+        ]
+      ],
+      "correlation": 0.9375890100979349
+    },
+    {
+      "path": "output/imagegen/battle-v5/raw/stage-2-2.png",
+      "sha256": "ca2b334ed24f8ae25d33dc76b0d62c268f50faebeebf54c0ac38cdf13c988e9f",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "target_rect": [
+        2688,
+        1376,
+        1536,
+        1024
+      ],
+      "registration": [
+        [
+          0.9993182420730591,
+          -0.00023462426906917244,
+          0.37883231043815613
+        ],
+        [
+          0.000144530349643901,
+          1.0011894702911377,
+          -0.10438723862171173
+        ]
+      ],
+      "correlation": 0.9596659154555232
+    },
+    {
+      "path": "output/imagegen/battle-v5/raw/stage-2-3.png",
+      "sha256": "bfc711dad7ac50ac7938603351e998f71c377ac3b00d7eb54ba5af2787540aab",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "target_rect": [
+        4032,
+        1376,
+        1536,
+        1024
+      ],
+      "registration": [
+        [
+          0.999366044998169,
+          0.00010227994789602235,
+          0.4811413288116455
+        ],
+        [
+          -0.00022431409161072224,
+          0.9993867874145508,
+          0.7302826642990112
+        ]
+      ],
+      "correlation": 0.9394089923157165
+    },
+    {
+      "path": "output/imagegen/battle-v5/raw/stage-2-4.png",
+      "sha256": "8ba70fd6aea4edc74fac13cb4fc8c49e384fb37cf4f119c4a1b9c1be63641687",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "target_rect": [
+        5376,
+        1376,
+        1536,
+        1024
+      ],
+      "registration": [
+        [
+          1.0000115633010864,
+          -0.00020421166846062988,
+          -0.26904383301734924
+        ],
+        [
+          0.00012775212235283107,
+          1.0008130073547363,
+          -0.11939225345849991
+        ]
+      ],
+      "correlation": 0.9709386736650175
+    },
+    {
+      "path": "output/imagegen/battle-v5/raw/stage-2-5.png",
+      "sha256": "28d52126554f8bf299a4b4e6b6f47195b192c083900506701ede343208a0d573",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "target_rect": [
+        6720,
+        1376,
+        1536,
+        1024
+      ],
+      "registration": [
+        [
+          0.9998105764389038,
+          -0.0004055007884744555,
+          0.04255885258316994
+        ],
+        [
+          0.00014617167471442372,
+          0.9991671442985535,
+          0.6286243796348572
+        ]
+      ],
+      "correlation": 0.966909046396721
+    },
+    {
+      "path": "output/imagegen/battle-v5/raw/stage-2-6.png",
+      "sha256": "8b025aa83f41d4e44472e777fdcea14553e4ef49f42a503c531a0f98d27480b6",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "target_rect": [
+        8064,
+        1376,
+        1536,
+        1024
+      ],
+      "registration": [
+        [
+          0.9993954300880432,
+          -8.943855937104672e-05,
+          0.6814357042312622
+        ],
+        [
+          0.00014169016503728926,
+          0.9983810782432556,
+          0.657107412815094
+        ]
+      ],
+      "correlation": 0.9726007051813044
+    }
+  ],
+  "detail_strategy": "21 native-resolution registered detail repaints; original composition used only for geometry and low-frequency illumination. No source upscaling.",
+  "composition": "One continuous painting and shared world transform; moon, reflection, architecture and floor stay registered."
 }
