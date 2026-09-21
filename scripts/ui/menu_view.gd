@@ -265,7 +265,7 @@ func help(page: String = "basics", character_id: String = "") -> void:
 			"236 / 214 可省斜方向，0.5秒完成；攻击可晚0.2秒。",
 			"轻技 → 重技 → 必杀 → 超杀；空挥不能取消。",
 			"236236+A/C 超杀耗 1 格；236236+A+C MAX 耗 3 格。",
-			"命中、受击和防御涨气；空挥不涨，连段伤害递减。"]
+			"命中、受击和防御涨气；空挥不涨，奥义连段不减伤。"]
 		for i in range(lessons.size()):
 			label(lessons[i], Rect2(654, 244 + i * 48, 549, 39), 17, PAPER)
 	else:

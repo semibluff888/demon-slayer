@@ -530,11 +530,9 @@ func _resolve_contact(contact: Dictionary) -> void:
 			a.combo_active = true
 		if not a.combo_instances.has(instance):
 			var index := a.combo_instances.size()
-			var scale := maxi(40, 100 - index * 10)
-			if attack.is_super():
-				scale = maxi(50, scale)
+			var scale := 100 if attack.is_super() else maxi(40, 100 - index * 5)
 			a.combo_instances[instance] = scale
-		var damage := maxi(1, int(attack.segment_damage(contact.segment) * int(a.combo_instances[instance]) / 100))
+		var damage := attack.segment_damage(contact.segment, int(a.combo_instances[instance]))
 		damage = mini(d.hp, damage)
 		d.hp = maxi(0, d.hp - damage)
 		var knockdown := attack.knockdown and int(contact.segment) == attack.hit_count() - 1

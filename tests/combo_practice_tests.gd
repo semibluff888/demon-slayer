@@ -24,55 +24,49 @@ func _initialize() -> void:
 	quit(0 if failures.is_empty() else 1)
 
 func _combo_matrix() -> void:
-	var routes := [
-		["2B","2A","5C","236A"],
-		["jC","5A","5C","214B"],
-		["5A","5C","236A","236236A"],
-		["5C","214D","236236AC"]]
+	var cases := [
+		{"route": ["2B","2A","5C","236A"], "damage": [226,226]},
+		{"route": ["jC","5A","5C","214B"], "damage": [274,269]},
+		{"route": ["5A","5C","236A","236236A"], "damage": [495,495]},
+		{"route": ["5C","214D","236236AC"], "damage": [584,582]}]
+	var prefixes := [
+		{"route": [], "damage": [0,0]},
+		{"route": ["5A"], "damage": [45,45]},
+		{"route": ["5B"], "damage": [32,32]},
+		{"route": ["2A"], "damage": [40,40]},
+		{"route": ["2B"], "damage": [27,27]},
+		{"route": ["5A","2A"], "damage": [83,83]},
+		{"route": ["5A","2A","5C"], "damage": [155,155]},
+		{"route": ["5A","2A","5C","236A"], "damage": [244,244]},
+		{"route": ["jC","5A","2A","5C","236A"], "damage": [305,305]},
+		{"route": ["jC","5A","2A","5C","236C"], "damage": [325,325]},
+		{"route": ["jC","5A","2A","5C","623C"], "damage": [329,321]},
+		{"route": ["236A"], "damage": [105,105]},
+		{"route": ["5A","236A"], "damage": [144,144]}]
+	for prefix in prefixes:
+		for finisher in ["236236A", "236236AC"]:
+			var route: Array = prefix.route.duplicate()
+			route.append(finisher)
+			var base := 280 if finisher == "236236A" else 445
+			cases.append({"route": route, "damage": [prefix.damage[0] + base, prefix.damage[1] + base]})
 	for character in ["tanjiro","zenitsu"]:
 		for facing in [-1,1]:
 			for corner in [false,true]:
-				for route_index in range(routes.size()):
-					var model = s.duel(character, facing, corner)
-					if corner:
-						model.fighters[1].x = Combat.RIGHT if facing == 1 else Combat.LEFT
-						model.fighters[0].x = model.fighters[1].x - facing * 34
-					model.fighters[0].meter = 300
-					var route: Array = routes[route_index]
-					var all_connected := true
-					var after_first := false
-					for notation: String in route:
-						var guard := {"x": facing, "y": 1 if notation.begins_with("2") else 0} if after_first else {}
-						if notation == "jC":
-							s.tick(model, {"y": -1})
-							s.advance(model, 18)
-							s.input(model, "C")
-						else:
-							if route_index == 1 and notation == "5A":
-								while not model.fighters[0].grounded:
-									s.tick(model, {}, guard)
-							s.input(model, notation, guard)
-						if not s.wait_contact(model, 100, guard):
-							all_connected = false
-							break
-						after_first = true
-					s.advance(model, 150, {}, {"x": facing})
-					var f = model.fighters[0]
-					var label := "%s/%s/facing%d/corner%s" % [character, route, facing, corner]
-					check(all_connected, "all requested moves connect: " + label)
-					check(f.combo >= route.size(), "first-hit-then-guard sees one continuous combo: " + label)
-					var total: int = 1000 - model.fighters[1].hp
-					check(f.combo_damage == total, "combo counter excludes no hidden gaps: " + label)
-					if route_index == 2:
-						check(f.meter == 200, "one-bar route spends exactly 100: " + label)
-						check(total >= 350 and total <= 450, "one-bar damage budget: " + label)
-					elif route_index == 3:
-						check(f.meter == 0, "MAX route spends exactly 300: " + label)
-						check(total >= 450 and total <= 550, "MAX damage budget: " + label)
-					else:
-						check(total >= 195 and total <= 300, "meterless damage budget: " + label)
-					report.append({"character": character, "route": route, "facing": facing, "corner": corner,
-						"damage": total, "hits": f.combo, "remaining_meter": f.meter, "connected": all_connected})
+				var totals := {}
+				for example in cases:
+					var route: Array = example.route
+					var expected: int = example.damage[0 if character == "tanjiro" else 1]
+					totals[JSON.stringify(route)] = _run_route(character, facing, corner, route, expected)
+				for example in cases:
+					var route: Array = example.route
+					if route[-1] not in ["236236A", "236236AC"]:
+						continue
+					for index in range(route.size() - 1):
+						var shorter: Array = route.duplicate()
+						shorter.remove_at(index)
+						var key := JSON.stringify(shorter)
+						if totals.has(key):
+							check(totals[JSON.stringify(route)] > totals[key], "real same-cost extension gains damage: %s/%s over %s/facing%d/corner%s" % [character, route, shorter, facing, corner])
 	# Deliberately leave a gap: guard must reject a fake combo.
 	var model = s.duel()
 	s.input(model, "5A")
@@ -82,6 +76,66 @@ func _combo_matrix() -> void:
 	s.input(model, "5C", {"x": 1})
 	s.advance(model, 40, {}, {"x": 1})
 	check(model.fighters[1].hp == hp, "first-hit guard catches deliberately disconnected normals")
+
+func _run_route(character: String, facing: int, corner: bool, route: Array, expected: int) -> int:
+	var model = s.duel(character, facing, corner)
+	if corner:
+		model.fighters[1].x = Combat.RIGHT if facing == 1 else Combat.LEFT
+		model.fighters[0].x = model.fighters[1].x - facing * 34
+	model.fighters[0].meter = 300
+	var all_connected := true
+	var requested_moves: Array[String] = []
+	for index in range(route.size()):
+		var notation: String = route[index]
+		var definition = model.definition(model.fighters[0])
+		var key := "super" if notation == "236236A" else ("max" if notation == "236236AC" else notation)
+		var move = definition.normals.get(key, definition.motions.get(key))
+		requested_moves.append(move.id)
+		var guard := {"x": facing, "y": 1 if notation.begins_with("2") else 0} if index > 0 else {}
+		if notation == "jC":
+			s.tick(model, {"y": -1})
+			s.advance(model, 18)
+			s.input(model, "C")
+		else:
+			if index == 1 and str(route[0]).begins_with("j"):
+				for frame in range(60):
+					if model.fighters[0].grounded:
+						break
+					s.tick(model, {}, guard)
+			s.input(model, notation, guard)
+		if not s.wait_contact(model, 100, guard):
+			all_connected = false
+			break
+	s.advance(model, 150, {}, {"x": facing})
+	var f = model.fighters[0]
+	var label := "%s/%s/facing%d/corner%s" % [character, route, facing, corner]
+	var total: int = 1000 - model.fighters[1].hp
+	var expected_cost := 300 if route[-1] == "236236AC" else (100 if route[-1] == "236236A" else 0)
+	var spent := 0
+	var hit_damage := 0
+	var blocked := false
+	var hit_moves: Array[String] = []
+	var instances: Array[int] = []
+	for event in s.events:
+		if event.type == "meter" and event.attacker == 0 and event.amount < 0:
+			spent -= int(event.amount)
+		elif event.type == "hit" and event.attacker == 0:
+			hit_damage += int(event.damage)
+			if int(event.instance) not in instances:
+				instances.append(int(event.instance))
+				hit_moves.append(str(event.move))
+		elif event.type == "block":
+			blocked = true
+	check(all_connected and not blocked, "first-hit guard sees continuous hits: " + label)
+	check(hit_moves == requested_moves, "every requested move hits in order: " + label)
+	check(f.combo >= route.size(), "combo counts all requested moves: " + label)
+	check(f.combo_damage == total and hit_damage == total, "HUD and hit events equal actual lost HP: " + label)
+	check(total == expected, "exact damage %d (got %d): %s" % [expected, total, label])
+	check(spent == expected_cost and f.meter == 300 - expected_cost, "spend the same resource exactly once: " + label)
+	report.append({"character": character, "route": route, "facing": facing, "corner": corner,
+		"damage": total, "expected_damage": expected, "hits": f.combo, "remaining_meter": f.meter,
+		"meter_spent": spent, "connected": all_connected and not blocked})
+	return total
 
 func _practice() -> void:
 	var model = s.duel()
