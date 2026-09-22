@@ -57,6 +57,7 @@ func _ready() -> void:
 	hud = HUDView.new()
 	hud.combat = combat
 	hud.catalog = catalog
+	hud.super_view = super_view
 	hud.size = Vector2(1280, 720)
 	hud.z_index = 30
 	add_child(hud)

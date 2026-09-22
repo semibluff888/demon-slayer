@@ -3,8 +3,8 @@ extends SceneTree
 const Main = preload("res://scenes/main.tscn")
 const Combat = preload("res://scripts/combat.gd")
 const Support = preload("res://tests/combat_test_support.gd")
-const OUT = "res://artifacts/character-scale/engine"
-const CASES = {
+var out := "res://artifacts/character-scale/engine"
+var cases := {
 	"tanjiro": {"2A":"crouch_light", "2D":"body_crouch_heavy", "jD":"body_air_heavy",
 		"236236AC":"sun_arc", "5AB":"roll_forward", "hit2D":"knockdown",
 		"hit5A":"hit", "hit5C":"hit"},
@@ -23,7 +23,12 @@ func _initialize() -> void:
 func _run() -> void:
 	# --hit-only keeps follow-up hit-reaction checks separate from the full matrix.
 	var hit_only := "--hit-only" in OS.get_cmdline_user_args()
-	DirAccess.make_dir_recursive_absolute(OUT)
+	if "--revisions" in OS.get_cmdline_user_args():
+		out = "res://artifacts/battle-revisions/engine"
+		cases = {}
+		for cid in ["tanjiro", "zenitsu"]:
+			cases[cid] = {"5D":"body_stand_heavy", "5AB":"roll_forward", "4AB":"roll_back", "hit6D":"thrown_forward", "hit4D":"thrown"}
+	DirAccess.make_dir_recursive_absolute(out)
 	game = Main.instantiate()
 	root.add_child(game)
 	game.set_physics_process(false)
@@ -32,13 +37,13 @@ func _run() -> void:
 		node.set_process(false)
 	for width in [1280, 1920]:
 		root.size = Vector2i(width, width * 9 / 16)
-		for cid: String in CASES:
+		for cid: String in cases:
 			for facing in [-1, 1]:
-				for notation: String in CASES[cid]:
-					if hit_only and CASES[cid][notation] != "hit":
+				for notation: String in cases[cid]:
+					if hit_only and cases[cid][notation] != "hit":
 						continue
-					await _case(width, cid, facing, notation, CASES[cid][notation])
-	var report := FileAccess.open(OUT + ("/captures-hit.json" if hit_only else "/captures.json"), FileAccess.WRITE)
+					await _case(width, cid, facing, notation, cases[cid][notation])
+	var report := FileAccess.open(out + ("/captures-hit.json" if hit_only else "/captures.json"), FileAccess.WRITE)
 	report.store_string(JSON.stringify({"method":"Godot OpenGL with held combat inputs; same-character duels at fixed camera scale", "captures":captures, "failures":failures}, "  "))
 	game.queue_free()
 	await process_frame
@@ -56,7 +61,7 @@ func _case(width: int, cid: String, facing: int, notation: String, expected: Str
 	var b = model.fighters[1]
 	var receive := notation.begins_with("hit")
 	var attack := notation.trim_prefix("hit")
-	var close_range := receive or attack == "6D"
+	var close_range := receive or attack in ["6D", "4D"]
 	a.x = 480 - facing * (17 if close_range else 75)
 	b.x = 480 + facing * (17 if close_range else 75)
 	a.facing = facing
@@ -96,10 +101,12 @@ func _case(width: int, cid: String, facing: int, notation: String, expected: Str
 		elif actor.clip == expected:
 			var cuts: Array = actor.visual.phases[expected]
 			phase = "startup" if actor.frame_index < cuts[0] else ("active" if actor.frame_index < cuts[1] else "recovery")
+			if receive and expected.begins_with("thrown") and actor.frame_index >= 8 and saved.has("recovery"):
+				phase = "landing-%d" % actor.frame_index
 		elif saved.has("recovery") and actor.clip == "idle":
 			phase = "return"
 		# The initial grab uses its own preparation clip before the linked throw.
-		elif attack == "6D" and not receive and actor.clip == "throw":
+		elif attack in ["6D", "4D"] and not receive and actor.clip == "throw":
 			phase = "grab"
 		if phase.is_empty() or saved.has(phase):
 			continue
@@ -108,12 +115,15 @@ func _case(width: int, cid: String, facing: int, notation: String, expected: Str
 		await RenderingServer.frame_post_draw
 		var picture := root.get_texture().get_image()
 		var name := "%d-%s-%s-%s-%s.png" % [width, cid, "left" if facing < 0 else "right", notation, phase]
-		if picture.get_size() != root.size or picture.save_png(OUT + "/" + name) != OK:
+		if picture.get_size() != root.size or picture.save_png(out + "/" + name) != OK:
 			failures.append(name + " capture failed")
 		captures.append({"path":name, "character":cid, "notation":notation, "facing":facing,
 			"width":width, "phase":phase, "clip":actor.clip, "drawing":actor.frame_index,
 			"feet":[a.x, a.y], "camera_zoom":game.view.camera.zoom})
-	for phase in ["idle", "startup", "active", "recovery", "return"]:
+	var required := ["idle", "startup", "active", "recovery", "return"]
+	if receive and expected.begins_with("thrown"):
+		required.append_array(["landing-8", "landing-9", "landing-10", "landing-11"])
+	for phase in required:
 		if not saved.has(phase):
 			failures.append("%s/%s/%s missing %s" % [cid, notation, facing, phase])
 	print("SCALE ", width, " ", cid, " ", facing, " ", notation, " ", saved.keys())

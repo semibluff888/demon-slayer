@@ -3,10 +3,17 @@ extends Node2D
 const Style = preload("res://scripts/presentation/battle_style.gd")
 const TITLE_SIZE: int = 36
 const TITLE_LIFETIME: float = 1.12
+# Upper portrait includes the complete hair, face, chin and earrings.
+const FACE_REGION := Rect2(96, 0, 832, 752)
 var combat: RefCounted
 var catalog: RefCounted
 var camera: RefCounted
-var paused: bool = false
+var paused: bool = false:
+	set(value):
+		if paused == value:
+			return
+		paused = value
+		queue_redraw()
 var active: Array[Dictionary] = []
 var seen: Array[int] = [-1, -1]
 var dim_amount: float = 0.0
@@ -16,6 +23,7 @@ var elemental_textures: Dictionary = {}
 var spheres: Array[ColorRect] = []
 
 func _ready() -> void:
+	texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
 	for id in ["water-wheel","sun-flame-arc"]:
 		var path: String = "res://art/effects/"+str(id)+".png"
 		if ResourceLoader.exists(path): elemental_textures[id] = load(path)
@@ -54,7 +62,7 @@ func consume(events: Array) -> void:
 		seen[slot] = f.attack_instance
 		active = active.filter(func(cue: Dictionary) -> bool: return int(cue.slot) != slot)
 		var move: Resource = combat.moves[event.move]
-		active.append({"slot":slot,"instance":f.attack_instance,"move":move,"start":combat.ticks,"age":0.0,"duration":move.freeze_frames/60.0,"max":move.presentation.super_tier==2 if move.presentation != null else move.kind=="max"})
+		active.append({"slot":slot,"side":activation_side(slot),"instance":f.attack_instance,"move":move,"start":combat.ticks,"age":0.0,"duration":move.freeze_frames/60.0,"max":move.presentation.super_tier==2 if move.presentation != null else move.kind=="max"})
 	_refresh()
 
 func reset_effects() -> void:
@@ -156,32 +164,62 @@ func _draw_energy() -> void:
 			energy.draw_line(center-Vector2(85*(1+burst),0),center+Vector2(85*(1+burst),0),Color(color.lightened(0.7),opacity*0.75),2.5,true)
 			energy.draw_line(center-Vector2(0,40*(1+burst)),center+Vector2(0,40*(1+burst)),Color(color,opacity*0.4),1.3,true)
 
+func title_texture(cue: Dictionary) -> Texture2D:
+	return cue.move.presentation.title_texture if cue.move.presentation != null else null
+
+func title_bounds(cue: Dictionary, both: bool = false) -> Rect2:
+	var limit := Vector2(560, 104) if both else Vector2(660, 152)
+	var y := 112.0 + int(cue.slot) * 116 if both else 126.0
+	var texture := title_texture(cue)
+	var native_size := texture.get_size() if texture != null else Vector2(catalog.title_font.get_string_size(cue.move.display_name, HORIZONTAL_ALIGNMENT_LEFT, -1, TITLE_SIZE).x, 48)
+	var fit := minf(limit.x / maxf(1, native_size.x), limit.y / maxf(1, native_size.y))
+	var drawn_size := native_size * minf(1, fit)
+	var entry := pow(1.0 - clampf(float(cue.age) / 0.10, 0, 1), 3)
+	var slide := entry * (28.0 * int(cue.side))
+	return Rect2(Vector2(640 - drawn_size.x * 0.5 + slide, y + (limit.y - drawn_size.y) * 0.5), drawn_size)
+
+func activation_side(slot: int) -> int:
+	# Lock the actual screen half at activation, including when both fighters
+	# are near the same arena edge. A rushing MAX must not move its own cut-in.
+	var fighter = combat.fighters[slot]
+	var screen_x: float = camera.point(Vector2(fighter.x, fighter.y)).x if camera != null else 640.0 + (fighter.x - 480.0) * 3.0
+	if not is_equal_approx(screen_x, 640.0):
+		return -1 if screen_x < 640.0 else 1
+	return -fighter.facing
+
+func face_source(texture: Texture2D) -> Rect2:
+	return Rect2(FACE_REGION.position * texture.get_size() / 1024.0, FACE_REGION.size * texture.get_size() / 1024.0)
+
+func face_bounds(cue: Dictionary, both: bool = false) -> Rect2:
+	var title := title_bounds(cue, both)
+	var height := 104.0 if both else 152.0
+	var size := Vector2(height * FACE_REGION.size.x / FACE_REGION.size.y, height)
+	var x := title.position.x - 24.0 - size.x if int(cue.side) < 0 else title.end.x + 24.0
+	return Rect2(Vector2(x, title.get_center().y - height * 0.5), size)
+
 func _draw() -> void:
-	if catalog == null:
+	if catalog == null or paused:
 		return
-	var both := active.size()>1
+	var both := active.size() > 1
 	for cue: Dictionary in active:
 		var slot: int = cue.slot
 		var age: float = cue.age
-		var alpha := minf(1,(TITLE_LIFETIME-age)/0.22)
-		var color: Color = cue.move.presentation.color if cue.move.presentation != null else Style.GOLD
+		var alpha := clampf((TITLE_LIFETIME - age) / 0.22, 0, 1)
 		var visual = catalog.characters[combat.fighters[slot].character]
-		var y := 137.0 + (slot*73 if both else 0)
-		if cue.max and age<0.48 and visual.battle_portrait != null:
-			var cut_alpha := minf(1,(0.48-age)/0.16)*0.88
-			var slide := (1.0-clampf(age/0.10,0,1))*70.0
-			var x := 31.0-slide if slot==0 else 948.0+slide
-			Style.ink(self,Rect2(x,y-10,300,128),Color(color.darkened(0.8),cut_alpha))
-			draw_set_transform(Vector2(x if slot==0 else x+300,y),0,Vector2(1 if slot==0 else -1,1))
-			draw_texture_rect_region(visual.battle_portrait,Rect2(0,0,300,110),Rect2(140,130,745,395),Color(1,1,1,cut_alpha))
+		if cue.max and age < 0.48 and visual.battle_portrait != null:
+			var cut_alpha := clampf((0.48 - age) / 0.16, 0, 1)
+			var face := face_bounds(cue, both)
+			# Both source portraits face right; turn the right-side cut-in inward.
+			if int(cue.side) > 0:
+				draw_set_transform(Vector2(face.end.x, face.position.y), 0, Vector2(-1, 1))
+			else:
+				draw_set_transform(face.position)
+			draw_texture_rect_region(visual.battle_portrait, Rect2(Vector2.ZERO, face.size), face_source(visual.battle_portrait), Color(1, 1, 1, cut_alpha))
 			draw_set_transform(Vector2.ZERO)
-			for n in range(5):
-				draw_line(Vector2(x+20,y+16+n*19),Vector2(x+277,y+6+n*19),Color(color,cut_alpha*0.25),1,true)
-		var value: String = cue.move.display_name
-		var width: float = catalog.title_font.get_string_size(value,HORIZONTAL_ALIGNMENT_LEFT,-1,TITLE_SIZE).x
-		var x := 640.0-width*0.5
-		Style.ink(self,Rect2(x-30,y,width+60,58),Color(0.015,0.022,0.04,alpha*0.89))
-		draw_line(Vector2(x-12,y+56),Vector2(x+width+12,y+56),Color(color,alpha*0.90),2,true)
-		Style.text(self,catalog.title_font,value,Vector2(x,y+40),TITLE_SIZE,Color(Style.PAPER,alpha),4)
-		Style.diamond(self,Vector2(x-17,y+27),4,Color(color,alpha))
-		Style.diamond(self,Vector2(x+width+17,y+27),4,Color(color,alpha))
+		var bounds := title_bounds(cue, both)
+		var texture := title_texture(cue)
+		if texture != null:
+			draw_texture_rect(texture, bounds, false, Color(1, 1, 1, alpha))
+		else:
+			var font_size := maxi(12, int(TITLE_SIZE * bounds.size.y / 48.0))
+			Style.text(self, catalog.title_font, cue.move.display_name, bounds.position + Vector2(0, bounds.size.y * 0.8), font_size, Color(Style.PAPER, alpha))

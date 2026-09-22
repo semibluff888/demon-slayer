@@ -12,3 +12,4 @@ extends Resource
 @export var glow_strength: float = 0.55
 @export var particle_scale: float = 1.0
 @export var super_tier: int = 0
+@export var title_texture: Texture2D

@@ -1,7 +1,8 @@
 """Deterministic offline cutout, registered stage layers and trimmed sprite packing.
 
-Source originals are immutable. A clip uses one calibration scale, never one scale
-per pose. Measured anchors/crops are persisted for review and can be overridden in
+Source originals are immutable. A clip uses one physical calibration scale. Explicit
+drawing registration can repair size drift already present in a source sheet; it
+never fits silhouettes or changes scale at runtime. Anchors/crops are persisted in
 anime-v2/calibration.json. No service calls or credentials are used here.
 """
 import argparse
@@ -232,6 +233,9 @@ def process_clip(job, calibration):
     for i in range(count):
         x, y = i % columns, i // columns
         crop, frame = components[i]
+        registration = config.get('drawing_registration', {}).get(str(i), {})
+        drawing_scale = registration.get('scale', 1.0)
+        frame_scale = scale * drawing_scale
         if str(i) in config.get('crops', {}):
             crop = config['crops'][str(i)]
             frame = source.crop(tuple(crop))
@@ -249,16 +253,16 @@ def process_clip(job, calibration):
             pelvis = config.get('pelvis', {}).get(str(i), [0.5, 0.55])
             root_x = (i % columns + pelvis[0]) * cell_w - crop[0]
             root_y = (i // columns + pelvis[1]) * cell_h - crop[1]
-            foot = (root_x, root_y + (34.0 / 70.0) * source_standing)
+            foot = (root_x, root_y + (34.0 / 70.0) * source_standing / drawing_scale)
             # The final victim frames are grounded on their back.
             if (meta['clip'].startswith('thrown') and i >= 8) or i in config.get('ground_frames', []):
                 foot = (root_x, measured_contact[1])
         else:
             foot = config.get('feet', {}).get(str(i), (root_x, measured_contact[1]))
-        # Sheet margins stay outside the packed runtime texture. Same scale for ALL poses.
+        # Register source anatomy before the shared clip scale; retain the same contact/root.
         frame = frame.crop(bbox)
-        scaled = frame.resize((max(1, round(frame.width*scale)), max(1, round(frame.height*scale))), Image.Resampling.LANCZOS)
-        at = (round(ANCHOR[0] - (foot[0]-bbox[0])*scale), round(ANCHOR[1] - (foot[1]-bbox[1])*scale))
+        scaled = frame.resize((max(1, round(frame.width*frame_scale)), max(1, round(frame.height*frame_scale))), Image.Resampling.LANCZOS)
+        at = (round(ANCHOR[0] - (foot[0]-bbox[0])*frame_scale), round(ANCHOR[1] - (foot[1]-bbox[1])*frame_scale))
         if min(at) < 0 or at[0]+scaled.width > CANVAS[0] or at[1]+scaled.height > CANVAS[1]:
             raise ValueError('Clipped artwork: {} frame {} at {} size {}'.format(job['id'], i, at, scaled.size))
         canvas = Image.new('RGBA', CANVAS)
@@ -273,6 +277,9 @@ def process_clip(job, calibration):
         frames.append(canvas)
         entries.append(dict(source=job['out'], crop=crop, measured_feet=foot, silhouette_contact=measured_contact, scale=scale,
                             normalized_bounds=list(canvas.getbbox()), source_cell_size=[cell_w, cell_h], anchor_mode=anchor_mode))
+        if registration:
+            entries[-1]['drawing_registration'] = registration
+            entries[-1]['effective_scale'] = frame_scale
     order = meta.get('frame_order', list(range(count)))
     save_json(OUT / 'imports' / (job['id'] + '.json'), dict(standing_height=source_standing, canvas_size=CANVAS, feet_anchor=ANCHOR, frame_order=order, frames=entries))
     return [frames[i] for i in order]

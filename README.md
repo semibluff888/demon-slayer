@@ -6,9 +6,24 @@ Godot 4.7.1 / GDScript 制作的2D手绘动漫格斗游戏。支持炭治郎、�
 
 人物尺寸校准：已检查两人的全部78组动作，修正17组体术、斩击、MAX、翻滚、投技和受击动作的比例。调整明细、对照图与离线复现见 [人物尺寸一致性修正](docs/character-scale-review.md)。
 
-## 比赛视觉升级（battle-v5）
+## 战斗 UI 轻量化（battle-ui）
 
-最新验收入口为 [本地预览](artifacts/battle-v5/index.html)，包含实际引擎截图、四种超杀录像和性能记录。21 块原生 1536×1024 局部重绘合成为 9600×2400 连续全景，运行时使用四块带采样边缘的纹理，保持镜头、地面和人物比例。支持 960×540 至 3840×2160，非 16:9 留边。
+当前战斗界面采用细线刀锋风格：88×88 小头像、细长生命条、底部三段呼吸槽、无外框格数和悬浮连击。常驻 HUD、招式名、回合提示和练习信息均移除了深色底板。暂停与练习设置沿用选人菜单的深蓝金线样式和原生控件。
+
+四种奥义使用用户提供的透明书法图，保留原色与辉光；MAX 保留短暗场、能量球和无底板完整面部特写，按施放时屏幕左右侧定位；书法图上方不再叠加额外文字。同屏双奥义分两行显示，展开的练习输入指导会暂时避让，演出结束后恢复。显示随暂停冻结，并在中断、重置和回合结束时清理；12／18 帧停顿、判定、伤害和耗气保持原样。
+
+最新菜单、人物比例和 MAX 修正见 [补充说明](docs/battle-revisions.md) 与 [前后对照／短片](artifacts/battle-revisions/index.html)。首版 HUD 截图见 [历史预览](artifacts/battle-ui/index.html)。用户原图、来源摘要和裁切记录在 output/user-assets/battle-ui/；运行图在 art/ui/super-titles/，采用无损导入和 mipmap 缩放。可离线复现：
+
+```powershell
+.\.venv\Scripts\python.exe tools/prepare_battle_ui_assets.py
+# 用 README 中的 Godot 引擎运行以下脚本；可添加 -- --hud 或 -- --video
+# --path . --audio-driver Dummy --fixed-fps 60 --script res://tools/capture_battle_ui.gd
+.\.venv\Scripts\python.exe tools/build_battle_ui_review.py --encode
+```
+
+## 背景与战斗特效（battle-v5 历史版本）
+
+该版本的历史验收为 [本地预览](artifacts/battle-v5/index.html)，包含实际引擎截图、四种超杀录像和性能记录。21 块原生 1536×1024 局部重绘合成为 9600×2400 连续全景，运行时使用四块带采样边缘的纹理，保持镜头、地面和人物比例。支持 960×540 至 3840×2160，非 16:9 留边。
 
 战斗头像采用新绘高清头肩像；血条、回合标记和计时统一金边水墨样式，呼吸槽位于下方两侧。练习信息位于底部中央，F3 设置中的「展开输入指导与搓招提示」可切换详细说明。水流、雷光、火焰分开绘制实体纹理与辉光；超杀／MAX 在原有 12／18 帧停顿内显示暗场、能量球、完整技能名，MAX 加入面部特写。四种标题统一 36px；暂停、重置和招式中断均正确冻结或清理演出。
 

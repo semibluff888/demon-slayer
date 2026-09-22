@@ -4,8 +4,8 @@ from pathlib import Path
 from array import array
 ROOT=Path(__file__).resolve().parents[1]
 def main():
- parser=argparse.ArgumentParser();parser.add_argument('batch',choices=['basics','specials','battle-v5']);args=parser.parse_args()
- folder=(ROOT/'artifacts/battle-v5/video' if args.batch=='battle-v5' else ROOT/'artifacts/phase2'/args.batch);cue=json.loads((folder/'cues.json').read_text(encoding='utf-8'))
+ parser=argparse.ArgumentParser();parser.add_argument('batch',choices=['basics','specials','battle-v5','battle-ui']);parser.add_argument('--folder',type=Path);args=parser.parse_args()
+ folder=args.folder or (ROOT/'artifacts'/args.batch/'video' if args.batch in ['battle-v5','battle-ui'] else ROOT/'artifacts/phase2'/args.batch);cue=json.loads((folder/'cues.json').read_text(encoding='utf-8'))
  rate=22050;mix=array('d',[0.0])*math.ceil(cue['frames']/cue['fps']*rate)
  streams={}
  for path in (folder/'audio').glob('*.wav'):

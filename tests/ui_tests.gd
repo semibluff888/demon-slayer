@@ -167,6 +167,7 @@ func _run() -> void:
 	check(game.combat.fighters[0].x == 430, "Backspace resets practice positions")
 	game.show_title()
 	await _test_native_menu_input()
+	await _test_battle_native_input()
 	for failure in failures:
 		printerr("FAIL: ", failure)
 	print("UI TESTS: %d passed, %d failed" % [passed, failures.size()])
@@ -286,3 +287,60 @@ func _test_practice_input_hints() -> void:
 	check(game.combat.fighters[0].input.feedback.is_empty(), "pause clears practice diagnosis")
 	game.set_paused(false)
 	game.reset_practice()
+
+func _test_battle_native_input() -> void:
+	game.devices.assign(["keyboard:0", "keyboard:1"])
+	game.choose_mode("practice")
+	game.start_match()
+	game.show_practice_options()
+	await process_frame
+	var toggle = game.gui.actions.practice_details
+	toggle.grab_focus()
+	var previous: bool = toggle.button_pressed
+	await _key(KEY_SPACE)
+	check(toggle.button_pressed != previous and game.view.hud.practice_details == toggle.button_pressed, "native Space activates the styled practice toggle")
+	await _key(KEY_TAB)
+	check(game.gui.actions.resume.has_focus(), "Tab follows battle modal focus from toggle to resume")
+	var pad := InputEventJoypadButton.new()
+	pad.device = 99
+	pad.button_index = JOY_BUTTON_DPAD_UP
+	pad.pressed = true
+	root.push_input(pad, true)
+	pad = pad.duplicate()
+	pad.pressed = false
+	root.push_input(pad, true)
+	await process_frame
+	check(toggle.has_focus(), "native gamepad D-pad returns to the practice toggle")
+	previous = toggle.button_pressed
+	pad = InputEventJoypadButton.new()
+	pad.device = 99
+	pad.button_index = JOY_BUTTON_A
+	pad.pressed = true
+	root.push_input(pad, true)
+	pad = pad.duplicate()
+	pad.pressed = false
+	root.push_input(pad, true)
+	await process_frame
+	check(toggle.button_pressed != previous, "native gamepad accept activates the styled toggle")
+	previous = toggle.button_pressed
+	var at: Vector2 = toggle.get_global_rect().get_center()
+	var motion := InputEventMouseMotion.new()
+	motion.position = at
+	motion.global_position = at
+	root.push_input(motion, true)
+	await process_frame
+	var click := InputEventMouseButton.new()
+	click.button_index = MOUSE_BUTTON_LEFT
+	click.position = at
+	click.global_position = at
+	click.pressed = true
+	root.push_input(click, true)
+	click = click.duplicate()
+	click.pressed = false
+	root.push_input(click, true)
+	await process_frame
+	check(toggle.button_pressed != previous and game.view.hud.practice_details == toggle.button_pressed, "native mouse click activates the styled toggle")
+	game.gui.actions.resume.grab_focus()
+	await _key(KEY_ENTER)
+	check(not game.paused and game.gui.actions.pause.text_only, "Enter resumes from the styled modal to bare footer buttons")
+	game.show_title()

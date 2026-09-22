@@ -112,6 +112,42 @@ class ArtworkTests(unittest.TestCase):
         for effect in ('water-slash','water-wheel','thunder','impact'):
             self.assertTrue((ROOT/'art/effects'/(effect+'.png')).is_file())
 
+
+    def test_throw_landings_keep_ground_contact_after_source_registration(self):
+        for character in ('tanjiro', 'zenitsu'):
+            for suffix in ('thrown-movement-v3', 'thrown_forward-phase2-v1'):
+                record = json.loads((ROOT/'output/imagegen/anime-v2/imports'/(character+'-'+suffix+'.json')).read_text())
+                for frame in record['frames'][8:]:
+                    self.assertLessEqual(abs(frame['normalized_bounds'][3] - record['feet_anchor'][1]), 2,
+                                         'Landing drawing must stay on the shared ground plane')
+                    correction = frame['drawing_registration']
+                    self.assertTrue(correction['reference'] and correction['reason'])
+                    self.assertGreater(correction['scale'], 1)
+                    self.assertAlmostEqual(frame['effective_scale'], frame['scale'] * correction['scale'])
+                for frame in record['frames'][:4]:
+                    self.assertNotIn('drawing_registration', frame, 'Already-correct grab anatomy is preserved')
+
+    def test_user_super_title_assets(self):
+        manifest = json.loads((ROOT/'output/user-assets/battle-ui/manifest.json').read_text(encoding='utf-8'))
+        self.assertEqual(manifest['origin'], 'user-supplied')
+        self.assertEqual({r['key'] for r in manifest['records']}, {'water_dragon', 'sun_arc', 'sixfold', 'godspeed'})
+        for record in manifest['records']:
+            source = ROOT / record['source']
+            output = ROOT / record['output']
+            self.assertEqual(hashlib.sha256(source.read_bytes()).hexdigest(), record['source_sha256'])
+            self.assertEqual(hashlib.sha256(output.read_bytes()).hexdigest(), record['output_sha256'])
+            with Image.open(source) as raw, Image.open(output) as final:
+                self.assertEqual(raw.size, (2172, 724))
+                self.assertEqual(final.mode, 'RGBA')
+                self.assertEqual(final.size, tuple(record['output_size']))
+                self.assertEqual(final.tobytes(), raw.convert('RGBA').crop(record['crop']).tobytes())
+                alpha = final.getchannel('A')
+                self.assertEqual(alpha.getextrema(), (0, 255))
+                self.assertGreater(alpha.histogram()[0], final.width * final.height * 0.08)
+            settings = output.with_suffix('.png.import').read_text(encoding='utf-8')
+            self.assertIn('compress/mode=0', settings)
+            self.assertIn('mipmaps/generate=true', settings)
+
     def test_generated_previews(self):
         if not CHECK_PREVIEWS:
             self.skipTest('Local previews are not versioned; rebuild art and pass --with-previews to validate them.')

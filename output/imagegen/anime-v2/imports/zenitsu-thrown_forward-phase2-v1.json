@@ -236,7 +236,7 @@
       ],
       "measured_feet": [
         183.83999999999992,
-        309.6365422952381
+        284.56796107769424
       ],
       "silhouette_contact": [
         186.5,
@@ -244,16 +244,22 @@
       ],
       "scale": 0.8090087579504831,
       "normalized_bounds": [
-        300,
-        318,
-        595,
-        476
+        279,
+        306,
+        616,
+        486
       ],
       "source_cell_size": [
         384.0,
         341.3333333333333
       ],
-      "anchor_mode": "pelvis"
+      "anchor_mode": "pelvis",
+      "drawing_registration": {
+        "scale": 1.14,
+        "reference": "idle + pre-release torso/head/limbs",
+        "reason": "The source drawings shrink during release/landing; restore anatomy at import, preserving the pelvis in flight and measured ground contact after impact."
+      },
+      "effective_scale": 0.9222699840635507
     },
     {
       "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-thrown_forward-phase2-v1.png",
@@ -273,16 +279,22 @@
       ],
       "scale": 0.8090087579504831,
       "normalized_bounds": [
-        311,
-        447,
-        593,
+        292,
+        430,
+        613,
         568
       ],
       "source_cell_size": [
         384.0,
         341.3333333333333
       ],
-      "anchor_mode": "pelvis"
+      "anchor_mode": "pelvis",
+      "drawing_registration": {
+        "scale": 1.14,
+        "reference": "idle + pre-release torso/head/limbs",
+        "reason": "The source drawings shrink during release/landing; restore anatomy at import, preserving the pelvis in flight and measured ground contact after impact."
+      },
+      "effective_scale": 0.9222699840635507
     },
     {
       "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-thrown_forward-phase2-v1.png",
@@ -302,16 +314,22 @@
       ],
       "scale": 0.8090087579504831,
       "normalized_bounds": [
-        315,
-        460,
-        573,
+        297,
+        444,
+        591,
         568
       ],
       "source_cell_size": [
         384.0,
         341.3333333333333
       ],
-      "anchor_mode": "pelvis"
+      "anchor_mode": "pelvis",
+      "drawing_registration": {
+        "scale": 1.14,
+        "reference": "idle + pre-release torso/head/limbs",
+        "reason": "The source drawings shrink during release/landing; restore anatomy at import, preserving the pelvis in flight and measured ground contact after impact."
+      },
+      "effective_scale": 0.9222699840635507
     },
     {
       "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-thrown_forward-phase2-v1.png",
@@ -331,16 +349,22 @@
       ],
       "scale": 0.8090087579504831,
       "normalized_bounds": [
-        289,
-        464,
-        588,
+        266,
+        449,
+        606,
         568
       ],
       "source_cell_size": [
         384.0,
         341.3333333333333
       ],
-      "anchor_mode": "pelvis"
+      "anchor_mode": "pelvis",
+      "drawing_registration": {
+        "scale": 1.14,
+        "reference": "idle + pre-release torso/head/limbs",
+        "reason": "The source drawings shrink during release/landing; restore anatomy at import, preserving the pelvis in flight and measured ground contact after impact."
+      },
+      "effective_scale": 0.9222699840635507
     },
     {
       "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-thrown_forward-phase2-v1.png",
@@ -360,16 +384,22 @@
       ],
       "scale": 0.8090087579504831,
       "normalized_bounds": [
-        299,
-        481,
-        595,
+        278,
+        469,
+        616,
         568
       ],
       "source_cell_size": [
         384.0,
         341.3333333333333
       ],
-      "anchor_mode": "pelvis"
+      "anchor_mode": "pelvis",
+      "drawing_registration": {
+        "scale": 1.14,
+        "reference": "idle + pre-release torso/head/limbs",
+        "reason": "The source drawings shrink during release/landing; restore anatomy at import, preserving the pelvis in flight and measured ground contact after impact."
+      },
+      "effective_scale": 0.9222699840635507
     }
   ]
 }

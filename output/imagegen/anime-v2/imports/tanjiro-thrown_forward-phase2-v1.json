@@ -207,7 +207,7 @@
       ],
       "measured_feet": [
         192.19999999999993,
-        290.97895238095236
+        270.89692176870744
       ],
       "silhouette_contact": [
         169.5,
@@ -215,16 +215,22 @@
       ],
       "scale": 0.881080100546788,
       "normalized_bounds": [
-        279,
-        312,
-        568,
-        517
+        258,
+        301,
+        582,
+        531
       ],
       "source_cell_size": [
         384.0,
         341.3333333333333
       ],
-      "anchor_mode": "pelvis"
+      "anchor_mode": "pelvis",
+      "drawing_registration": {
+        "scale": 1.12,
+        "reference": "idle + pre-release torso/head/limbs",
+        "reason": "The source drawings shrink during release/landing; restore anatomy at import, preserving the pelvis in flight and measured ground contact after impact."
+      },
+      "effective_scale": 0.9868097126124026
     },
     {
       "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-thrown_forward-phase2-v1.png",
@@ -236,7 +242,7 @@
       ],
       "measured_feet": [
         187.83999999999992,
-        215.80561904761893
+        195.723588435374
       ],
       "silhouette_contact": [
         186.5,
@@ -244,16 +250,22 @@
       ],
       "scale": 0.881080100546788,
       "normalized_bounds": [
-        282,
-        378,
-        592,
-        493
+        263,
+        375,
+        610,
+        504
       ],
       "source_cell_size": [
         384.0,
         341.3333333333333
       ],
-      "anchor_mode": "pelvis"
+      "anchor_mode": "pelvis",
+      "drawing_registration": {
+        "scale": 1.12,
+        "reference": "idle + pre-release torso/head/limbs",
+        "reason": "The source drawings shrink during release/landing; restore anatomy at import, preserving the pelvis in flight and measured ground contact after impact."
+      },
+      "effective_scale": 0.9868097126124026
     },
     {
       "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-thrown_forward-phase2-v1.png",
@@ -273,16 +285,22 @@
       ],
       "scale": 0.881080100546788,
       "normalized_bounds": [
-        296,
-        414,
-        605,
+        277,
+        395,
+        623,
         568
       ],
       "source_cell_size": [
         384.0,
         341.3333333333333
       ],
-      "anchor_mode": "pelvis"
+      "anchor_mode": "pelvis",
+      "drawing_registration": {
+        "scale": 1.12,
+        "reference": "idle + pre-release torso/head/limbs",
+        "reason": "The source drawings shrink during release/landing; restore anatomy at import, preserving the pelvis in flight and measured ground contact after impact."
+      },
+      "effective_scale": 0.9868097126124026
     },
     {
       "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-thrown_forward-phase2-v1.png",
@@ -302,16 +320,22 @@
       ],
       "scale": 0.881080100546788,
       "normalized_bounds": [
-        301,
-        433,
-        599,
+        283,
+        417,
+        617,
         568
       ],
       "source_cell_size": [
         384.0,
         341.3333333333333
       ],
-      "anchor_mode": "pelvis"
+      "anchor_mode": "pelvis",
+      "drawing_registration": {
+        "scale": 1.12,
+        "reference": "idle + pre-release torso/head/limbs",
+        "reason": "The source drawings shrink during release/landing; restore anatomy at import, preserving the pelvis in flight and measured ground contact after impact."
+      },
+      "effective_scale": 0.9868097126124026
     },
     {
       "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-thrown_forward-phase2-v1.png",
@@ -331,16 +355,22 @@
       ],
       "scale": 0.881080100546788,
       "normalized_bounds": [
-        290,
-        466,
-        598,
+        271,
+        454,
+        616,
         568
       ],
       "source_cell_size": [
         384.0,
         341.3333333333333
       ],
-      "anchor_mode": "pelvis"
+      "anchor_mode": "pelvis",
+      "drawing_registration": {
+        "scale": 1.12,
+        "reference": "idle + pre-release torso/head/limbs",
+        "reason": "The source drawings shrink during release/landing; restore anatomy at import, preserving the pelvis in flight and measured ground contact after impact."
+      },
+      "effective_scale": 0.9868097126124026
     },
     {
       "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-thrown_forward-phase2-v1.png",
@@ -360,16 +390,22 @@
       ],
       "scale": 0.881080100546788,
       "normalized_bounds": [
-        286,
-        471,
-        608,
+        266,
+        459,
+        627,
         568
       ],
       "source_cell_size": [
         384.0,
         341.3333333333333
       ],
-      "anchor_mode": "pelvis"
+      "anchor_mode": "pelvis",
+      "drawing_registration": {
+        "scale": 1.12,
+        "reference": "idle + pre-release torso/head/limbs",
+        "reason": "The source drawings shrink during release/landing; restore anatomy at import, preserving the pelvis in flight and measured ground contact after impact."
+      },
+      "effective_scale": 0.9868097126124026
     }
   ]
 }

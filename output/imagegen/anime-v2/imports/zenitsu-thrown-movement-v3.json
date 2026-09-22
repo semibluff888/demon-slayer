@@ -273,16 +273,22 @@
       ],
       "scale": 0.9487136558959763,
       "normalized_bounds": [
-        295,
-        397,
-        608,
+        283,
+        384,
+        621,
         568
       ],
       "source_cell_size": [
         362.0,
         362.0
       ],
-      "anchor_mode": "pelvis"
+      "anchor_mode": "pelvis",
+      "drawing_registration": {
+        "scale": 1.08,
+        "reference": "idle + pre-release torso/head/limbs",
+        "reason": "The source drawings shrink during release/landing; restore anatomy at import, preserving the pelvis in flight and measured ground contact after impact."
+      },
+      "effective_scale": 1.0246107483676545
     },
     {
       "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-thrown-movement-v3.png",
@@ -302,16 +308,22 @@
       ],
       "scale": 0.9487136558959763,
       "normalized_bounds": [
-        298,
-        410,
-        586,
+        286,
+        397,
+        597,
         568
       ],
       "source_cell_size": [
         362.0,
         362.0
       ],
-      "anchor_mode": "pelvis"
+      "anchor_mode": "pelvis",
+      "drawing_registration": {
+        "scale": 1.08,
+        "reference": "idle + pre-release torso/head/limbs",
+        "reason": "The source drawings shrink during release/landing; restore anatomy at import, preserving the pelvis in flight and measured ground contact after impact."
+      },
+      "effective_scale": 1.0246107483676545
     },
     {
       "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-thrown-movement-v3.png",
@@ -331,16 +343,22 @@
       ],
       "scale": 0.9487136558959763,
       "normalized_bounds": [
-        270,
-        449,
-        607,
+        255,
+        440,
+        619,
         568
       ],
       "source_cell_size": [
         362.0,
         362.0
       ],
-      "anchor_mode": "pelvis"
+      "anchor_mode": "pelvis",
+      "drawing_registration": {
+        "scale": 1.08,
+        "reference": "idle + pre-release torso/head/limbs",
+        "reason": "The source drawings shrink during release/landing; restore anatomy at import, preserving the pelvis in flight and measured ground contact after impact."
+      },
+      "effective_scale": 1.0246107483676545
     },
     {
       "source": "output\\imagegen\\anime-v2\\raw\\zenitsu-thrown-movement-v3.png",
@@ -360,16 +378,22 @@
       ],
       "scale": 0.9487136558959763,
       "normalized_bounds": [
-        285,
-        458,
-        620,
+        272,
+        449,
+        634,
         568
       ],
       "source_cell_size": [
         362.0,
         362.0
       ],
-      "anchor_mode": "pelvis"
+      "anchor_mode": "pelvis",
+      "drawing_registration": {
+        "scale": 1.08,
+        "reference": "idle + pre-release torso/head/limbs",
+        "reason": "The source drawings shrink during release/landing; restore anatomy at import, preserving the pelvis in flight and measured ground contact after impact."
+      },
+      "effective_scale": 1.0246107483676545
     }
   ]
 }

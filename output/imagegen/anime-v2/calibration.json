@@ -242,7 +242,45 @@
         0.55,
         0.76
       ]
-    }
+    },
+    "drawing_registration": {
+      "5": {
+        "scale": 1.12,
+        "reference": "idle + pre-release torso/head/limbs",
+        "reason": "The source drawings shrink during release/landing; restore anatomy at import, preserving the pelvis in flight and measured ground contact after impact."
+      },
+      "6": {
+        "scale": 1.12,
+        "reference": "idle + pre-release torso/head/limbs",
+        "reason": "The source drawings shrink during release/landing; restore anatomy at import, preserving the pelvis in flight and measured ground contact after impact."
+      },
+      "7": {
+        "scale": 1.12,
+        "reference": "idle + pre-release torso/head/limbs",
+        "reason": "The source drawings shrink during release/landing; restore anatomy at import, preserving the pelvis in flight and measured ground contact after impact."
+      },
+      "8": {
+        "scale": 1.12,
+        "reference": "idle + pre-release torso/head/limbs",
+        "reason": "The source drawings shrink during release/landing; restore anatomy at import, preserving the pelvis in flight and measured ground contact after impact."
+      },
+      "9": {
+        "scale": 1.12,
+        "reference": "idle + pre-release torso/head/limbs",
+        "reason": "The source drawings shrink during release/landing; restore anatomy at import, preserving the pelvis in flight and measured ground contact after impact."
+      },
+      "10": {
+        "scale": 1.12,
+        "reference": "idle + pre-release torso/head/limbs",
+        "reason": "The source drawings shrink during release/landing; restore anatomy at import, preserving the pelvis in flight and measured ground contact after impact."
+      },
+      "11": {
+        "scale": 1.12,
+        "reference": "idle + pre-release torso/head/limbs",
+        "reason": "The source drawings shrink during release/landing; restore anatomy at import, preserving the pelvis in flight and measured ground contact after impact."
+      }
+    },
+    "drawing_revision": "battle-revisions-20260923"
   },
   "zenitsu-idle": {
     "standing_height": 476.16,
@@ -393,7 +431,30 @@
   "zenitsu-thrown-movement-v3": {
     "standing_height": 358.38,
     "root_fraction": 0.5,
-    "note": "Registered against existing idle head/hand/limb proportions; one fixed scale across the entire clip. Rotating poses use a pelvis root."
+    "note": "Registered against existing idle head/hand/limb proportions; one fixed scale across the entire clip. Rotating poses use a pelvis root.",
+    "drawing_registration": {
+      "8": {
+        "scale": 1.08,
+        "reference": "idle + pre-release torso/head/limbs",
+        "reason": "The source drawings shrink during release/landing; restore anatomy at import, preserving the pelvis in flight and measured ground contact after impact."
+      },
+      "9": {
+        "scale": 1.08,
+        "reference": "idle + pre-release torso/head/limbs",
+        "reason": "The source drawings shrink during release/landing; restore anatomy at import, preserving the pelvis in flight and measured ground contact after impact."
+      },
+      "10": {
+        "scale": 1.08,
+        "reference": "idle + pre-release torso/head/limbs",
+        "reason": "The source drawings shrink during release/landing; restore anatomy at import, preserving the pelvis in flight and measured ground contact after impact."
+      },
+      "11": {
+        "scale": 1.08,
+        "reference": "idle + pre-release torso/head/limbs",
+        "reason": "The source drawings shrink during release/landing; restore anatomy at import, preserving the pelvis in flight and measured ground contact after impact."
+      }
+    },
+    "drawing_revision": "battle-revisions-20260923"
   },
   "zenitsu-body_stand_light-phase2-v1": {
     "standing_height": 477.866,
@@ -401,17 +462,31 @@
     "note": "Measured source frame0 upright anatomy against accepted idle (326/328px). One fixed scale for entire source."
   },
   "zenitsu-body_stand_heavy-phase2-v1": {
-    "standing_height": 391.732558,
+    "standing_height": 362.715331,
     "root_fraction": 0.5,
-    "note": "Idle-referenced head, torso and limb review across preparation, action and recovery. One fixed anatomical scale per source clip; retain measured feet/pelvis anchors.",
+    "note": "Fixed clip-wide anatomy calibration against idle; preserve feet/contact anchor and natural pose compression.",
     "scale_review": {
-      "revision": "character-scale-20260921",
+      "revision": "battle-revisions-20260923",
       "reference": "zenitsu-idle",
       "reference_frame": 0,
-      "previous_standing_height": 336.89,
-      "multiplier": 0.86,
-      "reason": "Oversized head, shoulder and kicking leg in the heavy body attack."
-    }
+      "previous_standing_height": 391.732558,
+      "multiplier": 1.08,
+      "reason": "Restore some of the previous over-reduction; compare leg and torso lengths while preserving the authored low iaido guard and bent supporting knee."
+    },
+    "review_history": [
+      {
+        "standing_height": 391.732558,
+        "note": "Idle-referenced head, torso and limb review across preparation, action and recovery. One fixed anatomical scale per source clip; retain measured feet/pelvis anchors.",
+        "scale_review": {
+          "revision": "character-scale-20260921",
+          "reference": "zenitsu-idle",
+          "reference_frame": 0,
+          "previous_standing_height": 336.89,
+          "multiplier": 0.86,
+          "reason": "Oversized head, shoulder and kicking leg in the heavy body attack."
+        }
+      }
+    ]
   },
   "zenitsu-body_crouch_light-phase2-v1": {
     "standing_height": 533.2992,
@@ -425,9 +500,23 @@
     "note": "Measured source frame0 upright anatomy against accepted idle (326/328px). One fixed scale for entire source."
   },
   "tanjiro-body_stand_heavy-phase2-v1": {
-    "standing_height": 336.871,
+    "standing_height": 354.601053,
     "root_fraction": 0.5,
-    "note": "Measured source frame0 upright anatomy against accepted idle (326/328px). One fixed scale for entire source."
+    "note": "Fixed clip-wide anatomy calibration against idle; preserve feet/contact anchor and natural pose compression.",
+    "review_history": [
+      {
+        "standing_height": 336.871,
+        "note": "Measured source frame0 upright anatomy against accepted idle (326/328px). One fixed scale for entire source."
+      }
+    ],
+    "scale_review": {
+      "revision": "battle-revisions-20260923",
+      "reference": "tanjiro-idle-v2",
+      "reference_frame": 0,
+      "previous_standing_height": 336.871,
+      "multiplier": 0.95,
+      "reason": "Slight reduction of the upright front-kick anatomy, including its standing recovery."
+    }
   },
   "tanjiro-body_crouch_light-phase2-v1": {
     "standing_height": 547.584,
@@ -509,22 +598,50 @@
     }
   },
   "tanjiro-roll_forward-phase2-v1": {
-    "standing_height": 353.935106,
+    "standing_height": 393.261229,
     "root_fraction": 0.5,
-    "note": "Idle-referenced head, torso and limb review across preparation, action and recovery. One fixed anatomical scale per source clip; retain measured feet/pelvis anchors.",
+    "note": "Fixed clip-wide anatomy calibration against idle; preserve feet/contact anchor and natural pose compression.",
     "scale_review": {
-      "revision": "character-scale-20260921",
+      "revision": "battle-revisions-20260923",
       "reference": "tanjiro-idle-v2",
       "reference_frame": 0,
-      "previous_standing_height": 332.699,
-      "multiplier": 0.94,
-      "reason": "Oversized head and torso during the roll, including preparation and recovery."
-    }
+      "previous_standing_height": 353.935106,
+      "multiplier": 0.9,
+      "reason": "Match head and torso through the forward somersault to idle; prior calibration still enlarged the tucked and recovering poses."
+    },
+    "review_history": [
+      {
+        "standing_height": 353.935106,
+        "note": "Idle-referenced head, torso and limb review across preparation, action and recovery. One fixed anatomical scale per source clip; retain measured feet/pelvis anchors.",
+        "scale_review": {
+          "revision": "character-scale-20260921",
+          "reference": "tanjiro-idle-v2",
+          "reference_frame": 0,
+          "previous_standing_height": 332.699,
+          "multiplier": 0.94,
+          "reason": "Oversized head and torso during the roll, including preparation and recovery."
+        }
+      }
+    ]
   },
   "tanjiro-roll_back-phase2-v1": {
-    "standing_height": 356.687,
+    "standing_height": 379.454255,
     "root_fraction": 0.5,
-    "note": "Measured source frame0 upright anatomy against accepted idle (326/328px). One fixed scale for entire source."
+    "note": "Fixed clip-wide anatomy calibration against idle; preserve feet/contact anchor and natural pose compression.",
+    "review_history": [
+      {
+        "standing_height": 356.687,
+        "note": "Measured source frame0 upright anatomy against accepted idle (326/328px). One fixed scale for entire source."
+      }
+    ],
+    "scale_review": {
+      "revision": "battle-revisions-20260923",
+      "reference": "tanjiro-idle-v2",
+      "reference_frame": 0,
+      "previous_standing_height": 356.687,
+      "multiplier": 0.94,
+      "reason": "Match head and limb proportions of the back roll to idle and the corrected forward roll."
+    }
   },
   "tanjiro-throw_forward-phase2-v1": {
     "standing_height": 337.914,
@@ -602,7 +719,35 @@
       "previous_standing_height": 386.646,
       "multiplier": 0.92,
       "reason": "Oversized head and torso in the forward-throw reaction; retain pelvis registration and grounded impact frames."
-    }
+    },
+    "drawing_registration": {
+      "7": {
+        "scale": 1.14,
+        "reference": "idle + pre-release torso/head/limbs",
+        "reason": "The source drawings shrink during release/landing; restore anatomy at import, preserving the pelvis in flight and measured ground contact after impact."
+      },
+      "8": {
+        "scale": 1.14,
+        "reference": "idle + pre-release torso/head/limbs",
+        "reason": "The source drawings shrink during release/landing; restore anatomy at import, preserving the pelvis in flight and measured ground contact after impact."
+      },
+      "9": {
+        "scale": 1.14,
+        "reference": "idle + pre-release torso/head/limbs",
+        "reason": "The source drawings shrink during release/landing; restore anatomy at import, preserving the pelvis in flight and measured ground contact after impact."
+      },
+      "10": {
+        "scale": 1.14,
+        "reference": "idle + pre-release torso/head/limbs",
+        "reason": "The source drawings shrink during release/landing; restore anatomy at import, preserving the pelvis in flight and measured ground contact after impact."
+      },
+      "11": {
+        "scale": 1.14,
+        "reference": "idle + pre-release torso/head/limbs",
+        "reason": "The source drawings shrink during release/landing; restore anatomy at import, preserving the pelvis in flight and measured ground contact after impact."
+      }
+    },
+    "drawing_revision": "battle-revisions-20260923"
   },
   "zenitsu-throw_tech-phase2-v1": {
     "standing_height": 477.866,
@@ -646,7 +791,40 @@
         0.51,
         0.63
       ]
-    }
+    },
+    "drawing_registration": {
+      "6": {
+        "scale": 1.12,
+        "reference": "idle + pre-release torso/head/limbs",
+        "reason": "The source drawings shrink during release/landing; restore anatomy at import, preserving the pelvis in flight and measured ground contact after impact."
+      },
+      "7": {
+        "scale": 1.12,
+        "reference": "idle + pre-release torso/head/limbs",
+        "reason": "The source drawings shrink during release/landing; restore anatomy at import, preserving the pelvis in flight and measured ground contact after impact."
+      },
+      "8": {
+        "scale": 1.12,
+        "reference": "idle + pre-release torso/head/limbs",
+        "reason": "The source drawings shrink during release/landing; restore anatomy at import, preserving the pelvis in flight and measured ground contact after impact."
+      },
+      "9": {
+        "scale": 1.12,
+        "reference": "idle + pre-release torso/head/limbs",
+        "reason": "The source drawings shrink during release/landing; restore anatomy at import, preserving the pelvis in flight and measured ground contact after impact."
+      },
+      "10": {
+        "scale": 1.12,
+        "reference": "idle + pre-release torso/head/limbs",
+        "reason": "The source drawings shrink during release/landing; restore anatomy at import, preserving the pelvis in flight and measured ground contact after impact."
+      },
+      "11": {
+        "scale": 1.12,
+        "reference": "idle + pre-release torso/head/limbs",
+        "reason": "The source drawings shrink during release/landing; restore anatomy at import, preserving the pelvis in flight and measured ground contact after impact."
+      }
+    },
+    "drawing_revision": "battle-revisions-20260923"
   },
   "tanjiro-throw_tech-phase2-v1": {
     "root_fraction": 0.5,

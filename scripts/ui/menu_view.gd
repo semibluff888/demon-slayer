@@ -1,6 +1,7 @@
 extends Control
 ## Native controls over the illustrated stage. Artwork contains no interface text.
 const DuelButton = preload("res://scripts/ui/duel_button.gd")
+const BattleStyle = preload("res://scripts/presentation/battle_style.gd")
 const PAPER := Color("fff0c8")
 const GOLD := Color("e6c77f")
 const MUTED := Color("b7bfd0")
@@ -14,8 +15,19 @@ var motion_time: float = 0.0
 var shades: Dictionary = {}
 var result_spark_time: float = 0.0
 var result_sparks: Node2D
+var battle_style: bool = false
 
 func _ready() -> void:
+	# Godot's defaults may only bind keyboard accept/cancel; native menus also
+	# need explicit all-device gamepad bindings. Fighter input remains sampled
+	# by InputRouter and battle footer buttons never take keyboard/pad focus.
+	var menu_buttons := {"ui_accept": JOY_BUTTON_A, "ui_cancel": JOY_BUTTON_B}
+	for action: String in menu_buttons:
+		var event := InputEventJoypadButton.new()
+		event.device = -1
+		event.button_index = menu_buttons[action]
+		if not InputMap.action_has_event(action, event):
+			InputMap.action_add_event(action, event)
 	name = "Interface"
 	size = Vector2(1280, 720)
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -47,6 +59,7 @@ func _process(delta: float) -> void:
 			entry.node.position = entry.origin + Vector2(sin(motion_time * 0.38 + entry.phase) * 2, cos(motion_time * 0.32 + entry.phase) * 1.8)
 
 func clear() -> void:
+	battle_style = false
 	if transition != null:
 		transition.kill()
 	modulate = Color.WHITE
@@ -184,11 +197,13 @@ func portrait(id: String, bounds: Rect2, flip: bool = false, moving: bool = fals
 		decorative.append({"node": node, "origin": bounds.position, "phase": decorative.size() * 1.7})
 
 func battle() -> void:
+	battle_style = true
 	if app.mode == "practice":
-		button("practice_options", "练习设置 F3", Rect2(526, 700, 137, 20), app.show_practice_options, false, false, 13).focus_mode = Control.FOCUS_NONE
-	button("pause", "暂停  Esc", Rect2(679, 700, 112, 20), func(): app.set_paused(true), false, false, 13).focus_mode = Control.FOCUS_NONE
+		button("practice_options", "练习设置 F3", Rect2(507, 694, 150, 26), app.show_practice_options, false, false, 13).focus_mode = Control.FOCUS_NONE
+	button("pause", "暂停  Esc", Rect2(680, 694, 112, 26), func(): app.set_paused(true), false, false, 13).focus_mode = Control.FOCUS_NONE
 
 func pause(reason: String) -> void:
+	battle_style = false
 	rect(Rect2(0, 0, 1280, 720), Color(0.018, 0.03, 0.065, 0.72))
 	panel(Rect2(399, 77, 482, 566))
 	label("P A U S E", Rect2(434, 111, 412, 23), 14, GOLD, false, HORIZONTAL_ALIGNMENT_CENTER)
@@ -313,6 +328,7 @@ func _help_page(page: String, id: String = "") -> void:
 	help(page, id)
 
 func training_options() -> void:
+	battle_style = false
 	rect(Rect2(0, 0, 1280, 720), Color(0.018, 0.03, 0.065, 0.78))
 	panel(Rect2(318, 115, 644, 495))
 	label("练习设置", Rect2(350, 145, 580, 62), 38, PAPER, true)
@@ -349,6 +365,10 @@ func keycap(value: String, bounds: Rect2) -> void:
 	label(value, bounds, 17, PAPER, false, HORIZONTAL_ALIGNMENT_CENTER)
 
 func label(value: String, bounds: Rect2, font_size: int = 18, color: Color = PAPER, serif: bool = false, align: int = HORIZONTAL_ALIGNMENT_LEFT) -> Label:
+	if battle_style:
+		if color == PAPER: color = BattleStyle.PAPER
+		elif color == GOLD: color = BattleStyle.GOLD
+		elif color == MUTED: color = BattleStyle.MUTED
 	var node := Label.new()
 	node.text = value
 	node.position = bounds.position
@@ -370,6 +390,8 @@ func button(id: String, value: String, bounds: Rect2, callback: Callable, primar
 	node.text = value
 	node.position = bounds.position
 	node.primary = primary
+	node.battle_style = battle_style
+	node.text_only = battle_style and bounds.size.y < 30
 	node.arrow = arrow
 	node.add_theme_font_size_override("font_size", font_size)
 	node.pressed.connect(callback)

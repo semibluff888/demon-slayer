@@ -47,6 +47,7 @@ func _run() -> void:
 		_test_whiff_and_resources(cid)
 	_test_feedback()
 	await _test_lifecycle()
+	DirAccess.make_dir_recursive_absolute("res://artifacts/phase2")
 	var file := FileAccess.open("res://artifacts/phase2/segment-validation.json",FileAccess.WRITE)
 	file.store_string(JSON.stringify(evidence,"  "))
 	for failure in failures: printerr("FAIL: ",failure)

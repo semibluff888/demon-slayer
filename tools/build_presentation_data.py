@@ -28,6 +28,8 @@ VISUALS={
  'sixfold':('thunder',0.88,0.62,1.5,1),
  'godspeed':('thunder',0.96,0.72,1.8,2),
 }
+TITLES = {"water_dragon", "sun_arc", "sixfold", "godspeed"}
+
 def build():
  target=ROOT/'resources/presentation';target.mkdir(parents=True,exist_ok=True)
  for key,(shape,color,sound,trails) in PROFILES.items():
@@ -36,5 +38,9 @@ def build():
   if key in VISUALS:
    texture,body,glow,particles,tier=VISUALS[key]
    text+=f'texture_key = "{texture}"\nbody_opacity = {body}\nglow_strength = {glow}\nparticle_scale = {particles}\nsuper_tier = {tier}\n'
+  if key in TITLES:
+   text=text.replace('load_steps=2', 'load_steps=3')
+   text=text.replace('[resource]', f'[ext_resource type="Texture2D" path="res://art/ui/super-titles/{key}.png" id="2"]\n\n[resource]')
+   text+='title_texture = ExtResource("2")\n'
   (target/(key+'.tres')).write_text(text,encoding='utf-8')
 if __name__=='__main__':build()
