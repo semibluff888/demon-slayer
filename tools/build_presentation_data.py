@@ -7,17 +7,17 @@ PROFILES={
  'water_slash':('water_slash',(0.50,0.85,1.0,1),'water_slash',0),
  'water_wheel':('water_wheel',(0.46,0.84,1.0,1),'water_wheel',0),
  'water_vortex':('water_vortex',(0.40,0.90,0.89,1),'water_wheel',0),
- 'water_dragon':('water_dragon',(0.38,0.83,1.0,1),'water_slash',1),
- 'sun_arc':('sun_arc',(1.0,0.40,0.09,1),'flame',0),
+ 'water_dragon':('water_dragon',(0.38,0.83,1.0,1),'water_slash',4),
+ 'sun_arc':('sun_arc',(1.0,0.40,0.09,1),'flame',6),
  'thunder':('thunder',(1.0,0.87,0.46,1),'thunder',2),
  'iai':('iai',(1.0,0.86,0.57,1),'iai',0),
  'iai_return':('iai_return',(1.0,0.79,0.38,1),'iai',0),
- 'sixfold':('sixfold',(1.0,0.88,0.46,1),'iai',2),
- 'godspeed':('godspeed',(0.80,0.89,1.0,1),'thunder',2),
+ 'sixfold':('sixfold',(1.0,0.88,0.46,1),'iai',4),
+ 'godspeed':('godspeed',(0.80,0.89,1.0,1),'thunder',6),
  'throw':('none',(0.9,0.8,0.7,1),'body_swing',0),
 }
 VISUALS={
- 'water_slash':('water-slash',0.90,0.48,1.1,0),
+ 'water_slash':('water-slash-spray',0.90,0.48,1.1,0),
  'water_wheel':('water-wheel',0.88,0.52,1.2,0),
  'water_vortex':('water-wheel',0.84,0.45,1.2,0),
  'water_dragon':('water-dragon',0.93,0.55,1.5,1),
@@ -30,6 +30,16 @@ VISUALS={
 }
 TITLES = {"water_dragon", "sun_arc", "sixfold", "godspeed"}
 
+# Cool silhouettes separate the movement trail from warm costumes and attack FX.
+TRAIL_COLORS = {
+ 'water_dragon': ('60baff', '6262cf'),
+ 'sun_arc': ('aaa0ff', '7855c8'),
+ 'sixfold': ('819fff', '7058cc'),
+ 'godspeed': ('91bdff', '6964d6'),
+}
+def color_value(value):
+ return ', '.join(f'{int(value[i:i+2],16)/255:.6f}' for i in (0,2,4)) + ', 1'
+
 def build():
  target=ROOT/'resources/presentation';target.mkdir(parents=True,exist_ok=True)
  for key,(shape,color,sound,trails) in PROFILES.items():
@@ -38,7 +48,14 @@ def build():
   if key in VISUALS:
    texture,body,glow,particles,tier=VISUALS[key]
    text+=f'texture_key = "{texture}"\nbody_opacity = {body}\nglow_strength = {glow}\nparticle_scale = {particles}\nsuper_tier = {tier}\n'
+  if key == 'water_slash':
+   text+='projectile_texture_key = "water-slash-projectile"\n'
   if key in TITLES:
+   maximum=key in ('sun_arc','godspeed')
+   text=text.replace('trail_alpha = 0.12',f'trail_alpha = {0.42 if maximum else 0.34}')
+   text+=f'trail_interval = {1/20 if maximum else 1/15:.8f}\ntrail_lifetime = {0.30 if maximum else 0.24}\n'
+   tint,fade=TRAIL_COLORS[key]
+   text+=f'trail_color = Color({color_value(tint)})\ntrail_end_color = Color({color_value(fade)})\n'
    text=text.replace('load_steps=2', 'load_steps=3')
    text=text.replace('[resource]', f'[ext_resource type="Texture2D" path="res://art/ui/super-titles/{key}.png" id="2"]\n\n[resource]')
    text+='title_texture = ExtResource("2")\n'

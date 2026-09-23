@@ -47,6 +47,8 @@ Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script',
 
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/battle_visual_tests.gd') -Expected 'BATTLE VISUAL TESTS: \d+ passed, 0 failed' | Out-Null
 
+Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/combat_polish_tests.gd') -Expected 'COMBAT POLISH TESTS: \d+ passed, 0 failed' | Out-Null
+
 $hashes = @()
 foreach ($fps in @(30, 60, 144)) {
     $logPath = Join-Path $artifactRoot "fps-$fps.log"

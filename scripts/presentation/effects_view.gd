@@ -26,7 +26,7 @@ func _ready() -> void:
 	var additive := CanvasItemMaterial.new()
 	additive.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
 	material = additive
-	for id in ["water-slash", "water-wheel", "thunder", "impact", "water-dragon", "sun-flame-arc", "water-slash-body", "water-wheel-body", "thunder-body", "water-dragon-body", "sun-flame-arc-body"]:
+	for id in ["water-slash", "water-wheel", "thunder", "impact", "water-dragon", "sun-flame-arc", "water-slash-body", "water-wheel-body", "thunder-body", "water-dragon-body", "sun-flame-arc-body", "water-slash-projectile", "water-slash-projectile-body", "water-slash-spray", "water-slash-spray-body"]:
 		var path: String = "res://art/effects/%s.png" % id
 		if ResourceLoader.exists(path):
 			textures[id] = load(path)
@@ -237,17 +237,17 @@ func _draw_attack(fighter: RefCounted) -> void:
 	if segment < 0:
 		return
 	var progress: float = move.segment_progress(fighter.move_frame)
-	var strength: float = (0.62 + sin(progress * PI) * 0.32) * (move.presentation.glow_strength if move.presentation != null else 0.55)
 	var attack: Rect2 = move.box
 	var shape := _profile_shape(move)
+	var strength: float = (0.62 + sin(progress * PI) * 0.32) * (move.presentation.glow_strength if move.presentation != null else 0.55)
 	match shape:
 		"water_slash":
 			# The detached projectile is the only hitbox. A small spray marks release.
-			_effect("water-slash",Rect2(17,-45,22,24),Color(color,0.25),PI)
+			_effect("water-slash-spray",Rect2(13,-43,30,20),Color(1,1,1,0.28*(1-progress*0.5)))
 		"water_wheel":
-			_effect("water-wheel",attack.grow(5),Color(color,strength*0.45),-progress*TAU)
+			_effect("water-wheel",attack.grow(5),Color(color,strength*0.45),progress*TAU)
 			_element_motes(attack,progress,color,16)
-			_ellipse(attack.grow(-3),-progress*TAU,PI*1.35,Color(color.lightened(0.5),0.62),1.4)
+			_ellipse(attack.grow(-3),progress*TAU,PI*1.35,Color(color.lightened(0.5),0.62),1.4)
 		"water_vortex":
 			var plane := Rect2(attack.position.x-6,-48,attack.size.x+12,44)
 			_effect("water-wheel",plane,Color(color,0.28),progress*TAU)
@@ -303,10 +303,17 @@ func _draw() -> void:
 			_draw_attack(fighter)
 		for projectile in combat.projectiles:
 			draw_set_transform(camera.point(Vector2(projectile.x,projectile.y)),0,Vector2(camera.zoom*projectile.facing,camera.zoom))
-			var bounds: Rect2 = combat.moves[projectile.move].projectile_box
-			# A vertical crest stays inside the projectile's exact collision envelope.
-			_effect("water-slash",bounds,Color(0.48,0.87,1,0.60),PI)
-			_ellipse(bounds.grow(-1),-1.15,2.3,Color(0.82,0.98,1,0.68),1.0)
+			var move: Resource = combat.moves[projectile.move]
+			var bounds: Rect2 = move.projectile_box
+			var key := _projectile_key(move)
+			# Authored vertical foam crest, without distorting the old horizontal slash.
+			_effect(key,bounds,Color(0.78,0.95,1,0.28),PI if key=="water-slash" else 0.0)
+			if key != "water-slash":
+				var age: float = move.projectile_lifetime - projectile.life
+				for n in range(3):
+					var drift := fposmod(age*0.08+n/3.0,1.0)
+					var at := Vector2(bounds.position.x-drift*6,lerpf(bounds.position.y+5,bounds.end.y-5,n/2.0))
+					draw_line(at,at+Vector2(1.7,0.6),Color(0.77,0.96,1,(1-drift)*0.20),0.65,true)
 	draw_set_transform(Vector2.ZERO)
 	for spark: Dictionary in sparks:
 		var at: Vector2 = camera.point(spark.at)
@@ -369,11 +376,11 @@ func _draw_body() -> void:
 		body_layer.draw_set_transform(camera.point(Vector2(fighter.x,fighter.y)),0,Vector2(camera.zoom*fighter.facing,camera.zoom))
 		match shape:
 			"water_slash":
-				bounds = Rect2(12,-47,29,29)
-				opacity *= 0.5
+				bounds = Rect2(13,-43,30,20)
+				opacity *= 0.68 * (1-progress*0.5)
 			"water_wheel":
 				bounds = attack.grow(4)
-				angle = -progress * TAU
+				angle = progress * TAU
 			"water_vortex":
 				bounds = Rect2(attack.position.x-6,-48,attack.size.x+12,44)
 				angle = progress*TAU
@@ -404,8 +411,15 @@ func _draw_body() -> void:
 		_body_texture(key,bounds,opacity,angle)
 	for projectile in combat.projectiles:
 		body_layer.draw_set_transform(camera.point(Vector2(projectile.x,projectile.y)),0,Vector2(camera.zoom*projectile.facing,camera.zoom))
-		_body_texture("water-slash-body",combat.moves[projectile.move].projectile_box,0.93,PI)
+		var move: Resource = combat.moves[projectile.move]
+		var key := _projectile_key(move)
+		_body_texture(key+"-body",move.projectile_box,0.96,PI if key=="water-slash" else 0.0)
 	body_layer.draw_set_transform(Vector2.ZERO)
+
+func _projectile_key(move: Resource) -> String:
+	if move.presentation != null and not move.presentation.projectile_texture_key.is_empty():
+		return move.presentation.projectile_texture_key
+	return "water-slash"
 
 func _body_texture(key: String, bounds: Rect2, alpha: float, angle: float = 0.0) -> void:
 	if not textures.has(key):

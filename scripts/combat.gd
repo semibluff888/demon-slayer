@@ -264,6 +264,11 @@ func _advance(f: Fighter) -> void:
 	if f.dash_ticks > 0 and (f.down or (f.axis != 0 and f.axis != f.dash_direction)):
 		_stop_dash(f)
 	if f.move == null and f.grounded and f.jump_buffer > 0:
+		# Capture the established forward dash before clearing its state. Neutral-up
+		# preserves momentum; reversing/crouching already cancelled the dash above.
+		var forward_dash: bool = f.dash_ticks > 0 and not f.dash_back
+		var jump_axis: int = f.dash_direction if forward_dash and f.axis == 0 else f.axis
+		var jump_speed: float = definition(f).walk_speed * (Arena.DASH_JUMP_MULTIPLIER if forward_dash else 1.0)
 		_stop_dash(f)
 		f.air_ticks = 0
 		f.air_used_move = false
@@ -273,7 +278,7 @@ func _advance(f: Fighter) -> void:
 		f.grounded = false
 		f.crouching = false
 		f.vy = -7.8
-		f.vx = f.axis * definition(f).walk_speed
+		f.vx = jump_axis * jump_speed
 		f.jump_buffer = 0
 		f.state = "air"
 	if f.buffer_left > 0 and not f.buffer_action.is_empty():

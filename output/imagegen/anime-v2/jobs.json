@@ -2324,5 +2324,69 @@
       "timeline": [],
       "segment_sync": true
     }
+  },
+  {
+    "id": "tanjiro-water_wheel-polish-v1",
+    "group": "combat-polish",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-water_wheel-polish-v1.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\tanjiro-water_wheel-polish-v1.png",
+    "size": "2048x1536",
+    "references": [
+      "output/imagegen/anime-v2/raw/tanjiro-model.png",
+      "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "water_wheel",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 18,
+      "anchor_mode": "pelvis",
+      "root_fraction": 0.5,
+      "phase_breaks": [
+        3,
+        8
+      ]
+    }
+  },
+  {
+    "id": "fx-water-slash-projectile-polish-v1",
+    "group": "combat-polish",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\fx-water-slash-projectile-polish-v1.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\fx-water-slash-projectile-polish-v1.png",
+    "size": "1024x1536",
+    "references": [
+      "art/effects/water-wheel-body.png"
+    ],
+    "metadata": {
+      "kind": "effect",
+      "effect": "water-slash-projectile",
+      "matte": "magenta",
+      "aspect": [
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "id": "fx-water-slash-spray-polish-v1",
+    "group": "combat-polish",
+    "prompt": "output\\imagegen\\anime-v2\\prompts\\fx-water-slash-spray-polish-v1.txt",
+    "out": "output\\imagegen\\anime-v2\\raw\\fx-water-slash-spray-polish-v1.png",
+    "size": "1536x1024",
+    "references": [
+      "art/effects/water-wheel-body.png"
+    ],
+    "metadata": {
+      "kind": "effect",
+      "effect": "water-slash-spray",
+      "matte": "magenta",
+      "aspect": [
+        3,
+        2
+      ]
+    }
   }
 ]

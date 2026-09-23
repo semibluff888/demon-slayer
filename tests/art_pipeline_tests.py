@@ -19,7 +19,7 @@ EXPECTED.update({'roll_forward':12,'roll_back':12,'throw_forward':12,'thrown_for
 
 def clip_counts(character):
     result = dict(EXPECTED)
-    result.update({'water_slash':9,'water_wheel':9} if character=='tanjiro' else {'iai':9,'thunder':9,'body_crouch_heavy':8})
+    result.update({'water_slash':9,'water_wheel':12} if character=='tanjiro' else {'iai':9,'thunder':9,'body_crouch_heavy':8})
     result.update({'water_vortex':12,'water_dragon':15,'sun_arc':12} if character=='tanjiro' else {'iai_return':12,'sixfold':18,'godspeed':15})
     return result
 
@@ -63,6 +63,25 @@ class ArtworkTests(unittest.TestCase):
                 opaque = a.point(lambda v:255 if v>200 else 0)
                 self.assertIsNone(ImageChops.multiply(residual,opaque).getbbox(), 'Opaque chroma-key residue')
                 page.close()
+
+    def test_combat_polish_sources_and_separate_water_textures(self):
+        manifest = json.loads((ROOT/'output/imagegen/combat-polish-manifest.json').read_text(encoding='utf-8'))
+        wheel = manifest['wheel']
+        self.assertEqual(wheel['frames'], 12)
+        self.assertEqual(hashlib.sha256((ROOT/wheel['source']).read_bytes()).hexdigest(), wheel['source_sha256'])
+        atlas = json.loads((ROOT/'art/characters/tanjiro/atlas.json').read_text(encoding='utf-8'))
+        self.assertEqual(atlas['clips']['water_wheel']['phase_breaks'], [3, 8])
+        self.assertEqual(atlas['clips']['water_wheel']['anchor_mode'], 'pelvis')
+        for effect in manifest['effects']:
+            for key in ('source', 'body', 'glow'):
+                self.assertEqual(hashlib.sha256((ROOT/effect[key]).read_bytes()).hexdigest(), effect[key+'_sha256'])
+            with Image.open(ROOT/effect['body']) as image:
+                self.assertEqual(image.mode, 'RGBA')
+                self.assertEqual(image.getchannel('A').getextrema(), (0,255))
+                r,g,b,a = image.split()
+                residue = ImageChops.subtract(ImageChops.darker(r,b),g).point(lambda v:255 if v>135 else 0)
+                opaque = a.point(lambda v:255 if v>200 else 0)
+                self.assertIsNone(ImageChops.multiply(residue,opaque).getbbox(), 'Water has no opaque magenta residue')
 
     def test_local_assets_and_provenance(self):
         for character in ('tanjiro','zenitsu'):

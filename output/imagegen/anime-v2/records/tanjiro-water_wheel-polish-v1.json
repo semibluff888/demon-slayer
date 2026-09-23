@@ -1,0 +1,29 @@
+{
+  "id": "tanjiro-water_wheel-polish-v1",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x1536",
+  "route": "CPA via bundled image_gen.py",
+  "started_utc": "2026-09-22T18:26:07.8521460Z",
+  "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-water_wheel-polish-v1.txt",
+  "output": "output\\imagegen\\anime-v2\\raw\\tanjiro-water_wheel-polish-v1.png",
+  "references": [
+    "output/imagegen/anime-v2/raw/tanjiro-model.png",
+    "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
+  ],
+  "price_verified": false,
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-09-22T18:26:50.9826490Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "72eb5c429dda3a607a426ce3be16b79a94efd1485f00f1d025b473eaabc6017c",
+  "review": {
+    "status": "accepted_for_combat_polish",
+    "reviewed_utc": "2026-09-23T11:12:21.376977+00:00",
+    "evidence": "artifacts/combat-polish/index.html"
+  }
+}

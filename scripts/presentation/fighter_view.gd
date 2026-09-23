@@ -1,4 +1,5 @@
 extends Node2D
+const TRAIL_SHADER = preload("res://scripts/presentation/afterimage.gdshader")
 const Arena = preload("res://scripts/arena_rules.gd")
 const IDLE_BREATH_SECONDS: float = 3.2
 const IDLE_BREATH_AMOUNT: float = 0.003
@@ -13,17 +14,32 @@ var last_state: String = ""
 var player_accent := Color("77dce0")
 var show_player_mark: bool = true
 var afterimages: Array[Dictionary] = []
+var trail_layer: Node2D
 var trail_clock: float = 0.0
+var last_trail_pose: Dictionary = {}
+var previous_attack_instance: int = -1
 var previous_move_frame: int = -1
 var previous_stun: int = 0
 var was_grounded: bool = true
 var landing_ticks: float = 0.0
 var restart_requested: bool = false
 
+func _ready() -> void:
+	trail_layer = Node2D.new()
+	trail_layer.name = "SuperAfterimages"
+	trail_layer.show_behind_parent = true
+	var ink := ShaderMaterial.new()
+	ink.shader = TRAIL_SHADER
+	trail_layer.material = ink
+	add_child(trail_layer)
+	trail_layer.draw.connect(_draw_super_trails)
+
 func reset_pose() -> void:
 	clock_ticks = 0
 	trail_clock = 0
 	afterimages.clear()
+	last_trail_pose.clear()
+	previous_attack_instance = -1
 	texture = null
 	clip = "idle"
 	last_state = ""
@@ -32,6 +48,8 @@ func reset_pose() -> void:
 	was_grounded = true
 	landing_ticks = 0
 	restart_requested = false
+	if trail_layer != null:
+		trail_layer.queue_redraw()
 
 func consume(events: Array, slot: int) -> void:
 	for event: Dictionary in events:
@@ -52,18 +70,21 @@ func sync(delta: float, freeze_pose: bool) -> void:
 	var desired := _clip()
 	var repeat_move: bool = fighter.move != null and fighter.move_frame < previous_move_frame
 	var renewed_stun: bool = fighter.state in ["hit", "block", "knockdown"] and fighter.stun > previous_stun
-	if desired != clip or restart_requested or repeat_move or renewed_stun:
+	var new_attack: bool = fighter.move != null and fighter.attack_instance != previous_attack_instance
+	if desired != clip or restart_requested or repeat_move or renewed_stun or new_attack:
 		clock_ticks = 0
 		# Releasing back keeps an already crouched fighter low instead of standing
 		# through the start of the crouch animation again.
 		if desired == "crouch" and clip == "guard_low" and visual.frames != null and visual.frames.has_animation(desired):
 			clock_ticks = maxi(0, visual.frames.get_frame_count(desired) - 1) * 3
 		afterimages.clear()
+		last_trail_pose.clear()
 		trail_clock = 0
 		clip = desired
 		restart_requested = false
 	previous_move_frame = fighter.move_frame if fighter.move != null else -1
 	previous_stun = fighter.stun
+	previous_attack_instance = fighter.attack_instance
 	if not freeze_pose:
 		clock_ticks += delta * 60
 		trail_clock += delta
@@ -77,12 +98,29 @@ func sync(delta: float, freeze_pose: bool) -> void:
 	var profile: Resource = fighter.move.presentation if fighter.move != null else null
 	if combat.phase != "fight":
 		afterimages.clear()
-	if not freeze_pose and combat.phase == "fight" and texture != null and profile != null and profile.trail_count > 0 and fighter.hitbox().has_area() and trail_clock >= 0.05:
-		afterimages.append({"texture": texture, "x": fighter.x, "y": fighter.y, "facing": fighter.facing, "life": 0.10, "color":profile.color, "alpha":profile.trail_alpha})
-		if afterimages.size() > profile.trail_count:
-			afterimages.pop_front()
-		trail_clock = 0
+		last_trail_pose.clear()
+	if not freeze_pose and combat.phase == "fight" and texture != null and profile != null and profile.trail_count > 0:
+		var move: Resource = fighter.move
+		var emitting: bool = move.is_super() and fighter.move_frame < move.startup + move.active
+		if not move.is_super():
+			emitting = fighter.hitbox().has_area()
+		var pose := {"at":Vector2(fighter.x, fighter.y), "texture":texture, "facing":pose_facing()}
+		# Do not stack identical ghosts while stationary. Startup motion still
+		# leaves a trail, and recovery lets existing samples finish fading.
+		if emitting and pose != last_trail_pose and trail_clock + 0.000001 >= maxf(profile.trail_interval, 1.0 / 144):
+			var duration: float = maxf(profile.trail_lifetime, 0.01)
+			var tint: Color = profile.trail_color if profile.trail_color.a > 0 else profile.color
+			var fade: Color = profile.trail_end_color if profile.trail_end_color.a > 0 else tint
+			afterimages.append({"texture":texture, "x":fighter.x, "y":fighter.y, "facing":pose_facing(),
+				"life":duration, "duration":duration, "color":tint, "end_color":fade, "silhouette":move.is_super(), "alpha":profile.trail_alpha,
+				"scale":_pose_scale(), "anchor":visual.feet_anchor, "factor":visual.canonical_height / visual.source_height})
+			while afterimages.size() > profile.trail_count:
+				afterimages.pop_front()
+			last_trail_pose = pose
+			trail_clock = fmod(maxf(0, trail_clock - profile.trail_interval), maxf(profile.trail_interval, 1.0 / 144))
 	queue_redraw()
+	if trail_layer != null:
+		trail_layer.queue_redraw()
 
 func _clip() -> String:
 	if combat.phase == "match_end" and combat.match_winner == fighter.slot:
@@ -205,8 +243,8 @@ func _draw() -> void:
 	if texture != null:
 		var factor: float = visual.canonical_height / visual.source_height
 		for ghost: Dictionary in afterimages:
-			draw_set_transform(Vector2(ghost.x - fighter.x, ghost.y - fighter.y), 0, Vector2(ghost.facing, 1))
-			draw_texture_rect(ghost.texture, Rect2(-visual.feet_anchor * factor, ghost.texture.get_size() * factor), false, Color(ghost.color, ghost.alpha * ghost.life / 0.10))
+			if not ghost.get("silhouette", false):
+				_draw_ghost(self, ghost)
 		draw_set_transform(Vector2.ZERO, 0, Vector2(pose_facing(), 1))
 		var pose_factor := _pose_scale() * factor
 		var rect := Rect2(-visual.feet_anchor * pose_factor, texture.get_size() * pose_factor)
@@ -218,6 +256,27 @@ func _draw() -> void:
 		draw_set_transform(Vector2.ZERO)
 	if show_player_mark:
 		draw_colored_polygon(PackedVector2Array([Vector2(-2, 3), Vector2(2, 3), Vector2(0, 5)]), player_accent)
+
+func trail_modulate(ghost: Dictionary) -> Color:
+	var remaining := clampf(float(ghost.life) / float(ghost.duration), 0, 1)
+	if not ghost.get("silhouette", false):
+		return Color(ghost.color, ghost.alpha * remaining)
+	var tint: Color = ghost.color.lerp(ghost.end_color, 1 - remaining)
+	# Hold the fresh silhouette briefly, then fade smoothly through blue-violet.
+	return Color(tint, ghost.alpha * smoothstep(0.0, 0.85, remaining))
+
+func _draw_ghost(canvas: Node2D, ghost: Dictionary) -> void:
+	canvas.draw_set_transform(Vector2(ghost.x - fighter.x, ghost.y - fighter.y), 0, Vector2(ghost.facing, 1))
+	var factor: Vector2 = ghost.scale * ghost.factor
+	canvas.draw_texture_rect(ghost.texture, Rect2(-ghost.anchor * factor, ghost.texture.get_size() * factor), false, trail_modulate(ghost))
+
+func _draw_super_trails() -> void:
+	if fighter == null:
+		return
+	for ghost: Dictionary in afterimages:
+		if ghost.get("silhouette", false):
+			_draw_ghost(trail_layer, ghost)
+	trail_layer.draw_set_transform(Vector2.ZERO)
 
 func pose_facing() -> int:
 	if not fighter.throw_role.is_empty() or (fighter.state == "knockdown" and fighter.throw_frame >= Arena.THROW_IMPACT_TICK):

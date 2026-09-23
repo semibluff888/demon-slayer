@@ -1,0 +1,70 @@
+{
+  "revision": "combat-polish-v1",
+  "route": "CPA / gpt-image-2 via existing image_gen.py",
+  "wheel": {
+    "source": "output\\imagegen\\anime-v2\\raw\\tanjiro-water_wheel-polish-v1.png",
+    "source_sha256": "72eb5c429dda3a607a426ce3be16b79a94efd1485f00f1d025b473eaabc6017c",
+    "actual_size": [
+      1536,
+      1024
+    ],
+    "frames": 12,
+    "phase_breaks": [
+      3,
+      8
+    ],
+    "anchor_mode": "pelvis",
+    "calibration": "tanjiro-water_wheel-polish-v1"
+  },
+  "effects": [
+    {
+      "id": "fx-water-slash-projectile-polish-v1",
+      "source": "output\\imagegen\\anime-v2\\raw\\fx-water-slash-projectile-polish-v1.png",
+      "source_sha256": "639081756ac5e7df5a97bd7c8eb45d0640ac8ab8cdd1a3306a9760d1b1a3c914",
+      "actual_size": [
+        1024,
+        1536
+      ],
+      "crop": [
+        168,
+        60,
+        964,
+        1470
+      ],
+      "output_size": [
+        512,
+        768
+      ],
+      "body": "art/effects/water-slash-projectile-body.png",
+      "glow": "art/effects/water-slash-projectile.png",
+      "body_sha256": "42e6e136aa1892c6f9ebce0555c8e78e13ab167cd46b6684a6c8ffda85c20761",
+      "glow_sha256": "b87967ae961c11e0ed398745451f3246e8b4bc6c023a15845651a9e941115fbd"
+    },
+    {
+      "id": "fx-water-slash-spray-polish-v1",
+      "source": "output\\imagegen\\anime-v2\\raw\\fx-water-slash-spray-polish-v1.png",
+      "source_sha256": "22c7b86e45f8d87c4810eccc73a8671423af57ab5c5f91cdb733736ec6a01ba4",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "crop": [
+        214,
+        106,
+        1254,
+        949
+      ],
+      "output_size": [
+        768,
+        512
+      ],
+      "body": "art/effects/water-slash-spray-body.png",
+      "glow": "art/effects/water-slash-spray.png",
+      "body_sha256": "679367b3d1e5fdeea27ed4051998f1b5a406b076fbbf20a313d1a44a5d67b8a4",
+      "glow_sha256": "395a14509b5770aea13c0d03627a6a26f28794269ef3f382b57893898d4c1e68"
+    }
+  ],
+  "unchanged_clips": 77,
+  "unchanged_drawings": 608,
+  "rebuild": ".venv/Scripts/python.exe tools/build_combat_polish_art.py"
+}

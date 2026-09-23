@@ -1,15 +1,13 @@
 {
-  "revision": "combat-polish-v2",
-  "generated_utc": "2026-09-23T11:12:21.376977+00:00",
+  "revision": "battle-ui-v5",
+  "generated_utc": "2026-09-20T18:26:36.366169+00:00",
   "route": "CPA / gpt-image-2 via existing image_gen.py",
-  "previous_manifest": "output/imagegen/history/pre-combat-polish-manifest.json",
-  "gameplay_changes": [
-    "Forward dash jump inherits 1.5x ordinary jump horizontal speed; height and timing unchanged."
-  ],
+  "previous_manifest": "output/imagegen/history/pre-battle-v5-manifest.json",
+  "gameplay_changes": [],
   "characters": {
     "tanjiro": {
       "clips": 39,
-      "frames": 309,
+      "frames": 306,
       "pages": 7,
       "canvas_size": [
         1024,
@@ -1266,8 +1264,8 @@
   "inventory": [
     {
       "path": "art/characters/tanjiro/atlas-0.png",
-      "bytes": 3888546,
-      "sha256": "7b276e023539d6b8f97d213f8e2a2fda8b4ba36eefbd394f0afd05d3c4865b1b",
+      "bytes": 3885801,
+      "sha256": "ba4dcc117eb5cfb643807e16b70e5cb12d2b001723e05117f1e600d819844757",
       "size": [
         2048,
         2048
@@ -1276,8 +1274,8 @@
     },
     {
       "path": "art/characters/tanjiro/atlas-1.png",
-      "bytes": 4036698,
-      "sha256": "ed58a514376c02b1911e294775ede0da6e8bb18c6c9db0ce33e2e75a75f44ccd",
+      "bytes": 3946004,
+      "sha256": "84199bc482550cf16e2b1d6c9e2f4c49ded461d08024f6e5feeb0065a376a6a4",
       "size": [
         2048,
         2048
@@ -1286,8 +1284,8 @@
     },
     {
       "path": "art/characters/tanjiro/atlas-2.png",
-      "bytes": 4102903,
-      "sha256": "6a5c090742f34176211f18988ec24acf54c2b893b3443de48d5186093ceceeb2",
+      "bytes": 4019523,
+      "sha256": "3936d3764b4d21453dc9adbdd4fd461b196e9f700f8f6b9c9bcf030ef1984758",
       "size": [
         2048,
         2048
@@ -1296,8 +1294,8 @@
     },
     {
       "path": "art/characters/tanjiro/atlas-3.png",
-      "bytes": 3777882,
-      "sha256": "8c153557a6639dd4c5caae7b074479ecd77c9a455bdf5edd3a9ebd26c67ed8c4",
+      "bytes": 3693641,
+      "sha256": "d4ebecda2fc764c0c61bb5153c51fbb6ec514f765669d126e116fee869487022",
       "size": [
         2048,
         2048
@@ -1306,8 +1304,8 @@
     },
     {
       "path": "art/characters/tanjiro/atlas-4.png",
-      "bytes": 4263049,
-      "sha256": "8d9ad2072ad47be76b0c9f92075d5c2d6406f91dd906427fd1eb4a3ffaaa7baa",
+      "bytes": 4140812,
+      "sha256": "e971c25d002ed6f725c06bf103390ec6674a4b5457d82b670ef91cfcf9692e3f",
       "size": [
         2048,
         2048
@@ -1316,8 +1314,8 @@
     },
     {
       "path": "art/characters/tanjiro/atlas-5.png",
-      "bytes": 4485846,
-      "sha256": "f111dc41da689cdc4e6af55b6f7532b61632b95c59db1a4efb139ced2285eefc",
+      "bytes": 4568146,
+      "sha256": "d39532e56d436e0a5797df181cffa953ea065f923aa18f6c5d36a844c9959939",
       "size": [
         2048,
         2048
@@ -1326,8 +1324,8 @@
     },
     {
       "path": "art/characters/tanjiro/atlas-6.png",
-      "bytes": 3145415,
-      "sha256": "ae6f7b7ba1c6010f7128319df38d53559340471166106995f7c8fefb99803b2d",
+      "bytes": 3147880,
+      "sha256": "8c03808cd1212f062ade69ab0925a0050f8b7fc00ba168ca53c99c695cb45ca6",
       "size": [
         2048,
         2048
@@ -1336,8 +1334,8 @@
     },
     {
       "path": "art/characters/tanjiro/atlas.json",
-      "bytes": 84365,
-      "sha256": "32be25f0c509829be05236d67a33807d350dec83fcc6109820e2ed1ddd4e96ca"
+      "bytes": 83639,
+      "sha256": "4e2c40d2d13ce94ebb5c2eb737b3488f9b2778831cb21004acb8b2e863b668c5"
     },
     {
       "path": "art/characters/tanjiro/avatar.png",
@@ -1545,46 +1543,6 @@
       "mode": "RGBA"
     },
     {
-      "path": "art/effects/water-slash-projectile-body.png",
-      "bytes": 358175,
-      "sha256": "42e6e136aa1892c6f9ebce0555c8e78e13ab167cd46b6684a6c8ffda85c20761",
-      "size": [
-        512,
-        768
-      ],
-      "mode": "RGBA"
-    },
-    {
-      "path": "art/effects/water-slash-projectile.png",
-      "bytes": 298234,
-      "sha256": "b87967ae961c11e0ed398745451f3246e8b4bc6c023a15845651a9e941115fbd",
-      "size": [
-        512,
-        768
-      ],
-      "mode": "RGB"
-    },
-    {
-      "path": "art/effects/water-slash-spray-body.png",
-      "bytes": 330483,
-      "sha256": "679367b3d1e5fdeea27ed4051998f1b5a406b076fbbf20a313d1a44a5d67b8a4",
-      "size": [
-        768,
-        512
-      ],
-      "mode": "RGBA"
-    },
-    {
-      "path": "art/effects/water-slash-spray.png",
-      "bytes": 272558,
-      "sha256": "395a14509b5770aea13c0d03627a6a26f28794269ef3f382b57893898d4c1e68",
-      "size": [
-        768,
-        512
-      ],
-      "mode": "RGB"
-    },
-    {
       "path": "art/effects/water-slash.png",
       "bytes": 434988,
       "sha256": "03a9d4317b8a36e7147cbfcc5ce7537c81af064da13f977852fa21f8f3255799",
@@ -1738,46 +1696,6 @@
         1152
       ],
       "mode": "RGBA"
-    },
-    {
-      "path": "art/ui/super-titles/godspeed.png",
-      "bytes": 2285124,
-      "sha256": "41dc71b46d5f69f91331e3ceb3fef2d202f7a8d95fb80c980f8b203b4866b08d",
-      "size": [
-        2167,
-        687
-      ],
-      "mode": "RGBA"
-    },
-    {
-      "path": "art/ui/super-titles/sixfold.png",
-      "bytes": 1809458,
-      "sha256": "b82b81c05ffa14e40ad662f33f2c44646df35881022dc7ddeb304dec20d3bb33",
-      "size": [
-        2172,
-        626
-      ],
-      "mode": "RGBA"
-    },
-    {
-      "path": "art/ui/super-titles/sun_arc.png",
-      "bytes": 1122187,
-      "sha256": "d92280eee1794217a6b6cfd571fd7aa00e2106a27c18c1eef58e587ffc1c22fb",
-      "size": [
-        2161,
-        466
-      ],
-      "mode": "RGBA"
-    },
-    {
-      "path": "art/ui/super-titles/water_dragon.png",
-      "bytes": 1228638,
-      "sha256": "c59d1c47ee61e7fcc1000288087a67a9fe35aa2f0eab1d38a45c2cd16ea850f9",
-      "size": [
-        2152,
-        531
-      ],
-      "mode": "RGBA"
     }
   ],
   "performance": {
@@ -1875,97 +1793,5 @@
       "evidence": "docs/battle-revisions.md",
       "review": "artifacts/battle-revisions/index.html"
     }
-  },
-  "combat_polish": {
-    "sources": [
-      {
-        "id": "tanjiro-water_wheel-polish-v1",
-        "status": "generated",
-        "model": "gpt-image-2",
-        "quality": "high",
-        "requested_size": "2048x1536",
-        "route": "CPA via bundled image_gen.py",
-        "started_utc": "2026-09-22T18:26:07.8521460Z",
-        "prompt": "output\\imagegen\\anime-v2\\prompts\\tanjiro-water_wheel-polish-v1.txt",
-        "output": "output\\imagegen\\anime-v2\\raw\\tanjiro-water_wheel-polish-v1.png",
-        "references": [
-          "output/imagegen/anime-v2/raw/tanjiro-model.png",
-          "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
-        ],
-        "price_verified": false,
-        "cost": null,
-        "accepted": true,
-        "completed_utc": "2026-09-22T18:26:50.9826490Z",
-        "actual_size": [
-          1536,
-          1024
-        ],
-        "sha256": "72eb5c429dda3a607a426ce3be16b79a94efd1485f00f1d025b473eaabc6017c",
-        "review": {
-          "status": "accepted_for_combat_polish",
-          "reviewed_utc": "2026-09-23T11:12:21.376977+00:00",
-          "evidence": "artifacts/combat-polish/index.html"
-        }
-      },
-      {
-        "id": "fx-water-slash-projectile-polish-v1",
-        "status": "generated",
-        "model": "gpt-image-2",
-        "quality": "high",
-        "requested_size": "1024x1536",
-        "route": "CPA via bundled image_gen.py",
-        "started_utc": "2026-09-22T18:26:50.9856602Z",
-        "prompt": "output\\imagegen\\anime-v2\\prompts\\fx-water-slash-projectile-polish-v1.txt",
-        "output": "output\\imagegen\\anime-v2\\raw\\fx-water-slash-projectile-polish-v1.png",
-        "references": [
-          "art/effects/water-wheel-body.png"
-        ],
-        "price_verified": false,
-        "cost": null,
-        "accepted": true,
-        "completed_utc": "2026-09-22T18:27:20.1299900Z",
-        "actual_size": [
-          1024,
-          1536
-        ],
-        "sha256": "639081756ac5e7df5a97bd7c8eb45d0640ac8ab8cdd1a3306a9760d1b1a3c914",
-        "review": {
-          "status": "accepted_for_combat_polish",
-          "reviewed_utc": "2026-09-23T11:12:21.376977+00:00",
-          "evidence": "artifacts/combat-polish/index.html"
-        }
-      },
-      {
-        "id": "fx-water-slash-spray-polish-v1",
-        "status": "generated",
-        "model": "gpt-image-2",
-        "quality": "high",
-        "requested_size": "1536x1024",
-        "route": "CPA via bundled image_gen.py",
-        "started_utc": "2026-09-22T18:27:20.1317785Z",
-        "prompt": "output\\imagegen\\anime-v2\\prompts\\fx-water-slash-spray-polish-v1.txt",
-        "output": "output\\imagegen\\anime-v2\\raw\\fx-water-slash-spray-polish-v1.png",
-        "references": [
-          "art/effects/water-wheel-body.png"
-        ],
-        "price_verified": false,
-        "cost": null,
-        "accepted": true,
-        "completed_utc": "2026-09-22T18:27:44.3401411Z",
-        "actual_size": [
-          1536,
-          1024
-        ],
-        "sha256": "22c7b86e45f8d87c4810eccc73a8671423af57ab5c5f91cdb733736ec6a01ba4",
-        "review": {
-          "status": "accepted_for_combat_polish",
-          "reviewed_utc": "2026-09-23T11:12:21.376977+00:00",
-          "evidence": "artifacts/combat-polish/index.html"
-        }
-      }
-    ],
-    "manifest": "output/imagegen/combat-polish-manifest.json",
-    "acceptance": "artifacts/combat-polish/acceptance.json",
-    "review": "artifacts/combat-polish/index.html"
   }
 }

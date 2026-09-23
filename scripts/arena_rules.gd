@@ -15,6 +15,7 @@ const FLOOR_SCREEN_Y: float = 594.0
 const DASH_WINDOW: int = 12
 const DASH_FORWARD_TICKS: int = 16
 const DASH_BACK_TICKS: int = 14
+const DASH_JUMP_MULTIPLIER: float = 1.5
 const DASH_FORWARD_SPEED: float = 4.6
 const DASH_BACK_SPEED: float = 4.0
 const THROW_TICKS: int = 30
