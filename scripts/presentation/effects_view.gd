@@ -19,6 +19,7 @@ var pulses: Array[Dictionary] = []
 var time: float = 0
 var trauma: float = 0
 var freeze: bool = false
+var playback_speed: float = 1.0
 var textures: Dictionary = {}
 var body_layer: Node2D
 
@@ -41,8 +42,9 @@ func consume(events: Array) -> void:
 	var tech := events.any(func(event: Dictionary) -> bool: return event.type == "throw_tech")
 	for event: Dictionary in events:
 		if event.type == "round_end":
-			reset_effects()
-			return
+			if not event.get("knockout", false):
+				reset_effects()
+			break # Queue a redraw even while the lethal frame is frozen.
 		if event.type == "throw_tech":
 			pulses.append({"kind":"tech", "at":event.position, "life":0.30, "duration":0.30, "color":Color("a8f3ef")})
 			continue
@@ -88,6 +90,7 @@ func reset_effects() -> void:
 	time = 0
 
 func _process(delta: float) -> void:
+	delta *= playback_speed
 	if freeze:
 		return
 	time += delta
@@ -295,9 +298,9 @@ func _draw_attack(fighter: RefCounted) -> void:
 func _draw() -> void:
 	if camera == null or combat == null:
 		return
-	if combat.phase == "fight":
+	if combat.phase in ["fight", "round_end"]:
 		for fighter in combat.fighters:
-			if fighter.move == null:
+			if fighter.move == null or not combat.presents_attack(fighter.slot):
 				continue
 			draw_set_transform(camera.point(Vector2(fighter.x,fighter.y)),0,Vector2(camera.zoom*fighter.facing,camera.zoom))
 			_draw_attack(fighter)
@@ -357,11 +360,11 @@ func _element_motes(attack: Rect2, progress: float, color: Color, count: int) ->
 		draw_line(at,at-Vector2(cos(a),sin(a))*(2+n%4),Color(color.lightened(0.55),alpha),0.8+n%2*0.4,true)
 
 func _draw_body() -> void:
-	if camera == null or combat == null or combat.phase != "fight":
+	if camera == null or combat == null or combat.phase not in ["fight", "round_end"]:
 		return
 	for fighter in combat.fighters:
 		var move: Resource = fighter.move
-		if move == null or move.segment(fighter.move_frame) < 0 or move.presentation == null:
+		if move == null or not combat.presents_attack(fighter.slot) or move.segment(fighter.move_frame) < 0 or move.presentation == null:
 			continue
 		var profile: Resource = move.presentation
 		var shape := _profile_shape(move)

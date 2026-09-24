@@ -33,7 +33,10 @@ role = "迅速 · 居合突进"
 accent = Color(0.941, 0.773, 0.471, 1)
 walk_speed = 2.45
 visual_directory = "res://art/characters/zenitsu/"
-state_animations = {"roll_forward": "roll_forward", "roll_back": "roll_back", "throw_forward": "throw_forward", "throw_back": "throw_success", "thrown_forward": "thrown_forward", "thrown_back": "thrown", "throw_tech": "throw_tech"}
+state_animations = {
+"round_intro": "round_intro",
+"round_victory": "round_victory",
+"round_defeat": "round_defeat","roll_forward": "roll_forward", "roll_back": "roll_back", "throw_forward": "throw_forward", "throw_back": "throw_success", "thrown_forward": "thrown_forward", "thrown_back": "thrown", "throw_tech": "throw_tech"}
 normals = {
 "5A": ExtResource("2"),
 "5B": ExtResource("3"),

@@ -1,6 +1,7 @@
 extends Node2D
 const TRAIL_SHADER = preload("res://scripts/presentation/afterimage.gdshader")
 const Arena = preload("res://scripts/arena_rules.gd")
+const Flow = preload("res://scripts/round_flow.gd")
 const IDLE_BREATH_SECONDS: float = 3.2
 const IDLE_BREATH_AMOUNT: float = 0.003
 var fighter: RefCounted
@@ -77,9 +78,10 @@ func sync(delta: float, freeze_pose: bool) -> void:
 		# through the start of the crouch animation again.
 		if desired == "crouch" and clip == "guard_low" and visual.frames != null and visual.frames.has_animation(desired):
 			clock_ticks = maxi(0, visual.frames.get_frame_count(desired) - 1) * 3
-		afterimages.clear()
-		last_trail_pose.clear()
-		trail_clock = 0
+		if combat.phase != "round_end" or fighter.hp <= 0:
+			afterimages.clear()
+			last_trail_pose.clear()
+			trail_clock = 0
 		clip = desired
 		restart_requested = false
 	previous_move_frame = fighter.move_frame if fighter.move != null else -1
@@ -91,15 +93,19 @@ func sync(delta: float, freeze_pose: bool) -> void:
 		for ghost: Dictionary in afterimages:
 			ghost.life -= delta
 		afterimages = afterimages.filter(func(ghost: Dictionary) -> bool: return ghost.life > 0)
+	if combat.phase == "round_end":
+		clock_ticks = combat.outro_pose_ticks(fighter.slot)
+	elif combat.phase == "intro":
+		clock_ticks = combat.actor_intro_ticks()
 	texture = null
 	if visual.frames != null and visual.frames.has_animation(clip) and visual.frames.get_frame_count(clip) > 0:
 		frame_index = _frame_index()
 		texture = visual.frames.get_frame_texture(clip, frame_index)
 	var profile: Resource = fighter.move.presentation if fighter.move != null else null
-	if combat.phase != "fight":
+	if combat.phase not in ["fight", "round_end"] or (combat.phase == "round_end" and fighter.hp <= 0):
 		afterimages.clear()
 		last_trail_pose.clear()
-	if not freeze_pose and combat.phase == "fight" and texture != null and profile != null and profile.trail_count > 0:
+	if not freeze_pose and combat.presents_attack(fighter.slot) and texture != null and profile != null and profile.trail_count > 0:
 		var move: Resource = fighter.move
 		var emitting: bool = move.is_super() and fighter.move_frame < move.startup + move.active
 		if not move.is_super():
@@ -123,8 +129,21 @@ func sync(delta: float, freeze_pose: bool) -> void:
 		trail_layer.queue_redraw()
 
 func _clip() -> String:
-	if combat.phase == "match_end" and combat.match_winner == fighter.slot:
-		return "victory"
+	if combat.phase == "intro" and combat.phase_frames > Flow.INTRO:
+		return _state_clip("round_intro", "idle")
+	if combat.phase == "round_end":
+		if combat.outro_ticks >= combat.victory_at and combat.round_winner == fighter.slot:
+			return _state_clip("round_victory", "victory")
+		if fighter.hp == 0 and combat.outro_ticks >= Flow.FREEZE and not combat.preserves_throw_pose(fighter.slot):
+			return _state_clip("round_defeat", "knockdown")
+		if not combat.is_knockout() and fighter.grounded:
+			return "idle"
+	if combat.phase == "match_end":
+		if combat.match_winner == fighter.slot:
+			return _state_clip("round_victory", "victory")
+		if fighter.hp > 0:
+			return "idle"
+		return _state_clip("thrown_back" if fighter.throw_back else "thrown_forward", "thrown") if combat.preserves_throw_pose(fighter.slot) else _state_clip("round_defeat", "knockdown")
 	if fighter.reaction == "throw_tech" and fighter.stun > 0:
 		return _state_clip("throw_tech", "guard")
 	if fighter.throw_role == "thrower":
@@ -165,6 +184,14 @@ func _timeline_frame(tick: int, count: int) -> int:
 
 func _frame_index() -> int:
 	var count: int = visual.frames.get_frame_count(clip)
+	if clip == "round_intro":
+		return mini(count - 1, int(combat.actor_intro_ticks() * float(count) / Flow.ACTOR_INTRO))
+	if clip == "round_defeat":
+		return mini(count - 1, combat.defeat_frame(fighter.slot))
+	if clip == "round_victory":
+		return count - 1 if combat.phase == "match_end" else mini(count - 1, int(clock_ticks * count / (Flow.RESULT - 15)))
+	if combat.phase == "round_end" and clip in ["victory", "knockdown", "hit"]:
+		return mini(count - 1, int(clock_ticks / 60.0 * visual.frames.get_animation_speed(clip)))
 	# Hold the relaxed drawing; the other idle poses shift the cloth and weight sharply.
 	# Smooth breathing below is anchored at the feet and freezes with the pose clock.
 	if clip == "idle":
@@ -279,6 +306,8 @@ func _draw_super_trails() -> void:
 	trail_layer.draw_set_transform(Vector2.ZERO)
 
 func pose_facing() -> int:
+	if clip == "round_defeat" and not combat.outro_paths[fighter.slot].is_empty():
+		return int(combat.outro_paths[fighter.slot].pose_facing)
 	if not fighter.throw_role.is_empty() or (fighter.state == "knockdown" and fighter.throw_frame >= Arena.THROW_IMPACT_TICK):
 		return fighter.throw_facing
 	if clip in ["jump_forward", "jump_back"]:

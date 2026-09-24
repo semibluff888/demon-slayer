@@ -1,11 +1,13 @@
 extends Control
 ## Screen-space HUD; presentation never changes combat resources.
+const RoundBanner = preload("res://scripts/presentation/round_banner.gd")
 const InputRouter = preload("res://scripts/input_router.gd")
 const Style = preload("res://scripts/presentation/battle_style.gd")
 const PAPER := Style.PAPER
 const GOLD := Style.GOLD
 const MUTED := Style.MUTED
 const INK := Style.INK
+var round_banner: Control
 var combat: RefCounted
 var catalog: RefCounted
 var super_view: Node2D
@@ -13,6 +15,7 @@ var cpu: bool = true
 var training: RefCounted
 var input_device: String = "keyboard:0"
 var frozen: bool = false
+var playback_speed: float = 1.0
 var practice_details: bool = false
 var input_hints: Array[String] = ["WASD / FG · VB", "↑↓←→ / JK · NM"]
 var meter_flash: Array[float] = [0.0, 0.0]
@@ -29,6 +32,10 @@ var time: float = 0.0
 
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
+	round_banner = RoundBanner.new()
+	round_banner.title_font = catalog.title_font
+	round_banner.body_font = catalog.body_font
+	add_child(round_banner)
 
 func reset_effects() -> void:
 	trailing.assign([1000.0, 1000.0])
@@ -65,6 +72,7 @@ func consume(events: Array) -> void:
 			callout_time.assign([0.8, 0.8])
 
 func _process(delta: float) -> void:
+	delta *= playback_speed
 	if combat == null or catalog == null or combat.fighters.is_empty():
 		return
 	if not frozen:
@@ -257,7 +265,7 @@ func _draw() -> void:
 	var seconds := "∞" if combat.practice else str(ceili(combat.remaining / 60.0))
 	var timer_width: float = catalog.title_font.get_string_size(seconds, HORIZONTAL_ALIGNMENT_LEFT, -1, 48).x
 	_text(seconds, Vector2(640 - timer_width / 2, 59), 48, PAPER, true)
-	var round_label := "修  炼" if combat.practice else "第 %d 回合" % (combat.wins[0] + combat.wins[1] + 1)
+	var round_label := "修  炼" if combat.practice else "第 %d 回合" % combat.round_number
 	var label_width: float = catalog.body_font.get_string_size(round_label, HORIZONTAL_ALIGNMENT_LEFT, -1, 12).x
 	_text(round_label, Vector2(640 - label_width / 2, 81), 12, GOLD)
 	draw_line(Vector2(606, 74), Vector2(611, 74), Color(GOLD, 0.6), 1, true)
@@ -267,8 +275,6 @@ func _draw() -> void:
 	else:
 		_text("P1  " + input_hints[0], Vector2(27, 710), 11, MUTED)
 		_right_text("CPU" if cpu else "P2  " + input_hints[1], 1253, 710, 11, MUTED)
-	if combat.phase in ["intro", "round_end"]:
-		var message := ("凝神" if combat.phase_frames > 45 else "拔刀") if combat.phase == "intro" else ("平局 · 再决" if combat.round_winner < 0 else "胜负已分")
-		var tw: float = catalog.title_font.get_string_size(message, HORIZONTAL_ALIGNMENT_LEFT, -1, 60).x
-		_text(message, Vector2(640 - tw / 2, 338), 60, PAPER, true)
-		draw_line(Vector2(600, 360), Vector2(680, 360), Color(GOLD, 0.75), 1, true)
+	if round_banner != null:
+		round_banner.cue = combat.round_cue()
+		round_banner.queue_redraw()

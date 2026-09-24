@@ -1,0 +1,29 @@
+{
+  "id": "tanjiro-a-victory-v1",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "3072x1536",
+  "route": "CPA via bundled image_gen.py",
+  "started_utc": "2026-09-24T13:32:12.2722474Z",
+  "prompt": "demo/round-presentation/prompts/tanjiro-a-victory-v1.txt",
+  "output": "output\\imagegen\\round-selected\\raw\\tanjiro-a-victory-v1.png",
+  "references": [
+    "output/imagegen/anime-v2/raw/tanjiro-model.png",
+    "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
+  ],
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-09-24T13:33:01.1536116Z",
+  "sha256": "e8769b08bf0be827592cf505ce19af953f06deb5d04aaaf6dce333556fa56be4",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "frame_count": 18,
+  "reviewed_for_demo": true,
+  "review": "Production Godot round capture, 960/1280/1920 mirror/corner/air/throw matrix and idle-referenced anatomy reviewed. Contact/release ownership checked for Tanjiro.",
+  "promoted_from": "demo\\round-presentation\\raw\\tanjiro-a-victory-v1.png",
+  "selection": "round_victory",
+  "production_selected": true
+}

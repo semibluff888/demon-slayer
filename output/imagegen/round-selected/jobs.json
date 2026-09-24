@@ -1,0 +1,26 @@
+[
+  {
+    "id": "tanjiro-defeat-v2",
+    "character": "tanjiro",
+    "prompt": "output\\imagegen\\round-selected\\prompts\\tanjiro-defeat-v2.txt",
+    "out": "output\\imagegen\\round-selected\\raw\\tanjiro-defeat-v2.png",
+    "size": "2048x1536",
+    "references": [
+      "output/imagegen/anime-v2/raw/tanjiro-model.png",
+      "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png",
+      "output\\imagegen\\round-selected\\references\\tanjiro-strained-recoil.png"
+    ]
+  },
+  {
+    "id": "zenitsu-defeat-v2",
+    "character": "zenitsu",
+    "prompt": "output\\imagegen\\round-selected\\prompts\\zenitsu-defeat-v2.txt",
+    "out": "output\\imagegen\\round-selected\\raw\\zenitsu-defeat-v2.png",
+    "size": "2048x1536",
+    "references": [
+      "output/imagegen/anime-v2/raw/zenitsu-model.png",
+      "output/imagegen/anime-v2/raw/zenitsu-idle.png",
+      "demo\\round-presentation\\raw\\zenitsu-c-defeat-v1.png"
+    ]
+  }
+]

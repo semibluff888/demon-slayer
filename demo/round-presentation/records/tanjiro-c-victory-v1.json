@@ -1,0 +1,26 @@
+{
+  "id": "tanjiro-c-victory-v1",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "3072x1536",
+  "route": "CPA via bundled image_gen.py",
+  "started_utc": "2026-09-24T13:40:58.1019671Z",
+  "prompt": "demo/round-presentation/prompts/tanjiro-c-victory-v1.txt",
+  "output": "demo/round-presentation/raw/tanjiro-c-victory-v1.png",
+  "references": [
+    "output/imagegen/anime-v2/raw/tanjiro-model.png",
+    "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png"
+  ],
+  "cost": null,
+  "accepted": false,
+  "completed_utc": "2026-09-24T13:41:49.3170838Z",
+  "sha256": "c887bb6bddabb838f79f8ae714a3ca0e3ed01a707aa4317ac12699163b2f4adc",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "frame_count": 18,
+  "reviewed_for_demo": true,
+  "review": "Engine-rendered contact sheets and 960/1280/1920 left/right captures inspected. Candidate only; production selection pending."
+}

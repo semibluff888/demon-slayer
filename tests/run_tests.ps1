@@ -49,6 +49,14 @@ Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script',
 
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/combat_polish_tests.gd') -Expected 'COMBAT POLISH TESTS: \d+ passed, 0 failed' | Out-Null
 
+Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/round_flow_tests.gd') -Expected 'ROUND FLOW TESTS: \d+ passed, 0 failed' | Out-Null
+
+Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/round_selected_tests.gd') -Expected 'ROUND SELECTED TESTS: \d+ passed, 0 failed' | Out-Null
+
+Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/round_polish_tests.gd') -Expected 'ROUND POLISH TESTS: \d+ passed, 0 failed' | Out-Null
+
+Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://demo/round-presentation/verify.gd') -Expected 'ROUND DEMO TESTS: \d+ passed, 0 failed' | Out-Null
+
 $hashes = @()
 foreach ($fps in @(30, 60, 144)) {
     $logPath = Join-Path $artifactRoot "fps-$fps.log"

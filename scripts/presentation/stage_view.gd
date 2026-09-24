@@ -6,6 +6,7 @@ var camera: RefCounted
 var time: float = 0.0
 var menu_mode: bool = false
 var freeze: bool = false
+var playback_speed: float = 1.0
 var layers: Array[Sprite2D] = []
 var atmosphere: Node2D
 var particles: Array[Dictionary] = []
@@ -43,6 +44,7 @@ func _ready() -> void:
 		particles.append({"x": rng.randf_range(0, 1280), "y": rng.randf_range(30, 720), "speed": rng.randf_range(9, 23), "phase": rng.randf_range(0, TAU), "size": rng.randf_range(1.2, 3)})
 
 func _process(delta: float) -> void:
+	delta *= playback_speed
 	if freeze:
 		return
 	time += delta

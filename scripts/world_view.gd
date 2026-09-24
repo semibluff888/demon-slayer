@@ -67,16 +67,22 @@ func _ready() -> void:
 	add_child(debug_layer)
 
 func _process(delta: float) -> void:
-	if not paused and combat.hitstop == 0 and combat.super_freeze == 0:
-		time += delta
 	var battle: bool = screen == "battle" and combat.fighters.size() == 2
+	var speed: float = combat.presentation_speed() if battle else 1.0
+	var presentation_delta: float = delta * speed
+	var visual_freeze: bool = paused or (battle and (combat.hitstop > 0 or combat.super_freeze > 0 or is_zero_approx(speed)))
+	if not paused and combat.hitstop == 0 and combat.super_freeze == 0:
+		time += presentation_delta
 	stage.menu_mode = not battle
-	stage.freeze = paused
+	stage.freeze = visual_freeze
+	stage.playback_speed = speed
 	hud.visible = screen == "battle"
 	effects.visible = battle
 	super_view.visible = battle
+	# KO freezes the observed presentation clock, but keeps cinematic artwork visible.
 	super_view.paused = paused
-	effects.freeze = paused or combat.hitstop > 0 or combat.super_freeze > 0
+	effects.playback_speed = speed
+	effects.freeze = visual_freeze
 	shadow_layer.visible = battle
 	debug_layer.visible = battle and debug_boxes
 	for i in range(2):
@@ -87,9 +93,12 @@ func _process(delta: float) -> void:
 		var f = combat.fighters[i]
 		fighters[i].fighter = f
 		fighters[i].visual = catalog.characters[f.character]
-		fighters[i].sync(delta, paused or combat.hitstop > 0 or combat.super_freeze > 0 or combat.phase != "fight")
-	if not paused:
-		camera.update(combat.fighters, delta)
+		fighters[i].sync(presentation_delta, visual_freeze)
+	if not visual_freeze:
+		camera.update(combat.fighters, presentation_delta)
+		if combat.phase == "round_end" and presentation_delta > 0:
+			var bounds: Array[Rect2] = [fighters[0].visual_bounds(), fighters[1].visual_bounds()]
+			camera.frame_round_actors(combat.fighters, bounds)
 		camera.shake = Vector2(sin(time * 79), cos(time * 93)) * effects.trauma * 11
 	stage.sync_camera()
 	for i in range(2):
@@ -99,6 +108,7 @@ func _process(delta: float) -> void:
 		fighters[i].scale = Vector2.ONE * camera.zoom
 	hud.cpu = cpu
 	hud.frozen = paused
+	hud.playback_speed = speed
 	hud.input_hints = input_hints
 	shadow_layer.queue_redraw()
 	debug_layer.queue_redraw()

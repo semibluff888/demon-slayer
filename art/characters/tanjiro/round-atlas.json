@@ -1,0 +1,681 @@
+{
+  "canvas_size": [
+    1024,
+    640
+  ],
+  "feet_anchor": [
+    448,
+    568
+  ],
+  "source_height": 340,
+  "canonical_height": 70,
+  "clips": {
+    "round_intro": {
+      "loop": false,
+      "fps": 12,
+      "phase_breaks": [
+        6,
+        12
+      ],
+      "frames": [
+        {
+          "texture": "round-0.png",
+          "region": [
+            877,
+            419,
+            291,
+            344
+          ],
+          "offset": [
+            310,
+            224
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            1172,
+            419,
+            286,
+            344
+          ],
+          "offset": [
+            305,
+            224
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            2,
+            419,
+            288,
+            345
+          ],
+          "offset": [
+            296,
+            223
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            294,
+            419,
+            284,
+            345
+          ],
+          "offset": [
+            296,
+            223
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            582,
+            419,
+            291,
+            345
+          ],
+          "offset": [
+            293,
+            223
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            1586,
+            2,
+            299,
+            346
+          ],
+          "offset": [
+            292,
+            222
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            1310,
+            2,
+            272,
+            356
+          ],
+          "offset": [
+            309,
+            212
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            787,
+            2,
+            256,
+            384
+          ],
+          "offset": [
+            306,
+            184
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            267,
+            2,
+            253,
+            411
+          ],
+          "offset": [
+            306,
+            157
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            1047,
+            2,
+            259,
+            378
+          ],
+          "offset": [
+            306,
+            190
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            524,
+            2,
+            259,
+            408
+          ],
+          "offset": [
+            306,
+            160
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            2,
+            2,
+            261,
+            413
+          ],
+          "offset": [
+            306,
+            155
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            1503,
+            768,
+            278,
+            329
+          ],
+          "offset": [
+            306,
+            239
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            209,
+            1110,
+            286,
+            328
+          ],
+          "offset": [
+            298,
+            240
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            172,
+            1443,
+            289,
+            320
+          ],
+          "offset": [
+            293,
+            248
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            465,
+            1443,
+            302,
+            318
+          ],
+          "offset": [
+            293,
+            250
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            771,
+            1443,
+            304,
+            316
+          ],
+          "offset": [
+            291,
+            252
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            1079,
+            1443,
+            298,
+            314
+          ],
+          "offset": [
+            293,
+            254
+          ]
+        }
+      ],
+      "segment_sync": false,
+      "anchor_mode": "feet",
+      "timeline": []
+    },
+    "round_victory": {
+      "loop": false,
+      "fps": 12,
+      "phase_breaks": [
+        6,
+        12
+      ],
+      "frames": [
+        {
+          "texture": "round-0.png",
+          "region": [
+            499,
+            1110,
+            291,
+            328
+          ],
+          "offset": [
+            346,
+            240
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            1131,
+            1110,
+            279,
+            327
+          ],
+          "offset": [
+            362,
+            241
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            1785,
+            768,
+            246,
+            329
+          ],
+          "offset": [
+            382,
+            239
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            2,
+            1110,
+            203,
+            329
+          ],
+          "offset": [
+            372,
+            239
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            978,
+            768,
+            189,
+            330
+          ],
+          "offset": [
+            365,
+            238
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            1171,
+            768,
+            175,
+            330
+          ],
+          "offset": [
+            367,
+            238
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            794,
+            1110,
+            177,
+            328
+          ],
+          "offset": [
+            367,
+            240
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            1414,
+            1110,
+            166,
+            327
+          ],
+          "offset": [
+            366,
+            241
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            1584,
+            1110,
+            166,
+            327
+          ],
+          "offset": [
+            373,
+            241
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            975,
+            1110,
+            152,
+            328
+          ],
+          "offset": [
+            371,
+            240
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            1754,
+            1110,
+            149,
+            327
+          ],
+          "offset": [
+            369,
+            241
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            697,
+            768,
+            129,
+            331
+          ],
+          "offset": [
+            381,
+            237
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            830,
+            768,
+            144,
+            331
+          ],
+          "offset": [
+            365,
+            237
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            2,
+            1443,
+            166,
+            323
+          ],
+          "offset": [
+            355,
+            245
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            1381,
+            1443,
+            177,
+            314
+          ],
+          "offset": [
+            353,
+            254
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            1350,
+            768,
+            149,
+            330
+          ],
+          "offset": [
+            361,
+            238
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            1593,
+            419,
+            136,
+            339
+          ],
+          "offset": [
+            376,
+            229
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            1462,
+            419,
+            127,
+            340
+          ],
+          "offset": [
+            376,
+            228
+          ]
+        }
+      ],
+      "segment_sync": false,
+      "anchor_mode": "feet",
+      "timeline": []
+    },
+    "round_defeat": {
+      "loop": false,
+      "fps": 12,
+      "phase_breaks": [
+        4,
+        8
+      ],
+      "frames": [
+        {
+          "texture": "round-0.png",
+          "region": [
+            358,
+            768,
+            335,
+            334
+          ],
+          "offset": [
+            312,
+            234
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            2,
+            768,
+            352,
+            338
+          ],
+          "offset": [
+            298,
+            230
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            1562,
+            1443,
+            376,
+            312
+          ],
+          "offset": [
+            271,
+            256
+          ]
+        },
+        {
+          "texture": "round-1.png",
+          "region": [
+            2,
+            2,
+            359,
+            289
+          ],
+          "offset": [
+            262,
+            279
+          ]
+        },
+        {
+          "texture": "round-1.png",
+          "region": [
+            365,
+            2,
+            370,
+            246
+          ],
+          "offset": [
+            252,
+            322
+          ]
+        },
+        {
+          "texture": "round-1.png",
+          "region": [
+            1164,
+            2,
+            385,
+            205
+          ],
+          "offset": [
+            234,
+            363
+          ]
+        },
+        {
+          "texture": "round-1.png",
+          "region": [
+            739,
+            2,
+            421,
+            239
+          ],
+          "offset": [
+            178,
+            329
+          ]
+        },
+        {
+          "texture": "round-1.png",
+          "region": [
+            2,
+            295,
+            511,
+            198
+          ],
+          "offset": [
+            99,
+            370
+          ]
+        },
+        {
+          "texture": "round-1.png",
+          "region": [
+            517,
+            295,
+            399,
+            164
+          ],
+          "offset": [
+            218,
+            424
+          ]
+        },
+        {
+          "texture": "round-1.png",
+          "region": [
+            1341,
+            295,
+            402,
+            154
+          ],
+          "offset": [
+            197,
+            436
+          ]
+        },
+        {
+          "texture": "round-1.png",
+          "region": [
+            920,
+            295,
+            417,
+            164
+          ],
+          "offset": [
+            185,
+            432
+          ]
+        },
+        {
+          "texture": "round-1.png",
+          "region": [
+            2,
+            497,
+            410,
+            128
+          ],
+          "offset": [
+            186,
+            464
+          ]
+        }
+      ],
+      "segment_sync": false,
+      "anchor_mode": "feet",
+      "timeline": [],
+      "contact_frame": 6,
+      "release_frame": 7,
+      "final_hold": true
+    }
+  },
+  "source": "output/imagegen/round-selected"
+}

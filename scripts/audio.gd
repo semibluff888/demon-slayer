@@ -24,6 +24,14 @@ func cues(events: Array, combat: RefCounted) -> Array[Dictionary]:
 		var gain := 1.0
 		var move: Resource = combat.moves.get(event.get("move", ""))
 		match kind:
+			"ready":
+				kind = "select"
+				gain = 0.55
+			"ko_announce":
+				kind = "round_end"
+			"round_end":
+				if event.get("knockout", false):
+					continue
 			"swing":
 				kind = "body_swing"
 				gain = 0.20 # A quiet cloth cue acknowledges input during startup.
@@ -54,10 +62,8 @@ func cues(events: Array, combat: RefCounted) -> Array[Dictionary]:
 	return result
 
 func consume(events: Array, combat: RefCounted) -> void:
-	if events.any(func(event: Dictionary) -> bool: return event.type == "round_end"):
+	if events.any(func(event: Dictionary) -> bool: return event.type == "round_end" and not event.get("knockout", false)):
 		reset_audio()
-		play("round_end")
-		return
 	for cue in cues(events,combat):
 		play(cue.kind,cue.gain)
 

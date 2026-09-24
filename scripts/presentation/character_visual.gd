@@ -40,11 +40,21 @@ func load_local_assets() -> void:
 	var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(manifest_path))
 	if not parsed is Dictionary:
 		return
+	frames = SpriteFrames.new()
+	frames.remove_animation("default")
+	clip_metadata.clear()
+	_load_atlas(directory, parsed)
+	var round_path := directory + "round-atlas.json"
+	if FileAccess.file_exists(round_path):
+		var selected: Variant = JSON.parse_string(FileAccess.get_file_as_string(round_path))
+		if selected is Dictionary:
+			_load_atlas(directory, selected)
+	art_ready = missing_clips().is_empty() and portrait != null
+
+func _load_atlas(directory: String, parsed: Dictionary) -> void:
 	feet_anchor = Vector2(parsed.get("feet_anchor", [384, 704])[0], parsed.get("feet_anchor", [384, 704])[1])
 	source_height = float(parsed.get("source_height", 600))
 	canonical_height = float(parsed.get("canonical_height", 70))
-	frames = SpriteFrames.new()
-	frames.remove_animation("default")
 	for clip: String in parsed.get("clips", {}):
 		var info: Dictionary = parsed.clips[clip]
 		clip_metadata[clip] = info
@@ -64,7 +74,6 @@ func load_local_assets() -> void:
 				packed.filter_clip = true
 				frames.add_frame(clip, packed)
 		phases[clip] = info.get("phase_breaks", [2, 4])
-	art_ready = missing_clips().is_empty() and portrait != null
 
 func missing_clips() -> Array[String]:
 	var required := REQUIRED_CLIPS.duplicate()

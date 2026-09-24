@@ -1,0 +1,27 @@
+{
+  "id": "tanjiro-defeat-v2",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x1536",
+  "route": "CPA via bundled image_gen.py",
+  "started_utc": "2026-09-24T15:17:57.9125688Z",
+  "prompt": "output\\imagegen\\round-selected\\prompts\\tanjiro-defeat-v2.txt",
+  "output": "output\\imagegen\\round-selected\\raw\\tanjiro-defeat-v2.png",
+  "references": [
+    "output/imagegen/anime-v2/raw/tanjiro-model.png",
+    "output/imagegen/anime-v2/raw/tanjiro-idle-v2.png",
+    "output\\imagegen\\round-selected\\references\\tanjiro-strained-recoil.png"
+  ],
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-09-24T15:19:11.2490235Z",
+  "sha256": "3b6a857e0fc28b3ae3dd103dcbfd49e630843260688ae90aa055f81a2620c98a",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "frame_count": 12,
+  "production_selected": true,
+  "review": "Production Godot round capture, 960/1280/1920 mirror/corner/air/throw matrix and idle-referenced anatomy reviewed. Contact/release ownership checked for Tanjiro."
+}

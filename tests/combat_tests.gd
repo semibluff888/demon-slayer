@@ -241,7 +241,7 @@ func _rounds() -> void:
 	model.fighters[1].meter = 250
 	model.remaining = 1
 	s.tick(model)
-	s.advance(model, 125)
+	s.advance(model, Combat.Flow.OUTRO)
 	check(model.fighters[0].meter == 70 and model.fighters[1].meter == 90, "draw restores round-opening meter")
 	model = s.duel()
 	model.fighters[0].hp = 800
@@ -251,12 +251,12 @@ func _rounds() -> void:
 	model.remaining = 1
 	s.tick(model)
 	check(model.round_winner == 0 and model.reason == "TIME UP", "timeout awards higher HP")
-	s.advance(model, 125)
+	s.advance(model, Combat.Flow.OUTRO)
 	check(model.fighters[0].meter == 130 and model.fighters[1].meter == 190, "both sides carry meter between decisive rounds")
 	model.phase = "fight"
 	model.fighters[1].hp = 0
 	s.tick(model)
-	s.advance(model, 125)
+	s.advance(model, Combat.Flow.OUTRO)
 	check(model.phase == "match_end" and model.match_winner == 0, "first to two wins the match")
 	model.new_match("zenitsu", "zenitsu")
 	check(model.fighters[0].meter == 0 and model.projectiles.is_empty() and model.super_freeze == 0 and model.wins == [0,0], "new match clears resource and transient state")

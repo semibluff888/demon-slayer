@@ -1,0 +1,26 @@
+{
+  "id": "zenitsu-b-defeat-v1",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x1536",
+  "route": "CPA via bundled image_gen.py",
+  "started_utc": "2026-09-24T13:35:44.4531583Z",
+  "prompt": "demo/round-presentation/prompts/zenitsu-b-defeat-v1.txt",
+  "output": "demo/round-presentation/raw/zenitsu-b-defeat-v1.png",
+  "references": [
+    "output/imagegen/anime-v2/raw/zenitsu-model.png",
+    "output/imagegen/anime-v2/raw/zenitsu-idle.png"
+  ],
+  "cost": null,
+  "accepted": false,
+  "completed_utc": "2026-09-24T13:37:25.0075646Z",
+  "sha256": "815d72981bff903703a39f4614649cd2d323ce935bd7797a86cd42c26843c519",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "frame_count": 12,
+  "reviewed_for_demo": true,
+  "review": "Engine-rendered contact sheets and 960/1280/1920 left/right captures inspected. Candidate only; production selection pending."
+}

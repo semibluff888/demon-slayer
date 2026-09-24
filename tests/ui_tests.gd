@@ -60,9 +60,9 @@ func _run() -> void:
 	check(game.combat.snapshot() == before, "pause freezes the entire combat state")
 	await _capture("04-pause")
 	_click("resume")
-	for n in range(90):
+	for n in range(Combat.Flow.OPENING):
 		game._physics_process(1.0 / 60)
-	check(game.combat.phase == "fight", "ready sequence ends after 90 ticks")
+	check(game.combat.phase == "fight", "ready sequence ends at configured GO boundary")
 	# Render a real active water slash and contact; no hand-painted screenshot.
 	game.combat.fighters[0].x = 268
 	game.combat.fighters[1].x = 341

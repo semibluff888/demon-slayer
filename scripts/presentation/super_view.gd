@@ -50,7 +50,7 @@ func _ready() -> void:
 
 func consume(events: Array) -> void:
 	for event: Dictionary in events:
-		if event.type == "round_end":
+		if event.type == "round_end" and not event.get("knockout", false):
 			reset_effects()
 			return
 		if event.type != "super":
@@ -79,7 +79,7 @@ func reset_effects() -> void:
 func _process(_delta: float) -> void:
 	if paused:
 		return
-	if combat == null or combat.phase != "fight":
+	if combat == null or combat.phase not in ["fight", "round_end"]:
 		if not active.is_empty():
 			reset_effects()
 		return
@@ -90,7 +90,7 @@ func _refresh() -> void:
 	for sphere in spheres: sphere.visible = false
 	var remaining: Array[Dictionary] = []
 	for cue: Dictionary in active:
-		cue.age = maxf(0, float(combat.ticks - int(cue.start))/60.0)
+		cue.age = maxf(0, float(combat.presentation_time_ticks() - int(cue.start))/60.0)
 		var f = combat.fighters[int(cue.slot)]
 		if cue.age >= TITLE_LIFETIME or f.state in ["hit","knockdown","thrown"] or f.attack_instance != cue.instance:
 			continue

@@ -1,6 +1,7 @@
 extends SceneTree
 const Combat = preload("res://scripts/combat.gd")
 const Arena = preload("res://scripts/arena_rules.gd")
+const Flow = preload("res://scripts/round_flow.gd")
 const Commands = preload("res://scripts/command_recognizer.gd")
 const Camera = preload("res://scripts/presentation/duel_camera.gd")
 const Support = preload("res://tests/combat_test_support.gd")
@@ -186,8 +187,10 @@ func _throws() -> void:
 		model.remaining = 1
 		s.advance(model, 3)
 		check(model.phase == "fight" and not model.throw_link.is_empty(), "timeout waits for linked throw")
-		s.advance(model, 45)
-		check(model.phase == "round_end" and model.round_winner == 0, "timeout/lethal throw settles before score")
+		for tick in range(Arena.THROW_TICKS + Flow.FREEZE + Flow.SLOW):
+			if model.phase == "round_end": break
+			s.tick(model)
+		check(model.throw_link.is_empty() and model.phase == "round_end" and model.round_winner == 0, "timeout/lethal throw completes linked landing before score")
 	model = duel(400,520)
 	s.input(model, "6D")
 	check(model.fighters[0].move.kind == "heavy", "far direction+D becomes normal")

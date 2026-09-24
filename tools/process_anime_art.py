@@ -236,6 +236,9 @@ def process_clip(job, calibration):
         registration = config.get('drawing_registration', {}).get(str(i), {})
         drawing_scale = registration.get('scale', 1.0)
         frame_scale = scale * drawing_scale
+        # Optional authored proportion correction, anchored at the same contact point.
+        axis_scale = config.get('anatomy_scale', [1.0, 1.0])
+        scale_x, scale_y = frame_scale * axis_scale[0], frame_scale * axis_scale[1]
         if str(i) in config.get('crops', {}):
             crop = config['crops'][str(i)]
             frame = source.crop(tuple(crop))
@@ -261,8 +264,8 @@ def process_clip(job, calibration):
             foot = config.get('feet', {}).get(str(i), (root_x, measured_contact[1]))
         # Register source anatomy before the shared clip scale; retain the same contact/root.
         frame = frame.crop(bbox)
-        scaled = frame.resize((max(1, round(frame.width*frame_scale)), max(1, round(frame.height*frame_scale))), Image.Resampling.LANCZOS)
-        at = (round(ANCHOR[0] - (foot[0]-bbox[0])*frame_scale), round(ANCHOR[1] - (foot[1]-bbox[1])*frame_scale))
+        scaled = frame.resize((max(1, round(frame.width*scale_x)), max(1, round(frame.height*scale_y))), Image.Resampling.LANCZOS)
+        at = (round(ANCHOR[0] - (foot[0]-bbox[0])*scale_x), round(ANCHOR[1] - (foot[1]-bbox[1])*scale_y))
         if min(at) < 0 or at[0]+scaled.width > CANVAS[0] or at[1]+scaled.height > CANVAS[1]:
             raise ValueError('Clipped artwork: {} frame {} at {} size {}'.format(job['id'], i, at, scaled.size))
         canvas = Image.new('RGBA', CANVAS)
@@ -277,6 +280,9 @@ def process_clip(job, calibration):
         frames.append(canvas)
         entries.append(dict(source=job['out'], crop=crop, measured_feet=foot, silhouette_contact=measured_contact, scale=scale,
                             normalized_bounds=list(canvas.getbbox()), source_cell_size=[cell_w, cell_h], anchor_mode=anchor_mode))
+        if 'anatomy_scale' in config:
+            entries[-1]['anatomy_scale'] = axis_scale
+            entries[-1]['effective_scale_xy'] = [scale_x, scale_y]
         if registration:
             entries[-1]['drawing_registration'] = registration
             entries[-1]['effective_scale'] = frame_scale

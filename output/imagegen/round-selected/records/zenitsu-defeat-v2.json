@@ -1,0 +1,27 @@
+{
+  "id": "zenitsu-defeat-v2",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x1536",
+  "route": "CPA via bundled image_gen.py",
+  "started_utc": "2026-09-24T15:18:23.2256015Z",
+  "prompt": "output\\imagegen\\round-selected\\prompts\\zenitsu-defeat-v2.txt",
+  "output": "output\\imagegen\\round-selected\\raw\\zenitsu-defeat-v2.png",
+  "references": [
+    "output/imagegen/anime-v2/raw/zenitsu-model.png",
+    "output/imagegen/anime-v2/raw/zenitsu-idle.png",
+    "demo\\round-presentation\\raw\\zenitsu-c-defeat-v1.png"
+  ],
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-09-24T15:19:36.7477042Z",
+  "sha256": "bd96916225f68a97ba23443d719683fd9fe844cd220a1872e980691b435205fb",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "frame_count": 12,
+  "production_selected": true,
+  "review": "Production Godot round capture, 960/1280/1920 mirror/corner/air/throw matrix and idle-referenced anatomy reviewed. Contact/release ownership checked for Tanjiro."
+}

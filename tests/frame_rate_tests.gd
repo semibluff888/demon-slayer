@@ -7,6 +7,31 @@ var b := AI.new(12)
 var ticks: int = 0
 var draw_ticks: int = 0
 var scripted := Combat.new()
+var finishing := Combat.new()
+var lethal_throw := Combat.new()
+var polish_trace := HashingContext.new()
+
+func _initialize() -> void:
+	polish_trace.start(HashingContext.HASH_SHA256)
+
+func _polish_step() -> void:
+	# Hash the entire KO history, including the impact before throw settlement.
+	if ticks % 450 == 0:
+		var index := int(ticks / 450)
+		var cid := "zenitsu" if index % 2 == 0 else "tanjiro"
+		for c in [finishing, lethal_throw]:
+			c.new_match(cid, "tanjiro" if cid == "zenitsu" else "zenitsu")
+			c.phase = "fight"
+			c.fighters[0].x = 480
+			c.fighters[1].x = 514
+			c.fighters[0].meter = 300
+			c.fighters[1].hp = 1
+		finishing._begin_move(finishing.fighters[0], finishing.moves["zenitsu_super" if cid == "zenitsu" else "tanjiro_623C"])
+		lethal_throw.fighters[0].throw_back = index % 2 == 0
+		lethal_throw._start_throw(lethal_throw._contact(lethal_throw.fighters[0], lethal_throw.fighters[1], lethal_throw.definition(lethal_throw.fighters[0]).throw_move, 1, 0, false))
+	for c in [finishing, lethal_throw]:
+		c.step([Combat.neutral(), Combat.neutral()])
+		polish_trace.update(JSON.stringify(c.snapshot()).to_utf8_buffer())
 
 func _process(_delta: float) -> bool:
 	draw_ticks += 1
@@ -42,9 +67,10 @@ func _physics_process(_delta: float) -> bool:
 		held.x = -1
 		held.buttons = 8
 	scripted.step([held, Combat.neutral()])
+	_polish_step()
 	ticks += 1
 	if ticks == 1800:
 		print("FRAME RATE RESULT: physics=", ticks, " render=", draw_ticks,
-			" hash=", JSON.stringify([model.snapshot(),scripted.snapshot()]).sha256_text())
+			" hash=", JSON.stringify([model.snapshot(),scripted.snapshot(),polish_trace.finish().hex_encode()]).sha256_text())
 		quit(0)
 	return false

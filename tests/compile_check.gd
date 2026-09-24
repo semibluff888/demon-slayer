@@ -1,7 +1,7 @@
 extends SceneTree
 
 func _initialize() -> void:
-	for directory in ["res://scripts", "res://tests", "res://tools"]:
+	for directory in ["res://scripts", "res://tests", "res://tools", "res://demo/round-presentation"]:
 		if not _load_scripts(directory):
 			quit(1)
 			return

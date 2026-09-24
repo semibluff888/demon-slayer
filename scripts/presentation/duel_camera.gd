@@ -33,3 +33,16 @@ func point(world: Vector2) -> Vector2:
 
 func rect(world: Rect2) -> Rect2:
 	return Rect2(point(world.position), world.size * zoom)
+
+func frame_round_actors(fighters: Array, artwork: Array[Rect2]) -> void:
+	# Use the panorama overscan for outstretched defeated bodies at the wall.
+	# Only pan: the 3x physical scale is identical to active combat.
+	var left := INF
+	var right := -INF
+	for i in range(mini(fighters.size(), artwork.size())):
+		left = minf(left, fighters[i].x + artwork[i].position.x)
+		right = maxf(right, fighters[i].x + artwork[i].end.x)
+	var minimum := maxf(Arena.HALF_VIEW - 48, right - Arena.HALF_VIEW + 4)
+	var maximum := minf(Arena.WIDTH - Arena.HALF_VIEW + 48, left + Arena.HALF_VIEW - 4)
+	if minimum <= maximum:
+		center_x = clampf(center_x, minimum, maximum)

@@ -11,12 +11,21 @@ const LEFT: float = Arena.LEFT
 const RIGHT: float = Arena.RIGHT
 const ROUND_TICKS := 3600
 const BUFFER_TICKS := 6
+const Flow = preload("res://scripts/round_flow.gd")
 var catalog := Catalog.new()
 var fighters: Array = []
 var moves: Dictionary = {}
 var wins: Array[int] = [0, 0]
 var phase: String = "intro"
-var phase_frames: int = 90
+var phase_frames: int = Flow.OPENING
+var go_frames: int = 0
+var outro_ticks: int = 0
+var outro_landed_at: Array[float] = [0.0, 0.0]
+var outro_paths: Array[Dictionary] = [{}, {}]
+var victory_at: int = Flow.RESULT_AT
+var outro_tail_until: float = 0.0
+# Starts at a lethal throw's impact, while scoring still waits for the linked landing.
+var lethal_throw_ticks: int = -1
 var remaining: int = ROUND_TICKS
 var hitstop: int = 0
 var super_freeze: int = 0
@@ -77,7 +86,14 @@ func start_round(meters: Array = []) -> void:
 	hitstop = 0
 	super_freeze = 0
 	phase = "fight" if practice else "intro"
-	phase_frames = 90
+	phase_frames = Flow.OPENING if not practice else 0
+	go_frames = 0
+	outro_ticks = 0
+	outro_landed_at.assign([0.0, 0.0])
+	outro_paths.assign([{}, {}])
+	victory_at = Flow.RESULT_AT
+	outro_tail_until = 0.0
+	lethal_throw_ticks = -1
 	round_winner = -1
 	reason = ""
 	round_number = wins[0] + wins[1] + 1
@@ -93,25 +109,25 @@ func step(commands: Array) -> void:
 	ticks += 1
 	if phase == "match_end":
 		return
+	if go_frames > 0:
+		go_frames -= 1
 	if phase == "intro":
 		phase_frames -= 1
-		if phase_frames <= 0:
-			phase = "fight"
+		if phase_frames > 0:
 			clear_inputs(commands)
-			events.append({"type": "fight"})
-		return
+			if phase_frames == Flow.READY:
+				events.append({"type": "ready"})
+			return
+		# The previous locked tick seeded held buttons. A NEW edge on GO works.
+		phase = "fight"
+		go_frames = Flow.GO
+		events.append({"type": "fight"})
 	if phase == "round_end":
-		for f in fighters:
-			f.previous_x = f.x
-			_integrate(f)
-		_constrain_separation()
-		phase_frames -= 1
-		if phase_frames <= 0:
-			if wins.max() >= 2:
-				match_winner = 0 if wins[0] >= 2 else 1
-				phase = "match_end"
-			else:
-				start_round()
+		_advance_outro()
+		return
+	if lethal_throw_ticks >= 0:
+		clear_inputs(commands)
+		_advance_lethal_throw()
 		return
 	_face_opponent()
 	var samples: Array[Dictionary] = []
@@ -409,16 +425,16 @@ func _begin_move(f: Fighter, selected: Move) -> void:
 	events.append({"type": "swing", "attacker": f.slot, "move": selected.id, "effect": selected.effect()})
 
 
-func _integrate(f: Fighter) -> void:
-	f.x += f.vx
+func _integrate(f: Fighter, delta_ticks: float = 1.0, air_tick_step: int = 1) -> void:
+	f.x += f.vx * delta_ticks
 	if f.grounded:
-		f.vx *= 0.76
+		f.vx *= pow(0.76, delta_ticks)
 	else:
-		f.air_ticks += 1
+		f.air_ticks += air_tick_step
 		if f.state == "hit":
-			f.vx *= 0.94
-		f.vy += 0.42
-		f.y += f.vy
+			f.vx *= pow(0.94, delta_ticks)
+		f.vy += 0.42 * delta_ticks
+		f.y += f.vy * delta_ticks
 		if f.y >= FLOOR_Y:
 			f.y = FLOOR_Y
 			f.vy = 0
@@ -598,8 +614,9 @@ func _advance_projectiles() -> void:
 				events.append({"type": "clash", "position": Vector2((a.x + b.x) * 0.5, a.y)})
 
 func _finish_round() -> void:
+	if phase != "fight":
+		return
 	throw_link.clear()
-	projectiles.clear()
 	for f in fighters:
 		_stop_dash(f)
 		f.throw_role = ""
@@ -613,7 +630,14 @@ func _finish_round() -> void:
 		f.combo_active = false
 		f.combo_instances.clear()
 	phase = "round_end"
-	phase_frames = 125
+	go_frames = 0
+	outro_ticks = maxi(0, lethal_throw_ticks)
+	lethal_throw_ticks = -1
+	victory_at = Flow.RESULT_AT
+	outro_tail_until = 0
+	phase_frames = victory_at + Flow.RESULT - outro_ticks
+	for f in fighters:
+		outro_landed_at[f.slot] = 0.0 if f.grounded else -1.0
 	hitstop = 0
 	super_freeze = 0
 	var a: int = fighters[0].hp
@@ -625,13 +649,200 @@ func _finish_round() -> void:
 		round_winner = 0 if a > b else 1
 		wins[round_winner] += 1
 		reason = "K.O." if mini(a, b) == 0 else "TIME UP"
-	events.append({"type": "round_end"})
+	if not is_knockout():
+		projectiles.clear()
+	_prepare_defeats()
+	events.append({"type": "round_end", "knockout": is_knockout()})
+
+func _prepare_defeats() -> void:
+	for f in fighters:
+		if f.hp > 0:
+			continue
+		# A lethal throw has already hit the floor before settlement. Never launch twice.
+		var thrown: bool = f.throw_frame >= Arena.THROW_IMPACT_TICK
+		var direction: int = -f.throw_facing if thrown else -f.facing
+		var flight: float = 0.0 if thrown else Flow.KO_FLIGHT + clampf((FLOOR_Y - f.y) / 12.0, 0, 8)
+		var separation: float = Arena.MAX_SEPARATION - Flow.KO_EDGE_MARGIN * 2
+		var other: Fighter = fighters[1 - f.slot]
+		var share: float = 2.0 if other.hp <= 0 else 1.0
+		var distance: float = minf(Flow.KO_DISTANCE, maxf(0, (separation - absf(f.x - other.x)) / share - Flow.KO_SLIDE))
+		var destination: float = f.x if thrown else clampf(f.x + direction * distance, LEFT, RIGHT)
+		# Leave room for the horizontal body without changing the fixed camera scale.
+		if direction > 0:
+			destination = maxf(f.x, minf(destination, other.x + separation))
+		else:
+			destination = minf(f.x, maxf(destination, other.x - separation))
+		outro_paths[f.slot] = {"x":f.x, "y":f.y, "end_x":destination,
+			"flight":flight, "direction":direction, "thrown":thrown, "pose_facing":f.throw_facing if thrown else f.facing}
+		outro_landed_at[f.slot] = 0.0 if thrown else -1.0
+
+func actor_intro_ticks() -> int:
+	return clampi(Flow.OPENING - phase_frames, 0, Flow.ACTOR_INTRO)
+
+func defeat_frame(slot: int) -> int:
+	var path: Dictionary = outro_paths[slot]
+	if path.is_empty():
+		return 0
+	if path.thrown:
+		return 11 # The throw has already finished landing; never replay a second impact.
+	var motion := Flow.motion_ticks(outro_ticks, is_knockout())
+	if motion < float(path.flight):
+		return mini(5, int(motion / float(path.flight) * 6))
+	return mini(11, 6 + int((motion - float(path.flight)) / Flow.KO_SETTLE_DRAWING))
+
+func _advance_defeat(f: Fighter, motion: float) -> void:
+	var path: Dictionary = outro_paths[f.slot]
+	var flight: float = path.flight
+	var progress := 1.0 if is_zero_approx(flight) else clampf(motion / flight, 0, 1)
+	var travel := 1.0 - pow(1.0 - progress, 1.25)
+	f.x = lerpf(path.x, path.end_x, travel)
+	f.y = lerpf(path.y, FLOOR_Y, progress) - sin(progress * PI) * 26.0
+	f.grounded = progress >= 1.0
+	f.vx = 0
+	f.vy = 0
+	f.move = null
+	f.flip_jump = false
+	f.knockdown_pending = false
+	f.state = "knockdown" if f.grounded else "hit"
+	if f.grounded:
+		outro_landed_at[f.slot] = flight
+		var slide := (1.0 - pow(1.0 - clampf((motion - flight) / 12.0, 0, 1), 2)) * Flow.KO_SLIDE
+		if not path.thrown:
+			f.x = clampf(f.x + path.direction * slide, LEFT, RIGHT)
+		f.y = FLOOR_Y
+
+func is_knockout() -> bool:
+	return reason in ["K.O.", "DOUBLE K.O."]
+
+func presentation_speed() -> float:
+	if lethal_throw_ticks >= 0:
+		return Flow.speed(lethal_throw_ticks, true)
+	return Flow.speed(outro_ticks, is_knockout()) if phase == "round_end" else 1.0
+
+func presentation_time_ticks() -> float:
+	var elapsed := lethal_throw_ticks if lethal_throw_ticks >= 0 else outro_ticks
+	if lethal_throw_ticks >= 0 or (phase == "round_end" and is_knockout()):
+		return float(ticks - elapsed) + Flow.motion_ticks(elapsed, true)
+	return float(ticks)
+
+func presents_attack(slot: int) -> bool:
+	return phase == "fight" or (phase == "round_end" and is_knockout() and fighters[slot].hp > 0 and outro_ticks < victory_at)
+
+func preserves_throw_pose(slot: int) -> bool:
+	return not outro_paths[slot].is_empty() and bool(outro_paths[slot].thrown)
+
+func outro_pose_ticks(slot: int) -> float:
+	if outro_ticks >= victory_at and round_winner == slot:
+		return float(outro_ticks - victory_at)
+	var motion := Flow.motion_ticks(outro_ticks, is_knockout())
+	return motion - maxf(0, outro_landed_at[slot]) if fighters[slot].hp == 0 else motion
+
+func round_cue() -> Dictionary:
+	if practice:
+		return {}
+	if lethal_throw_ticks >= 0:
+		return {} if lethal_throw_ticks < Flow.FREEZE else {"text":"K.O.", "age":lethal_throw_ticks - Flow.FREEZE, "duration":Flow.RESULT_AT - Flow.FREEZE}
+	if phase == "intro":
+		if phase_frames > Flow.INTRO:
+			return {}
+		if phase_frames > Flow.READY:
+			return {"text": "ROUND %d" % round_number, "age": Flow.INTRO - phase_frames, "duration": Flow.ROUND}
+		return {"text": "READY", "age": Flow.READY - phase_frames, "duration": Flow.READY}
+	if phase == "fight" and go_frames > 0:
+		return {"text": "GO!", "age": Flow.GO - go_frames, "duration": Flow.GO}
+	if phase == "round_end":
+		if outro_ticks >= victory_at:
+			return {"text": "DRAW" if round_winner < 0 else "P%d WINS" % (round_winner + 1),
+				"subtitle": "" if round_winner < 0 else definition(fighters[round_winner]).display_name,
+				"age": outro_ticks - victory_at, "duration": Flow.RESULT}
+		if is_knockout():
+			if outro_ticks < Flow.FREEZE:
+				return {}
+			return {"text": reason, "age": outro_ticks - Flow.FREEZE, "duration": victory_at - Flow.FREEZE}
+		return {"text": "TIME UP", "age": outro_ticks, "duration": Flow.RESULT_AT}
+	return {}
+
+func _advance_lethal_throw() -> void:
+	var before := Flow.motion_ticks(lethal_throw_ticks, true)
+	lethal_throw_ticks += 1
+	var after := Flow.motion_ticks(lethal_throw_ticks, true)
+	if lethal_throw_ticks == Flow.FREEZE:
+		events.append({"type":"ko_announce"})
+	if int(floor(after) - floor(before)) > 0:
+		_advance_throw()
+
+func _outro_skill_motion(f: Fighter, delta_ticks: float, advance_tick: bool) -> void:
+	if f.move == null or not is_knockout():
+		return
+	var move: Move = f.move
+	if f.move_frame < move.startup:
+		f.x += move.startup_travel * f.facing * delta_ticks
+	elif f.move_frame < move.startup + move.active:
+		var segment := move.segment(f.move_frame)
+		if advance_tick and segment >= 0 and f.move_frame == move.segment_start(segment):
+			events.append({"type":"strike", "attacker":f.slot, "move":move.id, "instance":f.attack_instance, "segment":segment})
+		f.x += move.travel * f.facing * delta_ticks
+		if move.projectile_speed != 0 and not f.projectile_spawned:
+			_spawn_projectile(f)
+
+func _outro_ready() -> bool:
+	if not is_knockout() or round_winner < 0:
+		return true
+	var winner: Fighter = fighters[round_winner]
+	return winner.move == null and winner.grounded and projectiles.is_empty() and Flow.motion_ticks(outro_ticks, true) >= outro_tail_until
+
+func _advance_outro() -> void:
+	var before := Flow.motion_ticks(outro_ticks, is_knockout())
+	outro_ticks += 1
+	var after := Flow.motion_ticks(outro_ticks, is_knockout())
+	var motion_delta := after - before
+	var move_steps := int(floor(after) - floor(before))
+	if outro_ticks == Flow.FREEZE and is_knockout():
+		events.append({"type": "ko_announce"})
+	if motion_delta > 0:
+		for f in fighters:
+			f.previous_x = f.x
+			if not outro_paths[f.slot].is_empty():
+				_advance_defeat(f, after)
+				continue
+			var airborne: bool = not f.grounded
+			var previous_move: Move = f.move
+			_outro_skill_motion(f, motion_delta, move_steps > 0)
+			_integrate(f, motion_delta, move_steps)
+			if airborne and f.grounded:
+				outro_landed_at[f.slot] = after
+			if f.move != null:
+				f.move_frame += move_steps
+				if f.move_frame >= f.move.total_frames():
+					f.move = null
+					f.state = "idle" if f.grounded else "air"
+			if previous_move != null and f.move == null and previous_move.presentation != null:
+				var tail := maxf(0, previous_move.presentation.trail_lifetime * 60 - previous_move.recovery)
+				outro_tail_until = maxf(outro_tail_until, after + tail)
+		# Visual flight only. No contacts, damage, chip, meter, cancels or new input.
+		for p in projectiles:
+			p.x += p.vx * motion_delta
+			p.life -= motion_delta
+		projectiles = projectiles.filter(func(p: Dictionary) -> bool: return p.life > 0 and p.x >= LEFT - 40 and p.x <= RIGHT + 40)
+		_constrain_separation()
+	if outro_ticks >= victory_at and not _outro_ready():
+		victory_at = outro_ticks + 1
+	phase_frames = victory_at + Flow.RESULT - outro_ticks
+	if phase_frames <= 0:
+		if wins.max() >= 2:
+			match_winner = 0 if wins[0] >= 2 else 1
+			phase = "match_end"
+		else:
+			start_round()
 
 func snapshot() -> Dictionary:
 	var data: Array = []
 	for f in fighters:
 		data.append(f.snapshot())
 	return {"fighters": data, "phase": phase, "phase_frames": phase_frames, "remaining": remaining,
+		"go_frames": go_frames, "outro_ticks": outro_ticks, "outro_landed_at": outro_landed_at.duplicate(),
+		"outro_paths": outro_paths.duplicate(true),
+		"victory_at": victory_at, "outro_tail_until": outro_tail_until, "lethal_throw_ticks": lethal_throw_ticks,
 		"wins": wins.duplicate(), "hitstop": hitstop, "super_freeze": super_freeze, "ticks": ticks,
 		"round_number": round_number, "round_winner": round_winner, "match_winner": match_winner,
 		"reason": reason, "next_instance": next_instance, "practice": practice,
@@ -765,6 +976,9 @@ func _advance_throw() -> void:
 		_change_meter(d, int(damage * 0.15))
 		events.append({"type": "throw", "attacker": a.slot, "damage": damage,
 			"position": Vector2(d.x, FLOOR_Y - 5)})
+		if not practice and d.hp <= 0:
+			lethal_throw_ticks = 0
+			hitstop = 0 # The shared KO clock freezes this exact impact, then slows the linked landing.
 	if frame >= Arena.THROW_TICKS:
 		a.x = throw_link.final_a
 		d.x = throw_link.final_d

@@ -64,6 +64,40 @@ class ArtworkTests(unittest.TestCase):
                 self.assertIsNone(ImageChops.multiply(residual,opaque).getbbox(), 'Opaque chroma-key residue')
                 page.close()
 
+    def test_selected_round_assets_have_production_paths_and_shared_ruler(self):
+        source_root = ROOT/'output/imagegen/round-selected'
+        manifest = json.loads((source_root/'manifest.json').read_text(encoding='utf-8'))
+        for item in manifest['clips']:
+            self.assertEqual(hashlib.sha256((ROOT/item['source']).read_bytes()).hexdigest(),item['sha256'])
+        for character in ('tanjiro','zenitsu'):
+            folder = ROOT/'art/characters'/character
+            base = json.loads((folder/'atlas.json').read_text(encoding='utf-8'))
+            selected = json.loads((folder/'round-atlas.json').read_text(encoding='utf-8'))
+            for key in ('canvas_size','feet_anchor','source_height','canonical_height'):
+                self.assertEqual(base[key], selected[key], 'selected animation must use the combat ruler')
+            self.assertEqual(set(selected['clips']), {'round_intro','round_victory','round_defeat'})
+            for clip,info in selected['clips'].items():
+                count = 12 if clip=='round_defeat' else 18
+                self.assertEqual(len(info['frames']),count)
+                self.assertFalse(info['loop'])
+                hashes = set()
+                for entry in info['frames']:
+                    self.assertTrue(entry['texture'].startswith('round-'))
+                    x,y,w,h = entry['region'];ox,oy = entry['offset']
+                    with Image.open(folder/entry['texture']) as page:
+                        self.assertTrue(0 <= x < x+w <= page.width and 0 <= y < y+h <= page.height)
+                        drawing = page.crop((x,y,x+w,y+h))
+                        self.assertTrue(0 <= ox < ox+w <= selected['canvas_size'][0] and 0 <= oy < oy+h <= selected['canvas_size'][1])
+                        hashes.add(hashlib.sha256(drawing.tobytes()).hexdigest())
+                        r,g,b,a = drawing.split()
+                        residue = ImageChops.subtract(ImageChops.darker(r,b),g).point(lambda v:255 if v>135 else 0)
+                        self.assertIsNone(ImageChops.multiply(residue,a.point(lambda v:255 if v>200 else 0)).getbbox())
+                self.assertEqual(len(hashes),count)
+            defeat = selected['clips']['round_defeat']
+            if character == 'tanjiro':
+                self.assertGreater(defeat['release_frame'],defeat['contact_frame'])
+            self.assertTrue(defeat['final_hold'])
+
     def test_combat_polish_sources_and_separate_water_textures(self):
         manifest = json.loads((ROOT/'output/imagegen/combat-polish-manifest.json').read_text(encoding='utf-8'))
         wheel = manifest['wheel']

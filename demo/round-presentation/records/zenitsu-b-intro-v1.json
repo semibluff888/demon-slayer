@@ -1,0 +1,26 @@
+{
+  "id": "zenitsu-b-intro-v1",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "3072x1536",
+  "route": "CPA via bundled image_gen.py",
+  "started_utc": "2026-09-24T13:34:14.7494026Z",
+  "prompt": "demo/round-presentation/prompts/zenitsu-b-intro-v1.txt",
+  "output": "demo/round-presentation/raw/zenitsu-b-intro-v1.png",
+  "references": [
+    "output/imagegen/anime-v2/raw/zenitsu-model.png",
+    "output/imagegen/anime-v2/raw/zenitsu-idle.png"
+  ],
+  "cost": null,
+  "accepted": false,
+  "completed_utc": "2026-09-24T13:34:54.5615441Z",
+  "sha256": "4738599f0620021708196c4521a4cb91f2c34a872a416bd427155656e2de494a",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "frame_count": 18,
+  "reviewed_for_demo": true,
+  "review": "Engine-rendered contact sheets and 960/1280/1920 left/right captures inspected. Candidate only; production selection pending."
+}

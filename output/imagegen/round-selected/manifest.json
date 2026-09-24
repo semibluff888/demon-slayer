@@ -1,0 +1,343 @@
+{
+  "selection": {
+    "tanjiro": {
+      "round_intro": "tanjiro-c-intro-v1",
+      "round_victory": "tanjiro-a-victory-v1",
+      "round_defeat": "tanjiro-defeat-v2"
+    },
+    "zenitsu": {
+      "round_intro": "zenitsu-d-intro-v1",
+      "round_victory": "zenitsu-d-victory-v1",
+      "round_defeat": "zenitsu-defeat-v2"
+    }
+  },
+  "clips": [
+    {
+      "character": "tanjiro",
+      "clip": "round_intro",
+      "source": "output\\imagegen\\round-selected\\raw\\tanjiro-c-intro-v1.png",
+      "sha256": "0a8f2a6327c933de35df020fe0c85e34cef10c3e277b60e08f44a7535e610967",
+      "count": 18,
+      "calibration": {
+        "standing_height": 273.4299513043478,
+        "root_fraction": 0.5,
+        "note": "Refine the previously enlarged opening: 5 percent narrower and 2 percent shorter, reducing bulky shoulders and head while retaining the planted-foot anchor and near-idle height. Offline correction only.",
+        "revision": "tanjiro-proportion-contact-20260925",
+        "anatomy_scale": [
+          0.95,
+          0.98
+        ]
+      }
+    },
+    {
+      "character": "tanjiro",
+      "clip": "round_victory",
+      "source": "output\\imagegen\\round-selected\\raw\\tanjiro-a-victory-v1.png",
+      "sha256": "e8769b08bf0be827592cf505ce19af953f06deb5d04aaaf6dce333556fa56be4",
+      "count": 18,
+      "calibration": {
+        "standing_height": 319,
+        "root_fraction": 0.5,
+        "note": "One idle-referenced anatomical scale per sheet: compare head, shoulders, hands and limbs. Root/contact registration is fixed before packing; no runtime pose scaling."
+      }
+    },
+    {
+      "character": "tanjiro",
+      "clip": "round_defeat",
+      "source": "output\\imagegen\\round-selected\\raw\\tanjiro-defeat-v2.png",
+      "sha256": "3b6a857e0fc28b3ae3dd103dcbfd49e630843260688ae90aa055f81a2620c98a",
+      "count": 12,
+      "calibration": {
+        "standing_height": 340,
+        "root_fraction": 0.5,
+        "feet": {
+          "0": [
+            128.04,
+            315
+          ],
+          "1": [
+            141.24,
+            319
+          ],
+          "2": [
+            168.44000000000005,
+            294
+          ],
+          "3": [
+            171.96000000000004,
+            268
+          ],
+          "4": [
+            178.4,
+            224
+          ],
+          "5": [
+            192.24,
+            183
+          ],
+          "6": [
+            237.24,
+            210
+          ],
+          "7": [
+            307.4000000000001,
+            174
+          ],
+          "8": [
+            201.72,
+            126.45614035087719
+          ],
+          "9": [
+            221.12,
+            115.7017543859649
+          ],
+          "10": [
+            231.12,
+            119.43859649122807
+          ],
+          "11": [
+            229.4000000000001,
+            90.94736842105263
+          ]
+        },
+        "note": "Offline anatomical registration of shrinking source drawings; grounded bodies enlarged 14 percent to agree with idle anatomy and thrown final pose. Runtime scale is unchanged.",
+        "component_transfers": [
+          {
+            "source_rect": [
+              1064,
+              621,
+              1181,
+              663
+            ],
+            "from": 6,
+            "to": 7
+          }
+        ],
+        "drawing_registration": {
+          "0": {
+            "scale": 1.06,
+            "reason": "Correct shrinking anatomy in the generated fall, with grounded limb length matched to existing thrown final pose."
+          },
+          "1": {
+            "scale": 1.06,
+            "reason": "Correct shrinking anatomy in the generated fall, with grounded limb length matched to existing thrown final pose."
+          },
+          "2": {
+            "scale": 1.06,
+            "reason": "Correct shrinking anatomy in the generated fall, with grounded limb length matched to existing thrown final pose."
+          },
+          "3": {
+            "scale": 1.08,
+            "reason": "Correct shrinking anatomy in the generated fall, with grounded limb length matched to existing thrown final pose."
+          },
+          "4": {
+            "scale": 1.1,
+            "reason": "Correct shrinking anatomy in the generated fall, with grounded limb length matched to existing thrown final pose."
+          },
+          "5": {
+            "scale": 1.12,
+            "reason": "Correct shrinking anatomy in the generated fall, with grounded limb length matched to existing thrown final pose."
+          },
+          "6": {
+            "scale": 1.14,
+            "reason": "Correct shrinking anatomy in the generated fall, with grounded limb length matched to existing thrown final pose."
+          },
+          "7": {
+            "scale": 1.14,
+            "reason": "Correct shrinking anatomy in the generated fall, with grounded limb length matched to existing thrown final pose."
+          },
+          "8": {
+            "scale": 1.14,
+            "reason": "Correct shrinking anatomy in the generated fall, with grounded limb length matched to existing thrown final pose."
+          },
+          "9": {
+            "scale": 1.14,
+            "reason": "Correct shrinking anatomy in the generated fall, with grounded limb length matched to existing thrown final pose."
+          },
+          "10": {
+            "scale": 1.14,
+            "reason": "Correct shrinking anatomy in the generated fall, with grounded limb length matched to existing thrown final pose."
+          },
+          "11": {
+            "scale": 1.14,
+            "reason": "Correct shrinking anatomy in the generated fall, with grounded limb length matched to existing thrown final pose."
+          }
+        },
+        "revision": "tanjiro-proportion-contact-20260925",
+        "ground_contact_reference": "Frames 8-11 register the largest connected body component to the floor, excluding the detached sword. Lowered by 20/22/28/24 canvas pixels respectively; the loose sword remains beside the body in the foreground."
+      }
+    },
+    {
+      "character": "zenitsu",
+      "clip": "round_intro",
+      "source": "output\\imagegen\\round-selected\\raw\\zenitsu-d-intro-v1.png",
+      "sha256": "c56d4574375a1a5136e7ab237a76b4f4a64da7a43ca2b9c7ed1963bbe01dacff",
+      "count": 18,
+      "calibration": {
+        "standing_height": 316.666667,
+        "root_fraction": 0.5,
+        "note": "Early D intro source drawings enlarged 7 percent; registration tapers as later source anatomy grows. Never fit frame silhouette heights or animate runtime scale.",
+        "drawing_registration": {
+          "0": {
+            "scale": 1.07,
+            "reason": "Early standing drawings were undersized relative to idle and later crouched drawing; correct anatomy before packing."
+          },
+          "1": {
+            "scale": 1.07,
+            "reason": "Early standing drawings were undersized relative to idle and later crouched drawing; correct anatomy before packing."
+          },
+          "2": {
+            "scale": 1.07,
+            "reason": "Early standing drawings were undersized relative to idle and later crouched drawing; correct anatomy before packing."
+          },
+          "3": {
+            "scale": 1.07,
+            "reason": "Early standing drawings were undersized relative to idle and later crouched drawing; correct anatomy before packing."
+          },
+          "4": {
+            "scale": 1.07,
+            "reason": "Early standing drawings were undersized relative to idle and later crouched drawing; correct anatomy before packing."
+          },
+          "5": {
+            "scale": 1.07,
+            "reason": "Early standing drawings were undersized relative to idle and later crouched drawing; correct anatomy before packing."
+          },
+          "6": {
+            "scale": 1.07,
+            "reason": "Early standing drawings were undersized relative to idle and later crouched drawing; correct anatomy before packing."
+          },
+          "7": {
+            "scale": 1.07,
+            "reason": "Early standing drawings were undersized relative to idle and later crouched drawing; correct anatomy before packing."
+          },
+          "8": {
+            "scale": 1.07,
+            "reason": "Early standing drawings were undersized relative to idle and later crouched drawing; correct anatomy before packing."
+          },
+          "9": {
+            "scale": 1.07,
+            "reason": "Early standing drawings were undersized relative to idle and later crouched drawing; correct anatomy before packing."
+          },
+          "10": {
+            "scale": 1.06,
+            "reason": "Early standing drawings were undersized relative to idle and later crouched drawing; correct anatomy before packing."
+          },
+          "11": {
+            "scale": 1.05,
+            "reason": "Early standing drawings were undersized relative to idle and later crouched drawing; correct anatomy before packing."
+          },
+          "12": {
+            "scale": 1.04,
+            "reason": "Early standing drawings were undersized relative to idle and later crouched drawing; correct anatomy before packing."
+          },
+          "13": {
+            "scale": 1.03,
+            "reason": "Early standing drawings were undersized relative to idle and later crouched drawing; correct anatomy before packing."
+          },
+          "14": {
+            "scale": 1.02,
+            "reason": "Early standing drawings were undersized relative to idle and later crouched drawing; correct anatomy before packing."
+          },
+          "15": {
+            "scale": 1.01,
+            "reason": "Early standing drawings were undersized relative to idle and later crouched drawing; correct anatomy before packing."
+          },
+          "16": {
+            "scale": 1.0,
+            "reason": "Early standing drawings were undersized relative to idle and later crouched drawing; correct anatomy before packing."
+          },
+          "17": {
+            "scale": 1.0,
+            "reason": "Early standing drawings were undersized relative to idle and later crouched drawing; correct anatomy before packing."
+          }
+        },
+        "revision": "round-polish-20260925"
+      }
+    },
+    {
+      "character": "zenitsu",
+      "clip": "round_victory",
+      "source": "output\\imagegen\\round-selected\\raw\\zenitsu-d-victory-v1.png",
+      "sha256": "a2e938153b4479fb71ddcccc6aaa8e82850e6c67e635271e4d17f6c781a99f37",
+      "count": 18,
+      "calibration": {
+        "standing_height": 320.408163,
+        "root_fraction": 0.5,
+        "note": "One idle-referenced anatomical scale per sheet: compare head, shoulders, hands and limbs. Root/contact registration is fixed before packing; no runtime pose scaling."
+      }
+    },
+    {
+      "character": "zenitsu",
+      "clip": "round_defeat",
+      "source": "output\\imagegen\\round-selected\\raw\\zenitsu-defeat-v2.png",
+      "sha256": "bd96916225f68a97ba23443d719683fd9fe844cd220a1872e980691b435205fb",
+      "count": 12,
+      "calibration": {
+        "standing_height": 385,
+        "root_fraction": 0.5,
+        "feet": {
+          "0": [
+            122.24000000000001,
+            346
+          ],
+          "1": [
+            136.03999999999996,
+            349
+          ],
+          "2": [
+            153.36,
+            319
+          ],
+          "3": [
+            186.16000000000008,
+            275
+          ],
+          "4": [
+            188.96,
+            214
+          ],
+          "5": [
+            182.67999999999995,
+            211
+          ],
+          "6": [
+            224.55999999999995,
+            168
+          ],
+          "7": [
+            230.96000000000004,
+            169
+          ],
+          "8": [
+            206.68,
+            197
+          ],
+          "9": [
+            218.39999999999998,
+            136
+          ],
+          "10": [
+            229.39999999999998,
+            120
+          ],
+          "11": [
+            233.4000000000001,
+            92
+          ]
+        },
+        "crops": {},
+        "note": "One idle-referenced anatomical scale per sheet: compare head, shoulders, hands and limbs. Root/contact registration is fixed before packing; no runtime pose scaling."
+      }
+    }
+  ],
+  "rebuild": ".venv/Scripts/python.exe tools/build_round_selected_art.py",
+  "ruler": {
+    "source_height": 340,
+    "canonical_height": 70,
+    "feet_anchor": [
+      448,
+      568
+    ]
+  },
+  "runtime_effects": "none; Tanjiro C has no fire arc"
+}

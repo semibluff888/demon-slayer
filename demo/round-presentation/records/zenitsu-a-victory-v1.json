@@ -1,0 +1,26 @@
+{
+  "id": "zenitsu-a-victory-v1",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "3072x1536",
+  "route": "CPA via bundled image_gen.py",
+  "started_utc": "2026-09-24T13:32:35.8972968Z",
+  "prompt": "demo/round-presentation/prompts/zenitsu-a-victory-v1.txt",
+  "output": "demo/round-presentation/raw/zenitsu-a-victory-v1.png",
+  "references": [
+    "output/imagegen/anime-v2/raw/zenitsu-model.png",
+    "output/imagegen/anime-v2/raw/zenitsu-idle.png"
+  ],
+  "cost": null,
+  "accepted": false,
+  "completed_utc": "2026-09-24T13:33:24.9883841Z",
+  "sha256": "b000ebbb2a6c45d416e9b0616217367e97d04fea4ef24a6f5d1536b79013cfa2",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "frame_count": 18,
+  "reviewed_for_demo": true,
+  "review": "Engine-rendered contact sheets and 960/1280/1920 left/right captures inspected. Candidate only; production selection pending."
+}
