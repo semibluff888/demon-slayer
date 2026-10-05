@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="StageVisual" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/presentation/stage_visual.gd" id="1"]
+[resource]
+script = ExtResource("1")
+id = "wisteria"
+display_name = "藤袭之庭"
+asset_directory = "res://art/stages/wisteria/"
+roster_order = 0
+atmosphere_preset = "petals"

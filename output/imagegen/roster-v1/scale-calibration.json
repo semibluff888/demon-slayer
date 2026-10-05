@@ -1,0 +1,1294 @@
+{
+  "version": 1,
+  "method": "Authored source registration against idle frame 0. Compare head, torso and limb dimensions at a fixed display scale; fully extended prone poses also use the body-length ruler. Never fit a crouched/rotated silhouette to standing height.",
+  "characters": {
+    "akaza": {
+      "reference_job": "akaza-idle",
+      "reference_frame": 0,
+      "reference_body_height": 366,
+      "source_height": 340,
+      "canonical_height": 70
+    },
+    "nezuko": {
+      "reference_job": "nezuko-idle",
+      "reference_frame": 0,
+      "reference_body_height": 356,
+      "source_height": 340,
+      "canonical_height": 70
+    }
+  },
+  "clips": {
+    "nezuko-idle": {
+      "source_sha256": "0dd78a00768598039f4b4a930115a78287954559619ee9a57d41522204cd0300",
+      "base_scale": 0.7378472222222222,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "nezuko-walk": {
+      "source_sha256": "e8c24b14d477260caaa22ec040e7c1e951aec7030d871fc549803efbf46cb910",
+      "base_scale": 0.7378472222222222,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "nezuko-walk_back": {
+      "source_sha256": "07b8155cbd9851f5c2864898839acf3eee9270ce1ad8192fa90b48067ae0b77c",
+      "base_scale": 0.7378472222222222,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "nezuko-crouch": {
+      "source_sha256": "4dfd2189dec18c1bea3374ac934f175c69bde040f4e1dc97491e6218599dce65",
+      "base_scale": 0.6935763888888888,
+      "frame_multipliers": [
+        0.94680851,
+        0.96808511,
+        0.9893617,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "nezuko-jump": {
+      "source_sha256": "312eb5d6415effa705e47a39acc61cb4367cdd1f1de8106bfb9659e46fbee7e2",
+      "base_scale": 0.7378472222222222,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "nezuko-guard": {
+      "source_sha256": "329cc79d9ce1f0be4c014b82c2efdb97a62391bf94190b4db667e35629d22ce1",
+      "base_scale": 0.7378472222222222,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "nezuko-hit": {
+      "source_sha256": "03b42a9bd12f86af04cc880b2900a77d3992faa2b7b3f79e3c5a2785e455ba87",
+      "base_scale": 0.7378472222222222,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "nezuko-knockdown": {
+      "source_sha256": "b59344309cac8c5f590019221d05d354d88a820ae88466b421824d0351aa2136",
+      "base_scale": 0.7378472222222222,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "nezuko-throw": {
+      "source_sha256": "26692e014fd7052096aab2fa7796dc5d9df04bb03e79e2ca939de5e6865cd77c",
+      "base_scale": 0.7378472222222222,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "nezuko-victory": {
+      "source_sha256": "841cf744446828aa789f3df3b29cb9301862ce3188823072480505f4b6d37e5f",
+      "base_scale": 0.7378472222222222,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "nezuko-stand_light": {
+      "source_sha256": "1332687dbb568d40328ea7ab5107a83339f2a456de2451fbde364e580bad28f4",
+      "base_scale": 0.7378472222222222,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "nezuko-stand_heavy": {
+      "source_sha256": "acba6e7ccadeaa1a4a61a50bc256c4f2bf4c529f8591f35664edc224dce22720",
+      "base_scale": 0.7083333333333333,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "nezuko-crouch_light": {
+      "source_sha256": "1474f2de800f32e656b1ea2e23e599b6c993e3484b0091140beca5fe7ddfa51c",
+      "base_scale": 0.6714409722222222,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "nezuko-crouch_heavy": {
+      "source_sha256": "77e4bdace68036ac79381d9b9143c5f640e6bd41e5b0f67021b211b3d98ed567",
+      "base_scale": 0.6935763888888888,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "nezuko-air_light": {
+      "source_sha256": "3c952199a525eba2e8c6b9a9f7502a9c01193a5360173217605bb2b72d8b0a0d",
+      "base_scale": 0.6935763888888888,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "nezuko-air_heavy": {
+      "source_sha256": "dc3987f8ff71d0bc8bb675e970feb2515ea0a3f7778f37f3a5d6141b8e383fc5",
+      "base_scale": 0.700954861111111,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "nezuko-body_stand_light": {
+      "source_sha256": "d060b8ec497cb4c9e1327c1e5a262347d6566c7953780c2af945cf89d31d795d",
+      "base_scale": 0.7230902777777778,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "nezuko-body_stand_heavy": {
+      "source_sha256": "ff10af1b85342534e9ecd4d3d0e5faf1f3c0acb976bd5430c69c5f3f7835a5a4",
+      "base_scale": 0.7230902777777778,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "nezuko-body_crouch_light": {
+      "source_sha256": "566df308b31b529d86fa4c6adfcde77fd9cc4a1176bd2983b9fc58806acfd574",
+      "base_scale": 0.6566840277777778,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "nezuko-body_crouch_heavy": {
+      "source_sha256": "53247195302c2d36bd37765f4a38de0d59b9d6e046e044068205bfb6c8c346ae",
+      "base_scale": 0.6714409722222222,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "nezuko-body_air_light": {
+      "source_sha256": "39681cdd4a128e7b3d13c1523bb8db9fe890193d6bb72149c39107978d8ce3d4",
+      "base_scale": 0.7230902777777778,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "nezuko-body_air_heavy": {
+      "source_sha256": "ef35675da90b2b245156570601a2356d6297a70ec6039ccb8d788e22e7c492d8",
+      "base_scale": 0.7083333333333333,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "nezuko-dash_forward": {
+      "source_sha256": "5c133430f99f14d5f38b7cb32346029f831615e1580d483257feb6b9d509feb7",
+      "base_scale": 0.7157118055555555,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "nezuko-dash_back": {
+      "source_sha256": "db09cc30f2db336c195a4d43ccb4c6b08bd244c75c4b8cd2beefd692265f30ae",
+      "base_scale": 0.7378472222222222,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "nezuko-jump_forward": {
+      "source_sha256": "0260d697c948b6ed3305fb5d96c7d4fcf703a2589f7fb76122cd6a00efe8fdbb",
+      "base_scale": 1.0846354166666667,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "nezuko-jump_back": {
+      "source_sha256": "c071dd27d92d4c5ca562e8b2ada7002959688f1b1dd90f663ccb4e356f43029f",
+      "base_scale": 1.0846354166666667,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "nezuko-roll_forward": {
+      "source_sha256": "ae766581666814f330b7ea7632a2cc6ca347380767bb0076359c1b61baa5e2b0",
+      "base_scale": 1.0403645833333335,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "nezuko-roll_back": {
+      "source_sha256": "5db33aea4935163ac547a1f75576e97bbbff6310441e465cbb957e648fccf5e1",
+      "base_scale": 1.0625,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "nezuko-throw_forward": {
+      "source_sha256": "84d6f12b2ebc98fdbf44c44aabd733fcc2ba918dc54765938d90639dadbde13d",
+      "base_scale": 1.1067708333333335,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "nezuko-throw_success": {
+      "source_sha256": "b93803de21e3b9f2575d50d93717dbf26ff87af71a991223314dd31000c70864",
+      "base_scale": 1.1067708333333335,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "nezuko-throw_tech": {
+      "source_sha256": "0b658375c2ca4c1ce5755c29ef8cdc0f60ff3fb2cd12545165c4488d8631d2db",
+      "base_scale": 0.7378472222222222,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "nezuko-round_intro": {
+      "source_sha256": "4c397c873523a28e7cabb463dcc6747b5434f5a27021548df3a82a2703d9338e",
+      "base_scale": 1.1067708333333335,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "nezuko-round_victory": {
+      "source_sha256": "76968d3ea9289c9c050ca056d13df430d8cda910a8fb252a0708e662bac90387",
+      "base_scale": 1.0846354166666667,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "nezuko-round_defeat": {
+      "source_sha256": "eeb264f3542dd2f96b6d660d0ab930bd00891303b02a7226423439b95d90b672",
+      "base_scale": 0.9407552083333335,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "nezuko-blood_kick": {
+      "source_sha256": "9950a2d39a6c55ec52a999b04d1cc59311a72472e68200dc0e16a94a6315ee30",
+      "base_scale": 1.0514322916666667,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "nezuko-rising_kick": {
+      "source_sha256": "f196563a160377e88cebe37d4e742a0338232a666ff2c06cf985011d016ed9d8",
+      "base_scale": 1.0625,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "nezuko-spinning_kick": {
+      "source_sha256": "c27a0296462ebd6ec4b2ae7f8ab69c10622638f10bdaac8408a50e3bbb4c4bda",
+      "base_scale": 1.0735677083333335,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "nezuko-blood_burst": {
+      "source_sha256": "faa2d01749a04f20451a91a03e03148e94f5bbf087094ac781d2f54d02f3ceda",
+      "base_scale": 1.0514322916666667,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "nezuko-awakened_combo": {
+      "source_sha256": "0e8197dd92d02397fbbbe867a7101548a418d1f4333dbe23797a6bc3ac304e02",
+      "base_scale": 1.0403645833333335,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "akaza-idle": {
+      "source_sha256": "5b89a64f6ed0d730f79b3f8dcf997a424afcdea84a1b14ffd795479388815bdb",
+      "base_scale": 0.7378472222222222,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "akaza-walk": {
+      "source_sha256": "189896fdf431e9280c78d11e315de4921e65f2bdc9c536d1b5212d609727f457",
+      "base_scale": 0.7378472222222222,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "akaza-walk_back": {
+      "source_sha256": "82068a6a5c76d818731452b42a3206046d7ece796ca5b9d4d9a4033d88989100",
+      "base_scale": 0.7378472222222222,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "akaza-crouch": {
+      "source_sha256": "f599c46c185414d88227ca760c888b0604798b3723c3d436e87e0bce498a4adb",
+      "base_scale": 0.7378472222222222,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "akaza-jump": {
+      "source_sha256": "a28076974cfb6b91a51039390e83619a5635b606be83678ce5234b4105b62c3a",
+      "base_scale": 0.7378472222222222,
+      "frame_multipliers": [
+        0.9,
+        0.9,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "akaza-guard": {
+      "source_sha256": "6ab442075cd21059d3ab28f621982b4697b0327daba086cb0d2d3f0e47109193",
+      "base_scale": 0.7378472222222222,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "akaza-guard_low": {
+      "source_sha256": "1671f2075568a039219b0e75e38a8af01756c25417bf30a198eda84920f17838",
+      "base_scale": 0.5386284722222222,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "akaza-hit": {
+      "source_sha256": "72ef6ee1cf48c3e741db676abbbd07ec958aab907e6ac63a4e00caaf610de6bb",
+      "base_scale": 0.7378472222222222,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "akaza-knockdown": {
+      "source_sha256": "9efab1250c711866a52218ca8bcb3a8dafac686cca51d89547430006069f4128",
+      "base_scale": 0.7378472222222222,
+      "frame_multipliers": [
+        0.96,
+        0.96,
+        0.98,
+        0.98,
+        1.0,
+        1.03
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "akaza-throw": {
+      "source_sha256": "e2d12c19e32ec8e622fe8d465784c58497c4f9d70cd079f54f269bbe98da50c6",
+      "base_scale": 0.7378472222222222,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "akaza-victory": {
+      "source_sha256": "fa69aa1c8074855c4a6f1c178912237ecf347026f31f8167be86b4ce65a32dfa",
+      "base_scale": 0.7378472222222222,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "akaza-stand_light": {
+      "source_sha256": "fbbb3bcae130e450235026462b98eeba0a148b5798295c15e5213424d0aba2f0",
+      "base_scale": 0.7378472222222222,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "akaza-stand_heavy": {
+      "source_sha256": "b4383ca021db4eac6563aacdbeef7e64ad493945681b370065c97b0985e1538e",
+      "base_scale": 0.7378472222222222,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "akaza-crouch_light": {
+      "source_sha256": "b891ea555b8d7db1b799d54a303c0b736121fa6963eaeae8b9ef789675a6b77a",
+      "base_scale": 0.59765625,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "akaza-crouch_heavy": {
+      "source_sha256": "cff086c452662f31d435594b21684b3e0e84ed92b7c7b9a334fa3500db629086",
+      "base_scale": 0.6124131944444444,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "akaza-air_light": {
+      "source_sha256": "162034417ceb4ab6007dace377cbe18862177dbeb9f0cc9c01b146b3991057bb",
+      "base_scale": 0.7230902777777778,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "akaza-air_heavy": {
+      "source_sha256": "6ad5d0f3e0e7ed8d24790e4473ab5d0497c6427ff940a77a61f53a7a3ecd0210",
+      "base_scale": 0.6935763888888888,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "akaza-body_stand_light": {
+      "source_sha256": "a020477b18d1b1a7c27e9e0ade52e887478c3bb5b5a390a335d35875bfd13349",
+      "base_scale": 0.7378472222222222,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "akaza-body_stand_heavy": {
+      "source_sha256": "cfc32aaeeba3958a421779de008a521717a1fac525016b79b5d19ac06cd035a7",
+      "base_scale": 0.7378472222222222,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "akaza-body_crouch_light": {
+      "source_sha256": "0231ee438c781fca05067f135869b885433240634383df3830b0b2abdd816f28",
+      "base_scale": 0.6419270833333334,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "akaza-body_crouch_heavy": {
+      "source_sha256": "9b672ba83552fe35bac04294a062f7ff28e620e37eccbef73e0cafa8b59a6ffb",
+      "base_scale": 0.700954861111111,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "akaza-body_air_light": {
+      "source_sha256": "b856e0ceb5837ff77dee6329c61d3d925ffa68042dab89adf69af072589cb661",
+      "base_scale": 0.7230902777777778,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "akaza-body_air_heavy": {
+      "source_sha256": "f5312e911276593db84ff127f8471824ebd70aba7a55c51dbb0ebc123ded01d9",
+      "base_scale": 0.7230902777777778,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "akaza-dash_forward": {
+      "source_sha256": "982811e0476660524e15826f89f958ec3a8c537965d49eb324e7a7ff36b252b7",
+      "base_scale": 0.7230902777777778,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "akaza-dash_back": {
+      "source_sha256": "1aa9af8798bca522556c6a4f20101ecab344f39829969b972c6063bd5ffcde0d",
+      "base_scale": 0.7378472222222222,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "akaza-jump_forward": {
+      "source_sha256": "ce76fa57f9b2cccdc02c31605b9e9e30f09b9b198ecfb5f3bf7f7ad22c1977a3",
+      "base_scale": 1.1067708333333335,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "akaza-jump_back": {
+      "source_sha256": "a127fc7e1d8c8a810ecf402f8096c899b8fa4ec39fb0a6c79162277bcfd25068",
+      "base_scale": 1.1067708333333335,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "akaza-roll_forward": {
+      "source_sha256": "5899c325bff30ec84efbf4f8d87f4a2127e26753ecd7ae5dfd3f652810a5dafb",
+      "base_scale": 1.0403645833333335,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "akaza-roll_back": {
+      "source_sha256": "738fc94ba899053ca1ac667351b29361ab7cb9edee09b62ebd22c11b06460bb1",
+      "base_scale": 1.0846354166666667,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "akaza-throw_forward": {
+      "source_sha256": "ddbac9552e0d2c0390df115c9aeb9b7c2d7e9829933bc136592e89ef5b422804",
+      "base_scale": 1.1067708333333335,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "akaza-throw_success": {
+      "source_sha256": "8ec0bd959909af664107dcd040e16fd7bc773364372ec35aff24f5e943bef4fe",
+      "base_scale": 1.0403645833333335,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "akaza-throw_tech": {
+      "source_sha256": "c02bdb853eeffbfd7c53843740aced30acceef4e5a156d2eebcf67329b58690b",
+      "base_scale": 0.7378472222222222,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "akaza-round_intro": {
+      "source_sha256": "f140a7ed07d16880bed182c0414201ff4424a6de236ba4c2d0b8e6e2feb3ecc7",
+      "base_scale": 1.1067708333333335,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "akaza-round_victory": {
+      "source_sha256": "a3d779c736aa623736a1fb220aa50b05ad1cdbcdc4b9d821ca2e2464c76b9cd5",
+      "base_scale": 1.1067708333333335,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "akaza-round_defeat": {
+      "source_sha256": "fd050cda8be31175cbf7b0150055564fadb572645e26adf447726b6edb58beb2",
+      "base_scale": 0.9960937500000001,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "akaza-air_type": {
+      "source_sha256": "e352c26f66c94bc2f663e9aedbf2041648bb90912b69e0f272333b09e3068954",
+      "base_scale": 0.9739583333333335,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "akaza-crown_splitter": {
+      "source_sha256": "fa398bd2e41f866203d28a39ae98a95d81edb1d04097c8cd9f77c1598105067c",
+      "base_scale": 1.0625,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "akaza-disorder": {
+      "source_sha256": "4972f5831a2206d8dafe3edbab09395e687808b36fef77cfbe159d06b239d36a",
+      "base_scale": 1.0403645833333335,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "akaza-annihilation": {
+      "source_sha256": "63885bf016fdd7985ce94d76cdc6994fa1b1a6133ddccf9615c2a8efa82f5262",
+      "base_scale": 1.0403645833333335,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "akaza-blue_afterglow": {
+      "source_sha256": "446ee8c6eaa32ecfad1e51e3f3ed6db0d735dedbb09da015ab6d88bc3c339603",
+      "base_scale": 1.0182291666666667,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "nezuko-thrown_forward-v2": {
+      "source_sha256": "b76f70f8de08f94ac7e2cf3e4190ddc87df291414563be69f3f995e93cce3331",
+      "base_scale": 0.8095238095238095,
+      "frame_multipliers": [
+        1.1,
+        1.1,
+        1.08,
+        1.06,
+        1.08,
+        1.06,
+        1.06,
+        1.08,
+        1.22,
+        1.26,
+        1.15,
+        1.2
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "nezuko-thrown-v2": {
+      "source_sha256": "25ece55dc94e147b0b469f5b867635b40f4065fb6aa6baeea933e8c233509114",
+      "base_scale": 0.8095238095238095,
+      "frame_multipliers": [
+        1.1,
+        1.08,
+        1.08,
+        1.08,
+        1.08,
+        1.08,
+        1.08,
+        1.1,
+        1.23,
+        1.27,
+        1.2,
+        1.24
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "akaza-thrown_forward-v2": {
+      "source_sha256": "930234248eb3600e8d1a8250d269cfed2b937556c79d58a081e986a96cfaab0a",
+      "base_scale": 0.8095238095238095,
+      "frame_multipliers": [
+        1.12,
+        1.1,
+        1.12,
+        1.1,
+        1.08,
+        1.08,
+        1.1,
+        1.14,
+        1.32,
+        1.3,
+        1.27,
+        1.35
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "akaza-thrown-v2": {
+      "source_sha256": "f38f17fb964355aaa17ab86414e989762c2ceb4efc816f2a001fdc939694f7f5",
+      "base_scale": 0.8095238095238095,
+      "frame_multipliers": [
+        1.08,
+        1.05,
+        1.12,
+        1.06,
+        1.08,
+        1.08,
+        1.08,
+        1.1,
+        1.29,
+        1.34,
+        1.31,
+        1.3
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    },
+    "nezuko-guard_low-v2": {
+      "source_sha256": "9f70a7e7b4e3aa23edab4c25d91f168fffb5eb3569367cda4729f4261a91ef0c",
+      "base_scale": 0.44426666666666664,
+      "frame_multipliers": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "nezuko-guard_low",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2304x1536",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/roster-v1/prompts/nezuko-guard_low.txt",
+  "output": "output/imagegen/roster-v1/raw/nezuko-guard_low.png",
+  "references": [
+    "output/imagegen/roster-v1/raw/nezuko-model.png"
+  ],
+  "started_utc": "2026-10-05T15:39:21.7039611Z",
+  "cost": null,
+  "accepted": false,
+  "completed_utc": "2026-10-05T15:40:20.8445457Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "c79e7ee2c9041483712c6abce0e55a735639ae788f1ac477ec018da678c4150c",
+  "review": "Crouching guard remains too upright compared with low hurtbox."
+}

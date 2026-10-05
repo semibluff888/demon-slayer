@@ -1,0 +1,24 @@
+{
+  "id": "nezuko-round_intro",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "3072x2304",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/roster-v1/prompts/nezuko-round_intro.txt",
+  "output": "output/imagegen/roster-v1/raw/nezuko-round_intro.png",
+  "references": [
+    "output/imagegen/roster-v1/raw/nezuko-model.png"
+  ],
+  "started_utc": "2026-10-05T15:44:41.0982729Z",
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-10-05T15:45:42.5264958Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "4c397c873523a28e7cabb463dcc6747b5434f5a27021548df3a82a2703d9338e",
+  "review_date": "2026-10-06",
+  "review_scope": "Source composition, extracted contact sheets, scale/anchor records and Godot integration reviewed."
+}

@@ -1,0 +1,68 @@
+[gd_resource type="Resource" script_class="CharacterDefinition" load_steps=23 format=3]
+
+[ext_resource type="Script" path="res://scripts/character_definition.gd" id="1"]
+[ext_resource type="Resource" path="res://moves/core/nezuko_5A.tres" id="2"]
+[ext_resource type="Resource" path="res://moves/core/nezuko_5B.tres" id="3"]
+[ext_resource type="Resource" path="res://moves/core/nezuko_5C.tres" id="4"]
+[ext_resource type="Resource" path="res://moves/core/nezuko_5D.tres" id="5"]
+[ext_resource type="Resource" path="res://moves/core/nezuko_2A.tres" id="6"]
+[ext_resource type="Resource" path="res://moves/core/nezuko_2B.tres" id="7"]
+[ext_resource type="Resource" path="res://moves/core/nezuko_2C.tres" id="8"]
+[ext_resource type="Resource" path="res://moves/core/nezuko_2D.tres" id="9"]
+[ext_resource type="Resource" path="res://moves/core/nezuko_jA.tres" id="10"]
+[ext_resource type="Resource" path="res://moves/core/nezuko_jB.tres" id="11"]
+[ext_resource type="Resource" path="res://moves/core/nezuko_jC.tres" id="12"]
+[ext_resource type="Resource" path="res://moves/core/nezuko_jD.tres" id="13"]
+[ext_resource type="Resource" path="res://moves/core/nezuko_236A.tres" id="14"]
+[ext_resource type="Resource" path="res://moves/core/nezuko_236C.tres" id="15"]
+[ext_resource type="Resource" path="res://moves/core/nezuko_623A.tres" id="16"]
+[ext_resource type="Resource" path="res://moves/core/nezuko_623C.tres" id="17"]
+[ext_resource type="Resource" path="res://moves/core/nezuko_214B.tres" id="18"]
+[ext_resource type="Resource" path="res://moves/core/nezuko_214D.tres" id="19"]
+[ext_resource type="Resource" path="res://moves/core/nezuko_super.tres" id="20"]
+[ext_resource type="Resource" path="res://moves/core/nezuko_max.tres" id="21"]
+[ext_resource type="Resource" path="res://moves/core/nezuko_throw.tres" id="22"]
+
+[resource]
+script = ExtResource("1")
+id = "nezuko"
+roster_order = 20
+display_name = "灶门祢豆子"
+epithet = "守护之火，永不熄灭"
+element_name = "血鬼术·爆血"
+role = "灵巧 · 近身压制"
+accent = Color(1.0, 0.40, 0.61, 1)
+walk_speed = 2.4
+visual_directory = "res://art/characters/nezuko/"
+state_animations = {
+"round_intro": "round_intro",
+"round_victory": "round_victory",
+"round_defeat": "round_defeat","roll_forward": "roll_forward", "roll_back": "roll_back", "throw_forward": "throw_forward", "throw_back": "throw_success", "thrown_forward": "thrown_forward", "thrown_back": "thrown", "throw_tech": "throw_tech"}
+normals = {
+"5A": ExtResource("2"),
+"5B": ExtResource("3"),
+"5C": ExtResource("4"),
+"5D": ExtResource("5"),
+"2A": ExtResource("6"),
+"2B": ExtResource("7"),
+"2C": ExtResource("8"),
+"2D": ExtResource("9"),
+"jA": ExtResource("10"),
+"jB": ExtResource("11"),
+"jC": ExtResource("12"),
+"jD": ExtResource("13")
+}
+motions = {
+"236A": ExtResource("14"),
+"236C": ExtResource("15"),
+"623A": ExtResource("16"),
+"623C": ExtResource("17"),
+"214B": ExtResource("18"),
+"214D": ExtResource("19"),
+"super": ExtResource("20"),
+"max": ExtResource("21")
+}
+throw_move = ExtResource("22")
+move_list = Array[Dictionary]([{"input": "236 + A/C", "name": "爆血飞踢", "description": "突进踢击 · 游戏演绎"}, {"input": "623 + A/C", "name": "升空踢", "description": "上升对空 · 游戏演绎"}, {"input": "214 + B/D", "name": "回旋踢", "description": "回旋连踢 · 游戏演绎"}, {"input": "236236 + A/C", "name": "血鬼术·爆血", "description": "多段爆血 · 1格"}, {"input": "236236 + A+C", "name": "爆血·觉醒连击", "description": "短暂觉醒连击 · 3格"}])
+portrait_faces_right = true
+menu_focus_x = 0.64

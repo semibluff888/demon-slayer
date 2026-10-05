@@ -1,0 +1,24 @@
+{
+  "id": "nezuko-body_air_heavy",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2304x1536",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/roster-v1/prompts/nezuko-body_air_heavy.txt",
+  "output": "output/imagegen/roster-v1/raw/nezuko-body_air_heavy.png",
+  "references": [
+    "output/imagegen/roster-v1/raw/nezuko-model.png"
+  ],
+  "started_utc": "2026-10-05T15:32:09.8497807Z",
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-10-05T15:33:15.2571350Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "ef35675da90b2b245156570601a2356d6297a70ec6039ccb8d788e22e7c492d8",
+  "review_date": "2026-10-06",
+  "review_scope": "Source composition, extracted contact sheets, scale/anchor records and Godot integration reviewed."
+}

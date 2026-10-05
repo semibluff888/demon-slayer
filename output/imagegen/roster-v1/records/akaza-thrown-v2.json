@@ -1,0 +1,24 @@
+{
+  "id": "akaza-thrown-v2",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "3072x2304",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/roster-v1/prompts/akaza-thrown-v2.txt",
+  "output": "output/imagegen/roster-v1/raw/akaza-thrown-v2.png",
+  "references": [
+    "output/imagegen/roster-v1/raw/akaza-model.png"
+  ],
+  "started_utc": "2026-10-05T15:59:23.6610941Z",
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-10-05T16:00:32.5570273Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "f38f17fb964355aaa17ab86414e989762c2ceb4efc816f2a001fdc939694f7f5",
+  "review_date": "2026-10-06",
+  "review_scope": "Source composition, extracted contact sheets, scale/anchor records and Godot integration reviewed."
+}

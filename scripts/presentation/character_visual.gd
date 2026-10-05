@@ -9,6 +9,8 @@ extends Resource
 @export var portrait: Texture2D
 @export var avatar: Texture2D
 @export var battle_portrait: Texture2D
+@export var portrait_faces_right: bool = false
+@export_range(0, 1) var menu_focus_x: float = 0.5
 @export var portrait_focus: Vector2 = Vector2(0.5, 0.25)
 @export var frames: SpriteFrames
 @export var feet_anchor: Vector2 = Vector2(384, 704)
@@ -26,7 +28,7 @@ const REQUIRED_CLIPS: Array[String] = ["idle", "walk", "walk_back", "crouch", "j
 	"crouch_light", "crouch_heavy", "air_light", "air_heavy",
 	"dash_forward", "dash_back", "jump_forward", "jump_back", "throw_success", "thrown"]
 
-func load_local_assets() -> void:
+func load_local_assets(load_frames: bool = true) -> void:
 	var directory := asset_directory if not asset_directory.is_empty() else "res://art/characters/%s/" % character_id
 	if ResourceLoader.exists(directory + "portrait.png"):
 		portrait = load(directory + "portrait.png")
@@ -34,6 +36,8 @@ func load_local_assets() -> void:
 		avatar = load(directory + "avatar.png")
 	if ResourceLoader.exists(directory + "battle-portrait.png"):
 		battle_portrait = load(directory + "battle-portrait.png")
+	if not load_frames:
+		return
 	var manifest_path := directory + "atlas.json"
 	if not FileAccess.file_exists(manifest_path):
 		return
@@ -83,3 +87,9 @@ func missing_clips() -> Array[String]:
 		if frames == null or not frames.has_animation(clip) or frames.get_frame_count(clip) == 0:
 			missing.append(clip)
 	return missing
+
+func release_combat_assets() -> void:
+	frames = null
+	phases.clear()
+	clip_metadata.clear()
+	art_ready = false

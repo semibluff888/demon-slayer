@@ -1,0 +1,24 @@
+{
+  "id": "akaza-disorder",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "3072x2304",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/roster-v1/prompts/akaza-disorder.txt",
+  "output": "output/imagegen/roster-v1/raw/akaza-disorder.png",
+  "references": [
+    "output/imagegen/roster-v1/raw/akaza-model.png"
+  ],
+  "started_utc": "2026-10-05T15:38:35.1865049Z",
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-10-05T15:39:31.9500727Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "4972f5831a2206d8dafe3edbab09395e687808b36fef77cfbe159d06b239d36a",
+  "review_date": "2026-10-06",
+  "review_scope": "Source composition, extracted contact sheets, scale/anchor records and Godot integration reviewed."
+}

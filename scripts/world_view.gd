@@ -147,3 +147,7 @@ func _draw_debug() -> void:
 				debug_layer.draw_rect(camera.rect(pair[0]), pair[1], false, 1.5)
 		var info := "P%d %s %s %d" % [f.slot + 1, f.state, f.move.id if f.move != null else "-", f.move_frame]
 		debug_layer.draw_string(catalog.body_font, camera.point(Vector2(f.x - 24, f.y - 82)), info, HORIZONTAL_ALIGNMENT_LEFT, -1, 13, Color.WHITE)
+
+func set_stage(id: String) -> void:
+	assert(catalog.stages.has(id))
+	stage.set_visual(catalog.stages[id])

@@ -6,7 +6,7 @@ var cursor := 0
 var muted := false
 var paused := false
 const SAMPLE_RATE := 22050
-const KINDS := ["hit", "body_hit", "block", "swing", "body_swing", "select", "fight", "round_end", "throw", "clash", "water_slash", "water_wheel", "iai", "thunder", "super", "max", "roll", "meter_empty", "meter_spend", "throw_tech", "flame"]
+const KINDS := ["hit", "body_hit", "block", "swing", "body_swing", "select", "fight", "round_end", "throw", "clash", "water_slash", "water_wheel", "iai", "thunder", "super", "max", "roll", "meter_empty", "meter_spend", "throw_tech", "flame", "blood", "shockwave"]
 
 func _ready() -> void:
 	for n in range(10):
@@ -99,7 +99,7 @@ func _make_sound(kind: String) -> AudioStreamWAV:
 	var duration := 0.105
 	if kind in ["water_slash","water_wheel","super","max"]: duration = 0.28
 	if kind in ["fight","round_end","throw","throw_tech","meter_empty","meter_spend"]: duration = 0.20
-	if kind in ["thunder","flame"]: duration = 0.16
+	if kind in ["thunder","flame","blood","shockwave"]: duration = 0.16
 	var frames := int(SAMPLE_RATE * duration)
 	var bytes := PackedByteArray()
 	bytes.resize(frames*2)
@@ -118,6 +118,8 @@ func _make_sound(kind: String) -> AudioStreamWAV:
 			"throw": value = sin(TAU*(75*t-70*t*t))*0.8+noise.randf_range(-0.15,0.15)*exp(-t*30)
 			"water_slash", "water_wheel": value = noise.randf_range(-0.3,0.3)*sin(progress*PI)+sin(TAU*(370*t-230*t*t))*0.16
 			"iai": value = sin(TAU*(2400*t-6200*t*t))*0.22+noise.randf_range(-0.10,0.10)
+			"blood": value = noise.randf_range(-0.32,0.32)*pow(1-progress,1.3)+sin(TAU*(160*t-85*t*t))*0.24
+			"shockwave": value = sin(TAU*(115*t-60*t*t))*0.42*pow(1-progress,1.6)+noise.randf_range(-0.13,0.13)
 			"thunder": value = noise.randf_range(-0.42,0.42)*pow(1-progress,2)+sin(TAU*62*t)*0.3
 			"super": value = (sin(TAU*(360*t+1200*t*t))+sin(TAU*720*t))*0.25
 			"max": value = sin(TAU*(180*t+1800*t*t))*0.32+sin(TAU*360*t)*0.20

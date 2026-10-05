@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="MovePresentation" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/presentation/move_presentation.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+shape = "shockwave"
+color = Color(0.30, 0.76, 1.0, 1)
+sound_key = "shockwave"
+texture_key = "shockwave"
+body_opacity = 0.80
+glow_strength = 0.45
+particle_scale = 1.0
+super_tier = 0
+trail_count = 3
+trail_alpha = 0.18
+trail_interval = 0.05
+trail_lifetime = 0.24
+sigil_texture_key = "compass"

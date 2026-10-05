@@ -18,7 +18,8 @@ func _polish_step() -> void:
 	# Hash the entire KO history, including the impact before throw settlement.
 	if ticks % 450 == 0:
 		var index := int(ticks / 450)
-		var cid := "zenitsu" if index % 2 == 0 else "tanjiro"
+		var ids: Array = finishing.catalog.characters.keys()
+		var cid: String = ids[index % ids.size()]
 		for c in [finishing, lethal_throw]:
 			c.new_match(cid, "tanjiro" if cid == "zenitsu" else "zenitsu")
 			c.phase = "fight"
@@ -26,7 +27,7 @@ func _polish_step() -> void:
 			c.fighters[1].x = 514
 			c.fighters[0].meter = 300
 			c.fighters[1].hp = 1
-		finishing._begin_move(finishing.fighters[0], finishing.moves["zenitsu_super" if cid == "zenitsu" else "tanjiro_623C"])
+		finishing._begin_move(finishing.fighters[0], finishing.definition(finishing.fighters[0]).motions["max" if index % 2 else "super"])
 		lethal_throw.fighters[0].throw_back = index % 2 == 0
 		lethal_throw._start_throw(lethal_throw._contact(lethal_throw.fighters[0], lethal_throw.fighters[1], lethal_throw.definition(lethal_throw.fighters[0]).throw_move, 1, 0, false))
 	for c in [finishing, lethal_throw]:
@@ -43,7 +44,8 @@ func _physics_process(_delta: float) -> bool:
 	var cycle := ticks % 90
 	var scenario := int(ticks / 90) % 4
 	if cycle == 0:
-		scripted.new_match("tanjiro", "zenitsu")
+		var ids: Array = scripted.catalog.characters.keys()
+		scripted.new_match(ids[int(ticks / 90) % ids.size()], ids[(int(ticks / 90) + 1) % ids.size()])
 		scripted.phase = "fight"
 		scripted.fighters[0].x = 400
 		scripted.fighters[1].x = 432 if scenario == 3 else 480

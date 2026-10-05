@@ -1,0 +1,24 @@
+{
+  "id": "nezuko-walk_back",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2304x1536",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/roster-v1/prompts/nezuko-walk_back.txt",
+  "output": "output/imagegen/roster-v1/raw/nezuko-walk_back.png",
+  "references": [
+    "output/imagegen/roster-v1/raw/nezuko-model.png"
+  ],
+  "started_utc": "2026-10-05T15:51:34.8268620Z",
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-10-05T15:52:36.8544093Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "07b8155cbd9851f5c2864898839acf3eee9270ce1ad8192fa90b48067ae0b77c",
+  "review_date": "2026-10-06",
+  "review_scope": "Source composition, extracted contact sheets, scale/anchor records and Godot integration reviewed."
+}

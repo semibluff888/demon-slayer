@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="DuelMove" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="1"]
+
+[ext_resource type="Resource" path="res://resources/presentation/air_type.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+presentation = ExtResource("2")
+display_name = "破坏杀·空式·重"
+kind = "skill"
+startup = 14
+active = 3
+recovery = 29
+damage = 130
+hitstun = 34
+blockstun = 16
+hitstop = 6
+push = 0.6
+box = Rect2(8, -48, 65, 32)
+cancel_targets = PackedStringArray("super", "max")
+cancel_window = 26
+animation_id = "air_type"
+projectile_speed = 5.0
+projectile_lifetime = 48
+id = "akaza_236C"
+effect_id = "air_type"

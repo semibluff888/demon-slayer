@@ -31,6 +31,13 @@ func _ready() -> void:
 		var path: String = "res://art/effects/%s.png" % id
 		if ResourceLoader.exists(path):
 			textures[id] = load(path)
+	for move: Resource in combat.moves.values():
+		if move.presentation == null: continue
+		for key: String in [move.presentation.texture_key, move.presentation.projectile_texture_key, move.presentation.sigil_texture_key]:
+			if key.is_empty(): continue
+			for suffix in ["", "-body"]:
+				var path: String = "res://art/effects/" + key + suffix + ".png"
+				if ResourceLoader.exists(path): textures[key + suffix] = load(path)
 	body_layer = Node2D.new()
 	body_layer.z_index = -1
 	body_layer.material = CanvasItemMaterial.new()
@@ -244,6 +251,14 @@ func _draw_attack(fighter: RefCounted) -> void:
 	var shape := _profile_shape(move)
 	var strength: float = (0.62 + sin(progress * PI) * 0.32) * (move.presentation.glow_strength if move.presentation != null else 0.55)
 	match shape:
+		"blood", "shockwave":
+			var key: String = move.presentation.texture_key
+			var bounds := attack.grow(3)
+			if move.projectile_speed > 0: bounds = Rect2(16,-47,29,28)
+			_effect(key,bounds,Color(color,0.30),-0.4 + progress * 0.8 if shape == "blood" else 0.0)
+			_element_motes(bounds,progress,color,18 if move.is_super() else 8)
+			if not move.presentation.sigil_texture_key.is_empty():
+				_effect(move.presentation.sigil_texture_key,Rect2(-45,-9,90,18),Color(color,0.32))
 		"water_slash":
 			# The detached projectile is the only hitbox. A small spray marks release.
 			_effect("water-slash-spray",Rect2(13,-43,30,20),Color(1,1,1,0.28*(1-progress*0.5)))
@@ -378,6 +393,9 @@ func _draw_body() -> void:
 		var angle := 0.0
 		body_layer.draw_set_transform(camera.point(Vector2(fighter.x,fighter.y)),0,Vector2(camera.zoom*fighter.facing,camera.zoom))
 		match shape:
+			"blood", "shockwave":
+				bounds = Rect2(16,-47,29,28) if move.projectile_speed > 0 else attack.grow(3)
+				angle = -0.4 + progress * 0.8 if shape == "blood" else 0.0
 			"water_slash":
 				bounds = Rect2(13,-43,30,20)
 				opacity *= 0.68 * (1-progress*0.5)

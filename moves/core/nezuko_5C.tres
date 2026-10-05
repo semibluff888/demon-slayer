@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="DuelMove" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="1"]
+
+[ext_resource type="Resource" path="res://resources/presentation/nezuko_body.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+presentation = ExtResource("2")
+display_name = "重爪"
+kind = "heavy"
+level = "mid"
+startup = 9
+active = 4
+recovery = 18
+damage = 80
+hitstun = 30
+blockstun = 15
+hitstop = 6
+push = 0.9
+stance = "stand"
+animation_id = "stand_heavy"
+effect_id = "body"
+knockdown = false
+box = Rect2(7, -52, 63, 37)
+cancel_targets = PackedStringArray("skill", "super", "max")
+id = "nezuko_5C"

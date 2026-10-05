@@ -66,7 +66,7 @@ func _test_segments(cid: String, facing: int, corner: bool, notation: String) ->
 		actor.free()
 		return
 	check(move.presentation != null, move.id+" has independent presentation resource")
-	var actual_shapes := {"tanjiro_214B":"water_vortex","tanjiro_214D":"water_vortex","tanjiro_super":"water_dragon","tanjiro_max":"sun_arc","zenitsu_214B":"iai_return","zenitsu_214D":"iai_return","zenitsu_super":"sixfold","zenitsu_max":"godspeed"}
+	var actual_shapes := {"tanjiro_214B":"water_vortex","tanjiro_214D":"water_vortex","tanjiro_super":"water_dragon","tanjiro_max":"sun_arc","zenitsu_214B":"iai_return","zenitsu_214D":"iai_return","zenitsu_super":"sixfold","zenitsu_max":"godspeed", "nezuko_214B":"spinning_kick", "nezuko_214D":"spinning_kick", "nezuko_super":"blood_burst", "nezuko_max":"awakened_combo", "akaza_214B":"disorder", "akaza_214D":"disorder", "akaza_super":"annihilation", "akaza_max":"blue_afterglow"}
 	check(move.clip_id() == actual_shapes[move.id], move.id+" uses dedicated motion")
 	var frames_by_segment := {}
 	var freeze_checked := false

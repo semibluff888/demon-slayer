@@ -1,0 +1,24 @@
+{
+  "id": "akaza-walk",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2304x1536",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/roster-v1/prompts/akaza-walk.txt",
+  "output": "output/imagegen/roster-v1/raw/akaza-walk.png",
+  "references": [
+    "output/imagegen/roster-v1/raw/akaza-model.png"
+  ],
+  "started_utc": "2026-10-05T15:51:33.6378436Z",
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-10-05T15:53:01.4267709Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "189896fdf431e9280c78d11e315de4921e65f2bdc9c536d1b5212d609727f457",
+  "review_date": "2026-10-06",
+  "review_scope": "Source composition, extracted contact sheets, scale/anchor records and Godot integration reviewed."
+}

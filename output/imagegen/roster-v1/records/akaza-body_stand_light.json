@@ -1,0 +1,24 @@
+{
+  "id": "akaza-body_stand_light",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2304x1536",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/roster-v1/prompts/akaza-body_stand_light.txt",
+  "output": "output/imagegen/roster-v1/raw/akaza-body_stand_light.png",
+  "references": [
+    "output/imagegen/roster-v1/raw/akaza-model.png"
+  ],
+  "started_utc": "2026-10-05T15:35:06.9167211Z",
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-10-05T15:36:34.1742962Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "a020477b18d1b1a7c27e9e0ade52e887478c3bb5b5a390a335d35875bfd13349",
+  "review_date": "2026-10-06",
+  "review_scope": "Source composition, extracted contact sheets, scale/anchor records and Godot integration reviewed."
+}

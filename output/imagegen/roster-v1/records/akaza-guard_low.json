@@ -1,0 +1,24 @@
+{
+  "id": "akaza-guard_low",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2304x1536",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/roster-v1/prompts/akaza-guard_low.txt",
+  "output": "output/imagegen/roster-v1/raw/akaza-guard_low.png",
+  "references": [
+    "output/imagegen/roster-v1/raw/akaza-model.png"
+  ],
+  "started_utc": "2026-10-05T15:39:32.3198211Z",
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-10-05T15:40:23.6995088Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "1671f2075568a039219b0e75e38a8af01756c25417bf30a198eda84920f17838",
+  "review_date": "2026-10-06",
+  "review_scope": "Source composition, extracted contact sheets, scale/anchor records and Godot integration reviewed."
+}

@@ -1,0 +1,24 @@
+{
+  "id": "nezuko-crouch_light",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2304x1536",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/roster-v1/prompts/nezuko-crouch_light.txt",
+  "output": "output/imagegen/roster-v1/raw/nezuko-crouch_light.png",
+  "references": [
+    "output/imagegen/roster-v1/raw/nezuko-model.png"
+  ],
+  "started_utc": "2026-10-05T15:36:24.8766195Z",
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-10-05T15:37:32.0454421Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "1474f2de800f32e656b1ea2e23e599b6c993e3484b0091140beca5fe7ddfa51c",
+  "review_date": "2026-10-06",
+  "review_scope": "Source composition, extracted contact sheets, scale/anchor records and Godot integration reviewed."
+}

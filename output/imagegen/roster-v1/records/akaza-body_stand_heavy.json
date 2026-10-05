@@ -1,0 +1,24 @@
+{
+  "id": "akaza-body_stand_heavy",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2304x1536",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/roster-v1/prompts/akaza-body_stand_heavy.txt",
+  "output": "output/imagegen/roster-v1/raw/akaza-body_stand_heavy.png",
+  "references": [
+    "output/imagegen/roster-v1/raw/akaza-model.png"
+  ],
+  "started_utc": "2026-10-05T15:34:26.3879665Z",
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-10-05T15:35:14.6745861Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "cfc32aaeeba3958a421779de008a521717a1fac525016b79b5d19ac06cd035a7",
+  "review_date": "2026-10-06",
+  "review_scope": "Source composition, extracted contact sheets, scale/anchor records and Godot integration reviewed."
+}

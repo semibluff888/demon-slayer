@@ -1,0 +1,24 @@
+{
+  "id": "nezuko-face",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "1024x1024",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/roster-v1/prompts/nezuko-face.txt",
+  "output": "output/imagegen/roster-v1/raw/nezuko-face.png",
+  "references": [
+    "output/imagegen/roster-v1/raw/nezuko-model.png"
+  ],
+  "started_utc": "2026-10-05T15:28:08.9759428Z",
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-10-05T15:28:48.8484403Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "1091b21c99dae3e4d085027b956b8b989c0cd722170d06e26ebea95618c462f7",
+  "review_date": "2026-10-06",
+  "review_scope": "Source composition, extracted contact sheets, scale/anchor records and Godot integration reviewed."
+}

@@ -1,0 +1,24 @@
+{
+  "id": "akaza-blue_afterglow",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "3072x2304",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/roster-v1/prompts/akaza-blue_afterglow.txt",
+  "output": "output/imagegen/roster-v1/raw/akaza-blue_afterglow.png",
+  "references": [
+    "output/imagegen/roster-v1/raw/akaza-model.png"
+  ],
+  "started_utc": "2026-10-05T15:31:43.7199475Z",
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-10-05T15:32:53.2754866Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "446ee8c6eaa32ecfad1e51e3f3ed6db0d735dedbb09da015ab6d88bc3c339603",
+  "review_date": "2026-10-06",
+  "review_scope": "Source composition, extracted contact sheets, scale/anchor records and Godot integration reviewed."
+}

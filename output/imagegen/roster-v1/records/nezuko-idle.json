@@ -1,0 +1,24 @@
+{
+  "id": "nezuko-idle",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2304x1536",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/roster-v1/prompts/nezuko-idle.txt",
+  "output": "output/imagegen/roster-v1/raw/nezuko-idle.png",
+  "references": [
+    "output/imagegen/roster-v1/raw/nezuko-model.png"
+  ],
+  "started_utc": "2026-10-05T15:40:21.2019068Z",
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-10-05T15:41:24.0507912Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "0dd78a00768598039f4b4a930115a78287954559619ee9a57d41522204cd0300",
+  "review_date": "2026-10-06",
+  "review_scope": "Source composition, extracted contact sheets, scale/anchor records and Godot integration reviewed."
+}

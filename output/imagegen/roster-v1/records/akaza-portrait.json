@@ -1,0 +1,24 @@
+{
+  "id": "akaza-portrait",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "1024x1536",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/roster-v1/prompts/akaza-portrait.txt",
+  "output": "output/imagegen/roster-v1/raw/akaza-portrait.png",
+  "references": [
+    "output/imagegen/roster-v1/raw/akaza-model.png"
+  ],
+  "started_utc": "2026-10-05T15:28:49.2098776Z",
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-10-05T15:30:05.6726258Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "38309812cf03730285be4b96772ecd906b6d143735d58b6f2d8a58623c035d56",
+  "review_date": "2026-10-06",
+  "review_scope": "Source composition, extracted contact sheets, scale/anchor records and Godot integration reviewed."
+}

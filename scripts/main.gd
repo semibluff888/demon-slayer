@@ -6,17 +6,21 @@ const Practice = preload("res://scripts/practice_controller.gd")
 const World = preload("res://scripts/world_view.gd")
 const Sound = preload("res://scripts/audio.gd")
 const Catalog = preload("res://scripts/presentation/visual_catalog.gd")
+const Selection = preload("res://scripts/ui/selection_controller.gd")
 const Menu = preload("res://scripts/ui/menu_view.gd")
 var combat := Combat.new()
 var router := InputRouter.new()
 var ai := AI.new()
 var practice_controller := Practice.new()
-var catalog := Catalog.new()
+var catalog := Catalog.new(false)
+var selection := Selection.new()
+var stage_id: String = "wisteria"
 var view: Node2D
 var sound: Node
 var gui: Control
 var screen: String = "title"
 var mode: String = "cpu"
+var menu_device: String = "keyboard:0"
 var characters: Array[String] = []
 var devices: Array[String] = ["keyboard:0", "keyboard:1"]
 var paused: bool = false
@@ -27,6 +31,7 @@ var pause_reason: String = ""
 var help_return: String = "title"
 
 func _ready() -> void:
+	selection.app = self
 	var ids: Array = catalog.characters.keys()
 	characters.assign([ids[0], ids[mini(1, ids.size() - 1)]])
 	view = World.new()
@@ -67,7 +72,20 @@ func _physics_process(_delta: float) -> void:
 	if combat.phase == "match_end":
 		show_result()
 
+func _input(event: InputEvent) -> void:
+	if screen == "title":
+		if event is InputEventJoypadButton and event.pressed:
+			menu_device = "pad:%d" % event.device
+		elif (event is InputEventKey or event is InputEventMouseButton) and event.pressed:
+			menu_device = "keyboard:0"
+	if selection.handle(event):
+		get_viewport().set_input_as_handled()
+
 func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		_back_or_pause()
+		get_viewport().set_input_as_handled()
+		return
 	if event is InputEventKey and event.pressed and not event.echo:
 		if event.keycode == KEY_F1:
 			view.debug_boxes = not view.debug_boxes
@@ -91,6 +109,15 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 func _back_or_pause() -> void:
+	if selection.modal:
+		gui.close_devices()
+		return
+	if screen == "setup":
+		selection.cancel(selection.active_slot)
+		return
+	if screen == "stage":
+		show_setup()
+		return
 	if screen == "battle":
 		if paused and not _devices_ready():
 			return
@@ -106,43 +133,61 @@ func _change_screen(next_screen: String) -> void:
 	view.characters = characters
 	view.paused = paused
 	sound.set_paused(paused)
-	if next_screen in ["title","setup","result"]:
+	if next_screen in ["title","setup","stage","result"]:
 		sound.reset_audio()
 	gui.clear()
 
 func show_title() -> void:
+	selection.reset()
 	paused = false
 	_change_screen("title")
 	gui.title()
 
 func choose_mode(selected: String) -> void:
 	mode = selected
+	if menu_device.begins_with("pad:") and router.connected(menu_device):
+		devices[0] = menu_device
+		if mode == "local":
+			devices[1] = "keyboard:0"
+			for candidate in router.available_devices():
+				if candidate.id.begins_with("pad:") and candidate.id != menu_device:
+					devices[1] = candidate.id
+					break
 	sound.play("select")
 	show_setup()
 
 func select_character(player: int, id: String) -> void:
-	characters[player] = id
-	sound.play("select")
-	show_setup()
-	gui.actions["p%d_%s" % [player + 1, id]].grab_focus()
+	selection.choose(player, id)
 
 func show_setup() -> void:
 	paused = false
+	selection.reset()
 	_change_screen("setup")
 	gui.setup()
 
+func show_stages() -> void:
+	_change_screen("stage")
+	gui.stages()
+
 func _validate_setup() -> void:
-	if screen != "setup":
+	if screen not in ["setup", "stage"] or not is_instance_valid(start_button):
 		return
 	var duplicate := mode == "local" and devices[0] == devices[1]
 	start_button.disabled = duplicate or not _devices_ready()
-	device_notice.text = "两位玩家请选择不同的操作设备" if duplicate else (
-		"自由练习 / F3 设置木桩与气槽 / Backspace 重置" if mode == "practice" else
-		"60 秒 / 回合 · 先赢两局获胜\n手柄 X 轻斩 · A 轻体术 · Y 重斩 · B 重体术")
+	if is_instance_valid(device_notice):
+		device_notice.text = "请选择不同设备" if duplicate else ("请连接操作设备" if not _devices_ready() else "")
+		if device_notice.text.is_empty() and not selection.modal:
+			var first := "十字键 · A 确认 · B 返回" if devices[0].begins_with("pad:") else ("WASD · F 确认 · G 返回" if devices[0] == "keyboard:0" else "方向键 · J 确认 · K 返回")
+			device_notice.text = first if mode != "local" or screen == "stage" else "P1 " + ("手柄 A/B" if devices[0].begins_with("pad:") else "WASD F/G" if devices[0] == "keyboard:0" else "方向键 J/K") + "    P2 " + ("手柄 A/B" if devices[1].begins_with("pad:") else "WASD F/G" if devices[1] == "keyboard:0" else "方向键 J/K")
+		device_notice.modulate = Color("ff8197") if start_button.disabled else Color.WHITE
 
 func start_match() -> void:
 	if not _devices_ready() or (mode == "local" and devices[0] == devices[1]):
 		return
+	selection.modal = false
+	view.reset_effects()
+	catalog.prepare_match(characters, stage_id)
+	view.set_stage(stage_id)
 	combat.practice = mode == "practice"
 	combat.new_match(characters[0], characters[1])
 	ai.reset()
@@ -226,8 +271,14 @@ func _devices_ready() -> bool:
 	return router.connected(devices[0]) and (mode != "local" or router.connected(devices[1]))
 
 func _on_joy_connection(_device: int, _connected: bool) -> void:
-	if screen == "setup":
-		show_setup()
+	if screen in ["setup", "stage"]:
+		if not _devices_ready():
+			selection.ready.assign([false, false])
+			if screen == "stage": show_setup()
+		if selection.modal:
+			gui.close_devices()
+		if screen == "setup": gui.refresh_setup()
+		_validate_setup()
 	elif screen == "battle":
 		if not _devices_ready():
 			set_paused(true, "手柄已断开，请重新连接；\n也可返回选人切换操作设备。")

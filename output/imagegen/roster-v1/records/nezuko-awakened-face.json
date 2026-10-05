@@ -1,0 +1,24 @@
+{
+  "id": "nezuko-awakened-face",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "1024x1024",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/roster-v1/prompts/nezuko-awakened-face.txt",
+  "output": "output/imagegen/roster-v1/raw/nezuko-awakened-face.png",
+  "references": [
+    "output/imagegen/roster-v1/raw/nezuko-model.png"
+  ],
+  "started_utc": "2026-10-05T15:28:08.9559123Z",
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-10-05T15:29:27.0004744Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "1afb0372556c5466f97edb843c0d23ff751e371785d6c44696ce4dc96b70d587",
+  "review_date": "2026-10-06",
+  "review_scope": "Only the isolated right-side awakened bust is accepted for the MAX cut-in. Crop recorded in portrait-calibration.json."
+}

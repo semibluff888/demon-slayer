@@ -1,0 +1,24 @@
+{
+  "id": "nezuko-walk",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2304x1536",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/roster-v1/prompts/nezuko-walk.txt",
+  "output": "output/imagegen/roster-v1/raw/nezuko-walk.png",
+  "references": [
+    "output/imagegen/roster-v1/raw/nezuko-model.png"
+  ],
+  "started_utc": "2026-10-05T15:51:30.7883597Z",
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-10-05T15:52:48.2654236Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "e8c24b14d477260caaa22ec040e7c1e951aec7030d871fc549803efbf46cb910",
+  "review_date": "2026-10-06",
+  "review_scope": "Source composition, extracted contact sheets, scale/anchor records and Godot integration reviewed."
+}

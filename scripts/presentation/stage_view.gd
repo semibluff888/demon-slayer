@@ -13,17 +13,7 @@ var particles: Array[Dictionary] = []
 var glow: GradientTexture2D
 
 func _ready() -> void:
-	for i in range(visual.layers.size()):
-		var layer := Sprite2D.new()
-		layer.centered = false
-		layer.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
-		if visual != null and i < visual.layers.size():
-			layer.texture = visual.layers[i]
-		if layer.texture != null:
-			layer.scale = visual.render_size / visual.canvas_size
-		layer.position = Vector2(640 - visual.render_size.x * 0.5, -36) + visual.tile_origins[i] * visual.render_size / visual.canvas_size
-		add_child(layer)
-		layers.append(layer)
+	_rebuild_layers()
 	var light := Gradient.new()
 	light.colors = PackedColorArray([Color(1, 1, 1, 0.65), Color(1, 1, 1, 0.12), Color(1, 1, 1, 0)])
 	light.offsets = PackedFloat32Array([0, 0.35, 1])
@@ -57,7 +47,7 @@ func _draw_atmosphere() -> void:
 		var y: float = fposmod(particle.y + time * particle.speed * 0.24, 750) - 15
 		var angle: float = sin(time * 0.7 + particle.phase)
 		atmosphere.draw_set_transform(Vector2(x, y), angle * 2)
-		atmosphere.draw_colored_polygon(PackedVector2Array([Vector2(-particle.size, 0), Vector2(0, -particle.size * 0.55), Vector2(particle.size, 0), Vector2(0, particle.size * 0.65)]), Color(0.77, 0.71, 0.96, 0.3 + (angle + 1) * 0.11))
+		atmosphere.draw_colored_polygon(PackedVector2Array([Vector2(-particle.size, 0), Vector2(0, -particle.size * 0.55), Vector2(particle.size, 0), Vector2(0, particle.size * 0.65)]), Color(0.77, 0.71, 0.96, 0.3 + (angle + 1) * 0.11) if visual.atmosphere_preset == "petals" else Color(1.0, 0.73, 0.37, 0.13 + (angle + 1) * 0.08))
 	atmosphere.draw_set_transform(Vector2.ZERO)
 	# Three low-opacity soft bands; no expensive full-screen postprocessing.
 	for i in range(3):
@@ -75,3 +65,26 @@ func sync_camera() -> void:
 	var shift := (center - Arena.CENTER) * Arena.ZOOM
 	for i in range(layers.size()):
 		layers[i].position = Vector2(640 - visual.render_size.x * 0.5 - shift, -36) + visual.tile_origins[i] * visual.render_size / visual.canvas_size + shake
+
+func set_visual(next: Resource) -> void:
+	visual = next
+	time = 0
+	_rebuild_layers()
+	sync_camera()
+
+func _rebuild_layers() -> void:
+	for layer in layers:
+		remove_child(layer)
+		layer.queue_free()
+	layers.clear()
+	for i in range(visual.layers.size()):
+		var layer := Sprite2D.new()
+		layer.centered = false
+		layer.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
+		if visual != null and i < visual.layers.size():
+			layer.texture = visual.layers[i]
+		if layer.texture != null:
+			layer.scale = visual.render_size / visual.canvas_size
+		layer.position = Vector2(640 - visual.render_size.x * 0.5, -36) + visual.tile_origins[i] * visual.render_size / visual.canvas_size
+		add_child(layer)
+		layers.append(layer)

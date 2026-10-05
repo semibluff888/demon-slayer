@@ -1,0 +1,24 @@
+{
+  "id": "nezuko-throw",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2304x1536",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/roster-v1/prompts/nezuko-throw.txt",
+  "output": "output/imagegen/roster-v1/raw/nezuko-throw.png",
+  "references": [
+    "output/imagegen/roster-v1/raw/nezuko-model.png"
+  ],
+  "started_utc": "2026-10-05T15:47:12.7487474Z",
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-10-05T15:48:17.7776386Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "26692e014fd7052096aab2fa7796dc5d9df04bb03e79e2ca939de5e6865cd77c",
+  "review_date": "2026-10-06",
+  "review_scope": "Source composition, extracted contact sheets, scale/anchor records and Godot integration reviewed."
+}

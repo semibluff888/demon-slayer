@@ -11,6 +11,11 @@ func _init() -> void:
 		if not file.ends_with(".tres"):
 			continue
 		register(load("res://resources/characters/" + file))
+	var ordered: Array = characters.values()
+	ordered.sort_custom(func(a, b): return a.id < b.id if a.roster_order == b.roster_order else a.roster_order < b.roster_order)
+	characters.clear()
+	for definition in ordered:
+		characters[definition.id] = definition
 
 func register(definition: Definition) -> void:
 	assert(definition != null and not definition.id.is_empty())

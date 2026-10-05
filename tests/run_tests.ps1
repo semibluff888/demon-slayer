@@ -57,6 +57,8 @@ Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script',
 
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://demo/round-presentation/verify.gd') -Expected 'ROUND DEMO TESTS: \d+ passed, 0 failed' | Out-Null
 
+Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/roster_expansion_tests.gd') -Expected 'ROSTER EXPANSION: \d+ passed, 0 failed' | Out-Null
+
 $hashes = @()
 foreach ($fps in @(30, 60, 144)) {
     $logPath = Join-Path $artifactRoot "fps-$fps.log"
@@ -75,5 +77,7 @@ $artPython = Join-Path $projectRoot '.venv/Scripts/python.exe'
 if (Test-Path -LiteralPath $artPython) {
     & $artPython (Join-Path $projectRoot 'tests/art_pipeline_tests.py')
     if ($LASTEXITCODE -ne 0) { throw 'Artwork validation failed.' }
+    & $artPython (Join-Path $projectRoot 'tests/roster_art_tests.py')
+    if ($LASTEXITCODE -ne 0) { throw 'Expansion artwork validation failed.' }
 }
 Write-Host 'All checks passed. Combat state is identical at 30 / 60 / 144 FPS.'

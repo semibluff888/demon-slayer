@@ -1,0 +1,24 @@
+{
+  "id": "nezuko-stand_heavy",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2304x1536",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/roster-v1/prompts/nezuko-stand_heavy.txt",
+  "output": "output/imagegen/roster-v1/raw/nezuko-stand_heavy.png",
+  "references": [
+    "output/imagegen/roster-v1/raw/nezuko-model.png"
+  ],
+  "started_utc": "2026-10-05T15:46:06.8231871Z",
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-10-05T15:47:12.3951001Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "acba6e7ccadeaa1a4a61a50bc256c4f2bf4c529f8591f35664edc224dce22720",
+  "review_date": "2026-10-06",
+  "review_scope": "Source composition, extracted contact sheets, scale/anchor records and Godot integration reviewed."
+}

@@ -62,7 +62,7 @@ def run(spec_path):
     spec_path = Path(spec_path).resolve()
     spec = json.loads(spec_path.read_text(encoding='utf-8-sig'))
     character = spec['character']
-    if character not in ('tanjiro', 'zenitsu'):
+    if not character.replace("_", "").isalnum() or not (ROOT / "resources/characters" / (character + ".tres")).exists():
         raise ValueError('Unknown character')
     output = ROOT / 'art' / 'characters' / character
     size = tuple(spec.get('canvas_size', [768, 768]))

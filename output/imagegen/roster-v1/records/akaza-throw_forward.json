@@ -1,0 +1,24 @@
+{
+  "id": "akaza-throw_forward",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "3072x2304",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/roster-v1/prompts/akaza-throw_forward.txt",
+  "output": "output/imagegen/roster-v1/raw/akaza-throw_forward.png",
+  "references": [
+    "output/imagegen/roster-v1/raw/akaza-model.png"
+  ],
+  "started_utc": "2026-10-05T15:48:14.6952373Z",
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-10-05T15:49:06.4221418Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "ddbac9552e0d2c0390df115c9aeb9b7c2d7e9829933bc136592e89ef5b422804",
+  "review_date": "2026-10-06",
+  "review_scope": "Source composition, extracted contact sheets, scale/anchor records and Godot integration reviewed."
+}

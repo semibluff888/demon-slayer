@@ -178,8 +178,13 @@ func _test_assets() -> void:
 		check(visual.art_ready, "complete illustrated actor: " + character)
 		check(visual.avatar != null and visual.portrait != null, "portrait and HUD avatar: " + character)
 		var expected := counts.duplicate()
-		for move in (["water_slash", "water_wheel"] if character == "tanjiro" else ["iai", "thunder"]):
-			expected[move] = 9
+		if character in ["tanjiro", "zenitsu"]:
+			for move in (["water_slash", "water_wheel"] if character == "tanjiro" else ["iai", "thunder"]):
+				expected[move] = 9
+		else:
+			expected.clear()
+			for clip: String in visual.REQUIRED_CLIPS + visual.required_move_clips:
+				expected[clip] = 6
 		for clip: String in expected:
 			var available: bool = visual.frames != null and visual.frames.has_animation(clip)
 			check(available, "animation exists: " + character + "/" + clip)
@@ -321,6 +326,7 @@ func _render_checks() -> void:
 	game.combat.fighters[1].x = 363
 	await _save("duel-neutral", root.size)
 	for character in game.combat.catalog.characters:
+		game.catalog.prepare_match([character,"zenitsu"],game.stage_id)
 		for move in game.combat.catalog.characters[character].all_moves():
 			game.combat.new_match(character, "zenitsu")
 			game.view.reset_effects()
@@ -341,7 +347,7 @@ func _render_checks() -> void:
 				game.combat.step([Combat.neutral(), Combat.neutral()])
 				game.view.consume(game.combat.events)
 			await _save("move-" + move.id, root.size)
-	for character in ["tanjiro", "zenitsu"]:
+	for character in game.combat.catalog.characters:
 		game.characters.assign([character, character])
 		game.start_match()
 		game.combat.phase = "fight"

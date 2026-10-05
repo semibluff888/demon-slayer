@@ -19,3 +19,5 @@ extends Resource
 @export var particle_scale: float = 1.0
 @export var super_tier: int = 0
 @export var title_texture: Texture2D
+@export var cut_in_path: String = ""
+@export var sigil_texture_key: String = ""

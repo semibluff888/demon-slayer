@@ -1,0 +1,24 @@
+{
+  "id": "nezuko-guard",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2304x1536",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/roster-v1/prompts/nezuko-guard.txt",
+  "output": "output/imagegen/roster-v1/raw/nezuko-guard.png",
+  "references": [
+    "output/imagegen/roster-v1/raw/nezuko-model.png"
+  ],
+  "started_utc": "2026-10-05T15:38:54.0106539Z",
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-10-05T15:39:55.9334152Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "329cc79d9ce1f0be4c014b82c2efdb97a62391bf94190b4db667e35629d22ce1",
+  "review_date": "2026-10-06",
+  "review_scope": "Source composition, extracted contact sheets, scale/anchor records and Godot integration reviewed."
+}

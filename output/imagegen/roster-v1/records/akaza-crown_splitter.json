@@ -1,0 +1,24 @@
+{
+  "id": "akaza-crown_splitter",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2304x2304",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/roster-v1/prompts/akaza-crown_splitter.txt",
+  "output": "output/imagegen/roster-v1/raw/akaza-crown_splitter.png",
+  "references": [
+    "output/imagegen/roster-v1/raw/akaza-model.png"
+  ],
+  "started_utc": "2026-10-05T15:36:37.1599350Z",
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-10-05T15:39:04.4745979Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "fa398bd2e41f866203d28a39ae98a95d81edb1d04097c8cd9f77c1598105067c",
+  "review_date": "2026-10-06",
+  "review_scope": "Source composition, extracted contact sheets, scale/anchor records and Godot integration reviewed."
+}

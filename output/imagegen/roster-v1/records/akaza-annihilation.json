@@ -1,0 +1,24 @@
+{
+  "id": "akaza-annihilation",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "3072x2304",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/roster-v1/prompts/akaza-annihilation.txt",
+  "output": "output/imagegen/roster-v1/raw/akaza-annihilation.png",
+  "references": [
+    "output/imagegen/roster-v1/raw/akaza-model.png"
+  ],
+  "started_utc": "2026-10-05T15:30:46.0119003Z",
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-10-05T15:32:09.4929823Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "63885bf016fdd7985ce94d76cdc6994fa1b1a6133ddccf9615c2a8efa82f5262",
+  "review_date": "2026-10-06",
+  "review_scope": "Source composition, extracted contact sheets, scale/anchor records and Godot integration reviewed."
+}

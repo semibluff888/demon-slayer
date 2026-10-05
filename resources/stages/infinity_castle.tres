@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StageVisual" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/presentation/stage_visual.gd" id="1"]
+[resource]
+script = ExtResource("1")
+id = "infinity_castle"
+display_name = "无限城"
+subtitle = "灯影无尽"
+asset_directory = "res://art/stages/infinity_castle/"
+roster_order = 10
+atmosphere_preset = "dust"

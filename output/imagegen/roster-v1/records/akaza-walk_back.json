@@ -1,0 +1,24 @@
+{
+  "id": "akaza-walk_back",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2304x1536",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/roster-v1/prompts/akaza-walk_back.txt",
+  "output": "output/imagegen/roster-v1/raw/akaza-walk_back.png",
+  "references": [
+    "output/imagegen/roster-v1/raw/akaza-model.png"
+  ],
+  "started_utc": "2026-10-05T15:51:42.1694156Z",
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-10-05T15:52:56.4728863Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "82068a6a5c76d818731452b42a3206046d7ece796ca5b9d4d9a4033d88989100",
+  "review_date": "2026-10-06",
+  "review_scope": "Source composition, extracted contact sheets, scale/anchor records and Godot integration reviewed."
+}

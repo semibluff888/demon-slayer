@@ -1,0 +1,24 @@
+{
+  "id": "akaza-air_type",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2304x2304",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/roster-v1/prompts/akaza-air_type.txt",
+  "output": "output/imagegen/roster-v1/raw/akaza-air_type.png",
+  "references": [
+    "output/imagegen/roster-v1/raw/akaza-model.png"
+  ],
+  "started_utc": "2026-10-05T15:30:21.1418845Z",
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-10-05T15:31:20.8264904Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "e352c26f66c94bc2f663e9aedbf2041648bb90912b69e0f272333b09e3068954",
+  "review_date": "2026-10-06",
+  "review_scope": "Source composition, extracted contact sheets, scale/anchor records and Godot integration reviewed."
+}

@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="DuelMove" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="1"]
+
+[ext_resource type="Resource" path="res://resources/presentation/blue_afterglow.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+presentation = ExtResource("2")
+display_name = "终式·青银乱残光"
+kind = "max"
+startup = 11
+active = 36
+recovery = 42
+damage = 445
+hitstun = 35
+blockstun = 15
+hitstop = 4
+push = 0.35
+meter_cost = 300
+freeze_frames = 18
+travel = 2.5
+knockdown = true
+hit_frames = PackedInt32Array(11, 17, 23, 29, 35, 41)
+animation_id = "blue_afterglow"
+effect_id = "blue_afterglow"
+box = Rect2(-8, -82, 124, 77)
+id = "akaza_max"

@@ -1,0 +1,24 @@
+{
+  "id": "nezuko-jump_forward",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "3072x2304",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/roster-v1/prompts/nezuko-jump_forward.txt",
+  "output": "output/imagegen/roster-v1/raw/nezuko-jump_forward.png",
+  "references": [
+    "output/imagegen/roster-v1/raw/nezuko-model.png"
+  ],
+  "started_utc": "2026-10-05T15:41:33.1155032Z",
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-10-05T15:42:36.8889925Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "0260d697c948b6ed3305fb5d96c7d4fcf703a2589f7fb76122cd6a00efe8fdbb",
+  "review_date": "2026-10-06",
+  "review_scope": "Source composition, extracted contact sheets, scale/anchor records and Godot integration reviewed."
+}

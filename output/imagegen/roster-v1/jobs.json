@@ -1,0 +1,2859 @@
+[
+  {
+    "id": "nezuko-model",
+    "group": "foundation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-model.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-model.png",
+    "size": "2048x1152",
+    "references": [],
+    "metadata": {}
+  },
+  {
+    "id": "nezuko-portrait",
+    "group": "portraits",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-portrait.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-portrait.png",
+    "size": "1024x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "matte": [
+        0,
+        255,
+        255
+      ]
+    }
+  },
+  {
+    "id": "nezuko-face",
+    "group": "portraits",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-face.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-face.png",
+    "size": "1024x1024",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "matte": [
+        0,
+        255,
+        255
+      ]
+    }
+  },
+  {
+    "id": "nezuko-awakened-face",
+    "group": "portraits",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-awakened-face.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-awakened-face.png",
+    "size": "1024x1024",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "matte": [
+        0,
+        255,
+        255
+      ]
+    }
+  },
+  {
+    "id": "nezuko-idle",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-idle.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-idle.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "idle",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": true,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "nezuko-walk",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-walk.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-walk.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "walk",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": true,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "nezuko-walk_back",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-walk_back.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-walk_back.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "walk_back",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": true,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "nezuko-crouch",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-crouch.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-crouch.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "crouch",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "nezuko-jump",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-jump.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-jump.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "jump",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "pelvis",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "nezuko-guard",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-guard.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-guard.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "guard",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "nezuko-guard_low",
+    "group": "rejected-animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-guard_low.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-guard_low.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "guard_low",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    },
+    "rejection_reason": "Crouching guard remains too upright compared with low hurtbox."
+  },
+  {
+    "id": "nezuko-hit",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-hit.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-hit.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "hit",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "nezuko-knockdown",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-knockdown.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-knockdown.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "knockdown",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "nezuko-throw",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-throw.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-throw.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "throw",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "nezuko-victory",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-victory.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-victory.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "victory",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "nezuko-stand_light",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-stand_light.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-stand_light.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "stand_light",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "nezuko-stand_heavy",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-stand_heavy.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-stand_heavy.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "stand_heavy",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "nezuko-crouch_light",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-crouch_light.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-crouch_light.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "crouch_light",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "nezuko-crouch_heavy",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-crouch_heavy.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-crouch_heavy.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "crouch_heavy",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "nezuko-air_light",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-air_light.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-air_light.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "air_light",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "pelvis",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "nezuko-air_heavy",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-air_heavy.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-air_heavy.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "air_heavy",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "pelvis",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "nezuko-body_stand_light",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-body_stand_light.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-body_stand_light.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "body_stand_light",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "nezuko-body_stand_heavy",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-body_stand_heavy.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-body_stand_heavy.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "body_stand_heavy",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "nezuko-body_crouch_light",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-body_crouch_light.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-body_crouch_light.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "body_crouch_light",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "nezuko-body_crouch_heavy",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-body_crouch_heavy.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-body_crouch_heavy.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "body_crouch_heavy",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "nezuko-body_air_light",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-body_air_light.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-body_air_light.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "body_air_light",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "pelvis",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "nezuko-body_air_heavy",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-body_air_heavy.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-body_air_heavy.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "body_air_heavy",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "pelvis",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "nezuko-dash_forward",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-dash_forward.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-dash_forward.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "dash_forward",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "nezuko-dash_back",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-dash_back.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-dash_back.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "dash_back",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "nezuko-jump_forward",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-jump_forward.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-jump_forward.png",
+    "size": "3072x2304",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "jump_forward",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "pelvis",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "nezuko-jump_back",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-jump_back.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-jump_back.png",
+    "size": "3072x2304",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "jump_back",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "pelvis",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "nezuko-roll_forward",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-roll_forward.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-roll_forward.png",
+    "size": "3072x2304",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "roll_forward",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "pelvis",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "nezuko-roll_back",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-roll_back.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-roll_back.png",
+    "size": "3072x2304",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "roll_back",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "pelvis",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "nezuko-throw_forward",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-throw_forward.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-throw_forward.png",
+    "size": "3072x2304",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "throw_forward",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "nezuko-throw_success",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-throw_success.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-throw_success.png",
+    "size": "3072x2304",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "throw_success",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "nezuko-thrown_forward",
+    "group": "rejected-animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-thrown_forward.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-thrown_forward.png",
+    "size": "3072x2304",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "thrown_forward",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "pelvis",
+      "segment_sync": false
+    },
+    "rejection_reason": "Wrong victim role or standing recovery instead of grounded final pose."
+  },
+  {
+    "id": "nezuko-thrown",
+    "group": "rejected-animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-thrown.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-thrown.png",
+    "size": "3072x2304",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "thrown",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "pelvis",
+      "segment_sync": false
+    },
+    "rejection_reason": "Wrong victim role or standing recovery instead of grounded final pose."
+  },
+  {
+    "id": "nezuko-throw_tech",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-throw_tech.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-throw_tech.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "throw_tech",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "nezuko-round_intro",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-round_intro.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-round_intro.png",
+    "size": "3072x2304",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "round_intro",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "nezuko-round_victory",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-round_victory.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-round_victory.png",
+    "size": "3072x2304",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "round_victory",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "nezuko-round_defeat",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-round_defeat.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-round_defeat.png",
+    "size": "3072x2304",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "round_defeat",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "nezuko-blood_kick",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-blood_kick.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-blood_kick.png",
+    "size": "2304x2304",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "blood_kick",
+      "count": 9,
+      "columns": 3,
+      "rows": 3,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "nezuko-rising_kick",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-rising_kick.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-rising_kick.png",
+    "size": "2304x2304",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "rising_kick",
+      "count": 9,
+      "columns": 3,
+      "rows": 3,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "nezuko-spinning_kick",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-spinning_kick.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-spinning_kick.png",
+    "size": "3072x2304",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "spinning_kick",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": true
+    }
+  },
+  {
+    "id": "nezuko-blood_burst",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-blood_burst.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-blood_burst.png",
+    "size": "3072x2304",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "blood_burst",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": true
+    }
+  },
+  {
+    "id": "nezuko-awakened_combo",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-awakened_combo.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-awakened_combo.png",
+    "size": "3072x2304",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "awakened_combo",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": true
+    }
+  },
+  {
+    "id": "akaza-model",
+    "group": "foundation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-model.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-model.png",
+    "size": "2048x1152",
+    "references": [],
+    "metadata": {}
+  },
+  {
+    "id": "akaza-portrait",
+    "group": "portraits",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-portrait.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-portrait.png",
+    "size": "1024x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "matte": [
+        0,
+        255,
+        0
+      ]
+    }
+  },
+  {
+    "id": "akaza-face",
+    "group": "portraits",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-face.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-face.png",
+    "size": "1024x1024",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "matte": [
+        0,
+        255,
+        0
+      ]
+    }
+  },
+  {
+    "id": "akaza-idle",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-idle.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-idle.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "idle",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": true,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "akaza-walk",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-walk.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-walk.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "walk",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": true,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "akaza-walk_back",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-walk_back.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-walk_back.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "walk_back",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": true,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "akaza-crouch",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-crouch.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-crouch.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "crouch",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "akaza-jump",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-jump.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-jump.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "jump",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "pelvis",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "akaza-guard",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-guard.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-guard.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "guard",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "akaza-guard_low",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-guard_low.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-guard_low.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "guard_low",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "akaza-hit",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-hit.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-hit.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "hit",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "akaza-knockdown",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-knockdown.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-knockdown.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "knockdown",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "akaza-throw",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-throw.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-throw.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "throw",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "akaza-victory",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-victory.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-victory.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "victory",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "akaza-stand_light",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-stand_light.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-stand_light.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "stand_light",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "akaza-stand_heavy",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-stand_heavy.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-stand_heavy.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "stand_heavy",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "akaza-crouch_light",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-crouch_light.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-crouch_light.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "crouch_light",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "akaza-crouch_heavy",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-crouch_heavy.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-crouch_heavy.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "crouch_heavy",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "akaza-air_light",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-air_light.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-air_light.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "air_light",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "pelvis",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "akaza-air_heavy",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-air_heavy.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-air_heavy.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "air_heavy",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "pelvis",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "akaza-body_stand_light",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-body_stand_light.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-body_stand_light.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "body_stand_light",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "akaza-body_stand_heavy",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-body_stand_heavy.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-body_stand_heavy.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "body_stand_heavy",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "akaza-body_crouch_light",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-body_crouch_light.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-body_crouch_light.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "body_crouch_light",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "akaza-body_crouch_heavy",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-body_crouch_heavy.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-body_crouch_heavy.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "body_crouch_heavy",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "akaza-body_air_light",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-body_air_light.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-body_air_light.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "body_air_light",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "pelvis",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "akaza-body_air_heavy",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-body_air_heavy.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-body_air_heavy.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "body_air_heavy",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "pelvis",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "akaza-dash_forward",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-dash_forward.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-dash_forward.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "dash_forward",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "akaza-dash_back",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-dash_back.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-dash_back.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "dash_back",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "akaza-jump_forward",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-jump_forward.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-jump_forward.png",
+    "size": "3072x2304",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "jump_forward",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "pelvis",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "akaza-jump_back",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-jump_back.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-jump_back.png",
+    "size": "3072x2304",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "jump_back",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "pelvis",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "akaza-roll_forward",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-roll_forward.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-roll_forward.png",
+    "size": "3072x2304",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "roll_forward",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "pelvis",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "akaza-roll_back",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-roll_back.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-roll_back.png",
+    "size": "3072x2304",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "roll_back",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "pelvis",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "akaza-throw_forward",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-throw_forward.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-throw_forward.png",
+    "size": "3072x2304",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "throw_forward",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "akaza-throw_success",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-throw_success.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-throw_success.png",
+    "size": "3072x2304",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "throw_success",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "akaza-thrown_forward",
+    "group": "rejected-animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-thrown_forward.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-thrown_forward.png",
+    "size": "3072x2304",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "thrown_forward",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "pelvis",
+      "segment_sync": false
+    },
+    "rejection_reason": "Wrong victim role or standing recovery instead of grounded final pose."
+  },
+  {
+    "id": "akaza-thrown",
+    "group": "rejected-animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-thrown.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-thrown.png",
+    "size": "3072x2304",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "thrown",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "pelvis",
+      "segment_sync": false
+    },
+    "rejection_reason": "Wrong victim role or standing recovery instead of grounded final pose."
+  },
+  {
+    "id": "akaza-throw_tech",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-throw_tech.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-throw_tech.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "throw_tech",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "akaza-round_intro",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-round_intro.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-round_intro.png",
+    "size": "3072x2304",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "round_intro",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "akaza-round_victory",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-round_victory.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-round_victory.png",
+    "size": "3072x2304",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "round_victory",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "akaza-round_defeat",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-round_defeat.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-round_defeat.png",
+    "size": "3072x2304",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "round_defeat",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "akaza-air_type",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-air_type.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-air_type.png",
+    "size": "2304x2304",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "air_type",
+      "count": 9,
+      "columns": 3,
+      "rows": 3,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "akaza-crown_splitter",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-crown_splitter.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-crown_splitter.png",
+    "size": "2304x2304",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "crown_splitter",
+      "count": 9,
+      "columns": 3,
+      "rows": 3,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "akaza-disorder",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-disorder.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-disorder.png",
+    "size": "3072x2304",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "disorder",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": true
+    }
+  },
+  {
+    "id": "akaza-annihilation",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-annihilation.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-annihilation.png",
+    "size": "3072x2304",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "annihilation",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "akaza-blue_afterglow",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-blue_afterglow.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-blue_afterglow.png",
+    "size": "3072x2304",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "blue_afterglow",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": true
+    }
+  },
+  {
+    "id": "infinity_castle-master",
+    "group": "foundation",
+    "prompt": "output/imagegen/roster-v1/prompts/infinity_castle-master.txt",
+    "out": "output/imagegen/roster-v1/raw/infinity_castle-master.png",
+    "size": "3840x1280",
+    "references": [],
+    "metadata": {
+      "stage": "infinity_castle"
+    }
+  },
+  {
+    "id": "entertainment_district-master",
+    "group": "foundation",
+    "prompt": "output/imagegen/roster-v1/prompts/entertainment_district-master.txt",
+    "out": "output/imagegen/roster-v1/raw/entertainment_district-master.png",
+    "size": "3840x1280",
+    "references": [],
+    "metadata": {
+      "stage": "entertainment_district"
+    }
+  },
+  {
+    "id": "fx-blood-flame",
+    "group": "effects",
+    "prompt": "output/imagegen/roster-v1/prompts/fx-blood-flame.txt",
+    "out": "output/imagegen/roster-v1/raw/fx-blood-flame.png",
+    "size": "1536x1024",
+    "references": [],
+    "metadata": {}
+  },
+  {
+    "id": "fx-shockwave",
+    "group": "effects",
+    "prompt": "output/imagegen/roster-v1/prompts/fx-shockwave.txt",
+    "out": "output/imagegen/roster-v1/raw/fx-shockwave.png",
+    "size": "1536x1024",
+    "references": [],
+    "metadata": {}
+  },
+  {
+    "id": "fx-compass",
+    "group": "effects",
+    "prompt": "output/imagegen/roster-v1/prompts/fx-compass.txt",
+    "out": "output/imagegen/roster-v1/raw/fx-compass.png",
+    "size": "1536x1024",
+    "references": [],
+    "metadata": {}
+  },
+  {
+    "id": "infinity_castle-detail-0-0",
+    "group": "stage-detail",
+    "prompt": "output/imagegen/roster-v1/prompts/infinity_castle-detail-0-0.txt",
+    "out": "output/imagegen/roster-v1/raw/infinity_castle-detail-0-0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/roster-v1/references/infinity_castle-detail-0-0.png"
+    ],
+    "metadata": {
+      "stage": "infinity_castle",
+      "target_rect": [
+        0,
+        0,
+        1536,
+        1024
+      ]
+    }
+  },
+  {
+    "id": "infinity_castle-detail-0-1",
+    "group": "stage-detail",
+    "prompt": "output/imagegen/roster-v1/prompts/infinity_castle-detail-0-1.txt",
+    "out": "output/imagegen/roster-v1/raw/infinity_castle-detail-0-1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/roster-v1/references/infinity_castle-detail-0-1.png"
+    ],
+    "metadata": {
+      "stage": "infinity_castle",
+      "target_rect": [
+        1152,
+        0,
+        1536,
+        1024
+      ]
+    }
+  },
+  {
+    "id": "infinity_castle-detail-0-2",
+    "group": "stage-detail",
+    "prompt": "output/imagegen/roster-v1/prompts/infinity_castle-detail-0-2.txt",
+    "out": "output/imagegen/roster-v1/raw/infinity_castle-detail-0-2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/roster-v1/references/infinity_castle-detail-0-2.png"
+    ],
+    "metadata": {
+      "stage": "infinity_castle",
+      "target_rect": [
+        2304,
+        0,
+        1536,
+        1024
+      ]
+    }
+  },
+  {
+    "id": "infinity_castle-detail-0-3",
+    "group": "stage-detail",
+    "prompt": "output/imagegen/roster-v1/prompts/infinity_castle-detail-0-3.txt",
+    "out": "output/imagegen/roster-v1/raw/infinity_castle-detail-0-3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/roster-v1/references/infinity_castle-detail-0-3.png"
+    ],
+    "metadata": {
+      "stage": "infinity_castle",
+      "target_rect": [
+        3456,
+        0,
+        1536,
+        1024
+      ]
+    }
+  },
+  {
+    "id": "infinity_castle-detail-0-4",
+    "group": "stage-detail",
+    "prompt": "output/imagegen/roster-v1/prompts/infinity_castle-detail-0-4.txt",
+    "out": "output/imagegen/roster-v1/raw/infinity_castle-detail-0-4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/roster-v1/references/infinity_castle-detail-0-4.png"
+    ],
+    "metadata": {
+      "stage": "infinity_castle",
+      "target_rect": [
+        4608,
+        0,
+        1536,
+        1024
+      ]
+    }
+  },
+  {
+    "id": "infinity_castle-detail-1-0",
+    "group": "stage-detail",
+    "prompt": "output/imagegen/roster-v1/prompts/infinity_castle-detail-1-0.txt",
+    "out": "output/imagegen/roster-v1/raw/infinity_castle-detail-1-0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/roster-v1/references/infinity_castle-detail-1-0.png"
+    ],
+    "metadata": {
+      "stage": "infinity_castle",
+      "target_rect": [
+        0,
+        512,
+        1536,
+        1024
+      ]
+    }
+  },
+  {
+    "id": "infinity_castle-detail-1-1",
+    "group": "stage-detail",
+    "prompt": "output/imagegen/roster-v1/prompts/infinity_castle-detail-1-1.txt",
+    "out": "output/imagegen/roster-v1/raw/infinity_castle-detail-1-1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/roster-v1/references/infinity_castle-detail-1-1.png"
+    ],
+    "metadata": {
+      "stage": "infinity_castle",
+      "target_rect": [
+        1152,
+        512,
+        1536,
+        1024
+      ]
+    }
+  },
+  {
+    "id": "infinity_castle-detail-1-2",
+    "group": "stage-detail",
+    "prompt": "output/imagegen/roster-v1/prompts/infinity_castle-detail-1-2.txt",
+    "out": "output/imagegen/roster-v1/raw/infinity_castle-detail-1-2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/roster-v1/references/infinity_castle-detail-1-2.png"
+    ],
+    "metadata": {
+      "stage": "infinity_castle",
+      "target_rect": [
+        2304,
+        512,
+        1536,
+        1024
+      ]
+    }
+  },
+  {
+    "id": "infinity_castle-detail-1-3",
+    "group": "stage-detail",
+    "prompt": "output/imagegen/roster-v1/prompts/infinity_castle-detail-1-3.txt",
+    "out": "output/imagegen/roster-v1/raw/infinity_castle-detail-1-3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/roster-v1/references/infinity_castle-detail-1-3.png"
+    ],
+    "metadata": {
+      "stage": "infinity_castle",
+      "target_rect": [
+        3456,
+        512,
+        1536,
+        1024
+      ]
+    }
+  },
+  {
+    "id": "infinity_castle-detail-1-4",
+    "group": "stage-detail",
+    "prompt": "output/imagegen/roster-v1/prompts/infinity_castle-detail-1-4.txt",
+    "out": "output/imagegen/roster-v1/raw/infinity_castle-detail-1-4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/roster-v1/references/infinity_castle-detail-1-4.png"
+    ],
+    "metadata": {
+      "stage": "infinity_castle",
+      "target_rect": [
+        4608,
+        512,
+        1536,
+        1024
+      ]
+    }
+  },
+  {
+    "id": "entertainment_district-detail-0-0",
+    "group": "stage-detail",
+    "prompt": "output/imagegen/roster-v1/prompts/entertainment_district-detail-0-0.txt",
+    "out": "output/imagegen/roster-v1/raw/entertainment_district-detail-0-0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/roster-v1/references/entertainment_district-detail-0-0.png"
+    ],
+    "metadata": {
+      "stage": "entertainment_district",
+      "target_rect": [
+        0,
+        0,
+        1536,
+        1024
+      ]
+    }
+  },
+  {
+    "id": "entertainment_district-detail-0-1",
+    "group": "stage-detail",
+    "prompt": "output/imagegen/roster-v1/prompts/entertainment_district-detail-0-1.txt",
+    "out": "output/imagegen/roster-v1/raw/entertainment_district-detail-0-1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/roster-v1/references/entertainment_district-detail-0-1.png"
+    ],
+    "metadata": {
+      "stage": "entertainment_district",
+      "target_rect": [
+        1152,
+        0,
+        1536,
+        1024
+      ]
+    }
+  },
+  {
+    "id": "entertainment_district-detail-0-2",
+    "group": "stage-detail",
+    "prompt": "output/imagegen/roster-v1/prompts/entertainment_district-detail-0-2.txt",
+    "out": "output/imagegen/roster-v1/raw/entertainment_district-detail-0-2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/roster-v1/references/entertainment_district-detail-0-2.png"
+    ],
+    "metadata": {
+      "stage": "entertainment_district",
+      "target_rect": [
+        2304,
+        0,
+        1536,
+        1024
+      ]
+    }
+  },
+  {
+    "id": "entertainment_district-detail-0-3",
+    "group": "stage-detail",
+    "prompt": "output/imagegen/roster-v1/prompts/entertainment_district-detail-0-3.txt",
+    "out": "output/imagegen/roster-v1/raw/entertainment_district-detail-0-3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/roster-v1/references/entertainment_district-detail-0-3.png"
+    ],
+    "metadata": {
+      "stage": "entertainment_district",
+      "target_rect": [
+        3456,
+        0,
+        1536,
+        1024
+      ]
+    }
+  },
+  {
+    "id": "entertainment_district-detail-0-4",
+    "group": "stage-detail",
+    "prompt": "output/imagegen/roster-v1/prompts/entertainment_district-detail-0-4.txt",
+    "out": "output/imagegen/roster-v1/raw/entertainment_district-detail-0-4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/roster-v1/references/entertainment_district-detail-0-4.png"
+    ],
+    "metadata": {
+      "stage": "entertainment_district",
+      "target_rect": [
+        4608,
+        0,
+        1536,
+        1024
+      ]
+    }
+  },
+  {
+    "id": "entertainment_district-detail-1-0",
+    "group": "stage-detail",
+    "prompt": "output/imagegen/roster-v1/prompts/entertainment_district-detail-1-0.txt",
+    "out": "output/imagegen/roster-v1/raw/entertainment_district-detail-1-0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/roster-v1/references/entertainment_district-detail-1-0.png"
+    ],
+    "metadata": {
+      "stage": "entertainment_district",
+      "target_rect": [
+        0,
+        512,
+        1536,
+        1024
+      ]
+    }
+  },
+  {
+    "id": "entertainment_district-detail-1-1",
+    "group": "stage-detail",
+    "prompt": "output/imagegen/roster-v1/prompts/entertainment_district-detail-1-1.txt",
+    "out": "output/imagegen/roster-v1/raw/entertainment_district-detail-1-1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/roster-v1/references/entertainment_district-detail-1-1.png"
+    ],
+    "metadata": {
+      "stage": "entertainment_district",
+      "target_rect": [
+        1152,
+        512,
+        1536,
+        1024
+      ]
+    }
+  },
+  {
+    "id": "entertainment_district-detail-1-2",
+    "group": "stage-detail",
+    "prompt": "output/imagegen/roster-v1/prompts/entertainment_district-detail-1-2.txt",
+    "out": "output/imagegen/roster-v1/raw/entertainment_district-detail-1-2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/roster-v1/references/entertainment_district-detail-1-2.png"
+    ],
+    "metadata": {
+      "stage": "entertainment_district",
+      "target_rect": [
+        2304,
+        512,
+        1536,
+        1024
+      ]
+    }
+  },
+  {
+    "id": "entertainment_district-detail-1-3",
+    "group": "stage-detail",
+    "prompt": "output/imagegen/roster-v1/prompts/entertainment_district-detail-1-3.txt",
+    "out": "output/imagegen/roster-v1/raw/entertainment_district-detail-1-3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/roster-v1/references/entertainment_district-detail-1-3.png"
+    ],
+    "metadata": {
+      "stage": "entertainment_district",
+      "target_rect": [
+        3456,
+        512,
+        1536,
+        1024
+      ]
+    }
+  },
+  {
+    "id": "entertainment_district-detail-1-4",
+    "group": "stage-detail",
+    "prompt": "output/imagegen/roster-v1/prompts/entertainment_district-detail-1-4.txt",
+    "out": "output/imagegen/roster-v1/raw/entertainment_district-detail-1-4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/roster-v1/references/entertainment_district-detail-1-4.png"
+    ],
+    "metadata": {
+      "stage": "entertainment_district",
+      "target_rect": [
+        4608,
+        512,
+        1536,
+        1024
+      ]
+    }
+  },
+  {
+    "id": "nezuko-thrown_forward-v2",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-thrown_forward-v2.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-thrown_forward-v2.png",
+    "size": "3072x2304",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "thrown_forward",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "pelvis",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "nezuko-thrown-v2",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-thrown-v2.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-thrown-v2.png",
+    "size": "3072x2304",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "thrown",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "pelvis",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "akaza-thrown_forward-v2",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-thrown_forward-v2.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-thrown_forward-v2.png",
+    "size": "3072x2304",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "thrown_forward",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "pelvis",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "akaza-thrown-v2",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/akaza-thrown-v2.txt",
+    "out": "output/imagegen/roster-v1/raw/akaza-thrown-v2.png",
+    "size": "3072x2304",
+    "references": [
+      "output/imagegen/roster-v1/raw/akaza-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "thrown",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        0
+      ],
+      "anchor_mode": "pelvis",
+      "segment_sync": false
+    }
+  },
+  {
+    "id": "nezuko-guard_low-v2",
+    "group": "animation",
+    "prompt": "output/imagegen/roster-v1/prompts/nezuko-guard_low-v2.txt",
+    "out": "output/imagegen/roster-v1/raw/nezuko-guard_low-v2.png",
+    "size": "2304x1536",
+    "references": [
+      "output/imagegen/roster-v1/raw/nezuko-model.png",
+      "output/imagegen/roster-v1/raw/nezuko-crouch.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "guard_low",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "loop": false,
+      "fps": 12,
+      "matte": [
+        0,
+        255,
+        255
+      ],
+      "anchor_mode": "feet",
+      "segment_sync": false
+    }
+  }
+]

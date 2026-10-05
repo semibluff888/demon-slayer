@@ -1,11 +1,20 @@
 extends Control
 ## Native controls over the illustrated stage. Artwork contains no interface text.
+const RosterCard = preload("res://scripts/ui/roster_card.gd")
+const StageCard = preload("res://scripts/ui/stage_card.gd")
 const DuelButton = preload("res://scripts/ui/duel_button.gd")
 const BattleStyle = preload("res://scripts/presentation/battle_style.gd")
 const PAPER := Color("fff0c8")
 const GOLD := Color("e6c77f")
 const MUTED := Color("b7bfd0")
 const RED := Color("9f3549")
+var roster_scroll: ScrollContainer
+var roster_cards: Dictionary = {}
+var stage_cards: Dictionary = {}
+var fighter_portraits: Array[TextureRect] = []
+var fighter_names: Array[Label] = []
+var fighter_states: Array[Label] = []
+var slot_buttons: Array[Button] = []
 var app: Node2D
 var catalog: RefCounted
 var actions: Dictionary = {}
@@ -48,6 +57,7 @@ func _ready() -> void:
 		shades[side] = shade
 
 func _process(delta: float) -> void:
+	app.selection.tick(delta)
 	if app.paused:
 		return
 	motion_time += delta
@@ -59,6 +69,12 @@ func _process(delta: float) -> void:
 			entry.node.position = entry.origin + Vector2(sin(motion_time * 0.38 + entry.phase) * 2, cos(motion_time * 0.32 + entry.phase) * 1.8)
 
 func clear() -> void:
+	roster_cards.clear()
+	stage_cards.clear()
+	fighter_portraits.clear()
+	fighter_names.clear()
+	fighter_states.clear()
+	slot_buttons.clear()
 	battle_style = false
 	if transition != null:
 		transition.kill()
@@ -91,100 +107,199 @@ func reveal() -> void:
 		focusable[i].focus_next = focusable[i].get_path_to(next)
 
 func title() -> void:
-	rect(Rect2(0, 0, 1280, 720), Color(0.025, 0.035, 0.075, 0.08))
-	portrait(catalog.characters.keys()[-1], Rect2(872, 118, 365, 553), false, true)
-	portrait(catalog.characters.keys()[0], Rect2(522, 58, 491, 655), true, true)
-	texture(shades.left, Rect2(0, 0, 800, 720))
-	texture(shades.bottom, Rect2(0, 604, 1280, 116))
-	rect(Rect2(56, 50, 35, 35), RED)
-	label("滅", Rect2(56, 50, 35, 35), 24, PAPER, true, HORIZONTAL_ALIGNMENT_CENTER)
-	label("鬼灭之刃  /  同人格斗", Rect2(109, 55, 415, 25), 17, GOLD)
-	label("月下对决", Rect2(49, 170, 569, 113), 99, PAPER, true)
-	label("M O O N L I T   D U E L", Rect2(61, 288, 493, 27), 18, GOLD)
-	rule(Vector2(61, 342), 58, RED)
-	label("挥刀，斩破长夜。", Rect2(60, 359, 434, 35), 25, MUTED, true)
-	var cpu := button("mode_cpu", "对 战 电 脑", Rect2(61, 434, 372, 59), func(): app.choose_mode("cpu"), true, true)
-	cpu.kicker = "01"
-	cpu.grab_focus()
-	var local := button("mode_local", "本 地 双 人", Rect2(61, 506, 372, 59), func(): app.choose_mode("local"), false, true)
-	local.kicker = "02"
-	button("mode_practice", "自由练习", Rect2(61, 576, 372, 45), func(): app.choose_mode("practice"), false, true, 21)
-	button("help", "操作指南", Rect2(61, 635, 179, 39), app.show_help, false, false, 17)
-	button("sound", "声音  /  " + ("关" if app.sound.muted else "开"), Rect2(258, 635, 175, 39), func(): app.sound.toggle(); app.show_title(), false, false, 17)
-	label("一对一对决    ·    六十秒一局    ·    三局两胜", Rect2(61, 675, 533, 22), 13, MUTED)
-	label("藤袭之庭", Rect2(1012, 657, 210, 31), 24, PAPER, true, HORIZONTAL_ALIGNMENT_RIGHT)
-	label("月夜  /  紫藤庭院", Rect2(1012, 692, 210, 18), 12, GOLD, false, HORIZONTAL_ALIGNMENT_RIGHT)
+	rect(Rect2(0, 0, 1280, 720), Color("080f1d"))
+	slash(Rect2(450, 0, 830, 720), Color("162239"), 120)
+	slash(Rect2(737, 0, 275, 720), Color("4b2638"), 100)
+	slash(Rect2(1000, 0, 280, 720), Color("182f46"), 95)
+	var ids: Array = catalog.characters.keys()
+	var featured := mini(ids.size(), 4)
+	for i in range(featured):
+		var x := 460.0 + i * 205
+		hero_portrait(ids[i], Rect2(x, 76 + (i % 2) * 22, 205, 622 - (i % 2) * 22), i < 2)
+	texture(shades.left, Rect2(0, 0, 680, 720))
+	texture(shades.bottom, Rect2(0, 544, 1280, 176))
+	rule(Vector2(55, 123), 54, RED)
+	label("鬼灭之刃", Rect2(55, 75, 300, 33), 24, GOLD, true)
+	label("月下对决", Rect2(48, 164, 460, 115), 82, PAPER, true)
+	label("M O O N L I T   D U E L", Rect2(57, 284, 435, 27), 16, MUTED)
+	button("mode_cpu", "单人对战", Rect2(55, 404, 362, 62), func(): app.choose_mode("cpu"), true, true, 27).grab_focus()
+	button("mode_local", "双人对战", Rect2(55, 480, 362, 56), func(): app.choose_mode("local"), false, true, 25)
+	button("mode_practice", "自由练习", Rect2(55, 550, 362, 56), func(): app.choose_mode("practice"), false, true, 25)
+	button("help", "指南", Rect2(55, 650, 122, 36), app.show_help, false, false, 17)
+	button("sound", "声音 " + ("关" if app.sound.muted else "开"), Rect2(192, 650, 139, 36), func(): app.sound.toggle(); app.show_title(), false, false, 17)
 	reveal()
 
+func slash(bounds: Rect2, color: Color, cut: float = 40) -> void:
+	var polygon := Polygon2D.new()
+	polygon.polygon = PackedVector2Array([bounds.position + Vector2(cut, 0), Vector2(bounds.end.x, bounds.position.y), bounds.end - Vector2(cut, 0), Vector2(bounds.position.x, bounds.end.y)])
+	polygon.color = color
+	add_child(polygon)
+
+func hero_portrait(id: String, bounds: Rect2, faces_right: bool) -> TextureRect:
+	var visual = catalog.characters[id]
+	var node := TextureRect.new()
+	node.position = bounds.position
+	node.size = bounds.size
+	node.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	node.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	node.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(node)
+	_set_hero(node, visual, faces_right)
+	return node
+
+func _set_hero(node: TextureRect, visual: Resource, faces_right: bool) -> void:
+	if visual.portrait == null: return
+	var crop := AtlasTexture.new()
+	crop.atlas = visual.portrait
+	var height: float = visual.portrait.get_height() * 0.72
+	var width: float = minf(visual.portrait.get_width(), height * node.size.x / node.size.y)
+	var center: float = visual.menu_focus_x * visual.portrait.get_width()
+	crop.region = Rect2(clampf(center - width * 0.5, 0, visual.portrait.get_width() - width), 0, width, height)
+	node.texture = crop
+	node.flip_h = faces_right != visual.portrait_faces_right
+
 func setup() -> void:
-	rect(Rect2(0, 0, 1280, 720), Color(0.025, 0.038, 0.075, 0.61))
-	texture(shades.bottom, Rect2(0, 409, 1280, 311))
-	label("选择剑士", Rect2(47, 23, 440, 62), 43, PAPER, true)
-	label("S E L E C T   Y O U R   F I G H T E R", Rect2(51, 90, 513, 22), 12, GOLD)
-	label("自由练习" if app.mode == "practice" else ("玩家对电脑" if app.mode == "cpu" else "本地双人对战"), Rect2(866, 42, 364, 28), 17, MUTED, false, HORIZONTAL_ALIGNMENT_RIGHT)
-	rule(Vector2(51, 123), 1178, Color(GOLD, 0.34))
-	for i in range(2):
-		var visual = catalog.characters[app.characters[i]]
-		var left := i == 0
-		var x := 49.0 if left else 730.0
-		portrait(app.characters[i], Rect2(217 if left else 741, 125, 321, 389), left)
-		var tx := 54.0 if left else 1068.0
-		var align := HORIZONTAL_ALIGNMENT_LEFT if left else HORIZONTAL_ALIGNMENT_RIGHT
-		label("PLAYER 01" if left else ("DUMMY" if app.mode == "practice" else ("COMPUTER" if app.mode == "cpu" else "PLAYER 02")), Rect2(tx, 145, 165, 22), 12, visual.accent, false, align)
-		label(visual.display_name, Rect2(tx - (17 if not left else 0), 184, 182, 45), 32, PAPER, true, align)
-		label(visual.element_name, Rect2(tx, 245, 165, 29), 20, visual.accent, false, align)
-		label(app.combat.catalog.characters[app.characters[i]].role, Rect2(tx, 280, 165, 25), 16, MUTED, false, align)
-		rule(Vector2(tx, 326), 161, Color(visual.accent, 0.48))
-		label("236 牵制 / 突进\n623 对空 / 214 回旋", Rect2(tx, 348, 165, 65), 13, MUTED, false, align)
-		label("1格超必杀\n3格 MAX 超必杀", Rect2(tx, 421, 165, 66), 20, PAPER, true, align)
-		var roster: Array = catalog.characters.keys()
-		var scroll := ScrollContainer.new()
-		scroll.position = Vector2(x, 516)
-		scroll.size = Vector2(502, 70)
-		scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-		add_child(scroll)
-		var cards := HBoxContainer.new()
-		cards.add_theme_constant_override("separation", 12)
-		scroll.add_child(cards)
-		for j in range(roster.size()):
-			var id: String = roster[j]
-			var card_visual = catalog.characters[id]
-			var card := button("p%d_%s" % [i + 1, id], card_visual.display_name, Rect2(x + j * 258, 520, 242, 54), func(): app.select_character(i, id), false, false, 18)
-			card.reparent(cards)
-			card.custom_minimum_size = Vector2(242, 54)
-			card.accent = card_visual.accent.darkened(0.65)
-			card.selected = app.characters[i] == id
-			card.portrait_texture = card_visual.avatar
-			if left and card.selected:
-				card.grab_focus()
-	label("VS", Rect2(563, 264, 154, 82), 64, GOLD, true, HORIZONTAL_ALIGNMENT_CENTER)
-	label("呼 吸 之 间", Rect2(555, 354, 170, 28), 15, MUTED, true, HORIZONTAL_ALIGNMENT_CENTER)
-	panel(Rect2(49, 590, 1182, 55))
-	label("操作设备", Rect2(68, 603, 140, 28), 17, GOLD)
+	rect(Rect2(0, 0, 1280, 720), Color("09111f"))
+	slash(Rect2(0, 76, 529, 351), Color("153642"), 72)
+	slash(Rect2(751, 76, 529, 351), Color("422639"), 72)
+	label("选择角色", Rect2(47, 22, 495, 56), 36, PAPER, true)
+	label("练习" if app.mode == "practice" else ("单人" if app.mode == "cpu" else "双人"), Rect2(1053, 30, 179, 30), 17, MUTED, false, HORIZONTAL_ALIGNMENT_RIGHT)
+	rule(Vector2(49, 83), 1182, Color(GOLD, 0.28))
+	for slot in range(2):
+		var left := slot == 0
+		var x := 56.0 if left else 872.0
+		var portrait_node := hero_portrait(app.characters[slot], Rect2(48 if left else 796, 92, 436, 304), left)
+		fighter_portraits.append(portrait_node)
+		slot_buttons.append(button("slot_%d" % [slot+1], "P%d" % [slot+1], Rect2(56 if left else 1110, 394, 114, 35), func(): app.selection.activate(slot), false, false, 17))
+		fighter_states.append(label("", Rect2(x, 432, 352, 25), 16, MUTED, false, HORIZONTAL_ALIGNMENT_RIGHT if not left else HORIZONTAL_ALIGNMENT_LEFT))
+		fighter_names.append(label("", Rect2(191 if left else 758, 389, 333, 47), 31, PAPER, true, HORIZONTAL_ALIGNMENT_RIGHT if not left else HORIZONTAL_ALIGNMENT_LEFT))
+	label("VS", Rect2(529, 209, 222, 103), 77, GOLD, true, HORIZONTAL_ALIGNMENT_CENTER)
+	roster_scroll = ScrollContainer.new()
+	roster_scroll.name = "RosterScroll"
+	roster_scroll.position = Vector2(319, 450)
+	roster_scroll.size = Vector2(642, 192)
+	roster_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	roster_scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
+	add_child(roster_scroll)
+	var center := CenterContainer.new()
+	center.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	center.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	roster_scroll.add_child(center)
+	var grid := GridContainer.new()
+	grid.columns = mini(6, catalog.characters.size())
+	grid.add_theme_constant_override("h_separation", 8)
+	grid.add_theme_constant_override("v_separation", 8)
+	center.add_child(grid)
+	for id: String in catalog.characters:
+		var card := RosterCard.new()
+		card.name = "character_" + id
+		card.custom_minimum_size = Vector2(96, 88)
+		card.portrait = catalog.characters[id].avatar
+		card.tooltip_text = catalog.characters[id].display_name
+		card.pressed.connect(func(): app.select_character(app.selection.active_slot, id))
+		card.mouse_entered.connect(card.queue_redraw)
+		card.mouse_exited.connect(card.queue_redraw)
+		card.focus_entered.connect(card.queue_redraw)
+		card.focus_exited.connect(card.queue_redraw)
+		grid.add_child(card)
+		roster_cards[id] = card
+		actions["character_" + id] = card
+	button("back", "返回", Rect2(48, 663, 130, 39), app.show_title, false, false, 17)
+	button("devices", "设备", Rect2(192, 663, 130, 39), device_popup, false, false, 17)
+	app.device_notice = label("", Rect2(337, 669, 510, 29), 15, MUTED)
+	app.start_button = button("start", "确认", Rect2(1006, 654, 225, 48), func(): app.selection.confirm(app.selection.active_slot), true, true, 21)
+	refresh_setup()
+	reveal()
+
+func refresh_setup() -> void:
+	if app.screen != "setup" or fighter_portraits.size() != 2: return
+	for slot in range(2):
+		var visual = catalog.characters[app.characters[slot]]
+		_set_hero(fighter_portraits[slot], visual, slot == 0)
+		fighter_names[slot].text = visual.display_name
+		fighter_states[slot].text = "已就绪" if app.selection.ready[slot] else ("选择中" if app.mode == "local" or app.selection.active_slot == slot else "")
+		fighter_states[slot].modulate = Color("69dbea") if slot == 0 else Color("f191ae")
+		slot_buttons[slot].text = "P1" if slot == 0 else ("木桩" if app.mode == "practice" else "CPU" if app.mode == "cpu" else "P2")
+		slot_buttons[slot].selected = app.selection.active_slot == slot
+	for id: String in roster_cards:
+		var card: Button = roster_cards[id]
+		card.cursors.clear()
+		card.locked.assign(app.selection.ready)
+		for slot in range(2):
+			if app.characters[slot] == id: card.cursors.append(slot)
+		card.queue_redraw()
+	var current: Button = roster_cards[app.characters[app.selection.active_slot]]
+	current.grab_focus()
+	roster_scroll.ensure_control_visible.call_deferred(current)
+	app.start_button.text = "确认 P%d" % [app.selection.active_slot + 1] if app.mode == "local" else "确认"
+	app._validate_setup()
+
+func stages() -> void:
+	rect(Rect2(0, 0, 1280, 720), Color("09111f"))
+	slash(Rect2(623, 0, 657, 720), Color("202b40"), 140)
+	label("选择场景", Rect2(49, 35, 600, 63), 41, PAPER, true)
+	rule(Vector2(51, 113), 1178, Color(GOLD, 0.32))
+	var index := 0
+	for id: String in catalog.stages:
+		var visual = catalog.stages[id]
+		var card := StageCard.new()
+		card.name = "stage_" + id
+		card.caption = visual.display_name
+		card.preview = visual.thumbnail
+		card.position = Vector2(51 + index * 398, 196)
+		card.size = Vector2(382, 337)
+		card.pressed.connect(func(): app.stage_id = id; refresh_stages())
+		add_child(card)
+		actions["stage_" + id] = card
+		stage_cards[id] = card
+		index += 1
+	button("back", "返回选人", Rect2(51, 660, 180, 42), app.show_setup, false, false, 18)
+	button("devices", "设备", Rect2(245, 660, 125, 42), device_popup, false, false, 18)
+	app.device_notice = label("", Rect2(391, 666, 493, 30), 15, MUTED)
+	app.start_button = button("start", "开战", Rect2(974, 647, 257, 56), func(): app.selection.confirm(0), true, true, 25)
+	refresh_stages()
+	reveal()
+
+func refresh_stages() -> void:
+	for id: String in stage_cards:
+		stage_cards[id].selected = id == app.stage_id
+		stage_cards[id].queue_redraw()
+	if stage_cards.has(app.stage_id): stage_cards[app.stage_id].grab_focus()
+	app._validate_setup()
+
+func device_popup() -> void:
+	if app.selection.modal: return
+	app.selection.modal = true
+	var blocker := ColorRect.new()
+	blocker.color = Color(0.015, 0.023, 0.045, 0.94)
+	blocker.size = Vector2(1280, 720)
+	add_child(blocker)
+	label("操作设备", Rect2(326, 172, 626, 55), 34, PAPER, true)
 	var available: Array = app.router.available_devices()
-	for i in range(2):
-		label("P%d" % (i + 1), Rect2(218 + i * 488, 606, 51, 24), 15, MUTED)
-		var option := device_option("device_p%d" % (i + 1), Rect2(269 + i * 488, 598, 386, 40))
+	app.setup_options.clear()
+	for slot in range(2):
+		label("P%d" % [slot + 1], Rect2(333, 278 + slot * 81, 70, 42), 20, GOLD)
+		var option := device_option("device_p%d" % [slot + 1], Rect2(426, 278 + slot * 81, 522, 44))
 		app.setup_options.append(option)
-		if i == 1 and app.mode != "local":
-			option.add_item("练习木桩" if app.mode == "practice" else "电脑对手  ·  普通")
+		if slot == 1 and app.mode != "local":
+			option.add_item("练习木桩" if app.mode == "practice" else "电脑")
 			option.disabled = true
 		else:
-			var selected_index := -1
 			for index in range(available.size()):
 				option.add_item(available[index].label)
-				if available[index].id == app.devices[i]:
-					selected_index = index
-			if selected_index < 0:
-				selected_index = mini(i, available.size() - 1)
-				app.devices[i] = available[selected_index].id
-			option.select(selected_index)
-			option.item_selected.connect(func(index: int): app.devices[i] = available[index].id; app._validate_setup())
-	button("back", "返回", Rect2(49, 662, 153, 39), app.show_title, false, false, 17)
-	app.device_notice = label("", Rect2(227, 656, 591, 52), 14, MUTED)
-	app.start_button = button("start", "拔刀 · 进入对战", Rect2(915, 657, 316, 48), app.start_match, true, true, 21)
+				if available[index].id == app.devices[slot]: option.select(index)
+			option.item_selected.connect(func(index: int): app.devices[slot] = available[index].id; app._validate_setup())
+	app.device_notice = label("", Rect2(331, 441, 617, 34), 17, MUTED)
+	button("close_devices", "完成", Rect2(670, 492, 278, 49), close_devices, true, true)
+	app.setup_options[0].grab_focus()
 	app._validate_setup()
-	reveal()
+
+func close_devices() -> void:
+	app.selection.modal = false
+	var is_stage: bool = app.screen == "stage"
+	clear()
+	if is_stage: stages()
+	else: setup()
 
 func portrait(id: String, bounds: Rect2, flip: bool = false, moving: bool = false) -> void:
 	var visual = catalog.characters[id]
@@ -192,7 +307,7 @@ func portrait(id: String, bounds: Rect2, flip: bool = false, moving: bool = fals
 		return
 	var node := texture(visual.portrait, bounds)
 	node.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	node.flip_h = flip
+	node.flip_h = flip != visual.portrait_faces_right
 	if moving:
 		decorative.append({"node": node, "origin": bounds.position, "phase": decorative.size() * 1.7})
 
@@ -207,8 +322,8 @@ func pause(reason: String) -> void:
 	rect(Rect2(0, 0, 1280, 720), Color(0.018, 0.03, 0.065, 0.72))
 	panel(Rect2(399, 77, 482, 566))
 	label("P A U S E", Rect2(434, 111, 412, 23), 14, GOLD, false, HORIZONTAL_ALIGNMENT_CENTER)
-	label("暂收刀锋", Rect2(424, 149, 432, 67), 45, PAPER, true, HORIZONTAL_ALIGNMENT_CENTER)
-	label(reason if not reason.is_empty() else "呼吸片刻，再次拔刀。", Rect2(426, 232, 428, 57), 17, MUTED, false, HORIZONTAL_ALIGNMENT_CENTER)
+	label("暂停对战", Rect2(424, 149, 432, 67), 45, PAPER, true, HORIZONTAL_ALIGNMENT_CENTER)
+	label(reason if not reason.is_empty() else "准备好后继续对战。", Rect2(426, 232, 428, 57), 17, MUTED, false, HORIZONTAL_ALIGNMENT_CENTER)
 	var resume := button("resume", "继续练习" if app.mode == "practice" else "继续对战", Rect2(449, 310, 382, 49), func(): app.set_paused(false), true, true)
 	resume.disabled = not app._devices_ready()
 	button("restart", "重置练习" if app.mode == "practice" else "重新开始比赛", Rect2(449, 376, 382, 43), app.start_match, false, false, 19)
@@ -240,7 +355,7 @@ func result() -> void:
 	button("replay", "再来一场", Rect2(685, 472, 495, 61), app.start_match, true, true).grab_focus()
 	button("setup", "返回选人", Rect2(685, 558, 237, 44), app.show_setup, false, false, 18)
 	button("home", "返回主菜单", Rect2(943, 558, 237, 44), app.show_title, false, false, 18)
-	label("刀锋归鞘，月色如初。", Rect2(685, 662, 495, 26), 17, MUTED, true)
+	label("月色如初，再决胜负。", Rect2(685, 662, 495, 26), 17, MUTED, true)
 	result_sparks = Node2D.new()
 	result_sparks.draw.connect(_draw_result_sparks)
 	add_child(result_sparks)
@@ -256,13 +371,13 @@ func _draw_result_sparks() -> void:
 
 func help(page: String = "basics", character_id: String = "") -> void:
 	rect(Rect2(0, 0, 1280, 720), Color(0.02, 0.035, 0.07, 0.9))
-	label("剑士心得", Rect2(48, 25, 560, 64), 43, PAPER, true)
-	label("A 轻斩 · B 轻体术 · C 重斩 · D 重体术  /  方向随朝向解释", Rect2(52, 104, 1176, 30), 19, MUTED)
+	label("操作指南", Rect2(48, 25, 560, 64), 43, PAPER, true)
+	label("A / B 轻攻击 · C / D 重攻击  /  方向随朝向解释", Rect2(52, 104, 1176, 30), 19, MUTED)
 	if page == "basics":
 		panel(Rect2(50, 164, 553, 461))
 		panel(Rect2(627, 164, 604, 461))
 		label("壹 / 按键与移动", Rect2(75, 181, 508, 42), 25, Color("82d4de"), true)
-		var rows := [["移动 / 跳跃", "WASD", "方向键"], ["A 轻斩", "F", "J"], ["B 轻体术", "G", "K"], ["C 重斩", "V", "N"], ["D 重体术", "B", "M"]]
+		var rows := [["移动 / 跳跃", "WASD", "方向键"], ["A 轻攻击", "F", "J"], ["B 轻体术", "G", "K"], ["C 重攻击", "V", "N"], ["D 重体术", "B", "M"]]
 		label("键盘 P1", Rect2(280, 233, 123, 24), 15, GOLD, false, HORIZONTAL_ALIGNMENT_CENTER)
 		label("键盘 P2", Rect2(439, 233, 123, 24), 15, GOLD, false, HORIZONTAL_ALIGNMENT_CENTER)
 		for i in range(rows.size()):

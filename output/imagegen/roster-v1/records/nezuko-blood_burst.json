@@ -1,0 +1,24 @@
+{
+  "id": "nezuko-blood_burst",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "3072x2304",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/roster-v1/prompts/nezuko-blood_burst.txt",
+  "output": "output/imagegen/roster-v1/raw/nezuko-blood_burst.png",
+  "references": [
+    "output/imagegen/roster-v1/raw/nezuko-model.png"
+  ],
+  "started_utc": "2026-10-05T15:31:21.1880807Z",
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-10-05T15:32:25.0245848Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "faa2d01749a04f20451a91a03e03148e94f5bbf087094ac781d2f54d02f3ceda",
+  "review_date": "2026-10-06",
+  "review_scope": "Source composition, extracted contact sheets, scale/anchor records and Godot integration reviewed."
+}

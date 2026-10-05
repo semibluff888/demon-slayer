@@ -1,0 +1,67 @@
+[gd_resource type="Resource" script_class="CharacterDefinition" load_steps=23 format=3]
+
+[ext_resource type="Script" path="res://scripts/character_definition.gd" id="1"]
+[ext_resource type="Resource" path="res://moves/core/akaza_5A.tres" id="2"]
+[ext_resource type="Resource" path="res://moves/core/akaza_5B.tres" id="3"]
+[ext_resource type="Resource" path="res://moves/core/akaza_5C.tres" id="4"]
+[ext_resource type="Resource" path="res://moves/core/akaza_5D.tres" id="5"]
+[ext_resource type="Resource" path="res://moves/core/akaza_2A.tres" id="6"]
+[ext_resource type="Resource" path="res://moves/core/akaza_2B.tres" id="7"]
+[ext_resource type="Resource" path="res://moves/core/akaza_2C.tres" id="8"]
+[ext_resource type="Resource" path="res://moves/core/akaza_2D.tres" id="9"]
+[ext_resource type="Resource" path="res://moves/core/akaza_jA.tres" id="10"]
+[ext_resource type="Resource" path="res://moves/core/akaza_jB.tres" id="11"]
+[ext_resource type="Resource" path="res://moves/core/akaza_jC.tres" id="12"]
+[ext_resource type="Resource" path="res://moves/core/akaza_jD.tres" id="13"]
+[ext_resource type="Resource" path="res://moves/core/akaza_236A.tres" id="14"]
+[ext_resource type="Resource" path="res://moves/core/akaza_236C.tres" id="15"]
+[ext_resource type="Resource" path="res://moves/core/akaza_623A.tres" id="16"]
+[ext_resource type="Resource" path="res://moves/core/akaza_623C.tres" id="17"]
+[ext_resource type="Resource" path="res://moves/core/akaza_214B.tres" id="18"]
+[ext_resource type="Resource" path="res://moves/core/akaza_214D.tres" id="19"]
+[ext_resource type="Resource" path="res://moves/core/akaza_super.tres" id="20"]
+[ext_resource type="Resource" path="res://moves/core/akaza_max.tres" id="21"]
+[ext_resource type="Resource" path="res://moves/core/akaza_throw.tres" id="22"]
+
+[resource]
+script = ExtResource("1")
+id = "akaza"
+roster_order = 30
+display_name = "猗窝座"
+epithet = "斗气不息，拳意不止"
+element_name = "破坏杀"
+role = "均衡 · 拳脚控距"
+accent = Color(0.30, 0.76, 1.0, 1)
+walk_speed = 2.2
+visual_directory = "res://art/characters/akaza/"
+state_animations = {
+"round_intro": "round_intro",
+"round_victory": "round_victory",
+"round_defeat": "round_defeat","roll_forward": "roll_forward", "roll_back": "roll_back", "throw_forward": "throw_forward", "throw_back": "throw_success", "thrown_forward": "thrown_forward", "thrown_back": "thrown", "throw_tech": "throw_tech"}
+normals = {
+"5A": ExtResource("2"),
+"5B": ExtResource("3"),
+"5C": ExtResource("4"),
+"5D": ExtResource("5"),
+"2A": ExtResource("6"),
+"2B": ExtResource("7"),
+"2C": ExtResource("8"),
+"2D": ExtResource("9"),
+"jA": ExtResource("10"),
+"jB": ExtResource("11"),
+"jC": ExtResource("12"),
+"jD": ExtResource("13")
+}
+motions = {
+"236A": ExtResource("14"),
+"236C": ExtResource("15"),
+"623A": ExtResource("16"),
+"623C": ExtResource("17"),
+"214B": ExtResource("18"),
+"214D": ExtResource("19"),
+"super": ExtResource("20"),
+"max": ExtResource("21")
+}
+throw_move = ExtResource("22")
+move_list = Array[Dictionary]([{"input": "236 + A/C", "name": "破坏杀·空式", "description": "远程冲击波；轻快重远"}, {"input": "623 + A/C", "name": "破坏杀·脚式·冠先割", "description": "上挑踢击；迎击空中"}, {"input": "214 + B/D", "name": "破坏杀·乱式", "description": "连续拳击；近身压制"}, {"input": "236236 + A/C", "name": "破坏杀·灭式", "description": "强力冲拳 · 1格"}, {"input": "236236 + A+C", "name": "终式·青银乱残光", "description": "六段冲击 · 3格"}])
+portrait_faces_right = true

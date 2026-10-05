@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="DuelMove" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="1"]
+
+[ext_resource type="Resource" path="res://resources/presentation/blood_kick.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+presentation = ExtResource("2")
+display_name = "爆血飞踢·重"
+kind = "skill"
+startup = 14
+active = 12
+recovery = 29
+damage = 130
+hitstun = 34
+blockstun = 16
+hitstop = 6
+push = 0.6
+box = Rect2(5, -55, 76, 49)
+cancel_targets = PackedStringArray("super", "max")
+cancel_window = 26
+animation_id = "blood_kick"
+travel = 7.5
+id = "nezuko_236C"
+effect_id = "blood_kick"

@@ -1,0 +1,24 @@
+{
+  "id": "nezuko-dash_back",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2304x1536",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/roster-v1/prompts/nezuko-dash_back.txt",
+  "output": "output/imagegen/roster-v1/raw/nezuko-dash_back.png",
+  "references": [
+    "output/imagegen/roster-v1/raw/nezuko-model.png"
+  ],
+  "started_utc": "2026-10-05T15:37:28.6542483Z",
+  "cost": null,
+  "accepted": true,
+  "completed_utc": "2026-10-05T15:38:31.2508080Z",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "sha256": "db09cc30f2db336c195a4d43ccb4c6b08bd244c75c4b8cd2beefd692265f30ae",
+  "review_date": "2026-10-06",
+  "review_scope": "Source composition, extracted contact sheets, scale/anchor records and Godot integration reviewed."
+}

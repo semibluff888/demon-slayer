@@ -20,6 +20,7 @@ var dim_amount: float = 0.0
 var dimmer: Node2D
 var energy: Node2D
 var elemental_textures: Dictionary = {}
+var cut_in_textures: Dictionary = {}
 var spheres: Array[ColorRect] = []
 
 func _ready() -> void:
@@ -27,6 +28,13 @@ func _ready() -> void:
 	for id in ["water-wheel","sun-flame-arc"]:
 		var path: String = "res://art/effects/"+str(id)+".png"
 		if ResourceLoader.exists(path): elemental_textures[id] = load(path)
+	for move: Resource in combat.moves.values():
+		if move.presentation == null: continue
+		var path: String = move.presentation.cut_in_path
+		if not path.is_empty() and ResourceLoader.exists(path): cut_in_textures[move.id] = load(path)
+		for key: String in [move.presentation.texture_key, move.presentation.sigil_texture_key]:
+			if ResourceLoader.exists("res://art/effects/" + key + ".png"):
+				elemental_textures[key] = load("res://art/effects/" + key + ".png")
 	dimmer = Node2D.new()
 	dimmer.z_index = -19
 	dimmer.draw.connect(_draw_dimmer)
@@ -137,8 +145,8 @@ func _draw_energy() -> void:
 			var r := radius*float(n)/4.0
 			energy.draw_circle(center,r,Color(color,opacity*0.018*(8-n)),true,-1,true)
 		var shape: String = cue.move.presentation.shape if cue.move.presentation != null else ""
-		var tex_key := "sun-flame-arc" if shape=="sun_arc" else "water-wheel"
-		if shape in ["water_dragon","sun_arc"] and elemental_textures.has(tex_key):
+		var tex_key: String = cue.move.presentation.texture_key if shape in ["blood", "shockwave"] else ("sun-flame-arc" if shape=="sun_arc" else "water-wheel")
+		if shape in ["water_dragon","sun_arc","blood","shockwave"] and elemental_textures.has(tex_key):
 			energy.draw_set_transform(center,age*4.5)
 			energy.draw_texture_rect(elemental_textures[tex_key],Rect2(-radius*1.4,-radius*1.4,radius*2.8,radius*2.8),false,Color(1,1,1,opacity*0.72))
 			energy.draw_set_transform(Vector2.ZERO)
@@ -206,7 +214,8 @@ func _draw() -> void:
 		var age: float = cue.age
 		var alpha := clampf((TITLE_LIFETIME - age) / 0.22, 0, 1)
 		var visual = catalog.characters[combat.fighters[slot].character]
-		if cue.max and age < 0.48 and visual.battle_portrait != null:
+		var cut_in: Texture2D = cut_in_textures.get(cue.move.id, visual.battle_portrait)
+		if cue.max and age < 0.48 and cut_in != null:
 			var cut_alpha := clampf((0.48 - age) / 0.16, 0, 1)
 			var face := face_bounds(cue, both)
 			# Both source portraits face right; turn the right-side cut-in inward.
@@ -214,7 +223,7 @@ func _draw() -> void:
 				draw_set_transform(Vector2(face.end.x, face.position.y), 0, Vector2(-1, 1))
 			else:
 				draw_set_transform(face.position)
-			draw_texture_rect_region(visual.battle_portrait, Rect2(Vector2.ZERO, face.size), face_source(visual.battle_portrait), Color(1, 1, 1, cut_alpha))
+			draw_texture_rect_region(cut_in, Rect2(Vector2.ZERO, face.size), face_source(cut_in), Color(1, 1, 1, cut_alpha))
 			draw_set_transform(Vector2.ZERO)
 		var bounds := title_bounds(cue, both)
 		var texture := title_texture(cue)

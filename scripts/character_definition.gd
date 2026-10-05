@@ -1,6 +1,9 @@
 class_name CharacterDefinition
 extends Resource
 @export var id: String = ""
+@export var roster_order: int = 100
+@export var portrait_faces_right: bool = false
+@export_range(0, 1) var menu_focus_x: float = 0.5
 @export var display_name: String = ""
 @export var epithet: String = ""
 @export var element_name: String = ""

@@ -48,10 +48,11 @@ func _run() -> void:
 	check(game.screen == "setup" and game.mode == "cpu", "CPU button opens setup")
 	await _capture("03-select")
 	# Exercise the actual character card callback, including a mirror match.
-	_click("p2_tanjiro")
+	_click("slot_2")
+	_click("character_tanjiro")
 	check(game.characters == ["tanjiro", "tanjiro"], "both slots can select the same character")
-	_click("p2_zenitsu")
-	_click("start")
+	_click("character_zenitsu")
+	_begin_selected_match()
 	check(game.screen == "battle" and game.combat.phase == "intro", "start button begins ready sequence")
 	game.set_paused(true)
 	var before: Dictionary = game.combat.snapshot()
@@ -137,7 +138,7 @@ func _run() -> void:
 	game._validate_setup()
 	check(not game.start_button.disabled, "two keyboard groups are valid independent inputs")
 	game.choose_mode("practice")
-	_click("start")
+	_begin_selected_match()
 	check(game.mode == "practice" and game.combat.practice and game.combat.fighters[0].meter == 300, "practice entry creates real training session")
 	_test_practice_input_hints()
 	await _capture("08-practice")
@@ -344,3 +345,8 @@ func _test_battle_native_input() -> void:
 	await _key(KEY_ENTER)
 	check(not game.paused and game.gui.actions.pause.text_only, "Enter resumes from the styled modal to bare footer buttons")
 	game.show_title()
+
+func _begin_selected_match() -> void:
+	for n in range(3):
+		if game.screen in ["setup", "stage"]:
+			_click("start")
