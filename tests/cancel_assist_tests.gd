@@ -34,7 +34,7 @@ func _run() -> void:
 									if event.type=="hit" and event.move.ends_with("_max" if max_version else "_super"):damage+=event.damage;hits+=1
 								var ending=model.definition(model.fighters[0]).motions["max" if max_version else "super"]
 								var label:="%s / %s 623%s f%d corner=%s max=%s delay=%d" % [cid,victim,button,facing,corner,max_version,delay]
-								check(damage==(445 if max_version else 280) and hits==ending.hit_count(),"slow input full finisher: "+label)
+								check(damage==(289 if max_version else 182) and hits==ending.hit_count(),"slow input full finisher: "+label)
 								check(block==0,"defender holding back finds no combo gap: "+label)
 								check(spend==(300 if max_version else 100),"correct single meter spend: "+label)
 								check(model.fighters[0].grounded and model.fighters[1].grounded,"both land after combo: "+label)

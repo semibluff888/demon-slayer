@@ -66,7 +66,7 @@ func _dash() -> void:
 	model._begin_move(attacker, model.definition(attacker).normals["5A"])
 	attacker.move_frame = attacker.move.startup
 	s.tick(model, {"x": -1})
-	check(model.fighters[0].hp == 955 and model.fighters[0].dash_ticks == 0, "back dash has no invulnerability or automatic guard")
+	check(model.fighters[0].hp == 971 and model.fighters[0].dash_ticks == 0, "back dash has no invulnerability or automatic guard")
 	model = duel(380, 425)
 	dash(model, 1)
 	s.advance(model, 6)
@@ -150,13 +150,13 @@ func _throws() -> void:
 				s.advance(model, 19)
 				check(model.fighters[1].hp == 1000, "throw damage waits for impact")
 				s.tick(model)
-				check(model.fighters[1].hp == 900 and model.hitstop == 7, "throw impact deals 100 exactly once")
+				check(model.fighters[1].hp == 935 and model.hitstop == 7, "throw impact deals 65 exactly once")
 				var position: float = model.fighters[1].x
 				s.tick(model)
 				check(model.fighters[1].x == position and model.fighters[1].throw_frame == 20, "throw hitstop freezes linked pose")
 				s.advance(model, 50)
 				check(signf(model.fighters[1].x - model.fighters[0].x) == before * (-1 if back else 1), "forward/back throw preserves/swaps sides")
-				check(model.fighters[1].hp == 900 and model.throw_link.is_empty(), "throw releases without duplicate damage")
+				check(model.fighters[1].hp == 935 and model.throw_link.is_empty(), "throw releases without duplicate damage")
 				check(minf(model.fighters[0].x,model.fighters[1].x) >= Arena.LEFT and maxf(model.fighters[0].x,model.fighters[1].x) <= Arena.RIGHT, "corner throw is bounded")
 	var model := duel(400,430)
 	s.tick(model, {"x": 1, "buttons": Commands.D}, {"x": -1, "buttons": Commands.D})
@@ -171,7 +171,7 @@ func _throws() -> void:
 		model._begin_move(b, model.definition(b).normals["5A"])
 		b.move_frame = b.move.startup
 		s.tick(model)
-		check(model.throw_link.is_empty() and a.hp == 955, "same-frame strike beats grab regardless of slot")
+		check(model.throw_link.is_empty() and a.hp == 971, "same-frame strike beats grab regardless of slot")
 	for delay in [6, 7]:
 		model = duel(400,430)
 		s.input(model, "6D")

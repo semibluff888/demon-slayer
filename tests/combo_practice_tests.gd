@@ -25,29 +25,29 @@ func _initialize() -> void:
 
 func _combo_matrix() -> void:
 	var cases := [
-		{"route": ["2B","2A","5C","236A"], "damage": [226,226]},
-		{"route": ["jC","5A","5C","214B"], "damage": [274,269]},
-		{"route": ["5A","5C","236A","236236A"], "damage": [495,495]},
-		{"route": ["5C","214D","236236AC"], "damage": [584,582]}]
+		{"route": ["2B","2A","5C","236A"], "damage": [144,144]},
+		{"route": ["jC","5A","5C","214B"], "damage": [176,172]},
+		{"route": ["5A","5C","236A","236236A"], "damage": [321,321]},
+		{"route": ["5C","214D","236236AC"], "damage": [379,378]}]
 	var prefixes := [
 		{"route": [], "damage": [0,0]},
-		{"route": ["5A"], "damage": [45,45]},
-		{"route": ["5B"], "damage": [32,32]},
-		{"route": ["2A"], "damage": [40,40]},
-		{"route": ["2B"], "damage": [27,27]},
-		{"route": ["5A","2A"], "damage": [83,83]},
-		{"route": ["5A","2A","5C"], "damage": [155,155]},
-		{"route": ["5A","2A","5C","236A"], "damage": [244,244]},
-		{"route": ["jC","5A","2A","5C","236A"], "damage": [305,305]},
-		{"route": ["jC","5A","2A","5C","236C"], "damage": [325,325]},
-		{"route": ["jC","5A","2A","5C","623C"], "damage": [329,321]},
-		{"route": ["236A"], "damage": [105,105]},
-		{"route": ["5A","236A"], "damage": [144,144]}]
+		{"route": ["5A"], "damage": [29,29]},
+		{"route": ["5B"], "damage": [20,20]},
+		{"route": ["2A"], "damage": [26,26]},
+		{"route": ["2B"], "damage": [17,17]},
+		{"route": ["5A","2A"], "damage": [53,53]},
+		{"route": ["5A","2A","5C"], "damage": [99,99]},
+		{"route": ["5A","2A","5C","236A"], "damage": [156,156]},
+		{"route": ["jC","5A","2A","5C","236A"], "damage": [196,196]},
+		{"route": ["jC","5A","2A","5C","236C"], "damage": [209,209]},
+		{"route": ["jC","5A","2A","5C","623C"], "damage": [211,206]},
+		{"route": ["236A"], "damage": [68,68]},
+		{"route": ["5A","236A"], "damage": [93,93]}]
 	for prefix in prefixes:
 		for finisher in ["236236A", "236236AC"]:
 			var route: Array = prefix.route.duplicate()
 			route.append(finisher)
-			var base := 280 if finisher == "236236A" else 445
+			var base := 182 if finisher == "236236A" else 289
 			cases.append({"route": route, "damage": [prefix.damage[0] + base, prefix.damage[1] + base]})
 	for character in ["tanjiro","zenitsu"]:
 		for facing in [-1,1]:
@@ -161,7 +161,7 @@ func _practice() -> void:
 		if practice.first_hit:
 			break
 	check(practice.first_hit and practice.command(model).x != 0, "first hit mode arms guard after actual damage")
-	check(practice.last_combo == 1 and practice.last_damage == 45, "practice records actual combo results")
+	check(practice.last_combo == 1 and practice.last_damage == 29, "practice records actual combo results")
 	practice.meter_mode = 3
 	model.fighters[0].meter = 0
 	practice.after_step(model)

@@ -28,3 +28,7 @@ textures/default_filters/use_nearest_mipmap_filter=false
 textures/canvas_textures/default_texture_filter=1
 environment/defaults/default_clear_color=Color(0.025, 0.043, 0.065, 1)
 
+[editor]
+; Godot 4.7.1 binary resource conversion drops PackedStringArray cancel_targets.
+; Keep authored resources so source and packaged combat use identical rules.
+export/convert_text_resources_to_binary=false

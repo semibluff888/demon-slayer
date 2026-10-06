@@ -48,8 +48,8 @@ func _rounding() -> void:
 
 func _scaling_floor() -> void:
 	# Isolate the formula beyond the playable chain limit without changing resources.
-	var expected := [80,76,72,68,64,60,56,52,48,44,40,36,32,32]
-	for character in ["tanjiro", "zenitsu"]:
+	var expected := [52,49,46,44,41,39,36,33,31,28,26,23,20,20]
+	for character in ["tanjiro", "zenitsu", "nezuko", "akaza"]:
 		for finisher in ["super", "max"]:
 			var model = s.duel(character)
 			var a = model.fighters[0]
@@ -64,7 +64,7 @@ func _scaling_floor() -> void:
 			var before: int = d.hp
 			for segment in range(move.hit_count()):
 				model._resolve_contact(model._contact(a, d, move, 100, segment, false))
-			check(before - d.hp == (280 if finisher == "super" else 445), "super ignores even maximum accumulated scaling: %s/%s" % [character, finisher])
+			check(before - d.hp == (182 if finisher == "super" else 289), "super ignores even maximum accumulated scaling: %s/%s" % [character, finisher])
 			check(a.combo_instances.size() == expected.size() + 1, "multi-hit finisher consumes only one scaling instance")
 			var instances: int = a.combo_instances.size()
 			var chip_before: int = d.hp
@@ -74,7 +74,7 @@ func _scaling_floor() -> void:
 			check(a.combo_instances.size() == instances and d.hp == chip_before, "blocked normal never advances hit damage scaling")
 
 func _partial_hits() -> void:
-	for character in ["tanjiro", "zenitsu"]:
+	for character in ["tanjiro", "zenitsu", "nezuko", "akaza"]:
 		for finisher in ["236236A", "236236AC"]:
 			var cost := 100 if finisher == "236236A" else 300
 			for interrupted in [false, true]:
@@ -113,11 +113,11 @@ func _partial_hits() -> void:
 			s.tick(model)
 		d.x = a.x + a.facing * 34
 		s.advance(model, 90)
-		check(1000 - d.hp == (63 if character == "tanjiro" else 60) and a.combo == 1, "late single segment keeps only its authored share: " + character)
+		check(1000 - d.hp == (39 if character in ["zenitsu", "nezuko"] else 41) and a.combo == 1, "late single segment keeps only its authored share: " + character)
 		model = s.duel(character)
 		s.input(model, "214D", {"x": 1})
 		s.advance(model, 90, {}, {"x": 1})
-		check(1000 - model.fighters[1].hp == (9 if character == "tanjiro" else 8), "chip retains original unscaled segment calculation: " + character)
+		check(1000 - model.fighters[1].hp == 6, "chip retains original unscaled segment calculation: " + character)
 		check(model.fighters[1].meter == 3 and model.fighters[0].combo_damage == 0, "multi-hit guard grants meter once without combo damage")
 
 func _actual_damage_and_reset() -> void:
@@ -128,16 +128,16 @@ func _actual_damage_and_reset() -> void:
 	check(s.wait_contact(model), "normal opener hits")
 	s.input(model, "5C", {"x": 1})
 	check(s.wait_contact(model, 100, {"x": 1}), "scaled heavy cancels continuously")
-	check(a.combo_damage == 121 and 1000 - d.hp == 121, "actual normal combo damage includes 95 percent heavy")
-	check(a.meter == 30 and d.meter == 17, "both players gain meter from actual scaled damage")
+	check(a.combo_damage == 78 and 1000 - d.hp == 78, "actual normal combo damage includes 95 percent heavy")
+	check(a.meter == 19 and d.meter == 11, "both players gain meter from actual scaled damage")
 	s.advance(model, 60)
 	check(not a.combo_active and a.combo_instances.is_empty() and a.combo_display > 0, "scaling resets on recovery while old HUD result remains visible")
 	d.x = a.x + a.facing * 34
 	var before: int = d.hp
 	s.input(model, "5C")
 	check(s.wait_contact(model), "new combo heavy hits after recovery")
-	check(before - d.hp == 80 and a.combo_damage == 80 and a.combo == 1, "next combo starts at full damage and replaces old HUD total")
-	for character in ["tanjiro", "zenitsu"]:
+	check(before - d.hp == 52 and a.combo_damage == 52 and a.combo == 1, "next combo starts at full damage and replaces old HUD total")
+	for character in ["tanjiro", "zenitsu", "nezuko", "akaza"]:
 		for finisher in ["236236A", "236236AC"]:
 			model = s.duel(character)
 			a = model.fighters[0]
@@ -157,7 +157,7 @@ func _actual_damage_and_reset() -> void:
 				elif event.type == "meter" and event.attacker == 0 and event.amount < 0:
 					spent -= int(event.amount)
 			check(d.hp == 0 and a.combo_damage == 50 and dealt == 50, "lethal super clamps events and HUD to remaining HP: %s/%s" % [character, finisher])
-			check(a.meter == (11 if cost == 100 else 0) and d.meter == 6 and spent == cost, "overkill neither generates extra meter nor repeats the cost")
+			check(a.meter == (7 if cost == 100 else 0) and d.meter == 7 and spent == cost, "overkill neither generates extra meter nor repeats the cost")
 
 func _route_extensions() -> void:
 	# These are contact-level arithmetic candidates, not proof of reach or hitstun.
@@ -183,7 +183,7 @@ func _route_extensions() -> void:
 								route.append(move)
 						if not route.is_empty():
 							routes.append(route)
-	for character in ["tanjiro", "zenitsu"]:
+	for character in ["tanjiro", "zenitsu", "nezuko", "akaza"]:
 		var model = s.duel(character)
 		for cancel_on_first in [false, true]:
 			var totals := {}

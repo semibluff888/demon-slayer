@@ -98,7 +98,7 @@ func _test_new_moves() -> void:
 					check(hits.size() == move.hit_count(),"all real hits land "+cid+"/"+notation)
 					check(1000-b.hp == move.damage,"whole move damage "+cid+"/"+notation)
 					if move.is_super():
-						check(move.damage == (445 if key == "max" else 280),"super/MAX authored damage")
+						check(move.damage == (289 if key == "max" else 182),"super/MAX authored damage")
 						check(a.meter == 300-move.meter_cost,"super meter spent once")
 					var blocked = helper.duel(cid,facing,corner)
 					blocked.fighters[0].meter = 300

@@ -69,7 +69,7 @@ func _guards() -> void:
 	var model = s.duel()
 	s.input(model, "5A")
 	s.advance(model, 90, {"buttons": Commands.A})
-	check(model.fighters[1].hp == 955, "held attack and active frames cannot duplicate damage")
+	check(model.fighters[1].hp == 971, "held attack and active frames cannot duplicate damage")
 	model = s.duel()
 	model.fighters[1].hp = 1
 	s.input(model, "236A", {"x": 1})
@@ -100,7 +100,7 @@ func _meters() -> void:
 	var model = s.duel()
 	s.input(model, "5A")
 	s.wait_contact(model)
-	check(model.fighters[0].meter == 11 and model.fighters[1].meter == 6, "meter derives from actual landed damage")
+	check(model.fighters[0].meter == 7 and model.fighters[1].meter == 4, "meter derives from actual landed damage")
 	model = s.duel()
 	model.fighters[1].x += 230
 	s.input(model, "5C")
@@ -173,7 +173,7 @@ func _projectiles() -> void:
 		s.input(model, "236236A")
 		s.advance(model, 160)
 		check(model.fighters[0].combo == (4 if id == "tanjiro" else 6), "super resolves every segment once: " + id)
-		check(model.fighters[1].hp == 720, "raw multi-hit super sums to its authored damage")
+		check(model.fighters[1].hp == 818, "raw multi-hit super sums to its authored damage")
 
 func _cancels() -> void:
 	var model = s.duel()
@@ -228,10 +228,10 @@ func _rounds() -> void:
 	var model = s.duel()
 	s.tick(model, {"buttons": Commands.A}, {"buttons": Commands.A})
 	s.advance(model, 12)
-	check(model.fighters[0].hp == 955 and model.fighters[1].hp == 955, "same-frame strikes trade symmetrically")
+	check(model.fighters[0].hp == 971 and model.fighters[1].hp == 971, "same-frame strikes trade symmetrically")
 	model = s.duel()
 	for f in model.fighters:
-		f.hp = 45
+		f.hp = 29
 	s.tick(model, {"buttons": Commands.A}, {"buttons": Commands.A})
 	s.advance(model, 12)
 	check(model.reason == "DOUBLE K.O." and model.wins == [0,0], "double KO awards neither side")
@@ -340,7 +340,7 @@ func _edge_cases() -> void:
 		model._begin_move(d, model.definition(d).normals["5A"])
 		d.move_frame = d.move.startup
 		s.tick(model)
-		check(a.hp == 955 and d.hp == 895, "projectile and normal trade in either player slot")
+		check(a.hp == 971 and d.hp == 932, "projectile and normal trade in either player slot")
 	model = s.duel()
 	model.hitstop = 9
 	s.input(model, "236236AC")

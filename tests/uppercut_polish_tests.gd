@@ -113,7 +113,7 @@ func _routes() -> void:
 									super_damage+=event.damage;super_hits+=1
 							var super_move = model.definition(model.fighters[0]).motions["max" if ending=="236236AC" else "super"]
 							check(connected and blocks==0,"guard-tested real-input continuous combo: "+label)
-							check(super_damage==(445 if ending=="236236AC" else 280) and super_hits==super_move.hit_count(),"all finisher hits and damage: "+label)
+							check(super_damage==(289 if ending=="236236AC" else 182) and super_hits==super_move.hit_count(),"all finisher hits and damage: "+label)
 							check(spend==(300 if ending=="236236AC" else 100),"single correct meter spend: "+label)
 							check(model.fighters[0].grounded and model.fighters[1].grounded,"both actors land after uppercut cancel: "+label)
 

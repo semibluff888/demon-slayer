@@ -26,12 +26,12 @@ Godot 4.7.1 制作的 2D 格斗游戏。当前有炭治郎、善逸、祢豆子�
 # 首次准备：下载并校验官方编辑器和 Windows 导出模板
 powershell -ExecutionPolicy Bypass -File tools/install-export-tools.ps1
 # 自动找到 build/engine 中的引擎；也可传 -Godot 或设置 GODOT
-powershell -ExecutionPolicy Bypass -File tools/build-release.ps1 -Version 0.1.0
+powershell -ExecutionPolicy Bypass -File tools/build-release.ps1 -Version 0.1.2
 # 测试
 powershell -ExecutionPolicy Bypass -File tests/run_tests.ps1 -Godot '你的 Godot 可执行文件路径'
 ```
 
-成品在 `dist/`：游戏 ZIP、SHA-256 校验文件、发行说明及验证日志。打包在独立暂存目录进行，仅包含游戏运行内容；JSON 图集清单会明确打包，并通过导出后的可执行程序验证角色与地图完整性。
+成品在 `dist/`：游戏 ZIP、SHA-256 校验文件、发行说明及验证日志。打包在独立暂存目录进行，仅包含游戏运行内容；JSON 图集清单会明确打包，并通过导出后的可执行程序验证角色与地图完整性、84 招属性一致性和 64 组真实输入连招。
 
 [发布流程、目录职责与清理说明](docs/distribution.md) · [第三方许可](THIRD-PARTY-NOTICES.md)
 

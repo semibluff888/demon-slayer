@@ -41,6 +41,7 @@ static func run(game: Node) -> void:
 		failures.append("Packaged winner health recovery is incorrect")
 	if game.view.hud.trailing != [550.0,1000.0]:
 		failures.append("Packaged opening HUD shows false damage")
+	failures.append_array(preload("res://scripts/combat_verifier.gd").new().run(not OS.has_feature("editor")))
 	for failure in failures:
 		printerr("FAIL: ", failure)
 	print("RELEASE SMOKE: %d failed" % failures.size())

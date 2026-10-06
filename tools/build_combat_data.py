@@ -19,6 +19,8 @@ def value(v):
     return str(v)
 
 def move_resource(data):
+    # 1000 HP balance: lower burst while retaining positive combo extensions.
+    data["damage"] = max(1, data["damage"] * 65 // 100)
     profile = data.pop("_presentation", "")
     path = MOVES / (data["id"] + ".tres")
     text = '[gd_resource type="Resource" script_class="DuelMove" load_steps=2 format=3]\n\n'

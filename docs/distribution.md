@@ -32,3 +32,59 @@ clean-local.ps1 默认只报告；-Apply 才删除。它验证路径在本项目
 历史说明中提及的 artifacts 截图/录像已清理，可通过 tools/capture_*.gd 和 tools/build_*_review.py 重新生成。制作源图及其 provenance 仍保留在 output/，避免丢失离线复现能力。
 
 本次整理和验证结果见 [整理报告](cleanup-report.md)。
+
+## v0.1.2 连招导出回归
+
+Godot 4.7.1 将文本资源转换为二进制时，本项目的 `DuelMove.cancel_targets` 导出后变为空数组。相同输入在源码通过，导出的 PCK 即使用开发引擎加载也无法取消。`project.godot` 明确关闭 `editor/export/convert_text_resources_to_binary`，使发布版加载原始招式资源。
+
+`tools/build-release.ps1` 在导出前从源码生成 `resources/combat-manifest.json`（仅存在于暂存目录和成品 PCK），记录全部招式的可序列化脚本属性。发布 EXE 的 `--headless -- --verify-release` 对比属性，并运行四角色 × 双朝向 × 中场/版边 × 四路线，共 64 组真实输入验证：普通技连打、必杀取消、回旋接 MAX、升龙接 MAX。首击后持续防御用来识别断连，同时核对招式顺序、血量、HUD 和耗气。验证未通过时不生成 ZIP。
+
+`tests/release_combat_tests.gd` 使用同一验证器提供开发版基线。该验证是引擎内逐帧输入回放，不等同于实体键盘或手柄手感验收。
+
+## 自行提交与发布（PowerShell）
+
+以下以**下一版 0.1.3** 为例，每次发布请使用新的版本号。
+
+1. 在项目目录修改游戏及 `docs/RELEASE-NOTES.md`，写明本版变化。
+2. 检查改动，运行测试，再构建对应版本；某一步报错就先修复，不继续发布。
+
+```powershell
+cd J:\Project\demon-slayer
+git status
+git diff
+powershell -ExecutionPolicy Bypass -File tests/run_tests.ps1
+powershell -ExecutionPolicy Bypass -File tools/build-release.ps1 -Version 0.1.3
+```
+
+打包脚本会用实际导出的 EXE 检查资源与连招。成功后，`dist/` 包含 ZIP、SHA-256、发行说明和验证日志。版本号重复时脚本会拒绝覆盖现有 ZIP。
+
+3. 确认 `git status` 中都是本次需要提交的源码，然后提交并推送：
+
+```powershell
+git add README.md docs moves project.godot scripts tests tools
+git diff --cached --stat
+git commit -m "fix: 简述这次修改"
+git push origin main
+```
+
+若还修改了其他目录（例如 `art/` 或 `resources/`），在 `git add` 后面加上对应路径。`dist/`、`build/` 已被 Git 忽略，游戏 ZIP 作为 Release 附件上传。
+
+4. 为刚才构建并提交的版本打标签。打包后若又修改游戏代码或资源，需要重新测试、构建，保证包和标签一致。
+
+```powershell
+git tag -a v0.1.3 -m "Release v0.1.3"
+git push origin v0.1.3
+```
+
+5. 打开 https://github.com/semibluff888/demon-slayer/releases/new ，选择已有的 `v0.1.3` 标签，标题填写版本名；将 `dist/DemonSlayer-0.1.3-windows-x86_64-notes.md` 的内容粘贴为说明，上传以下两个文件，然后点击 **Publish release**：
+
+- `dist/DemonSlayer-0.1.3-windows-x86_64.zip`
+- `dist/DemonSlayer-0.1.3-windows-x86_64.sha256`
+
+分享 https://github.com/semibluff888/demon-slayer/releases/latest 即可让玩家找到最新版。玩家应下载 Windows ZIP，完整解压后运行 EXE；GitHub 自动附带的 Source code 是源码。
+
+如安装了 GitHub CLI，也可用以下命令代替网页步骤（首次运行先 `gh auth login`）：
+
+```powershell
+gh release create v0.1.3 --verify-tag --title "宿命对决 v0.1.3" --notes-file dist/DemonSlayer-0.1.3-windows-x86_64-notes.md dist/DemonSlayer-0.1.3-windows-x86_64.zip dist/DemonSlayer-0.1.3-windows-x86_64.sha256
+```

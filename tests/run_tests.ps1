@@ -36,6 +36,7 @@ function Invoke-DuelCheck {
 }
 
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/compile_check.gd') -Expected 'COMPILE / SCENE LOAD OK' | Out-Null
+Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/release_combat_tests.gd') -Expected 'RELEASE COMBAT: 64 cases, 0 failed' | Out-Null
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/input_tests.gd') -Expected 'INPUT TESTS: \d+ passed, 0 failed' | Out-Null
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/combat_tests.gd') -Expected 'COMBAT TESTS: \d+ passed, 0 failed' | Out-Null
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/damage_tests.gd') -Expected 'DAMAGE TESTS: \d+ passed, 0 failed' | Out-Null
