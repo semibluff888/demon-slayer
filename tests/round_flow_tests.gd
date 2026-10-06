@@ -31,8 +31,10 @@ func _run() -> void:
 	_intro()
 	_outro()
 	_timeouts()
+	_health_carryover()
 	_visuals()
 	await _pause_and_effects()
+	await _opening_health_display()
 	for failure in failures: printerr("FAIL: ", failure)
 	print("ROUND FLOW TESTS: %d passed, %d failed" % [passed, failures.size()])
 	quit(0 if failures.is_empty() else 1)
@@ -202,5 +204,89 @@ func _pause_and_effects() -> void:
 		game.set_paused(false)
 	game.start_match()
 	check(game.combat.outro_ticks == 0 and game.view.effects.sparks.is_empty(), "new match clears preserved lethal effects")
+	game.queue_free()
+	await process_frame
+
+func _health_carryover() -> void:
+	for winner in range(2):
+		# Time scaling, fractional truncation, near-death survival and full-health cap.
+		for scenario in [[3600, 400, 600], [1800, 400, 550], [1799, 400, 549], [1, 1, 101], [1800, 950, 1000]]:
+			var c = duel()
+			c.remaining = scenario[0]
+			c.fighters[winner].hp = scenario[1]
+			c.fighters[1-winner].hp = 0
+			c._finish_round()
+			advance(c, Flow.OUTRO - 1)
+			check(c.fighters[winner].hp == scenario[1], "recovery waits for next round")
+			advance(c, 1)
+			check(c.phase == "intro" and c.fighters[winner].hp == scenario[2], "winner carries HP with time-based recovery")
+			check(c.fighters[1-winner].hp == 1000, "defeated side starts fresh")
+			advance(c, 30)
+			check(c.fighters[winner].hp == scenario[2], "intro never applies recovery twice")
+		var c = duel()
+		c.fighters[winner].hp = 400
+		c.fighters[1-winner].hp = 300
+		c.remaining = 1
+		advance(c, 1)
+		advance(c, Flow.OUTRO)
+		check(c.fighters[winner].hp == 500 and c.fighters[1-winner].hp == 1000, "timeout winner receives only base recovery")
+		var opening: Array = [c.fighters[0].hp, c.fighters[1].hp]
+		check(c.snapshot().round_open_hp == opening, "snapshot includes opening HP for deterministic draws")
+		for tied_hp in [0, 200]:
+			c.phase = "fight"
+			for f in c.fighters: f.hp = tied_hp
+			c.remaining = 0
+			c._finish_round()
+			advance(c, Flow.OUTRO)
+			check(c.round_number == 2 and c.wins[winner] == 1, "draw repeats round without score")
+			check([c.fighters[0].hp, c.fighters[1].hp] == opening, "double KO and tied timeout restore opening HP without farming recovery")
+		c.phase = "fight"
+		c.fighters[1-winner].hp = 300
+		c.fighters[winner].hp = 0
+		c.remaining = 1800
+		c._finish_round()
+		advance(c, Flow.OUTRO)
+		check(c.round_number == 3 and c.fighters[1-winner].hp == 450 and c.fighters[winner].hp == 1000, "third round carries new winner HP")
+		c.phase = "fight"
+		c.fighters[winner].hp = 0
+		c._finish_round()
+		advance(c, Flow.OUTRO)
+		check(c.phase == "match_end" and c.fighters[1-winner].hp == 450, "final result does not grant recovery")
+		c.new_match("tanjiro", "zenitsu")
+		check(c.fighters[0].hp == 1000 and c.fighters[1].hp == 1000 and c.round_open_hp == [1000,1000], "rematch resets HP and draw baseline")
+		c.practice = true
+		c.fighters[0].hp = 123
+		c.start_round([0,0])
+		check(c.phase == "fight" and c.fighters[0].hp == 1000, "practice reset starts at full HP")
+
+func _opening_health_display() -> void:
+	var game := Main.instantiate()
+	root.add_child(game)
+	game.set_physics_process(false)
+	game.sound.muted = true
+	game.mode = "local"
+	for winner in range(2):
+		game.start_match()
+		game.combat.phase = "fight"
+		game.combat.remaining = 1800
+		game.combat.fighters[winner].hp = 400
+		game.combat.fighters[1-winner].hp = 0
+		game.combat._finish_round()
+		for n in range(Flow.OUTRO): game._physics_process(1.0/60)
+		var hud = game.view.hud
+		check(game.combat.phase == "intro" and game.combat.round_cue().is_empty(), "health display checked before announcements")
+		check(hud.trailing[winner] == 550 and hud.trailing[1-winner] == 1000, "opening HUD immediately matches carried HP on both sides")
+		hud._process(0.1)
+		check(hud.trailing[winner] == 550, "opening HP has no fake damage animation")
+		game.combat.phase = "fight"
+		game.combat.fighters[winner].hp -= 100
+		hud._process(0.1)
+		check(hud.trailing[winner] > 450 and hud.trailing[winner] < 550, "real damage still animates the trailing bar")
+		for f in game.combat.fighters: f.hp = 0
+		game.combat._finish_round()
+		for n in range(Flow.OUTRO): game._physics_process(1.0/60)
+		check(hud.trailing[winner] == 550 and hud.trailing[1-winner] == 1000, "draw retry snaps HUD to round opening HP")
+	game.start_match()
+	check(game.view.hud.trailing == [1000.0,1000.0], "new match HUD starts full")
 	game.queue_free()
 	await process_frame

@@ -1,6 +1,10 @@
 class_name GameSettings
 extends RefCounted
 const Router = preload("res://scripts/input_router.gd")
+const KEYMAP_VERSION := 2
+const LEGACY_KEYS := [
+	[KEY_A, KEY_D, KEY_S, KEY_W, KEY_T, KEY_Y, KEY_G, KEY_H],
+	[KEY_LEFT, KEY_RIGHT, KEY_DOWN, KEY_UP, KEY_KP_4, KEY_KP_5, KEY_KP_1, KEY_KP_2]]
 const RESERVED := [KEY_ESCAPE, KEY_F1, KEY_F2, KEY_F3, KEY_BACKSPACE, KEY_SHIFT, KEY_CTRL, KEY_ALT, KEY_META, KEY_CAPSLOCK, KEY_NUMLOCK, KEY_SCROLLLOCK, KEY_PRINT]
 var path: String = "user://settings.cfg"
 var muted: bool = false
@@ -23,6 +27,9 @@ func load_config() -> void:
 		var keys = file.get_value("keyboard", "p%d" % [player+1], Router.KEYS[player])
 		if keys is not Array and keys is not PackedInt32Array and keys is not PackedInt64Array: return
 		candidate.append(Array(keys))
+	# Only migrate the complete old default layout; preserve any custom mapping.
+	if file.get_value("keyboard", "version", 1) == 1 and candidate == LEGACY_KEYS:
+		candidate = Router.KEYS.duplicate(true)
 	if _valid_maps(candidate): keymaps = candidate
 
 func _valid_maps(maps: Array) -> bool:
@@ -62,6 +69,7 @@ func save_config() -> Error:
 	var file := ConfigFile.new()
 	file.set_value("audio", "muted", muted)
 	file.set_value("audio", "volume", volume)
+	file.set_value("keyboard", "version", KEYMAP_VERSION)
 	for player in range(2): file.set_value("keyboard", "p%d" % [player+1], keymaps[player])
 	var result := file.save(path)
 	last_error = "" if result == OK else "设置暂未保存，请检查本地存储权限。"

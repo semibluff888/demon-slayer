@@ -4,8 +4,8 @@ extends RefCounted
 const Commands = preload("res://scripts/command_recognizer.gd")
 const ACTIONS: Array[String] = ["left", "right", "down", "up", "a", "b", "c", "d"]
 const KEYS: Array = [
-	[KEY_A, KEY_D, KEY_S, KEY_W, KEY_T, KEY_Y, KEY_G, KEY_H],
-	[KEY_LEFT, KEY_RIGHT, KEY_DOWN, KEY_UP, KEY_KP_4, KEY_KP_5, KEY_KP_1, KEY_KP_2]]
+	[KEY_A, KEY_D, KEY_S, KEY_W, KEY_U, KEY_I, KEY_J, KEY_K],
+	[KEY_LEFT, KEY_RIGHT, KEY_DOWN, KEY_UP, KEY_KP_5, KEY_KP_6, KEY_KP_2, KEY_KP_3]]
 var stick_directions: Dictionary = {}
 var suppressed: Dictionary = {}
 
@@ -80,8 +80,8 @@ static func motion_hints(device: String, facing: int) -> Array[String]:
 
 func available_devices() -> Array[Dictionary]:
 	var result: Array[Dictionary] = [
-		{"id": "keyboard:0", "label": "键盘 1 · WASD / TY·GH"},
-		{"id": "keyboard:1", "label": "键盘 2 · 方向键 / Num45·Num12"}]
+		{"id": "keyboard:0", "label": "键盘 1 · WASD / UI·JK"},
+		{"id": "keyboard:1", "label": "键盘 2 · 方向键 / Num56·Num23"}]
 	for id in Input.get_connected_joypads():
 		result.append({"id": "pad:%d" % id, "label": "手柄 %d · %s" % [id + 1, Input.get_joy_name(id)]})
 	return result

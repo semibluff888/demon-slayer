@@ -10,6 +10,8 @@ const FLOOR_Y: float = Arena.FLOOR_Y
 const LEFT: float = Arena.LEFT
 const RIGHT: float = Arena.RIGHT
 const ROUND_TICKS := 3600
+const WIN_RECOVERY_BASE := 100
+const WIN_RECOVERY_TIME_BONUS := 100
 const BUFFER_TICKS := 6
 const SUPER_BUFFER_TICKS := 10
 const Flow = preload("res://scripts/round_flow.gd")
@@ -40,6 +42,7 @@ var throw_link: Dictionary = {}
 var projectiles: Array[Dictionary] = []
 var next_instance: int = 1
 var round_open_meter: Array[int] = [0, 0]
+var round_open_hp: Array[int] = [1000, 1000]
 var practice: bool = false
 
 func _init() -> void:
@@ -68,8 +71,15 @@ func new_match(p1: String, p2: String) -> void:
 
 func start_round(meters: Array = []) -> void:
 	var carry: Array = meters.duplicate() if not meters.is_empty() else [fighters[0].meter, fighters[1].meter]
-	if meters.is_empty() and not reason.is_empty() and round_winner < 0:
+	var continuing := meters.is_empty() and not reason.is_empty() and not practice
+	var opening_hp: Array[int] = [1000, 1000]
+	if continuing and round_winner >= 0:
+		# KOF-style survival recovery: 10% base plus up to 10% for time left.
+		var recovery := WIN_RECOVERY_BASE + floori(float(WIN_RECOVERY_TIME_BONUS * clampi(remaining, 0, ROUND_TICKS)) / ROUND_TICKS)
+		opening_hp[round_winner] = clampi(fighters[round_winner].hp + recovery, 1, 1000)
+	elif continuing:
 		carry = round_open_meter.duplicate()
+		opening_hp = round_open_hp.duplicate()
 	for i in range(2):
 		var fresh := Fighter.new()
 		fresh.character = fighters[i].character
@@ -79,7 +89,9 @@ func start_round(meters: Array = []) -> void:
 		fresh.facing = 1 if i == 0 else -1
 		fresh.input.last_facing = fresh.facing
 		fresh.meter = clampi(int(carry[i]), 0, 300)
+		fresh.hp = opening_hp[i]
 		round_open_meter[i] = fresh.meter
+		round_open_hp[i] = fresh.hp
 		fighters[i] = fresh
 	remaining = ROUND_TICKS
 	throw_link.clear()
@@ -877,6 +889,7 @@ func snapshot() -> Dictionary:
 		"wins": wins.duplicate(), "hitstop": hitstop, "super_freeze": super_freeze, "ticks": ticks,
 		"round_number": round_number, "round_winner": round_winner, "match_winner": match_winner,
 		"reason": reason, "next_instance": next_instance, "practice": practice,
+		"round_open_hp": round_open_hp.duplicate(),
 		"round_open_meter": round_open_meter.duplicate(), "projectiles": projectiles.duplicate(true),
 		"throw_link": throw_link.duplicate(true)}
 

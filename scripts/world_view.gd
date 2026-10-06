@@ -12,7 +12,7 @@ var characters: Array[String] = ["tanjiro", "zenitsu"]
 var debug_boxes: bool = false
 var cpu: bool = true
 var paused: bool = false
-var input_hints: Array[String] = ["WASD / TY · GH", "↑↓←→ / Num45 · Num12"]
+var input_hints: Array[String] = ["WASD / UI · JK", "↑↓←→ / Num56 · Num23"]
 var camera := Camera.new()
 var stage: Node2D
 var effects: Node2D

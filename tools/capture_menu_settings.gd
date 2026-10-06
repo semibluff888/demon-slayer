@@ -27,7 +27,7 @@ func _run() -> void:
 		game.show_settings();await shot("settings-%dx%d" % [size.x,size.y])
 	root.size=Vector2i(1280,720)
 	game.gui.actions.key_0_4.pressed.emit();await shot("key-capture")
-	var event:=InputEventKey.new();event.physical_keycode=KEY_KP_4;event.keycode=KEY_KP_4;event.pressed=true
+	var event:=InputEventKey.new();event.physical_keycode=KEY_KP_5;event.keycode=KEY_KP_5;event.pressed=true
 	game._input(event);await shot("key-conflict")
 	game.close_settings()
 	game.choose_mode("local");await shot("selection")

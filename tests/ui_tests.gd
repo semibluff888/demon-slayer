@@ -274,8 +274,8 @@ func _test_practice_input_hints() -> void:
 			var forward := ("D" if facing > 0 else "A") if device == "keyboard:0" else ("→" if facing > 0 else "←")
 			var back := ("A" if facing > 0 else "D") if device == "keyboard:0" else ("←" if facing > 0 else "→")
 			check(hints[0].contains(forward + " +") and hints[1].contains(back + " +"), "practice motion hints mirror with facing")
-			var slash := "T / G" if device == "keyboard:0" else ("Num4 / Num1" if device == "keyboard:1" else "X / Y")
-			var body := "Y / H" if device == "keyboard:0" else ("Num5 / Num2" if device == "keyboard:1" else "A / B")
+			var slash := "U / J" if device == "keyboard:0" else ("Num5 / Num2" if device == "keyboard:1" else "X / Y")
+			var body := "I / K" if device == "keyboard:0" else ("Num6 / Num3" if device == "keyboard:1" else "A / B")
 			check(hints[0].contains(slash) and hints[1].contains(body), "practice shows physical attacks, not logical letters")
 			for n in range(hints.size()):
 				var font_size := 16 if n < 2 else 13

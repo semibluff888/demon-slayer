@@ -1,4 +1,4 @@
 @echo off
 setlocal
-powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0tools\launch.ps1"
-if errorlevel 1 pause
+powershell.exe -NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File "%~dp0tools\launch.ps1"
+exit /b %errorlevel%

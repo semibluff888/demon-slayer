@@ -17,7 +17,7 @@ var input_device: String = "keyboard:0"
 var frozen: bool = false
 var playback_speed: float = 1.0
 var practice_details: bool = false
-var input_hints: Array[String] = ["WASD / TY · GH", "↑↓←→ / Num45 · Num12"]
+var input_hints: Array[String] = ["WASD / UI · JK", "↑↓←→ / Num56 · Num23"]
 var meter_flash: Array[float] = [0.0, 0.0]
 var meter_error: Array[float] = [0.0, 0.0]
 var meter_spent: Array[int] = [0, 0]
@@ -38,7 +38,8 @@ func _ready() -> void:
 	add_child(round_banner)
 
 func reset_effects() -> void:
-	trailing.assign([1000.0, 1000.0])
+	for i in range(trailing.size()):
+		trailing[i] = combat.fighters[i].hp if combat != null and i < combat.fighters.size() else 1000.0
 	callouts.assign(["", ""])
 	callout_time.assign([0.0, 0.0])
 	meter_flash.assign([0.0, 0.0])
