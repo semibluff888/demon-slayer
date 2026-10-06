@@ -1,0 +1,25 @@
+{
+  "id": "title-all-hashira",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "3840x2160",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/title-ensemble-v3/prompts/title-all-hashira.txt",
+  "output": "output/imagegen/title-ensemble-v3/raw/title-all-hashira.png",
+  "references": [
+    "output/imagegen/menu-settings-v1/raw/title-ensemble-v2.png"
+  ],
+  "started_utc": "2026-10-06T10:56:15.7596885Z",
+  "cost": null,
+  "accepted": false,
+  "python_runtime": ".venv-imagegen/Scripts/python.exe",
+  "prefer_ipv6": true,
+  "completed_utc": "2026-10-06T10:59:11.1079047Z",
+  "actual_size": [
+    1672,
+    941
+  ],
+  "sha256": "98b5697de267eb6bec8e0e0158114273660b9d9f7a302544137f1d949f0faf5d",
+  "review_scope": "Rejected: Tengen Uzui and Gyutaro missing; retain as input for a targeted two-character edit."
+}

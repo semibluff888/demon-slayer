@@ -1,20 +1,39 @@
-"""Install the reviewed ensemble poster from its saved CPA source. No network calls."""
+"""Install the latest reviewed title poster from saved CPA sources. No network."""
 from pathlib import Path
-import json,hashlib
+import json, hashlib
 from PIL import Image
 ROOT=Path(__file__).resolve().parents[1]
-OUT=ROOT/'output/imagegen/menu-settings-v1'
-def ready():return (OUT/'raw/title-ensemble-v2.png').is_file()
+POSTERS=[
+ ('title-ensemble-v3','title-all-hashira-r2'),
+ ('title-ensemble-v3','title-all-hashira'),
+ ('menu-settings-v1','title-ensemble-v2'),
+]
+
+def selected():
+ for folder,identifier in POSTERS:
+  out=ROOT/'output/imagegen'/folder
+  source=out/'raw'/(identifier+'.png')
+  record_path=out/'records'/(identifier+'.json')
+  if not source.is_file() or not record_path.is_file():continue
+  record=json.loads(record_path.read_text(encoding='utf-8-sig'))
+  if record.get('status')=='generated' and record.get('accepted'):
+   return out,source,record_path,record
+ raise ValueError('No reviewed title poster is available.')
+
+def ready():
+ try:selected();return True
+ except ValueError:return False
+
 def build():
- source=OUT/'raw/title-ensemble-v2.png'
- record_path=OUT/'records/title-ensemble-v2.json'
- record=json.loads(record_path.read_text(encoding='utf-8-sig'))
- if record['status']!='generated':raise ValueError('Unfinished poster request')
+ out,source,record_path,record=selected()
  image=Image.open(source).convert('RGB')
  if abs(image.width/image.height-16/9)>.02:raise ValueError('Poster must keep its authored widescreen composition')
- output=ROOT/'art/ui/title-poster.png';image.save(output)
- record.update(actual_size=list(image.size),sha256=hashlib.sha256(source.read_bytes()).hexdigest(),accepted=True,review_scope='Readable Chinese game title; twelve distinct Corps, Hashira and demon portraits; native-menu safe area; no duplicate characters.')
- record_path.write_text(json.dumps(record,ensure_ascii=False,indent=2),encoding='utf-8')
- (OUT/'imports/title-poster.json').write_text(json.dumps(dict(source=source.relative_to(ROOT).as_posix(),output=output.relative_to(ROOT).as_posix(),actual_size=list(image.size),sha256=record['sha256'],crop=None,resampled=False),indent=2),encoding='utf-8')
- print('Installed ensemble title poster:',image.size)
+ actual_hash=hashlib.sha256(source.read_bytes()).hexdigest()
+ if record.get('sha256')!=actual_hash:raise ValueError('Poster source changed after review')
+ output=ROOT/'art/ui/title-poster.png'
+ image.save(output)
+ (out/'imports').mkdir(parents=True,exist_ok=True)
+ (out/'imports/title-poster.json').write_text(json.dumps(dict(source=source.relative_to(ROOT).as_posix(),output=output.relative_to(ROOT).as_posix(),actual_size=list(image.size),sha256=actual_hash,crop=None,resampled=False),indent=2),encoding='utf-8')
+ print('Installed reviewed title poster:',source.name,image.size)
+
 if __name__=='__main__':build()

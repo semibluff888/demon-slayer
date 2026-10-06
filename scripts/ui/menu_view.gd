@@ -113,11 +113,11 @@ func title() -> void:
 	var poster := texture(load("res://art/ui/title-poster.png"), Rect2(0,0,1280,720))
 	poster.name="TitlePoster"
 	poster.texture_filter=CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
-	button("mode_cpu","单人对战",Rect2(55,357,362,51),func():app.choose_mode("cpu"),true,true,26).grab_focus()
-	button("mode_local","双人对战",Rect2(55,420,362,51),func():app.choose_mode("local"),false,true,25)
-	button("mode_practice","自由练习",Rect2(55,483,362,51),func():app.choose_mode("practice"),false,true,25)
-	button("help","帮助",Rect2(55,546,362,51),app.show_help,false,true,25)
-	button("settings","游戏设置",Rect2(55,609,362,51),app.show_settings,false,true,25)
+	button("mode_cpu","单人对战",Rect2(55,357,300,51),func():app.choose_mode("cpu"),true,true,26).grab_focus()
+	button("mode_local","双人对战",Rect2(55,420,300,51),func():app.choose_mode("local"),false,true,25)
+	button("mode_practice","自由练习",Rect2(55,483,300,51),func():app.choose_mode("practice"),false,true,25)
+	button("help","帮助",Rect2(55,546,300,51),app.show_help,false,true,25)
+	button("settings","游戏设置",Rect2(55,609,300,51),app.show_settings,false,true,25)
 	reveal()
 
 func settings() -> void:

@@ -1,0 +1,46 @@
+[
+  {
+    "id": "title-all-hashira",
+    "group": "title",
+    "model": "gpt-image-2",
+    "prompt": "output/imagegen/title-ensemble-v3/prompts/title-all-hashira.txt",
+    "out": "output/imagegen/title-ensemble-v3/raw/title-all-hashira.png",
+    "size": "3840x2160",
+    "references": [
+      "output/imagegen/menu-settings-v1/raw/title-ensemble-v2.png"
+    ],
+    "metadata": {
+      "hashira_count": 9,
+      "demon_count": 8,
+      "total_characters": 21,
+      "ui_safe_rect": [
+        0,
+        0.49,
+        0.34,
+        0.45
+      ]
+    }
+  },
+  {
+    "id": "title-all-hashira-r2",
+    "group": "title",
+    "model": "gpt-image-2",
+    "prompt": "output/imagegen/title-ensemble-v3/prompts/title-all-hashira-r2.txt",
+    "out": "output/imagegen/title-ensemble-v3/raw/title-all-hashira-r2.png",
+    "size": "3840x2160",
+    "references": [
+      "output/imagegen/title-ensemble-v3/raw/title-all-hashira.png"
+    ],
+    "metadata": {
+      "hashira_count": 9,
+      "demon_count": 8,
+      "total_characters": 21,
+      "ui_safe_rect": [
+        0,
+        0.49,
+        0.34,
+        0.45
+      ]
+    }
+  }
+]

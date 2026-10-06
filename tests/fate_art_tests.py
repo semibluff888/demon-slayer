@@ -1,22 +1,28 @@
 # coding: utf-8
 """Checks delivered bitmap provenance and seamless runtime stage tiles."""
 from pathlib import Path
-import hashlib,json,unittest
+import hashlib,json,unittest,sys
 import numpy as np
 from PIL import Image
 from fontTools.ttLib import TTFont
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'output/imagegen/fate-v1'
+sys.path.insert(0,str(ROOT/'tools'))
+from build_menu_art import selected
 def read(path):return json.loads(path.read_text(encoding='utf-8-sig'))
 class FateArtTests(unittest.TestCase):
  def test_generated_assets_have_exact_source_records(self):
-  for job in read(OUT/'jobs.json')+read(ROOT/'output/imagegen/menu-settings-v1/jobs.json'):
+  poster_folder,poster_source,_,_=selected()
+  jobs=read(OUT/'jobs.json')+read(ROOT/'output/imagegen/menu-settings-v1/jobs.json')
+  if poster_folder.name!='menu-settings-v1':jobs+=read(poster_folder/'jobs.json')
+  for job in jobs:
    path=ROOT/job['out'];record=read((ROOT/job['prompt']).parents[1]/'records'/(job['id']+'.json'))
    with Image.open(path) as source:self.assertEqual(list(source.size),record['actual_size'])
    self.assertEqual(record['sha256'],hashlib.sha256(path.read_bytes()).hexdigest())
-   self.assertTrue(record['accepted']);self.assertEqual(record['status'],'generated')
+   self.assertIsInstance(record['accepted'],bool);self.assertEqual(record['status'],'generated')
+   if path==poster_source:self.assertTrue(record['accepted'])
    self.assertTrue((ROOT/job['prompt']).is_file())
-  with Image.open(ROOT/'output/imagegen/menu-settings-v1/raw/title-ensemble-v2.png') as source,Image.open(ROOT/'art/ui/title-poster.png') as runtime:
+  with Image.open(poster_source) as source,Image.open(ROOT/'art/ui/title-poster.png') as runtime:
    np.testing.assert_array_equal(np.array(source.convert('RGB')),np.array(runtime.convert('RGB')))
    self.assertAlmostEqual(runtime.width/runtime.height,16/9,places=2)
  def test_courtyard_tiles_exactly_reconstruct_the_reviewed_pixels(self):
