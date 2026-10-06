@@ -8,6 +8,9 @@ const Sound = preload("res://scripts/audio.gd")
 const Catalog = preload("res://scripts/presentation/visual_catalog.gd")
 const Selection = preload("res://scripts/ui/selection_controller.gd")
 const Menu = preload("res://scripts/ui/menu_view.gd")
+const Settings = preload("res://scripts/game_settings.gd")
+var settings := Settings.new()
+var settings_return: String = "title"
 var combat := Combat.new()
 var router := InputRouter.new()
 var ai := AI.new()
@@ -31,6 +34,8 @@ var pause_reason: String = ""
 var help_return: String = "title"
 
 func _ready() -> void:
+	settings.load_config()
+	router.apply_keymaps(settings.keymaps)
 	selection.app = self
 	var ids: Array = catalog.characters.keys()
 	characters.assign([ids[0], ids[mini(1, ids.size() - 1)]])
@@ -40,6 +45,7 @@ func _ready() -> void:
 	add_child(view)
 	sound = Sound.new()
 	add_child(sound)
+	sound.set_levels(settings.muted,settings.volume)
 	gui = Menu.new()
 	gui.z_index = 60
 	gui.app = self
@@ -73,11 +79,17 @@ func _physics_process(_delta: float) -> void:
 		show_result()
 
 func _input(event: InputEvent) -> void:
+	if screen == "settings" and gui.settings_panel != null and gui.settings_panel.handle(event):
+		get_viewport().set_input_as_handled()
+		return
 	if screen == "title":
 		if event is InputEventJoypadButton and event.pressed:
 			menu_device = "pad:%d" % event.device
 		elif (event is InputEventKey or event is InputEventMouseButton) and event.pressed:
 			menu_device = "keyboard:0"
+	if _menu_keyboard(event):
+		get_viewport().set_input_as_handled()
+		return
 	if selection.handle(event):
 		get_viewport().set_input_as_handled()
 
@@ -91,7 +103,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			view.debug_boxes = not view.debug_boxes
 			get_viewport().set_input_as_handled()
 		elif event.keycode == KEY_F2:
-			sound.toggle()
+			toggle_audio()
 			if screen == "title":
 				show_title()
 			get_viewport().set_input_as_handled()
@@ -109,8 +121,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 func _back_or_pause() -> void:
-	if selection.modal:
-		gui.close_devices()
+	if screen == "settings":
+		close_settings()
 		return
 	if screen == "setup":
 		selection.cancel(selection.active_slot)
@@ -148,7 +160,7 @@ func choose_mode(selected: String) -> void:
 	if menu_device.begins_with("pad:") and router.connected(menu_device):
 		devices[0] = menu_device
 		if mode == "local":
-			devices[1] = "keyboard:0"
+			devices[1] = "keyboard:1"
 			for candidate in router.available_devices():
 				if candidate.id.begins_with("pad:") and candidate.id != menu_device:
 					devices[1] = candidate.id
@@ -177,8 +189,8 @@ func _validate_setup() -> void:
 	if is_instance_valid(device_notice):
 		device_notice.text = "请选择不同设备" if duplicate else ("请连接操作设备" if not _devices_ready() else "")
 		if device_notice.text.is_empty() and not selection.modal:
-			var first := "十字键 · A 确认 · B 返回" if devices[0].begins_with("pad:") else ("WASD · F 确认 · G 返回" if devices[0] == "keyboard:0" else "方向键 · J 确认 · K 返回")
-			device_notice.text = first if mode != "local" or screen == "stage" else "P1 " + ("手柄 A/B" if devices[0].begins_with("pad:") else "WASD F/G" if devices[0] == "keyboard:0" else "方向键 J/K") + "    P2 " + ("手柄 A/B" if devices[1].begins_with("pad:") else "WASD F/G" if devices[1] == "keyboard:0" else "方向键 J/K")
+			var first: String = router.selection_hint(devices[0])
+			device_notice.text = first if mode != "local" or screen == "stage" else "P1 " + first + "    P2 " + router.selection_hint(devices[1])
 		device_notice.modulate = Color("ff8197") if start_button.disabled else Color.WHITE
 
 func start_match() -> void:
@@ -206,11 +218,46 @@ func start_match() -> void:
 	sound.play("select")
 
 func _device_hint(device: String) -> String:
-	if device == "keyboard:0":
-		return "WASD / FG · VB"
-	if device == "keyboard:1":
-		return "↑↓←→ / JK · NM"
-	return "手柄 X A / Y B"
+	return router.device_hint(device)
+
+func refresh_input_hints() -> void:
+	view.input_hints.assign([_device_hint(devices[0]),_device_hint(devices[1])])
+	view.hud.input_device=devices[0]
+
+func _menu_keyboard(event: InputEvent) -> bool:
+	if event is not InputEventKey or not (screen in ["title","help","settings","result"] or (screen=="battle" and paused)):
+		return false
+	var key: int=event.physical_keycode if event.physical_keycode else event.keycode
+	for player in range(2):
+		var index:=router.current_keys(player).find(key)
+		if index not in [0,1,2,3,4,5]:continue
+		var action:=InputEventAction.new()
+		action.action=["ui_left","ui_right","ui_down","ui_up","ui_accept","ui_cancel"][index]
+		action.pressed=event.pressed
+		get_viewport().push_input(action)
+		return true
+	return false
+
+func toggle_audio() -> void:
+	sound.toggle()
+	settings.muted=sound.muted
+	settings.save_config()
+	if screen=="settings":gui.actions.audio_mute.set_pressed_no_signal(settings.muted)
+
+func show_settings() -> void:
+	settings_return="battle" if screen=="battle" else "title"
+	if settings_return=="battle":
+		paused=true
+		_reset_inputs()
+	_change_screen("settings")
+	gui.settings()
+
+func close_settings() -> void:
+	_reset_inputs()
+	if settings_return=="battle":
+		_change_screen("battle")
+		set_paused(true,"" if _devices_ready() else "请重连手柄，或在游戏设置中切换为键盘。")
+	else:show_title()
 
 func _reset_inputs() -> void:
 	var held: Array = [router.sample(devices[0]), router.sample(devices[1])]
@@ -271,16 +318,17 @@ func _devices_ready() -> bool:
 	return router.connected(devices[0]) and (mode != "local" or router.connected(devices[1]))
 
 func _on_joy_connection(_device: int, _connected: bool) -> void:
+	if screen == "settings":
+		gui.settings_panel.refresh_controllers()
+		return
 	if screen in ["setup", "stage"]:
 		if not _devices_ready():
 			selection.ready.assign([false, false])
 			if screen == "stage": show_setup()
-		if selection.modal:
-			gui.close_devices()
 		if screen == "setup": gui.refresh_setup()
 		_validate_setup()
 	elif screen == "battle":
 		if not _devices_ready():
-			set_paused(true, "手柄已断开，请重新连接；\n也可返回选人切换操作设备。")
+			set_paused(true, "手柄已断开，请重新连接；\n也可在游戏设置中切换为键盘。")
 		elif paused:
 			set_paused(true, "设备已连接，可以继续对战。")

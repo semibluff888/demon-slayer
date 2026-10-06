@@ -162,6 +162,9 @@ func _pad(device: int, button: int) -> void:
 
 func _test_selection() -> void:
 	game = Main.instantiate()
+	game.settings.path = "res://artifacts/roster_expansion_tests-settings.cfg"
+	DirAccess.make_dir_recursive_absolute("res://artifacts")
+	game.settings.save_config()
 	root.add_child(game)
 	game.set_physics_process(false)
 	game.sound.muted = true
@@ -173,9 +176,9 @@ func _test_selection() -> void:
 		game.select_character(0,"nezuko")
 		game.select_character(1,"akaza")
 		game.selection.active_slot = 0
-		_key(KEY_F)
+		_key(KEY_T)
 		check(game.screen == "setup" and game.selection.ready == [true,false],"P1 locks before stage: "+mode)
-		_key(KEY_J if mode == "local" else KEY_F)
+		_key(KEY_KP_4 if mode == "local" else KEY_T)
 		check(game.screen == "stage","both locked opens stage: "+mode)
 		var selected: Array = game.characters.duplicate()
 		game.gui.actions.back.pressed.emit()
@@ -185,9 +188,9 @@ func _test_selection() -> void:
 		game.gui.actions.stage_infinity_castle.pressed.emit()
 		check(game.screen == "stage" and game.stage_id == "infinity_castle","mouse selects stage without starting")
 		if mode == "local":
-			_key(KEY_J)
+			_key(KEY_KP_4)
 			check(game.screen == "stage","P2 cannot start stage")
-		_key(KEY_F)
+		_key(KEY_T)
 		check(game.screen == "battle" and game.view.stage.visual.id == "infinity_castle","P1 starts selected stage: "+mode)
 		game.start_match()
 		check(game.stage_id == "infinity_castle","rematch retains stage")
@@ -203,14 +206,14 @@ func _test_selection() -> void:
 	_key(KEY_RIGHT)
 	check(game.characters == ["zenitsu","zenitsu"],"P2 direction is independent, mirrors allowed")
 	check(game.gui.roster_cards.zenitsu.cursors == [0,1],"mirror card displays both cursors")
-	_key(KEY_F)
+	_key(KEY_T)
 	_key(KEY_D)
 	check(game.characters[0] == "zenitsu" and game.selection.ready[0],"locked cursor cannot move")
-	_key(KEY_G)
+	_key(KEY_Y)
 	check(not game.selection.ready[0],"owner can unlock")
 	game.devices[1] = game.devices[0]
 	game._validate_setup()
-	_key(KEY_F)
+	_key(KEY_T)
 	check(game.start_button.disabled and not game.selection.ready[0],"conflicting assignment blocks locking")
 	# Real joypad event types, deterministic virtual device presence.
 	game.router = Pads.new()
@@ -226,8 +229,7 @@ func _test_selection() -> void:
 	_pad(99,JOY_BUTTON_DPAD_LEFT)
 	check(game.characters == ["zenitsu","akaza"],"two pad events control independent cursors")
 	_pad(98,JOY_BUTTON_Y)
-	check(game.selection.modal,"pad opens device popup")
-	game.gui.close_devices()
+	check(not game.selection.modal and not game.gui.actions.has("devices"),"selection has no device popup or shortcut")
 	_pad(98,JOY_BUTTON_A)
 	_pad(99,JOY_BUTTON_A)
 	check(game.screen == "stage","two pads confirm setup")

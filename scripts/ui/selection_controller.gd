@@ -98,7 +98,8 @@ func handle(event: InputEvent) -> bool:
 		var direction := Vector2i.ZERO
 		var operation := ""
 		for keyboard in range(2):
-			var keys: Array = [[KEY_A, KEY_D, KEY_W, KEY_S, KEY_F, KEY_G], [KEY_LEFT, KEY_RIGHT, KEY_UP, KEY_DOWN, KEY_J, KEY_K]][keyboard]
+			var mapping: Array = app.router.current_keys(keyboard)
+			var keys: Array = [mapping[0],mapping[1],mapping[3],mapping[2],mapping[4],mapping[5]]
 			var index := keys.find(key)
 			if index >= 0:
 				slot = _owner("keyboard:%d" % keyboard)
@@ -107,7 +108,7 @@ func handle(event: InputEvent) -> bool:
 				else:
 					operation = "confirm" if index == 4 else "cancel"
 				break
-		if key in [KEY_ENTER, KEY_KP_ENTER, KEY_SPACE]:
+		if slot < 0 and key in [KEY_ENTER, KEY_KP_ENTER, KEY_SPACE]:
 			var focused: Control = app.get_viewport().gui_get_focus_owner()
 			if focused != null and not str(focused.name).begins_with("character_") and not str(focused.name).begins_with("stage_"):
 				return false
@@ -125,9 +126,6 @@ func handle(event: InputEvent) -> bool:
 				elif operation == "cancel": cancel(slot)
 		return true
 	if event is InputEventJoypadButton or event is InputEventJoypadMotion:
-		if event is InputEventJoypadButton and event.button_index == JOY_BUTTON_Y and event.pressed:
-			app.gui.device_popup()
-			return true
 		var slot := _owner("pad:%d" % event.device)
 		if slot < 0 or (app.screen == "stage" and slot != 0):
 			return true
@@ -145,9 +143,6 @@ func handle(event: InputEvent) -> bool:
 				return true
 			if event.button_index == JOY_BUTTON_B and event.pressed:
 				cancel(slot)
-				return true
-			if event.button_index == JOY_BUTTON_Y and event.pressed:
-				app.gui.device_popup()
 				return true
 			var dirs := {JOY_BUTTON_DPAD_LEFT: Vector2i.LEFT, JOY_BUTTON_DPAD_RIGHT: Vector2i.RIGHT, JOY_BUTTON_DPAD_UP: Vector2i.UP, JOY_BUTTON_DPAD_DOWN: Vector2i.DOWN}
 			if not dirs.has(event.button_index):

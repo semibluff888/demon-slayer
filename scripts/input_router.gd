@@ -4,8 +4,8 @@ extends RefCounted
 const Commands = preload("res://scripts/command_recognizer.gd")
 const ACTIONS: Array[String] = ["left", "right", "down", "up", "a", "b", "c", "d"]
 const KEYS: Array = [
-	[KEY_A, KEY_D, KEY_S, KEY_W, KEY_F, KEY_G, KEY_V, KEY_B],
-	[KEY_LEFT, KEY_RIGHT, KEY_DOWN, KEY_UP, KEY_J, KEY_K, KEY_N, KEY_M]]
+	[KEY_A, KEY_D, KEY_S, KEY_W, KEY_T, KEY_Y, KEY_G, KEY_H],
+	[KEY_LEFT, KEY_RIGHT, KEY_DOWN, KEY_UP, KEY_KP_4, KEY_KP_5, KEY_KP_1, KEY_KP_2]]
 var stick_directions: Dictionary = {}
 var suppressed: Dictionary = {}
 
@@ -20,22 +20,68 @@ func _init() -> void:
 			event.physical_keycode = KEYS[player][n]
 			InputMap.action_add_event(action, event)
 
+func apply_keymaps(maps: Array) -> void:
+	for player in range(2):
+		for n in range(ACTIONS.size()):
+			var action := "p%d_%s" % [player+1,ACTIONS[n]]
+			Input.action_release(action)
+			InputMap.action_erase_events(action)
+			var event := InputEventKey.new()
+			event.physical_keycode=maps[player][n]
+			InputMap.action_add_event(action,event)
+	suppressed.clear()
+
+static func current_keys(player: int) -> Array:
+	var result: Array=[]
+	for n in range(ACTIONS.size()):
+		var code: int=KEYS[player][n]
+		var action := "p%d_%s" % [player+1,ACTIONS[n]]
+		if InputMap.has_action(action):
+			for event in InputMap.action_get_events(action):
+				if event is InputEventKey:
+					code=event.physical_keycode if event.physical_keycode else event.keycode
+					break
+		result.append(code)
+	return result
+
+static func key_name(code: int) -> String:
+	if code>=KEY_KP_0 and code<=KEY_KP_9:return "Num%d" % [code-KEY_KP_0]
+	var special := {KEY_LEFT:"←",KEY_RIGHT:"→",KEY_UP:"↑",KEY_DOWN:"↓",KEY_KP_ENTER:"NumEnter"}
+	return special.get(code,OS.get_keycode_string(code))
+
+static func movement_hint(player: int) -> String:
+	var keys:=current_keys(player)
+	return " ".join([key_name(keys[3]),key_name(keys[0]),key_name(keys[2]),key_name(keys[1])])
+
+static func device_hint(device: String) -> String:
+	if not device.begins_with("keyboard:"):return "手柄 X A / Y B"
+	var player:=int(device.get_slice(":",1))
+	var keys:=current_keys(player)
+	return "%s / %s %s · %s %s" % [movement_hint(player),key_name(keys[4]),key_name(keys[5]),key_name(keys[6]),key_name(keys[7])]
+
+static func selection_hint(device: String) -> String:
+	if not device.begins_with("keyboard:"):return "十字键 · A 确认 · B 返回"
+	var keys:=current_keys(int(device.get_slice(":",1)))
+	return "%s 确认 · %s 返回" % [key_name(keys[4]),key_name(keys[5])]
+
 static func motion_hints(device: String, facing: int) -> Array[String]:
-	var left := "A" if device == "keyboard:0" else "←"
-	var right := "D" if device == "keyboard:0" else "→"
-	var down := "S" if device == "keyboard:0" else "↓"
-	var slash := "F / V" if device == "keyboard:0" else ("J / N" if device == "keyboard:1" else "X / Y")
-	var body := "G / B" if device == "keyboard:0" else ("K / M" if device == "keyboard:1" else "A / B")
-	var forward := right if facing > 0 else left
-	var back := left if facing > 0 else right
-	return ["236：%s → %s + (%s)" % [down, forward, slash],
-		"214：%s → %s + (%s)" % [down, back, body],
-		"朝%s · 松开%s · 0.5秒完成，攻击可晚0.2秒" % ["右" if facing > 0 else "左", down]]
+	var keyboard:=device.begins_with("keyboard:")
+	var keys:=current_keys(int(device.get_slice(":",1))) if keyboard else []
+	var left:=key_name(keys[0]) if keyboard else "←"
+	var right:=key_name(keys[1]) if keyboard else "→"
+	var down:=key_name(keys[2]) if keyboard else "↓"
+	var slash:="%s / %s" % [key_name(keys[4]),key_name(keys[6])] if keyboard else "X / Y"
+	var body:="%s / %s" % [key_name(keys[5]),key_name(keys[7])] if keyboard else "A / B"
+	var forward:=right if facing>0 else left
+	var back:=left if facing>0 else right
+	return ["236：%s → %s + (%s)" % [down,forward,slash],
+		"214：%s → %s + (%s)" % [down,back,body],
+		"朝%s · 松开%s · 0.5秒完成，攻击可晚0.2秒" % ["右" if facing>0 else "左",down]]
 
 func available_devices() -> Array[Dictionary]:
 	var result: Array[Dictionary] = [
-		{"id": "keyboard:0", "label": "键盘 1 · WASD / FG·VB"},
-		{"id": "keyboard:1", "label": "键盘 2 · 方向键 / JK·NM"}]
+		{"id": "keyboard:0", "label": "键盘 1 · WASD / TY·GH"},
+		{"id": "keyboard:1", "label": "键盘 2 · 方向键 / Num45·Num12"}]
 	for id in Input.get_connected_joypads():
 		result.append({"id": "pad:%d" % id, "label": "手柄 %d · %s" % [id + 1, Input.get_joy_name(id)]})
 	return result

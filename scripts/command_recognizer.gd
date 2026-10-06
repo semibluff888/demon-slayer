@@ -8,7 +8,8 @@ const D := 8
 const MOTION_WINDOW := 30
 const BUTTON_WINDOW := 12
 const DP_WINDOW := 20
-const SUPER_WINDOW := 36
+const SUPER_WINDOW := 42
+const SUPER_BUTTON_WINDOW := 12
 const STRICT_BUTTON_WINDOW := 6
 const CHORD_WINDOW := 2
 const FEEDBACK_WINDOW := 90
@@ -157,7 +158,7 @@ func motion() -> String:
 func _motion_match(name: String) -> Dictionary:
 	var quarter := name in ["236", "214"]
 	var window := MOTION_WINDOW if quarter else (DP_WINDOW if name == "623" else SUPER_WINDOW)
-	return _match_pattern(PATTERNS[name], window, BUTTON_WINDOW if quarter else STRICT_BUTTON_WINDOW, quarter)
+	return _match_pattern(PATTERNS[name], window, BUTTON_WINDOW if quarter else (SUPER_BUTTON_WINDOW if name == "236236" else STRICT_BUTTON_WINDOW), quarter)
 
 func _match_pattern(pattern: Array, window: int, button_window: int, held_start: bool = false) -> Dictionary:
 	var samples: Array[Dictionary] = []

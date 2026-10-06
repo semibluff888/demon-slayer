@@ -4,6 +4,7 @@ var streams: Dictionary = {}
 var voices: Array[AudioStreamPlayer] = []
 var cursor := 0
 var muted := false
+var volume: float = 1.0
 var paused := false
 const SAMPLE_RATE := 22050
 const KINDS := ["hit", "body_hit", "block", "swing", "body_swing", "select", "fight", "round_end", "throw", "clash", "water_slash", "water_wheel", "iai", "thunder", "super", "max", "roll", "meter_empty", "meter_spend", "throw_tech", "flame", "blood", "shockwave"]
@@ -73,7 +74,8 @@ func play(kind: String, gain: float = 1.0) -> void:
 	var voice := voices[cursor % voices.size()]
 	cursor += 1
 	voice.stream = streams[kind]
-	voice.volume_db = -17.0 + linear_to_db(maxf(gain,0.01))
+	voice.set_meta("cue_gain",gain)
+	voice.volume_db = -17.0 + linear_to_db(maxf(gain*volume,0.00001))
 	voice.stream_paused = false
 	voice.play()
 
@@ -89,11 +91,15 @@ func reset_audio() -> void:
 	paused = false
 	cursor = 0
 
+func set_levels(silent: bool, level: float) -> void:
+	muted = silent
+	volume = clampf(level,0,1)
+	for voice in voices:
+		voice.volume_db = -17.0 + linear_to_db(maxf(float(voice.get_meta("cue_gain",1.0))*volume,0.00001))
+		if muted: voice.stop()
+
 func toggle() -> void:
-	muted = not muted
-	if muted:
-		for voice in voices:
-			voice.stop()
+	set_levels(not muted,volume)
 
 func _make_sound(kind: String) -> AudioStreamWAV:
 	var duration := 0.105

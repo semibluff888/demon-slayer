@@ -63,6 +63,10 @@ Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script',
 
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/uppercut_polish_tests.gd') -Expected 'UPPERCUT POLISH: \d+ passed, 0 failed' | Out-Null
 
+Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/settings_tests.gd') -Expected 'SETTINGS TESTS: \d+ passed, 0 failed' | Out-Null
+
+Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/cancel_assist_tests.gd') -Expected 'CANCEL ASSIST: \d+ passed, 0 failed' | Out-Null
+
 $hashes = @()
 foreach ($fps in @(30, 60, 144)) {
     $logPath = Join-Path $artifactRoot "fps-$fps.log"

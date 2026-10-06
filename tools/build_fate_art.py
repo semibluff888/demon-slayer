@@ -21,6 +21,8 @@ def main():
  target=ROOT/'art/ui/title-poster.png';target.parent.mkdir(parents=True,exist_ok=True)
  poster.save(target)
  save(OUT/'imports/title-poster.json',dict(source=path.relative_to(ROOT).as_posix(),actual_size=list(poster.size),crop=None,output=target.relative_to(ROOT).as_posix(),title='\u9b3c\u706d\u4e4b\u5203\uff1a\u5bbf\u547d\u5bf9\u51b3',sha256=record['sha256']))
+ from build_menu_art import ready as menu_ready,build as build_menu
+ if menu_ready():build_menu()
  from build_courtyard_hd import ready,build
  if ready():
   build();return

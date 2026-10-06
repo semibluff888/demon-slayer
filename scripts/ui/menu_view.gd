@@ -1,5 +1,7 @@
 extends Control
 ## Native controls over illustrated scenery; the title poster includes its own lettering.
+const SettingsPanel = preload("res://scripts/ui/settings_panel.gd")
+var settings_panel: RefCounted
 const RosterCard = preload("res://scripts/ui/roster_card.gd")
 const StageCard = preload("res://scripts/ui/stage_card.gd")
 const DuelButton = preload("res://scripts/ui/duel_button.gd")
@@ -69,6 +71,7 @@ func _process(delta: float) -> void:
 			entry.node.position = entry.origin + Vector2(sin(motion_time * 0.38 + entry.phase) * 2, cos(motion_time * 0.32 + entry.phase) * 1.8)
 
 func clear() -> void:
+	settings_panel=null
 	roster_cards.clear()
 	stage_cards.clear()
 	fighter_portraits.clear()
@@ -107,16 +110,19 @@ func reveal() -> void:
 		focusable[i].focus_next = focusable[i].get_path_to(next)
 
 func title() -> void:
-	var poster := texture(load("res://art/ui/title-poster.png"), Rect2(0, 0, 1280, 720))
-	poster.name = "TitlePoster"
-	poster.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
-	texture(shades.left, Rect2(0, 372, 470, 348))
-	button("mode_cpu", "单人对战", Rect2(55, 404, 362, 62), func(): app.choose_mode("cpu"), true, true, 27).grab_focus()
-	button("mode_local", "双人对战", Rect2(55, 480, 362, 56), func(): app.choose_mode("local"), false, true, 25)
-	button("mode_practice", "自由练习", Rect2(55, 550, 362, 56), func(): app.choose_mode("practice"), false, true, 25)
-	button("help", "指南", Rect2(55, 650, 122, 36), app.show_help, false, false, 17)
-	button("sound", "声音 " + ("关" if app.sound.muted else "开"), Rect2(192, 650, 139, 36), func(): app.sound.toggle(); app.show_title(), false, false, 17)
+	var poster := texture(load("res://art/ui/title-poster.png"), Rect2(0,0,1280,720))
+	poster.name="TitlePoster"
+	poster.texture_filter=CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
+	button("mode_cpu","单人对战",Rect2(55,357,362,51),func():app.choose_mode("cpu"),true,true,26).grab_focus()
+	button("mode_local","双人对战",Rect2(55,420,362,51),func():app.choose_mode("local"),false,true,25)
+	button("mode_practice","自由练习",Rect2(55,483,362,51),func():app.choose_mode("practice"),false,true,25)
+	button("help","帮助",Rect2(55,546,362,51),app.show_help,false,true,25)
+	button("settings","游戏设置",Rect2(55,609,362,51),app.show_settings,false,true,25)
 	reveal()
+
+func settings() -> void:
+	settings_panel=SettingsPanel.new()
+	settings_panel.build(self)
 
 func slash(bounds: Rect2, color: Color, cut: float = 40) -> void:
 	var polygon := Polygon2D.new()
@@ -194,8 +200,7 @@ func setup() -> void:
 		roster_cards[id] = card
 		actions["character_" + id] = card
 	button("back", "返回", Rect2(48, 663, 130, 39), app.show_title, false, false, 17)
-	button("devices", "设备", Rect2(192, 663, 130, 39), device_popup, false, false, 17)
-	app.device_notice = label("", Rect2(337, 669, 510, 29), 15, MUTED)
+	app.device_notice = label("", Rect2(213, 669, 760, 29), 15, MUTED)
 	app.start_button = button("start", "确认", Rect2(1006, 654, 225, 48), func(): app.selection.confirm(app.selection.active_slot), true, true, 21)
 	refresh_setup()
 	reveal()
@@ -249,8 +254,7 @@ func stages() -> void:
 		stage_cards[id] = card
 		index += 1
 	button("back", "返回选人", Rect2(51, 660, 180, 42), app.show_setup, false, false, 18)
-	button("devices", "设备", Rect2(245, 660, 125, 42), device_popup, false, false, 18)
-	app.device_notice = label("", Rect2(391, 666, 493, 30), 15, MUTED)
+	app.device_notice = label("", Rect2(274, 666, 677, 30), 15, MUTED)
 	app.start_button = button("start", "开战", Rect2(974, 647, 257, 56), func(): app.selection.confirm(0), true, true, 25)
 	refresh_stages()
 	reveal()
@@ -261,40 +265,6 @@ func refresh_stages() -> void:
 		stage_cards[id].queue_redraw()
 	if stage_cards.has(app.stage_id): stage_cards[app.stage_id].grab_focus()
 	app._validate_setup()
-
-func device_popup() -> void:
-	if app.selection.modal: return
-	app.selection.modal = true
-	var blocker := ColorRect.new()
-	blocker.color = Color(0.015, 0.023, 0.045, 0.94)
-	blocker.size = Vector2(1280, 720)
-	add_child(blocker)
-	label("操作设备", Rect2(326, 172, 626, 55), 34, PAPER, true)
-	var available: Array = app.router.available_devices()
-	app.setup_options.clear()
-	for slot in range(2):
-		label("P%d" % [slot + 1], Rect2(333, 278 + slot * 81, 70, 42), 20, GOLD)
-		var option := device_option("device_p%d" % [slot + 1], Rect2(426, 278 + slot * 81, 522, 44))
-		app.setup_options.append(option)
-		if slot == 1 and app.mode != "local":
-			option.add_item("练习木桩" if app.mode == "practice" else "电脑")
-			option.disabled = true
-		else:
-			for index in range(available.size()):
-				option.add_item(available[index].label)
-				if available[index].id == app.devices[slot]: option.select(index)
-			option.item_selected.connect(func(index: int): app.devices[slot] = available[index].id; app._validate_setup())
-	app.device_notice = label("", Rect2(331, 441, 617, 34), 17, MUTED)
-	button("close_devices", "完成", Rect2(670, 492, 278, 49), close_devices, true, true)
-	app.setup_options[0].grab_focus()
-	app._validate_setup()
-
-func close_devices() -> void:
-	app.selection.modal = false
-	var is_stage: bool = app.screen == "stage"
-	clear()
-	if is_stage: stages()
-	else: setup()
 
 func portrait(id: String, bounds: Rect2, flip: bool = false, moving: bool = false) -> void:
 	var visual = catalog.characters[id]
@@ -313,25 +283,23 @@ func battle() -> void:
 	button("pause", "暂停  Esc", Rect2(680, 694, 112, 26), func(): app.set_paused(true), false, false, 13).focus_mode = Control.FOCUS_NONE
 
 func pause(reason: String) -> void:
-	battle_style = false
-	rect(Rect2(0, 0, 1280, 720), Color(0.018, 0.03, 0.065, 0.72))
-	panel(Rect2(399, 77, 482, 566))
-	label("P A U S E", Rect2(434, 111, 412, 23), 14, GOLD, false, HORIZONTAL_ALIGNMENT_CENTER)
-	label("暂停对战", Rect2(424, 149, 432, 67), 45, PAPER, true, HORIZONTAL_ALIGNMENT_CENTER)
-	label(reason if not reason.is_empty() else "准备好后继续对战。", Rect2(426, 232, 428, 57), 17, MUTED, false, HORIZONTAL_ALIGNMENT_CENTER)
-	var resume := button("resume", "继续练习" if app.mode == "practice" else "继续对战", Rect2(449, 310, 382, 49), func(): app.set_paused(false), true, true)
-	resume.disabled = not app._devices_ready()
-	button("restart", "重置练习" if app.mode == "practice" else "重新开始比赛", Rect2(449, 376, 382, 43), app.start_match, false, false, 19)
-	button("move_list", "招式表 / 操作指南", Rect2(449, 434, 382, 43), app.show_help, false, false, 19)
-	if app.mode == "practice":
-		button("practice_options", "木桩与气槽设置", Rect2(449, 492, 382, 43), app.show_practice_options, false, false, 19)
-	button("setup", "返回选人 / 调整设备", Rect2(449, 559, 382, 43), app.show_setup, false, false, 18)
-	if resume.disabled:
-		actions.setup.grab_focus()
-	else:
-		resume.grab_focus()
+	battle_style=false
+	rect(Rect2(0,0,1280,720),Color(0.018,0.03,0.065,0.72))
+	panel(Rect2(399,43,482,634))
+	label("P A U S E",Rect2(434,77,412,23),14,GOLD,false,HORIZONTAL_ALIGNMENT_CENTER)
+	label("暂停对战",Rect2(424,111,432,67),45,PAPER,true,HORIZONTAL_ALIGNMENT_CENTER)
+	label(reason,Rect2(426,187,428,54),16,MUTED,false,HORIZONTAL_ALIGNMENT_CENTER)
+	var resume:=button("resume","继续练习" if app.mode=="practice" else "继续对战",Rect2(449,260,382,49),func():app.set_paused(false),true,true)
+	resume.disabled=not app._devices_ready()
+	button("restart","重置练习" if app.mode=="practice" else "重新开始比赛",Rect2(449,323,382,43),app.start_match,false,false,19)
+	button("move_list","帮助与招式表",Rect2(449,379,382,43),app.show_help,false,false,19)
+	button("settings","游戏设置",Rect2(449,435,382,43),app.show_settings,false,false,19)
+	if app.mode=="practice":
+		button("practice_options","木桩与气槽设置",Rect2(449,491,382,43),app.show_practice_options,false,false,19)
+	button("setup","返回选人",Rect2(449,574,382,43),app.show_setup,false,false,19)
+	if resume.disabled:actions.settings.grab_focus()
+	else:resume.grab_focus()
 	reveal()
-
 
 func result() -> void:
 	rect(Rect2(0, 0, 1280, 720), Color(0.025, 0.035, 0.075, 0.40))
@@ -372,7 +340,11 @@ func help(page: String = "basics", character_id: String = "") -> void:
 		panel(Rect2(50, 164, 553, 461))
 		panel(Rect2(627, 164, 604, 461))
 		label("壹 / 按键与移动", Rect2(75, 181, 508, 42), 25, Color("82d4de"), true)
-		var rows := [["移动 / 跳跃", "WASD", "方向键"], ["A 轻攻击", "F", "J"], ["B 轻体术", "G", "K"], ["C 重攻击", "V", "N"], ["D 重体术", "B", "M"]]
+		var keys1: Array=app.router.current_keys(0)
+		var keys2: Array=app.router.current_keys(1)
+		var rows := [["移动 / 跳跃",app.router.movement_hint(0),app.router.movement_hint(1)]]
+		for index in range(4):
+			rows.append([["A 轻攻击","B 轻体术","C 重攻击","D 重体术"][index],app.router.key_name(keys1[index+4]),app.router.key_name(keys2[index+4])])
 		label("键盘 P1", Rect2(280, 233, 123, 24), 15, GOLD, false, HORIZONTAL_ALIGNMENT_CENTER)
 		label("键盘 P2", Rect2(439, 233, 123, 24), 15, GOLD, false, HORIZONTAL_ALIGNMENT_CENTER)
 		for i in range(rows.size()):
@@ -381,7 +353,7 @@ func help(page: String = "basics", character_id: String = "") -> void:
 			keycap(rows[i][1], Rect2(280, y, 123, 32))
 			keycap(rows[i][2], Rect2(439, y, 123, 32))
 		label("手柄：X / A / Y / B 对应逻辑 A / B / C / D", Rect2(75, 501, 508, 27), 16, MUTED)
-		label("朝右：236 = S → D＋F/V；214 = S → A＋G/B。\n先松S；朝左交换A/D。双击前后可短冲刺。", Rect2(75, 547, 508, 56), 16, GOLD)
+		label("236 = ↓↘→；214 = ↓↙←，朝左时镜像。\n双击前后可短冲刺；按键可在游戏设置中修改。",Rect2(75,547,508,56),16,GOLD)
 		label("贰 / 攻防与资源", Rect2(652, 181, 553, 42), 25, GOLD, true)
 		var lessons := [
 			"后方向站防，后下方向蹲防；跳攻站防、下段蹲防。",

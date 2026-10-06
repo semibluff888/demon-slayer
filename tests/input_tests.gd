@@ -122,7 +122,7 @@ func _devices() -> void:
 		check(reader.sample(router.pad_held(amount, 0, {}), 1).dash == 0, "stick hysteresis avoids false releases")
 	reader.sample(router.pad_held(0, 0, {}), 1)
 	check(reader.sample(router.pad_held(0.8, 0, {}), 1).dash == 1, "pad neutral enables second tap")
-	for pair in [["a", KEY_F, Commands.A], ["b", KEY_G, Commands.B], ["c", KEY_V, Commands.C], ["d", KEY_B, Commands.D]]:
+	for pair in [["a", KEY_T, Commands.A], ["b", KEY_Y, Commands.B], ["c", KEY_G, Commands.C], ["d", KEY_H, Commands.D]]:
 		var event := InputEventKey.new()
 		event.physical_keycode = pair[1]
 		event.pressed = true

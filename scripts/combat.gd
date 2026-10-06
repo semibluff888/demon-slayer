@@ -11,6 +11,7 @@ const LEFT: float = Arena.LEFT
 const RIGHT: float = Arena.RIGHT
 const ROUND_TICKS := 3600
 const BUFFER_TICKS := 6
+const SUPER_BUFFER_TICKS := 10
 const Flow = preload("res://scripts/round_flow.gd")
 var catalog := Catalog.new()
 var fighters: Array = []
@@ -252,7 +253,7 @@ func _read_command(f: Fighter, command: Dictionary) -> void:
 	if not command.action.is_empty():
 		f.buffer_action = command.action.duplicate()
 		f.buffer = command.action.type
-		f.buffer_left = BUFFER_TICKS
+		f.buffer_left = SUPER_BUFFER_TICKS if command.action.type == "max" or command.action.get("motion", "") == "236236" else BUFFER_TICKS
 
 func _advance(f: Fighter) -> void:
 	f.previous_x = f.x
@@ -318,7 +319,13 @@ func _advance(f: Fighter) -> void:
 			var segment := f.move.segment(f.move_frame)
 			if segment >= 0 and f.move_frame == f.move.segment_start(segment):
 				events.append({"type":"strike", "attacker":f.slot, "move":f.move.id, "instance":f.attack_instance, "segment":segment})
-			f.x += f.move.travel * f.facing
+			var travel: float = f.move.travel
+			var target: Fighter = fighters[1 - f.slot]
+			# Connected multihit supers must not dash beneath their airborne target.
+			# Keep natural forward movement until contact spacing is reached; no warp.
+			if f.move.is_super() and f.confirmed and f.move.hit_count() > 1 and target.stun > 0 and f.attack_instance in target.juggle_instances:
+				travel = minf(travel, maxf(0, (target.x - f.x) * f.facing - 26))
+			f.x += travel * f.facing
 			if f.move.projectile_speed != 0 and not f.projectile_spawned:
 				_spawn_projectile(f)
 	elif f.dash_ticks > 0:
@@ -353,9 +360,13 @@ func _try_action(f: Fighter) -> void:
 	if selected == null:
 		return
 	if f.move != null:
-		if not f.connected or selected.kind not in f.move.cancel_targets:
-			return
 		if f.move_frame > f.move.startup + f.move.active + f.move.cancel_window:
+			# An expired uppercut cancel must not linger until landing and spend
+			# meter on an unintended standalone super at the end of recovery.
+			if f.move.lift != 0 and selected.is_super():
+				f.clear_buffer()
+			return
+		if not f.connected or selected.kind not in f.move.cancel_targets:
 			return
 		if selected.is_super() and not f.confirmed:
 			return
@@ -402,6 +413,12 @@ func _begin_move(f: Fighter, selected: Move) -> void:
 	# into its stance instead of carrying a standing animation through the whole arc.
 	if selected.is_super() and f.move != null and f.move.lift != 0 and not f.grounded:
 		f.vy = maxf(0, f.vy)
+		# A late hit-confirm must not let the launched victim land during the
+		# ground super's startup. Carry only the still-stunned airborne victim;
+		# this cannot pick up an already grounded knockdown or grant a new juggle.
+		var victim: Fighter = fighters[1 - f.slot]
+		if victim.state == "hit" and victim.stun > 0 and not victim.grounded:
+			victim.vy = minf(victim.vy, -3.2)
 	f.move = selected
 	f.attack_instance = next_instance
 	next_instance += 1

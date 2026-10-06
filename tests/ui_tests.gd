@@ -33,6 +33,9 @@ func check(condition: bool, message: String) -> void:
 func _run() -> void:
 	create_timer(30).timeout.connect(func(): printerr("UI test watchdog expired"); quit(1))
 	game = MainScene.instantiate()
+	game.settings.path = "res://artifacts/ui_tests-settings.cfg"
+	DirAccess.make_dir_recursive_absolute("res://artifacts")
+	game.settings.save_config()
 	root.add_child(game)
 	game.set_physics_process(false)
 	game.sound.muted = true
@@ -186,7 +189,7 @@ func _test_native_menu_input() -> void:
 	game.show_title()
 	await process_frame
 	var motion := InputEventMouseMotion.new()
-	motion.position = Vector2(210, 458)
+	motion.position = Vector2(210, 380)
 	motion.global_position = motion.position
 	root.push_input(motion, true)
 	await process_frame
@@ -271,8 +274,8 @@ func _test_practice_input_hints() -> void:
 			var forward := ("D" if facing > 0 else "A") if device == "keyboard:0" else ("→" if facing > 0 else "←")
 			var back := ("A" if facing > 0 else "D") if device == "keyboard:0" else ("←" if facing > 0 else "→")
 			check(hints[0].contains(forward + " +") and hints[1].contains(back + " +"), "practice motion hints mirror with facing")
-			var slash := "F / V" if device == "keyboard:0" else ("J / N" if device == "keyboard:1" else "X / Y")
-			var body := "G / B" if device == "keyboard:0" else ("K / M" if device == "keyboard:1" else "A / B")
+			var slash := "T / G" if device == "keyboard:0" else ("Num4 / Num1" if device == "keyboard:1" else "X / Y")
+			var body := "Y / H" if device == "keyboard:0" else ("Num5 / Num2" if device == "keyboard:1" else "A / B")
 			check(hints[0].contains(slash) and hints[1].contains(body), "practice shows physical attacks, not logical letters")
 			for n in range(hints.size()):
 				var font_size := 16 if n < 2 else 13

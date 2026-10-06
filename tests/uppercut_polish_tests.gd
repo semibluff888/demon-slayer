@@ -128,7 +128,7 @@ func _recovery() -> void:
 				helper.input(model,"623"+button,defender)
 				var fighter=model.fighters[0]
 				var move=model.definition(fighter).motions["623"+button]
-				var target: int = move.startup+move.active+2 if situation=="late" else move.startup+2
+				var target: int = move.startup+move.active+move.cancel_window+2 if situation=="late" else move.startup+2
 				while fighter.move!=null and fighter.move_frame<target:helper.tick(model,{},defender)
 				var before_y: float = model.fighters[1].y
 				helper.input(model,"236236AC",defender)

@@ -17,7 +17,7 @@ var input_device: String = "keyboard:0"
 var frozen: bool = false
 var playback_speed: float = 1.0
 var practice_details: bool = false
-var input_hints: Array[String] = ["WASD / FG · VB", "↑↓←→ / JK · NM"]
+var input_hints: Array[String] = ["WASD / TY · GH", "↑↓←→ / Num45 · Num12"]
 var meter_flash: Array[float] = [0.0, 0.0]
 var meter_error: Array[float] = [0.0, 0.0]
 var meter_spent: Array[int] = [0, 0]
@@ -109,7 +109,7 @@ func practice_hints() -> Array[String]:
 	return InputRouter.motion_hints(input_device, combat.fighters[0].facing)
 
 func practice_feedback() -> String:
-	var down := "S" if input_device == "keyboard:0" else "↓"
+	var down := InputRouter.key_name(InputRouter.current_keys(int(input_device.get_slice(":",1)))[2]) if input_device.begins_with("keyboard:") else "↓"
 	match combat.fighters[0].input.feedback:
 		"release_down": return "搓招提示：仍在斜下，松开%s再按横方向＋攻击。" % down
 		"motion_timeout": return "搓招提示：方向超时，请在0.5秒内连贯输入。"

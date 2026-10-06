@@ -434,27 +434,27 @@
     "note": "Registered against existing idle head/hand/limb proportions; one fixed scale across the entire clip. Rotating poses use a pelvis root.",
     "drawing_registration": {
       "8": {
-        "scale": 1.08,
-        "reference": "idle + pre-release torso/head/limbs",
-        "reason": "The source drawings shrink during release/landing; restore anatomy at import, preserving the pelvis in flight and measured ground contact after impact."
+        "scale": 0.9,
+        "reference": "zenitsu-thrown_forward-phase2-v1 grounded poses and zenitsu-idle anatomy",
+        "reason": "Further reduce back-throw landing anatomy by 10 percent after player review; retain the original measured ground contact and source root."
       },
       "9": {
-        "scale": 1.08,
-        "reference": "idle + pre-release torso/head/limbs",
-        "reason": "The source drawings shrink during release/landing; restore anatomy at import, preserving the pelvis in flight and measured ground contact after impact."
+        "scale": 0.9,
+        "reference": "zenitsu-thrown_forward-phase2-v1 grounded poses and zenitsu-idle anatomy",
+        "reason": "Further reduce back-throw landing anatomy by 10 percent after player review; retain the original measured ground contact and source root."
       },
       "10": {
-        "scale": 1.08,
-        "reference": "idle + pre-release torso/head/limbs",
-        "reason": "The source drawings shrink during release/landing; restore anatomy at import, preserving the pelvis in flight and measured ground contact after impact."
+        "scale": 0.9,
+        "reference": "zenitsu-thrown_forward-phase2-v1 grounded poses and zenitsu-idle anatomy",
+        "reason": "Further reduce back-throw landing anatomy by 10 percent after player review; retain the original measured ground contact and source root."
       },
       "11": {
-        "scale": 1.08,
-        "reference": "idle + pre-release torso/head/limbs",
-        "reason": "The source drawings shrink during release/landing; restore anatomy at import, preserving the pelvis in flight and measured ground contact after impact."
+        "scale": 0.9,
+        "reference": "zenitsu-thrown_forward-phase2-v1 grounded poses and zenitsu-idle anatomy",
+        "reason": "Further reduce back-throw landing anatomy by 10 percent after player review; retain the original measured ground contact and source root."
       }
     },
-    "drawing_revision": "battle-revisions-20260923"
+    "drawing_revision": "zenitsu-back-throw-scale-20261006-r2"
   },
   "zenitsu-body_stand_light-phase2-v1": {
     "standing_height": 477.866,
