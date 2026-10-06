@@ -228,7 +228,7 @@
     },
     "nezuko-body_stand_light": {
       "source_sha256": "d060b8ec497cb4c9e1327c1e5a262347d6566c7953780c2af945cf89d31d795d",
-      "base_scale": 0.7230902777777778,
+      "base_scale": 0.7845529513888889,
       "frame_multipliers": [
         1.0,
         1.0,
@@ -237,11 +237,11 @@
         1.0,
         1.0
       ],
-      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle. Uppercut-polish revision: compare exposed face, torso and grounded neutral transitions to idle/crouch; local correction x1.085, global character scale remains 0.85."
     },
     "nezuko-body_stand_heavy": {
       "source_sha256": "ff10af1b85342534e9ecd4d3d0e5faf1f3c0acb976bd5430c69c5f3f7835a5a4",
-      "base_scale": 0.7230902777777778,
+      "base_scale": 0.7556293402777777,
       "frame_multipliers": [
         1.0,
         1.0,
@@ -250,7 +250,7 @@
         1.0,
         1.0
       ],
-      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+      "review": "Uppercut-polish: x1.045 from prior calibration; standing entry and return now agree with idle within 2%, feet fixed. All six drawings reviewed; preserve global 0.85 stature."
     },
     "nezuko-body_crouch_light": {
       "source_sha256": "566df308b31b529d86fa4c6adfcde77fd9cc4a1176bd2983b9fc58806acfd574",
@@ -1279,7 +1279,7 @@
     },
     "nezuko-guard_low-v2": {
       "source_sha256": "9f70a7e7b4e3aa23edab4c25d91f168fffb5eb3569367cda4729f4261a91ef0c",
-      "base_scale": 0.44426666666666664,
+      "base_scale": 0.49757866666666667,
       "frame_multipliers": [
         1.0,
         1.0,
@@ -1288,7 +1288,7 @@
         1.0,
         1.0
       ],
-      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle."
+      "review": "Full sequence, neutral transitions, body scale, ground contact and rotation; compare to unchanged idle. Uppercut-polish revision: compare exposed face, torso and grounded neutral transitions to idle/crouch; local correction x1.12, global character scale remains 0.85."
     }
   }
 }

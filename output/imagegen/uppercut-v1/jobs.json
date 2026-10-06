@@ -1,0 +1,26 @@
+[
+  {
+    "id": "zenitsu-rising-iai-g25",
+    "group": "animation",
+    "prompt": "output/imagegen/uppercut-v1/prompts/zenitsu-rising-iai.txt",
+    "out": "output/imagegen/uppercut-v1/raw/zenitsu-rising-iai-g25.png",
+    "size": "auto",
+    "references": [
+      "output/imagegen/uppercut-v1/references/zenitsu-idle.png",
+      "output/imagegen/uppercut-v1/references/zenitsu-old-iai.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "iai",
+      "count": 9,
+      "columns": 3,
+      "rows": 3,
+      "matte": [
+        0,
+        255,
+        0
+      ]
+    },
+    "model": "gpt-image-2.5"
+  }
+]

@@ -34,6 +34,8 @@ role = "均衡 · 拳脚控距"
 accent = Color(0.30, 0.76, 1.0, 1)
 walk_speed = 2.2
 visual_directory = "res://art/characters/akaza/"
+model_scale = 1.0
+hit_reaction_frames = PackedInt32Array(2, 1, 3)
 state_animations = {
 "round_intro": "round_intro",
 "round_victory": "round_victory",

@@ -16,6 +16,8 @@ extends Resource
 @export var feet_anchor: Vector2 = Vector2(384, 704)
 @export var source_height: float = 600.0
 @export var canonical_height: float = 70.0
+var model_scale: float = 1.0
+var hit_reaction_frames: PackedInt32Array = []
 @export var phases: Dictionary = {}
 var clip_metadata: Dictionary = {}
 var state_animations: Dictionary = {}
@@ -78,6 +80,9 @@ func _load_atlas(directory: String, parsed: Dictionary) -> void:
 				packed.filter_clip = true
 				frames.add_frame(clip, packed)
 		phases[clip] = info.get("phase_breaks", [2, 4])
+
+func drawing_scale() -> float:
+	return canonical_height / source_height * model_scale
 
 func missing_clips() -> Array[String]:
 	var required := REQUIRED_CLIPS.duplicate()

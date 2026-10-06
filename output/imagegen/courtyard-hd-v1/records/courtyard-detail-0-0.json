@@ -1,0 +1,17 @@
+{
+  "id": "courtyard-detail-0-0",
+  "status": "interrupted",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "1536x1024",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/courtyard-hd-v1/prompts/courtyard-detail-0-0.txt",
+  "output": "output/imagegen/courtyard-hd-v1/raw/courtyard-detail-0-0.png",
+  "references": [
+    "output/imagegen/courtyard-hd-v1/references/courtyard-detail-0-0.png"
+  ],
+  "started_utc": "2026-10-06T05:50:31.9611377Z",
+  "cost": null,
+  "accepted": false,
+  "review": "Repeated image-service connection failures; no source file received. Stopped after model query confirmed gpt-image-2.5 is available. Original result/cost is unknown; do not auto-retry."
+}

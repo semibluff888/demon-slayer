@@ -16,6 +16,8 @@ extends Resource
 @export var travel: float = 0.0
 @export var startup_travel: float = 0.0
 @export var lift: float = 0.0
+@export var lift_frame: int = 0
+@export var launch: float = 0.0
 @export var box: Rect2 = Rect2(10, -48, 44, 24)
 @export var cancel_window: int = 18
 @export var knockdown: bool = false

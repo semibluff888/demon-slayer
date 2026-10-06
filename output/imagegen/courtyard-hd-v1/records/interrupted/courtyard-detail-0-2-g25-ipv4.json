@@ -1,0 +1,18 @@
+{
+  "id": "courtyard-detail-0-2-g25",
+  "status": "interrupted",
+  "model": "gpt-image-2.5",
+  "quality": "high",
+  "requested_size": "1536x1024",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/courtyard-hd-v1/prompts/courtyard-detail-0-2.txt",
+  "output": "output/imagegen/courtyard-hd-v1/raw/courtyard-detail-0-2-g25.png",
+  "references": [
+    "output/imagegen/courtyard-hd-v1/references/courtyard-detail-0-2.png"
+  ],
+  "started_utc": "2026-10-06T06:27:47.4574374Z",
+  "cost": null,
+  "accepted": false,
+  "python_runtime": ".venv-imagegen/Scripts/python.exe",
+  "review": "Both IPv4 addresses time out in verified TLS probes; both IPv6 addresses pass full TLS verification and answer HTTP. Stopped pending process. Retry once with process-scoped IPv6 DNS ordering, original hostname/SNI/certificate checks unchanged."
+}

@@ -368,6 +368,8 @@ def pack(character, clips):
         row_h = max(row_h, image.height)
     save_atlas_page(page, target / ('atlas-{}.png'.format(page_index)))
     save_json(target / 'atlas.json', atlas)
+    from build_uppercut_art import apply_character_overrides
+    apply_character_overrides(character)
     print('{}: {} clips, {} original frames, {} atlas pages'.format(character, len(clips), len(sprites), page_index+1))
 
 def animations(only=None):

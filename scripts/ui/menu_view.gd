@@ -1,5 +1,5 @@
 extends Control
-## Native controls over the illustrated stage. Artwork contains no interface text.
+## Native controls over illustrated scenery; the title poster includes its own lettering.
 const RosterCard = preload("res://scripts/ui/roster_card.gd")
 const StageCard = preload("res://scripts/ui/stage_card.gd")
 const DuelButton = preload("res://scripts/ui/duel_button.gd")
@@ -107,21 +107,10 @@ func reveal() -> void:
 		focusable[i].focus_next = focusable[i].get_path_to(next)
 
 func title() -> void:
-	rect(Rect2(0, 0, 1280, 720), Color("080f1d"))
-	slash(Rect2(450, 0, 830, 720), Color("162239"), 120)
-	slash(Rect2(737, 0, 275, 720), Color("4b2638"), 100)
-	slash(Rect2(1000, 0, 280, 720), Color("182f46"), 95)
-	var ids: Array = catalog.characters.keys()
-	var featured := mini(ids.size(), 4)
-	for i in range(featured):
-		var x := 460.0 + i * 205
-		hero_portrait(ids[i], Rect2(x, 76 + (i % 2) * 22, 205, 622 - (i % 2) * 22), i < 2)
-	texture(shades.left, Rect2(0, 0, 680, 720))
-	texture(shades.bottom, Rect2(0, 544, 1280, 176))
-	rule(Vector2(55, 123), 54, RED)
-	label("鬼灭之刃", Rect2(55, 75, 300, 33), 24, GOLD, true)
-	label("月下对决", Rect2(48, 164, 460, 115), 82, PAPER, true)
-	label("M O O N L I T   D U E L", Rect2(57, 284, 435, 27), 16, MUTED)
+	var poster := texture(load("res://art/ui/title-poster.png"), Rect2(0, 0, 1280, 720))
+	poster.name = "TitlePoster"
+	poster.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
+	texture(shades.left, Rect2(0, 372, 470, 348))
 	button("mode_cpu", "单人对战", Rect2(55, 404, 362, 62), func(): app.choose_mode("cpu"), true, true, 27).grab_focus()
 	button("mode_local", "双人对战", Rect2(55, 480, 362, 56), func(): app.choose_mode("local"), false, true, 25)
 	button("mode_practice", "自由练习", Rect2(55, 550, 362, 56), func(): app.choose_mode("practice"), false, true, 25)
@@ -240,14 +229,20 @@ func stages() -> void:
 	label("选择场景", Rect2(49, 35, 600, 63), 41, PAPER, true)
 	rule(Vector2(51, 113), 1178, Color(GOLD, 0.32))
 	var index := 0
+	var columns := mini(4, catalog.stages.size())
+	var rows := ceili(float(catalog.stages.size()) / columns)
+	var card_width := (1178.0 - (columns - 1) * 20.0) / columns
+	var card_height := minf(337.0, (432.0 - (rows - 1) * 18.0) / rows)
+	var top := 158.0 + (432.0 - rows * card_height - (rows - 1) * 18.0) * 0.5
 	for id: String in catalog.stages:
 		var visual = catalog.stages[id]
 		var card := StageCard.new()
 		card.name = "stage_" + id
+		card.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
 		card.caption = visual.display_name
 		card.preview = visual.thumbnail
-		card.position = Vector2(51 + index * 398, 196)
-		card.size = Vector2(382, 337)
+		card.position = Vector2(51 + (index % columns) * (card_width + 20), top + (index / columns) * (card_height + 18))
+		card.size = Vector2(card_width, card_height)
 		card.pressed.connect(func(): app.stage_id = id; refresh_stages())
 		add_child(card)
 		actions["stage_" + id] = card

@@ -14,6 +14,8 @@ extends Resource
 @export var projectile_texture_key: String = ""
 
 @export var texture_key: String = ""
+@export var texture_flip_h: bool = false
+@export_enum("static", "forward", "rising", "sweep", "burst", "flurry") var effect_motion: String = "static"
 @export var body_opacity: float = 0.86
 @export var glow_strength: float = 0.55
 @export var particle_scale: float = 1.0

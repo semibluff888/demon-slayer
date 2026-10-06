@@ -104,6 +104,10 @@ func _process(delta: float) -> void:
 	for i in range(2):
 		var f = combat.fighters[i]
 		fighters[i].z_index = 3 if f.throw_role == "victim" and f.throw_frame >= 8 else 2
+		# Keep pain readable above opaque elemental ink (z=9). The later
+		# additive effect node still draws its glow and impact sparks over the body.
+		if f.state == "hit":
+			fighters[i].z_index = effects.z_index
 		fighters[i].position = camera.point(Vector2(f.x, f.y))
 		fighters[i].scale = Vector2.ONE * camera.zoom
 	hud.cpu = cpu

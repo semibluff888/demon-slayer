@@ -119,7 +119,7 @@ func sync(delta: float, freeze_pose: bool) -> void:
 			var fade: Color = profile.trail_end_color if profile.trail_end_color.a > 0 else tint
 			afterimages.append({"texture":texture, "x":fighter.x, "y":fighter.y, "facing":pose_facing(),
 				"life":duration, "duration":duration, "color":tint, "end_color":fade, "silhouette":move.is_super(), "alpha":profile.trail_alpha,
-				"scale":_pose_scale(), "anchor":visual.feet_anchor, "factor":visual.canonical_height / visual.source_height})
+				"scale":_pose_scale(), "anchor":visual.feet_anchor, "factor":visual.drawing_scale()})
 			while afterimages.size() > profile.trail_count:
 				afterimages.pop_front()
 			last_trail_pose = pose
@@ -190,6 +190,11 @@ func _frame_index() -> int:
 		return mini(count - 1, combat.defeat_frame(fighter.slot))
 	if clip == "round_victory":
 		return count - 1 if combat.phase == "match_end" else mini(count - 1, int(clock_ticks * count / (Flow.RESULT - 15)))
+	# A hit begins on impact, never on the neutral lead-in or recovered drawing.
+	# Hitstop holds the impact; renewed hits restart the same authored pain sequence.
+	if clip == "hit" and not visual.hit_reaction_frames.is_empty():
+		var reaction_step := mini(visual.hit_reaction_frames.size() - 1, int(clock_ticks / 5.0))
+		return clampi(visual.hit_reaction_frames[reaction_step], 0, count - 1)
 	if combat.phase == "round_end" and clip in ["victory", "knockdown", "hit"]:
 		return mini(count - 1, int(clock_ticks / 60.0 * visual.frames.get_animation_speed(clip)))
 	# Hold the relaxed drawing; the other idle poses shift the cloth and weight sharply.
@@ -227,6 +232,10 @@ func _frame_index() -> int:
 				var group_end := first + int((segment + 1) * float(second - first) / move.hit_count())
 				return mini(group_end - 1, group_start + int(move.segment_progress(fighter.move_frame) * (group_end - group_start)))
 			return mini(count - 1, first + int(float(fighter.move_frame - move.startup) / move.active * maxi(1, second - first)))
+		if move.lift != 0 and not fighter.grounded:
+			# Active ascent -> apex -> falling pose. Never show the planted final
+			# recovery drawing in midair (especially visible on Zenitsu's upward iai).
+			return maxi(first, second - 1) if fighter.vy < 0 else mini(count - 2, second)
 		return mini(count - 1, second + int(float(fighter.move_frame - move.startup - move.active) / move.recovery * maxi(1, count - second)))
 	if clip == "jump":
 		if fighter.grounded:
@@ -249,7 +258,7 @@ func _frame_index() -> int:
 func visual_bounds() -> Rect2:
 	if texture == null or visual == null:
 		return Rect2(-36, -84, 72, 84)
-	var factor: Vector2 = _pose_scale() * visual.canonical_height / visual.source_height
+	var factor: Vector2 = _pose_scale() * visual.drawing_scale()
 	var bounds := Rect2(Vector2.ZERO, texture.get_size())
 	if texture is AtlasTexture:
 		bounds = Rect2(texture.margin.position, texture.region.size)
@@ -268,7 +277,7 @@ func _draw() -> void:
 	if fighter == null:
 		return
 	if texture != null:
-		var factor: float = visual.canonical_height / visual.source_height
+		var factor: float = visual.drawing_scale()
 		for ghost: Dictionary in afterimages:
 			if not ghost.get("silhouette", false):
 				_draw_ghost(self, ghost)

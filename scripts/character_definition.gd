@@ -11,6 +11,9 @@ extends Resource
 @export var accent: Color = Color.WHITE
 @export var walk_speed: float = 2.15
 @export var visual_directory: String = ""
+# Whole-model size and authored pain poses; independent of combat geometry.
+@export_range(0.5, 1.5) var model_scale: float = 1.0
+@export var hit_reaction_frames: PackedInt32Array = []
 @export var normals: Dictionary = {}
 @export var motions: Dictionary = {}
 # Dedicated state clips are enabled by authored character resources after art validation.

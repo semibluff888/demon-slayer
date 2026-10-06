@@ -17,6 +17,9 @@ func _draw() -> void:
 		if source.size.x / source.size.y > wanted:
 			source.size.x = source.size.y * wanted
 			source.position.x = (preview.get_width() - source.size.x) * 0.5
+		else:
+			source.size.y = source.size.x / wanted
+			source.position.y = (preview.get_height() - source.size.y) * 0.5
 		draw_texture_rect_region(preview, target, source)
 	var tint := Color("f1d8a6") if selected else Color("728096")
 	draw_rect(Rect2(0, size.y - 60, size.x, 60), Color("a33e55") if selected else Color("111d30"))

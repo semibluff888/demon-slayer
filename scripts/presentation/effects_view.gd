@@ -117,10 +117,10 @@ func _process(delta: float) -> void:
 	if body_layer != null:
 		body_layer.queue_redraw()
 
-func _effect(id: String, bounds: Rect2, color: Color = Color.WHITE, uv_rotation: float = 0.0) -> void:
+func _effect(id: String, bounds: Rect2, color: Color = Color.WHITE, uv_rotation: float = 0.0, flip_h: bool = false) -> void:
 	if not textures.has(id):
 		return
-	if is_zero_approx(uv_rotation):
+	if is_zero_approx(uv_rotation) and not flip_h:
 		draw_texture_rect(textures[id], bounds, false, color)
 		return
 	# Rotate inside the attack envelope instead of rotating a quad past its edges.
@@ -129,7 +129,7 @@ func _effect(id: String, bounds: Rect2, color: Color = Color.WHITE, uv_rotation:
 	var uvs := PackedVector2Array()
 	for corner in corners:
 		vertices.append(bounds.position + corner * bounds.size)
-		uvs.append((corner - Vector2.ONE * 0.5).rotated(uv_rotation) + Vector2.ONE * 0.5)
+		uvs.append(effect_uv(corner, uv_rotation, flip_h))
 	draw_polygon(vertices, PackedColorArray([color]), uvs, textures[id])
 
 func _lightning(tail: Vector2, tip: Vector2, width: float, color: Color, tail_opacity: float = 1.0) -> void:
@@ -207,6 +207,24 @@ func _ellipse(bounds: Rect2, start: float, length: float, color: Color, width: f
 		points.append(bounds.get_center() + Vector2(cos(angle),sin(angle)) * bounds.size * 0.5)
 	draw_polyline(points, color, width, true)
 
+func effect_uv(corner: Vector2, angle: float, flip_h: bool) -> Vector2:
+	var uv := (corner - Vector2.ONE * 0.5).rotated(angle) + Vector2.ONE * 0.5
+	if flip_h:
+		uv.x = 1.0 - uv.x
+	return uv
+
+func element_angle(move: Resource, progress: float, segment: int = 0) -> float:
+	# Most blood profiles mirror the authored crest into local forward. Rising
+	# reverses both the UV angle and source reflection to mirror the whole arc.
+	# The outer fighter transform then handles either facing direction.
+	match move.presentation.effect_motion:
+		"forward": return lerpf(-0.12, 0.12, progress)
+		"rising": return -lerpf(0.65, 1.35, progress) # Mirror the already-rotated arc in local X.
+		"sweep": return lerpf(-0.70, 0.70, progress)
+		"burst": return lerpf(-0.20, 0.20, progress)
+		"flurry": return lerpf(-0.55, 0.55, progress) * (1 if segment % 2 == 0 else -1)
+	return 0.0
+
 func _profile_shape(move: Resource) -> String:
 	return move.presentation.shape if move.presentation != null else move.effect()
 
@@ -255,7 +273,7 @@ func _draw_attack(fighter: RefCounted) -> void:
 			var key: String = move.presentation.texture_key
 			var bounds := attack.grow(3)
 			if move.projectile_speed > 0: bounds = Rect2(16,-47,29,28)
-			_effect(key,bounds,Color(color,0.30),-0.4 + progress * 0.8 if shape == "blood" else 0.0)
+			_effect(key,bounds,Color(color,0.30),element_angle(move,progress,segment),move.presentation.texture_flip_h)
 			_element_motes(bounds,progress,color,18 if move.is_super() else 8)
 			if not move.presentation.sigil_texture_key.is_empty():
 				_effect(move.presentation.sigil_texture_key,Rect2(-45,-9,90,18),Color(color,0.32))
@@ -395,7 +413,7 @@ func _draw_body() -> void:
 		match shape:
 			"blood", "shockwave":
 				bounds = Rect2(16,-47,29,28) if move.projectile_speed > 0 else attack.grow(3)
-				angle = -0.4 + progress * 0.8 if shape == "blood" else 0.0
+				angle = element_angle(move,progress,move.segment(fighter.move_frame))
 			"water_slash":
 				bounds = Rect2(13,-43,30,20)
 				opacity *= 0.68 * (1-progress*0.5)
@@ -429,7 +447,7 @@ func _draw_body() -> void:
 				continue
 			_:
 				continue
-		_body_texture(key,bounds,opacity,angle)
+		_body_texture(key,bounds,opacity,angle,profile.texture_flip_h)
 	for projectile in combat.projectiles:
 		body_layer.draw_set_transform(camera.point(Vector2(projectile.x,projectile.y)),0,Vector2(camera.zoom*projectile.facing,camera.zoom))
 		var move: Resource = combat.moves[projectile.move]
@@ -442,7 +460,7 @@ func _projectile_key(move: Resource) -> String:
 		return move.presentation.projectile_texture_key
 	return "water-slash"
 
-func _body_texture(key: String, bounds: Rect2, alpha: float, angle: float = 0.0) -> void:
+func _body_texture(key: String, bounds: Rect2, alpha: float, angle: float = 0.0, flip_h: bool = false) -> void:
 	if not textures.has(key):
 		return
 	var corners := PackedVector2Array([Vector2.ZERO,Vector2.RIGHT,Vector2.ONE,Vector2.DOWN])
@@ -450,7 +468,7 @@ func _body_texture(key: String, bounds: Rect2, alpha: float, angle: float = 0.0)
 	var uvs := PackedVector2Array()
 	for corner in corners:
 		vertices.append(bounds.position+corner*bounds.size)
-		uvs.append((corner-Vector2.ONE*0.5).rotated(angle)+Vector2.ONE*0.5)
+		uvs.append(effect_uv(corner, angle, flip_h))
 	body_layer.draw_polygon(vertices,PackedColorArray([Color(1,1,1,alpha)]),uvs,textures[key])
 
 func _body_ribbon(key: String, tail: Vector2, tip: Vector2, width: float, color: Color) -> void:

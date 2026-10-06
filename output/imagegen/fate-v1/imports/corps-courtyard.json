@@ -1,0 +1,84 @@
+{
+  "source": {
+    "path": "output/imagegen/fate-v1/raw/corps-courtyard.png",
+    "actual_size": [
+      2172,
+      724
+    ],
+    "crop": [
+      0,
+      90,
+      2172,
+      633
+    ],
+    "sha256": "74172821341245b1ecd31f6e3672726ba88ccf831e21787f34cc1aa8698fbd22"
+  },
+  "output_size": [
+    2172,
+    543
+  ],
+  "resampled": false,
+  "gutter_pixels": 8,
+  "tiles": [
+    {
+      "texture": "panorama-0.png",
+      "rect": [
+        0,
+        0,
+        543,
+        543
+      ],
+      "region": [
+        8,
+        8,
+        543,
+        543
+      ]
+    },
+    {
+      "texture": "panorama-1.png",
+      "rect": [
+        543,
+        0,
+        543,
+        543
+      ],
+      "region": [
+        8,
+        8,
+        543,
+        543
+      ]
+    },
+    {
+      "texture": "panorama-2.png",
+      "rect": [
+        1086,
+        0,
+        543,
+        543
+      ],
+      "region": [
+        8,
+        8,
+        543,
+        543
+      ]
+    },
+    {
+      "texture": "panorama-3.png",
+      "rect": [
+        1629,
+        0,
+        543,
+        543
+      ],
+      "region": [
+        8,
+        8,
+        543,
+        543
+      ]
+    }
+  ]
+}

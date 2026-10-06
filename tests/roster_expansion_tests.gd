@@ -40,7 +40,7 @@ func _run() -> void:
 func _test_catalog() -> void:
 	var catalog := Catalog.new(false)
 	check(catalog.characters.keys() == ["tanjiro","zenitsu","nezuko","akaza"],"stable authored roster order")
-	check(catalog.stages.keys() == ["wisteria","infinity_castle","entertainment_district"],"three ordered stages")
+	check(catalog.stages.keys() == ["wisteria","infinity_castle","entertainment_district","corps_courtyard"],"four ordered stages")
 	for visual in catalog.characters.values():
 		check(visual.frames == null and visual.avatar != null and visual.portrait != null,"menu uses portraits without animation atlas")
 	for stage in catalog.stages.values():

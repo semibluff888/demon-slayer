@@ -1,0 +1,18 @@
+{
+  "id": "courtyard-detail-0-0",
+  "status": "uncertain",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "1536x1024",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/courtyard-hd-v1/prompts/courtyard-detail-0-0.txt",
+  "output": "output/imagegen/courtyard-hd-v1/raw/courtyard-detail-0-0.png",
+  "references": [
+    "output/imagegen/courtyard-hd-v1/references/courtyard-detail-0-0.png"
+  ],
+  "started_utc": "2026-10-06T03:55:55.0348084Z",
+  "cost": null,
+  "accepted": false,
+  "error_type": "RuntimeException",
+  "review": "Network timeout/connection reset; both processes exited 1 and no image returned. User confirmed reconnection and explicitly requested continuation. CPA models probe now succeeds. One reviewed retry."
+}

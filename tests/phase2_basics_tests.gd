@@ -102,7 +102,8 @@ func _test_normals(cid: String, facing: int, corner: bool) -> void:
 			"facing":-facing,"blocked":false,"projectile":false,"airborne":false,"position":Vector2(f.x,f.y-36)})
 		actor.consume(model.events, 0)
 		actor.sync(0, true)
-		check(f.move == null and actor.clip == "hit" and actor.frame_index == 0, key + " hit interrupts without old pose or trail")
+		var impact_frame := 2 if cid in ["nezuko", "akaza"] else 0
+		check(f.move == null and actor.clip == "hit" and actor.frame_index == impact_frame and actor.afterimages.is_empty(), key + " hit interrupts with the authored impact pose and no trail")
 		actor.free()
 
 func _test_rolls(cid: String, facing: int, corner: bool) -> void:

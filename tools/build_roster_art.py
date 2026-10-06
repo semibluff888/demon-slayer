@@ -12,7 +12,10 @@ REVIEW=OUT/'review'
 CANVAS=(1024,640);ANCHOR=(448,568)
 def read(p,default=None):return json.loads(p.read_text(encoding='utf-8-sig')) if p.exists() else default
 def save(p,d):
- p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(json.dumps(d,ensure_ascii=False,indent=2).encode('utf-8'))
+ p.parent.mkdir(parents=True,exist_ok=True)
+ temporary=p.with_name(p.name+'.building')
+ temporary.write_bytes(json.dumps(d,ensure_ascii=False,indent=2).encode('utf-8'))
+ temporary.replace(p)
 def matte(image,key):
  a=np.asarray(image.convert('RGBA')).astype(np.float32)
  rgb=a[:,:,:3];bg=np.array(key,dtype=np.float32)

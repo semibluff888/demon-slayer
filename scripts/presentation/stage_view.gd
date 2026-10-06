@@ -42,17 +42,19 @@ func _process(delta: float) -> void:
 	atmosphere.queue_redraw()
 
 func _draw_atmosphere() -> void:
-	for particle: Dictionary in particles:
+	var daylight: bool = visual.atmosphere_preset == "daylight"
+	for index in range(12 if daylight else particles.size()):
+		var particle: Dictionary = particles[index]
 		var x: float = fposmod(particle.x + time * particle.speed, 1320) - 20
 		var y: float = fposmod(particle.y + time * particle.speed * 0.24, 750) - 15
 		var angle: float = sin(time * 0.7 + particle.phase)
 		atmosphere.draw_set_transform(Vector2(x, y), angle * 2)
-		atmosphere.draw_colored_polygon(PackedVector2Array([Vector2(-particle.size, 0), Vector2(0, -particle.size * 0.55), Vector2(particle.size, 0), Vector2(0, particle.size * 0.65)]), Color(0.77, 0.71, 0.96, 0.3 + (angle + 1) * 0.11) if visual.atmosphere_preset == "petals" else Color(1.0, 0.73, 0.37, 0.13 + (angle + 1) * 0.08))
+		atmosphere.draw_colored_polygon(PackedVector2Array([Vector2(-particle.size, 0), Vector2(0, -particle.size * 0.55), Vector2(particle.size, 0), Vector2(0, particle.size * 0.65)]), Color(0.77, 0.71, 0.96, 0.3 + (angle + 1) * 0.11) if visual.atmosphere_preset == "petals" else Color(1.0, 0.92, 0.72, 0.10) if daylight else Color(1.0, 0.73, 0.37, 0.13 + (angle + 1) * 0.08))
 	atmosphere.draw_set_transform(Vector2.ZERO)
 	# Three low-opacity soft bands; no expensive full-screen postprocessing.
 	for i in range(3):
 		var drift := sin(time * 0.06 + i * 2.1) * 112
-		atmosphere.draw_texture_rect(glow, Rect2(-140 + i * 502 + drift, 482 + i % 2 * 61, 802, 134), false, Color(0.52, 0.62, 0.85, 0.085))
+		atmosphere.draw_texture_rect(glow, Rect2(-140 + i * 502 + drift, 482 + i % 2 * 61, 802, 134), false, Color(1.0, 0.93, 0.77, 0.025) if daylight else Color(0.52, 0.62, 0.85, 0.085))
 
 func draw_foreground(_canvas: Node2D) -> void:
 	pass # Foreground is painted into the continuous scene; no cutout overlays.

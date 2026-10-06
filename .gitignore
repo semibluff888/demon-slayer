@@ -48,3 +48,11 @@ Desktop.ini
 /output/imagegen/round-selected/packed/
 
 /output/imagegen/roster-v1/review/
+.venv-imagegen/
+
+/output/pip-cache/
+
+# Keep the selected offline inference runtime; omit downloaded archives and demos.
+/output/super-resolution/*
+!/output/super-resolution/runtime/
+!/output/super-resolution/distribution.json

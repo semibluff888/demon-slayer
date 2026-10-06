@@ -1,0 +1,39 @@
+{
+  "status": "processed",
+  "accepted": true,
+  "method": "neural-super-resolution",
+  "model": "realesrgan-x4plus-anime",
+  "scale": 4,
+  "source": "output/imagegen/fate-v1/raw/corps-courtyard.png",
+  "source_sha256": "74172821341245b1ecd31f6e3672726ba88ccf831e21787f34cc1aa8698fbd22",
+  "generated_size": [
+    2172,
+    724
+  ],
+  "output": "output/imagegen/courtyard-hd-v1/raw/corps-courtyard-realesrgan-x4plus-anime.png",
+  "actual_size": [
+    8688,
+    2896
+  ],
+  "sha256": "b802a310dfd49cbbd2e8ba0aebe569764de6d559aeac7d83a15401338efca415",
+  "crop": [
+    0,
+    360,
+    8688,
+    2532
+  ],
+  "tool_version": "Real-ESRGAN ncnn Vulkan v0.2.0",
+  "distribution": "output/super-resolution/distribution.json",
+  "command": [
+    "-n",
+    "realesrgan-x4plus-anime",
+    "-s",
+    "4",
+    "-t",
+    "256",
+    "-j",
+    "1:1:1"
+  ],
+  "review_scope": "Original/full processed panorama, roof/veranda/foliage detail comparisons, 720p/1080p/4K Godot captures and both scrolling boundaries inspected. Geometry, horizon, lighting and contact plane preserved.",
+  "uncompleted_generation": "The ten CPA detail-patch jobs have no accepted outputs. Interrupted/uncertain records are retained, with no automatic retry."
+}

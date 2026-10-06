@@ -21,6 +21,7 @@ def main():
   rows=[dict(input=n,name=c['names'][i],description=c['descriptions'][i]) for i,n in enumerate(['236 + A/C','623 + A/C','214 + B/D','236236 + A/C','236236 + A+C'])]
   definition+='move_list = Array[Dictionary]('+json.dumps(rows,ensure_ascii=False)+')\nportrait_faces_right = true\n'
   definition += 'menu_focus_x = 0.64\n' if cid=='nezuko' else ''
+  definition += 'model_scale = '+('0.85' if cid=='nezuko' else '1.0')+'\nhit_reaction_frames = PackedInt32Array(2, 1, 3)\n'
   (ROOT/f'resources/characters/{cid}.tres').write_text(definition,encoding='utf-8')
   keys=[s+b for s in ['5','2','j'] for b in 'ABCD']+['236A','236C','623A','623C','214B','214D','super','max','throw']
   for key in keys:
@@ -53,6 +54,8 @@ def main():
    shape=('blood' if cid=='nezuko' else 'shockwave') if special else 'body'
    text='[gd_resource type="Resource" script_class="MovePresentation" load_steps=2 format=3]\n\n[ext_resource type="Script" path="res://scripts/presentation/move_presentation.gd" id="1"]\n\n[resource]\nscript = ExtResource("1")\n'
    fields=dict(shape=quoted(shape),color=c['color'],sound_key=quoted('blood' if cid=='nezuko' and special else 'shockwave' if special else 'body_swing'),texture_key=quoted(c['effect'] if special else ''),body_opacity='0.80',glow_strength='0.45',particle_scale='1.0',super_tier=str(tier),trail_count='9' if tier else '3' if special else '0',trail_alpha='0.18',trail_interval='0.05',trail_lifetime='0.24')
+   if cid=='nezuko' and special:
+    fields['texture_flip_h']='false' if i==2 else 'true';fields['effect_motion']=quoted(['forward','rising','sweep','burst','flurry'][i-1])
    if cid=='akaza' and special:fields['sigil_texture_key']='"compass"'
    if cid=='akaza' and i==1:fields['projectile_texture_key']='"shockwave"'
    if cid=='nezuko' and tier==2:fields['cut_in_path']='"res://art/characters/nezuko/awakened-portrait.png"'

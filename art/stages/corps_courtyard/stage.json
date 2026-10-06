@@ -1,0 +1,104 @@
+{
+  "revision": "courtyard-sr-v1",
+  "size": [
+    8688,
+    2172
+  ],
+  "render_size": [
+    3168,
+    792
+  ],
+  "world_width": 960,
+  "layers": [
+    "panorama"
+  ],
+  "parallax": [
+    1.0
+  ],
+  "tiles": [
+    {
+      "texture": "panorama-0.png",
+      "rect": [
+        0,
+        0,
+        2172,
+        2172
+      ],
+      "region": [
+        8,
+        8,
+        2172,
+        2172
+      ]
+    },
+    {
+      "texture": "panorama-1.png",
+      "rect": [
+        2172,
+        0,
+        2172,
+        2172
+      ],
+      "region": [
+        8,
+        8,
+        2172,
+        2172
+      ]
+    },
+    {
+      "texture": "panorama-2.png",
+      "rect": [
+        4344,
+        0,
+        2172,
+        2172
+      ],
+      "region": [
+        8,
+        8,
+        2172,
+        2172
+      ]
+    },
+    {
+      "texture": "panorama-3.png",
+      "rect": [
+        6516,
+        0,
+        2172,
+        2172
+      ],
+      "region": [
+        8,
+        8,
+        2172,
+        2172
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "path": "output/imagegen/courtyard-hd-v1/raw/corps-courtyard-realesrgan-x4plus-anime.png",
+      "actual_size": [
+        8688,
+        2896
+      ],
+      "crop": [
+        0,
+        360,
+        8688,
+        2532
+      ],
+      "sha256": "b802a310dfd49cbbd2e8ba0aebe569764de6d559aeac7d83a15401338efca415",
+      "method": "neural-super-resolution",
+      "model": "realesrgan-x4plus-anime",
+      "generated_master": "output/imagegen/fate-v1/raw/corps-courtyard.png",
+      "generated_size": [
+        2172,
+        724
+      ],
+      "generated_sha256": "74172821341245b1ecd31f6e3672726ba88ccf831e21787f34cc1aa8698fbd22"
+    }
+  ]
+}

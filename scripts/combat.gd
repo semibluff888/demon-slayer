@@ -310,6 +310,8 @@ func _advance(f: Fighter) -> void:
 		f.vx = 0
 	f.dash_request = 0
 	if f.move != null:
+		if f.move.lift != 0 and f.move.lift_frame > 0 and f.move_frame == f.move.lift_frame:
+			_take_off(f, f.move.lift)
 		if f.move_frame < f.move.startup:
 			f.x += f.move.startup_travel * f.facing
 		elif f.move_frame < f.move.startup + f.move.active:
@@ -396,6 +398,10 @@ func _choose_move(f: Fighter) -> Move:
 
 func _begin_move(f: Fighter, selected: Move) -> void:
 	_stop_dash(f)
+	# A hit-confirmed uppercut cancel arrests ascent; the ground super falls naturally
+	# into its stance instead of carrying a standing animation through the whole arc.
+	if selected.is_super() and f.move != null and f.move.lift != 0 and not f.grounded:
+		f.vy = maxf(0, f.vy)
 	f.move = selected
 	f.attack_instance = next_instance
 	next_instance += 1
@@ -413,17 +419,21 @@ func _begin_move(f: Fighter, selected: Move) -> void:
 	f.input.last_action = selected.display_name
 	if f.grounded:
 		f.vx = 0
-	if selected.lift != 0:
-		f.flip_jump = false
-		f.grounded = false
-		f.crouching = false
-		f.vy = selected.lift
+	if selected.lift != 0 and selected.lift_frame == 0:
+		_take_off(f, selected.lift)
 	if selected.meter_cost > 0:
 		_change_meter(f, -selected.meter_cost)
 		super_freeze = maxi(super_freeze, selected.freeze_frames)
 		events.append({"type": "super", "attacker": f.slot, "move": selected.id})
 	events.append({"type": "swing", "attacker": f.slot, "move": selected.id, "effect": selected.effect()})
 
+
+func _take_off(f: Fighter, velocity: float) -> void:
+	f.flip_jump = false
+	f.grounded = false
+	f.crouching = false
+	f.air_ticks = 0
+	f.vy = velocity
 
 func _integrate(f: Fighter, delta_ticks: float = 1.0, air_tick_step: int = 1) -> void:
 	f.x += f.vx * delta_ticks
@@ -556,6 +566,8 @@ func _resolve_contact(contact: Dictionary) -> void:
 		var damage := attack.segment_damage(contact.segment, int(a.combo_instances[instance]))
 		damage = mini(d.hp, damage)
 		d.hp = maxi(0, d.hp - damage)
+		if attack.launch < 0:
+			_take_off(d, attack.launch)
 		var knockdown := attack.knockdown and int(contact.segment) == attack.hit_count() - 1
 		d.state = "knockdown" if knockdown and d.grounded else "hit"
 		d.stun = 34 if d.state == "knockdown" else attack.hitstun
@@ -775,6 +787,8 @@ func _outro_skill_motion(f: Fighter, delta_ticks: float, advance_tick: bool) -> 
 	if f.move == null or not is_knockout():
 		return
 	var move: Move = f.move
+	if advance_tick and move.lift != 0 and move.lift_frame > 0 and f.move_frame == move.lift_frame:
+		_take_off(f, move.lift)
 	if f.move_frame < move.startup:
 		f.x += move.startup_travel * f.facing * delta_ticks
 	elif f.move_frame < move.startup + move.active:

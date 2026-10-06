@@ -1,0 +1,35 @@
+{
+  "zenitsu-rising-iai-g25": {
+    "approved": true,
+    "source_sha256": "9146d8d8484b5c7bcc0911ba11a5a66c37a5c92649a37b80a30d4d9053b11f8a",
+    "base_scale": 1.0580645161290323,
+    "frame_multipliers": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "root_x": [
+      214,
+      633,
+      1053,
+      198,
+      614,
+      1070,
+      213,
+      624,
+      1048
+    ],
+    "pelvis_y": {
+      "4": 645,
+      "5": 635,
+      "6": 1030
+    },
+    "review": "Preserve physical anatomy: neutral source height 310 -> existing idle 328 pixels. Frames 0-3 and 7-8 use actual foot contact; frames 4-6 use belt/pelvis landmarks. Same model scale throughout, no per-silhouette fitting. Reviewed hair, face, sword, haori and both airborne knees."
+  }
+}

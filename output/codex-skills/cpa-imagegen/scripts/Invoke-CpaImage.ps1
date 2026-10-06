@@ -10,7 +10,8 @@ param(
     [string[]]$ReferenceImages = @(),
     [switch]$Probe,
     [switch]$DryRun,
-    [switch]$UseSystemProxy
+    [switch]$UseSystemProxy,
+    [switch]$PreferIPv6
 )
 
 $ErrorActionPreference = 'Stop'
@@ -90,7 +91,7 @@ if ($providerSettings['env_key']) {
 if (-not $apiKey) { throw 'No static CPA API key found in provider env_key or Codex auth.json. Configure it locally; do not paste it in chat.' }
 
 $previousEnvironment = @{}
-foreach ($envName in @('OPENAI_API_KEY', 'OPENAI_BASE_URL', 'NO_PROXY')) {
+foreach ($envName in @('OPENAI_API_KEY', 'OPENAI_BASE_URL', 'NO_PROXY', 'PYTHONPATH', 'CPA_IPV6_HOST')) {
     $previousEnvironment[$envName] = [Environment]::GetEnvironmentVariable($envName, 'Process')
 }
 try {
@@ -99,6 +100,11 @@ try {
     if (-not $UseSystemProxy) {
         $env:NO_PROXY = (@($previousEnvironment['NO_PROXY'], $baseUri.DnsSafeHost) |
             Where-Object { $_ }) -join ','
+    }
+    if ($PreferIPv6) {
+        $networkDirectory = Join-Path (Split-Path -Parent $PSScriptRoot) 'network'
+        $env:PYTHONPATH = (@($networkDirectory, $previousEnvironment['PYTHONPATH']) | Where-Object { $_ }) -join [IO.Path]::PathSeparator
+        $env:CPA_IPV6_HOST = $baseUri.DnsSafeHost
     }
     if ($Probe) {
         $requestArgs = @{

@@ -34,6 +34,8 @@ role = "灵巧 · 近身压制"
 accent = Color(1.0, 0.40, 0.61, 1)
 walk_speed = 2.4
 visual_directory = "res://art/characters/nezuko/"
+model_scale = 0.85
+hit_reaction_frames = PackedInt32Array(2, 1, 3)
 state_animations = {
 "round_intro": "round_intro",
 "round_victory": "round_victory",

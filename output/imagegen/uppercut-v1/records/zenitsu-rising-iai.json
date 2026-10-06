@@ -1,0 +1,18 @@
+{
+  "id": "zenitsu-rising-iai",
+  "status": "uncertain",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "1536x1536",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/uppercut-v1/prompts/zenitsu-rising-iai.txt",
+  "output": "output/imagegen/uppercut-v1/raw/zenitsu-rising-iai.png",
+  "references": [
+    "output/imagegen/uppercut-v1/references/zenitsu-idle.png",
+    "output/imagegen/uppercut-v1/references/zenitsu-old-iai.png"
+  ],
+  "started_utc": "2026-10-06T06:02:14.8624687Z",
+  "cost": null,
+  "accepted": false,
+  "error_type": "RuntimeException"
+}

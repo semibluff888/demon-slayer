@@ -23,6 +23,8 @@ func _init(load_combat_art: bool = true) -> void:
 		visual.element_name = definition.element_name
 		visual.accent = definition.accent
 		visual.asset_directory = definition.visual_directory
+		visual.model_scale = definition.model_scale
+		visual.hit_reaction_frames = definition.hit_reaction_frames.duplicate()
 		visual.state_animations = definition.state_animations.duplicate()
 		for clip: String in visual.state_animations.values():
 			if not clip in visual.required_move_clips:

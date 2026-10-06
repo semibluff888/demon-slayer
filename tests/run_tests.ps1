@@ -59,6 +59,10 @@ Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script',
 
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/roster_expansion_tests.gd') -Expected 'ROSTER EXPANSION: \d+ passed, 0 failed' | Out-Null
 
+Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/fate_revision_tests.gd') -Expected 'FATE REVISIONS: \d+ passed, 0 failed' | Out-Null
+
+Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/uppercut_polish_tests.gd') -Expected 'UPPERCUT POLISH: \d+ passed, 0 failed' | Out-Null
+
 $hashes = @()
 foreach ($fps in @(30, 60, 144)) {
     $logPath = Join-Path $artifactRoot "fps-$fps.log"
@@ -79,5 +83,9 @@ if (Test-Path -LiteralPath $artPython) {
     if ($LASTEXITCODE -ne 0) { throw 'Artwork validation failed.' }
     & $artPython (Join-Path $projectRoot 'tests/roster_art_tests.py')
     if ($LASTEXITCODE -ne 0) { throw 'Expansion artwork validation failed.' }
+    & $artPython (Join-Path $projectRoot 'tests/uppercut_art_tests.py')
+    if ($LASTEXITCODE -ne 0) { throw 'Uppercut artwork validation failed.' }
+    & $artPython (Join-Path $projectRoot 'tests/fate_art_tests.py')
+    if ($LASTEXITCODE -ne 0) { throw 'Fate artwork validation failed.' }
 }
 Write-Host 'All checks passed. Combat state is identical at 30 / 60 / 144 FPS.'
