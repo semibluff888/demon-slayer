@@ -16,8 +16,10 @@ __pycache__/
 .ruff_cache/
 
 # Reproducible captures, logs, review images and temporary files.
-/artifacts/
-/tmp/
+/artifacts/*
+!/artifacts/.gdignore
+/tmp/*
+!/tmp/.gdignore
 /output/imagegen/anime-v2/review/
 /output/font-sources/
 /output/imagegen/raw/

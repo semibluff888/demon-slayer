@@ -175,7 +175,11 @@ class ArtworkTests(unittest.TestCase):
                                          'Landing drawing must stay on the shared ground plane')
                     correction = frame['drawing_registration']
                     self.assertTrue(correction['reference'] and correction['reason'])
-                    self.assertGreater(correction['scale'], 1)
+                    # The accepted 2026-10-06 back-throw revision shrinks Zenitsu
+                    # to 90%; other landing corrections still enlarge the source.
+                    expected_scale = (0.9 if character == 'zenitsu' and suffix == 'thrown-movement-v3'
+                                      else 1.14 if character == 'zenitsu' else 1.12)
+                    self.assertAlmostEqual(correction['scale'], expected_scale)
                     self.assertAlmostEqual(frame['effective_scale'], frame['scale'] * correction['scale'])
                 for frame in record['frames'][:4]:
                     self.assertNotIn('drawing_registration', frame, 'Already-correct grab anatomy is preserved')

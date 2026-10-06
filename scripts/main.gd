@@ -53,6 +53,8 @@ func _ready() -> void:
 	add_child(gui)
 	Input.joy_connection_changed.connect(_on_joy_connection)
 	show_title()
+	if OS.get_cmdline_user_args().has("--verify-release"):
+		preload("res://scripts/release_verifier.gd").run.call_deferred(self)
 
 func _physics_process(_delta: float) -> void:
 	if screen != "battle" or paused:

@@ -1,0 +1,29 @@
+name: Build Windows package
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version without v (for example 0.1.0)'
+        required: true
+        default: '0.1.0'
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prepare official Godot tools
+        shell: pwsh
+        run: ./tools/install-export-tools.ps1
+      - name: Build and verify exported runtime
+        shell: pwsh
+        env:
+          RELEASE_VERSION: ${{ inputs.version }}
+        run: ./tools/build-release.ps1 -Version $env:RELEASE_VERSION
+      - uses: actions/upload-artifact@v4
+        with:
+          name: windows-release
+          path: dist/*
+          if-no-files-found: error

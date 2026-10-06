@@ -1,9 +1,10 @@
 param(
-    [string]$Godot = 'D:\Godot_v4.7.1-stable_win64.exe\Godot_v4.7.1-stable_win64_console.exe',
+    [string]$Godot = $env:GODOT,
     [switch]$Capture
 )
 $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path -Parent $PSScriptRoot
+$Godot = & (Join-Path $projectRoot 'tools/find-godot.ps1') -Godot $Godot
 if (-not (Test-Path -LiteralPath $Godot)) {
     throw "Godot not found. Use -Godot 'path\to\Godot_console.exe'."
 }
