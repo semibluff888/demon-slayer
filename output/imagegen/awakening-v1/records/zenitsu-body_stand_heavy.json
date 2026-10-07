@@ -1,0 +1,26 @@
+{
+  "id": "zenitsu-body_stand_heavy",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x1152",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\zenitsu-body_stand_heavy.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\zenitsu-body_stand_heavy.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\references\\zenitsu-body_stand_heavy.png",
+    "art\\characters\\zenitsu\\portrait.png"
+  ],
+  "started_utc": "2026-10-07T09:47:19.6382525Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T09:48:11.0095843Z",
+  "actual_size": [
+    1672,
+    941
+  ],
+  "sha256": "089e9ed2cae55727729204b2eb20438c77bebaf47358a39c5854126a0b950ae9",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

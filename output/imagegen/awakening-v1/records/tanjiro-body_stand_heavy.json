@@ -1,0 +1,26 @@
+{
+  "id": "tanjiro-body_stand_heavy",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x1152",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\tanjiro-body_stand_heavy.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\tanjiro-body_stand_heavy.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\references\\tanjiro-body_stand_heavy.png",
+    "art\\characters\\tanjiro\\portrait.png"
+  ],
+  "started_utc": "2026-10-07T09:47:15.8848164Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T09:48:03.0048179Z",
+  "actual_size": [
+    1672,
+    941
+  ],
+  "sha256": "289735af8a2d68cb85d71dd6ecc0dba0eeda264b8d3b865444c94acb246e8cee",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

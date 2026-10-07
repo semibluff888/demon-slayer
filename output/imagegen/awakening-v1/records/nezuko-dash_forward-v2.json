@@ -1,0 +1,25 @@
+{
+  "id": "nezuko-dash_forward-v2",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x768",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\nezuko-dash_forward-v2.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\nezuko-dash_forward-v2.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\raw\\nezuko-dash_forward.png"
+  ],
+  "started_utc": "2026-10-07T10:26:31.5822076Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T10:27:12.8990754Z",
+  "actual_size": [
+    2048,
+    768
+  ],
+  "sha256": "6b5f3870e0d0038bc1f8cefea66d8b848067fc0adb6a7d52d1dfb13997eb7077",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

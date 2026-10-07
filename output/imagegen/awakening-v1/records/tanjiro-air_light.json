@@ -1,0 +1,26 @@
+{
+  "id": "tanjiro-air_light",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x768",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\tanjiro-air_light.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\tanjiro-air_light.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\references\\tanjiro-air_light.png",
+    "art\\characters\\tanjiro\\portrait.png"
+  ],
+  "started_utc": "2026-10-07T09:43:12.1057652Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T09:43:50.2403941Z",
+  "actual_size": [
+    2048,
+    768
+  ],
+  "sha256": "abc1bf3246ce38d1bdfca54f69fedcfe944768446a6ea4d3992da1626eb8a780",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

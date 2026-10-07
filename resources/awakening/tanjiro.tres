@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="AwakeningDefinition" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/awakening_definition.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+display_name = "全集中·斑纹"
+damage_percent = 115
+received_percent = 95
+chip_percent = 100
+walk_percent = 110
+dash_percent = 110
+healing_percent = 0
+healing_limit = 0
+color = Color(1, 0.38, 0.18, 1)
+sound = "flame"
+form_atlas = "res://art/characters/tanjiro/awakening/atlas.json"
+form_scale = 1

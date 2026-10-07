@@ -1,0 +1,25 @@
+{
+  "id": "nezuko-throw-v2",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x768",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\nezuko-throw-v2.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\nezuko-throw-v2.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\raw\\nezuko-throw.png"
+  ],
+  "started_utc": "2026-10-07T10:30:36.8474527Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T10:31:09.6145204Z",
+  "actual_size": [
+    2048,
+    768
+  ],
+  "sha256": "90b14769220773b459c83c3a6f20d903c0751c89a9b168018e0e540c4b196b80",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

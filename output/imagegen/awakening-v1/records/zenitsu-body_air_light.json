@@ -1,0 +1,26 @@
+{
+  "id": "zenitsu-body_air_light",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x768",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\zenitsu-body_air_light.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\zenitsu-body_air_light.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\references\\zenitsu-body_air_light.png",
+    "art\\characters\\zenitsu\\portrait.png"
+  ],
+  "started_utc": "2026-10-07T09:45:19.1431255Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T09:46:01.0416046Z",
+  "actual_size": [
+    2048,
+    768
+  ],
+  "sha256": "82c444f11f91c8193ee8bd8a6180d60faa6da90bcb80216a5a4cac5cb34ed20d",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

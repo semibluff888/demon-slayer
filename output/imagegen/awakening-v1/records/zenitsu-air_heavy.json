@@ -1,0 +1,26 @@
+{
+  "id": "zenitsu-air_heavy",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x768",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\zenitsu-air_heavy.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\zenitsu-air_heavy.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\references\\zenitsu-air_heavy.png",
+    "art\\characters\\zenitsu\\portrait.png"
+  ],
+  "started_utc": "2026-10-07T09:42:38.6733432Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T09:43:10.9917966Z",
+  "actual_size": [
+    2048,
+    768
+  ],
+  "sha256": "9836dd2075c90c5efe36bac587d4809afce6e7dcdc127388c673d61b80f54207",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

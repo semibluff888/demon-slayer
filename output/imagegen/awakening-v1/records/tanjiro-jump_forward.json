@@ -1,0 +1,26 @@
+{
+  "id": "tanjiro-jump_forward",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x768",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\tanjiro-jump_forward.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\tanjiro-jump_forward.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\references\\tanjiro-jump_forward.png",
+    "art\\characters\\tanjiro\\portrait.png"
+  ],
+  "started_utc": "2026-10-07T09:56:06.4460406Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T09:56:51.5514827Z",
+  "actual_size": [
+    2048,
+    768
+  ],
+  "sha256": "47e7fce05ff02eaab22065b987a313d5264cd00ff21e67625d06d142d4e2d617",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

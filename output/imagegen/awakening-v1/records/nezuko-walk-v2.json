@@ -1,0 +1,25 @@
+{
+  "id": "nezuko-walk-v2",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x768",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\nezuko-walk-v2.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\nezuko-walk-v2.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\raw\\nezuko-walk.png"
+  ],
+  "started_utc": "2026-10-07T10:32:09.9706732Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T10:32:41.7610101Z",
+  "actual_size": [
+    2048,
+    768
+  ],
+  "sha256": "07e877dd01b135a7219376eee115f3fdd0c2c3105b34b3190ecc547a03db0c1f",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

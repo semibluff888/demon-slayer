@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CharacterDefinition" load_steps=23 format=3]
+[gd_resource type="Resource" script_class="CharacterDefinition" load_steps=24 format=3]
 
 [ext_resource type="Script" path="res://scripts/character_definition.gd" id="1"]
 [ext_resource type="Resource" path="res://moves/core/tanjiro_5A.tres" id="2"]
@@ -23,8 +23,11 @@
 [ext_resource type="Resource" path="res://moves/core/tanjiro_max.tres" id="21"]
 [ext_resource type="Resource" path="res://moves/core/tanjiro_throw.tres" id="22"]
 
+[ext_resource type="Resource" path="res://resources/awakening/tanjiro.tres" id="awakening"]
+
 [resource]
 script = ExtResource("1")
+awakening = ExtResource("awakening")
 id = "tanjiro"
 roster_order = 0
 display_name = "灶门炭治郎"

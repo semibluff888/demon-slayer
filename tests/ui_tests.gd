@@ -149,8 +149,8 @@ func _run() -> void:
 	check(game.paused, "practice options pause combat")
 	game.gui.actions.practice_guard.select(3)
 	game.gui.actions.practice_guard.item_selected.emit(3)
-	game.gui.actions.practice_meter.select(3)
-	game.gui.actions.practice_meter.item_selected.emit(3)
+	game.gui.actions.practice_meter.select(4)
+	game.gui.actions.practice_meter.item_selected.emit(4)
 	check(game.practice_controller.guard_mode == 3 and game.practice_controller.meter_mode == 3, "native practice selectors change guard and resource")
 	await _capture("09-practice-options")
 	_click("resume")
@@ -304,7 +304,10 @@ func _test_battle_native_input() -> void:
 	await _key(KEY_SPACE)
 	check(toggle.button_pressed != previous and game.view.hud.practice_details == toggle.button_pressed, "native Space activates the styled practice toggle")
 	await _key(KEY_TAB)
-	check(game.gui.actions.resume.has_focus(), "Tab follows battle modal focus from toggle to resume")
+	check(game.gui.actions.practice_awakening.has_focus(), "Tab reaches awakening duration option")
+	await _key(KEY_SPACE)
+	check(game.practice_controller.awakening_infinite and game.combat.awakening_infinite, "native toggle updates practice and combat awakening")
+	await _key(KEY_SPACE)
 	var pad := InputEventJoypadButton.new()
 	pad.device = 99
 	pad.button_index = JOY_BUTTON_DPAD_UP

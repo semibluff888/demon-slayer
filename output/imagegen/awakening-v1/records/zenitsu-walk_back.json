@@ -1,0 +1,26 @@
+{
+  "id": "zenitsu-walk_back",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x768",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\zenitsu-walk_back.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\zenitsu-walk_back.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\references\\zenitsu-walk_back.png",
+    "art\\characters\\zenitsu\\portrait.png"
+  ],
+  "started_utc": "2026-10-07T10:07:38.4681384Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T10:08:17.4568650Z",
+  "actual_size": [
+    2048,
+    768
+  ],
+  "sha256": "2252a5dfd914de1d6b30eb15d121ee9e95bb9469ba4fa5dc6ac3e368275872d9",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

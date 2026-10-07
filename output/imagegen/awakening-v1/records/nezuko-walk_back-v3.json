@@ -1,0 +1,25 @@
+{
+  "id": "nezuko-walk_back-v3",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x768",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\nezuko-walk_back-v3.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\nezuko-walk_back-v3.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\raw\\nezuko-walk_back-v2.png"
+  ],
+  "started_utc": "2026-10-07T10:40:57.6725543Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T10:41:27.2336365Z",
+  "actual_size": [
+    2048,
+    768
+  ],
+  "sha256": "b4c1cb07fb303346da3fa9451d01fd3f077b9e9c723822da20a294b71d11cf5f",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

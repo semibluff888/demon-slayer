@@ -1,0 +1,25 @@
+{
+  "id": "nezuko-crouch-v2",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x768",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\nezuko-crouch-v2.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\nezuko-crouch-v2.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\raw\\nezuko-crouch.png"
+  ],
+  "started_utc": "2026-10-07T10:24:55.6514148Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T10:25:44.6347727Z",
+  "actual_size": [
+    2048,
+    768
+  ],
+  "sha256": "355b104168aa8f1c602445418c38f14ae71056e98161152561c796c7edabb842",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

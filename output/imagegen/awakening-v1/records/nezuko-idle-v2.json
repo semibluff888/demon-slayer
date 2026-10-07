@@ -1,0 +1,25 @@
+{
+  "id": "nezuko-idle-v2",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x768",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\nezuko-idle-v2.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\nezuko-idle-v2.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\raw\\nezuko-idle.png"
+  ],
+  "started_utc": "2026-10-07T10:21:09.9645350Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T10:21:49.9584111Z",
+  "actual_size": [
+    2048,
+    768
+  ],
+  "sha256": "a71f7a12b68a78b324c3e90adaeb60327cb6350cd1ffdeb57d4b4e94c15b44b5",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

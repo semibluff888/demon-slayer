@@ -1,0 +1,25 @@
+{
+  "id": "nezuko-body_stand_heavy-v2",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x768",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\nezuko-body_stand_heavy-v2.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\nezuko-body_stand_heavy-v2.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\raw\\nezuko-body_stand_heavy.png"
+  ],
+  "started_utc": "2026-10-07T10:24:12.8999037Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T10:24:43.9031665Z",
+  "actual_size": [
+    2048,
+    768
+  ],
+  "sha256": "e39cd1e62bee9f3d654a8fd3c7751b19cd3fd6f366c952b3b9d55e98980f87b9",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

@@ -1,0 +1,26 @@
+{
+  "id": "zenitsu-air_light",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x768",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\zenitsu-air_light.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\zenitsu-air_light.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\references\\zenitsu-air_light.png",
+    "art\\characters\\zenitsu\\portrait.png"
+  ],
+  "started_utc": "2026-10-07T09:43:22.1915296Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T09:44:02.4302130Z",
+  "actual_size": [
+    2048,
+    768
+  ],
+  "sha256": "02d2d0d5b09eb96e7a764524166d3d816bc2f969e27fd8788999a3ca212c4c72",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

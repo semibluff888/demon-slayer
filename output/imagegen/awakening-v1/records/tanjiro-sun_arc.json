@@ -1,0 +1,26 @@
+{
+  "id": "tanjiro-sun_arc",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x1152",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\tanjiro-sun_arc.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\tanjiro-sun_arc.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\references\\tanjiro-sun_arc.png",
+    "art\\characters\\tanjiro\\portrait.png"
+  ],
+  "started_utc": "2026-10-07T10:01:29.9787996Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T10:02:15.7277145Z",
+  "actual_size": [
+    1672,
+    941
+  ],
+  "sha256": "cf49e3ef23ea13c0fb6e644d52c7c1c022c6d815ae2502b70e7fc7620133cb32",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

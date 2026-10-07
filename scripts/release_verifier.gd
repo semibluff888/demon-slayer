@@ -13,7 +13,27 @@ static func run(game: Node) -> void:
 		for clip in visual.clip_metadata:
 			if visual.frames.get_frame_count(clip) != visual.clip_metadata[clip].frames.size():
 				failures.append("Animation frames missing: " + id + "/" + clip)
+		if visual.awakening_frames != null:
+			for clip in visual.frames.get_animation_names():
+				if visual.awakening_frames.get_frame_count(clip) != visual.frames.get_frame_count(clip):
+					failures.append("Awakening animation frames missing: " + id + "/" + clip)
+			if visual.awakening_frames.get_frame_count(visual.awakening.start_clip) != 6:
+				failures.append("Awakening activation frames missing: " + id)
+		if id != "akaza":
+			for asset in ["portrait","fx-aura","fx-wisp","fx-sweep","fx-burst"]:
+				if not ResourceLoader.exists("res://art/characters/%s/awakening/%s.png" % [id,asset]):
+					failures.append("Packaged awakening artwork missing: " + id + "/" + asset)
 		visual.release_combat_assets()
+		var model = game.Combat.new()
+		model.new_match(id,id)
+		model.phase = "fight"
+		model.fighters[0].meter = 300
+		for tick in range(3): model.step([{"buttons":6} if tick == 0 else game.Combat.neutral(),game.Combat.neutral()])
+		if model.fighters[0].awakening_ticks != 600 or model.fighters[0].meter != 100 or model.super_freeze != 12:
+			failures.append("Packaged awakening input/resource failure: " + id)
+		for tick in range(30): model.step([game.Combat.neutral(),game.Combat.neutral()])
+		if model.fighters[0].awakening_ticks != 582 or model.fighters[0].awakening_startup != 0:
+			failures.append("Packaged awakening timing failure: " + id)
 	for id in catalog.stages:
 		var stage = catalog.stages[id]
 		stage.load_local_assets()

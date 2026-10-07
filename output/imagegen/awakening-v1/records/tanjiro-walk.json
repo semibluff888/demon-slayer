@@ -1,0 +1,26 @@
+{
+  "id": "tanjiro-walk",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x768",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\tanjiro-walk.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\tanjiro-walk.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\references\\tanjiro-walk.png",
+    "art\\characters\\tanjiro\\portrait.png"
+  ],
+  "started_utc": "2026-10-07T10:06:51.2981788Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T10:07:37.0431391Z",
+  "actual_size": [
+    2048,
+    768
+  ],
+  "sha256": "5f78e1f238cf7b6ae9d1f3b86d71f1013fb4b9df09b0a8aaefe8bea5df71331a",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

@@ -14,6 +14,7 @@ var super_view: Node2D
 var cpu: bool = true
 var training: RefCounted
 var input_device: String = "keyboard:0"
+var awakening_hints: Array[String] = ["I+J", "Num6+Num2"]
 var frozen: bool = false
 var playback_speed: float = 1.0
 var practice_details: bool = false
@@ -29,6 +30,7 @@ var combo_pop: Array[float] = [0.0, 0.0]
 var last_combo: Array[int] = [0, 0]
 var last_stock: Array[int] = [0, 0]
 var time: float = 0.0
+var awakening_reveal: Array[float] = [0.0, 0.0]
 
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -50,12 +52,19 @@ func reset_effects() -> void:
 	last_combo.assign([0, 0])
 	last_stock.assign([0, 0])
 	time = 0
+	awakening_reveal.assign([0.0, 0.0])
 
 func consume(events: Array) -> void:
 	for event: Dictionary in events:
 		if event.type == "swing" and combat.moves[event.move].kind == "skill":
 			callouts[event.attacker] = combat.moves[event.move].display_name
 			callout_time[event.attacker] = 1.2
+		elif event.type == "awakening_start":
+			awakening_reveal[event.attacker] = 0.85
+			callout_time[event.attacker] = 0
+		elif event.type == "awakening_denied":
+			callouts[event.attacker] = "觉醒需地面行动 / 普通技命中"
+			callout_time[event.attacker] = 0.7
 		elif event.type == "meter_empty":
 			meter_error[event.attacker] = 0.6
 			callouts[event.attacker] = "呼吸槽不足 · 需要 %d 格" % int(event.cost / 100)
@@ -79,6 +88,7 @@ func _process(delta: float) -> void:
 	if not frozen:
 		time += delta
 		for i in range(2):
+			awakening_reveal[i] = maxf(0, awakening_reveal[i] - delta)
 			meter_flash[i] = maxf(0, meter_flash[i] - delta)
 			meter_error[i] = maxf(0, meter_error[i] - delta)
 			spent_time[i] = maxf(0, spent_time[i] - delta)
@@ -125,6 +135,8 @@ func _portrait(slot: int, visual: Resource) -> void:
 	draw_polyline(frame, Color(INK, 0.9), 3, true)
 	draw_polyline(frame, Color(GOLD, 0.72), 1.2, true)
 	var texture: Texture2D = visual.battle_portrait if visual.battle_portrait != null else visual.avatar
+	if combat.fighters[slot].awakening_ticks > 0 and visual.awakened_portrait != null:
+		texture = visual.awakened_portrait
 	if texture != null:
 		draw_texture_rect(texture, Rect2(0, 0, 88, 88), false)
 	draw_polyline(PackedVector2Array([Vector2(0, 35), Vector2(0, 19), Vector2(11, 8), Vector2(28, 8)]), GOLD, 1.5, true)
@@ -187,15 +199,20 @@ func _meter(slot: int, f: RefCounted, visual: Resource) -> void:
 		draw_line(Vector2(cell.position.x, cell.end.y), cell.end, Color(tint, 0.5), 1, true)
 		var fill_rect := meter_fill_rect(slot, f.meter, n)
 		Style.blade(self, fill_rect, tint.lightened(flash * 0.65), not left)
-	var caption := "MAX" if stock == 3 else ""
+	var caption := ("MAX · " if stock == 3 else "") + ("觉醒 " + awakening_hints[slot] if stock >= 2 else "")
+	var caption_color := GOLD
+	if f.awakening_ticks > 0:
+		var data: Resource = combat.definition(f).awakening
+		caption_color = data.color
+		caption = "奥义可用" if stock >= 1 else "觉醒中"
 	if meter_error[slot] > 0:
 		caption = "气量不足"
-	elif spent_time[slot] > 0:
+	elif spent_time[slot] > 0 and f.awakening_ticks <= 0:
 		caption = "−%d 格" % int(meter_spent[slot] / 100)
 	if left:
-		_text(caption, Vector2(bx, 686), 13, tint if meter_error[slot] > 0 else GOLD)
+		_text(caption, Vector2(bx, 686), 13, tint if meter_error[slot] > 0 else caption_color)
 	else:
-		_right_text(caption, bx + 248, 686, 13, tint if meter_error[slot] > 0 else GOLD)
+		_right_text(caption, bx + 248, 686, 13, tint if meter_error[slot] > 0 else caption_color)
 
 func _combo(slot: int, f: RefCounted) -> void:
 	if frozen or f.combo_display <= 0 or f.combo < 2:
@@ -253,6 +270,7 @@ func _draw() -> void:
 		_portrait(i, visual)
 		_health_bar(i, f, visual)
 		_meter(i, f, visual)
+		_awakening_status(i, f)
 		_combo(i, f)
 		if callout_time[i] > 0 and not has_super_title() and not frozen:
 			var alpha := minf(1, callout_time[i] * 3)
@@ -279,3 +297,57 @@ func _draw() -> void:
 	if round_banner != null:
 		round_banner.cue = combat.round_cue()
 		round_banner.queue_redraw()
+
+
+func _awakening_emblem(at: Vector2, cid: String, color: Color) -> void:
+	if cid == "zenitsu":
+		draw_colored_polygon(PackedVector2Array([at + Vector2(1,-9),at + Vector2(-6,1),at + Vector2(-1,1),at + Vector2(-3,9),at + Vector2(7,-3),at + Vector2(2,-3)]), color)
+	elif cid == "nezuko":
+		var points := PackedVector2Array([at+Vector2(0,-9),at+Vector2(2,-2),at+Vector2(6,-5),at+Vector2(7,3),at+Vector2(2,8),at+Vector2(-3,8),at+Vector2(-7,3),at+Vector2(-5,-3),at+Vector2(-3,1)])
+		draw_colored_polygon(points, color)
+		Style.diamond(self, at + Vector2(0,3), 3, INK)
+	else:
+		var count := 6 if cid == "akaza" else 8
+		for n in range(count):
+			var direction := Vector2.from_angle(n * TAU / count)
+			draw_line(at + direction * 4, at + direction * 9, color, 1.2, true)
+		Style.diamond(self, at, 3, color, false)
+
+func _awakening_status(slot: int, f: RefCounted) -> void:
+	if f.awakening_ticks <= 0:
+		return
+	var data: Resource = combat.definition(f).awakening
+	var left := slot == 0
+	var x := 128.0 if left else 832.0
+	var width := 320.0
+	var infinite: bool = combat.practice and combat.awakening_infinite
+	var warning: bool = not infinite and f.awakening_ticks <= 120
+	var accent: Color = data.color.lerp(Color("ffe4cf"), 0.16)
+	if warning:
+		accent = accent.lerp(Color("fff0df"), 0.30 + 0.22 * sin(f.awakening_ticks * 0.23))
+	var panel := PackedVector2Array([Vector2(x,94),Vector2(x+width-10,94),Vector2(x+width,104),Vector2(x+width,137),Vector2(x,137)])
+	draw_colored_polygon(panel, Color(INK,0.90))
+	draw_line(Vector2(x,94),Vector2(x+width-10,94),Color(accent,0.55),1,true)
+	draw_rect(Rect2(x,94,2,43),accent)
+	_awakening_emblem(Vector2(x+19,116), f.character, accent)
+	_text("快速觉醒" if f.awakening_quick else "觉醒",Vector2(x+38,107),10,Color(accent,0.92))
+	_text(data.display_name,Vector2(x+38,126),16,PAPER,true)
+	var seconds := "∞" if infinite else "%.1f" % (f.awakening_ticks / 60.0)
+	_right_text(seconds,x+width-23,125,23,accent)
+	if not infinite:
+		_text("s",Vector2(x+width-19,125),11,Color(PAPER,0.7))
+	var fraction := 1.0 if infinite else clampf(float(f.awakening_ticks) / maxi(1,f.awakening_duration),0,1)
+	var rail := Rect2(x+38,132,width-50,2)
+	draw_rect(rail,Color(accent,0.16))
+	var fill := Rect2(rail.position+Vector2(0 if left else rail.size.x*(1-fraction),0),Vector2(rail.size.x*fraction,2))
+	draw_rect(fill,accent)
+	if fraction > 0:
+		draw_rect(Rect2(fill.end.x-2 if left else fill.position.x,131,2,4),Color("fff4dc"))
+	if awakening_reveal[slot] > 0 and not has_super_title():
+		var alpha := smoothstep(0.0,0.2,awakening_reveal[slot])
+		var slide := 12.0 * pow(clampf((awakening_reveal[slot]-0.63)/0.22,0,1),2)
+		var bx := x - slide if left else x + slide
+		Style.blade(self,Rect2(bx,148,230,44),Color(INK,0.86*alpha),not left)
+		draw_line(Vector2(bx,148),Vector2(bx+202,148),Color(accent,0.7*alpha),1,true)
+		_text("觉 醒",Vector2(bx+14,180),25,Color(PAPER,alpha),true)
+		_text("QUICK CANCEL" if f.awakening_quick else "AWAKENING",Vector2(bx+112,177),10,Color(accent,alpha))

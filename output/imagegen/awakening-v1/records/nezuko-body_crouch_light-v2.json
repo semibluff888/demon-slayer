@@ -1,0 +1,25 @@
+{
+  "id": "nezuko-body_crouch_light-v2",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x768",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\nezuko-body_crouch_light-v2.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\nezuko-body_crouch_light-v2.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\raw\\nezuko-body_crouch_light.png"
+  ],
+  "started_utc": "2026-10-07T10:23:42.1877149Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T10:24:24.2265178Z",
+  "actual_size": [
+    2048,
+    768
+  ],
+  "sha256": "189f0d9fc9f70eb41a7bd491646c4c63d4ab62af3b0124f22132a306897c0000",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

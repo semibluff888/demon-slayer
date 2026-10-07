@@ -1,0 +1,26 @@
+{
+  "id": "zenitsu-dash_forward",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x768",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\zenitsu-dash_forward.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\zenitsu-dash_forward.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\references\\zenitsu-dash_forward.png",
+    "art\\characters\\zenitsu\\portrait.png"
+  ],
+  "started_utc": "2026-10-07T09:51:14.7375489Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T09:51:55.0130665Z",
+  "actual_size": [
+    2048,
+    768
+  ],
+  "sha256": "c901406455f5fb07e9d86b08407c6f45c31f9fd410c9f96b223d6d6f0024462c",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

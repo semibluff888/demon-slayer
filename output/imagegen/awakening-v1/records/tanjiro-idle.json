@@ -1,0 +1,26 @@
+{
+  "id": "tanjiro-idle",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x768",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\tanjiro-idle.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\tanjiro-idle.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\references\\tanjiro-idle.png",
+    "art\\characters\\tanjiro\\portrait.png"
+  ],
+  "started_utc": "2026-10-07T09:41:56.2347556Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T09:42:35.4449403Z",
+  "actual_size": [
+    2048,
+    768
+  ],
+  "sha256": "17de35fce9aa44ba60698efa734d0cab4880c707d46a679abda1fabf5ba57221",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

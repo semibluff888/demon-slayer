@@ -1,0 +1,26 @@
+{
+  "id": "zenitsu-guard",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x768",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\zenitsu-guard.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\zenitsu-guard.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\references\\zenitsu-guard.png",
+    "art\\characters\\zenitsu\\portrait.png"
+  ],
+  "started_utc": "2026-10-07T09:52:23.0437432Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T09:53:00.8120029Z",
+  "actual_size": [
+    2048,
+    768
+  ],
+  "sha256": "0efb784dbdc90d7a6ed9db8981511cd109e5b64ef0b80aa99d4428e9ff0127a1",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

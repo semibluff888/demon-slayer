@@ -10,6 +10,7 @@ extends Resource
 @export var role: String = ""
 @export var accent: Color = Color.WHITE
 @export var walk_speed: float = 2.15
+@export var awakening: Resource
 @export var visual_directory: String = ""
 # Whole-model size and authored pain poses; independent of combat geometry.
 @export_range(0.5, 1.5) var model_scale: float = 1.0

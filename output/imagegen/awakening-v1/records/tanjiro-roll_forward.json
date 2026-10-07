@@ -1,0 +1,26 @@
+{
+  "id": "tanjiro-roll_forward",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x1152",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\tanjiro-roll_forward.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\tanjiro-roll_forward.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\references\\tanjiro-roll_forward.png",
+    "art\\characters\\tanjiro\\portrait.png"
+  ],
+  "started_utc": "2026-10-07T09:58:23.4089223Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T09:59:13.7045721Z",
+  "actual_size": [
+    1672,
+    941
+  ],
+  "sha256": "a52e0bdac79720cc2517b456e7de52422be26b5e6c8a7561112ae5953b2121e0",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

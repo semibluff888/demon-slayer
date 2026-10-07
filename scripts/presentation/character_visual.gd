@@ -17,6 +17,9 @@ extends Resource
 @export var source_height: float = 600.0
 @export var canonical_height: float = 70.0
 var model_scale: float = 1.0
+var awakening: Resource
+var awakening_frames: SpriteFrames
+var awakened_portrait: Texture2D
 var hit_reaction_frames: PackedInt32Array = []
 @export var phases: Dictionary = {}
 var clip_metadata: Dictionary = {}
@@ -38,6 +41,10 @@ func load_local_assets(load_frames: bool = true) -> void:
 		avatar = load(directory + "avatar.png")
 	if ResourceLoader.exists(directory + "battle-portrait.png"):
 		battle_portrait = load(directory + "battle-portrait.png")
+	if ResourceLoader.exists(directory + "awakened-portrait.png"):
+		awakened_portrait = load(directory + "awakened-portrait.png")
+	if ResourceLoader.exists(directory + "awakening/portrait.png"):
+		awakened_portrait = load(directory + "awakening/portrait.png")
 	if not load_frames:
 		return
 	var manifest_path := directory + "atlas.json"
@@ -55,6 +62,7 @@ func load_local_assets(load_frames: bool = true) -> void:
 		var selected: Variant = JSON.parse_string(FileAccess.get_file_as_string(round_path))
 		if selected is Dictionary:
 			_load_atlas(directory, selected)
+	_load_awakening_assets()
 	art_ready = missing_clips().is_empty() and portrait != null
 
 func _load_atlas(directory: String, parsed: Dictionary) -> void:
@@ -91,10 +99,45 @@ func missing_clips() -> Array[String]:
 	for clip: String in required:
 		if frames == null or not frames.has_animation(clip) or frames.get_frame_count(clip) == 0:
 			missing.append(clip)
+	if awakening != null:
+		var alternate := required.duplicate()
+		alternate.append(awakening.start_clip)
+		for clip: String in alternate:
+			if awakening_frames == null or not awakening_frames.has_animation(clip) or awakening_frames.get_frame_count(clip) == 0:
+				missing.append("awakening/" + clip)
 	return missing
 
 func release_combat_assets() -> void:
 	frames = null
+	awakening_frames = null
 	phases.clear()
 	clip_metadata.clear()
 	art_ready = false
+
+func _load_awakening_assets() -> void:
+	awakening_frames = null
+	if awakening == null or not FileAccess.file_exists(awakening.form_atlas):
+		return
+	var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(awakening.form_atlas))
+	if not parsed is Dictionary:
+		return
+	awakening_frames = SpriteFrames.new()
+	awakening_frames.remove_animation("default")
+	var directory: String = str(awakening.form_atlas).get_base_dir() + "/"
+	for clip: String in parsed.get("clips", {}):
+		var info: Dictionary = parsed.clips[clip]
+		awakening_frames.add_animation(clip)
+		awakening_frames.set_animation_loop(clip, info.get("loop", false))
+		awakening_frames.set_animation_speed(clip, float(info.get("fps", 12)))
+		for entry: Dictionary in info.frames:
+			var packed := AtlasTexture.new()
+			if not ResourceLoader.exists(directory + entry.texture):
+				push_error("Missing awakening texture: " + directory + entry.texture)
+				continue
+			packed.atlas = load(directory + entry.texture)
+			var region: Array = entry.region
+			packed.region = Rect2(region[0], region[1], region[2], region[3])
+			var canvas: Array = parsed.canvas_size
+			packed.margin = Rect2(entry.offset[0], entry.offset[1], canvas[0] - region[2], canvas[1] - region[3])
+			packed.filter_clip = true
+			awakening_frames.add_frame(clip, packed)

@@ -12,6 +12,14 @@ var vy: float = 0.0
 var facing: int = 1
 var hp: int = 1000
 var meter: int = 0
+var awakening_ticks: int = 0
+var awakening_duration: int = 0
+var awakening_startup: int = 0
+var awakening_quick: bool = false
+var awakening_heal_left: int = 0
+var awakening_heal_fraction: int = 0
+var quick_awakening_used: bool = false
+var attack_damage_percent: int = 100
 var state: String = "idle"
 var grounded: bool = true
 var knockdown_pending: bool = false
@@ -94,7 +102,9 @@ func clear_buffer() -> void:
 func observable() -> Dictionary:
 	return {"character": character, "x": x, "y": y, "facing": facing, "state": state,
 		"grounded": grounded, "crouching": crouching, "meter": meter, "hp": hp,
-		"move": move.id if move != null else "", "connected": connected, "confirmed": confirmed}
+		"move": move.id if move != null else "", "connected": connected, "confirmed": confirmed,
+		"awakening_ticks": awakening_ticks, "awakening_startup": awakening_startup,
+		"quick_awakening_used": quick_awakening_used}
 
 func snapshot() -> Dictionary:
 	var data: Dictionary = {}

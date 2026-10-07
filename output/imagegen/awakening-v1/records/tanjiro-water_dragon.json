@@ -1,0 +1,26 @@
+{
+  "id": "tanjiro-water_dragon",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x1536",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\tanjiro-water_dragon.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\tanjiro-water_dragon.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\references\\tanjiro-water_dragon.png",
+    "art\\characters\\tanjiro\\portrait.png"
+  ],
+  "started_utc": "2026-10-07T10:08:03.1296005Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T10:08:59.1143717Z",
+  "actual_size": [
+    1448,
+    1086
+  ],
+  "sha256": "e996fbea07d13424fec08aa9b1705af3539e224faea1ce5c23423910b9478b05",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

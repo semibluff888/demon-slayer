@@ -1,0 +1,12 @@
+Use case: style-transfer
+Asset type: final high-quality 2D anime fighting-game animation sprite sheet, throw_forward.
+Image 1: exact action/layout reference; its drawing quality is NOT the target.
+Image 2: approved final awakening model, face, costume and rendering style. This is the identity master.
+Redraw EXACTLY 12 corresponding chronological poses from Image 1 in the polished style and identity of Image 2. Copy each original gesture, sword angle, silhouette, orientation and action precisely. Do not substitute a standing pose for an attack, crouch, jump or roll.
+Nezuko: exactly ONE slender ivory horn on anatomical RIGHT forehead, about one-third head-height, fine dark crimson ivy marks on temple/cheek and exposed arms/legs. Refined pink slit pupils, CLOSED composed mouth (no scream), absolutely NO bamboo or muzzle or red strap. Intact modest pink hemp-leaf kimono, cocoa haori, obi and sandals. Long black hair with copper-orange ends. Elegant athletic limbs, slightly smaller head, intact coverage. She already has awakening anatomy in EVERY frame, even crouching, upside-down, receiving hits and falling. No extra horn.
+The clean delicate linework, coherent cel shading, elegant facial anatomy, proportions and rich costume colors must match Image 2. Exquisite hands, crisp hair locks and accurate costume construction. No chibi head, distorted body, screaming mouth, blurry edges or harsh flat sticker outline.
+Layout: 4 equal columns by 3 equal rows, row-major order, EXACTLY 12 complete isolated figures. Keep every drawing centered in its own cell, consistent anatomical scale across the entire sheet, generous clean space between figures. Preserve each pose relative size as in Image 1; never enlarge a crouching or horizontal figure to fill the cell. Entire hair, horn, limbs and weapon visible with margins. Leave any unused cells empty.
+Every drawing must keep the approved face even in hit reactions and upside-down poses. Nezuko never has bamboo; Zenitsu keeps closed eyes.
+Absolutely flat CYAN #00ffff background including gutters, or genuine transparent alpha. No shadows, floor, glow, energy, aura, lightning, text, labels, numbers, grid lines, borders, watermarks or extra objects. Visual effects are separate.
+
+Anatomy quality check: each figure has exactly TWO arms, TWO hands and TWO legs. If the action reference contains duplicated limbs or ghosted hands, correct that drawing defect while keeping the intended pose. No duplicate limbs, stray hands or extra fingers.

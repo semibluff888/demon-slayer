@@ -1,0 +1,26 @@
+{
+  "id": "zenitsu-thrown",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x1152",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\zenitsu-thrown.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\zenitsu-thrown.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\references\\zenitsu-thrown.png",
+    "art\\characters\\zenitsu\\portrait.png"
+  ],
+  "started_utc": "2026-10-07T10:05:03.7621938Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T10:05:56.6086713Z",
+  "actual_size": [
+    1672,
+    941
+  ],
+  "sha256": "a75d634a060bc50856ac340de43abd3abd2256b43043c027159fc9803e63b0e1",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

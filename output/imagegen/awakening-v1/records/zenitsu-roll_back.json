@@ -1,0 +1,26 @@
+{
+  "id": "zenitsu-roll_back",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x1152",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\zenitsu-roll_back.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\zenitsu-roll_back.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\references\\zenitsu-roll_back.png",
+    "art\\characters\\zenitsu\\portrait.png"
+  ],
+  "started_utc": "2026-10-07T09:58:02.4518501Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T09:58:58.2217434Z",
+  "actual_size": [
+    1672,
+    941
+  ],
+  "sha256": "cd7033ec3e8493188f7b4ef7fef3c619f512555deed60bf327dc256de1dfeb68",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

@@ -3,6 +3,7 @@ extends RefCounted
 const Combat = preload("res://scripts/combat.gd")
 var guard_mode: int = 0
 var meter_mode: int = 2
+var awakening_infinite: bool = false
 var first_hit: bool = false
 var recovery_ticks: int = 0
 var last_combo: int = 0
@@ -22,10 +23,13 @@ func reset(model: Combat, positions: bool = true) -> void:
 	recovery_ticks = 0
 	last_combo = 0
 	last_damage = 0
+	for fighter in model.fighters:
+		model._end_awakening(fighter)
+	model.awakening_infinite = awakening_infinite
 	apply_meter(model)
 
 func apply_meter(model: Combat) -> void:
-	model.fighters[0].meter = [0, 100, 300, 300][meter_mode]
+	model.fighters[0].meter = [0, 100, 300, 300, 200][meter_mode]
 	model.fighters[1].meter = 0
 
 func command(model: Combat) -> Dictionary:
@@ -41,6 +45,7 @@ func command(model: Combat) -> Dictionary:
 	return result
 
 func after_step(model: Combat) -> void:
+	model.awakening_infinite = awakening_infinite
 	if meter_mode == 3:
 		model.fighters[0].meter = 300
 	for event in model.events:
@@ -62,5 +67,5 @@ func after_step(model: Combat) -> void:
 
 
 func snapshot() -> Dictionary:
-	return {"guard_mode": guard_mode, "meter_mode": meter_mode, "first_hit": first_hit,
+	return {"guard_mode": guard_mode, "meter_mode": meter_mode, "awakening_infinite": awakening_infinite, "first_hit": first_hit,
 		"recovery_ticks": recovery_ticks, "last_combo": last_combo, "last_damage": last_damage}

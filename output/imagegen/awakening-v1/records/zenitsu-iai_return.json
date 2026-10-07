@@ -1,0 +1,26 @@
+{
+  "id": "zenitsu-iai_return",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x1152",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\zenitsu-iai_return.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\zenitsu-iai_return.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\references\\zenitsu-iai_return.png",
+    "art\\characters\\zenitsu\\portrait.png"
+  ],
+  "started_utc": "2026-10-07T09:53:45.1774029Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T09:54:36.5686053Z",
+  "actual_size": [
+    1672,
+    941
+  ],
+  "sha256": "0ba5b5c18fceb116fdda1bc0494ae66e98bc7da13df9df44765c6da320a1baee",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

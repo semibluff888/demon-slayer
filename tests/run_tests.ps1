@@ -40,6 +40,9 @@ Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script',
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/input_tests.gd') -Expected 'INPUT TESTS: \d+ passed, 0 failed' | Out-Null
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/combat_tests.gd') -Expected 'COMBAT TESTS: \d+ passed, 0 failed' | Out-Null
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/damage_tests.gd') -Expected 'DAMAGE TESTS: \d+ passed, 0 failed' | Out-Null
+Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/awakening_tests.gd') -Expected 'AWAKENING TESTS: \d+ passed, 0 failed' | Out-Null
+Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/awakening_visual_tests.gd') -Expected 'AWAKENING VISUAL: \d+ passed, 0 failed' | Out-Null
+Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/awakening_presentation_tests.gd') -Expected 'AWAKENING PRESENTATION V2: \d+ passed, 0 failed' | Out-Null
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/movement_tests.gd') -Expected 'MOVEMENT TESTS: \d+ passed, 0 failed' | Out-Null
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/combo_practice_tests.gd') -Expected 'COMBO / PRACTICE TESTS: \d+ passed, 0 failed' | Out-Null
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/ui_tests.gd') -Expected 'UI TESTS: \d+ passed, 0 failed' | Out-Null
@@ -79,6 +82,7 @@ if (($hashes | Select-Object -Unique).Count -ne 1 -or $hashes[0].Length -ne 64) 
     throw 'Combat state diverged across render frame rates.'
 }
 if ($Capture) {
+    Invoke-DuelCheck -EngineArgs @('--path', $projectRoot, '--audio-driver', 'Dummy', '--script', 'res://tools/capture_awakening.gd') -Expected 'AWAKENING CAPTURE: \d+ checks, 0 failed' | Out-Null
     Invoke-DuelCheck -EngineArgs @('--path', $projectRoot, '--audio-driver', 'Dummy', '--script', 'res://tests/ui_tests.gd', '--', '--capture') -Expected 'UI TESTS: \d+ passed, 0 failed' | Out-Null
     Invoke-DuelCheck -EngineArgs @('--path', $projectRoot, '--audio-driver', 'Dummy', '--script', 'res://tests/presentation_tests.gd', '--', '--capture') -Expected 'PRESENTATION TESTS: \d+ passed, 0 failed' | Out-Null
     Invoke-DuelCheck -EngineArgs @('--path', $projectRoot, '--audio-driver', 'Dummy', '--script', 'res://tools/capture_phase2_matrix.gd') -Expected 'PHASE TWO MATRIX: \d+ screenshots, 0 failed' | Out-Null
@@ -91,6 +95,8 @@ if (Test-Path -LiteralPath $artPython) {
     if ($LASTEXITCODE -ne 0) { throw 'Expansion artwork validation failed.' }
     & $artPython (Join-Path $projectRoot 'tests/uppercut_art_tests.py')
     if ($LASTEXITCODE -ne 0) { throw 'Uppercut artwork validation failed.' }
+    & $artPython (Join-Path $projectRoot 'tests/awakening_art_tests.py')
+    if ($LASTEXITCODE -ne 0) { throw 'Awakening artwork validation failed.' }
     & $artPython (Join-Path $projectRoot 'tests/fate_art_tests.py')
     if ($LASTEXITCODE -ne 0) { throw 'Fate artwork validation failed.' }
 }

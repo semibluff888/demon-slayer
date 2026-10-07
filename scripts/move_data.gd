@@ -68,10 +68,10 @@ func segment_progress(frame: int) -> float:
 func hit_count() -> int:
 	return maxi(1, hit_frames.size())
 
-func segment_damage(index: int, scale_percent: int = 100) -> int:
+func segment_damage(index: int, scale_percent: int = 100, attack_percent: int = 100, defense_percent: int = 100) -> int:
 	var count := hit_count()
 	# Scale once before splitting so extra hits do not add rounding losses.
-	var total := maxi(count, int(damage * scale_percent / 100))
+	var total := maxi(count, int(damage * scale_percent * attack_percent * defense_percent / 1000000))
 	return int(total / count) + (total % count if index == count - 1 else 0)
 
 func is_super() -> bool:

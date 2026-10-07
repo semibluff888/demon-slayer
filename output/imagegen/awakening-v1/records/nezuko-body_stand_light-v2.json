@@ -1,0 +1,25 @@
+{
+  "id": "nezuko-body_stand_light-v2",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x768",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\nezuko-body_stand_light-v2.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\nezuko-body_stand_light-v2.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\raw\\nezuko-body_stand_light.png"
+  ],
+  "started_utc": "2026-10-07T10:24:37.7274527Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T10:25:18.7572736Z",
+  "actual_size": [
+    2048,
+    768
+  ],
+  "sha256": "c93f2fc755e4a4da3ef49095646424a5567aebfb82cb12a77dfd9b51571e6b0d",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

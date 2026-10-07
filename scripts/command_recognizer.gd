@@ -118,6 +118,8 @@ func sample(command: Dictionary, facing: int) -> Dictionary:
 				action.type = "roll"
 			elif (mask & (A | C)) == (A | C) and action.motion == "236236":
 				action.type = "max"
+			elif mask == (B | C):
+				action.type = "awaken"
 			elif (mask & (A | C)) != 0 and action.motion in ["236236", "623", "236"]:
 				action.type = "motion"
 				action.button = "C" if mask & C else "A"
@@ -133,7 +135,7 @@ func sample(command: Dictionary, facing: int) -> Dictionary:
 				if feedback.is_empty():
 					feedback = _diagnose(mask)
 			feedback_until = tick + FEEDBACK_DURATION if not feedback.is_empty() else 0
-			if action.type in ["motion", "max", "roll"]:
+			if action.type in ["motion", "max", "roll", "awaken"]:
 				# A second button press needs a fresh motion, even inside the wider
 				# button window. This also stops an old 236 becoming a later super.
 				consumed_tick = tick

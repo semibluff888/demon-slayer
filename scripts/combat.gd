@@ -44,6 +44,10 @@ var next_instance: int = 1
 var round_open_meter: Array[int] = [0, 0]
 var round_open_hp: Array[int] = [1000, 1000]
 var practice: bool = false
+var awakening_infinite: bool = false
+var pending_healing: Array[int] = [0, 0]
+const AWAKENING_COST := 200
+const AWAKENING_FREEZE := 12
 
 func _init() -> void:
 	moves = catalog.moves
@@ -110,6 +114,7 @@ func start_round(meters: Array = []) -> void:
 	round_winner = -1
 	reason = ""
 	round_number = wins[0] + wins[1] + 1
+	pending_healing.assign([0, 0])
 	events.clear()
 
 func clear_inputs(held: Array = []) -> void:
@@ -158,12 +163,20 @@ func step(commands: Array) -> void:
 		if not practice:
 			remaining = maxi(0, remaining - 1)
 		_advance_throw()
+		_tick_awakenings()
 		return
 	if super_freeze > 0:
 		super_freeze -= 1
 		return
 	if hitstop > 0:
 		hitstop -= 1
+		return
+	# Resolve both activation requests before either fighter advances.
+	var activated := false
+	for f in fighters:
+		if f.buffer_left > 0 and f.buffer_action.get("type", "") == "awaken":
+			activated = _try_awaken(f) or activated
+	if activated:
 		return
 	if not practice:
 		remaining = maxi(0, remaining - 1)
@@ -201,13 +214,14 @@ func step(commands: Array) -> void:
 		var bounds := projectile_box(projectile)
 		bounds = bounds.merge(Rect2(bounds.position - Vector2(projectile.vx, 0), bounds.size))
 		if bounds.intersects(d.hurtbox()) and _can_be_struck(d, a, move, projectile.instance, true):
-			contacts.append(_contact(a, d, move, projectile.instance, 0, true, projectile.facing))
+			contacts.append(_contact(a, d, move, projectile.instance, 0, true, projectile.facing, int(projectile.get("damage_percent", 100))))
 			projectile.life = 0
 	var struck: Array[int] = []
 	for contact in contacts:
 		if contact.move.kind != "throw":
 			struck.append(1 - int(contact.attacker))
 			_resolve_contact(contact)
+	_flush_awakening_healing()
 	var grabs: Array[Dictionary] = []
 	for contact in contacts:
 		if contact.move.kind == "throw" and not int(contact.attacker) in struck and _throwable(fighters[1 - int(contact.attacker)]):
@@ -218,6 +232,7 @@ func step(commands: Array) -> void:
 		_start_throw(grabs[0])
 	projectiles = projectiles.filter(func(p: Dictionary) -> bool: return int(p.life) > 0)
 	if not throw_link.is_empty():
+		_tick_awakenings()
 		return
 	for f in fighters:
 		if f.move != null:
@@ -225,9 +240,11 @@ func step(commands: Array) -> void:
 			if f.move_frame >= f.move.total_frames():
 				f.move = null
 				f.state = "idle" if f.grounded else "air"
-		f.buffer_left = maxi(0, f.buffer_left - 1)
+		if f.awakening_startup == 0:
+			f.buffer_left = maxi(0, f.buffer_left - 1)
 		f.jump_buffer = maxi(0, f.jump_buffer - 1)
 		f.combo_display = maxi(0, f.combo_display - 1)
+	_tick_awakenings()
 	if not practice and (fighters[0].hp <= 0 or fighters[1].hp <= 0 or remaining <= 0):
 		_finish_round()
 
@@ -236,6 +253,7 @@ func _update_sequences() -> void:
 		var a: Fighter = fighters[i]
 		var d: Fighter = fighters[1 - i]
 		if d.stun == 0 and d.throw_role.is_empty():
+			a.quick_awakening_used = false
 			a.combo_active = false
 			a.combo_instances.clear()
 			a.chain_instances.clear()
@@ -263,12 +281,18 @@ func _read_command(f: Fighter, command: Dictionary) -> void:
 	if command.jump:
 		f.jump_buffer = BUFFER_TICKS
 	if not command.action.is_empty():
+		if command.action.type == "awaken" and not can_awaken(f):
+			f.clear_buffer()
+			events.append({"type":"awakening_denied", "attacker":f.slot})
+			return
 		f.buffer_action = command.action.duplicate()
 		f.buffer = command.action.type
 		f.buffer_left = SUPER_BUFFER_TICKS if command.action.type == "max" or command.action.get("motion", "") == "236236" else BUFFER_TICKS
 
 func _advance(f: Fighter) -> void:
 	f.previous_x = f.x
+	if f.state == "awakening" and f.awakening_startup == 0:
+		f.state = "idle"
 	f.throw_invulnerable = maxi(0, f.throw_invulnerable - 1)
 	if f.stun > 0:
 		_stop_dash(f)
@@ -278,6 +302,16 @@ func _advance(f: Fighter) -> void:
 			if f.state == "knockdown":
 				f.throw_invulnerable = 8
 			f.state = "idle" if f.grounded else "air"
+		_integrate(f)
+		return
+	if f.awakening_startup > 0:
+		f.state = "awakening"
+		f.crouching = false
+		f.jump_buffer = 0
+		if f.awakening_quick:
+			var gap: float = (fighters[1 - f.slot].x - f.x) * f.facing - 26.0
+			f.x += f.facing * minf(4.0, maxf(0.0, gap))
+		f.awakening_startup -= 1
 		_integrate(f)
 		return
 	if f.roll_frame >= 0:
@@ -342,7 +376,7 @@ func _advance(f: Fighter) -> void:
 				_spawn_projectile(f)
 	elif f.dash_ticks > 0:
 		f.state = "dash"
-		f.x += f.dash_direction * (Arena.DASH_BACK_SPEED if f.dash_back else Arena.DASH_FORWARD_SPEED)
+		f.x += f.dash_direction * (Arena.DASH_BACK_SPEED if f.dash_back else Arena.DASH_FORWARD_SPEED) * awakening_movement(f, true)
 		f.dash_frame += 1
 		f.dash_ticks -= 1
 	elif f.grounded:
@@ -350,7 +384,7 @@ func _advance(f: Fighter) -> void:
 		if f.crouching:
 			f.state = "crouch"
 		else:
-			f.x += f.axis * definition(f).walk_speed
+			f.x += f.axis * definition(f).walk_speed * awakening_movement(f, false)
 			f.state = "walk" if f.axis != 0 else "idle"
 	_integrate(f)
 
@@ -432,6 +466,7 @@ func _begin_move(f: Fighter, selected: Move) -> void:
 		if victim.state == "hit" and victim.stun > 0 and not victim.grounded:
 			victim.vy = minf(victim.vy, -3.2)
 	f.move = selected
+	f.attack_damage_percent = int(definition(f).awakening.damage_percent) if f.awakening_ticks > 0 and selected.kind in ["light", "heavy", "skill"] else 100
 	f.attack_instance = next_instance
 	next_instance += 1
 	f.hit_registry.clear()
@@ -517,7 +552,7 @@ func _resolve_push() -> void:
 		right.x = RIGHT
 
 func _can_block(f: Fighter, attack: Move) -> bool:
-	if attack.level == "throw" or not f.grounded or f.move != null or f.hp <= 0 or f.dash_ticks > 0 or f.state == "dash" or f.roll_frame >= 0:
+	if f.awakening_startup > 0 or f.state == "awakening" or attack.level == "throw" or not f.grounded or f.move != null or f.hp <= 0 or f.dash_ticks > 0 or f.state == "dash" or f.roll_frame >= 0:
 		return false
 	if f.stun > 0 and f.state != "block":
 		return false
@@ -541,10 +576,12 @@ func _can_be_struck(d: Fighter, a: Fighter, _move: Move, instance: int, projecti
 		return false
 	return true
 
-func _contact(a: Fighter, d: Fighter, move: Move, instance: int, segment: int, projectile: bool, facing_override: int = 0) -> Dictionary:
+func _contact(a: Fighter, d: Fighter, move: Move, instance: int, segment: int, projectile: bool, facing_override: int = 0, damage_percent: int = -1) -> Dictionary:
 	return {"attacker": a.slot, "move": move, "instance": instance, "segment": segment,
 		"facing": a.facing if facing_override == 0 else facing_override,
 		"blocked": _can_block(d, move), "projectile": projectile, "airborne": not d.grounded,
+		"damage_percent": a.attack_damage_percent if damage_percent < 0 else damage_percent,
+		"received_percent": awakening_defense(d), "chip_percent": int(definition(d).awakening.chip_percent) if d.awakening_ticks > 0 else 100,
 		"position": Vector2(d.x, d.y - 36)}
 
 func _record_chain(a: Fighter, attack: Move, instance: int) -> void:
@@ -572,13 +609,16 @@ func _resolve_contact(contact: Dictionary) -> void:
 	d.throw_frame = 0
 	d.reaction = ""
 	d.move = null
+	d.awakening_startup = 0
 	d.clear_buffer()
 	if contact.blocked:
 		d.state = "block"
 		d.stun = attack.blockstun
 		d.vx = contact.facing * attack.push * 0.55
 		if attack.kind in ["skill", "super", "max"]:
-			d.hp = maxi(1, d.hp - maxi(1, int(attack.segment_damage(contact.segment) * 0.08)))
+			var chip := maxi(1, int(attack.segment_damage(contact.segment) * 0.08))
+			chip = int(chip * int(contact.get("chip_percent", 100)) / 100)
+			d.hp = maxi(1, d.hp - chip)
 		if first_contact:
 			_change_meter(d, 3)
 		events.append({"type": "block", "position": contact.position, "attacker": contact.attacker, "move":attack.id, "instance":instance, "segment":contact.segment})
@@ -592,9 +632,11 @@ func _resolve_contact(contact: Dictionary) -> void:
 			var index := a.combo_instances.size()
 			var scale := 100 if attack.is_super() else maxi(40, 100 - index * 5)
 			a.combo_instances[instance] = scale
-		var damage := attack.segment_damage(contact.segment, int(a.combo_instances[instance]))
+		var damage := attack.segment_damage(contact.segment, int(a.combo_instances[instance]), int(contact.get("damage_percent", 100)), int(contact.get("received_percent", 100)))
 		damage = mini(d.hp, damage)
 		d.hp = maxi(0, d.hp - damage)
+		if a.awakening_ticks > 0 and attack.kind in ["light", "heavy", "skill"]:
+			pending_healing[a.slot] += damage * int(definition(a).awakening.healing_percent)
 		if attack.launch < 0:
 			_take_off(d, attack.launch)
 		var knockdown := attack.knockdown and int(contact.segment) == attack.hit_count() - 1
@@ -620,6 +662,8 @@ func _resolve_contact(contact: Dictionary) -> void:
 	hitstop = maxi(hitstop, attack.hitstop)
 
 func _change_meter(f: Fighter, amount: int) -> void:
+	if amount > 0 and f.awakening_ticks > 0:
+		return
 	var old := f.meter
 	f.meter = clampi(f.meter + amount, 0, 300)
 	if f.meter != old:
@@ -629,7 +673,7 @@ func _spawn_projectile(f: Fighter) -> void:
 	f.projectile_spawned = true
 	projectiles.append({"owner": f.slot, "instance": f.attack_instance, "move": f.move.id,
 		"x": f.x + f.facing * 27, "y": f.y - 32, "vx": f.move.projectile_speed * f.facing,
-		"facing": f.facing, "life": f.move.projectile_lifetime})
+		"facing": f.facing, "life": f.move.projectile_lifetime, "damage_percent": f.attack_damage_percent})
 	events.append({"type": "projectile", "attacker": f.slot, "move": f.move.id})
 
 func projectile_box(projectile: Dictionary) -> Rect2:
@@ -659,6 +703,7 @@ func _finish_round() -> void:
 		return
 	throw_link.clear()
 	for f in fighters:
+		_end_awakening(f)
 		_stop_dash(f)
 		f.throw_role = ""
 		f.roll_frame = -1
@@ -888,7 +933,7 @@ func snapshot() -> Dictionary:
 		"victory_at": victory_at, "outro_tail_until": outro_tail_until, "lethal_throw_ticks": lethal_throw_ticks,
 		"wins": wins.duplicate(), "hitstop": hitstop, "super_freeze": super_freeze, "ticks": ticks,
 		"round_number": round_number, "round_winner": round_winner, "match_winner": match_winner,
-		"reason": reason, "next_instance": next_instance, "practice": practice,
+		"reason": reason, "next_instance": next_instance, "practice": practice, "awakening_infinite": awakening_infinite,
 		"round_open_hp": round_open_hp.duplicate(),
 		"round_open_meter": round_open_meter.duplicate(), "projectiles": projectiles.duplicate(true),
 		"throw_link": throw_link.duplicate(true)}
@@ -939,6 +984,7 @@ func _start_throw(contact: Dictionary) -> void:
 		"move": contact.move.id, "start_a": a.x, "start_d": d.x, "final_a": final_x,
 		"final_d": final_x + destination * Arena.THROW_DISTANCE}
 	for f in [a, d]:
+		f.awakening_startup = 0
 		_stop_dash(f)
 		f.move = null
 		f.roll_frame = -1
@@ -1009,7 +1055,7 @@ func _advance_throw() -> void:
 	d.grounded = frame >= Arena.THROW_IMPACT_TICK
 	if frame == Arena.THROW_IMPACT_TICK:
 		var attack: Move = moves[throw_link.move]
-		var damage := mini(d.hp, attack.damage)
+		var damage := mini(d.hp, maxi(1, int(attack.damage * awakening_defense(d) / 100)))
 		d.hp = maxi(0, d.hp - damage)
 		d.state = "knockdown"
 		d.stun = 34
@@ -1020,7 +1066,10 @@ func _advance_throw() -> void:
 		_change_meter(d, int(damage * 0.15))
 		events.append({"type": "throw", "attacker": a.slot, "damage": damage,
 			"position": Vector2(d.x, FLOOR_Y - 5)})
+		if d.hp <= 0:
+			_end_awakening(d)
 		if not practice and d.hp <= 0:
+			_end_awakening(a)
 			lethal_throw_ticks = 0
 			hitstop = 0 # The shared KO clock freezes this exact impact, then slows the linked landing.
 	if frame >= Arena.THROW_TICKS:
@@ -1035,3 +1084,94 @@ func _advance_throw() -> void:
 		_face_opponent()
 		if not practice and (a.hp <= 0 or d.hp <= 0 or remaining <= 0):
 			_finish_round()
+
+func can_awaken(f: Fighter) -> bool:
+	if phase != "fight" or f.hp <= 0 or definition(f).awakening == null or f.awakening_ticks > 0:
+		return false
+	if not f.grounded or f.stun > 0 or f.roll_frame >= 0 or not f.throw_role.is_empty() or not throw_link.is_empty():
+		return false
+	if f.move == null:
+		return true
+	var d: Fighter = fighters[1 - f.slot]
+	return not f.quick_awakening_used and f.confirmed and f.move.kind in ["light", "heavy"] and f.move.stance != "air" and not f.move.knockdown and f.move.launch == 0 and d.grounded and d.stun > 0 and d.state == "hit" and f.move_frame <= f.move.startup + f.move.active + f.move.cancel_window
+
+func _try_awaken(f: Fighter) -> bool:
+	var allowed := can_awaken(f)
+	f.clear_buffer()
+	if not allowed:
+		events.append({"type":"awakening_denied", "attacker":f.slot})
+		return false
+	if f.meter < AWAKENING_COST:
+		events.append({"type":"meter_empty", "attacker":f.slot, "cost":AWAKENING_COST})
+		return false
+	var quick := f.move != null
+	_change_meter(f, -AWAKENING_COST)
+	_stop_dash(f)
+	f.awakening_duration = 360 if quick else 600
+	f.awakening_ticks = f.awakening_duration
+	f.awakening_startup = 6 if quick else 18
+	f.awakening_quick = quick
+	f.awakening_heal_left = int(definition(f).awakening.healing_limit)
+	f.awakening_heal_fraction = 0
+	f.vx = 0
+	f.crouching = false
+	f.move = null
+	f.state = "awakening"
+	if quick:
+		f.quick_awakening_used = true
+		f.chain_normals.clear()
+		f.chain_counts.erase("light")
+		f.chain_counts.erase("heavy")
+	f.input.last_action = ("快速觉醒 · " if quick else "觉醒 · ") + str(definition(f).awakening.display_name)
+	super_freeze = maxi(super_freeze, AWAKENING_FREEZE)
+	events.append({"type":"awakening_start", "attacker":f.slot, "quick":quick})
+	return true
+
+func awakening_movement(f: Fighter, dash: bool) -> float:
+	if f.awakening_ticks <= 0:
+		return 1.0
+	var data: Resource = definition(f).awakening
+	return float(data.dash_percent if dash else data.walk_percent) / 100.0
+
+func awakening_defense(f: Fighter) -> int:
+	return int(definition(f).awakening.received_percent) if f.awakening_ticks > 0 else 100
+
+func _tick_awakenings() -> void:
+	for f in fighters:
+		if f.awakening_ticks <= 0:
+			continue
+		if f.hp <= 0:
+			_end_awakening(f)
+			continue
+		if not (practice and awakening_infinite):
+			f.awakening_ticks -= 1
+			if f.awakening_ticks == 120:
+				events.append({"type":"awakening_warning", "attacker":f.slot})
+			if f.awakening_ticks == 0:
+				_end_awakening(f)
+
+func _end_awakening(f: Fighter) -> void:
+	if f.awakening_duration > 0:
+		events.append({"type":"awakening_end", "attacker":f.slot})
+	f.awakening_ticks = 0
+	f.awakening_duration = 0
+	f.awakening_startup = 0
+	f.awakening_heal_left = 0
+	f.awakening_heal_fraction = 0
+	if f.state == "awakening":
+		f.state = "idle"
+
+func _flush_awakening_healing() -> void:
+	# Damage to BOTH fighters is resolved first: a trade cannot revive a KO.
+	for f in fighters:
+		var credit: int = pending_healing[f.slot]
+		pending_healing[f.slot] = 0
+		if f.hp <= 0 or f.awakening_ticks <= 0 or credit == 0 or f.awakening_heal_left <= 0:
+			continue
+		credit += f.awakening_heal_fraction
+		f.awakening_heal_fraction = credit % 100
+		var amount := mini(1000 - f.hp, mini(f.awakening_heal_left, int(credit / 100)))
+		if amount > 0:
+			f.hp += amount
+			f.awakening_heal_left -= amount
+			events.append({"type":"heal", "attacker":f.slot, "amount":amount, "value":f.hp})

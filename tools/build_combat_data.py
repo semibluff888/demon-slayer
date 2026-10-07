@@ -153,10 +153,11 @@ def make_roster(phase2=False, specials=False):
         add("throw", dict(display_name="近身投",kind="throw",level="throw",startup=5,active=2,recovery=29,
                          damage=100,hitstun=34,blockstun=0,hitstop=7,push=4,
                          box=Raw("Rect2(0, -48, 44, 48)"),knockdown=True,animation_id="throw"), throws)
-        text = f'[gd_resource type="Resource" script_class="CharacterDefinition" load_steps={len(all_refs)+2} format=3]\n\n'
+        text = f'[gd_resource type="Resource" script_class="CharacterDefinition" load_steps={len(all_refs)+3} format=3]\n\n'
         text += '[ext_resource type="Script" path="res://scripts/character_definition.gd" id="1"]\n'
         text += "".join(f'[ext_resource type="Resource" path="{path}" id="{ref}"]\n' for ref,path in all_refs)
-        text += '\n[resource]\nscript = ExtResource("1")\n'
+        text += f'[ext_resource type="Resource" path="res://resources/awakening/{cid}.tres" id="awakening"]\n'
+        text += '\n[resource]\nscript = ExtResource("1")\nawakening = ExtResource("awakening")\n'
         text += "".join(f"{k} = {value(v)}\n" for k,v in profile.items() if k not in ["specials","descriptions"])
         text += f'visual_directory = "res://art/characters/{cid}/"\n'
         if phase2:

@@ -1,0 +1,1263 @@
+{
+  "revision": "awakening-v2",
+  "accepted_at": "2026-10-07T13:04:51.053674+00:00",
+  "method": "Authorized CPA cpa2.8201128.xyz, gpt-image-2 via installed image_gen.py; reviewed raster sheets, native alpha/cyan matte, uniform pose registration; local Godot rendering.",
+  "redrawn_characters": [
+    "tanjiro",
+    "zenitsu",
+    "nezuko"
+  ],
+  "selected_source_count": 117,
+  "redrawn_frames": 926,
+  "portrait_count": 3,
+  "vfx_texture_count": 12,
+  "variant_selection": "selected.json",
+  "accepted_sources": [
+    {
+      "clip_id": "tanjiro-awakening_start",
+      "selected_id": "tanjiro-awakening_start",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/tanjiro-awakening_start.png",
+      "source_sha256": "e0a109123a481a25bcb4c8f34b66b9782735b571be97e8de5717e3a68105a85b",
+      "prompt": "output/imagegen/awakening-v2/prompts/tanjiro-awakening_start.txt",
+      "prompt_sha256": "7906999c00da9b017c03ef88ef62dfc6825a5a448651b8d44afe20b5bbcccd92"
+    },
+    {
+      "clip_id": "tanjiro-idle",
+      "selected_id": "tanjiro-idle",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/tanjiro-idle.png",
+      "source_sha256": "4ee3686d4fefe6ea5c0c5e8fccc4a32e909dca2431a7ea784c0c03e8466b9b56",
+      "prompt": "output/imagegen/awakening-v2/prompts/tanjiro-idle.txt",
+      "prompt_sha256": "d52ea1d7521bbab37e2b8aba9d9d0262e272165d002563477664f573ab302fbe"
+    },
+    {
+      "clip_id": "tanjiro-walk",
+      "selected_id": "tanjiro-walk",
+      "frames": 8,
+      "source": "output/imagegen/awakening-v2/raw/tanjiro-walk.png",
+      "source_sha256": "eaec223cff698370f6615953d9068420ae49a501ad80ea700bee5d2ae7a4dbf9",
+      "prompt": "output/imagegen/awakening-v2/prompts/tanjiro-walk.txt",
+      "prompt_sha256": "a01930f4afb880505629b465ea1d15e6870946e16fbb162f4cd3ba27aa244d59"
+    },
+    {
+      "clip_id": "tanjiro-walk_back",
+      "selected_id": "tanjiro-walk_back",
+      "frames": 8,
+      "source": "output/imagegen/awakening-v2/raw/tanjiro-walk_back.png",
+      "source_sha256": "7f679b0a7839ac421a3038fcb81d821885524953eed09d1dd9a5041a3e2afc1b",
+      "prompt": "output/imagegen/awakening-v2/prompts/tanjiro-walk_back.txt",
+      "prompt_sha256": "f683733208d8afcb59b137d72ca85fc4ea03d387a29205514452b73d48bff4eb"
+    },
+    {
+      "clip_id": "tanjiro-crouch",
+      "selected_id": "tanjiro-crouch",
+      "frames": 3,
+      "source": "output/imagegen/awakening-v2/raw/tanjiro-crouch.png",
+      "source_sha256": "39a156be73bebd3e9309334afcea5d6e2f027c31db2ec472970a204f48063b79",
+      "prompt": "output/imagegen/awakening-v2/prompts/tanjiro-crouch.txt",
+      "prompt_sha256": "b0cbe2370de7311c4d87cf659fd2aeb0858e8995d3747398d00fceb8ddc4ec9a"
+    },
+    {
+      "clip_id": "tanjiro-jump",
+      "selected_id": "tanjiro-jump",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/tanjiro-jump.png",
+      "source_sha256": "6e532e117a04127a841770c493ecdc3ad2ebe3a0b368043b2629a095f840877e",
+      "prompt": "output/imagegen/awakening-v2/prompts/tanjiro-jump.txt",
+      "prompt_sha256": "268c90fa7bb646a2f68fa3714404c8580c75e31b89e6eaa8ac4ce9072aaa6a87"
+    },
+    {
+      "clip_id": "tanjiro-guard",
+      "selected_id": "tanjiro-guard",
+      "frames": 3,
+      "source": "output/imagegen/awakening-v2/raw/tanjiro-guard.png",
+      "source_sha256": "2e1640066909a3ad3b46f43345c0b64600d120a79949dd7f0a9cb55564ee2699",
+      "prompt": "output/imagegen/awakening-v2/prompts/tanjiro-guard.txt",
+      "prompt_sha256": "ca3f7fea427a7f2d76105254dba41f8d5b59b596b6b1ab2d538ae8409b4d854e"
+    },
+    {
+      "clip_id": "tanjiro-guard_low",
+      "selected_id": "tanjiro-guard_low",
+      "frames": 3,
+      "source": "output/imagegen/awakening-v2/raw/tanjiro-guard_low.png",
+      "source_sha256": "21aeec153f2115793b084a181423fc9ca2f06ee6afd5ef381e56b9d9539ea243",
+      "prompt": "output/imagegen/awakening-v2/prompts/tanjiro-guard_low.txt",
+      "prompt_sha256": "821092fa3a620f1c0d88e55205a9daaa3bcf23ba7a0ce81b30cf5571dd3b3da7"
+    },
+    {
+      "clip_id": "tanjiro-hit",
+      "selected_id": "tanjiro-hit",
+      "frames": 4,
+      "source": "output/imagegen/awakening-v2/raw/tanjiro-hit.png",
+      "source_sha256": "e91f86cc87514485b993dc0336b34e1e47d2555e341b5516db992da51c154db3",
+      "prompt": "output/imagegen/awakening-v2/prompts/tanjiro-hit.txt",
+      "prompt_sha256": "34cb5b55bda93d79cdd1a03f9e28ddcca95a9aafe26d90dbb7bd40e57942c47d"
+    },
+    {
+      "clip_id": "tanjiro-knockdown",
+      "selected_id": "tanjiro-knockdown",
+      "frames": 5,
+      "source": "output/imagegen/awakening-v2/raw/tanjiro-knockdown.png",
+      "source_sha256": "7e31625f5dcbbc09709e0dc17b123d097d65ebbf988df9288bd540ab658d7077",
+      "prompt": "output/imagegen/awakening-v2/prompts/tanjiro-knockdown.txt",
+      "prompt_sha256": "3f0f3b743bf197af0280320cac991663ec7f605de6e8d61e4bc991436e137d6d"
+    },
+    {
+      "clip_id": "tanjiro-throw",
+      "selected_id": "tanjiro-throw",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/tanjiro-throw.png",
+      "source_sha256": "617c19965a29b156f54e1280d0c29ad61f11826417c483f0cf2d7cba04276ab1",
+      "prompt": "output/imagegen/awakening-v2/prompts/tanjiro-throw.txt",
+      "prompt_sha256": "81369cef52cd30c1fd9ed78ba089c5b675228aa607ab97490ef2ee8c01fd82ea"
+    },
+    {
+      "clip_id": "tanjiro-stand_light",
+      "selected_id": "tanjiro-stand_light",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/tanjiro-stand_light.png",
+      "source_sha256": "b0df6e5fb9ffe9b3fab85f1f11c538b827faf9a37099911688d9f07b67f09ffe",
+      "prompt": "output/imagegen/awakening-v2/prompts/tanjiro-stand_light.txt",
+      "prompt_sha256": "9cbf7fd5b2f99f95fec9986f8716c92d4a5eadbc7dbf44ac15d9643ceedcce1d"
+    },
+    {
+      "clip_id": "tanjiro-stand_heavy",
+      "selected_id": "tanjiro-stand_heavy",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/tanjiro-stand_heavy.png",
+      "source_sha256": "7a0bb55d0d6760e385f1d3a2b257030ad493a658261ebf359d5f7d651def7fa7",
+      "prompt": "output/imagegen/awakening-v2/prompts/tanjiro-stand_heavy.txt",
+      "prompt_sha256": "7ff387b17088d3822723b4cf25696a16e43d6af04b28c99116bee26de86ac9a0"
+    },
+    {
+      "clip_id": "tanjiro-crouch_light",
+      "selected_id": "tanjiro-crouch_light",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/tanjiro-crouch_light.png",
+      "source_sha256": "ce3892fc077a3b5d0db2d505061262ef47cb181d2c162460053d9b65770c165e",
+      "prompt": "output/imagegen/awakening-v2/prompts/tanjiro-crouch_light.txt",
+      "prompt_sha256": "eacf521975a2652d39d82eb02fcd455a4271c5873d26980dc136dab6dbfa60b9"
+    },
+    {
+      "clip_id": "tanjiro-crouch_heavy",
+      "selected_id": "tanjiro-crouch_heavy",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/tanjiro-crouch_heavy.png",
+      "source_sha256": "66d11a8c692446c687af4e742c8bd1468abf39837191362cb72067fafb06de79",
+      "prompt": "output/imagegen/awakening-v2/prompts/tanjiro-crouch_heavy.txt",
+      "prompt_sha256": "4d4eecba5265990c8f7599e7b0d0c706ebdfd70b909c6c3e7786dc5ca4ae438e"
+    },
+    {
+      "clip_id": "tanjiro-air_light",
+      "selected_id": "tanjiro-air_light",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/tanjiro-air_light.png",
+      "source_sha256": "cd5872c41fb61279ab774ebab174b458eb539e58e5331a4085191449a2bb88b9",
+      "prompt": "output/imagegen/awakening-v2/prompts/tanjiro-air_light.txt",
+      "prompt_sha256": "2c399982d8d8610b549a160bd23262f2ceeed3d6bbfc762d192a14cee42c550c"
+    },
+    {
+      "clip_id": "tanjiro-air_heavy",
+      "selected_id": "tanjiro-air_heavy",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/tanjiro-air_heavy.png",
+      "source_sha256": "4edfa5d73fe39ba0de9bf54f9a543486047fad798b035df735a2d0613c9fbf54",
+      "prompt": "output/imagegen/awakening-v2/prompts/tanjiro-air_heavy.txt",
+      "prompt_sha256": "96ce2671aef961c4114ada2552f4e942791c2333e7875114967edcca6ab66f47"
+    },
+    {
+      "clip_id": "tanjiro-water_slash",
+      "selected_id": "tanjiro-water_slash",
+      "frames": 9,
+      "source": "output/imagegen/awakening-v2/raw/tanjiro-water_slash.png",
+      "source_sha256": "228be5b753ae55b26ae30724ff31948d00ed21db476c51fdec32f4613b548c78",
+      "prompt": "output/imagegen/awakening-v2/prompts/tanjiro-water_slash.txt",
+      "prompt_sha256": "7eb0110fe60c852a3d5f93e1094b9f014b398e701a9f6ec094fffc2170e4ab85"
+    },
+    {
+      "clip_id": "tanjiro-water_wheel",
+      "selected_id": "tanjiro-water_wheel",
+      "frames": 12,
+      "source": "output/imagegen/awakening-v2/raw/tanjiro-water_wheel.png",
+      "source_sha256": "32004be442a0c3d100f03b4dac4cf11410b1cbe9cbeaff2903ecae10ebd6f3c3",
+      "prompt": "output/imagegen/awakening-v2/prompts/tanjiro-water_wheel.txt",
+      "prompt_sha256": "de562ead38ef76c2f9efdd419bc20814dd6c398a5b4e75ea180f5c070ae82f12"
+    },
+    {
+      "clip_id": "tanjiro-dash_forward",
+      "selected_id": "tanjiro-dash_forward",
+      "frames": 8,
+      "source": "output/imagegen/awakening-v2/raw/tanjiro-dash_forward.png",
+      "source_sha256": "f1a5fc0d3535b15992e13ba5d7c58d83389dd9875fdd2692274e54685f179c93",
+      "prompt": "output/imagegen/awakening-v2/prompts/tanjiro-dash_forward.txt",
+      "prompt_sha256": "7aff423c60879aaedf11a3b62e268260a6c7de6b81e44f33ff35aba15eafc8bc"
+    },
+    {
+      "clip_id": "tanjiro-dash_back",
+      "selected_id": "tanjiro-dash_back",
+      "frames": 8,
+      "source": "output/imagegen/awakening-v2/raw/tanjiro-dash_back.png",
+      "source_sha256": "b8c2d61f0ce78f3f49fa719f2abdb7d3c25ae44118be87a40acabdfdfe32d93d",
+      "prompt": "output/imagegen/awakening-v2/prompts/tanjiro-dash_back.txt",
+      "prompt_sha256": "385fda89590b82e34e7f715724bd0ee4b42812a85b4faac6d869d36e3b305f19"
+    },
+    {
+      "clip_id": "tanjiro-jump_forward",
+      "selected_id": "tanjiro-jump_forward",
+      "frames": 8,
+      "source": "output/imagegen/awakening-v2/raw/tanjiro-jump_forward.png",
+      "source_sha256": "5ab3b38bb0bce6a5b47e02cd25b87b80d1912d1bcf0e7f9de76cfbff8dfa0da9",
+      "prompt": "output/imagegen/awakening-v2/prompts/tanjiro-jump_forward.txt",
+      "prompt_sha256": "592e639fba95292d11bbefbd4a79f20342e35b80f49edf2e6369b0bf7ab05243"
+    },
+    {
+      "clip_id": "tanjiro-jump_back",
+      "selected_id": "tanjiro-jump_back",
+      "frames": 8,
+      "source": "output/imagegen/awakening-v2/raw/tanjiro-jump_back.png",
+      "source_sha256": "1e240799577b78491f83ba41138344716608ecc29b03e4c4891c489924b2f9e6",
+      "prompt": "output/imagegen/awakening-v2/prompts/tanjiro-jump_back.txt",
+      "prompt_sha256": "8d7b25b2b307d303859e33052c3f8091504409bfe20a2db3599810dc3efe09f9"
+    },
+    {
+      "clip_id": "tanjiro-throw_success",
+      "selected_id": "tanjiro-throw_success",
+      "frames": 12,
+      "source": "output/imagegen/awakening-v2/raw/tanjiro-throw_success.png",
+      "source_sha256": "5535f1648ad543fb33d50058a3def7f458a49abcb33aae324f3e9a57e374fb1e",
+      "prompt": "output/imagegen/awakening-v2/prompts/tanjiro-throw_success.txt",
+      "prompt_sha256": "5f84b34466cda8940084b9be73643e351d8f9c073447f83af8e94967665f8654"
+    },
+    {
+      "clip_id": "tanjiro-thrown",
+      "selected_id": "tanjiro-thrown-anatomy-v2",
+      "frames": 12,
+      "source": "output/imagegen/awakening-v2/raw/tanjiro-thrown-anatomy-v2.png",
+      "source_sha256": "c3f7c0182aa1607e98b4b7ef99a3a709e10c72b545beaa3cf3df2b2602544cb3",
+      "prompt": "output/imagegen/awakening-v2/prompts/tanjiro-thrown-anatomy-v2.txt",
+      "prompt_sha256": "ef26745d5ae993b4921f8704e2741ac4652e9a040587d63cd9ace495a188e9ba"
+    },
+    {
+      "clip_id": "tanjiro-body_stand_light",
+      "selected_id": "tanjiro-body_stand_light",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/tanjiro-body_stand_light.png",
+      "source_sha256": "ea98f8e58c34c23fd1c099189955b4e9056232541b8454e116f8933655f25b93",
+      "prompt": "output/imagegen/awakening-v2/prompts/tanjiro-body_stand_light.txt",
+      "prompt_sha256": "39fdda5f0a3893076827668854289a6b28e341f92f2cc3ca352ed36500f643dd"
+    },
+    {
+      "clip_id": "tanjiro-body_stand_heavy",
+      "selected_id": "tanjiro-body_stand_heavy",
+      "frames": 9,
+      "source": "output/imagegen/awakening-v2/raw/tanjiro-body_stand_heavy.png",
+      "source_sha256": "e4b6b7fd0226078545200254c5aa521a5a980b258c0a1957bac7cee910f4bcca",
+      "prompt": "output/imagegen/awakening-v2/prompts/tanjiro-body_stand_heavy.txt",
+      "prompt_sha256": "07f986af27a4096f87c2479b21c6514bd9efcb49527a5e9baff86e17f60fd6c5"
+    },
+    {
+      "clip_id": "tanjiro-body_crouch_light",
+      "selected_id": "tanjiro-body_crouch_light",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/tanjiro-body_crouch_light.png",
+      "source_sha256": "50b88f70a8d2b88f41b31fca9c58514dc96af45ff3341c717235abc1c9cb6206",
+      "prompt": "output/imagegen/awakening-v2/prompts/tanjiro-body_crouch_light.txt",
+      "prompt_sha256": "a9a2c1370e52c9603699e2bceb249c5a8aceb8ecaf8eb1d385c99927c8ce15f8"
+    },
+    {
+      "clip_id": "tanjiro-body_crouch_heavy",
+      "selected_id": "tanjiro-body_crouch_heavy",
+      "frames": 9,
+      "source": "output/imagegen/awakening-v2/raw/tanjiro-body_crouch_heavy.png",
+      "source_sha256": "14dcaae99f3e4735fe21e1474305cedeadd36e4f007bd8d4e411b0ea6e1b75be",
+      "prompt": "output/imagegen/awakening-v2/prompts/tanjiro-body_crouch_heavy.txt",
+      "prompt_sha256": "22319dd928d189c886ae2435ec82d076c220c94d99f381ae3a5d542ac621c1d1"
+    },
+    {
+      "clip_id": "tanjiro-body_air_light",
+      "selected_id": "tanjiro-body_air_light",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/tanjiro-body_air_light.png",
+      "source_sha256": "82ee7105731e8b2f7b8377542f19191bbfc44e93c8c4a00df4c8df8621eca062",
+      "prompt": "output/imagegen/awakening-v2/prompts/tanjiro-body_air_light.txt",
+      "prompt_sha256": "e6c99ca44eb468ace533600bdfd3ef63880b0b38dc27702cfec337351b75af22"
+    },
+    {
+      "clip_id": "tanjiro-body_air_heavy",
+      "selected_id": "tanjiro-body_air_heavy",
+      "frames": 9,
+      "source": "output/imagegen/awakening-v2/raw/tanjiro-body_air_heavy.png",
+      "source_sha256": "862fdfeb0f984c2c39ff33f0159be6f933c5c4b6467a1a4f23fd51e8f326d157",
+      "prompt": "output/imagegen/awakening-v2/prompts/tanjiro-body_air_heavy.txt",
+      "prompt_sha256": "8f14c0ada775664b0506e1cced6388afd9cdc6c676351beb3d722c886dd070c7"
+    },
+    {
+      "clip_id": "tanjiro-roll_forward",
+      "selected_id": "tanjiro-roll_forward",
+      "frames": 12,
+      "source": "output/imagegen/awakening-v2/raw/tanjiro-roll_forward.png",
+      "source_sha256": "38603d776ea51dd81fba339cfa9bf7afcb052c94a32222e15fcdd21791ec9b96",
+      "prompt": "output/imagegen/awakening-v2/prompts/tanjiro-roll_forward.txt",
+      "prompt_sha256": "32b3c5d9130c61850280de18101c39df6cd26e7b6adafb5189464142332bd4a2"
+    },
+    {
+      "clip_id": "tanjiro-roll_back",
+      "selected_id": "tanjiro-roll_back",
+      "frames": 12,
+      "source": "output/imagegen/awakening-v2/raw/tanjiro-roll_back.png",
+      "source_sha256": "f7ad1efe5fb78f3e54a54c329086e4a4a63b1b441e613b0b6e2df1cc5b41b2ac",
+      "prompt": "output/imagegen/awakening-v2/prompts/tanjiro-roll_back.txt",
+      "prompt_sha256": "6f1a5ed21ad72e1b9e1a47db936d20cac96883c61845c7e9aa5541ce7b56504c"
+    },
+    {
+      "clip_id": "tanjiro-throw_forward",
+      "selected_id": "tanjiro-throw_forward",
+      "frames": 12,
+      "source": "output/imagegen/awakening-v2/raw/tanjiro-throw_forward.png",
+      "source_sha256": "f8dc2528e69d73b14eb46239b595a7d31e2db8721ed0002767d4c92780feea9b",
+      "prompt": "output/imagegen/awakening-v2/prompts/tanjiro-throw_forward.txt",
+      "prompt_sha256": "4438e482e0b566f51eeffe9eea427806b62b0400750b3f47551f23d52872fc9a"
+    },
+    {
+      "clip_id": "tanjiro-thrown_forward",
+      "selected_id": "tanjiro-thrown_forward",
+      "frames": 12,
+      "source": "output/imagegen/awakening-v2/raw/tanjiro-thrown_forward.png",
+      "source_sha256": "969d578ce53124f8219ff52613e1c96a5ee719c1e2789be4861ef7b3c1217fae",
+      "prompt": "output/imagegen/awakening-v2/prompts/tanjiro-thrown_forward.txt",
+      "prompt_sha256": "6e998f1981d834cff1995fb91a1aec8f9b768233f9cc9acde6042f11bd81294f"
+    },
+    {
+      "clip_id": "tanjiro-throw_tech",
+      "selected_id": "tanjiro-throw_tech",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/tanjiro-throw_tech.png",
+      "source_sha256": "bf5afb9a0617a3349ad6a76521f7812f2ee6d8a4390a1b82dcfb75a24b673607",
+      "prompt": "output/imagegen/awakening-v2/prompts/tanjiro-throw_tech.txt",
+      "prompt_sha256": "f8b3dc86a6ce245943fc49be8bd9349202c7535f8ae520a0978665ad3d06d35d"
+    },
+    {
+      "clip_id": "tanjiro-water_vortex",
+      "selected_id": "tanjiro-water_vortex",
+      "frames": 12,
+      "source": "output/imagegen/awakening-v2/raw/tanjiro-water_vortex.png",
+      "source_sha256": "561b68809fa58a6cb02318894dcae86b103b7865d910c4301e1029e1dc4ef7da",
+      "prompt": "output/imagegen/awakening-v2/prompts/tanjiro-water_vortex.txt",
+      "prompt_sha256": "8169fdce6d808b92f788b9f863423b9764b7ce28dc19f83d7fe620c5a09f2aa6"
+    },
+    {
+      "clip_id": "tanjiro-water_dragon",
+      "selected_id": "tanjiro-water_dragon",
+      "frames": 15,
+      "source": "output/imagegen/awakening-v2/raw/tanjiro-water_dragon.png",
+      "source_sha256": "71d45cd49422cddb7916af95478807f43dffee7ac06e623fe9f86af5436d216d",
+      "prompt": "output/imagegen/awakening-v2/prompts/tanjiro-water_dragon.txt",
+      "prompt_sha256": "e95996dcd88ce99f234899c7a6dab12058b39235df4a2a79cc74379edf4b4bb1"
+    },
+    {
+      "clip_id": "tanjiro-sun_arc",
+      "selected_id": "tanjiro-sun_arc",
+      "frames": 12,
+      "source": "output/imagegen/awakening-v2/raw/tanjiro-sun_arc.png",
+      "source_sha256": "e92ac7c0a3ed61892b789b02b4e57bf05b10902468eb152d2531af47e0400acc",
+      "prompt": "output/imagegen/awakening-v2/prompts/tanjiro-sun_arc.txt",
+      "prompt_sha256": "b3834787c9da368fc2a0c2640882741062104a1e6517ea0ff57fcbbf36bba7aa"
+    },
+    {
+      "clip_id": "zenitsu-awakening_start",
+      "selected_id": "zenitsu-awakening_start",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/zenitsu-awakening_start.png",
+      "source_sha256": "223d28d4d5a296347c76b66493d915e489ca62dba4feb083b1536e004676e80e",
+      "prompt": "output/imagegen/awakening-v2/prompts/zenitsu-awakening_start.txt",
+      "prompt_sha256": "65cfccec69470c1929b4fc65a5085bf08f9308cb2ed5c693cf9c4696bff3cc39"
+    },
+    {
+      "clip_id": "zenitsu-idle",
+      "selected_id": "zenitsu-idle",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/zenitsu-idle.png",
+      "source_sha256": "eaa25ed74b5b5b3dbc690d5b1ca7d9057385b38e45d6ba802430118a79840edd",
+      "prompt": "output/imagegen/awakening-v2/prompts/zenitsu-idle.txt",
+      "prompt_sha256": "7eae40784a1e3a5b380d1fe113ce0f039f301a5d56a26164951428a3bd126af5"
+    },
+    {
+      "clip_id": "zenitsu-walk",
+      "selected_id": "zenitsu-walk",
+      "frames": 8,
+      "source": "output/imagegen/awakening-v2/raw/zenitsu-walk.png",
+      "source_sha256": "bc42105b3ec16102984fc431454e7753fecbb33f892d8451145dff9910e3700c",
+      "prompt": "output/imagegen/awakening-v2/prompts/zenitsu-walk.txt",
+      "prompt_sha256": "e32031c8e9571a4d3be92d3b51d34eaf07863446408d517965ee3ce6789d3ea3"
+    },
+    {
+      "clip_id": "zenitsu-walk_back",
+      "selected_id": "zenitsu-walk_back",
+      "frames": 8,
+      "source": "output/imagegen/awakening-v2/raw/zenitsu-walk_back.png",
+      "source_sha256": "d2b8c5c01cd197f982014ae198059ab368be1357c1d12fa5feca09614d515692",
+      "prompt": "output/imagegen/awakening-v2/prompts/zenitsu-walk_back.txt",
+      "prompt_sha256": "c0e911a85240a7eea645b7205564bc4437596d4d6ef05bfc47849bd806964b3e"
+    },
+    {
+      "clip_id": "zenitsu-crouch",
+      "selected_id": "zenitsu-crouch",
+      "frames": 3,
+      "source": "output/imagegen/awakening-v2/raw/zenitsu-crouch.png",
+      "source_sha256": "3483a6f9329ca14af43c9c9ceeb33bf424871fb96d2ab705787eb79bbc1b07c3",
+      "prompt": "output/imagegen/awakening-v2/prompts/zenitsu-crouch.txt",
+      "prompt_sha256": "f2f93f68443d9bc17b2f4b13efe5edc0d303d5df7eaa597fed12fd99ba7f2beb"
+    },
+    {
+      "clip_id": "zenitsu-jump",
+      "selected_id": "zenitsu-jump",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/zenitsu-jump.png",
+      "source_sha256": "98cdcd4bc0acb1ba82ce38f77f88cb43a2f309ed72fd290ede45f4b817a68b6f",
+      "prompt": "output/imagegen/awakening-v2/prompts/zenitsu-jump.txt",
+      "prompt_sha256": "ed8e9330241c01d587c060c926c9da9582e35dfc3e52f92fcb467ee8db96b4e7"
+    },
+    {
+      "clip_id": "zenitsu-guard",
+      "selected_id": "zenitsu-guard",
+      "frames": 3,
+      "source": "output/imagegen/awakening-v2/raw/zenitsu-guard.png",
+      "source_sha256": "c332b0bd0364009d611cacd91c02b10d01a6aa8a3f956d245a01cd5345864bc1",
+      "prompt": "output/imagegen/awakening-v2/prompts/zenitsu-guard.txt",
+      "prompt_sha256": "b1b4a1365ddc29f4b336126bfdd733f40b76102ea44229c263a4f4c2b82499ac"
+    },
+    {
+      "clip_id": "zenitsu-guard_low",
+      "selected_id": "zenitsu-guard_low",
+      "frames": 3,
+      "source": "output/imagegen/awakening-v2/raw/zenitsu-guard_low.png",
+      "source_sha256": "0c02b096802de55c1b7e82c8c59c905006b3c408021cbf975077d35bfa9da77f",
+      "prompt": "output/imagegen/awakening-v2/prompts/zenitsu-guard_low.txt",
+      "prompt_sha256": "68d7524d101358ab84e22bb5a899af6758510c6791672e62c9255a1eb1bd3ec9"
+    },
+    {
+      "clip_id": "zenitsu-hit",
+      "selected_id": "zenitsu-hit",
+      "frames": 4,
+      "source": "output/imagegen/awakening-v2/raw/zenitsu-hit.png",
+      "source_sha256": "411a9c4072ee674e5ab7772b5259fabf4cb811bc3d80fc546b92698673a886de",
+      "prompt": "output/imagegen/awakening-v2/prompts/zenitsu-hit.txt",
+      "prompt_sha256": "093d2df7c51e1f6339026fd5c59832497730771d933df1eb29ffbbe2fd3e1898"
+    },
+    {
+      "clip_id": "zenitsu-knockdown",
+      "selected_id": "zenitsu-knockdown",
+      "frames": 5,
+      "source": "output/imagegen/awakening-v2/raw/zenitsu-knockdown.png",
+      "source_sha256": "9a14ea101d36d2d061b9dbe92bd9b3caceeaf8121ce5d6b31e7ab7576f352d1c",
+      "prompt": "output/imagegen/awakening-v2/prompts/zenitsu-knockdown.txt",
+      "prompt_sha256": "8bdf87ef8d3c096dc7d89ca95022e70e6c3536dd382126f1ee35bdbd5ab91d54"
+    },
+    {
+      "clip_id": "zenitsu-throw",
+      "selected_id": "zenitsu-throw",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/zenitsu-throw.png",
+      "source_sha256": "dc2e4bed65fb3c9cf04049f41a084a1520a1032b01928e5e5534852cac388305",
+      "prompt": "output/imagegen/awakening-v2/prompts/zenitsu-throw.txt",
+      "prompt_sha256": "762d11c3805bc340947e53d0657d6c275d500d0524b5e5723c45dbf013b66bda"
+    },
+    {
+      "clip_id": "zenitsu-stand_light",
+      "selected_id": "zenitsu-stand_light",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/zenitsu-stand_light.png",
+      "source_sha256": "936bd54512c114515d838cd5d339cb47e0f8cb11cb2fdc1233139f92b23d1d8f",
+      "prompt": "output/imagegen/awakening-v2/prompts/zenitsu-stand_light.txt",
+      "prompt_sha256": "62f6cc1966e4e32e3608382221484a5316ae33dfe369b14c3532e2129e19dbe9"
+    },
+    {
+      "clip_id": "zenitsu-stand_heavy",
+      "selected_id": "zenitsu-stand_heavy",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/zenitsu-stand_heavy.png",
+      "source_sha256": "97893939bfe11c250dae6ef9bf06052e4ecb7bda935dc6d72b127e9a55a65d29",
+      "prompt": "output/imagegen/awakening-v2/prompts/zenitsu-stand_heavy.txt",
+      "prompt_sha256": "c499b72a8d3159cf5548dae9f59bc16fdcf5f181a813fc69a92e00b00f1060e6"
+    },
+    {
+      "clip_id": "zenitsu-crouch_light",
+      "selected_id": "zenitsu-crouch_light",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/zenitsu-crouch_light.png",
+      "source_sha256": "1615a98d233a4ca3e1717cc967568455f37e01e7d96c98e83e33554fac3ece69",
+      "prompt": "output/imagegen/awakening-v2/prompts/zenitsu-crouch_light.txt",
+      "prompt_sha256": "6a435e17ecf0403c77963bb09a4d2ded68a95c30a6a4e8c6a07389729079b4db"
+    },
+    {
+      "clip_id": "zenitsu-crouch_heavy",
+      "selected_id": "zenitsu-crouch_heavy",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/zenitsu-crouch_heavy.png",
+      "source_sha256": "37ccded23bb1d5a51b862bdec1e18a0cee715347f4af358beace605b144ce968",
+      "prompt": "output/imagegen/awakening-v2/prompts/zenitsu-crouch_heavy.txt",
+      "prompt_sha256": "02a941b0ecc51af1590daab0d02da5585676f740370e18c75a71fda38f8a605e"
+    },
+    {
+      "clip_id": "zenitsu-air_light",
+      "selected_id": "zenitsu-air_light",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/zenitsu-air_light.png",
+      "source_sha256": "0cdf27662c2b37e03566483a172f10c73cf14fda27448c753476cdbf77d16ac2",
+      "prompt": "output/imagegen/awakening-v2/prompts/zenitsu-air_light.txt",
+      "prompt_sha256": "d84973887e41770e38edcff3ff76aec140861b5c6c362227489b84dd24bd67b1"
+    },
+    {
+      "clip_id": "zenitsu-air_heavy",
+      "selected_id": "zenitsu-air_heavy",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/zenitsu-air_heavy.png",
+      "source_sha256": "f10f174b8f988d76f34429cf9b4db11e971b3d75410bc31c845f529a6addfd07",
+      "prompt": "output/imagegen/awakening-v2/prompts/zenitsu-air_heavy.txt",
+      "prompt_sha256": "6ca2c33c33c4632e82974394efbbbd11b3f9c3d9794ab0643b48fcfcd94010d8"
+    },
+    {
+      "clip_id": "zenitsu-iai",
+      "selected_id": "zenitsu-iai",
+      "frames": 9,
+      "source": "output/imagegen/awakening-v2/raw/zenitsu-iai.png",
+      "source_sha256": "1795d0c991f7d7094adf42c962922124c873439f2ed48df357697be9452a7556",
+      "prompt": "output/imagegen/awakening-v2/prompts/zenitsu-iai.txt",
+      "prompt_sha256": "7aa7da4eac26033701a18accd9d8b474d0321f3706d7d233e6265b155810147a"
+    },
+    {
+      "clip_id": "zenitsu-thunder",
+      "selected_id": "zenitsu-thunder",
+      "frames": 9,
+      "source": "output/imagegen/awakening-v2/raw/zenitsu-thunder.png",
+      "source_sha256": "c8b5522bf0388a57bbc4cda5f1ea85e672b3606daef581db7b2752f894ce398c",
+      "prompt": "output/imagegen/awakening-v2/prompts/zenitsu-thunder.txt",
+      "prompt_sha256": "9ede214d9b5ec6ff70d21e37df0b129a254e4dc706baba5c67e1e9b909b895ec"
+    },
+    {
+      "clip_id": "zenitsu-dash_forward",
+      "selected_id": "zenitsu-dash_forward",
+      "frames": 8,
+      "source": "output/imagegen/awakening-v2/raw/zenitsu-dash_forward.png",
+      "source_sha256": "c680faa51dd71701647fa6c0d07a3e315ab715162ef31b73afc7f24cddbbee80",
+      "prompt": "output/imagegen/awakening-v2/prompts/zenitsu-dash_forward.txt",
+      "prompt_sha256": "f1db97b65dd19e40e2fd547dfb51ae751717fe463ebee3328293df52648bfb15"
+    },
+    {
+      "clip_id": "zenitsu-dash_back",
+      "selected_id": "zenitsu-dash_back",
+      "frames": 8,
+      "source": "output/imagegen/awakening-v2/raw/zenitsu-dash_back.png",
+      "source_sha256": "82c51d45de78dad31843af3a3a90559566ec5781ce157e120a060751911483ea",
+      "prompt": "output/imagegen/awakening-v2/prompts/zenitsu-dash_back.txt",
+      "prompt_sha256": "930305716236bc3c4a7b79b48fe0dd01bef10ab38d63b7f45456f937607dabd2"
+    },
+    {
+      "clip_id": "zenitsu-jump_forward",
+      "selected_id": "zenitsu-jump_forward",
+      "frames": 8,
+      "source": "output/imagegen/awakening-v2/raw/zenitsu-jump_forward.png",
+      "source_sha256": "a1ec8371cbd62675715e1e5f39f9d17c789d77f3472440b1a90eb6ab89dfa986",
+      "prompt": "output/imagegen/awakening-v2/prompts/zenitsu-jump_forward.txt",
+      "prompt_sha256": "c57df75b242764b8e63a0af3810d5e21f0035ce38add5e3bcd2062f8184ecbd8"
+    },
+    {
+      "clip_id": "zenitsu-jump_back",
+      "selected_id": "zenitsu-jump_back",
+      "frames": 8,
+      "source": "output/imagegen/awakening-v2/raw/zenitsu-jump_back.png",
+      "source_sha256": "c2b5ecf844ee3940966a2591d42903cab8db1018c440024f115ff01668f0343c",
+      "prompt": "output/imagegen/awakening-v2/prompts/zenitsu-jump_back.txt",
+      "prompt_sha256": "40292701f8c1f9f8361138e7b1c40bee1e8ab3ff39042dfc37fb98b02df960c9"
+    },
+    {
+      "clip_id": "zenitsu-throw_success",
+      "selected_id": "zenitsu-throw_success",
+      "frames": 12,
+      "source": "output/imagegen/awakening-v2/raw/zenitsu-throw_success.png",
+      "source_sha256": "9330b337fdc7da82de03fb792c43b747418cdde769c927d533cbd9746286e3d2",
+      "prompt": "output/imagegen/awakening-v2/prompts/zenitsu-throw_success.txt",
+      "prompt_sha256": "989afe11f7a49d0ba4be5bafacf1eaf83c2426231ac866dd838a94eed144a4fb"
+    },
+    {
+      "clip_id": "zenitsu-thrown",
+      "selected_id": "zenitsu-thrown",
+      "frames": 12,
+      "source": "output/imagegen/awakening-v2/raw/zenitsu-thrown.png",
+      "source_sha256": "249048b6ad089636fb53026f62e6d4dbbff881a3f808ef63bbc71c42378ab61a",
+      "prompt": "output/imagegen/awakening-v2/prompts/zenitsu-thrown.txt",
+      "prompt_sha256": "cf5a3536a8f33c82320723d9953c52f2b80097e619b138506b80f33b368c81aa"
+    },
+    {
+      "clip_id": "zenitsu-body_stand_light",
+      "selected_id": "zenitsu-body_stand_light",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/zenitsu-body_stand_light.png",
+      "source_sha256": "e0d109f8738b5650ee83cb89fcc4b99c534af541ad63bf6a68cecf2d7c58e93b",
+      "prompt": "output/imagegen/awakening-v2/prompts/zenitsu-body_stand_light.txt",
+      "prompt_sha256": "847993cdf775c997980779bbf5fbd970d4ebb4bcea21d5d900e7b6d9375e1c6e"
+    },
+    {
+      "clip_id": "zenitsu-body_stand_heavy",
+      "selected_id": "zenitsu-body_stand_heavy",
+      "frames": 9,
+      "source": "output/imagegen/awakening-v2/raw/zenitsu-body_stand_heavy.png",
+      "source_sha256": "5ac90ad391484020463d1481937e529d050962c7938de2b5063ee4414f51c8ee",
+      "prompt": "output/imagegen/awakening-v2/prompts/zenitsu-body_stand_heavy.txt",
+      "prompt_sha256": "a03fd718e6a0e828ed761c19924ee8a75675008f3587d6d3a6e6ce8d7f7bda1c"
+    },
+    {
+      "clip_id": "zenitsu-body_crouch_light",
+      "selected_id": "zenitsu-body_crouch_light",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/zenitsu-body_crouch_light.png",
+      "source_sha256": "8499ee4ef91fd64d66a01951c50dd4add048b2a11c88823eeeca0b7bc3c83432",
+      "prompt": "output/imagegen/awakening-v2/prompts/zenitsu-body_crouch_light.txt",
+      "prompt_sha256": "e12126ba1ebee513fa375088608cc2688a118a25e466d8592aeb4cfc889d1f44"
+    },
+    {
+      "clip_id": "zenitsu-body_crouch_heavy",
+      "selected_id": "zenitsu-body_crouch_heavy",
+      "frames": 8,
+      "source": "output/imagegen/awakening-v2/raw/zenitsu-body_crouch_heavy.png",
+      "source_sha256": "ba4615e26adb7dd572e319f2f3861e83ce1c0e96724f94a2625436fbebb40419",
+      "prompt": "output/imagegen/awakening-v2/prompts/zenitsu-body_crouch_heavy.txt",
+      "prompt_sha256": "61bf2bcd376d37d2d8580b81faddc38e5571e6c5b66f233cff38dedde4b02ba5"
+    },
+    {
+      "clip_id": "zenitsu-body_air_light",
+      "selected_id": "zenitsu-body_air_light",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/zenitsu-body_air_light.png",
+      "source_sha256": "478051f18e7f857e4d0be0becff6b66f14a962f2cad84df7b215567570900298",
+      "prompt": "output/imagegen/awakening-v2/prompts/zenitsu-body_air_light.txt",
+      "prompt_sha256": "cda7856c002f9326280ef3a5bf0e7f41d1ac5c3c7464631bca0fba4a12a42f90"
+    },
+    {
+      "clip_id": "zenitsu-body_air_heavy",
+      "selected_id": "zenitsu-body_air_heavy",
+      "frames": 9,
+      "source": "output/imagegen/awakening-v2/raw/zenitsu-body_air_heavy.png",
+      "source_sha256": "f61ccd29088817522884bc0ceb2623b3179c82fe1c2c72b8219efd1b15d3cd10",
+      "prompt": "output/imagegen/awakening-v2/prompts/zenitsu-body_air_heavy.txt",
+      "prompt_sha256": "2aad3a9731f92250ead4f82e26388ff182b06dcedc1fb61b65454d61c681cd37"
+    },
+    {
+      "clip_id": "zenitsu-roll_forward",
+      "selected_id": "zenitsu-roll_forward",
+      "frames": 12,
+      "source": "output/imagegen/awakening-v2/raw/zenitsu-roll_forward.png",
+      "source_sha256": "859d08032df3223e87004cfb5afaddfc3fa87ea81f5d05f70b7fa30ddb5af56f",
+      "prompt": "output/imagegen/awakening-v2/prompts/zenitsu-roll_forward.txt",
+      "prompt_sha256": "c3a2cdeaa55bbfa7d7260697348ab742c436a658cad3fb75a0d66e6468c02d9a"
+    },
+    {
+      "clip_id": "zenitsu-roll_back",
+      "selected_id": "zenitsu-roll_back",
+      "frames": 12,
+      "source": "output/imagegen/awakening-v2/raw/zenitsu-roll_back.png",
+      "source_sha256": "fb8164a4816f2f778a8759f01a73170428359a1dcfae20cff017b31a06f11dcd",
+      "prompt": "output/imagegen/awakening-v2/prompts/zenitsu-roll_back.txt",
+      "prompt_sha256": "e11fcf9f0a58a058d23d14aa587f1aed3d653bc4f4eba678471a133169864ab8"
+    },
+    {
+      "clip_id": "zenitsu-throw_forward",
+      "selected_id": "zenitsu-throw_forward",
+      "frames": 12,
+      "source": "output/imagegen/awakening-v2/raw/zenitsu-throw_forward.png",
+      "source_sha256": "2d47a3dd272f263e661413c2c8cac6b02b1f01fc9d7dc2fe8ebdba9b30e2bde2",
+      "prompt": "output/imagegen/awakening-v2/prompts/zenitsu-throw_forward.txt",
+      "prompt_sha256": "ada252876a4b54cd516319f55209d0bee530c1fdce888d0059ff4b4a9923513d"
+    },
+    {
+      "clip_id": "zenitsu-thrown_forward",
+      "selected_id": "zenitsu-thrown_forward",
+      "frames": 12,
+      "source": "output/imagegen/awakening-v2/raw/zenitsu-thrown_forward.png",
+      "source_sha256": "b3274360a515adc5bb017e3d485caeee6c849eda6edd6f2bf312f036c41d8a1d",
+      "prompt": "output/imagegen/awakening-v2/prompts/zenitsu-thrown_forward.txt",
+      "prompt_sha256": "e3ea65bd5c02d3091f97b24af074e4135ae964fddce6c35e6fafecd5fcb27aab"
+    },
+    {
+      "clip_id": "zenitsu-throw_tech",
+      "selected_id": "zenitsu-throw_tech",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/zenitsu-throw_tech.png",
+      "source_sha256": "d01ed0c8b5d36077bc0bdaa89e9440e709a4e7f9a3ae6360119a030f1b38bf2f",
+      "prompt": "output/imagegen/awakening-v2/prompts/zenitsu-throw_tech.txt",
+      "prompt_sha256": "7e7fef43f4a69ce8d984a9bedcf7bbeac012ebf21608a2c7c06e7c9b88c6e44c"
+    },
+    {
+      "clip_id": "zenitsu-iai_return",
+      "selected_id": "zenitsu-iai_return",
+      "frames": 12,
+      "source": "output/imagegen/awakening-v2/raw/zenitsu-iai_return.png",
+      "source_sha256": "0d615692600abeb1482fae5f276e01e959ff9a1b74e8d40fa3647f3fc5773bd5",
+      "prompt": "output/imagegen/awakening-v2/prompts/zenitsu-iai_return.txt",
+      "prompt_sha256": "aac3b376faabe4825b56b0b79a692c342c138afd017c4e24a4cb38bee1e0c5b1"
+    },
+    {
+      "clip_id": "zenitsu-sixfold",
+      "selected_id": "zenitsu-sixfold",
+      "frames": 18,
+      "source": "output/imagegen/awakening-v2/raw/zenitsu-sixfold.png",
+      "source_sha256": "12ee191f1a859296fb0d25cd59b2a684b83dbba10b56b625c84864ef4297d6f5",
+      "prompt": "output/imagegen/awakening-v2/prompts/zenitsu-sixfold.txt",
+      "prompt_sha256": "55efeb0348e7587c338f325c035fa1e3955ebab5de4deb453029c15bf4ace1d1"
+    },
+    {
+      "clip_id": "zenitsu-godspeed",
+      "selected_id": "zenitsu-godspeed",
+      "frames": 15,
+      "source": "output/imagegen/awakening-v2/raw/zenitsu-godspeed.png",
+      "source_sha256": "36f6f8faf636b67115e1dd15d5cbf076633313db9f923d6992b7afb1cf8f5732",
+      "prompt": "output/imagegen/awakening-v2/prompts/zenitsu-godspeed.txt",
+      "prompt_sha256": "0873bdd3e51d7259879be5e30c3c52c5c43c1028ee4351ceae5a1a86ce14c0a5"
+    },
+    {
+      "clip_id": "nezuko-awakening_start",
+      "selected_id": "nezuko-awakening_start",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/nezuko-awakening_start.png",
+      "source_sha256": "ddefb28e884a57985ad2863fccc3ef6944ea1fa28598429f2685d22dca3600dd",
+      "prompt": "output/imagegen/awakening-v2/prompts/nezuko-awakening_start.txt",
+      "prompt_sha256": "fed81dace25cc1d862f27119bee29ed058735a541a82abc0499d464e72165e40"
+    },
+    {
+      "clip_id": "nezuko-idle",
+      "selected_id": "nezuko-idle",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/nezuko-idle.png",
+      "source_sha256": "37fb040c8364ab46a5b1349620240c87765b4f0c881215d68ab9b53fbe8be452",
+      "prompt": "output/imagegen/awakening-v2/prompts/nezuko-idle.txt",
+      "prompt_sha256": "d5c3a17fa77fa3798c5eea31414e20c92fbcad03326414e8179ac2a5ec396888"
+    },
+    {
+      "clip_id": "nezuko-walk",
+      "selected_id": "nezuko-walk",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/nezuko-walk.png",
+      "source_sha256": "5bb0ac7a5e4ca2fa41c5751798388575d34b5d8e4cf1712e52720bc74af73ca4",
+      "prompt": "output/imagegen/awakening-v2/prompts/nezuko-walk.txt",
+      "prompt_sha256": "5a45b29bd749261c317a237c7a8d83addc65d551d78c2e70fd2f2549b0e4a3b2"
+    },
+    {
+      "clip_id": "nezuko-walk_back",
+      "selected_id": "nezuko-walk_back",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/nezuko-walk_back.png",
+      "source_sha256": "c9a20ab9c606db0074e2c94c33ca689500e745696fb52c095c9a30e04ffef7aa",
+      "prompt": "output/imagegen/awakening-v2/prompts/nezuko-walk_back.txt",
+      "prompt_sha256": "73e6e83c7552e9fe4a7a4f7835f65a1e702bcb355692088dee9fe2ebeb8f0c19"
+    },
+    {
+      "clip_id": "nezuko-crouch",
+      "selected_id": "nezuko-crouch",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/nezuko-crouch.png",
+      "source_sha256": "0a0daea9b0612ba93de03e63d4ba9a8204a8756f3ed7a0df45a0215617cf81a6",
+      "prompt": "output/imagegen/awakening-v2/prompts/nezuko-crouch.txt",
+      "prompt_sha256": "f4ec85accf0d31610359a91d8a4e2a612dc3ee56e65a90588d2604e58fa6fd9a"
+    },
+    {
+      "clip_id": "nezuko-jump",
+      "selected_id": "nezuko-jump",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/nezuko-jump.png",
+      "source_sha256": "d72459ed569b3cc3bb1084f91c43ca0b45e5e04b16455982e06087385d56b3e0",
+      "prompt": "output/imagegen/awakening-v2/prompts/nezuko-jump.txt",
+      "prompt_sha256": "e67a86d2ffb83befb55daa99aaf8dc7cca72cf8eab42faa92ae4439e6c4d9a74"
+    },
+    {
+      "clip_id": "nezuko-guard",
+      "selected_id": "nezuko-guard",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/nezuko-guard.png",
+      "source_sha256": "8f703d5e8b66230b521e855d233c4b45781a29386355af4c982831a8e93ed4ad",
+      "prompt": "output/imagegen/awakening-v2/prompts/nezuko-guard.txt",
+      "prompt_sha256": "59a67717f0b0331ce76fb0d4eca0a69a5f7c5640b019a57bfcccf0ba3cc0079a"
+    },
+    {
+      "clip_id": "nezuko-hit",
+      "selected_id": "nezuko-hit",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/nezuko-hit.png",
+      "source_sha256": "619bdb5114c83f6f663e7e63830b449b5c7386f07c3ff9adb83efa3d683ecfe3",
+      "prompt": "output/imagegen/awakening-v2/prompts/nezuko-hit.txt",
+      "prompt_sha256": "5b2be7aa6c5bcd980783a788421e74342953429a0d9c9350fd8a1c263721db79"
+    },
+    {
+      "clip_id": "nezuko-knockdown",
+      "selected_id": "nezuko-knockdown-anatomy-v2",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/nezuko-knockdown-anatomy-v2.png",
+      "source_sha256": "136a29a43986bd0db755b3380a70ad45924f55ccb87b51b49af8b52136e59fb1",
+      "prompt": "output/imagegen/awakening-v2/prompts/nezuko-knockdown-anatomy-v2.txt",
+      "prompt_sha256": "66e467e9d6ab41ff11f59c1f6c42e9c7eaf3c31b6b2537779d1c3db6c5ee7ce9"
+    },
+    {
+      "clip_id": "nezuko-throw",
+      "selected_id": "nezuko-throw",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/nezuko-throw.png",
+      "source_sha256": "97e9ed17b4cc79f558c4d80a3cad36a7e1e82802910cbd37d66be9f911ae9448",
+      "prompt": "output/imagegen/awakening-v2/prompts/nezuko-throw.txt",
+      "prompt_sha256": "7a3f725c5eb1dfd3d57e93eee36cfffb97d7e88db404d5d5487b5db333485177"
+    },
+    {
+      "clip_id": "nezuko-stand_light",
+      "selected_id": "nezuko-stand_light",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/nezuko-stand_light.png",
+      "source_sha256": "79e609ad405e8ccf85fb2bf26dee14b446cd34efa2df9f6a476128075433bb0d",
+      "prompt": "output/imagegen/awakening-v2/prompts/nezuko-stand_light.txt",
+      "prompt_sha256": "7275b6661c840ebe20a167f7c67ecf85d2dcb0c62bd068bc253a933376d4126f"
+    },
+    {
+      "clip_id": "nezuko-stand_heavy",
+      "selected_id": "nezuko-stand_heavy",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/nezuko-stand_heavy.png",
+      "source_sha256": "e6f832f90881c54476d46064f3408ec7157105538f90ec478826c54653a4b5d6",
+      "prompt": "output/imagegen/awakening-v2/prompts/nezuko-stand_heavy.txt",
+      "prompt_sha256": "6713d52a9408a2cc143c07ae9cee7c71befe4f276b0911c4926d2dbe3669f9a8"
+    },
+    {
+      "clip_id": "nezuko-crouch_light",
+      "selected_id": "nezuko-crouch_light",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/nezuko-crouch_light.png",
+      "source_sha256": "a2fdd76a0b28a3412c8cf1cd15a2c94b12c25b03710ac3672a41e3185ed1147f",
+      "prompt": "output/imagegen/awakening-v2/prompts/nezuko-crouch_light.txt",
+      "prompt_sha256": "7cfd5b9cdb0d8ff0864d6115c5a7b6655da2248a98eda0644b3c5c364846d121"
+    },
+    {
+      "clip_id": "nezuko-crouch_heavy",
+      "selected_id": "nezuko-crouch_heavy",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/nezuko-crouch_heavy.png",
+      "source_sha256": "ba7c5fbd6b03e2ebebcc8d8c85340ef2bee80e999a9d416d807c6d6e885d437b",
+      "prompt": "output/imagegen/awakening-v2/prompts/nezuko-crouch_heavy.txt",
+      "prompt_sha256": "8dceed173a3f9900c4414bffa2ce3daa1a707a1d84560e6a47bad57abbc148b0"
+    },
+    {
+      "clip_id": "nezuko-air_light",
+      "selected_id": "nezuko-air_light",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/nezuko-air_light.png",
+      "source_sha256": "5366064520dad05c225821f7c9eaeebe9bb4f49664f5b08dc54c984625997b40",
+      "prompt": "output/imagegen/awakening-v2/prompts/nezuko-air_light.txt",
+      "prompt_sha256": "a20d923101246cd269839789bd81d4d9a9a646c8accc66773b63fe1999db4e6d"
+    },
+    {
+      "clip_id": "nezuko-air_heavy",
+      "selected_id": "nezuko-air_heavy",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/nezuko-air_heavy.png",
+      "source_sha256": "9fc01a27f8a93b96158ac28e4f73ed878901ff03548f165b15b8876c1ea91ca7",
+      "prompt": "output/imagegen/awakening-v2/prompts/nezuko-air_heavy.txt",
+      "prompt_sha256": "5a958380acb88742c7e9fec23d9e33ff7513f0c1e6b748577a7162139a0073be"
+    },
+    {
+      "clip_id": "nezuko-body_stand_light",
+      "selected_id": "nezuko-body_stand_light",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/nezuko-body_stand_light.png",
+      "source_sha256": "6720a2e2e0a1ffd44920b1600837531168d30bec20d54fe55da38d65b40e7f80",
+      "prompt": "output/imagegen/awakening-v2/prompts/nezuko-body_stand_light.txt",
+      "prompt_sha256": "31f8c558e8d6f121e89147e36231df82e3fed07f4cbbec5df8d6ce19e101700b"
+    },
+    {
+      "clip_id": "nezuko-body_stand_heavy",
+      "selected_id": "nezuko-body_stand_heavy",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/nezuko-body_stand_heavy.png",
+      "source_sha256": "397f710033078e694cd9ad315eafab86ce89697567b36eaaa430b98db4e366f1",
+      "prompt": "output/imagegen/awakening-v2/prompts/nezuko-body_stand_heavy.txt",
+      "prompt_sha256": "1fd23c6cb2887dc757862c01449dac41fbf71dfd2b4e96bf14646a8950d1fc09"
+    },
+    {
+      "clip_id": "nezuko-body_crouch_light",
+      "selected_id": "nezuko-body_crouch_light",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/nezuko-body_crouch_light.png",
+      "source_sha256": "9ab85c59a9fa847933b56464025af682539936438b0f302b67d1f409fbd645d7",
+      "prompt": "output/imagegen/awakening-v2/prompts/nezuko-body_crouch_light.txt",
+      "prompt_sha256": "d85d0e415b2a7ef3eed8b38177370eeebeb90184fe662e9e3a5366ba37cb7eba"
+    },
+    {
+      "clip_id": "nezuko-body_crouch_heavy",
+      "selected_id": "nezuko-body_crouch_heavy",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/nezuko-body_crouch_heavy.png",
+      "source_sha256": "b47ea6f6139e6ecb7a2cf693d891cb269b4413f28ff8e2acdc3224a8fd17a537",
+      "prompt": "output/imagegen/awakening-v2/prompts/nezuko-body_crouch_heavy.txt",
+      "prompt_sha256": "2bfcdc93f593951a32034ecb4daff252cceaf73038781abe6a40c46f2ef59be4"
+    },
+    {
+      "clip_id": "nezuko-body_air_light",
+      "selected_id": "nezuko-body_air_light",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/nezuko-body_air_light.png",
+      "source_sha256": "e89e8efebc89934f04a44e57209cca1ffe69e11e6d5af9fa6a0773dd7b6ff36e",
+      "prompt": "output/imagegen/awakening-v2/prompts/nezuko-body_air_light.txt",
+      "prompt_sha256": "934090a49278f3587deedbb9c14a020bc469b7a51b7be33298e3641f17c28c5e"
+    },
+    {
+      "clip_id": "nezuko-body_air_heavy",
+      "selected_id": "nezuko-body_air_heavy",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/nezuko-body_air_heavy.png",
+      "source_sha256": "c48fd5c28ebf75184786e9e3909e867e860c9f13399b51d38573c9799d098d25",
+      "prompt": "output/imagegen/awakening-v2/prompts/nezuko-body_air_heavy.txt",
+      "prompt_sha256": "8fb7ec83d01a2d723da3c472c6074ce05c8566f5399b82adf397a8a5226034bb"
+    },
+    {
+      "clip_id": "nezuko-dash_forward",
+      "selected_id": "nezuko-dash_forward",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/nezuko-dash_forward.png",
+      "source_sha256": "fe261f7837df01770abec2b3927bd9a9ce8aa0412c135f073f00b6a8c5c84de5",
+      "prompt": "output/imagegen/awakening-v2/prompts/nezuko-dash_forward.txt",
+      "prompt_sha256": "6bafa889dc2c8d13957857e93c7de7e4af9db6fd474a968ff5eb7255c67fadba"
+    },
+    {
+      "clip_id": "nezuko-dash_back",
+      "selected_id": "nezuko-dash_back",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/nezuko-dash_back.png",
+      "source_sha256": "f1eac2ae1ead2b54260d87b0063cbbe87dbfdae70274520d35d83b75e27ef1ed",
+      "prompt": "output/imagegen/awakening-v2/prompts/nezuko-dash_back.txt",
+      "prompt_sha256": "e689b99867590102d2bd4cf2bcb3751e39770fafd21170bc1f2e4665c9dbd07a"
+    },
+    {
+      "clip_id": "nezuko-jump_forward",
+      "selected_id": "nezuko-jump_forward",
+      "frames": 12,
+      "source": "output/imagegen/awakening-v2/raw/nezuko-jump_forward.png",
+      "source_sha256": "c012231f31b341fcdfbc528e2f009cf8161eb77c701559c947a2e4b808d60ba7",
+      "prompt": "output/imagegen/awakening-v2/prompts/nezuko-jump_forward.txt",
+      "prompt_sha256": "926821e141ab999efe271410b5c14c443460e8b6c2e7fa31f8cd3548112d9e27"
+    },
+    {
+      "clip_id": "nezuko-jump_back",
+      "selected_id": "nezuko-jump_back-face-v3",
+      "frames": 12,
+      "source": "output/imagegen/awakening-v2/raw/nezuko-jump_back-face-v3.png",
+      "source_sha256": "58632871dcb2d594c304431c162472f72b8f480b9cb28255b02d4f52c4b38203",
+      "prompt": "output/imagegen/awakening-v2/prompts/nezuko-jump_back-face-v3.txt",
+      "prompt_sha256": "1d0a7e43748d89ed29a51414d1054bc7d86178dffef96a66bd74473a9540cbde"
+    },
+    {
+      "clip_id": "nezuko-roll_forward",
+      "selected_id": "nezuko-roll_forward",
+      "frames": 12,
+      "source": "output/imagegen/awakening-v2/raw/nezuko-roll_forward.png",
+      "source_sha256": "0090efcff617d89238ff030639bb6b8f64d4b25ba528a47df70b291dd6110d14",
+      "prompt": "output/imagegen/awakening-v2/prompts/nezuko-roll_forward.txt",
+      "prompt_sha256": "2b6537d08397aa1e0c491d81ebb96317c593f73742f8b4cf2d0c14bc1ba9d906"
+    },
+    {
+      "clip_id": "nezuko-roll_back",
+      "selected_id": "nezuko-roll_back",
+      "frames": 12,
+      "source": "output/imagegen/awakening-v2/raw/nezuko-roll_back.png",
+      "source_sha256": "1e1505b12514adc7184fac66978fe40976d39aa5f04db3627fa82458944a6525",
+      "prompt": "output/imagegen/awakening-v2/prompts/nezuko-roll_back.txt",
+      "prompt_sha256": "cffce9442561dcc2fa3fa6b05eb1860be86e6e630c0eb83c568055f7ed2cf5f0"
+    },
+    {
+      "clip_id": "nezuko-throw_forward",
+      "selected_id": "nezuko-throw_forward-face-v2",
+      "frames": 12,
+      "source": "output/imagegen/awakening-v2/raw/nezuko-throw_forward-face-v2.png",
+      "source_sha256": "fb53786aa05289645304a35306ef4c0063359583d3dc7502a158624a8f5484c7",
+      "prompt": "output/imagegen/awakening-v2/prompts/nezuko-throw_forward-face-v2.txt",
+      "prompt_sha256": "21d2ca9a3d21eacbecfdc39b0d90997e608beb2a18a8446067557ad9ebe9f271"
+    },
+    {
+      "clip_id": "nezuko-throw_success",
+      "selected_id": "nezuko-throw_success",
+      "frames": 12,
+      "source": "output/imagegen/awakening-v2/raw/nezuko-throw_success.png",
+      "source_sha256": "43b1546dc817623b5286739409c9e1d30b3b5e20f1c1f8f4a91394cf38c4f2fd",
+      "prompt": "output/imagegen/awakening-v2/prompts/nezuko-throw_success.txt",
+      "prompt_sha256": "0e38e16049753e38da1e4f8a603a8d74353c027ebad7d0010e3966adbeb39f7e"
+    },
+    {
+      "clip_id": "nezuko-throw_tech",
+      "selected_id": "nezuko-throw_tech",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/nezuko-throw_tech.png",
+      "source_sha256": "716efb0ab8b3b797aacbe9d063b86fa7eff0e2ddfafe6f0000076660bb62f3c6",
+      "prompt": "output/imagegen/awakening-v2/prompts/nezuko-throw_tech.txt",
+      "prompt_sha256": "d4a2e1f62208b01d3b346b22babfe78dfddf73094939011f08fb4ff0266d8c85"
+    },
+    {
+      "clip_id": "nezuko-blood_kick",
+      "selected_id": "nezuko-blood_kick",
+      "frames": 9,
+      "source": "output/imagegen/awakening-v2/raw/nezuko-blood_kick.png",
+      "source_sha256": "65dd86ef93283a2b4c20caaefdc06d8434725c5dc5d96c2d624177e82d876415",
+      "prompt": "output/imagegen/awakening-v2/prompts/nezuko-blood_kick.txt",
+      "prompt_sha256": "5edea929171143b8f08e0dc9ecd9d606d2ac66e7be0899db55160d3df2768a37"
+    },
+    {
+      "clip_id": "nezuko-rising_kick",
+      "selected_id": "nezuko-rising_kick",
+      "frames": 9,
+      "source": "output/imagegen/awakening-v2/raw/nezuko-rising_kick.png",
+      "source_sha256": "6d718841a730d7e077e141de54c8eb9d836ad839581049392258f664d87610a8",
+      "prompt": "output/imagegen/awakening-v2/prompts/nezuko-rising_kick.txt",
+      "prompt_sha256": "6ed3f5e5562afe78b2988a318375a44dac377d776b433f6893a1aee87e0d6880"
+    },
+    {
+      "clip_id": "nezuko-spinning_kick",
+      "selected_id": "nezuko-spinning_kick",
+      "frames": 12,
+      "source": "output/imagegen/awakening-v2/raw/nezuko-spinning_kick.png",
+      "source_sha256": "e644de86416987c7a3a65efc1523da5bcae8c86d4854a81747997d840908bbd2",
+      "prompt": "output/imagegen/awakening-v2/prompts/nezuko-spinning_kick.txt",
+      "prompt_sha256": "13936816f48a03ab670a8c0b5db26cb166f4a3c5648c95ed302e9b35bcb4d6df"
+    },
+    {
+      "clip_id": "nezuko-blood_burst",
+      "selected_id": "nezuko-blood_burst",
+      "frames": 12,
+      "source": "output/imagegen/awakening-v2/raw/nezuko-blood_burst.png",
+      "source_sha256": "3946315e50c518ff8bf89a4d5e604d45d6387664ba2f6f3e64e39f2cf98c0589",
+      "prompt": "output/imagegen/awakening-v2/prompts/nezuko-blood_burst.txt",
+      "prompt_sha256": "6bb726414872733d3fa3d18f9368e49ace58fd682d49d3550d02f6f2f7dd878f"
+    },
+    {
+      "clip_id": "nezuko-awakened_combo",
+      "selected_id": "nezuko-awakened_combo",
+      "frames": 12,
+      "source": "output/imagegen/awakening-v2/raw/nezuko-awakened_combo.png",
+      "source_sha256": "2356e843a44093da1accbe60540422a521231257e7d13d761e14f4a9c50d02fd",
+      "prompt": "output/imagegen/awakening-v2/prompts/nezuko-awakened_combo.txt",
+      "prompt_sha256": "b564bcab3628dd7209e81fc0589aa48cdd57f92771204473f8282daa79d807fc"
+    },
+    {
+      "clip_id": "nezuko-thrown_forward",
+      "selected_id": "nezuko-thrown_forward",
+      "frames": 12,
+      "source": "output/imagegen/awakening-v2/raw/nezuko-thrown_forward.png",
+      "source_sha256": "fb9e95d69cc9c3f05a41a71db3050cb4e4b5c63a22d711c06092d426c3e8cf8f",
+      "prompt": "output/imagegen/awakening-v2/prompts/nezuko-thrown_forward.txt",
+      "prompt_sha256": "e25c5716495ca067f22c6e1c8d5a2641f518d6685cc02e69fe50bce62bdf3742"
+    },
+    {
+      "clip_id": "nezuko-thrown",
+      "selected_id": "nezuko-thrown-anatomy-v2",
+      "frames": 12,
+      "source": "output/imagegen/awakening-v2/raw/nezuko-thrown-anatomy-v2.png",
+      "source_sha256": "709c1012d867504da08a744f62265a2843875c8126656fef91818f51d287ea0e",
+      "prompt": "output/imagegen/awakening-v2/prompts/nezuko-thrown-anatomy-v2.txt",
+      "prompt_sha256": "6d7c7a0ff51478ffeac4a6eacdc2b71c629086dca5f1cad2f0a849f1422ae718"
+    },
+    {
+      "clip_id": "nezuko-guard_low",
+      "selected_id": "nezuko-guard_low",
+      "frames": 6,
+      "source": "output/imagegen/awakening-v2/raw/nezuko-guard_low.png",
+      "source_sha256": "cafb67898ec860771384ef4e229ec5e1f01df6457e10087b45e46b744e624c94",
+      "prompt": "output/imagegen/awakening-v2/prompts/nezuko-guard_low.txt",
+      "prompt_sha256": "84d7372001025d941ac540f9508f2602220322e61a325e555564477a6654ffb5"
+    }
+  ],
+  "build_summary": [
+    {
+      "character": "nezuko",
+      "generated_clips": 39,
+      "clips": 43,
+      "frames": 348
+    },
+    {
+      "character": "tanjiro",
+      "generated_clips": 39,
+      "clips": 43,
+      "frames": 363
+    },
+    {
+      "character": "zenitsu",
+      "generated_clips": 39,
+      "clips": 43,
+      "frames": 365
+    }
+  ],
+  "akaza_assets_unchanged": true,
+  "checks": {
+    "source_segmentation": {
+      "ready": 117,
+      "total": 117,
+      "errors": []
+    },
+    "core": 1400,
+    "visual": 1768,
+    "presentation": 30,
+    "art_pipeline_test_methods": 5,
+    "full_regression_passed": true,
+    "optional_legacy_preview_check": "Skipped: local legacy previews are not versioned. New awakening source and runtime images were separately reviewed.",
+    "fps": [
+      30,
+      60,
+      144
+    ],
+    "fps_hashes": [
+      "213e1c58ac2dd79110edc9d756e5fc311016916c36522c345af328f03c0bb22a",
+      "213e1c58ac2dd79110edc9d756e5fc311016916c36522c345af328f03c0bb22a",
+      "213e1c58ac2dd79110edc9d756e5fc311016916c36522c345af328f03c0bb22a"
+    ],
+    "runtime": {
+      "checks": 44,
+      "failures": [],
+      "screenshots": 552,
+      "resolutions": [
+        [
+          960,
+          540
+        ],
+        [
+          1280,
+          720
+        ],
+        [
+          1920,
+          1080
+        ]
+      ]
+    }
+  },
+  "visual_review": {
+    "source": "All 926 selected action frames reviewed on contact sheets; five clips corrected for anatomy/face artifacts.",
+    "corrections": [
+      "Nezuko knockdown extra hand removed",
+      "Nezuko thrown extra hand removed",
+      "Tanjiro thrown extra fist removed",
+      "Nezuko throw_forward bamboo and arm correction",
+      "Nezuko jump_back bamboo and chin straps removed; final v3 selected"
+    ],
+    "runtime": "Representative frame for every redesigned clip reviewed from actual Godot captures; mirror, warning, hit, throw and crouch shots inspected.",
+    "unchanged_clips": [
+      "round_intro",
+      "round_victory",
+      "round_defeat",
+      "victory"
+    ],
+    "unchanged_reason": "Awakening ends at round completion, so round presentation uses the original form."
+  },
+  "evidence": {
+    "regression": "artifacts/awakening-v2-final-regression.log",
+    "import": "artifacts/awakening-v2-final-import.log",
+    "runtime_captures": "artifacts/awakening-v2/captures.json",
+    "overview": "artifacts/awakening-v2/redesign-overview.jpg",
+    "source_review": "output/imagegen/awakening-v2/review/index.html"
+  },
+  "shipped_art_sha256": {
+    "art/characters/tanjiro/awakening/atlas-0.png": "7ee329bbf2c7a9b57cfba5c5fbe418a26d3dcdaf3408daea703b0002a9d021be",
+    "art/characters/tanjiro/awakening/atlas-1.png": "e5885bc966ee80289b5e259ddbcc2cd977719ff8b285118a8cf63238b51c44fd",
+    "art/characters/tanjiro/awakening/atlas-2.png": "a65ed5b41137f67b0d0eb2b34b627e306d59997539713756d27a55d7d7ae7b17",
+    "art/characters/tanjiro/awakening/atlas-3.png": "bb36508a187b0abdd340a1240cb0d91e522392a032501f9d39db6e3a23356fbb",
+    "art/characters/tanjiro/awakening/atlas-4.png": "47ae731ef73063d0cb5402b431e0268d3a588c6b3d9e2f3bb7a86ea8fb1811f8",
+    "art/characters/tanjiro/awakening/atlas-5.png": "0ae0523bf56653bcb38b612fb6eef09580180b65a9474aa1319551f6baefe159",
+    "art/characters/tanjiro/awakening/atlas-6.png": "cf189c353cf856198a1953bd2fb18d323c8e3ab8b59b1b803b18dfb8f01d6791",
+    "art/characters/tanjiro/awakening/atlas-7.png": "a7a472662ac7b403ffec53976d333713ee3db8209fc5f452553f8ec3cd52db27",
+    "art/characters/tanjiro/awakening/atlas-8.png": "7cc3ee523b02f865ea405e9071f02c6684ff762c027a5966cd36d23c476acb40",
+    "art/characters/tanjiro/awakening/atlas.json": "c8bae63b708da72dffdda5e4d3f5eacfca9ad34880d8f65a9bf6dc8476fbfbe7",
+    "art/characters/tanjiro/awakening/fx-aura.png": "a6ed18e64bd8af9914c528b4600c77c2eb05cd88a7fbcd118f44b17130bddb04",
+    "art/characters/tanjiro/awakening/fx-burst.png": "2c0a21195e504aa8a1afa679148021f3c3fb6e6f81eb9b04ce41e989e6da15fd",
+    "art/characters/tanjiro/awakening/fx-sweep.png": "482b7eeb99d40582574d1de68a21f34662ba977d9f98a3e6b7f5dd698348aa27",
+    "art/characters/tanjiro/awakening/fx-wisp.png": "6c960fdde418fafa6294844e91bc340f78f1be1fadb40eda05500f8946fbad14",
+    "art/characters/tanjiro/awakening/portrait.png": "756bd4242b1d3d3c15760b3232013eab513dfa9d4806676bff1a4692cb831a7c",
+    "art/characters/zenitsu/awakening/atlas-0.png": "599db8fe20532dec03f8b7beb2d4b9c4ebbdf226137720e09a3da920b17ce4b2",
+    "art/characters/zenitsu/awakening/atlas-1.png": "054b204f96b8e98dc03b8a9f5611af41fee1cbe957f0dec6046fe7d99d10e586",
+    "art/characters/zenitsu/awakening/atlas-2.png": "6aa8f67324a4890f6c52c5255c7bc2d49eb371ca088fbfa2bc70cc73537dfdae",
+    "art/characters/zenitsu/awakening/atlas-3.png": "e0a7678be2e4f5ba58a79a4423ed9d21bfa2eea499671a1a99746f3334dfc87f",
+    "art/characters/zenitsu/awakening/atlas-4.png": "a9f79b79d5abc1611d1d2d4b891143a2858ef8c9373e518837d1195973d7c86e",
+    "art/characters/zenitsu/awakening/atlas-5.png": "673f197d83f15830ebc9b4ef37bf903d8923f3062944d38e235a0caa657d6fe9",
+    "art/characters/zenitsu/awakening/atlas-6.png": "be32998acfd7f746e1b91dd0bc16bef76ec0678fb5862331d0d6f12b1b5250ed",
+    "art/characters/zenitsu/awakening/atlas.json": "2003157057f712316fa5cc1bd971a10a30403d44b4c8222816a7b1557eaa1c04",
+    "art/characters/zenitsu/awakening/fx-aura.png": "406e4a4d8e09fa0e7b4eb303e9ed533db5bd2ca9f94206da86f14760b3083a47",
+    "art/characters/zenitsu/awakening/fx-burst.png": "c8dbb8c03ed03bc0a98c268fdc30c5a5caae3fca904f4b7689087ebe18afb235",
+    "art/characters/zenitsu/awakening/fx-sweep.png": "676a03502fca7ec9b0e12c6ee9a4d287319384d1be6c7f2528ba577f10b1407a",
+    "art/characters/zenitsu/awakening/fx-wisp.png": "8c9984d5234000903a07b3db0f6e615bf874348a5f74011976e7f4b9b212a314",
+    "art/characters/zenitsu/awakening/portrait.png": "9087ecd3101499ae8113912266a0a96f5eb815b37e071f3ed5e6a9f52ccbdc4c",
+    "art/characters/nezuko/awakening/atlas-0.png": "c7eb9166580429938a7f97d94ecf2030a53408780d50cb1b3c6af5b3fba2286e",
+    "art/characters/nezuko/awakening/atlas-1.png": "970b9ca05bef20de444a6f462f15ccdb7575a70d96980dd0abbdde6aafe10a65",
+    "art/characters/nezuko/awakening/atlas-2.png": "287779dd4691b45b460aa84db067bbec43f278691b9e8c0e60851df4af4b8de9",
+    "art/characters/nezuko/awakening/atlas-3.png": "68d65b611f5eecf90e75fa7a970bf2a2d316e12ef3c001f348eba45d78a44b39",
+    "art/characters/nezuko/awakening/atlas-4.png": "7cc758a817a63a96f15b0ef4f811f3b64b3b24d83cd59e0912e0f8f87552466d",
+    "art/characters/nezuko/awakening/atlas-5.png": "8e27b9ba32a24ab7b0b5a2bc3c866d2f7007a9280b6c003cdebc1ebd3a01e579",
+    "art/characters/nezuko/awakening/atlas-6.png": "1e0ff7ea3d4c7cabfc2b9288ea08863928da000e187f868d968e4bfecb998337",
+    "art/characters/nezuko/awakening/atlas-7.png": "7e6b3780d75841faccf40cd5707258f1a09312e34055f89cfcc1aa7cc240d76a",
+    "art/characters/nezuko/awakening/atlas-8.png": "11360ccea7551436ff043e03e7cd39de269b8e18847528a8c8db3aab33bf2e83",
+    "art/characters/nezuko/awakening/atlas.json": "2c5f322568a19e6546a21a1ed94ad9180e27622f0f2cfbb039e4fdbb07f54891",
+    "art/characters/nezuko/awakening/fx-aura.png": "a8ceb48d15d5a47c8dbc14c9b405252acc498eec60ba2877730815dd6a1454ac",
+    "art/characters/nezuko/awakening/fx-burst.png": "6df3da0988373b9b53b7ae0ee2d65ad2545868143e0cb70e322777c92b73465a",
+    "art/characters/nezuko/awakening/fx-sweep.png": "4e44593c6c7bdb1874ceb547c7534da2a8694ec7a32a859b182b4b4663c0e151",
+    "art/characters/nezuko/awakening/fx-wisp.png": "74a98d5d64be4a29cd715c02848f1f7aeb9f2323f1906ec4fd2e16bcbcb3c931",
+    "art/characters/nezuko/awakening/portrait.png": "f8dbfe10c8adc8758865090fadde5a904cc89b568fbb455ae23d8a2a54d383f9"
+  },
+  "production_manifests": {
+    "models": "pilots.json",
+    "actions": "jobs.json",
+    "effects": "effects.json",
+    "corrections": [
+      "corrections.json",
+      "corrections-final.json"
+    ],
+    "selected": "selected.json"
+  },
+  "static_sources": [
+    {
+      "id": "tanjiro-model",
+      "source": "output/imagegen/awakening-v2/raw/tanjiro-model.png",
+      "source_sha256": "0ffc1ef4ea5f083518ba37b63e000cc9dc3c702421e0d41d3667c5ec143bb380",
+      "prompt": "output/imagegen/awakening-v2/prompts/tanjiro-model.txt"
+    },
+    {
+      "id": "zenitsu-model",
+      "source": "output/imagegen/awakening-v2/raw/zenitsu-model.png",
+      "source_sha256": "567ea5d092589555da84afb8510cbcdb0e96f3058ac253bee85961809f80edce",
+      "prompt": "output/imagegen/awakening-v2/prompts/zenitsu-model.txt"
+    },
+    {
+      "id": "nezuko-model",
+      "source": "output/imagegen/awakening-v2/raw/nezuko-model.png",
+      "source_sha256": "97fa1c3595d3a39db4245f9dd1016da76e96eb80f6e49651621f79184623f4a1",
+      "prompt": "output/imagegen/awakening-v2/prompts/nezuko-model.txt"
+    },
+    {
+      "id": "tanjiro-vfx",
+      "source": "output/imagegen/awakening-v2/raw/tanjiro-vfx.png",
+      "source_sha256": "edd04d7c24d018480e48699a2817bc6f754e3c0d0c47974095d39598882cdcb4",
+      "prompt": "output/imagegen/awakening-v2/prompts/tanjiro-vfx.txt"
+    },
+    {
+      "id": "zenitsu-vfx",
+      "source": "output/imagegen/awakening-v2/raw/zenitsu-vfx.png",
+      "source_sha256": "0a6f213079b1d4d0146a889246586d57946308877cab0b0ff11c8997d5ca54e4",
+      "prompt": "output/imagegen/awakening-v2/prompts/zenitsu-vfx.txt"
+    },
+    {
+      "id": "nezuko-vfx",
+      "source": "output/imagegen/awakening-v2/raw/nezuko-vfx.png",
+      "source_sha256": "9ae04e4095ce3a3b4a0bf2efa4d2d1405eb4c071ff548c1b29e46b2ef8af6739",
+      "prompt": "output/imagegen/awakening-v2/prompts/nezuko-vfx.txt"
+    }
+  ],
+  "release": {
+    "version": "0.2.1-awakening-art",
+    "path": "dist/DemonSlayer-0.2.1-awakening-art-windows-x86_64.zip",
+    "bytes": 433448941,
+    "sha256": "44664d189c0c6dc30cbe966052d68e34505f8e4989c1dd5a8121427ef1c0459c",
+    "zip_crc_passed": true,
+    "source_move_comparisons": 84,
+    "combat_routes": 64,
+    "runtime_failures": 0,
+    "smoke_log": "dist/DemonSlayer-0.2.1-awakening-art-windows-x86_64-smoke.log",
+    "packaging_note": "Initial fresh Godot editor import exited with Windows access violation 0xc0000005. A single explicit --import --quit run completed successfully in the same staging directory; export and packaged runtime validation then passed. Staging directory cleaned after verified ZIP creation."
+  }
+}

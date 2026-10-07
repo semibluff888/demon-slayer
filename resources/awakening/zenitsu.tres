@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="AwakeningDefinition" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/awakening_definition.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+display_name = "雷之呼吸·神速"
+damage_percent = 108
+received_percent = 100
+chip_percent = 100
+walk_percent = 120
+dash_percent = 125
+healing_percent = 0
+healing_limit = 0
+color = Color(1, 0.85, 0.28, 1)
+sound = "thunder"
+form_atlas = "res://art/characters/zenitsu/awakening/atlas.json"
+form_scale = 1

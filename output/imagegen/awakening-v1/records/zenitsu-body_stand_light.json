@@ -1,0 +1,26 @@
+{
+  "id": "zenitsu-body_stand_light",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x768",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\zenitsu-body_stand_light.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\zenitsu-body_stand_light.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\references\\zenitsu-body_stand_light.png",
+    "art\\characters\\zenitsu\\portrait.png"
+  ],
+  "started_utc": "2026-10-07T09:48:04.0957014Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T09:48:41.9539046Z",
+  "actual_size": [
+    2048,
+    768
+  ],
+  "sha256": "be28ca59a959bf56de973bcb159cdce5de686d67c2d31b2f731988349b68ba79",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

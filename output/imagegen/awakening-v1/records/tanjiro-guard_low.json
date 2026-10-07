@@ -1,0 +1,26 @@
+{
+  "id": "tanjiro-guard_low",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x768",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\tanjiro-guard_low.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\tanjiro-guard_low.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\references\\tanjiro-guard_low.png",
+    "art\\characters\\tanjiro\\portrait.png"
+  ],
+  "started_utc": "2026-10-07T09:52:39.3744900Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T09:53:08.8848531Z",
+  "actual_size": [
+    2048,
+    768
+  ],
+  "sha256": "2a71c381a7ccad13fd34c8ea51f80200355790e18571539c2ba4bd60c4d4dbfc",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

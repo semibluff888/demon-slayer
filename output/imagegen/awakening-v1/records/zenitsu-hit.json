@@ -1,0 +1,26 @@
+{
+  "id": "zenitsu-hit",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x768",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\zenitsu-hit.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\zenitsu-hit.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\references\\zenitsu-hit.png",
+    "art\\characters\\zenitsu\\portrait.png"
+  ],
+  "started_utc": "2026-10-07T09:53:24.0248011Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T09:54:02.3814346Z",
+  "actual_size": [
+    2048,
+    768
+  ],
+  "sha256": "6f8fe1d994a7dcc744b8c3fda8f36af49448fcff9bdff19146e16ad0feca594a",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

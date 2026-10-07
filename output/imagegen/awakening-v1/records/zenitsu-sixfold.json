@@ -1,0 +1,26 @@
+{
+  "id": "zenitsu-sixfold",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x1920",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\zenitsu-sixfold.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\zenitsu-sixfold.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\references\\zenitsu-sixfold.png",
+    "art\\characters\\zenitsu\\portrait.png"
+  ],
+  "started_utc": "2026-10-07T09:59:14.6943112Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T10:00:17.1483786Z",
+  "actual_size": [
+    1295,
+    1215
+  ],
+  "sha256": "fc236b1db3a2c4f5b8f2041bcd317648bd7b12ede1c2430af4f2e1c0a1274e49",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

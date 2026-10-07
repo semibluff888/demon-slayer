@@ -1,0 +1,25 @@
+{
+  "id": "nezuko-knockdown-v2",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x768",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\nezuko-knockdown-v2.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\nezuko-knockdown-v2.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\raw\\nezuko-knockdown.png"
+  ],
+  "started_utc": "2026-10-07T10:28:26.9870906Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T10:29:10.7564294Z",
+  "actual_size": [
+    2048,
+    768
+  ],
+  "sha256": "1b7e6916e8c01d8ca64a6fadc0f251423acb08cd7f8fef810ea194ea6d4d3788",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

@@ -1,0 +1,25 @@
+{
+  "id": "nezuko-stand_light-v3",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x768",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\nezuko-stand_light-v3.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\nezuko-stand_light-v3.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\raw\\nezuko-stand_light-v2.png"
+  ],
+  "started_utc": "2026-10-07T10:40:40.7452238Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T10:41:21.8066136Z",
+  "actual_size": [
+    2048,
+    768
+  ],
+  "sha256": "0375a16b3e68631e7c4cc27dbda37ef321a08f3c3cd01e24484fc82d8e6d73f2",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

@@ -1,0 +1,26 @@
+{
+  "id": "zenitsu-idle",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x768",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\zenitsu-idle.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\zenitsu-idle.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\references\\zenitsu-idle.png",
+    "art\\characters\\zenitsu\\portrait.png"
+  ],
+  "started_utc": "2026-10-07T09:41:57.5254151Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T09:42:37.5330578Z",
+  "actual_size": [
+    2048,
+    768
+  ],
+  "sha256": "530a5e5b7e453d1be014ebd00f4d2270c4c63b975448de0202c9612794676936",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

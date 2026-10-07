@@ -1,0 +1,421 @@
+[
+  {
+    "id": "nezuko-crouch_heavy-v4",
+    "group": "awakening",
+    "out": "output\\imagegen\\awakening-v1\\raw\\nezuko-crouch_heavy-v4.png",
+    "prompt": "output\\imagegen\\awakening-v1\\prompts\\nezuko-crouch_heavy-v4.txt",
+    "references": [
+      "output\\imagegen\\awakening-v1\\raw\\nezuko-crouch_heavy-v3.png"
+    ],
+    "size": "2048x768",
+    "model": "gpt-image-2",
+    "metadata": {
+      "character": "nezuko",
+      "clip": "crouch_heavy",
+      "count": 6,
+      "columns": 4,
+      "rows": 2,
+      "cell": [
+        512,
+        384
+      ],
+      "original_clip": {
+        "loop": false,
+        "fps": 12,
+        "phase_breaks": [
+          2,
+          4
+        ],
+        "frames": [
+          {
+            "texture": "atlas-7.png",
+            "region": [
+              598,
+              2,
+              268,
+              256
+            ],
+            "offset": [
+              319,
+              313
+            ]
+          },
+          {
+            "texture": "atlas-7.png",
+            "region": [
+              870,
+              2,
+              307,
+              255
+            ],
+            "offset": [
+              293,
+              314
+            ]
+          },
+          {
+            "texture": "atlas-4.png",
+            "region": [
+              622,
+              1308,
+              307,
+              318
+            ],
+            "offset": [
+              279,
+              251
+            ]
+          },
+          {
+            "texture": "atlas-4.png",
+            "region": [
+              967,
+              1631,
+              300,
+              316
+            ],
+            "offset": [
+              311,
+              252
+            ]
+          },
+          {
+            "texture": "atlas-6.png",
+            "region": [
+              1531,
+              1154,
+              292,
+              266
+            ],
+            "offset": [
+              299,
+              303
+            ]
+          },
+          {
+            "texture": "atlas-6.png",
+            "region": [
+              2,
+              1428,
+              294,
+              266
+            ],
+            "offset": [
+              292,
+              303
+            ]
+          }
+        ],
+        "segment_sync": false,
+        "anchor_mode": "feet",
+        "timeline": []
+      },
+      "source_bounds": [
+        [
+          319,
+          313,
+          587,
+          569
+        ],
+        [
+          293,
+          314,
+          600,
+          569
+        ],
+        [
+          279,
+          251,
+          586,
+          569
+        ],
+        [
+          311,
+          252,
+          611,
+          568
+        ],
+        [
+          299,
+          303,
+          591,
+          569
+        ],
+        [
+          292,
+          303,
+          586,
+          569
+        ]
+      ],
+      "supersedes": "nezuko-crouch_heavy"
+    }
+  },
+  {
+    "id": "nezuko-jump_forward-v4",
+    "group": "awakening",
+    "out": "output\\imagegen\\awakening-v1\\raw\\nezuko-jump_forward-v4.png",
+    "prompt": "output\\imagegen\\awakening-v1\\prompts\\nezuko-jump_forward-v4.txt",
+    "references": [
+      "output\\imagegen\\awakening-v1\\references\\nezuko-jump_forward-mouth-upright.png"
+    ],
+    "size": "2048x1152",
+    "model": "gpt-image-2",
+    "metadata": {
+      "character": "nezuko",
+      "clip": "jump_forward",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "cell": [
+        512,
+        384
+      ],
+      "original_clip": {
+        "loop": false,
+        "fps": 12,
+        "phase_breaks": [
+          4,
+          8
+        ],
+        "frames": [
+          {
+            "texture": "atlas-2.png",
+            "region": [
+              233,
+              699,
+              203,
+              342
+            ],
+            "offset": [
+              320,
+              227
+            ]
+          },
+          {
+            "texture": "atlas-5.png",
+            "region": [
+              2,
+              2,
+              257,
+              315
+            ],
+            "offset": [
+              282,
+              249
+            ]
+          },
+          {
+            "texture": "atlas-7.png",
+            "region": [
+              273,
+              1274,
+              281,
+              231
+            ],
+            "offset": [
+              285,
+              336
+            ]
+          },
+          {
+            "texture": "atlas-7.png",
+            "region": [
+              1473,
+              2,
+              273,
+              255
+            ],
+            "offset": [
+              306,
+              310
+            ]
+          },
+          {
+            "texture": "atlas-6.png",
+            "region": [
+              901,
+              1154,
+              322,
+              267
+            ],
+            "offset": [
+              298,
+              265
+            ]
+          },
+          {
+            "texture": "atlas-5.png",
+            "region": [
+              250,
+              639,
+              222,
+              310
+            ],
+            "offset": [
+              353,
+              215
+            ]
+          },
+          {
+            "texture": "atlas-6.png",
+            "region": [
+              1422,
+              300,
+              287,
+              282
+            ],
+            "offset": [
+              297,
+              218
+            ]
+          },
+          {
+            "texture": "atlas-5.png",
+            "region": [
+              258,
+              953,
+              277,
+              306
+            ],
+            "offset": [
+              311,
+              235
+            ]
+          },
+          {
+            "texture": "atlas-6.png",
+            "region": [
+              300,
+              1428,
+              277,
+              265
+            ],
+            "offset": [
+              318,
+              259
+            ]
+          },
+          {
+            "texture": "atlas-5.png",
+            "region": [
+              539,
+              953,
+              255,
+              306
+            ],
+            "offset": [
+              329,
+              219
+            ]
+          },
+          {
+            "texture": "atlas-1.png",
+            "region": [
+              1689,
+              1074,
+              242,
+              347
+            ],
+            "offset": [
+              294,
+              222
+            ]
+          },
+          {
+            "texture": "atlas-1.png",
+            "region": [
+              1487,
+              719,
+              219,
+              350
+            ],
+            "offset": [
+              300,
+              219
+            ]
+          }
+        ],
+        "segment_sync": false,
+        "anchor_mode": "pelvis",
+        "timeline": []
+      },
+      "source_bounds": [
+        [
+          320,
+          227,
+          523,
+          569
+        ],
+        [
+          282,
+          249,
+          539,
+          564
+        ],
+        [
+          285,
+          336,
+          566,
+          567
+        ],
+        [
+          306,
+          310,
+          579,
+          565
+        ],
+        [
+          298,
+          265,
+          620,
+          532
+        ],
+        [
+          353,
+          215,
+          575,
+          525
+        ],
+        [
+          297,
+          218,
+          584,
+          500
+        ],
+        [
+          311,
+          235,
+          588,
+          541
+        ],
+        [
+          318,
+          259,
+          595,
+          524
+        ],
+        [
+          329,
+          219,
+          584,
+          525
+        ],
+        [
+          294,
+          222,
+          536,
+          569
+        ],
+        [
+          300,
+          219,
+          519,
+          569
+        ]
+      ],
+      "supersedes": "nezuko-jump_forward"
+    },
+    "source_rotation": 180
+  }
+]

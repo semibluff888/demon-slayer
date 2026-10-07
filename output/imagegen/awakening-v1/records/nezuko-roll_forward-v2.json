@@ -1,0 +1,25 @@
+{
+  "id": "nezuko-roll_forward-v2",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x1152",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\nezuko-roll_forward-v2.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\nezuko-roll_forward-v2.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\raw\\nezuko-roll_forward.png"
+  ],
+  "started_utc": "2026-10-07T10:29:11.5363995Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T10:29:56.7698497Z",
+  "actual_size": [
+    1672,
+    941
+  ],
+  "sha256": "76ad8c382bbe68f1c4879c6a62412be8d4b25a808e23af5861488297ff79fe41",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

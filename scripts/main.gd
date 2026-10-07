@@ -214,6 +214,7 @@ func start_match() -> void:
 	view.hud.training = practice_controller if mode == "practice" else null
 	view.hud.input_device = devices[0]
 	view.input_hints.assign([_device_hint(devices[0]), _device_hint(devices[1])])
+	_refresh_awakening_hints()
 	paused = false
 	_change_screen("battle")
 	gui.battle()
@@ -223,6 +224,7 @@ func _device_hint(device: String) -> String:
 	return router.device_hint(device)
 
 func refresh_input_hints() -> void:
+	_refresh_awakening_hints()
 	view.input_hints.assign([_device_hint(devices[0]),_device_hint(devices[1])])
 	view.hud.input_device=devices[0]
 
@@ -334,3 +336,12 @@ func _on_joy_connection(_device: int, _connected: bool) -> void:
 			set_paused(true, "手柄已断开，请重新连接；\n也可在游戏设置中切换为键盘。")
 		elif paused:
 			set_paused(true, "设备已连接，可以继续对战。")
+
+func _refresh_awakening_hints() -> void:
+	for slot in range(2):
+		if str(devices[slot]).begins_with("keyboard"):
+			var keyboard := int(str(devices[slot]).get_slice(":", 1))
+			var keys: Array = router.current_keys(keyboard)
+			view.hud.awakening_hints[slot] = router.key_name(keys[5]) + "+" + router.key_name(keys[6])
+		else:
+			view.hud.awakening_hints[slot] = "A+Y"

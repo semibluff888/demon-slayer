@@ -1,0 +1,25 @@
+{
+  "id": "nezuko-blood_burst-v2",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x1152",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\nezuko-blood_burst-v2.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\nezuko-blood_burst-v2.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\raw\\nezuko-blood_burst.png"
+  ],
+  "started_utc": "2026-10-07T10:21:50.3145954Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T10:23:39.6378408Z",
+  "actual_size": [
+    1672,
+    941
+  ],
+  "sha256": "2d13bf283eb0078c4ecafadb16621f51259e2b315450bc8bbdd7754ce1e2ed5a",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

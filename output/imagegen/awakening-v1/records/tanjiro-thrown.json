@@ -1,0 +1,26 @@
+{
+  "id": "tanjiro-thrown",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x1152",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\tanjiro-thrown.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\tanjiro-thrown.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\references\\tanjiro-thrown.png",
+    "art\\characters\\tanjiro\\portrait.png"
+  ],
+  "started_utc": "2026-10-07T10:05:00.3087890Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T10:05:39.6780687Z",
+  "actual_size": [
+    1672,
+    941
+  ],
+  "sha256": "a1d4439a517009d3cb498b92fa9744b847db7e8db6e71741ea346b4a1e47d95e",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

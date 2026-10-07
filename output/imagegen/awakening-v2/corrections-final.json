@@ -1,0 +1,268 @@
+[
+  {
+    "id": "nezuko-jump_back-face-v3",
+    "group": "corrections",
+    "out": "output/imagegen/awakening-v2/raw/nezuko-jump_back-face-v3.png",
+    "prompt": "output/imagegen/awakening-v2/prompts/nezuko-jump_back-face-v3.txt",
+    "references": [
+      "output/imagegen/awakening-v2/raw/nezuko-jump_back-face-v2.png",
+      "output/imagegen/awakening-v2/raw/nezuko-model.png"
+    ],
+    "size": "2816x2112",
+    "model": "gpt-image-2",
+    "metadata": {
+      "character": "nezuko",
+      "clip": "jump_back",
+      "count": 12,
+      "columns": 4,
+      "rows": 3,
+      "cell": [
+        704,
+        704
+      ],
+      "original_clip": {
+        "loop": false,
+        "fps": 12,
+        "phase_breaks": [
+          4,
+          8
+        ],
+        "frames": [
+          {
+            "texture": "atlas-0.png",
+            "region": [
+              242,
+              375,
+              191,
+              362
+            ],
+            "offset": [
+              330,
+              207
+            ]
+          },
+          {
+            "texture": "atlas-6.png",
+            "region": [
+              908,
+              1698,
+              248,
+              260
+            ],
+            "offset": [
+              279,
+              309
+            ]
+          },
+          {
+            "texture": "atlas-1.png",
+            "region": [
+              1013,
+              2,
+              306,
+              354
+            ],
+            "offset": [
+              251,
+              219
+            ]
+          },
+          {
+            "texture": "atlas-5.png",
+            "region": [
+              476,
+              639,
+              339,
+              310
+            ],
+            "offset": [
+              253,
+              219
+            ]
+          },
+          {
+            "texture": "atlas-0.png",
+            "region": [
+              472,
+              2,
+              329,
+              366
+            ],
+            "offset": [
+              310,
+              212
+            ]
+          },
+          {
+            "texture": "atlas-2.png",
+            "region": [
+              418,
+              1045,
+              215,
+              338
+            ],
+            "offset": [
+              336,
+              219
+            ]
+          },
+          {
+            "texture": "atlas-6.png",
+            "region": [
+              2,
+              2,
+              286,
+              294
+            ],
+            "offset": [
+              309,
+              236
+            ]
+          },
+          {
+            "texture": "atlas-6.png",
+            "region": [
+              1713,
+              300,
+              281,
+              281
+            ],
+            "offset": [
+              312,
+              259
+            ]
+          },
+          {
+            "texture": "atlas-7.png",
+            "region": [
+              1750,
+              2,
+              271,
+              254
+            ],
+            "offset": [
+              334,
+              284
+            ]
+          },
+          {
+            "texture": "atlas-6.png",
+            "region": [
+              869,
+              2,
+              253,
+              291
+            ],
+            "offset": [
+              292,
+              252
+            ]
+          },
+          {
+            "texture": "atlas-0.png",
+            "region": [
+              437,
+              375,
+              207,
+              362
+            ],
+            "offset": [
+              320,
+              207
+            ]
+          },
+          {
+            "texture": "atlas-0.png",
+            "region": [
+              648,
+              375,
+              190,
+              362
+            ],
+            "offset": [
+              327,
+              207
+            ]
+          }
+        ],
+        "segment_sync": false,
+        "anchor_mode": "pelvis",
+        "timeline": []
+      },
+      "source_bounds": [
+        [
+          330,
+          207,
+          521,
+          569
+        ],
+        [
+          279,
+          309,
+          527,
+          569
+        ],
+        [
+          251,
+          219,
+          557,
+          573
+        ],
+        [
+          253,
+          219,
+          592,
+          529
+        ],
+        [
+          310,
+          212,
+          639,
+          578
+        ],
+        [
+          336,
+          219,
+          551,
+          557
+        ],
+        [
+          309,
+          236,
+          595,
+          530
+        ],
+        [
+          312,
+          259,
+          593,
+          540
+        ],
+        [
+          334,
+          284,
+          605,
+          538
+        ],
+        [
+          292,
+          252,
+          545,
+          543
+        ],
+        [
+          320,
+          207,
+          527,
+          569
+        ],
+        [
+          327,
+          207,
+          517,
+          569
+        ]
+      ]
+    }
+  }
+]

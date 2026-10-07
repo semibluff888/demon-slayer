@@ -1,0 +1,26 @@
+{
+  "id": "zenitsu-crouch_light",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x768",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\zenitsu-crouch_light.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\zenitsu-crouch_light.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\references\\zenitsu-crouch_light.png",
+    "art\\characters\\zenitsu\\portrait.png"
+  ],
+  "started_utc": "2026-10-07T09:49:55.6233603Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T09:50:27.2398705Z",
+  "actual_size": [
+    2048,
+    768
+  ],
+  "sha256": "8348a74a5be8ce70667c5e37401b14efee282db763ba36a37f517ed4a0bfe54a",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

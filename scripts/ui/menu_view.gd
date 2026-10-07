@@ -352,7 +352,8 @@ func help(page: String = "basics", character_id: String = "") -> void:
 			label(rows[i][0], Rect2(77, y, 181, 31), 18)
 			keycap(rows[i][1], Rect2(280, y, 123, 32))
 			keycap(rows[i][2], Rect2(439, y, 123, 32))
-		label("手柄：X / A / Y / B 对应逻辑 A / B / C / D", Rect2(75, 501, 508, 27), 16, MUTED)
+		label("觉醒 B+C：P1 %s+%s / P2 %s+%s" % [app.router.key_name(keys1[5]), app.router.key_name(keys1[6]), app.router.key_name(keys2[5]), app.router.key_name(keys2[6])], Rect2(75, 489, 508, 27), 16, GOLD)
+		label("手柄 X/A/Y/B 对应 A/B/C/D；觉醒 A+Y", Rect2(75, 517, 508, 27), 15, MUTED)
 		label("236 = ↓↘→；214 = ↓↙←，朝左时镜像。\n双击前后可短冲刺；按键可在游戏设置中修改。",Rect2(75,547,508,56),16,GOLD)
 		label("贰 / 攻防与资源", Rect2(652, 181, 553, 42), 25, GOLD, true)
 		var lessons := [
@@ -362,9 +363,10 @@ func help(page: String = "basics", character_id: String = "") -> void:
 			"236 / 214 可省斜方向，0.5秒完成；攻击可晚0.2秒。",
 			"轻技 → 重技 → 必杀 → 超杀；空挥不能取消。",
 			"236236+A/C 超杀耗 1 格；236236+A+C MAX 耗 3 格。",
-			"命中、受击和防御涨气；空挥不涨，奥义连段不减伤。"]
+			"B+C 耗2格：普通觉醒10秒，普通技命中快速觉醒6秒。",
+			"觉醒停止回气；快速觉醒可再接一轮普通技。"]
 		for i in range(lessons.size()):
-			label(lessons[i], Rect2(654, 244 + i * 48, 549, 39), 17, PAPER)
+			label(lessons[i], Rect2(654, 244 + i * 43, 549, 39), 17, PAPER)
 	else:
 		if character_id.is_empty():
 			character_id = app.characters[0]
@@ -379,14 +381,16 @@ func help(page: String = "basics", character_id: String = "") -> void:
 		if page == "moves":
 			for i in range(definition.move_list.size()):
 				var row: Dictionary = definition.move_list[i]
-				var y := 174 + i * 62
+				var y := 170 + i * 58
 				label(row.input, Rect2(75, y, 246, 43), 22, definition.accent)
 				label(row.name, Rect2(330, y, 860, 29), 22, PAPER, true)
 				label(row.description, Rect2(333, y + 28, 855, 24), 15, MUTED)
 				rule(Vector2(75, y + 57), 1115, Color(GOLD, 0.18))
-			label("示例连段 / j. 为空中，5 为站立，2 为蹲下", Rect2(75, 497, 1115, 26), 17, GOLD)
+			label("B+C · " + definition.awakening.display_name + " · 2格 / 普通10秒、快速6秒", Rect2(75, 464, 1115, 24), 16, definition.accent)
+			label(definition.awakening.effect_summary(), Rect2(75, 491, 1115, 24), 15, MUTED)
+			label("示例连段 / j. 为空中，5 为站立，2 为蹲下", Rect2(75, 520, 1115, 26), 17, GOLD)
 			for i in range(definition.combos.size()):
-				label(definition.combos[i], Rect2(76 + (i % 2) * 571, 538 + int(i / 2) * 39, 554, 30), 18)
+				label(definition.combos[i], Rect2(76 + (i % 2) * 571, 553 + int(i / 2) * 36, 554, 30), 18)
 		else:
 			var keys: Array = definition.normals.keys()
 			for i in range(keys.size()):
@@ -422,10 +426,10 @@ func training_options() -> void:
 	guard.item_selected.connect(func(index: int): app.practice_controller.guard_mode = index; app.practice_controller.first_hit = false)
 	label("呼吸槽", Rect2(355, 323, 156, 42), 21, GOLD)
 	var meter := device_option("practice_meter", Rect2(530, 323, 392, 43))
-	for item in ["0 格", "1 格", "3 格", "无限气"]:
-		meter.add_item(item)
-	meter.select(app.practice_controller.meter_mode)
-	meter.item_selected.connect(func(index: int): app.practice_controller.meter_mode = index; app.practice_controller.apply_meter(app.combat))
+	for item in [["0 格", 0], ["1 格", 1], ["2 格", 4], ["3 格", 2], ["无限气", 3]]:
+		meter.add_item(item[0], item[1])
+	meter.select(meter.get_item_index(app.practice_controller.meter_mode))
+	meter.item_selected.connect(func(index: int): app.practice_controller.meter_mode = meter.get_item_id(index); app.practice_controller.apply_meter(app.combat))
 	var details := CheckButton.new()
 	details.text = "展开输入指导与搓招提示"
 	details.position = Vector2(355, 380)
@@ -435,9 +439,18 @@ func training_options() -> void:
 	details.add_theme_color_override("font_color", PAPER)
 	add_child(details)
 	actions["practice_details"] = details
-	label("连段结束后自动补血；Backspace 重置。", Rect2(355, 431, 567, 30), 16, MUTED)
-	button("resume", "继续练习", Rect2(355, 469, 267, 49), func(): app.set_paused(false), true, true, 21).grab_focus()
-	button("practice_reset", "重置位置", Rect2(649, 469, 273, 49), func(): app.reset_practice(); app.set_paused(false), false, false, 21)
+	var awakening := CheckButton.new()
+	awakening.text = "觉醒时间无限（仍需 B+C 发动）"
+	awakening.position = Vector2(355, 423)
+	awakening.size = Vector2(567, 42)
+	awakening.button_pressed = app.practice_controller.awakening_infinite
+	awakening.toggled.connect(func(value: bool): app.practice_controller.awakening_infinite = value; app.combat.awakening_infinite = value)
+	awakening.add_theme_color_override("font_color", PAPER)
+	add_child(awakening)
+	actions["practice_awakening"] = awakening
+	label("连段结束后自动补血；Backspace 重置并解除觉醒。", Rect2(355, 474, 567, 30), 16, MUTED)
+	button("resume", "继续练习", Rect2(355, 515, 267, 49), func(): app.set_paused(false), true, true, 21).grab_focus()
+	button("practice_reset", "重置位置", Rect2(649, 515, 273, 49), func(): app.reset_practice(); app.set_paused(false), false, false, 21)
 	reveal()
 
 

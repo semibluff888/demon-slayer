@@ -1,0 +1,26 @@
+{
+  "id": "tanjiro-hit",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x768",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\tanjiro-hit.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\tanjiro-hit.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\references\\tanjiro-hit.png",
+    "art\\characters\\tanjiro\\portrait.png"
+  ],
+  "started_utc": "2026-10-07T09:53:09.9535963Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T09:53:43.9769218Z",
+  "actual_size": [
+    2048,
+    768
+  ],
+  "sha256": "6696be541219bfc1147cda45cd6dda0c658a25c9eee85bd4f0c9d3b964010add",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

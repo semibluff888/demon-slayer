@@ -4,6 +4,7 @@ $productionRoot = Split-Path -Parent $PSScriptRoot
 Set-Location -LiteralPath $productionRoot
 $job = Get-Content -Raw -LiteralPath $Manifest -Encoding UTF8 | ConvertFrom-Json | Where-Object { $_.id -eq $Id }
 if (-not $job) { throw 'Unknown artwork job' }
+if ($job.skip_reason) { Write-Output ('SKIPPED ' + $Id + ': ' + $job.skip_reason); exit 0 }
 $recordPath = Join-Path (Split-Path -Parent (Join-Path $productionRoot $Manifest)) ('records/' + $Id + '.json')
 if (Test-Path -LiteralPath $job.out) { Write-Output ('EXISTS ' + $Id); exit 0 }
 if (Test-Path -LiteralPath $recordPath) { throw ('Inspect prior request before retry: ' + $Id) }

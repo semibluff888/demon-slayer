@@ -1,0 +1,25 @@
+{
+  "id": "nezuko-jump-v4",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x768",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\nezuko-jump-v4.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\nezuko-jump-v4.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\raw\\nezuko-jump-v3.png"
+  ],
+  "started_utc": "2026-10-07T10:32:10.9570641Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T10:32:49.9626357Z",
+  "actual_size": [
+    2048,
+    768
+  ],
+  "sha256": "b0ce817e9b3b9c34250f9851334b80a83d783e9e6b061957b10ff72f8b40a7e0",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

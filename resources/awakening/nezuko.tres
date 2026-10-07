@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="AwakeningDefinition" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/awakening_definition.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+display_name = "鬼化·爆血"
+damage_percent = 120
+received_percent = 100
+chip_percent = 100
+walk_percent = 105
+dash_percent = 105
+healing_percent = 10
+healing_limit = 40
+color = Color(1, 0.30, 0.60, 1)
+sound = "blood"
+form_atlas = "res://art/characters/nezuko/awakening/atlas.json"
+form_scale = 1.15

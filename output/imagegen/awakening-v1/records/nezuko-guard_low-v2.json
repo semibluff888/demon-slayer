@@ -1,0 +1,25 @@
+{
+  "id": "nezuko-guard_low-v2",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x768",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\nezuko-guard_low-v2.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\nezuko-guard_low-v2.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\raw\\nezuko-guard_low.png"
+  ],
+  "started_utc": "2026-10-07T10:27:23.9812527Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T10:27:50.7929210Z",
+  "actual_size": [
+    2048,
+    768
+  ],
+  "sha256": "3bf0ab0ee5840e8f0d7fe21d17c238cd6547941d0f49b89efba385100a7d8264",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

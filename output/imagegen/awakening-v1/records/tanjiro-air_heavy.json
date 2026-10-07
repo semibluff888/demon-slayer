@@ -1,0 +1,26 @@
+{
+  "id": "tanjiro-air_heavy",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x768",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\tanjiro-air_heavy.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\tanjiro-air_heavy.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\references\\tanjiro-air_heavy.png",
+    "art\\characters\\tanjiro\\portrait.png"
+  ],
+  "started_utc": "2026-10-07T09:42:36.6241057Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T09:43:07.0291933Z",
+  "actual_size": [
+    2048,
+    768
+  ],
+  "sha256": "2b1a4c3a7b501329b6401b8060f201f47b86daccb5ecfc0e5ab65947629b056a",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

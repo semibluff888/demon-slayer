@@ -1,0 +1,26 @@
+{
+  "id": "zenitsu-knockdown",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x768",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\zenitsu-knockdown.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\zenitsu-knockdown.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\references\\zenitsu-knockdown.png",
+    "art\\characters\\zenitsu\\portrait.png"
+  ],
+  "started_utc": "2026-10-07T09:56:52.7926833Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T09:57:32.6575758Z",
+  "actual_size": [
+    2048,
+    768
+  ],
+  "sha256": "69c9e45032124c1f728da646721bfa4e6b253179d2bdfd9967e88e6112358ccf",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

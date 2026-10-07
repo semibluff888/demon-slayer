@@ -1,0 +1,26 @@
+{
+  "id": "zenitsu-walk",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x768",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\zenitsu-walk.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\zenitsu-walk.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\references\\zenitsu-walk.png",
+    "art\\characters\\zenitsu\\portrait.png"
+  ],
+  "started_utc": "2026-10-07T10:06:55.9861179Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T10:07:37.3780161Z",
+  "actual_size": [
+    2048,
+    768
+  ],
+  "sha256": "4bfdf186ba56c3102a764b825af897db1183d14d36f9353a61a1c2550a3d4433",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

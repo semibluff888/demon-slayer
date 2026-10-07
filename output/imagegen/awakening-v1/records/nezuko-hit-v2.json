@@ -1,0 +1,25 @@
+{
+  "id": "nezuko-hit-v2",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x768",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\nezuko-hit-v2.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\nezuko-hit-v2.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\raw\\nezuko-hit.png"
+  ],
+  "started_utc": "2026-10-07T10:27:39.1979273Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T10:28:19.3457209Z",
+  "actual_size": [
+    2048,
+    768
+  ],
+  "sha256": "6079a7edb2187191f12c6e03db6335536b43bf6db285b38cffc611823a4916b1",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

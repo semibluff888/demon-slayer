@@ -9,12 +9,31 @@ var draw_ticks: int = 0
 var scripted := Combat.new()
 var finishing := Combat.new()
 var lethal_throw := Combat.new()
+var awakened := Combat.new()
 var polish_trace := HashingContext.new()
 
 func _initialize() -> void:
 	polish_trace.start(HashingContext.HASH_SHA256)
 
 func _polish_step() -> void:
+	if ticks % 900 == 0:
+		awakened.new_match("nezuko", "akaza" if ticks == 0 else "zenitsu")
+		awakened.phase = "fight"
+		awakened.fighters[0].meter = 300
+		awakened.fighters[1].meter = 300
+	var first := Combat.neutral()
+	var second := Combat.neutral()
+	if ticks % 900 == 0:
+		first.buttons = 6
+		second.buttons = 6
+	if ticks % 900 > 40 and ticks % 900 < 130:
+		first.x = 1
+	if ticks % 900 in [60, 90, 140, 175]:
+		first.buttons = 4
+	if ticks % 900 in [80, 125, 160]:
+		second.buttons = 1
+	awakened.step([first, second])
+	polish_trace.update(JSON.stringify(awakened.snapshot()).to_utf8_buffer())
 	# Hash the entire KO history, including the impact before throw settlement.
 	if ticks % 450 == 0:
 		var index := int(ticks / 450)

@@ -1,0 +1,26 @@
+{
+  "id": "zenitsu-thunder",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x1152",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\zenitsu-thunder.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\zenitsu-thunder.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\references\\zenitsu-thunder.png",
+    "art\\characters\\zenitsu\\portrait.png"
+  ],
+  "started_utc": "2026-10-07T10:05:59.5123693Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T10:06:47.4412055Z",
+  "actual_size": [
+    1672,
+    941
+  ],
+  "sha256": "214b13971fcb19ecce2bbfd873e40af1496f79951cb883308c8d8ab5dcb334b1",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

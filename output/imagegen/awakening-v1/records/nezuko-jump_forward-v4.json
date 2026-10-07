@@ -1,0 +1,25 @@
+{
+  "id": "nezuko-jump_forward-v4",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x1152",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\nezuko-jump_forward-v4.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\nezuko-jump_forward-v4.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\references\\nezuko-jump_forward-mouth-upright.png"
+  ],
+  "started_utc": "2026-10-07T10:46:19.2254708Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T10:47:04.1428456Z",
+  "actual_size": [
+    1671,
+    941
+  ],
+  "sha256": "2272f26d16845df5b48dae7c9568505d12443e849dde8c6637d6b313ce716ca3",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

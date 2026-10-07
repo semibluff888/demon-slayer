@@ -45,6 +45,15 @@ func cues(events: Array, combat: RefCounted) -> Array[Dictionary]:
 				if move != null:
 					var segment: int = event.get("segment",0)
 					gain = 0.52 if segment > 0 and segment < move.hit_count()-1 else (0.78 if move.kind=="light" else 1.0)
+			"awakening_start":
+				kind = combat.definition(combat.fighters[event.attacker]).awakening.sound
+				gain = 0.9
+			"awakening_warning":
+				kind = "meter_empty"
+				gain = 0.35
+			"awakening_end":
+				kind = "body_swing"
+				gain = 0.3
 			"super":
 				kind = "max" if move != null and move.kind == "max" else "super"
 				gain = 0.80

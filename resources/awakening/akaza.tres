@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="AwakeningDefinition" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/awakening_definition.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+display_name = "术式展开·罗针"
+damage_percent = 110
+received_percent = 85
+chip_percent = 50
+walk_percent = 105
+dash_percent = 105
+healing_percent = 0
+healing_limit = 0
+color = Color(0.30, 0.80, 1, 1)
+sound = "shockwave"
+form_atlas = "res://art/characters/akaza/awakening/atlas.json"
+form_scale = 1

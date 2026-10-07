@@ -1,0 +1,26 @@
+{
+  "id": "tanjiro-crouch",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x768",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\tanjiro-crouch.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\tanjiro-crouch.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\references\\tanjiro-crouch.png",
+    "art\\characters\\tanjiro\\portrait.png"
+  ],
+  "started_utc": "2026-10-07T09:48:31.6778881Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T09:49:12.0935842Z",
+  "actual_size": [
+    2048,
+    768
+  ],
+  "sha256": "feb514bb318e23904b1ede9de303cc6ff2c544cea8310ddc5cae2b19739ef9aa",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

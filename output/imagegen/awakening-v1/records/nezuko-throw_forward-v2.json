@@ -1,0 +1,25 @@
+{
+  "id": "nezuko-throw_forward-v2",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x1152",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\nezuko-throw_forward-v2.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\nezuko-throw_forward-v2.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\raw\\nezuko-throw_forward.png"
+  ],
+  "started_utc": "2026-10-07T10:30:40.5252951Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T10:31:25.1228042Z",
+  "actual_size": [
+    1672,
+    941
+  ],
+  "sha256": "a71d7e538aa340395b651fa7053a8f0ff24fa32b5caa366b4af1dc2625cd8727",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

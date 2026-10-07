@@ -1,0 +1,26 @@
+{
+  "id": "tanjiro-body_crouch_heavy",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x1152",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\tanjiro-body_crouch_heavy.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\tanjiro-body_crouch_heavy.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\references\\tanjiro-body_crouch_heavy.png",
+    "art\\characters\\tanjiro\\portrait.png"
+  ],
+  "started_utc": "2026-10-07T09:45:49.6214116Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T09:46:39.6411671Z",
+  "actual_size": [
+    1672,
+    941
+  ],
+  "sha256": "2113d38d65bb20efb30c77046df0226ee8d3725a8fc27534a554ce7274c06e07",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

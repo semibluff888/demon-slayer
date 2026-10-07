@@ -1,0 +1,26 @@
+{
+  "id": "tanjiro-dash_forward",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x768",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\tanjiro-dash_forward.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\tanjiro-dash_forward.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\references\\tanjiro-dash_forward.png",
+    "art\\characters\\tanjiro\\portrait.png"
+  ],
+  "started_utc": "2026-10-07T09:51:06.3733761Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T09:51:36.9880975Z",
+  "actual_size": [
+    2048,
+    768
+  ],
+  "sha256": "31244c9ec39a393351f5d177df5f3d14c7119c02c1dfd68a974af852f2ca6853",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

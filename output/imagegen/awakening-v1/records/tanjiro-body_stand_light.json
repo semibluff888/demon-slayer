@@ -1,0 +1,26 @@
+{
+  "id": "tanjiro-body_stand_light",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x768",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\tanjiro-body_stand_light.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\tanjiro-body_stand_light.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\references\\tanjiro-body_stand_light.png",
+    "art\\characters\\tanjiro\\portrait.png"
+  ],
+  "started_utc": "2026-10-07T09:47:50.8798776Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T09:48:30.6689819Z",
+  "actual_size": [
+    2048,
+    768
+  ],
+  "sha256": "1476562499e5aae74e046e750cd6cd95acb4a0f9d7b296e6f37570a31f12e9fb",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}

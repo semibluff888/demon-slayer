@@ -1,0 +1,154 @@
+[
+  {
+    "id": "nezuko-jump-v4",
+    "group": "awakening",
+    "out": "output\\imagegen\\awakening-v1\\raw\\nezuko-jump-v4.png",
+    "prompt": "output\\imagegen\\awakening-v1\\prompts\\nezuko-jump-v4.txt",
+    "references": [
+      "output\\imagegen\\awakening-v1\\raw\\nezuko-jump-v3.png"
+    ],
+    "size": "2048x768",
+    "model": "gpt-image-2",
+    "metadata": {
+      "character": "nezuko",
+      "clip": "jump",
+      "count": 6,
+      "columns": 4,
+      "rows": 2,
+      "cell": [
+        512,
+        384
+      ],
+      "original_clip": {
+        "loop": false,
+        "fps": 12,
+        "phase_breaks": [
+          2,
+          4
+        ],
+        "frames": [
+          {
+            "texture": "atlas-7.png",
+            "region": [
+              2,
+              1509,
+              246,
+              226
+            ],
+            "offset": [
+              326,
+              343
+            ]
+          },
+          {
+            "texture": "atlas-5.png",
+            "region": [
+              1381,
+              1263,
+              231,
+              300
+            ],
+            "offset": [
+              327,
+              250
+            ]
+          },
+          {
+            "texture": "atlas-6.png",
+            "region": [
+              323,
+              874,
+              224,
+              274
+            ],
+            "offset": [
+              309,
+              211
+            ]
+          },
+          {
+            "texture": "atlas-4.png",
+            "region": [
+              1596,
+              1631,
+              246,
+              315
+            ],
+            "offset": [
+              342,
+              205
+            ]
+          },
+          {
+            "texture": "atlas-7.png",
+            "region": [
+              1183,
+              1274,
+              254,
+              229
+            ],
+            "offset": [
+              324,
+              339
+            ]
+          },
+          {
+            "texture": "atlas-1.png",
+            "region": [
+              1386,
+              361,
+              180,
+              352
+            ],
+            "offset": [
+              334,
+              217
+            ]
+          }
+        ],
+        "segment_sync": false,
+        "anchor_mode": "pelvis",
+        "timeline": []
+      },
+      "source_bounds": [
+        [
+          326,
+          343,
+          572,
+          569
+        ],
+        [
+          327,
+          250,
+          558,
+          550
+        ],
+        [
+          309,
+          211,
+          533,
+          485
+        ],
+        [
+          342,
+          205,
+          588,
+          520
+        ],
+        [
+          324,
+          339,
+          578,
+          568
+        ],
+        [
+          334,
+          217,
+          514,
+          569
+        ]
+      ],
+      "supersedes": "nezuko-jump"
+    }
+  }
+]

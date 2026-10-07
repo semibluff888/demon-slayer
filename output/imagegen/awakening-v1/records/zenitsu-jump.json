@@ -1,0 +1,26 @@
+{
+  "id": "zenitsu-jump",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "2048x768",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output\\imagegen\\awakening-v1\\prompts\\zenitsu-jump.txt",
+  "output": "output\\imagegen\\awakening-v1\\raw\\zenitsu-jump.png",
+  "references": [
+    "output\\imagegen\\awakening-v1\\references\\zenitsu-jump.png",
+    "art\\characters\\zenitsu\\portrait.png"
+  ],
+  "started_utc": "2026-10-07T09:54:37.7662667Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T09:55:21.4989382Z",
+  "actual_size": [
+    2048,
+    768
+  ],
+  "sha256": "589327fdf5b2af9c274bda7d579b0a9ad2185dffa288d615aa9cb02a2d2ec420",
+  "review": "Selected after atlas/alpha/phase/anchor validation and Godot rendered pose review."
+}
