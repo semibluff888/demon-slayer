@@ -1,0 +1,367 @@
+{
+  "baseline_revision": "awakening-v8",
+  "walk_fps": 12,
+  "poses": {
+    "stand_heavy": [
+      {
+        "source_clip": "idle",
+        "source_frame": 0
+      },
+      {
+        "scale": [
+          0.96,
+          1
+        ]
+      },
+      {
+        "scale": [
+          0.96,
+          1
+        ]
+      },
+      {
+        "scale": [
+          0.96,
+          1
+        ]
+      },
+      {
+        "scale": [
+          0.96,
+          1
+        ]
+      },
+      {
+        "source_clip": "idle",
+        "source_frame": 0
+      }
+    ],
+    "rising_kick": [
+      {
+        "source_clip": "idle",
+        "source_frame": 0
+      },
+      {
+        "scale": [
+          1.03,
+          1.03
+        ]
+      },
+      {
+        "scale": [
+          1.03,
+          1.03
+        ]
+      },
+      {
+        "scale": [
+          1.06,
+          1.06
+        ]
+      },
+      {
+        "scale": [
+          1.06,
+          1.06
+        ]
+      },
+      {
+        "scale": [
+          1.03,
+          1.03
+        ]
+      },
+      {
+        "scale": [
+          1.09,
+          1.09
+        ]
+      },
+      {
+        "scale": [
+          1.08,
+          1.08
+        ]
+      },
+      {
+        "source_clip": "idle",
+        "source_frame": 0
+      }
+    ],
+    "blood_kick": [
+      {
+        "source_clip": "idle",
+        "source_frame": 0
+      },
+      {
+        "scale": [
+          0.98,
+          1
+        ]
+      },
+      {
+        "source_clip": "awakened_combo",
+        "source_frame": 2,
+        "source_waist_x": 502.31,
+        "target_waist_x": 449,
+        "ground_y": 569
+      },
+      {
+        "scale": [
+          0.96,
+          1
+        ]
+      },
+      {
+        "source_clip": "awakened_combo",
+        "source_frame": 4,
+        "source_waist_x": 436.73,
+        "target_waist_x": 449,
+        "ground_y": 569
+      },
+      {
+        "scale": [
+          0.94,
+          0.98
+        ]
+      },
+      {
+        "scale": [
+          0.96,
+          1
+        ]
+      },
+      {
+        "source_clip": "awakened_combo",
+        "source_frame": 2,
+        "source_waist_x": 502.31,
+        "target_waist_x": 449,
+        "ground_y": 569
+      },
+      {
+        "source_clip": "idle",
+        "source_frame": 0
+      }
+    ],
+    "throw_forward": [
+      {
+        "source_clip": "idle",
+        "source_frame": 0
+      },
+      {
+        "scale": [
+          1.055,
+          1.055
+        ],
+        "source_waist_x": 409.9,
+        "target_waist_x": 449,
+        "ground_y": 569
+      },
+      {
+        "scale": [
+          1.08,
+          1.08
+        ],
+        "source_waist_x": 462.909,
+        "target_waist_x": 449,
+        "ground_y": 569
+      },
+      {
+        "scale": [
+          1.11,
+          1.11
+        ],
+        "source_waist_x": 593.984,
+        "target_waist_x": 449,
+        "ground_y": 569
+      },
+      {
+        "scale": [
+          1.12,
+          1.12
+        ],
+        "source_waist_x": 471.207,
+        "target_waist_x": 449,
+        "ground_y": 569
+      },
+      {
+        "scale": [
+          1.1,
+          1.1
+        ],
+        "source_waist_x": 460.391,
+        "target_waist_x": 449,
+        "ground_y": 569
+      },
+      {
+        "scale": [
+          1.1,
+          1.1
+        ],
+        "source_waist_x": 471.252,
+        "target_waist_x": 449,
+        "ground_y": 569
+      },
+      {
+        "scale": [
+          1.12,
+          1.12
+        ],
+        "source_waist_x": 441.714,
+        "target_waist_x": 449,
+        "ground_y": 569
+      },
+      {
+        "scale": [
+          1.1,
+          1.1
+        ],
+        "source_waist_x": 529.643,
+        "target_waist_x": 449,
+        "ground_y": 569
+      },
+      {
+        "scale": [
+          1.1,
+          1.1
+        ],
+        "source_waist_x": 506.357,
+        "target_waist_x": 449,
+        "ground_y": 569
+      },
+      {
+        "scale": [
+          1.12,
+          1.12
+        ],
+        "source_waist_x": 477.143,
+        "target_waist_x": 449,
+        "ground_y": 569
+      },
+      {
+        "source_clip": "idle",
+        "source_frame": 0
+      }
+    ],
+    "throw_success": [
+      {
+        "source_revision": "corrected",
+        "source_clip": "throw_forward",
+        "source_frame": 0
+      },
+      {
+        "source_revision": "corrected",
+        "source_clip": "throw_forward",
+        "source_frame": 1
+      },
+      {
+        "source_revision": "corrected",
+        "source_clip": "throw_forward",
+        "source_frame": 2
+      },
+      {
+        "source_revision": "corrected",
+        "source_clip": "throw_forward",
+        "source_frame": 3
+      },
+      {
+        "scale": [
+          1.02,
+          1.02
+        ],
+        "source_waist_x": 454.494,
+        "target_waist_x": 449,
+        "ground_y": 569
+      },
+      {
+        "scale": [
+          1.035,
+          1.035
+        ],
+        "source_waist_x": 434.125,
+        "target_waist_x": 449,
+        "ground_y": 569
+      },
+      {
+        "source_revision": "corrected",
+        "source_clip": "throw_forward",
+        "source_frame": 6,
+        "flip_x": true
+      },
+      {
+        "source_revision": "corrected",
+        "source_clip": "throw_forward",
+        "source_frame": 7,
+        "flip_x": true
+      },
+      {
+        "source_revision": "corrected",
+        "source_clip": "throw_forward",
+        "source_frame": 8,
+        "flip_x": true
+      },
+      {
+        "source_revision": "corrected",
+        "source_clip": "throw_forward",
+        "source_frame": 9,
+        "flip_x": true
+      },
+      {
+        "source_revision": "corrected",
+        "source_clip": "throw_forward",
+        "source_frame": 10,
+        "flip_x": true
+      },
+      {
+        "source_revision": "corrected",
+        "source_clip": "throw_forward",
+        "source_frame": 11,
+        "flip_x": true
+      }
+    ]
+  },
+  "guard": {
+    "original": "output/imagegen/awakening-v9/references/guard-edit-target.png",
+    "edited": "output/imagegen/awakening-v9/raw/nezuko-guard_low-hands.png",
+    "patch_boxes": [
+      [
+        325,
+        134,
+        428,
+        255
+      ],
+      [
+        817,
+        134,
+        932,
+        257
+      ],
+      [
+        1334,
+        154,
+        1460,
+        272
+      ],
+      [
+        328,
+        632,
+        436,
+        760
+      ],
+      [
+        829,
+        640,
+        945,
+        770
+      ],
+      [
+        1345,
+        629,
+        1473,
+        754
+      ]
+    ],
+    "original_sha256": "7d92ff541e8d0e516138820005a75e124617d88ab079c778e94c09afff9df5c9",
+    "edited_sha256": "9e4045ea8edfc9edd0c4f030f6730e51f150ac03bd67dc10c1d5a964c5c63f8b"
+  }
+}

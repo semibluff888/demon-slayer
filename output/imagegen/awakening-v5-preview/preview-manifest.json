@@ -1,0 +1,38 @@
+{
+  "status": "awaiting_user_approval",
+  "integration_authorized": false,
+  "runtime_changes": false,
+  "full_animation_production_started": false,
+  "asset_id": "nezuko-idle-v5",
+  "prompt": "output/imagegen/awakening-v5-preview/prompts/nezuko-idle-v5.txt",
+  "image": "output/imagegen/awakening-v5-preview/raw/nezuko-idle-v5.png",
+  "generation": "Authorized CPA API using existing imagegen helper; gpt-image-2, high quality",
+  "references": [
+    {
+      "image": "output/imagegen/awakening-v4-preview/raw/nezuko-idle-v4.png",
+      "sha256": "63689a464003151ff03da3e518e9ec758f9c7b806a64f7be9f4eb0ff040c19f3",
+      "role": "current preview as edit target"
+    },
+    {
+      "image": "output/imagegen/awakening-v3-preview/references/nezuko-user-reference.png",
+      "sha256": "5d8de1071b6c9f3889182cce1716cb45a304b894d34917a93295e49e75ec80c7",
+      "role": "original user upload as identity reference"
+    }
+  ],
+  "edit_scope": "nonsexual collarbone and shoulder cloth-tension details; chest covered",
+  "preview_reviewed": true,
+  "user_approved": false,
+  "completed_at": "2026-10-07T16:55:26.955121+00:00",
+  "sha256": "a0abcd328990e02e65105e227880c7f53939c0e17f1badac7c2bc2043e977c9f",
+  "actual_size": [
+    1086,
+    1448
+  ],
+  "generation_record": "output/imagegen/awakening-v5-preview/records/nezuko-idle-v5.json",
+  "review_notes": [
+    "Collar opening is wider across the collarbones and upper sternum, with the chest still covered.",
+    "Localized shoulder seam splits and cloth tension communicate supernatural combat strength.",
+    "Face, horn, hair, markings, lowered hands and the full-body silhouette remain consistent with v4.",
+    "One preview only; no new animation production or Nezuko runtime integration."
+  ]
+}

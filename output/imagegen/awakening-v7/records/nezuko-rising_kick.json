@@ -1,0 +1,70 @@
+{
+  "id": "nezuko-rising_kick",
+  "status": "assembled",
+  "route": "Lossless vertical assembly of generated six-frame source sheets",
+  "output": "output/imagegen/awakening-v7/raw/nezuko-rising_kick-assembled.png",
+  "actual_size": [
+    2172,
+    1748
+  ],
+  "sources": [
+    {
+      "id": "nezuko-rising_kick-part0",
+      "out": "output/imagegen/awakening-v7/raw/nezuko-rising_kick-part0.png",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "columns": 3,
+      "rows": 2,
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-rising_kick-part0.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png",
+        "output/imagegen/awakening-v7/references/nezuko-rising_kick-part0.png"
+      ],
+      "source_sha256": "e8925075ddc1b51fb3fe17b956e118080009cd2e81caec7f9dabb195a455903e",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "assembly_offset": [
+        318,
+        0
+      ]
+    },
+    {
+      "id": "nezuko-rising_kick-part1",
+      "out": "output/imagegen/awakening-v7/raw/nezuko-rising_kick-part1.png",
+      "indices": [
+        6,
+        7,
+        8
+      ],
+      "columns": 3,
+      "rows": 1,
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-rising_kick-part1.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png",
+        "output/imagegen/awakening-v7/references/nezuko-rising_kick-part1.png"
+      ],
+      "source_sha256": "83e52256c3aa20015bad12f25810292c9202fd8496798d8eeb9787394b0c4421",
+      "actual_size": [
+        2172,
+        724
+      ],
+      "assembly_offset": [
+        0,
+        1024
+      ]
+    }
+  ],
+  "frame_overrides": [],
+  "sha256": "cff29d6271547f93dbe79e738bdc28fad93d29f6cd31ebe7960870d37c5d43c6",
+  "accepted": true,
+  "reviewed_at": "2026-10-08T13:59:48.747121+00:00",
+  "review_basis": "Native source sheets, shared pixel ruler and actual Godot captures; preserve approved idle exactly."
+}

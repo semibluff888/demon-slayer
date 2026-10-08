@@ -1,0 +1,23 @@
+{
+  "id": "nezuko-dash_forward",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "1536x1024",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/awakening-v7/prompts/nezuko-dash_forward.txt",
+  "output": "output/imagegen/awakening-v7/raw/nezuko-dash_forward.png",
+  "references": [
+    "output/imagegen/awakening-v7/references/approved-game-idle.png",
+    "output/imagegen/awakening-v7/references/pose-dash_forward.png"
+  ],
+  "started_utc": "2026-10-08T12:59:59.9034602Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-08T13:00:46.4636223Z",
+  "sha256": "e98e13fc0170a452f64bd8bc4f54406e92ce84fd82cef337376c967b0a12ec4b",
+  "reviewed_at": "2026-10-08T13:59:48.696094+00:00",
+  "review_basis": "Native source sheets, shared pixel ruler and actual Godot captures; preserve approved idle exactly."
+}

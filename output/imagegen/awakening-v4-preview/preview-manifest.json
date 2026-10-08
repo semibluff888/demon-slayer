@@ -1,0 +1,36 @@
+{
+  "status": "revision_requested",
+  "created_at": "2026-10-07T16:46:24.412857+00:00",
+  "integration_authorized": false,
+  "runtime_changes": false,
+  "full_animation_production_started": false,
+  "generation": "Authorized CPA API, existing helper invoking installed image_gen.py edit with one actual image attachment; gpt-image-2, quality high",
+  "asset": {
+    "id": "nezuko-idle-v4",
+    "image": "output/imagegen/awakening-v4-preview/raw/nezuko-idle-v4.png",
+    "actual_size": [
+      1086,
+      1448
+    ],
+    "sha256": "63689a464003151ff03da3e518e9ec758f9c7b806a64f7be9f4eb0ff040c19f3",
+    "prompt": "output/imagegen/awakening-v4-preview/prompts/nezuko-idle-v4.txt",
+    "references": [
+      {
+        "image": "output/imagegen/awakening-v3-preview/references/nezuko-user-reference.png",
+        "sha256": "5d8de1071b6c9f3889182cce1716cb45a304b894d34917a93295e49e75ec80c7",
+        "role": "unchanged original user-uploaded illustration passed via --image"
+      }
+    ],
+    "generation_record": "output/imagegen/awakening-v4-preview/records/nezuko-idle-v4.json",
+    "preview_reviewed": true,
+    "user_approved": false
+  },
+  "review_notes": [
+    "Both arms hang naturally beside the body, open hands below the obi.",
+    "No extra trousers or leggings. Asymmetric damaged kimono, bare legs and leaf-vine details follow the reference.",
+    "Face, horn, hair silhouette and costume colors closely retain the actual attached source.",
+    "The upper kimono overlaps across the chest without cleavage; neutral nonsexual full-body presentation.",
+    "This is one design preview, not a runtime sprite or completed animation set. Nezuko runtime art is unchanged."
+  ],
+  "superseded_by": "output/imagegen/awakening-v5-preview/preview-manifest.json"
+}

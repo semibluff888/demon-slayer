@@ -1,0 +1,22 @@
+{
+  "id": "nezuko-stand_heavy-model-v2",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "1536x1024",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/awakening-v7/prompts/nezuko-stand_heavy-model-v2.txt",
+  "output": "output/imagegen/awakening-v7/raw/nezuko-stand_heavy-model-v2.png",
+  "references": [
+    "output/imagegen/awakening-v7/references/approved-game-idle.png"
+  ],
+  "started_utc": "2026-10-08T13:37:05.0937541Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-08T13:38:00.0823376Z",
+  "sha256": "10a897566ef95250db48387f62c127bbad41abcb4174a2feedba5b0d02bd39cd",
+  "reviewed_at": "2026-10-08T13:59:48.661687+00:00",
+  "review_basis": "Native source sheets, shared pixel ruler and actual Godot captures; preserve approved idle exactly."
+}

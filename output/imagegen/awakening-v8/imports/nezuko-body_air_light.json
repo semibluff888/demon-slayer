@@ -1,0 +1,190 @@
+{
+  "job_id": "nezuko-body_air_light",
+  "source": "output/imagegen/awakening-v8/raw/nezuko-body_air_light.png",
+  "source_sha256": "ac73428dbb036b887057171ade3ce615ac379478a28e53f180115fa34d6acfe4",
+  "calibration": "motion-calibration.json",
+  "frames": [
+    {
+      "scale": 0.74375,
+      "size": [
+        306,
+        381
+      ],
+      "offset": [
+        259,
+        218
+      ],
+      "source_origin": [
+        15,
+        18
+      ],
+      "registration_profile": "model-ruler-v8",
+      "source_root": [
+        255,
+        140
+      ],
+      "source_root_absolute": [
+        270,
+        158
+      ],
+      "target_root_x": 449.0,
+      "rendered_root_x": 448.65625,
+      "rendered_root_y": 322.125,
+      "scaled_head_length": 59.5,
+      "anchor": "waist"
+    },
+    {
+      "scale": 0.7345679012345679,
+      "size": [
+        288,
+        344
+      ],
+      "offset": [
+        278,
+        214
+      ],
+      "source_origin": [
+        521,
+        29
+      ],
+      "registration_profile": "model-ruler-v8",
+      "source_root": [
+        233,
+        147
+      ],
+      "source_root_absolute": [
+        754,
+        176
+      ],
+      "target_root_x": 449.0,
+      "rendered_root_x": 449.15432098765433,
+      "rendered_root_y": 321.98148148148147,
+      "scaled_head_length": 59.5,
+      "anchor": "waist"
+    },
+    {
+      "scale": 0.725609756097561,
+      "size": [
+        406,
+        362
+      ],
+      "offset": [
+        268,
+        212
+      ],
+      "source_origin": [
+        32,
+        500
+      ],
+      "registration_profile": "model-ruler-v8",
+      "source_root": [
+        250,
+        152
+      ],
+      "source_root_absolute": [
+        282,
+        652
+      ],
+      "target_root_x": 449.0,
+      "rendered_root_x": 449.4024390243902,
+      "rendered_root_y": 322.29268292682923,
+      "scaled_head_length": 59.5,
+      "anchor": "waist",
+      "source_override": {
+        "out": "output/imagegen/awakening-v8/raw/nezuko-body_air_heavy.png",
+        "source_sha256": "4afe1e1badd4d0bf21bfd34c1084728fa3840039c2578dea563f60b760c6b602",
+        "index": 3,
+        "count": 6,
+        "columns": 3,
+        "reason": "Complete equivalent airborne kick; original generated toes touch the right source edge."
+      }
+    },
+    {
+      "scale": 0.7083333333333334,
+      "size": [
+        277,
+        342
+      ],
+      "offset": [
+        278,
+        228
+      ],
+      "source_origin": [
+        44,
+        506
+      ],
+      "registration_profile": "model-ruler-v8",
+      "source_root": [
+        241,
+        132
+      ],
+      "source_root_absolute": [
+        285,
+        638
+      ],
+      "target_root_x": 449.0,
+      "rendered_root_x": 448.70833333333337,
+      "rendered_root_y": 321.5,
+      "scaled_head_length": 59.5,
+      "anchor": "waist"
+    },
+    {
+      "scale": 0.7168674698795181,
+      "size": [
+        317,
+        333
+      ],
+      "offset": [
+        277,
+        232
+      ],
+      "source_origin": [
+        516,
+        511
+      ],
+      "registration_profile": "model-ruler-v8",
+      "source_root": [
+        240,
+        125
+      ],
+      "source_root_absolute": [
+        756,
+        636
+      ],
+      "target_root_x": 449.0,
+      "rendered_root_x": 449.04819277108436,
+      "rendered_root_y": 321.60843373493975,
+      "scaled_head_length": 59.5,
+      "anchor": "waist"
+    },
+    {
+      "scale": 0.725609756097561,
+      "size": [
+        309,
+        341
+      ],
+      "offset": [
+        247,
+        217
+      ],
+      "source_origin": [
+        1056,
+        511
+      ],
+      "registration_profile": "model-ruler-v8",
+      "source_root": [
+        278,
+        145
+      ],
+      "source_root_absolute": [
+        1334,
+        656
+      ],
+      "target_root_x": 449.0,
+      "rendered_root_x": 448.719512195122,
+      "rendered_root_y": 322.2134146341463,
+      "scaled_head_length": 59.5,
+      "anchor": "waist"
+    }
+  ]
+}

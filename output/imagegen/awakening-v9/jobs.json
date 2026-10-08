@@ -1,0 +1,21 @@
+[
+  {
+    "id": "nezuko-guard_low-hands",
+    "group": "targeted",
+    "out": "output/imagegen/awakening-v9/raw/nezuko-guard_low-hands.png",
+    "prompt": "output/imagegen/awakening-v9/prompts/nezuko-guard_low-hands.txt",
+    "references": [
+      "output/imagegen/awakening-v9/references/guard-edit-target.png",
+      "output/imagegen/awakening-v9/references/approved-idle.png"
+    ],
+    "size": "1536x1024",
+    "model": "gpt-image-2",
+    "metadata": {
+      "character": "nezuko",
+      "clip": "guard_low",
+      "count": 6,
+      "columns": 3,
+      "rows": 2
+    }
+  }
+]

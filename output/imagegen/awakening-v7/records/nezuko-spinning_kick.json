@@ -1,0 +1,73 @@
+{
+  "id": "nezuko-spinning_kick",
+  "status": "assembled",
+  "route": "Lossless vertical assembly of generated six-frame source sheets",
+  "output": "output/imagegen/awakening-v7/raw/nezuko-spinning_kick-assembled.png",
+  "actual_size": [
+    1536,
+    2048
+  ],
+  "sources": [
+    {
+      "id": "nezuko-spinning_kick-part0",
+      "out": "output/imagegen/awakening-v7/raw/nezuko-spinning_kick-part0.png",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "columns": 3,
+      "rows": 2,
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-spinning_kick-part0.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png",
+        "output/imagegen/awakening-v7/references/nezuko-spinning_kick-part0.png"
+      ],
+      "source_sha256": "8fd62ab361e068bcef400abab7bca3f0650b660c1f37bf3a5f9f3269910e2079",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "assembly_offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "nezuko-spinning_kick-part1",
+      "out": "output/imagegen/awakening-v7/raw/nezuko-spinning_kick-part1.png",
+      "indices": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "columns": 3,
+      "rows": 2,
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-spinning_kick-part1.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png",
+        "output/imagegen/awakening-v7/references/nezuko-spinning_kick-part1.png"
+      ],
+      "source_sha256": "5bc4f0a64620fe9e6f0ff0bf47a4087f0ef77d56b8e5e61f5899ebdbd96d58db",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "assembly_offset": [
+        0,
+        1024
+      ]
+    }
+  ],
+  "frame_overrides": [],
+  "sha256": "ec44cd9df124dc589b68cecdeca492cdaf7fcc933dd639cbbe50eb7e4cd80e3a",
+  "accepted": true,
+  "reviewed_at": "2026-10-08T13:59:48.753122+00:00",
+  "review_basis": "Native source sheets, shared pixel ruler and actual Godot captures; preserve approved idle exactly."
+}

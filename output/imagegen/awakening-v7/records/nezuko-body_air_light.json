@@ -1,0 +1,23 @@
+{
+  "id": "nezuko-body_air_light",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "1536x1024",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/awakening-v7/prompts/nezuko-body_air_light.txt",
+  "output": "output/imagegen/awakening-v7/raw/nezuko-body_air_light.png",
+  "references": [
+    "output/imagegen/awakening-v7/references/approved-game-idle.png",
+    "output/imagegen/awakening-v7/references/pose-body_air_light.png"
+  ],
+  "started_utc": "2026-10-08T12:56:50.8112397Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-08T12:57:51.6426423Z",
+  "sha256": "6f7d1c7f3303e6a834ce7766725faa6573468913f2c60d9a0a263b7f17283eda",
+  "reviewed_at": "2026-10-08T13:59:48.690097+00:00",
+  "review_basis": "Native source sheets, shared pixel ruler and actual Godot captures; preserve approved idle exactly."
+}

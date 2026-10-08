@@ -1,0 +1,23 @@
+{
+  "id": "nezuko-knockdown",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "1536x1024",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/awakening-v7/prompts/nezuko-knockdown.txt",
+  "output": "output/imagegen/awakening-v7/raw/nezuko-knockdown.png",
+  "references": [
+    "output/imagegen/awakening-v7/references/approved-game-idle.png",
+    "output/imagegen/awakening-v7/references/pose-knockdown.png"
+  ],
+  "started_utc": "2026-10-08T13:02:44.4657289Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-08T13:03:55.0593591Z",
+  "sha256": "7f4703a710aaf65794fe9921ef7273d7b284e510051828d13a7bfc426595c4fb",
+  "reviewed_at": "2026-10-08T13:59:48.652687+00:00",
+  "review_basis": "Native source sheets, shared pixel ruler and actual Godot captures; preserve approved idle exactly."
+}

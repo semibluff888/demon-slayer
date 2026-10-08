@@ -1,0 +1,17 @@
+[
+  {
+    "id": "nezuko-portrait",
+    "group": "portraits",
+    "out": "output/imagegen/awakening-v6/raw/nezuko-portrait.png",
+    "prompt": "output/imagegen/awakening-v6/prompts/nezuko-portrait.txt",
+    "references": [
+      "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+    ],
+    "size": "1024x1024",
+    "model": "gpt-image-2",
+    "metadata": {
+      "character": "nezuko",
+      "purpose": "authorized awakened HUD portrait"
+    }
+  }
+]

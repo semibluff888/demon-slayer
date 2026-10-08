@@ -1,0 +1,20 @@
+[
+  {
+    "id": "nezuko-idle-v6",
+    "group": "concept",
+    "out": "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png",
+    "prompt": "output/imagegen/awakening-v6-preview/prompts/nezuko-idle-v6.txt",
+    "references": [
+      "output/imagegen/awakening-v5-preview/raw/nezuko-idle-v5.png",
+      "output/imagegen/awakening-v4-preview/raw/nezuko-idle-v4.png"
+    ],
+    "size": "1024x1536",
+    "model": "gpt-image-2",
+    "metadata": {
+      "character": "nezuko",
+      "purpose": "approval preview only; no runtime integration",
+      "edit_scope": "repair shoulder seams only; preserve current covered neckline and all other details",
+      "reference_roles": ["current preview as edit target", "intact shoulder-fabric reference"]
+    }
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "base_atlas": "baseline",
+  "preserve_unmodified_clips": true,
+  "reference_idle": "references/approved-idle.png",
+  "reference_max": "references/approved-max.png",
+  "target_clips": [
+    "walk",
+    "walk_back",
+    "dash_forward",
+    "dash_back",
+    "air_light",
+    "air_heavy",
+    "body_air_light",
+    "body_air_heavy",
+    "blood_kick",
+    "rising_kick",
+    "spinning_kick",
+    "blood_burst"
+  ],
+  "target_head_length": 59.5,
+  "reason": "User-approved v7 MAX defines action anatomy; fix cyclic translation and stature."
+}

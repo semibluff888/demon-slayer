@@ -1,0 +1,20 @@
+{
+  "status": "integrated",
+  "manifest": "preview-manifest.json",
+  "characters": {
+    "akaza": {
+      "user_approved": true,
+      "integration_authorized": true,
+      "integrated": true
+    },
+    "nezuko": {
+      "user_approved": false,
+      "integration_authorized": true,
+      "integrated": true,
+      "current_preview": "output/imagegen/awakening-v5-preview/preview-manifest.json",
+      "approval_gate_waived": true,
+      "current_production": "output/imagegen/awakening-v6/jobs.json",
+      "acceptance": "output/imagegen/awakening-v6/acceptance.json"
+    }
+  }
+}

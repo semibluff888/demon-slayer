@@ -1,0 +1,165 @@
+[
+  {
+    "id": "nezuko-walk-cycle-v2",
+    "group": "cycle",
+    "out": "output/imagegen/awakening-v8/raw/nezuko-walk-cycle-v2.png",
+    "prompt": "output/imagegen/awakening-v8/prompts/nezuko-walk-cycle-v2.txt",
+    "references": [
+      "output/imagegen/awakening-v8/references/approved-idle.png",
+      "output/imagegen/awakening-v8/references/approved-max.png",
+      "output/imagegen/awakening-v8/references/walk-cycle-guide.png"
+    ],
+    "size": "1536x1024",
+    "model": "gpt-image-2",
+    "metadata": {
+      "character": "nezuko",
+      "clip": "walk",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "cell": [
+        512,
+        512
+      ],
+      "original_clip": {
+        "loop": true,
+        "fps": 12,
+        "phase_breaks": [
+          2,
+          4
+        ],
+        "frames": [
+          {
+            "texture": "atlas-0.png",
+            "region": [
+              763,
+              741,
+              181,
+              360
+            ],
+            "offset": [
+              347,
+              209
+            ]
+          },
+          {
+            "texture": "atlas-1.png",
+            "region": [
+              766,
+              2,
+              243,
+              354
+            ],
+            "offset": [
+              321,
+              215
+            ]
+          },
+          {
+            "texture": "atlas-0.png",
+            "region": [
+              730,
+              1470,
+              238,
+              356
+            ],
+            "offset": [
+              308,
+              213
+            ]
+          },
+          {
+            "texture": "atlas-1.png",
+            "region": [
+              985,
+              1427,
+              238,
+              345
+            ],
+            "offset": [
+              340,
+              224
+            ]
+          },
+          {
+            "texture": "atlas-1.png",
+            "region": [
+              286,
+              1074,
+              228,
+              348
+            ],
+            "offset": [
+              321,
+              220
+            ]
+          },
+          {
+            "texture": "atlas-1.png",
+            "region": [
+              1062,
+              719,
+              201,
+              350
+            ],
+            "offset": [
+              314,
+              219
+            ]
+          }
+        ],
+        "segment_sync": false,
+        "anchor_mode": "feet",
+        "timeline": []
+      },
+      "source_bounds": [
+        [
+          347,
+          209,
+          528,
+          569
+        ],
+        [
+          321,
+          215,
+          564,
+          569
+        ],
+        [
+          308,
+          213,
+          546,
+          569
+        ],
+        [
+          340,
+          224,
+          578,
+          569
+        ],
+        [
+          321,
+          220,
+          549,
+          568
+        ],
+        [
+          314,
+          219,
+          515,
+          569
+        ]
+      ],
+      "registration_profile": "model-ruler-v8",
+      "facial_acting": "contextual",
+      "frame_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  }
+]

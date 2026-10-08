@@ -1,0 +1,73 @@
+{
+  "id": "nezuko-jump_back",
+  "status": "assembled",
+  "route": "Lossless vertical assembly of generated six-frame source sheets",
+  "output": "output/imagegen/awakening-v7/raw/nezuko-jump_back-assembled.png",
+  "actual_size": [
+    1536,
+    2048
+  ],
+  "sources": [
+    {
+      "id": "nezuko-jump_back-part0",
+      "out": "output/imagegen/awakening-v7/raw/nezuko-jump_back-part0.png",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "columns": 3,
+      "rows": 2,
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-jump_back-part0.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png",
+        "output/imagegen/awakening-v7/references/nezuko-jump_back-part0.png"
+      ],
+      "source_sha256": "bfa8ebd4788d133d6975f9f0aa6ad044813cab9443e5039610d2831b8330e569",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "assembly_offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "nezuko-jump_back-part1",
+      "out": "output/imagegen/awakening-v7/raw/nezuko-jump_back-part1.png",
+      "indices": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "columns": 3,
+      "rows": 2,
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-jump_back-part1.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png",
+        "output/imagegen/awakening-v7/references/nezuko-jump_back-part1.png"
+      ],
+      "source_sha256": "adb132afbd2ebf8b2ee4fccd1f6ee4e13a9d7eaf58e4e68732301aac691c1a1a",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "assembly_offset": [
+        0,
+        1024
+      ]
+    }
+  ],
+  "frame_overrides": [],
+  "sha256": "9a187c1124ac2e2d1957a1f6414a745c693a257358c584e2fa5ad22da21fe2a1",
+  "accepted": true,
+  "reviewed_at": "2026-10-08T13:59:48.709135+00:00",
+  "review_basis": "Native source sheets, shared pixel ruler and actual Godot captures; preserve approved idle exactly."
+}

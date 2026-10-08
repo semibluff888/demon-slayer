@@ -58,7 +58,7 @@ def main():
     fields['texture_flip_h']='false' if i==2 else 'true';fields['effect_motion']=quoted(['forward','rising','sweep','burst','flurry'][i-1])
    if cid=='akaza' and special:fields['sigil_texture_key']='"compass"'
    if cid=='akaza' and i==1:fields['projectile_texture_key']='"shockwave"'
-   if cid=='nezuko' and tier==2:fields['cut_in_path']='"res://art/characters/nezuko/awakened-portrait.png"'
+   if cid=='nezuko' and tier==2:fields['cut_in_path']='"res://art/characters/nezuko/awakening/portrait.png"'
    text+=''.join(k+' = '+v+'\n' for k,v in fields.items())
    (ROOT/f'resources/presentation/{clip}.tres').write_text(text,encoding='utf-8')
  print('Expansion resources authored; existing fighter moves untouched.')

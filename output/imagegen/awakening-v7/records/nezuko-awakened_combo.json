@@ -1,0 +1,71 @@
+{
+  "id": "nezuko-awakened_combo",
+  "status": "assembled",
+  "route": "Lossless vertical assembly of generated six-frame source sheets",
+  "output": "output/imagegen/awakening-v7/raw/nezuko-awakened_combo-assembled.png",
+  "actual_size": [
+    1536,
+    2048
+  ],
+  "sources": [
+    {
+      "id": "nezuko-awakened_combo-part0",
+      "out": "output/imagegen/awakening-v7/raw/nezuko-awakened_combo-part0.png",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "columns": 3,
+      "rows": 2,
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-awakened_combo-part0.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png"
+      ],
+      "source_sha256": "d524f1310ab979ba0fb51faed5ddafdc8f8adbf14b14b5cdeb5e16751467e62e",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "assembly_offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "nezuko-awakened_combo-part1",
+      "out": "output/imagegen/awakening-v7/raw/nezuko-awakened_combo-part1.png",
+      "indices": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "columns": 3,
+      "rows": 2,
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-awakened_combo-part1.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png"
+      ],
+      "source_sha256": "4c2b9294d4f8b8622ba8760c6533bb2a871a0b682cd1110f635e22510de856a0",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "assembly_offset": [
+        0,
+        1024
+      ]
+    }
+  ],
+  "frame_overrides": [],
+  "sha256": "57634b177ba88b755f6cb6ea129be88063e0cdd7490ccae90563b89c751ad0ac",
+  "accepted": true,
+  "reviewed_at": "2026-10-08T13:59:48.765128+00:00",
+  "review_basis": "Native source sheets, shared pixel ruler and actual Godot captures; preserve approved idle exactly."
+}

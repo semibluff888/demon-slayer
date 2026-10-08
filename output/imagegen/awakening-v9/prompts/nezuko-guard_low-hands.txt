@@ -1,0 +1,7 @@
+Use case: precise-object-edit
+Asset type: six-frame 2D fighting game crouching guard sprite sheet.
+Image 1 is the exact EDIT TARGET, a 3-column by 2-row sheet. Image 2 is an identity reference only.
+Primary request: correct ONLY the crossed defensive arms and fists in all six frames of Image 1. Preserve the exact character, crouching pose, body proportions, head size, feet, hair, horn, costume, lighting, cel-shaded linework, 1536x1024 canvas, and frame positions.
+Specific correction: the far fist is incorrectly hidden behind the cheek. Move that forearm and fist into the plane IN FRONT of the face. Both forearms form a readable X guard in front of the lower face. BOTH clenched fists and their knuckles must be separately visible, one on either side of the X, with the face behind the forearms; neither hand disappears behind the cheek, jaw, or hair. Offset the fists slightly for a clean silhouette. Keep exactly two arms, two hands, anatomically connected elbows and wrists. In frame 0 the guard is already fully raised; frames 1 to 5 show the same guard with subtle existing recoil.
+Constraints: keep all lower-body pixels, clothing shape and head/body scale as closely as possible to Image 1. No larger head, no shorter legs, no change to body width, no additional accessories, no additional skin exposure. The edit concerns combat defense anatomy only.
+Background: same perfectly flat bright cyan #00FFFF. No shadows outside character, no text, no labels, no dividers, no glow. Return the full six-frame sheet at the original layout and resolution.

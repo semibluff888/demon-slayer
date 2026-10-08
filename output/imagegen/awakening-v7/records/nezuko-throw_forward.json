@@ -1,0 +1,73 @@
+{
+  "id": "nezuko-throw_forward",
+  "status": "assembled",
+  "route": "Lossless vertical assembly of generated six-frame source sheets",
+  "output": "output/imagegen/awakening-v7/raw/nezuko-throw_forward-assembled.png",
+  "actual_size": [
+    1536,
+    2048
+  ],
+  "sources": [
+    {
+      "id": "nezuko-throw_forward-part0",
+      "out": "output/imagegen/awakening-v7/raw/nezuko-throw_forward-part0.png",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "columns": 3,
+      "rows": 2,
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-throw_forward-part0.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png",
+        "output/imagegen/awakening-v7/references/nezuko-throw_forward-part0.png"
+      ],
+      "source_sha256": "bad430b5016be8e1c9f20773e063a8f88f0762ac47cb333035b11545874fdb94",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "assembly_offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "nezuko-throw_forward-part1",
+      "out": "output/imagegen/awakening-v7/raw/nezuko-throw_forward-part1.png",
+      "indices": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "columns": 3,
+      "rows": 2,
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-throw_forward-part1.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png",
+        "output/imagegen/awakening-v7/references/nezuko-throw_forward-part1.png"
+      ],
+      "source_sha256": "ee1ef4b17dfa445b30c7b8505bf689094e1646875f481ec03cd8117960e24434",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "assembly_offset": [
+        0,
+        1024
+      ]
+    }
+  ],
+  "frame_overrides": [],
+  "sha256": "b3084a187afe37f2feb9f1f637c94f6e8e423fc9b995231a4f258214b2da0743",
+  "accepted": true,
+  "reviewed_at": "2026-10-08T13:59:48.726122+00:00",
+  "review_basis": "Native source sheets, shared pixel ruler and actual Godot captures; preserve approved idle exactly."
+}

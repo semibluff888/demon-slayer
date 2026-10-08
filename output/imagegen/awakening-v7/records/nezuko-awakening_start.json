@@ -1,0 +1,23 @@
+{
+  "id": "nezuko-awakening_start",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "1536x1024",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/awakening-v7/prompts/nezuko-awakening_start.txt",
+  "output": "output/imagegen/awakening-v7/raw/nezuko-awakening_start.png",
+  "references": [
+    "output/imagegen/awakening-v7/references/approved-game-idle.png",
+    "output/imagegen/awakening-v7/references/pose-awakening_start.png"
+  ],
+  "started_utc": "2026-10-08T12:54:49.5685367Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-08T12:55:48.5490525Z",
+  "sha256": "e17bd18ded33c825285625ff29a4b79c3c3a6ebfd98c2d5cf0dae419efea87e9",
+  "reviewed_at": "2026-10-08T13:59:48.628131+00:00",
+  "review_basis": "Native source sheets, shared pixel ruler and actual Godot captures; preserve approved idle exactly."
+}

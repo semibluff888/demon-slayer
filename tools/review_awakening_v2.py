@@ -7,7 +7,9 @@ from build_awakening_art import cyan_matte,clean
 from build_roster_art import components
 ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'output/imagegen/awakening-v2'
 def main():
- parser=argparse.ArgumentParser();parser.add_argument('--all-frames',action='store_true');args=parser.parse_args()
+ global OUT
+ parser=argparse.ArgumentParser();parser.add_argument('--all-frames',action='store_true');parser.add_argument('--source-dir',default='output/imagegen/awakening-v2');args=parser.parse_args()
+ OUT=ROOT/args.source_dir
  all_frames={}
  jobs=json.loads((OUT/'jobs.json').read_text('utf-8'));selection=json.loads((OUT/'selected.json').read_text('utf-8')) if (OUT/'selected.json').exists() else {}
  items={};errors=[];ready=0

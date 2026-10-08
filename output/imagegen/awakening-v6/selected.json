@@ -1,0 +1,12 @@
+{
+  "nezuko-knockdown": {
+    "id": "nezuko-knockdown-anatomy-v2",
+    "out": "output/imagegen/awakening-v6/raw/nezuko-knockdown-anatomy-v2.png",
+    "prompt": "output/imagegen/awakening-v6/prompts/nezuko-knockdown-anatomy-v2.txt",
+    "references": [
+      "output/imagegen/awakening-v6/raw/nezuko-knockdown.png",
+      "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+    ],
+    "reason": "Remove extra hand in frame 2; generated source has native RGBA transparency."
+  }
+}

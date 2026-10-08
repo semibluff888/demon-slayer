@@ -1,0 +1,38 @@
+{
+  "status": "integrated_and_verified",
+  "integration_authorized": true,
+  "runtime_changes": true,
+  "full_animation_production_started": true,
+  "asset_id": "nezuko-idle-v6",
+  "prompt": "output/imagegen/awakening-v6-preview/prompts/nezuko-idle-v6.txt",
+  "image": "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png",
+  "generation": "Authorized CPA API via existing imagegen helper; gpt-image-2, high quality",
+  "references": [
+    {
+      "image": "output/imagegen/awakening-v5-preview/raw/nezuko-idle-v5.png",
+      "sha256": "a0abcd328990e02e65105e227880c7f53939c0e17f1badac7c2bc2043e977c9f",
+      "role": "current preview as edit target"
+    },
+    {
+      "image": "output/imagegen/awakening-v4-preview/raw/nezuko-idle-v4.png",
+      "sha256": "63689a464003151ff03da3e518e9ec758f9c7b806a64f7be9f4eb0ff040c19f3",
+      "role": "intact shoulder-fabric reference"
+    }
+  ],
+  "edit_scope": "repair shoulder seams only; preserve current covered neckline and all other details",
+  "preview_reviewed": true,
+  "approval_gate_waived": true,
+  "actual_size": [
+    1086,
+    1448
+  ],
+  "sha256": "e683ccc91413998931c4901b3291ae17471d39c1687deaa44bd26e223581e072",
+  "production_manifest": "output/imagegen/awakening-v6/jobs.json",
+  "review_notes": [
+    "Both shoulder holes are repaired.",
+    "Current neckline stays covered; no cleavage added.",
+    "Remaining design and lowered-hands stance preserved.",
+    "User explicitly authorized direct game integration without another confirmation."
+  ],
+  "acceptance": "output/imagegen/awakening-v6/acceptance.json"
+}

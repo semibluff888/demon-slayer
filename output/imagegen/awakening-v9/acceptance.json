@@ -1,0 +1,110 @@
+{
+  "revision": "awakening-v9",
+  "date": "2026-10-09",
+  "status": "integrated; user gameplay acceptance pending",
+  "baseline": "awakening-v8",
+  "scope": [
+    "walk cadence",
+    "standing heavy width",
+    "rising kick size",
+    "blood flying kick proportions",
+    "crouch guard fists",
+    "forward throw size and registration",
+    "back throw turn and direction"
+  ],
+  "artwork": {
+    "pixel_changed_clips": [
+      "stand_heavy",
+      "rising_kick",
+      "blood_kick",
+      "throw_forward",
+      "throw_success",
+      "guard_low"
+    ],
+    "pixel_changed_frames": 54,
+    "pixel_preserved_frames": 294,
+    "metadata_only_clips": [
+      "walk",
+      "walk_back"
+    ],
+    "walk_fps": 12,
+    "runtime_capture": false
+  },
+  "source": {
+    "cpa_jobs": 1,
+    "guard_job": {
+      "id": "nezuko-guard_low-hands",
+      "group": "targeted",
+      "out": "output/imagegen/awakening-v9/raw/nezuko-guard_low-hands.png",
+      "prompt": "output/imagegen/awakening-v9/prompts/nezuko-guard_low-hands.txt",
+      "references": [
+        "output/imagegen/awakening-v9/references/guard-edit-target.png",
+        "output/imagegen/awakening-v9/references/approved-idle.png"
+      ],
+      "size": "1536x1024",
+      "model": "gpt-image-2",
+      "metadata": {
+        "character": "nezuko",
+        "clip": "guard_low",
+        "count": 6,
+        "columns": 3,
+        "rows": 2
+      }
+    },
+    "guard_status": "generated",
+    "corrections": "corrections.json",
+    "rebuild": "tools/build_nezuko_awakening_v9.py"
+  },
+  "review": {
+    "method": "offline shared-ruler static contact sheets; no game capture",
+    "clips": [
+      "stand_heavy",
+      "rising_kick",
+      "blood_kick",
+      "throw_forward",
+      "throw_success",
+      "guard_low"
+    ],
+    "approved_idle_and_max": "pixel identical"
+  },
+  "verification": {
+    "artwork_tests": 11,
+    "artwork_result": "passed",
+    "artwork_log": "artifacts/awakening-v9-art-check.log",
+    "godot_import": "passed",
+    "import_log": "artifacts/awakening-v9-import.log",
+    "compile_scene_load": "passed",
+    "compile_log": "artifacts/awakening-v9-compile.log",
+    "full_combat_regression": "not run; art-only targeted revision",
+    "gameplay_visual_acceptance": "user will perform",
+    "gameplay_capture": false,
+    "video_recording": false
+  },
+  "runtime_assets": {
+    "art/characters/nezuko/awakening/atlas-0.png": "fdfcfbb7bc46dffb73e23758f3d748127a734d883d8ffc1679a854825db38f93",
+    "art/characters/nezuko/awakening/atlas-1.png": "c7f295359d4fcbf03994f828c15352d26f9a5ab7dc6a38a5b4ca27c11b79a409",
+    "art/characters/nezuko/awakening/atlas-2.png": "7eb0742ac34128d79248b33ab9bac37e315954fd1c3b6bc87aca7da20880faf6",
+    "art/characters/nezuko/awakening/atlas-3.png": "99e571934d9a04944dad8e7f1edf2d1c8a0eeff595a94b5f2793e362cac56900",
+    "art/characters/nezuko/awakening/atlas-4.png": "957fa84be593f771a82a9a8645240dee58efc4537a0791b35a4ac8d4db24666f",
+    "art/characters/nezuko/awakening/atlas-5.png": "07da77071d0c3fb3caf104534408abd8b72f556bde5591755f943276f0d527c5",
+    "art/characters/nezuko/awakening/atlas-6.png": "3961fce4d324881bffd7020776cbfe740c7a43b3d3486347e0d0f501f4c44efa",
+    "art/characters/nezuko/awakening/atlas-7.png": "f9a0a62b1b41553ca91d002e85f0b0fa6ddaf0b251523ef4eb33d3a629d85289",
+    "art/characters/nezuko/awakening/atlas-8.png": "5fb8006829c9754d524393733ffc0e237479df2c97cf085dd2ee98ce85996b45",
+    "art/characters/nezuko/awakening/atlas.json": "f6908d734d97de3aa3894c9f05a53c10f19a2dfea8efcc849c352e1c1dc9054f",
+    "art/characters/nezuko/awakening/fx-aura.png": "a8ceb48d15d5a47c8dbc14c9b405252acc498eec60ba2877730815dd6a1454ac",
+    "art/characters/nezuko/awakening/fx-burst.png": "6df3da0988373b9b53b7ae0ee2d65ad2545868143e0cb70e322777c92b73465a",
+    "art/characters/nezuko/awakening/fx-sweep.png": "4e44593c6c7bdb1874ceb547c7534da2a8694ec7a32a859b182b4b4663c0e151",
+    "art/characters/nezuko/awakening/fx-wisp.png": "74a98d5d64be4a29cd715c02848f1f7aeb9f2323f1906ec4fd2e16bcbcb3c931",
+    "art/characters/nezuko/awakening/portrait.png": "15f3e740c8fc2ae9a918e4412b25f331f2b43ac1e0909d8363fdb9056e3f2f96"
+  },
+  "release": {
+    "status": "exported-and-verified",
+    "archive": "dist/DemonSlayer-0.2.5-nezuko-detail-fix-windows-x86_64.zip",
+    "sha256": "ebb87a1c902f5e70d9027afc4d4d38a2487317ea890d078716c5493ec5aa497d",
+    "bytes": 437224857,
+    "zip_integrity": "passed",
+    "combat_cases": 64,
+    "move_manifest_count": 84,
+    "smoke_log": "dist/DemonSlayer-0.2.5-nezuko-detail-fix-windows-x86_64-smoke.log"
+  }
+}

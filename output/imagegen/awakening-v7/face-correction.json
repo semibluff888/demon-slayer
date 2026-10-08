@@ -1,0 +1,21 @@
+[
+  {
+    "id": "nezuko-roll_back-face-cleanup",
+    "group": "correction",
+    "out": "output/imagegen/awakening-v7/raw/nezuko-roll_back-face-cleanup.png",
+    "prompt": "output/imagegen/awakening-v7/prompts/nezuko-roll_back-face-cleanup.txt",
+    "references": [
+      "output/imagegen/awakening-v7/raw/nezuko-roll_back-part0.png",
+      "output/imagegen/awakening-v7/references/approved-game-idle.png"
+    ],
+    "model": "gpt-image-2",
+    "size": "1536x1024",
+    "metadata": {
+      "character": "nezuko",
+      "clip": "roll_back",
+      "count": 6,
+      "columns": 3,
+      "rows": 2
+    }
+  }
+]

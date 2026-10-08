@@ -1,0 +1,1838 @@
+[
+  {
+    "id": "nezuko-stand_light-model-v2",
+    "group": "model-refine",
+    "out": "output/imagegen/awakening-v7/raw/nezuko-stand_light-model-v2.png",
+    "prompt": "output/imagegen/awakening-v7/prompts/nezuko-stand_light-model-v2.txt",
+    "references": [
+      "output/imagegen/awakening-v7/references/approved-game-idle.png"
+    ],
+    "size": "1536x1024",
+    "model": "gpt-image-2",
+    "metadata": {
+      "character": "nezuko",
+      "clip": "stand_light",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "cell": [
+        512,
+        512
+      ],
+      "original_clip": {
+        "loop": false,
+        "fps": 12,
+        "phase_breaks": [
+          2,
+          4
+        ],
+        "frames": [
+          {
+            "texture": "atlas-1.png",
+            "region": [
+              2,
+              719,
+              227,
+              351
+            ],
+            "offset": [
+              314,
+              218
+            ]
+          },
+          {
+            "texture": "atlas-1.png",
+            "region": [
+              1444,
+              1427,
+              286,
+              345
+            ],
+            "offset": [
+              289,
+              223
+            ]
+          },
+          {
+            "texture": "atlas-2.png",
+            "region": [
+              1060,
+              351,
+              336,
+              342
+            ],
+            "offset": [
+              266,
+              227
+            ]
+          },
+          {
+            "texture": "atlas-2.png",
+            "region": [
+              1400,
+              351,
+              334,
+              342
+            ],
+            "offset": [
+              295,
+              226
+            ]
+          },
+          {
+            "texture": "atlas-2.png",
+            "region": [
+              1738,
+              351,
+              243,
+              342
+            ],
+            "offset": [
+              303,
+              226
+            ]
+          },
+          {
+            "texture": "atlas-2.png",
+            "region": [
+              2,
+              699,
+              227,
+              342
+            ],
+            "offset": [
+              306,
+              227
+            ]
+          }
+        ],
+        "segment_sync": false,
+        "anchor_mode": "feet",
+        "timeline": []
+      },
+      "source_bounds": [
+        [
+          314,
+          218,
+          541,
+          569
+        ],
+        [
+          289,
+          223,
+          575,
+          568
+        ],
+        [
+          266,
+          227,
+          602,
+          569
+        ],
+        [
+          295,
+          226,
+          629,
+          568
+        ],
+        [
+          303,
+          226,
+          546,
+          568
+        ],
+        [
+          306,
+          227,
+          533,
+          569
+        ]
+      ],
+      "registration_profile": "idle-head-ruler-v7",
+      "facial_acting": "exertion"
+    }
+  },
+  {
+    "id": "nezuko-stand_heavy-model-v2",
+    "group": "model-refine",
+    "out": "output/imagegen/awakening-v7/raw/nezuko-stand_heavy-model-v2.png",
+    "prompt": "output/imagegen/awakening-v7/prompts/nezuko-stand_heavy-model-v2.txt",
+    "references": [
+      "output/imagegen/awakening-v7/references/approved-game-idle.png"
+    ],
+    "size": "1536x1024",
+    "model": "gpt-image-2",
+    "metadata": {
+      "character": "nezuko",
+      "clip": "stand_heavy",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "cell": [
+        512,
+        512
+      ],
+      "original_clip": {
+        "loop": false,
+        "fps": 12,
+        "phase_breaks": [
+          2,
+          4
+        ],
+        "frames": [
+          {
+            "texture": "atlas-3.png",
+            "region": [
+              1214,
+              342,
+              280,
+              332
+            ],
+            "offset": [
+              302,
+              237
+            ]
+          },
+          {
+            "texture": "atlas-3.png",
+            "region": [
+              611,
+              679,
+              306,
+              331
+            ],
+            "offset": [
+              282,
+              237
+            ]
+          },
+          {
+            "texture": "atlas-4.png",
+            "region": [
+              996,
+              984,
+              338,
+              319
+            ],
+            "offset": [
+              263,
+              250
+            ]
+          },
+          {
+            "texture": "atlas-4.png",
+            "region": [
+              433,
+              2,
+              321,
+              324
+            ],
+            "offset": [
+              299,
+              245
+            ]
+          },
+          {
+            "texture": "atlas-4.png",
+            "region": [
+              758,
+              2,
+              272,
+              324
+            ],
+            "offset": [
+              299,
+              244
+            ]
+          },
+          {
+            "texture": "atlas-3.png",
+            "region": [
+              1037,
+              1684,
+              275,
+              325
+            ],
+            "offset": [
+              297,
+              244
+            ]
+          }
+        ],
+        "segment_sync": false,
+        "anchor_mode": "feet",
+        "timeline": []
+      },
+      "source_bounds": [
+        [
+          302,
+          237,
+          582,
+          569
+        ],
+        [
+          282,
+          237,
+          588,
+          568
+        ],
+        [
+          263,
+          250,
+          601,
+          569
+        ],
+        [
+          299,
+          245,
+          620,
+          569
+        ],
+        [
+          299,
+          244,
+          571,
+          568
+        ],
+        [
+          297,
+          244,
+          572,
+          569
+        ]
+      ],
+      "registration_profile": "idle-head-ruler-v7",
+      "facial_acting": "exertion"
+    }
+  },
+  {
+    "id": "nezuko-body_stand_light-model-v2",
+    "group": "model-refine",
+    "out": "output/imagegen/awakening-v7/raw/nezuko-body_stand_light-model-v2.png",
+    "prompt": "output/imagegen/awakening-v7/prompts/nezuko-body_stand_light-model-v2.txt",
+    "references": [
+      "output/imagegen/awakening-v7/references/approved-game-idle.png"
+    ],
+    "size": "1536x1024",
+    "model": "gpt-image-2",
+    "metadata": {
+      "character": "nezuko",
+      "clip": "body_stand_light",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "cell": [
+        512,
+        512
+      ],
+      "original_clip": {
+        "loop": false,
+        "fps": 12,
+        "phase_breaks": [
+          2,
+          4
+        ],
+        "frames": [
+          {
+            "texture": "atlas-0.png",
+            "region": [
+              1577,
+              1470,
+              249,
+              355
+            ],
+            "offset": [
+              308,
+              213
+            ]
+          },
+          {
+            "texture": "atlas-0.png",
+            "region": [
+              1157,
+              375,
+              269,
+              361
+            ],
+            "offset": [
+              293,
+              208
+            ]
+          },
+          {
+            "texture": "atlas-0.png",
+            "region": [
+              1316,
+              741,
+              352,
+              360
+            ],
+            "offset": [
+              263,
+              209
+            ]
+          },
+          {
+            "texture": "atlas-0.png",
+            "region": [
+              1430,
+              375,
+              243,
+              361
+            ],
+            "offset": [
+              301,
+              208
+            ]
+          },
+          {
+            "texture": "atlas-0.png",
+            "region": [
+              1677,
+              375,
+              241,
+              361
+            ],
+            "offset": [
+              295,
+              208
+            ]
+          },
+          {
+            "texture": "atlas-0.png",
+            "region": [
+              2,
+              375,
+              236,
+              362
+            ],
+            "offset": [
+              297,
+              206
+            ]
+          }
+        ],
+        "segment_sync": false,
+        "anchor_mode": "feet",
+        "timeline": []
+      },
+      "source_bounds": [
+        [
+          308,
+          213,
+          557,
+          568
+        ],
+        [
+          293,
+          208,
+          562,
+          569
+        ],
+        [
+          263,
+          209,
+          615,
+          569
+        ],
+        [
+          301,
+          208,
+          544,
+          569
+        ],
+        [
+          295,
+          208,
+          536,
+          569
+        ],
+        [
+          297,
+          206,
+          533,
+          568
+        ]
+      ],
+      "registration_profile": "idle-head-ruler-v7",
+      "facial_acting": "exertion"
+    }
+  },
+  {
+    "id": "nezuko-body_stand_heavy-model-v2",
+    "group": "model-refine",
+    "out": "output/imagegen/awakening-v7/raw/nezuko-body_stand_heavy-model-v2.png",
+    "prompt": "output/imagegen/awakening-v7/prompts/nezuko-body_stand_heavy-model-v2.txt",
+    "references": [
+      "output/imagegen/awakening-v7/references/approved-game-idle.png"
+    ],
+    "size": "1536x1024",
+    "model": "gpt-image-2",
+    "metadata": {
+      "character": "nezuko",
+      "clip": "body_stand_heavy",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "cell": [
+        512,
+        512
+      ],
+      "original_clip": {
+        "loop": false,
+        "fps": 12,
+        "phase_breaks": [
+          2,
+          4
+        ],
+        "frames": [
+          {
+            "texture": "atlas-0.png",
+            "region": [
+              1672,
+              741,
+              249,
+              360
+            ],
+            "offset": [
+              308,
+              209
+            ]
+          },
+          {
+            "texture": "atlas-0.png",
+            "region": [
+              255,
+              1106,
+              252,
+              359
+            ],
+            "offset": [
+              283,
+              210
+            ]
+          },
+          {
+            "texture": "atlas-0.png",
+            "region": [
+              511,
+              1106,
+              388,
+              359
+            ],
+            "offset": [
+              233,
+              210
+            ]
+          },
+          {
+            "texture": "atlas-0.png",
+            "region": [
+              1570,
+              1106,
+              366,
+              357
+            ],
+            "offset": [
+              269,
+              211
+            ]
+          },
+          {
+            "texture": "atlas-0.png",
+            "region": [
+              2,
+              1470,
+              240,
+              357
+            ],
+            "offset": [
+              298,
+              211
+            ]
+          },
+          {
+            "texture": "atlas-0.png",
+            "region": [
+              246,
+              1470,
+              250,
+              357
+            ],
+            "offset": [
+              301,
+              211
+            ]
+          }
+        ],
+        "segment_sync": false,
+        "anchor_mode": "feet",
+        "timeline": []
+      },
+      "source_bounds": [
+        [
+          308,
+          209,
+          557,
+          569
+        ],
+        [
+          283,
+          210,
+          535,
+          569
+        ],
+        [
+          233,
+          210,
+          621,
+          569
+        ],
+        [
+          269,
+          211,
+          635,
+          568
+        ],
+        [
+          298,
+          211,
+          538,
+          568
+        ],
+        [
+          301,
+          211,
+          551,
+          568
+        ]
+      ],
+      "registration_profile": "idle-head-ruler-v7",
+      "facial_acting": "exertion"
+    }
+  },
+  {
+    "id": "nezuko-crouch_light-model-v2",
+    "group": "model-refine",
+    "out": "output/imagegen/awakening-v7/raw/nezuko-crouch_light-model-v2.png",
+    "prompt": "output/imagegen/awakening-v7/prompts/nezuko-crouch_light-model-v2.txt",
+    "references": [
+      "output/imagegen/awakening-v7/references/approved-game-idle.png"
+    ],
+    "size": "1536x1024",
+    "model": "gpt-image-2",
+    "metadata": {
+      "character": "nezuko",
+      "clip": "crouch_light",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "cell": [
+        512,
+        512
+      ],
+      "original_clip": {
+        "loop": false,
+        "fps": 12,
+        "phase_breaks": [
+          2,
+          4
+        ],
+        "frames": [
+          {
+            "texture": "atlas-6.png",
+            "region": [
+              1160,
+              1698,
+              258,
+              259
+            ],
+            "offset": [
+              308,
+              310
+            ]
+          },
+          {
+            "texture": "atlas-7.png",
+            "region": [
+              1172,
+              263,
+              310,
+              251
+            ],
+            "offset": [
+              289,
+              318
+            ]
+          },
+          {
+            "texture": "atlas-7.png",
+            "region": [
+              356,
+              521,
+              354,
+              250
+            ],
+            "offset": [
+              258,
+              319
+            ]
+          },
+          {
+            "texture": "atlas-7.png",
+            "region": [
+              283,
+              263,
+              353,
+              252
+            ],
+            "offset": [
+              298,
+              317
+            ]
+          },
+          {
+            "texture": "atlas-7.png",
+            "region": [
+              1342,
+              521,
+              267,
+              248
+            ],
+            "offset": [
+              294,
+              320
+            ]
+          },
+          {
+            "texture": "atlas-7.png",
+            "region": [
+              1486,
+              263,
+              258,
+              251
+            ],
+            "offset": [
+              288,
+              318
+            ]
+          }
+        ],
+        "segment_sync": false,
+        "anchor_mode": "feet",
+        "timeline": []
+      },
+      "source_bounds": [
+        [
+          308,
+          310,
+          566,
+          569
+        ],
+        [
+          289,
+          318,
+          599,
+          569
+        ],
+        [
+          258,
+          319,
+          612,
+          569
+        ],
+        [
+          298,
+          317,
+          651,
+          569
+        ],
+        [
+          294,
+          320,
+          561,
+          568
+        ],
+        [
+          288,
+          318,
+          546,
+          569
+        ]
+      ],
+      "registration_profile": "idle-head-ruler-v7",
+      "facial_acting": "exertion"
+    }
+  },
+  {
+    "id": "nezuko-crouch_heavy-model-v2",
+    "group": "model-refine",
+    "out": "output/imagegen/awakening-v7/raw/nezuko-crouch_heavy-model-v2.png",
+    "prompt": "output/imagegen/awakening-v7/prompts/nezuko-crouch_heavy-model-v2.txt",
+    "references": [
+      "output/imagegen/awakening-v7/references/approved-game-idle.png"
+    ],
+    "size": "1536x1024",
+    "model": "gpt-image-2",
+    "metadata": {
+      "character": "nezuko",
+      "clip": "crouch_heavy",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "cell": [
+        512,
+        512
+      ],
+      "original_clip": {
+        "loop": false,
+        "fps": 12,
+        "phase_breaks": [
+          2,
+          4
+        ],
+        "frames": [
+          {
+            "texture": "atlas-7.png",
+            "region": [
+              598,
+              2,
+              268,
+              256
+            ],
+            "offset": [
+              319,
+              313
+            ]
+          },
+          {
+            "texture": "atlas-7.png",
+            "region": [
+              870,
+              2,
+              307,
+              255
+            ],
+            "offset": [
+              293,
+              314
+            ]
+          },
+          {
+            "texture": "atlas-4.png",
+            "region": [
+              622,
+              1308,
+              307,
+              318
+            ],
+            "offset": [
+              279,
+              251
+            ]
+          },
+          {
+            "texture": "atlas-4.png",
+            "region": [
+              967,
+              1631,
+              300,
+              316
+            ],
+            "offset": [
+              311,
+              252
+            ]
+          },
+          {
+            "texture": "atlas-6.png",
+            "region": [
+              1531,
+              1154,
+              292,
+              266
+            ],
+            "offset": [
+              299,
+              303
+            ]
+          },
+          {
+            "texture": "atlas-6.png",
+            "region": [
+              2,
+              1428,
+              294,
+              266
+            ],
+            "offset": [
+              292,
+              303
+            ]
+          }
+        ],
+        "segment_sync": false,
+        "anchor_mode": "feet",
+        "timeline": []
+      },
+      "source_bounds": [
+        [
+          319,
+          313,
+          587,
+          569
+        ],
+        [
+          293,
+          314,
+          600,
+          569
+        ],
+        [
+          279,
+          251,
+          586,
+          569
+        ],
+        [
+          311,
+          252,
+          611,
+          568
+        ],
+        [
+          299,
+          303,
+          591,
+          569
+        ],
+        [
+          292,
+          303,
+          586,
+          569
+        ]
+      ],
+      "registration_profile": "idle-head-ruler-v7",
+      "facial_acting": "exertion"
+    }
+  },
+  {
+    "id": "nezuko-body_crouch_light-model-v2",
+    "group": "model-refine",
+    "out": "output/imagegen/awakening-v7/raw/nezuko-body_crouch_light-model-v2.png",
+    "prompt": "output/imagegen/awakening-v7/prompts/nezuko-body_crouch_light-model-v2.txt",
+    "references": [
+      "output/imagegen/awakening-v7/references/approved-game-idle.png"
+    ],
+    "size": "1536x1024",
+    "model": "gpt-image-2",
+    "metadata": {
+      "character": "nezuko",
+      "clip": "body_crouch_light",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "cell": [
+        512,
+        512
+      ],
+      "original_clip": {
+        "loop": false,
+        "fps": 12,
+        "phase_breaks": [
+          2,
+          4
+        ],
+        "frames": [
+          {
+            "texture": "atlas-6.png",
+            "region": [
+              1422,
+              1698,
+              288,
+              259
+            ],
+            "offset": [
+              296,
+              309
+            ]
+          },
+          {
+            "texture": "atlas-7.png",
+            "region": [
+              2,
+              1274,
+              267,
+              231
+            ],
+            "offset": [
+              286,
+              338
+            ]
+          },
+          {
+            "texture": "atlas-7.png",
+            "region": [
+              1389,
+              1509,
+              369,
+              219
+            ],
+            "offset": [
+              240,
+              350
+            ]
+          },
+          {
+            "texture": "atlas-7.png",
+            "region": [
+              1027,
+              776,
+              302,
+              246
+            ],
+            "offset": [
+              292,
+              322
+            ]
+          },
+          {
+            "texture": "atlas-7.png",
+            "region": [
+              373,
+              776,
+              274,
+              247
+            ],
+            "offset": [
+              297,
+              322
+            ]
+          },
+          {
+            "texture": "atlas-7.png",
+            "region": [
+              1181,
+              2,
+              288,
+              255
+            ],
+            "offset": [
+              289,
+              313
+            ]
+          }
+        ],
+        "segment_sync": false,
+        "anchor_mode": "feet",
+        "timeline": []
+      },
+      "source_bounds": [
+        [
+          296,
+          309,
+          584,
+          568
+        ],
+        [
+          286,
+          338,
+          553,
+          569
+        ],
+        [
+          240,
+          350,
+          609,
+          569
+        ],
+        [
+          292,
+          322,
+          594,
+          568
+        ],
+        [
+          297,
+          322,
+          571,
+          569
+        ],
+        [
+          289,
+          313,
+          577,
+          568
+        ]
+      ],
+      "registration_profile": "idle-head-ruler-v7",
+      "facial_acting": "exertion"
+    }
+  },
+  {
+    "id": "nezuko-body_crouch_heavy-model-v2",
+    "group": "model-refine",
+    "out": "output/imagegen/awakening-v7/raw/nezuko-body_crouch_heavy-model-v2.png",
+    "prompt": "output/imagegen/awakening-v7/prompts/nezuko-body_crouch_heavy-model-v2.txt",
+    "references": [
+      "output/imagegen/awakening-v7/references/approved-game-idle.png"
+    ],
+    "size": "1536x1024",
+    "model": "gpt-image-2",
+    "metadata": {
+      "character": "nezuko",
+      "clip": "body_crouch_heavy",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "cell": [
+        512,
+        512
+      ],
+      "original_clip": {
+        "loop": false,
+        "fps": 12,
+        "phase_breaks": [
+          2,
+          4
+        ],
+        "frames": [
+          {
+            "texture": "atlas-5.png",
+            "region": [
+              1602,
+              639,
+              269,
+              308
+            ],
+            "offset": [
+              298,
+              260
+            ]
+          },
+          {
+            "texture": "atlas-6.png",
+            "region": [
+              607,
+              1698,
+              297,
+              260
+            ],
+            "offset": [
+              277,
+              309
+            ]
+          },
+          {
+            "texture": "atlas-7.png",
+            "region": [
+              1178,
+              1739,
+              352,
+              214
+            ],
+            "offset": [
+              247,
+              355
+            ]
+          },
+          {
+            "texture": "atlas-7.png",
+            "region": [
+              842,
+              1028,
+              356,
+              239
+            ],
+            "offset": [
+              289,
+              330
+            ]
+          },
+          {
+            "texture": "atlas-7.png",
+            "region": [
+              640,
+              263,
+              259,
+              252
+            ],
+            "offset": [
+              329,
+              317
+            ]
+          },
+          {
+            "texture": "atlas-5.png",
+            "region": [
+              868,
+              1263,
+              267,
+              301
+            ],
+            "offset": [
+              307,
+              267
+            ]
+          }
+        ],
+        "segment_sync": false,
+        "anchor_mode": "feet",
+        "timeline": []
+      },
+      "source_bounds": [
+        [
+          298,
+          260,
+          567,
+          568
+        ],
+        [
+          277,
+          309,
+          574,
+          569
+        ],
+        [
+          247,
+          355,
+          599,
+          569
+        ],
+        [
+          289,
+          330,
+          645,
+          569
+        ],
+        [
+          329,
+          317,
+          588,
+          569
+        ],
+        [
+          307,
+          267,
+          574,
+          568
+        ]
+      ],
+      "registration_profile": "idle-head-ruler-v7",
+      "facial_acting": "exertion"
+    }
+  },
+  {
+    "id": "nezuko-guard-model-v2",
+    "group": "model-refine",
+    "out": "output/imagegen/awakening-v7/raw/nezuko-guard-model-v2.png",
+    "prompt": "output/imagegen/awakening-v7/prompts/nezuko-guard-model-v2.txt",
+    "references": [
+      "output/imagegen/awakening-v7/references/approved-game-idle.png"
+    ],
+    "size": "1536x1024",
+    "model": "gpt-image-2",
+    "metadata": {
+      "character": "nezuko",
+      "clip": "guard",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "cell": [
+        512,
+        512
+      ],
+      "original_clip": {
+        "loop": false,
+        "fps": 12,
+        "phase_breaks": [
+          2,
+          4
+        ],
+        "frames": [
+          {
+            "texture": "atlas-1.png",
+            "region": [
+              763,
+              1074,
+              241,
+              348
+            ],
+            "offset": [
+              335,
+              221
+            ]
+          },
+          {
+            "texture": "atlas-1.png",
+            "region": [
+              1008,
+              1074,
+              261,
+              348
+            ],
+            "offset": [
+              295,
+              221
+            ]
+          },
+          {
+            "texture": "atlas-2.png",
+            "region": [
+              533,
+              2,
+              250,
+              344
+            ],
+            "offset": [
+              286,
+              225
+            ]
+          },
+          {
+            "texture": "atlas-3.png",
+            "region": [
+              2,
+              342,
+              273,
+              333
+            ],
+            "offset": [
+              326,
+              236
+            ]
+          },
+          {
+            "texture": "atlas-2.png",
+            "region": [
+              1709,
+              699,
+              248,
+              339
+            ],
+            "offset": [
+              309,
+              229
+            ]
+          },
+          {
+            "texture": "atlas-2.png",
+            "region": [
+              440,
+              699,
+              249,
+              341
+            ],
+            "offset": [
+              285,
+              228
+            ]
+          }
+        ],
+        "segment_sync": false,
+        "anchor_mode": "feet",
+        "timeline": []
+      },
+      "source_bounds": [
+        [
+          335,
+          221,
+          576,
+          569
+        ],
+        [
+          295,
+          221,
+          556,
+          569
+        ],
+        [
+          286,
+          225,
+          536,
+          569
+        ],
+        [
+          326,
+          236,
+          599,
+          569
+        ],
+        [
+          309,
+          229,
+          557,
+          568
+        ],
+        [
+          285,
+          228,
+          534,
+          569
+        ]
+      ],
+      "registration_profile": "idle-head-ruler-v7",
+      "facial_acting": "contextual"
+    }
+  },
+  {
+    "id": "nezuko-guard_low-model-v2",
+    "group": "model-refine",
+    "out": "output/imagegen/awakening-v7/raw/nezuko-guard_low-model-v2.png",
+    "prompt": "output/imagegen/awakening-v7/prompts/nezuko-guard_low-model-v2.txt",
+    "references": [
+      "output/imagegen/awakening-v7/references/approved-game-idle.png"
+    ],
+    "size": "1536x1024",
+    "model": "gpt-image-2",
+    "metadata": {
+      "character": "nezuko",
+      "clip": "guard_low",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "cell": [
+        512,
+        512
+      ],
+      "original_clip": {
+        "loop": false,
+        "fps": 12,
+        "phase_breaks": [
+          2,
+          4
+        ],
+        "frames": [
+          {
+            "texture": "atlas-7.png",
+            "region": [
+              334,
+              1739,
+              232,
+              218
+            ],
+            "offset": [
+              314,
+              350
+            ]
+          },
+          {
+            "texture": "atlas-7.png",
+            "region": [
+              946,
+              1739,
+              228,
+              216
+            ],
+            "offset": [
+              309,
+              353
+            ]
+          },
+          {
+            "texture": "atlas-8.png",
+            "region": [
+              240,
+              2,
+              225,
+              205
+            ],
+            "offset": [
+              300,
+              363
+            ]
+          },
+          {
+            "texture": "atlas-8.png",
+            "region": [
+              2,
+              2,
+              234,
+              209
+            ],
+            "offset": [
+              311,
+              359
+            ]
+          },
+          {
+            "texture": "atlas-8.png",
+            "region": [
+              699,
+              2,
+              222,
+              191
+            ],
+            "offset": [
+              308,
+              378
+            ]
+          },
+          {
+            "texture": "atlas-8.png",
+            "region": [
+              469,
+              2,
+              226,
+              193
+            ],
+            "offset": [
+              306,
+              375
+            ]
+          }
+        ],
+        "segment_sync": false,
+        "anchor_mode": "feet",
+        "timeline": []
+      },
+      "source_bounds": [
+        [
+          314,
+          350,
+          546,
+          568
+        ],
+        [
+          309,
+          353,
+          537,
+          569
+        ],
+        [
+          300,
+          363,
+          525,
+          568
+        ],
+        [
+          311,
+          359,
+          545,
+          568
+        ],
+        [
+          308,
+          378,
+          530,
+          569
+        ],
+        [
+          306,
+          375,
+          532,
+          568
+        ]
+      ],
+      "registration_profile": "idle-head-ruler-v7",
+      "facial_acting": "contextual"
+    }
+  },
+  {
+    "id": "nezuko-hit-model-v2",
+    "group": "model-refine",
+    "out": "output/imagegen/awakening-v7/raw/nezuko-hit-model-v2.png",
+    "prompt": "output/imagegen/awakening-v7/prompts/nezuko-hit-model-v2.txt",
+    "references": [
+      "output/imagegen/awakening-v7/references/approved-game-idle.png"
+    ],
+    "size": "1536x1024",
+    "model": "gpt-image-2",
+    "metadata": {
+      "character": "nezuko",
+      "clip": "hit",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "cell": [
+        512,
+        512
+      ],
+      "original_clip": {
+        "loop": false,
+        "fps": 12,
+        "phase_breaks": [
+          2,
+          4
+        ],
+        "frames": [
+          {
+            "texture": "atlas-0.png",
+            "region": [
+              1739,
+              2,
+              189,
+              362
+            ],
+            "offset": [
+              357,
+              206
+            ]
+          },
+          {
+            "texture": "atlas-0.png",
+            "region": [
+              842,
+              375,
+              311,
+              361
+            ],
+            "offset": [
+              280,
+              208
+            ]
+          },
+          {
+            "texture": "atlas-3.png",
+            "region": [
+              870,
+              1350,
+              311,
+              328
+            ],
+            "offset": [
+              284,
+              241
+            ]
+          },
+          {
+            "texture": "atlas-4.png",
+            "region": [
+              2,
+              331,
+              299,
+              323
+            ],
+            "offset": [
+              327,
+              246
+            ]
+          },
+          {
+            "texture": "atlas-3.png",
+            "region": [
+              833,
+              1015,
+              282,
+              330
+            ],
+            "offset": [
+              303,
+              239
+            ]
+          },
+          {
+            "texture": "atlas-1.png",
+            "region": [
+              465,
+              361,
+              187,
+              353
+            ],
+            "offset": [
+              320,
+              215
+            ]
+          }
+        ],
+        "segment_sync": false,
+        "anchor_mode": "feet",
+        "timeline": []
+      },
+      "source_bounds": [
+        [
+          357,
+          206,
+          546,
+          568
+        ],
+        [
+          280,
+          208,
+          591,
+          569
+        ],
+        [
+          284,
+          241,
+          595,
+          569
+        ],
+        [
+          327,
+          246,
+          626,
+          569
+        ],
+        [
+          303,
+          239,
+          585,
+          569
+        ],
+        [
+          320,
+          215,
+          507,
+          568
+        ]
+      ],
+      "registration_profile": "idle-head-ruler-v7",
+      "facial_acting": "contextual"
+    }
+  },
+  {
+    "id": "nezuko-throw-model-v2",
+    "group": "model-refine",
+    "out": "output/imagegen/awakening-v7/raw/nezuko-throw-model-v2.png",
+    "prompt": "output/imagegen/awakening-v7/prompts/nezuko-throw-model-v2.txt",
+    "references": [
+      "output/imagegen/awakening-v7/references/approved-game-idle.png"
+    ],
+    "size": "1536x1024",
+    "model": "gpt-image-2",
+    "metadata": {
+      "character": "nezuko",
+      "clip": "throw",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "cell": [
+        512,
+        512
+      ],
+      "original_clip": {
+        "loop": false,
+        "fps": 12,
+        "phase_breaks": [
+          2,
+          4
+        ],
+        "frames": [
+          {
+            "texture": "atlas-1.png",
+            "region": [
+              1227,
+              1427,
+              213,
+              345
+            ],
+            "offset": [
+              314,
+              223
+            ]
+          },
+          {
+            "texture": "atlas-2.png",
+            "region": [
+              517,
+              351,
+              339,
+              343
+            ],
+            "offset": [
+              294,
+              226
+            ]
+          },
+          {
+            "texture": "atlas-3.png",
+            "region": [
+              876,
+              342,
+              334,
+              332
+            ],
+            "offset": [
+              289,
+              237
+            ]
+          },
+          {
+            "texture": "atlas-2.png",
+            "region": [
+              787,
+              2,
+              323,
+              344
+            ],
+            "offset": [
+              297,
+              225
+            ]
+          },
+          {
+            "texture": "atlas-2.png",
+            "region": [
+              1114,
+              2,
+              223,
+              344
+            ],
+            "offset": [
+              315,
+              225
+            ]
+          },
+          {
+            "texture": "atlas-1.png",
+            "region": [
+              1273,
+              1074,
+              215,
+              348
+            ],
+            "offset": [
+              309,
+              220
+            ]
+          }
+        ],
+        "segment_sync": false,
+        "anchor_mode": "feet",
+        "timeline": []
+      },
+      "source_bounds": [
+        [
+          314,
+          223,
+          527,
+          568
+        ],
+        [
+          294,
+          226,
+          633,
+          569
+        ],
+        [
+          289,
+          237,
+          623,
+          569
+        ],
+        [
+          297,
+          225,
+          620,
+          569
+        ],
+        [
+          315,
+          225,
+          538,
+          569
+        ],
+        [
+          309,
+          220,
+          524,
+          568
+        ]
+      ],
+      "registration_profile": "idle-head-ruler-v7",
+      "facial_acting": "exertion"
+    }
+  }
+]

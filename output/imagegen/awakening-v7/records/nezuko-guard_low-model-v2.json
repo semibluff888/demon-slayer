@@ -1,0 +1,22 @@
+{
+  "id": "nezuko-guard_low-model-v2",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "1536x1024",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/awakening-v7/prompts/nezuko-guard_low-model-v2.txt",
+  "output": "output/imagegen/awakening-v7/raw/nezuko-guard_low-model-v2.png",
+  "references": [
+    "output/imagegen/awakening-v7/references/approved-game-idle.png"
+  ],
+  "started_utc": "2026-10-08T13:36:24.6135704Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-08T13:37:12.5651008Z",
+  "sha256": "7d92ff541e8d0e516138820005a75e124617d88ab079c778e94c09afff9df5c9",
+  "reviewed_at": "2026-10-08T13:59:48.779121+00:00",
+  "review_basis": "Native source sheets, shared pixel ruler and actual Godot captures; preserve approved idle exactly."
+}

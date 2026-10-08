@@ -1,10 +1,11 @@
 """Deterministic keying, pose registration, and immutable awakening atlas packing."""
-import argparse,copy,hashlib,json,math
+import argparse,copy,hashlib,json,math,time
 from pathlib import Path
 import cv2
 import numpy as np
 from PIL import Image,ImageDraw,ImageFont
 from build_roster_art import matte,components
+from awakening_anatomy import calibrated_frames,register
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'output/imagegen/awakening-v1'
 def save(path,data):
@@ -30,7 +31,7 @@ def selected_jobs():
   job.update(selected.get(job['id'],{}))
  return jobs
 
-def clean(cell,despill=False):
+def clean(cell,despill=False,return_bounds=False):
  native=np.asarray(cell.convert('RGBA'))
  image=cell.convert('RGBA')
  data=np.array(image)
@@ -55,7 +56,19 @@ def clean(cell,despill=False):
  image=Image.fromarray(data,'RGBA')
  bounds=image.getbbox()
  if not bounds or (bounds[2]-bounds[0])<15 or (bounds[3]-bounds[1])<15:raise ValueError('Incomplete sprite')
- return image.crop(bounds)
+ return (image.crop(bounds),bounds) if return_bounds else image.crop(bounds)
+def save_page(page,path):
+ # Atomic replacement keeps Godot from reading a partially written PNG on Windows.
+ temporary=path.with_name(path.stem+'.building.png')
+ page.save(temporary)
+ for attempt in range(5):
+  try:
+   temporary.replace(path)
+   break
+  except PermissionError:
+   if attempt==4:raise
+   time.sleep(.4*(attempt+1))
+
 def pack(directory,manifest,clips):
  result={k:copy.deepcopy(v) for k,v in manifest.items() if k!='clips'}
  result['revision']=OUT.name;result['clips']={}
@@ -70,18 +83,23 @@ def pack(directory,manifest,clips):
  for clip,index,sprite,offset in sprites:
   if x+sprite.width+2>2048:x=2;y+=row_h+4;row_h=0
   if y+sprite.height+2>2048:
-   page.save(directory/f'atlas-{page_index}.png');page_index+=1;page=Image.new('RGBA',(2048,2048));x=y=2;row_h=0
+   save_page(page,directory/f'atlas-{page_index}.png');page_index+=1;page=Image.new('RGBA',(2048,2048));x=y=2;row_h=0
   page.alpha_composite(sprite,(x,y))
   result['clips'][clip]['frames'][index]=dict(texture=f'atlas-{page_index}.png',region=[x,y,sprite.width,sprite.height],offset=list(offset))
   x+=sprite.width+4;row_h=max(row_h,sprite.height)
- page.save(directory/f'atlas-{page_index}.png')
+ save_page(page,directory/f'atlas-{page_index}.png')
  save(directory/'atlas.json',result)
  used={entry['texture'] for clip in result['clips'].values() for entry in clip['frames']}
  for stale in directory.glob('atlas-*.png'):
   if stale.name not in used:
-   stale.unlink()
-   sidecar=stale.with_name(stale.name+'.import')
-   if sidecar.exists():sidecar.unlink()
+   for unused in [stale,stale.with_name(stale.name+'.import')]:
+    for attempt in range(5):
+     try:
+      if unused.exists():unused.unlink()
+      break
+     except PermissionError:
+      if attempt==4:raise
+      time.sleep(.4*(attempt+1))
  return result
 def source_sprite(directory,entry,cache):
  if entry['texture'] not in cache:cache[entry['texture']]=Image.open(directory/entry['texture']).convert('RGBA')
@@ -124,17 +142,31 @@ def main():
    frames=[source_sprite(directory,e,cache) for e in meta['frames']]
    if cid=='akaza':frames=[(enhance_akaza(image),offset) for image,offset in frames]
    clips[clip]=dict(meta=meta,frames=frames)
+  baseline=None;baseline_cache={}
+  if (OUT/'baseline/atlas.json').exists():baseline=json.loads((OUT/'baseline/atlas.json').read_text(encoding='utf-8-sig'))
   generated=0
   for job in jobs:
    if job['metadata']['character']!=cid or not (ROOT/job['out']).exists():continue
    record_path=OUT/'records'/(job['id']+'.json')
    record=json.loads(record_path.read_text(encoding='utf-8-sig'))
-   if record.get('status')!='generated':raise ValueError('Inspect uncertain request '+job['id'])
+   if record.get('status') not in ['generated','assembled']:raise ValueError('Inspect uncertain request '+job['id'])
    meta=job['metadata'];clip=meta['clip'];cols=meta['columns'];rows=meta['rows'];cw,ch=meta['cell']
+   profile=meta.get('registration_profile','legacy')
+   if profile=='preserve-v6-idle':
+    old_meta=baseline['clips'][clip]
+    clips[clip]=dict(meta=old_meta,frames=[source_sprite(OUT/'baseline',e,baseline_cache) for e in old_meta['frames']])
+    prior=json.loads((ROOT/'output/imagegen/awakening-v6/imports'/('nezuko-'+clip+'.json')).read_text(encoding='utf-8'))
+    prior['registration_profile']='preserve-v6-idle';save(OUT/'imports'/(job['base_id']+'.json'),prior);generated+=1
+    continue
+   anatomical=profile=='idle-head-ruler-v7'
+   if anatomical:
+    if a.partial and (not (OUT/'anatomy-calibration.json').exists() or job['base_id'] not in json.loads((OUT/'anatomy-calibration.json').read_text(encoding='utf-8'))['clips']):continue
+    target_head,anatomy_model=calibrated_frames(ROOT,OUT,job)
    raw=Image.open(ROOT/job['out']).convert('RGBA')
    if job.get('source_rotation'):raw=raw.rotate(job['source_rotation'])
    native=np.asarray(raw)
-   keyed=raw if np.mean(native[:,:,3]<8)>.30 else (cyan_matte(raw) if OUT.name=='awakening-v2' else matte(raw,(0,255,255)))
+   # Preserve the historical v1 keying; later revisions use costume-safe cyan removal.
+   keyed=cyan_matte(raw) if anatomical else (raw if np.mean(native[:,:,3]<8)>.30 else (cyan_matte(raw) if OUT.name!='awakening-v1' else matte(raw,(0,255,255))))
    # Segment complete bodies before ordering cells: airborne poses can cross a grid boundary.
    parts=components(keyed,meta['count'],cols)
    new=[];registration=[]
@@ -142,22 +174,28 @@ def main():
    if clip=='awakening_start':original=[original[0]]*meta['count']
    for index in range(meta['count']):
     source_crop,sprite=parts[index]
-    sprite=clean(sprite,OUT.name=='awakening-v2')
+    sprite=clean(sprite,OUT.name!='awakening-v1')
     bounds=meta['source_bounds'][index];w=bounds[2]-bounds[0];h=bounds[3]-bounds[1]
-    # Uniform anatomical calibration, never independent width/height stretching.
-    horn_allowance=1.035 if cid=='nezuko' and h>w and OUT.name=='awakening-v1' else 1.0
-    if OUT.name=='awakening-v2' and clip in ['idle','walk','walk_back','awakening_start','guard']:
-     scale=h/sprite.height
+    details={}
+    if anatomical:
+     old_sprite,old_offset=source_sprite(OUT/'baseline',baseline['clips'][clip]['frames'][index],baseline_cache)
+     scale,size,offset,details=register(sprite,index,target_head,anatomy_model,old_sprite,old_offset,bounds)
+     sprite=sprite.resize(size,Image.Resampling.LANCZOS)
     else:
-     scale=max(w,h)*horn_allowance/max(sprite.size)
-    center_x=(bounds[0]+bounds[2])/2
-    available_width=2*min(center_x,manifest['canvas_size'][0]-center_x)
-    scale=min(scale,available_width/sprite.width,bounds[3]/sprite.height)
-    size=(max(1,round(sprite.width*scale)),max(1,round(sprite.height*scale)))
-    sprite=sprite.resize(size,Image.Resampling.LANCZOS)
-    offset=(round((bounds[0]+bounds[2]-size[0])/2),bounds[3]-size[1])
+     # Uniform anatomical calibration, never independent width/height stretching.
+     horn_allowance=1.035 if cid=='nezuko' and h>w and OUT.name=='awakening-v1' else 1.0
+     if OUT.name!='awakening-v1' and clip in ['idle','walk','walk_back','awakening_start','guard']:
+      scale=h/sprite.height
+     else:
+      scale=max(w,h)*horn_allowance/max(sprite.size)
+     center_x=(bounds[0]+bounds[2])/2
+     available_width=2*min(center_x,manifest['canvas_size'][0]-center_x)
+     scale=min(scale,available_width/sprite.width,bounds[3]/sprite.height)
+     size=(max(1,round(sprite.width*scale)),max(1,round(sprite.height*scale)))
+     sprite=sprite.resize(size,Image.Resampling.LANCZOS)
+     offset=(round((bounds[0]+bounds[2]-size[0])/2),bounds[3]-size[1])
     if min(offset)<0 or offset[0]+size[0]>manifest['canvas_size'][0] or offset[1]+size[1]>manifest['canvas_size'][1]:raise ValueError('Pose overflow '+job['id']+':'+str(index))
-    new.append((sprite,offset));registration.append(dict(scale=scale,offset=offset,size=size,source_bounds=bounds,source_crop=list(source_crop)))
+    new.append((sprite,offset));registration.append(dict(scale=scale,offset=offset,size=size,source_bounds=bounds,source_crop=list(source_crop),**details))
    new_meta=copy.deepcopy(meta['original_clip'])
    if clip=='awakening_start':new_meta.update(loop=False,fps=20,phase_breaks=[2,4])
    clips[clip]=dict(meta=new_meta,frames=new)

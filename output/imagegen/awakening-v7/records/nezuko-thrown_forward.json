@@ -1,0 +1,71 @@
+{
+  "id": "nezuko-thrown_forward",
+  "status": "assembled",
+  "route": "Lossless vertical assembly of generated six-frame source sheets",
+  "output": "output/imagegen/awakening-v7/raw/nezuko-thrown_forward-assembled.png",
+  "actual_size": [
+    1536,
+    2048
+  ],
+  "sources": [
+    {
+      "id": "nezuko-thrown_forward-identity-part0",
+      "out": "output/imagegen/awakening-v7/raw/nezuko-thrown_forward-identity-part0.png",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "columns": 3,
+      "rows": 2,
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-thrown_forward-identity-part0.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png"
+      ],
+      "source_sha256": "526766858008bfa68ccf30bdf1ca7f44de6739a8732ebe2b3d308591f14a11a7",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "assembly_offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "nezuko-thrown_forward-identity-part1",
+      "out": "output/imagegen/awakening-v7/raw/nezuko-thrown_forward-identity-part1.png",
+      "indices": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "columns": 3,
+      "rows": 2,
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-thrown_forward-identity-part1.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png"
+      ],
+      "source_sha256": "5a4abead443de2f6cb8c4829b6836da460d47637e872c34a9d595b88786a97f6",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "assembly_offset": [
+        0,
+        1024
+      ]
+    }
+  ],
+  "frame_overrides": [],
+  "sha256": "39a4efe1542964e9af143cf22c079fc0c8ca55ab6e76bfcec583d64ee8ea8ca7",
+  "accepted": true,
+  "reviewed_at": "2026-10-08T13:59:48.770122+00:00",
+  "review_basis": "Native source sheets, shared pixel ruler and actual Godot captures; preserve approved idle exactly."
+}

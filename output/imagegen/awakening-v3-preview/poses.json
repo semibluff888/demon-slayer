@@ -1,0 +1,26 @@
+[
+  {
+    "id": "nezuko-six-poses-v3",
+    "group": "poses",
+    "out": "output/imagegen/awakening-v3-preview/raw/nezuko-six-poses-v3.png",
+    "prompt": "output/imagegen/awakening-v3-preview/prompts/nezuko-six-poses-v3.txt",
+    "references": [
+      "output/imagegen/awakening-v3-preview/raw/nezuko-model-v3.png",
+      "output/imagegen/awakening-v3-preview/references/nezuko-six-pose-reference.png"
+    ],
+    "size": "3072x2048",
+    "model": "gpt-image-2",
+    "metadata": {
+      "character": "nezuko",
+      "purpose": "approval preview only",
+      "pose_order": [
+        "idle",
+        "guard_low",
+        "body_stand_heavy",
+        "jump",
+        "hit",
+        "awakening_start"
+      ]
+    }
+  }
+]

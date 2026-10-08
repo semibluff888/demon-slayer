@@ -1,0 +1,70 @@
+{
+  "id": "nezuko-blood_kick",
+  "status": "assembled",
+  "route": "Lossless vertical assembly of generated six-frame source sheets",
+  "output": "output/imagegen/awakening-v7/raw/nezuko-blood_kick-assembled.png",
+  "actual_size": [
+    2172,
+    1748
+  ],
+  "sources": [
+    {
+      "id": "nezuko-blood_kick-part0",
+      "out": "output/imagegen/awakening-v7/raw/nezuko-blood_kick-part0.png",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "columns": 3,
+      "rows": 2,
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-blood_kick-part0.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png",
+        "output/imagegen/awakening-v7/references/nezuko-blood_kick-part0.png"
+      ],
+      "source_sha256": "a56bc02897bbfff1c673638f430c3b55a2baecbd934cbbd1a5e125eb5087ab2e",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "assembly_offset": [
+        318,
+        0
+      ]
+    },
+    {
+      "id": "nezuko-blood_kick-part1",
+      "out": "output/imagegen/awakening-v7/raw/nezuko-blood_kick-part1.png",
+      "indices": [
+        6,
+        7,
+        8
+      ],
+      "columns": 3,
+      "rows": 1,
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-blood_kick-part1.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png",
+        "output/imagegen/awakening-v7/references/nezuko-blood_kick-part1.png"
+      ],
+      "source_sha256": "e0539e8d348423beca5712d8dbd52d03305ea817f410a761316f10d685b214a1",
+      "actual_size": [
+        2172,
+        724
+      ],
+      "assembly_offset": [
+        0,
+        1024
+      ]
+    }
+  ],
+  "frame_overrides": [],
+  "sha256": "a0def84de39f9a7b8358123c6aabcee35d8084403431d06004103e5fe302ce74",
+  "accepted": true,
+  "reviewed_at": "2026-10-08T13:59:48.741123+00:00",
+  "review_basis": "Native source sheets, shared pixel ruler and actual Godot captures; preserve approved idle exactly."
+}

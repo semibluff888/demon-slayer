@@ -1,0 +1,32 @@
+[
+  {
+    "id": "nezuko-model-v3",
+    "group": "concept",
+    "out": "output/imagegen/awakening-v3-preview/raw/nezuko-model-v3.png",
+    "prompt": "output/imagegen/awakening-v3-preview/prompts/nezuko-model-v3.txt",
+    "references": [
+      "output/imagegen/awakening-v3-preview/references/nezuko-user-reference.png"
+    ],
+    "size": "1024x1536",
+    "model": "gpt-image-2",
+    "metadata": {
+      "character": "nezuko",
+      "purpose": "approval preview only"
+    }
+  },
+  {
+    "id": "akaza-awakening-portrait-v3",
+    "group": "concept",
+    "out": "output/imagegen/awakening-v3-preview/raw/akaza-awakening-portrait-v3.png",
+    "prompt": "output/imagegen/awakening-v3-preview/prompts/akaza-awakening-portrait-v3.txt",
+    "references": [
+      "art/characters/akaza/battle-portrait.png"
+    ],
+    "size": "1024x1024",
+    "model": "gpt-image-2",
+    "metadata": {
+      "character": "akaza",
+      "purpose": "approval preview only"
+    }
+  }
+]

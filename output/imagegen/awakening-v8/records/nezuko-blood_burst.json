@@ -1,0 +1,70 @@
+{
+  "id": "nezuko-blood_burst",
+  "status": "assembled",
+  "route": "Lossless vertical assembly of generated six-frame source sheets",
+  "output": "output/imagegen/awakening-v8/raw/nezuko-blood_burst-assembled.png",
+  "actual_size": [
+    1536,
+    2048
+  ],
+  "sources": [
+    {
+      "id": "nezuko-blood_burst-part0",
+      "out": "output/imagegen/awakening-v8/raw/nezuko-blood_burst-part0.png",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "columns": 3,
+      "rows": 2,
+      "prompt": "output/imagegen/awakening-v8/prompts/nezuko-blood_burst-part0.txt",
+      "references": [
+        "output/imagegen/awakening-v8/references/approved-idle.png",
+        "output/imagegen/awakening-v8/references/approved-max.png"
+      ],
+      "source_sha256": "63f2e314483d1cb80723aa8bb998f04b14b3c94e2c3f9cee22749307744d54b5",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "assembly_offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "nezuko-blood_burst-part1",
+      "out": "output/imagegen/awakening-v8/raw/nezuko-blood_burst-part1.png",
+      "indices": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "columns": 3,
+      "rows": 2,
+      "prompt": "output/imagegen/awakening-v8/prompts/nezuko-blood_burst-part1.txt",
+      "references": [
+        "output/imagegen/awakening-v8/references/approved-idle.png",
+        "output/imagegen/awakening-v8/references/approved-max.png"
+      ],
+      "source_sha256": "13fb42a187cd61f654e619d7ba0c35a0eee597a09a1ce5a10a35257b67aeec30",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "assembly_offset": [
+        0,
+        1024
+      ]
+    }
+  ],
+  "frame_overrides": [],
+  "sha256": "7e6762fd28a469a38b6a1e722118915e3ddcb0e064e02ae3ec7dd554df1cc0ab"
+}

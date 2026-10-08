@@ -1,0 +1,20 @@
+[
+  {
+    "id": "nezuko-idle-v5",
+    "group": "concept",
+    "out": "output/imagegen/awakening-v5-preview/raw/nezuko-idle-v5.png",
+    "prompt": "output/imagegen/awakening-v5-preview/prompts/nezuko-idle-v5.txt",
+    "references": [
+      "output/imagegen/awakening-v4-preview/raw/nezuko-idle-v4.png",
+      "output/imagegen/awakening-v3-preview/references/nezuko-user-reference.png"
+    ],
+    "size": "1024x1536",
+    "model": "gpt-image-2",
+    "metadata": {
+      "character": "nezuko",
+      "purpose": "approval preview only; no runtime integration",
+      "edit_scope": "nonsexual collarbone and shoulder cloth-tension details; chest covered",
+      "reference_roles": ["current preview as edit target", "original user upload as identity reference"]
+    }
+  }
+]

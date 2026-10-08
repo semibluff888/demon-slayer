@@ -1,0 +1,774 @@
+{
+  "reference": "references/approved-max.png",
+  "measurement_note": "Reviewed skull and waist landmarks; body stature cross-checked against approved idle and MAX at a shared pixel ruler. Hair, horn and open jaw excluded from skull measurements. No automatic costume-color roots.",
+  "clips": {
+    "nezuko-walk": {
+      "source_sha256": "1ae1afa328825ed478a7ea963d2722f4c955bbbd2ac9e70629adff27be9179e9",
+      "anchor": "ground",
+      "target_x": 449,
+      "target_head_length": 59.5,
+      "fps": 20,
+      "frames": [
+        {
+          "root": [
+            293,
+            166
+          ],
+          "head_length": 84,
+          "height": 356
+        },
+        {
+          "root": [
+            787,
+            165
+          ],
+          "head_length": 84,
+          "height": 354
+        },
+        {
+          "root": [
+            1302,
+            170
+          ],
+          "head_length": 84,
+          "height": 357
+        },
+        {
+          "root": [
+            291,
+            682
+          ],
+          "head_length": 84,
+          "height": 356
+        },
+        {
+          "root": [
+            793,
+            681
+          ],
+          "head_length": 84,
+          "height": 354
+        },
+        {
+          "root": [
+            1302,
+            684
+          ],
+          "head_length": 84,
+          "height": 357
+        }
+      ]
+    },
+    "nezuko-dash_forward": {
+      "source_sha256": "b31a5b614f145e07bee89fb89938c37bed9eae299151f4929fb86ba1412c5c0d",
+      "anchor": "ground",
+      "target_x": 449,
+      "target_head_length": 59.5,
+      "frames": [
+        {
+          "root": [
+            316,
+            236
+          ],
+          "head_length": 84
+        },
+        {
+          "root": [
+            844,
+            217
+          ],
+          "head_length": 84
+        },
+        {
+          "root": [
+            1391,
+            221
+          ],
+          "head_length": 85
+        },
+        {
+          "root": [
+            376,
+            692
+          ],
+          "head_length": 83
+        },
+        {
+          "root": [
+            890,
+            692
+          ],
+          "head_length": 84
+        },
+        {
+          "root": [
+            1360,
+            670
+          ],
+          "head_length": 84
+        }
+      ]
+    },
+    "nezuko-walk_back": {
+      "source_sha256": "fe01efbdba56c8d1f3c5b9a0ce3f0fbf1f82c9e5acdad730f203777e802d0a99",
+      "anchor": "ground",
+      "target_x": 449,
+      "target_head_length": 59.5,
+      "frames": [
+        {
+          "root": [
+            270,
+            168
+          ],
+          "head_length": 84,
+          "height": 356
+        },
+        {
+          "root": [
+            783,
+            166
+          ],
+          "head_length": 84,
+          "height": 354
+        },
+        {
+          "root": [
+            1304,
+            165
+          ],
+          "head_length": 84,
+          "height": 357
+        },
+        {
+          "root": [
+            328,
+            665
+          ],
+          "head_length": 84,
+          "height": 356
+        },
+        {
+          "root": [
+            820,
+            663
+          ],
+          "head_length": 84,
+          "height": 354
+        },
+        {
+          "root": [
+            1364,
+            666
+          ],
+          "head_length": 84,
+          "height": 357
+        }
+      ],
+      "fps": 20
+    },
+    "nezuko-dash_back": {
+      "source_sha256": "a3d99c118da316f7385df69e8daedb3a805035a8424fd20f87ded2f998631ccb",
+      "anchor": "ground",
+      "target_x": 449,
+      "target_head_length": 59.5,
+      "frames": [
+        {
+          "root": [
+            254,
+            168
+          ],
+          "head_length": 79
+        },
+        {
+          "root": [
+            795,
+            195
+          ],
+          "head_length": 81
+        },
+        {
+          "root": [
+            1347,
+            192
+          ],
+          "head_length": 82
+        },
+        {
+          "root": [
+            347,
+            676
+          ],
+          "head_length": 80
+        },
+        {
+          "root": [
+            849,
+            678
+          ],
+          "head_length": 83
+        },
+        {
+          "root": [
+            1279,
+            650
+          ],
+          "head_length": 82
+        }
+      ]
+    },
+    "nezuko-air_light": {
+      "source_sha256": "fc898e3d897b31a5a910d022ae26cfaed6e0c7556e7d7dc320ff24de2cc7ccfd",
+      "anchor": "waist",
+      "target_x": 449,
+      "target_head_length": 59.5,
+      "frames": [
+        {
+          "root": [
+            281,
+            164
+          ],
+          "head_length": 78
+        },
+        {
+          "root": [
+            731,
+            190
+          ],
+          "head_length": 78
+        },
+        {
+          "root": [
+            1267,
+            201
+          ],
+          "head_length": 82
+        },
+        {
+          "root": [
+            317,
+            664
+          ],
+          "head_length": 80
+        },
+        {
+          "root": [
+            794,
+            686
+          ],
+          "head_length": 81
+        },
+        {
+          "root": [
+            1329,
+            648
+          ],
+          "head_length": 79
+        }
+      ],
+      "target_y": 322
+    },
+    "nezuko-air_heavy": {
+      "source_sha256": "b0b50b78ed054a43733cda5854ef9c9274bf69d3e132516006cffa97b19998a6",
+      "anchor": "waist",
+      "target_x": 449,
+      "target_head_length": 59.5,
+      "frames": [
+        {
+          "root": [
+            283,
+            163
+          ],
+          "head_length": 80
+        },
+        {
+          "root": [
+            772,
+            195
+          ],
+          "head_length": 81
+        },
+        {
+          "root": [
+            1287,
+            204
+          ],
+          "head_length": 80
+        },
+        {
+          "root": [
+            283,
+            668
+          ],
+          "head_length": 81
+        },
+        {
+          "root": [
+            806,
+            674
+          ],
+          "head_length": 80
+        },
+        {
+          "root": [
+            1326,
+            648
+          ],
+          "head_length": 81
+        }
+      ],
+      "target_y": 322
+    },
+    "nezuko-body_air_light": {
+      "source_sha256": "ac73428dbb036b887057171ade3ce615ac379478a28e53f180115fa34d6acfe4",
+      "anchor": "waist",
+      "target_x": 449,
+      "target_head_length": 59.5,
+      "frames": [
+        {
+          "root": [
+            270,
+            158
+          ],
+          "head_length": 80
+        },
+        {
+          "root": [
+            754,
+            176
+          ],
+          "head_length": 81
+        },
+        {
+          "root": [
+            282,
+            652
+          ],
+          "head_length": 82,
+          "source_override": {
+            "out": "output/imagegen/awakening-v8/raw/nezuko-body_air_heavy.png",
+            "source_sha256": "4afe1e1badd4d0bf21bfd34c1084728fa3840039c2578dea563f60b760c6b602",
+            "index": 3,
+            "count": 6,
+            "columns": 3,
+            "reason": "Complete equivalent airborne kick; original generated toes touch the right source edge."
+          }
+        },
+        {
+          "root": [
+            285,
+            638
+          ],
+          "head_length": 84
+        },
+        {
+          "root": [
+            756,
+            636
+          ],
+          "head_length": 83
+        },
+        {
+          "root": [
+            1334,
+            656
+          ],
+          "head_length": 82
+        }
+      ],
+      "target_y": 322
+    },
+    "nezuko-body_air_heavy": {
+      "source_sha256": "4afe1e1badd4d0bf21bfd34c1084728fa3840039c2578dea563f60b760c6b602",
+      "anchor": "waist",
+      "target_x": 449,
+      "target_head_length": 59.5,
+      "frames": [
+        {
+          "root": [
+            299,
+            172
+          ],
+          "head_length": 82
+        },
+        {
+          "root": [
+            750,
+            164
+          ],
+          "head_length": 82
+        },
+        {
+          "root": [
+            1186,
+            178
+          ],
+          "head_length": 82
+        },
+        {
+          "root": [
+            282,
+            652
+          ],
+          "head_length": 82
+        },
+        {
+          "root": [
+            847,
+            650
+          ],
+          "head_length": 82
+        },
+        {
+          "root": [
+            1343,
+            650
+          ],
+          "head_length": 82
+        }
+      ],
+      "target_y": 322
+    },
+    "nezuko-blood_kick": {
+      "source_sha256": "455a5078e7d3fb9b3ec7276d2f1b8cfb21b51f5f9cb01c50f8b2529eab6c25f6",
+      "anchor": "ground",
+      "target_x": 449,
+      "target_head_length": 59.5,
+      "frames": [
+        {
+          "root": [
+            210,
+            131
+          ],
+          "head_length": 60
+        },
+        {
+          "root": [
+            751,
+            143
+          ],
+          "head_length": 62
+        },
+        {
+          "root": [
+            1352,
+            197
+          ],
+          "head_length": 62
+        },
+        {
+          "root": [
+            296,
+            477
+          ],
+          "head_length": 61
+        },
+        {
+          "root": [
+            675,
+            668
+          ],
+          "head_length": 82,
+          "source_override": {
+            "out": "output/imagegen/awakening-v8/raw/nezuko-spinning_kick-part0.png",
+            "source_sha256": "94f3cd15a28b119bdc14a5e2e86f565768f9caf5ced25ca991d9d8ec71a4e1d2",
+            "index": 4,
+            "count": 6,
+            "columns": 3,
+            "reason": "Complete equivalent extension; original generated support foot ends at a sheet boundary."
+          }
+        },
+        {
+          "root": [
+            1260,
+            491
+          ],
+          "head_length": 61
+        },
+        {
+          "root": [
+            272,
+            769
+          ],
+          "head_length": 60
+        },
+        {
+          "root": [
+            835,
+            870
+          ],
+          "head_length": 62
+        },
+        {
+          "root": [
+            1306,
+            768
+          ],
+          "head_length": 61
+        }
+      ]
+    },
+    "nezuko-rising_kick": {
+      "source_sha256": "1787c7d8dce1f852674655d7fe8dbf90b7d9d516f44cbf8d4194f95d5b1933f2",
+      "anchor": "ground",
+      "target_x": 449,
+      "target_head_length": 59.5,
+      "frames": [
+        {
+          "root": [
+            240,
+            147
+          ],
+          "head_length": 60
+        },
+        {
+          "root": [
+            781,
+            179
+          ],
+          "head_length": 63
+        },
+        {
+          "root": [
+            1280,
+            133
+          ],
+          "head_length": 62
+        },
+        {
+          "root": [
+            251,
+            489
+          ],
+          "head_length": 63
+        },
+        {
+          "root": [
+            770,
+            491
+          ],
+          "head_length": 64
+        },
+        {
+          "root": [
+            1270,
+            484
+          ],
+          "head_length": 62
+        },
+        {
+          "root": [
+            259,
+            812
+          ],
+          "head_length": 63
+        },
+        {
+          "root": [
+            796,
+            823
+          ],
+          "head_length": 61
+        },
+        {
+          "root": [
+            1288,
+            817
+          ],
+          "head_length": 62
+        }
+      ]
+    },
+    "nezuko-spinning_kick": {
+      "source_sha256": "b88eb1a0d24d69e0b49123e0aae287c88c30bf91c0dc18bb74202531c86dff68",
+      "anchor": "ground",
+      "target_x": 449,
+      "target_head_length": 59.5,
+      "frames": [
+        {
+          "root": [
+            251,
+            180
+          ],
+          "head_length": 79
+        },
+        {
+          "root": [
+            754,
+            206
+          ],
+          "head_length": 79
+        },
+        {
+          "root": [
+            1280,
+            192
+          ],
+          "head_length": 82
+        },
+        {
+          "root": [
+            240,
+            654
+          ],
+          "head_length": 82
+        },
+        {
+          "root": [
+            675,
+            668
+          ],
+          "head_length": 82
+        },
+        {
+          "root": [
+            1282,
+            700
+          ],
+          "head_length": 78
+        },
+        {
+          "root": [
+            244,
+            1198
+          ],
+          "head_length": 79
+        },
+        {
+          "root": [
+            685,
+            1204
+          ],
+          "head_length": 81
+        },
+        {
+          "root": [
+            1304,
+            1189
+          ],
+          "head_length": 82
+        },
+        {
+          "root": [
+            276,
+            1706
+          ],
+          "head_length": 82
+        },
+        {
+          "root": [
+            801,
+            1716
+          ],
+          "head_length": 80
+        },
+        {
+          "root": [
+            1289,
+            1701
+          ],
+          "head_length": 81
+        }
+      ]
+    },
+    "nezuko-blood_burst": {
+      "source_sha256": "7e6762fd28a469a38b6a1e722118915e3ddcb0e064e02ae3ec7dd554df1cc0ab",
+      "anchor": "ground",
+      "target_x": 449,
+      "target_head_length": 59.5,
+      "frames": [
+        {
+          "root": [
+            252,
+            176
+          ],
+          "head_length": 78
+        },
+        {
+          "root": [
+            800,
+            199
+          ],
+          "head_length": 80
+        },
+        {
+          "root": [
+            1307,
+            231
+          ],
+          "head_length": 82
+        },
+        {
+          "root": [
+            269,
+            660
+          ],
+          "head_length": 80
+        },
+        {
+          "root": [
+            812,
+            658
+          ],
+          "head_length": 81
+        },
+        {
+          "root": [
+            1345,
+            683
+          ],
+          "head_length": 80
+        },
+        {
+          "root": [
+            264,
+            1199
+          ],
+          "head_length": 80
+        },
+        {
+          "root": [
+            699,
+            1211
+          ],
+          "head_length": 82
+        },
+        {
+          "root": [
+            1304,
+            165
+          ],
+          "head_length": 82,
+          "source_override": {
+            "out": "output/imagegen/awakening-v8/raw/nezuko-spinning_kick-part1.png",
+            "source_sha256": "53110dfb1754227ab44196f9b575d945ca8d0cf27681fdd31b1a3e1cbec05779",
+            "index": 2,
+            "count": 6,
+            "columns": 3,
+            "reason": "Complete follow-through kick; original generated toes touch the right source edge."
+          }
+        },
+        {
+          "root": [
+            277,
+            1680
+          ],
+          "head_length": 81
+        },
+        {
+          "root": [
+            784,
+            1681
+          ],
+          "head_length": 81
+        },
+        {
+          "root": [
+            1268,
+            1696
+          ],
+          "head_length": 80
+        }
+      ]
+    }
+  }
+}

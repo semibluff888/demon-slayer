@@ -1,0 +1,23 @@
+{
+  "id": "nezuko-throw_tech",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "1536x1024",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/awakening-v7/prompts/nezuko-throw_tech.txt",
+  "output": "output/imagegen/awakening-v7/raw/nezuko-throw_tech.png",
+  "references": [
+    "output/imagegen/awakening-v7/references/approved-game-idle.png",
+    "output/imagegen/awakening-v7/references/pose-throw_tech.png"
+  ],
+  "started_utc": "2026-10-08T13:07:57.4022638Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-08T13:08:49.5506348Z",
+  "sha256": "62fbb83ca30e5b2124d5fa5c760b6cef086f7eab5c6d96cd06863fc644a3b534",
+  "reviewed_at": "2026-10-08T13:59:48.736123+00:00",
+  "review_basis": "Native source sheets, shared pixel ruler and actual Godot captures; preserve approved idle exactly."
+}

@@ -1,0 +1,25 @@
+{
+  "id": "nezuko-portrait",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "1024x1024",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/awakening-v6/prompts/nezuko-portrait.txt",
+  "output": "output/imagegen/awakening-v6/raw/nezuko-portrait.png",
+  "references": [
+    "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+  ],
+  "started_utc": "2026-10-07T17:16:45.9139283Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-07T17:17:30.9515227Z",
+  "sha256": "fd24404863f40d549f1c8194902e01cedd0a52dad2e58e2689f46906e054dbca",
+  "actual_size": [
+    1254,
+    1254
+  ],
+  "reviewed_at": "2026-10-07T18:16:46.332666+00:00"
+}

@@ -1,0 +1,22 @@
+{
+  "id": "nezuko-hit-model-v2",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "1536x1024",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/awakening-v7/prompts/nezuko-hit-model-v2.txt",
+  "output": "output/imagegen/awakening-v7/raw/nezuko-hit-model-v2.png",
+  "references": [
+    "output/imagegen/awakening-v7/references/approved-game-idle.png"
+  ],
+  "started_utc": "2026-10-08T13:36:33.6703757Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-08T13:37:38.4572648Z",
+  "sha256": "4d89bad72a175f246e28b840d83ce7e95124a0f089b659c97587e682283f7230",
+  "reviewed_at": "2026-10-08T13:59:48.649686+00:00",
+  "review_basis": "Native source sheets, shared pixel ruler and actual Godot captures; preserve approved idle exactly."
+}

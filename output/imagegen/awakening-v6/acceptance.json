@@ -1,0 +1,669 @@
+{
+  "status": "integrated_and_verified",
+  "completed_at": "2026-10-07T18:16:46.332666+00:00",
+  "integration_authorized": true,
+  "approval_gate_waived": true,
+  "generation": "Authorized CPA API and installed imagegen CLI, gpt-image-2, high quality, actual attached pose and model references",
+  "source_master": {
+    "image": "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png",
+    "sha256": "e683ccc91413998931c4901b3291ae17471d39c1687deaa44bd26e223581e072",
+    "source_manifest": "output/imagegen/awakening-v6-preview/preview-manifest.json",
+    "integration_authorized": true
+  },
+  "generated_clips": 39,
+  "generated_frames": 306,
+  "runtime_total_clips": 43,
+  "runtime_total_frames": 348,
+  "assets": [
+    {
+      "base_id": "nezuko-awakening_start",
+      "selected_id": "nezuko-awakening_start",
+      "clip": "awakening_start",
+      "frame_count": 6,
+      "source": "output/imagegen/awakening-v6/raw/nezuko-awakening_start.png",
+      "source_sha256": "003be7cba711d9490b69ed97b5a13012e52ca81905a0d2c0c7e3fd55c45a946a",
+      "prompt": "output/imagegen/awakening-v6/prompts/nezuko-awakening_start.txt",
+      "prompt_sha256": "1f5c477f9f4c3f6e35ab92256238383afa4715fbf5b5ca3a133c3e9eb078f7b2",
+      "references": [
+        "output/imagegen/awakening-v2/references/nezuko-awakening_start.png",
+        "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+      ],
+      "registration": "output/imagegen/awakening-v6/imports/nezuko-awakening_start.json"
+    },
+    {
+      "base_id": "nezuko-idle",
+      "selected_id": "nezuko-idle",
+      "clip": "idle",
+      "frame_count": 6,
+      "source": "output/imagegen/awakening-v6/raw/nezuko-idle.png",
+      "source_sha256": "6b1252f1725d89db1c7586397f1ee8dc44593e0c2ff1d33aeae27821824943f5",
+      "prompt": "output/imagegen/awakening-v6/prompts/nezuko-idle.txt",
+      "prompt_sha256": "0ad98c07191cbd67fc29d9acb8dd4aec1de3e474df14f729a749df5bbb263a45",
+      "references": [
+        "output/imagegen/awakening-v2/references/nezuko-idle.png",
+        "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+      ],
+      "registration": "output/imagegen/awakening-v6/imports/nezuko-idle.json"
+    },
+    {
+      "base_id": "nezuko-walk",
+      "selected_id": "nezuko-walk",
+      "clip": "walk",
+      "frame_count": 6,
+      "source": "output/imagegen/awakening-v6/raw/nezuko-walk.png",
+      "source_sha256": "06baf06725844b9bccd8210e8cdb4c7767d35812bff968eb65556efc6e6e7038",
+      "prompt": "output/imagegen/awakening-v6/prompts/nezuko-walk.txt",
+      "prompt_sha256": "3d20fdce0c65707548371110cda36805011ec51dd7fed324a40ae4f3300929e3",
+      "references": [
+        "output/imagegen/awakening-v2/references/nezuko-walk.png",
+        "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+      ],
+      "registration": "output/imagegen/awakening-v6/imports/nezuko-walk.json"
+    },
+    {
+      "base_id": "nezuko-walk_back",
+      "selected_id": "nezuko-walk_back",
+      "clip": "walk_back",
+      "frame_count": 6,
+      "source": "output/imagegen/awakening-v6/raw/nezuko-walk_back.png",
+      "source_sha256": "b82ecb377d94baec4ffd01ed33ea97d794c838b575171e3d853e098770c0bdef",
+      "prompt": "output/imagegen/awakening-v6/prompts/nezuko-walk_back.txt",
+      "prompt_sha256": "ba98173a4e3eaa06b17e549f1cae0c2a54f33bf36fab27172988add3d93c1296",
+      "references": [
+        "output/imagegen/awakening-v2/references/nezuko-walk_back.png",
+        "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+      ],
+      "registration": "output/imagegen/awakening-v6/imports/nezuko-walk_back.json"
+    },
+    {
+      "base_id": "nezuko-crouch",
+      "selected_id": "nezuko-crouch",
+      "clip": "crouch",
+      "frame_count": 6,
+      "source": "output/imagegen/awakening-v6/raw/nezuko-crouch.png",
+      "source_sha256": "fe45bc30f61e3dfb0433224dcc7791a6c3a8f709b454510e84422b0bafd21238",
+      "prompt": "output/imagegen/awakening-v6/prompts/nezuko-crouch.txt",
+      "prompt_sha256": "ce11a3f670d438bbc58f7fd87a04997b14ed702724a6c5e2b6cdfdb1beb40a2f",
+      "references": [
+        "output/imagegen/awakening-v2/references/nezuko-crouch.png",
+        "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+      ],
+      "registration": "output/imagegen/awakening-v6/imports/nezuko-crouch.json"
+    },
+    {
+      "base_id": "nezuko-jump",
+      "selected_id": "nezuko-jump",
+      "clip": "jump",
+      "frame_count": 6,
+      "source": "output/imagegen/awakening-v6/raw/nezuko-jump.png",
+      "source_sha256": "d965bc0062d2bfe7a590a4b58338706c60b14e1b250791865e8ac67129b2fcd1",
+      "prompt": "output/imagegen/awakening-v6/prompts/nezuko-jump.txt",
+      "prompt_sha256": "7c0ff9694aa07137d217964716b905135ea03b489211923ff593051a8d04589e",
+      "references": [
+        "output/imagegen/awakening-v2/references/nezuko-jump.png",
+        "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+      ],
+      "registration": "output/imagegen/awakening-v6/imports/nezuko-jump.json"
+    },
+    {
+      "base_id": "nezuko-guard",
+      "selected_id": "nezuko-guard",
+      "clip": "guard",
+      "frame_count": 6,
+      "source": "output/imagegen/awakening-v6/raw/nezuko-guard.png",
+      "source_sha256": "67c68e03f8225f8a437a829a60bcd91eea3fea513c6546f5835b9fa09743ff13",
+      "prompt": "output/imagegen/awakening-v6/prompts/nezuko-guard.txt",
+      "prompt_sha256": "7b3dc500b9c8891af1cd561776365809cd0099667d414e62278e9fa74423e1b0",
+      "references": [
+        "output/imagegen/awakening-v2/references/nezuko-guard.png",
+        "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+      ],
+      "registration": "output/imagegen/awakening-v6/imports/nezuko-guard.json"
+    },
+    {
+      "base_id": "nezuko-hit",
+      "selected_id": "nezuko-hit",
+      "clip": "hit",
+      "frame_count": 6,
+      "source": "output/imagegen/awakening-v6/raw/nezuko-hit.png",
+      "source_sha256": "a00e02a8c3b4b23b251f67af3d6a92fada92a4ce99c20a33e6a0c449db302ceb",
+      "prompt": "output/imagegen/awakening-v6/prompts/nezuko-hit.txt",
+      "prompt_sha256": "550b8920c3cd13470e51ab52b0cffeaf16460742f17f6245b1f8366863b23c05",
+      "references": [
+        "output/imagegen/awakening-v2/references/nezuko-hit.png",
+        "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+      ],
+      "registration": "output/imagegen/awakening-v6/imports/nezuko-hit.json"
+    },
+    {
+      "base_id": "nezuko-knockdown",
+      "selected_id": "nezuko-knockdown-anatomy-v2",
+      "clip": "knockdown",
+      "frame_count": 6,
+      "source": "output/imagegen/awakening-v6/raw/nezuko-knockdown-anatomy-v2.png",
+      "source_sha256": "a3bed9ee4af60522d80a57e9d04abdc5643f2d2378aaf80326d53338d5594caf",
+      "prompt": "output/imagegen/awakening-v6/prompts/nezuko-knockdown-anatomy-v2.txt",
+      "prompt_sha256": "6ddbd3d9689ba9a35bb7a0d5f478a348805ad36763880e85433e25bbc499a548",
+      "references": [
+        "output/imagegen/awakening-v6/raw/nezuko-knockdown.png",
+        "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+      ],
+      "registration": "output/imagegen/awakening-v6/imports/nezuko-knockdown.json"
+    },
+    {
+      "base_id": "nezuko-throw",
+      "selected_id": "nezuko-throw",
+      "clip": "throw",
+      "frame_count": 6,
+      "source": "output/imagegen/awakening-v6/raw/nezuko-throw.png",
+      "source_sha256": "91dd616204f9b4871abd15d7c690e914733495a0e8d39e1ad94d8076f51adf64",
+      "prompt": "output/imagegen/awakening-v6/prompts/nezuko-throw.txt",
+      "prompt_sha256": "93462bb220b1c25f87faaad57d8059eabe9cd10788e85fc339b3476283d547c2",
+      "references": [
+        "output/imagegen/awakening-v2/references/nezuko-throw.png",
+        "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+      ],
+      "registration": "output/imagegen/awakening-v6/imports/nezuko-throw.json"
+    },
+    {
+      "base_id": "nezuko-stand_light",
+      "selected_id": "nezuko-stand_light",
+      "clip": "stand_light",
+      "frame_count": 6,
+      "source": "output/imagegen/awakening-v6/raw/nezuko-stand_light.png",
+      "source_sha256": "3ad2e2fcdc7ebe54b1a585463daa08d10b1a7dc8d1d1cb6471922a4c9a795e75",
+      "prompt": "output/imagegen/awakening-v6/prompts/nezuko-stand_light.txt",
+      "prompt_sha256": "05984f048d00c00a8e94b2ee5b38b7b710ea7cd0648d5cf9b889af7033582248",
+      "references": [
+        "output/imagegen/awakening-v2/references/nezuko-stand_light.png",
+        "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+      ],
+      "registration": "output/imagegen/awakening-v6/imports/nezuko-stand_light.json"
+    },
+    {
+      "base_id": "nezuko-stand_heavy",
+      "selected_id": "nezuko-stand_heavy",
+      "clip": "stand_heavy",
+      "frame_count": 6,
+      "source": "output/imagegen/awakening-v6/raw/nezuko-stand_heavy.png",
+      "source_sha256": "65c7a97c412ab485c3fb163148782290fd7460fbd1b07a8bea4c176890174431",
+      "prompt": "output/imagegen/awakening-v6/prompts/nezuko-stand_heavy.txt",
+      "prompt_sha256": "4efa49cc92f432137a238214e7c5bf83f51a0ea7dc0b9abe4b8959ada4fe1b7f",
+      "references": [
+        "output/imagegen/awakening-v2/references/nezuko-stand_heavy.png",
+        "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+      ],
+      "registration": "output/imagegen/awakening-v6/imports/nezuko-stand_heavy.json"
+    },
+    {
+      "base_id": "nezuko-crouch_light",
+      "selected_id": "nezuko-crouch_light",
+      "clip": "crouch_light",
+      "frame_count": 6,
+      "source": "output/imagegen/awakening-v6/raw/nezuko-crouch_light.png",
+      "source_sha256": "ff2921d3c7c6d6ba0deaa7f616400f88083722ce2abc6c2faa11655b85f173f6",
+      "prompt": "output/imagegen/awakening-v6/prompts/nezuko-crouch_light.txt",
+      "prompt_sha256": "c302e53266302ef4c227b8261da8fcc5fc0cc5d8dad67959e099121bd2471a44",
+      "references": [
+        "output/imagegen/awakening-v2/references/nezuko-crouch_light.png",
+        "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+      ],
+      "registration": "output/imagegen/awakening-v6/imports/nezuko-crouch_light.json"
+    },
+    {
+      "base_id": "nezuko-crouch_heavy",
+      "selected_id": "nezuko-crouch_heavy",
+      "clip": "crouch_heavy",
+      "frame_count": 6,
+      "source": "output/imagegen/awakening-v6/raw/nezuko-crouch_heavy.png",
+      "source_sha256": "71d6b282d24284983a1166cb4b60e9868ec8ddbbf1c94305c5cb56b426311916",
+      "prompt": "output/imagegen/awakening-v6/prompts/nezuko-crouch_heavy.txt",
+      "prompt_sha256": "06f0a561f99d653dab6afc6c41a29a036858efde5be28f5345c4f55b92b33abe",
+      "references": [
+        "output/imagegen/awakening-v2/references/nezuko-crouch_heavy.png",
+        "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+      ],
+      "registration": "output/imagegen/awakening-v6/imports/nezuko-crouch_heavy.json"
+    },
+    {
+      "base_id": "nezuko-air_light",
+      "selected_id": "nezuko-air_light",
+      "clip": "air_light",
+      "frame_count": 6,
+      "source": "output/imagegen/awakening-v6/raw/nezuko-air_light.png",
+      "source_sha256": "a559719b98ea347c662cd71f02e90e7d218e2753a0a564910971863594875b74",
+      "prompt": "output/imagegen/awakening-v6/prompts/nezuko-air_light.txt",
+      "prompt_sha256": "17ae415d4ef5c838677d04a906eb7c4b1491f769da7052db11dd098fd6fb7647",
+      "references": [
+        "output/imagegen/awakening-v2/references/nezuko-air_light.png",
+        "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+      ],
+      "registration": "output/imagegen/awakening-v6/imports/nezuko-air_light.json"
+    },
+    {
+      "base_id": "nezuko-air_heavy",
+      "selected_id": "nezuko-air_heavy",
+      "clip": "air_heavy",
+      "frame_count": 6,
+      "source": "output/imagegen/awakening-v6/raw/nezuko-air_heavy.png",
+      "source_sha256": "2751124976830dd4a1aba4d1f5e90f9b7817692ed350104f48c538ec76fc4111",
+      "prompt": "output/imagegen/awakening-v6/prompts/nezuko-air_heavy.txt",
+      "prompt_sha256": "9b1509258f653d65a5d4bef5274a7629ce5e1ea3cb5a4499312c634931f3dad7",
+      "references": [
+        "output/imagegen/awakening-v2/references/nezuko-air_heavy.png",
+        "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+      ],
+      "registration": "output/imagegen/awakening-v6/imports/nezuko-air_heavy.json"
+    },
+    {
+      "base_id": "nezuko-body_stand_light",
+      "selected_id": "nezuko-body_stand_light",
+      "clip": "body_stand_light",
+      "frame_count": 6,
+      "source": "output/imagegen/awakening-v6/raw/nezuko-body_stand_light.png",
+      "source_sha256": "a98e94e56219c2dd5dd2312507483d2dfec78eba62fea28bffbcc3bbce3af173",
+      "prompt": "output/imagegen/awakening-v6/prompts/nezuko-body_stand_light.txt",
+      "prompt_sha256": "7a5abdc0e79229564f68ac551338a9d5ef13ca86161a9d94126569f34a8db06b",
+      "references": [
+        "output/imagegen/awakening-v2/references/nezuko-body_stand_light.png",
+        "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+      ],
+      "registration": "output/imagegen/awakening-v6/imports/nezuko-body_stand_light.json"
+    },
+    {
+      "base_id": "nezuko-body_stand_heavy",
+      "selected_id": "nezuko-body_stand_heavy",
+      "clip": "body_stand_heavy",
+      "frame_count": 6,
+      "source": "output/imagegen/awakening-v6/raw/nezuko-body_stand_heavy.png",
+      "source_sha256": "75ff1f54a7f0e5d5ec7da39d6a2d0f89d028b0fdab23e3c2ab5cbfecfd6b6936",
+      "prompt": "output/imagegen/awakening-v6/prompts/nezuko-body_stand_heavy.txt",
+      "prompt_sha256": "40557d2d96c1bdf701a639bf11743d76ca87b23b6cf6c58e13b21f2dc75d2112",
+      "references": [
+        "output/imagegen/awakening-v2/references/nezuko-body_stand_heavy.png",
+        "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+      ],
+      "registration": "output/imagegen/awakening-v6/imports/nezuko-body_stand_heavy.json"
+    },
+    {
+      "base_id": "nezuko-body_crouch_light",
+      "selected_id": "nezuko-body_crouch_light",
+      "clip": "body_crouch_light",
+      "frame_count": 6,
+      "source": "output/imagegen/awakening-v6/raw/nezuko-body_crouch_light.png",
+      "source_sha256": "27590012e6fdafc409e6c789cb6b399cba1489102eeb0df1482526fc8fbbd060",
+      "prompt": "output/imagegen/awakening-v6/prompts/nezuko-body_crouch_light.txt",
+      "prompt_sha256": "8e685c42bb9d12f9280a0d7e34e864255aa5f21148dfdc79fed6a727403e76d0",
+      "references": [
+        "output/imagegen/awakening-v2/references/nezuko-body_crouch_light.png",
+        "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+      ],
+      "registration": "output/imagegen/awakening-v6/imports/nezuko-body_crouch_light.json"
+    },
+    {
+      "base_id": "nezuko-body_crouch_heavy",
+      "selected_id": "nezuko-body_crouch_heavy",
+      "clip": "body_crouch_heavy",
+      "frame_count": 6,
+      "source": "output/imagegen/awakening-v6/raw/nezuko-body_crouch_heavy.png",
+      "source_sha256": "16d3cfd5298875af83a54bc6472105cee8148f09d54cd759536b86e88029dda2",
+      "prompt": "output/imagegen/awakening-v6/prompts/nezuko-body_crouch_heavy.txt",
+      "prompt_sha256": "29ba83f878ec6d728d2e4585c287ab33dd44c861d31fcae4a5d6ac510fadd717",
+      "references": [
+        "output/imagegen/awakening-v2/references/nezuko-body_crouch_heavy.png",
+        "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+      ],
+      "registration": "output/imagegen/awakening-v6/imports/nezuko-body_crouch_heavy.json"
+    },
+    {
+      "base_id": "nezuko-body_air_light",
+      "selected_id": "nezuko-body_air_light",
+      "clip": "body_air_light",
+      "frame_count": 6,
+      "source": "output/imagegen/awakening-v6/raw/nezuko-body_air_light.png",
+      "source_sha256": "4e86bc8bcb9a68fba55b27928c54c407b3277b80af739ebe7a909cefc8734099",
+      "prompt": "output/imagegen/awakening-v6/prompts/nezuko-body_air_light.txt",
+      "prompt_sha256": "4d981ceabbc4fc30bff42c453b58800aa9a26aa15a42cebeafe266341fa7de0b",
+      "references": [
+        "output/imagegen/awakening-v2/references/nezuko-body_air_light.png",
+        "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+      ],
+      "registration": "output/imagegen/awakening-v6/imports/nezuko-body_air_light.json"
+    },
+    {
+      "base_id": "nezuko-body_air_heavy",
+      "selected_id": "nezuko-body_air_heavy",
+      "clip": "body_air_heavy",
+      "frame_count": 6,
+      "source": "output/imagegen/awakening-v6/raw/nezuko-body_air_heavy.png",
+      "source_sha256": "044278a6517aed4609085b58de6f1dfd55f0b0ce0455490d66c92526ae166aa3",
+      "prompt": "output/imagegen/awakening-v6/prompts/nezuko-body_air_heavy.txt",
+      "prompt_sha256": "e85b2becf7bb54bbed20711c3b82f8f7c51c5fc03e7cc0af7615492fe41e7573",
+      "references": [
+        "output/imagegen/awakening-v2/references/nezuko-body_air_heavy.png",
+        "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+      ],
+      "registration": "output/imagegen/awakening-v6/imports/nezuko-body_air_heavy.json"
+    },
+    {
+      "base_id": "nezuko-dash_forward",
+      "selected_id": "nezuko-dash_forward",
+      "clip": "dash_forward",
+      "frame_count": 6,
+      "source": "output/imagegen/awakening-v6/raw/nezuko-dash_forward.png",
+      "source_sha256": "49ebc8a856e3bb56dfe0e014478647d55a6ff32c8685254fa00e6a6d19944136",
+      "prompt": "output/imagegen/awakening-v6/prompts/nezuko-dash_forward.txt",
+      "prompt_sha256": "79b27bc4d6c3535109cc3e4a0587034ea6409db37317ca913905c7210f57e707",
+      "references": [
+        "output/imagegen/awakening-v2/references/nezuko-dash_forward.png",
+        "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+      ],
+      "registration": "output/imagegen/awakening-v6/imports/nezuko-dash_forward.json"
+    },
+    {
+      "base_id": "nezuko-dash_back",
+      "selected_id": "nezuko-dash_back",
+      "clip": "dash_back",
+      "frame_count": 6,
+      "source": "output/imagegen/awakening-v6/raw/nezuko-dash_back.png",
+      "source_sha256": "eaa944e9f50f1d685c5583767f9db0335431aeb1a370abef1bafc1bd23022ded",
+      "prompt": "output/imagegen/awakening-v6/prompts/nezuko-dash_back.txt",
+      "prompt_sha256": "7d03194fee518d38b8f1f1a686650ba723ed467035fdadad74fef7e2af1e520e",
+      "references": [
+        "output/imagegen/awakening-v2/references/nezuko-dash_back.png",
+        "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+      ],
+      "registration": "output/imagegen/awakening-v6/imports/nezuko-dash_back.json"
+    },
+    {
+      "base_id": "nezuko-jump_forward",
+      "selected_id": "nezuko-jump_forward",
+      "clip": "jump_forward",
+      "frame_count": 12,
+      "source": "output/imagegen/awakening-v6/raw/nezuko-jump_forward.png",
+      "source_sha256": "e0cce8f2b10e9b53b5b06d9cecb7bbd290a886144d819e16b7d829513daa396b",
+      "prompt": "output/imagegen/awakening-v6/prompts/nezuko-jump_forward.txt",
+      "prompt_sha256": "0ffe022ca6e7228913246433da75b2abe3e9f265ba5b114f7e895b3515415869",
+      "references": [
+        "output/imagegen/awakening-v2/references/nezuko-jump_forward.png",
+        "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+      ],
+      "registration": "output/imagegen/awakening-v6/imports/nezuko-jump_forward.json"
+    },
+    {
+      "base_id": "nezuko-jump_back",
+      "selected_id": "nezuko-jump_back",
+      "clip": "jump_back",
+      "frame_count": 12,
+      "source": "output/imagegen/awakening-v6/raw/nezuko-jump_back.png",
+      "source_sha256": "30edd3774b99d645eaca3e6c3e1640a0a698412d0fa95323bfe4d0f46e33b147",
+      "prompt": "output/imagegen/awakening-v6/prompts/nezuko-jump_back.txt",
+      "prompt_sha256": "27d6dbf8f10865a921415a4ff8755c6f85812ea2aad11464b492c50604873c1d",
+      "references": [
+        "output/imagegen/awakening-v2/references/nezuko-jump_back.png",
+        "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+      ],
+      "registration": "output/imagegen/awakening-v6/imports/nezuko-jump_back.json"
+    },
+    {
+      "base_id": "nezuko-roll_forward",
+      "selected_id": "nezuko-roll_forward",
+      "clip": "roll_forward",
+      "frame_count": 12,
+      "source": "output/imagegen/awakening-v6/raw/nezuko-roll_forward.png",
+      "source_sha256": "c85590ac4f889435621e06e60bfa39b757cb6f6a7f81e19c276c456474ad7b37",
+      "prompt": "output/imagegen/awakening-v6/prompts/nezuko-roll_forward.txt",
+      "prompt_sha256": "aa0fad508d19284237f5fca1535bb1eb14b1c21583d70e2b8d77de71a8a60878",
+      "references": [
+        "output/imagegen/awakening-v2/references/nezuko-roll_forward.png",
+        "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+      ],
+      "registration": "output/imagegen/awakening-v6/imports/nezuko-roll_forward.json"
+    },
+    {
+      "base_id": "nezuko-roll_back",
+      "selected_id": "nezuko-roll_back",
+      "clip": "roll_back",
+      "frame_count": 12,
+      "source": "output/imagegen/awakening-v6/raw/nezuko-roll_back.png",
+      "source_sha256": "9a987f5050751bc78fb05254f6ca6fb7488ad5fe6b92f8d8352a2f2fcd919319",
+      "prompt": "output/imagegen/awakening-v6/prompts/nezuko-roll_back.txt",
+      "prompt_sha256": "86e902336b592da23b743cb305e0557a964f8cb870c401ca8607bc15d5a5f50f",
+      "references": [
+        "output/imagegen/awakening-v2/references/nezuko-roll_back.png",
+        "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+      ],
+      "registration": "output/imagegen/awakening-v6/imports/nezuko-roll_back.json"
+    },
+    {
+      "base_id": "nezuko-throw_forward",
+      "selected_id": "nezuko-throw_forward",
+      "clip": "throw_forward",
+      "frame_count": 12,
+      "source": "output/imagegen/awakening-v6/raw/nezuko-throw_forward.png",
+      "source_sha256": "147e4d4cd488bb57430c15e71cb83ac7141444330d114f496122601e2d3d7813",
+      "prompt": "output/imagegen/awakening-v6/prompts/nezuko-throw_forward.txt",
+      "prompt_sha256": "02f2c8469b381610a9fa747a0c0e92b80242999b5fd643d6313f7466ec83c45e",
+      "references": [
+        "output/imagegen/awakening-v2/references/nezuko-throw_forward.png",
+        "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+      ],
+      "registration": "output/imagegen/awakening-v6/imports/nezuko-throw_forward.json"
+    },
+    {
+      "base_id": "nezuko-throw_success",
+      "selected_id": "nezuko-throw_success",
+      "clip": "throw_success",
+      "frame_count": 12,
+      "source": "output/imagegen/awakening-v6/raw/nezuko-throw_success.png",
+      "source_sha256": "06224235b557066d7e174fe0d150a550be7d78c61786e85ad39c398c579e681e",
+      "prompt": "output/imagegen/awakening-v6/prompts/nezuko-throw_success.txt",
+      "prompt_sha256": "b0756d1cc9dab054de78ee39ad94da650667dad6cd82182487ada5845213e08a",
+      "references": [
+        "output/imagegen/awakening-v2/references/nezuko-throw_success.png",
+        "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+      ],
+      "registration": "output/imagegen/awakening-v6/imports/nezuko-throw_success.json"
+    },
+    {
+      "base_id": "nezuko-throw_tech",
+      "selected_id": "nezuko-throw_tech",
+      "clip": "throw_tech",
+      "frame_count": 6,
+      "source": "output/imagegen/awakening-v6/raw/nezuko-throw_tech.png",
+      "source_sha256": "b62dd6fc5f91df687c9ce93ce729980b1f21c8507d14c47bf23c4ee9c91235cc",
+      "prompt": "output/imagegen/awakening-v6/prompts/nezuko-throw_tech.txt",
+      "prompt_sha256": "9440dab151b25851d72f977821373e49f7e20c6e085722c3ba4fdcd6eaeb8d28",
+      "references": [
+        "output/imagegen/awakening-v2/references/nezuko-throw_tech.png",
+        "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+      ],
+      "registration": "output/imagegen/awakening-v6/imports/nezuko-throw_tech.json"
+    },
+    {
+      "base_id": "nezuko-blood_kick",
+      "selected_id": "nezuko-blood_kick",
+      "clip": "blood_kick",
+      "frame_count": 9,
+      "source": "output/imagegen/awakening-v6/raw/nezuko-blood_kick.png",
+      "source_sha256": "a6fe08609b8a9bf61cafbe11abe6643aa0f792905221d1fcdf683830cd637f16",
+      "prompt": "output/imagegen/awakening-v6/prompts/nezuko-blood_kick.txt",
+      "prompt_sha256": "8e1b2c3fded452c7c7b79c1c9a7dc92fb2ae40a722e31ce8a10fe36c04967c2d",
+      "references": [
+        "output/imagegen/awakening-v2/references/nezuko-blood_kick.png",
+        "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+      ],
+      "registration": "output/imagegen/awakening-v6/imports/nezuko-blood_kick.json"
+    },
+    {
+      "base_id": "nezuko-rising_kick",
+      "selected_id": "nezuko-rising_kick",
+      "clip": "rising_kick",
+      "frame_count": 9,
+      "source": "output/imagegen/awakening-v6/raw/nezuko-rising_kick.png",
+      "source_sha256": "ef8bdb919c0716544fd5e1b4875ff37873690090257edee1c5637d8414e5a97c",
+      "prompt": "output/imagegen/awakening-v6/prompts/nezuko-rising_kick.txt",
+      "prompt_sha256": "80b2d7ae3a19d37e593f3fd816f4b44c98dcf0460a29b5a3aacdc8e0c8436527",
+      "references": [
+        "output/imagegen/awakening-v2/references/nezuko-rising_kick.png",
+        "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+      ],
+      "registration": "output/imagegen/awakening-v6/imports/nezuko-rising_kick.json"
+    },
+    {
+      "base_id": "nezuko-spinning_kick",
+      "selected_id": "nezuko-spinning_kick",
+      "clip": "spinning_kick",
+      "frame_count": 12,
+      "source": "output/imagegen/awakening-v6/raw/nezuko-spinning_kick.png",
+      "source_sha256": "c01bca4e2f3d8dcf2302f596f277baa7dd3f119a25fc421f744c6f6b9f175c56",
+      "prompt": "output/imagegen/awakening-v6/prompts/nezuko-spinning_kick.txt",
+      "prompt_sha256": "178bacbf195b5421922ab8c0c88a548b7f84a4e799178d34c9815bbed992076a",
+      "references": [
+        "output/imagegen/awakening-v2/references/nezuko-spinning_kick.png",
+        "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+      ],
+      "registration": "output/imagegen/awakening-v6/imports/nezuko-spinning_kick.json"
+    },
+    {
+      "base_id": "nezuko-blood_burst",
+      "selected_id": "nezuko-blood_burst",
+      "clip": "blood_burst",
+      "frame_count": 12,
+      "source": "output/imagegen/awakening-v6/raw/nezuko-blood_burst.png",
+      "source_sha256": "2a5105fb438a2c45d06f2e0876dbaccc3a9ddc4c236603071cb61e6f4255bcf3",
+      "prompt": "output/imagegen/awakening-v6/prompts/nezuko-blood_burst.txt",
+      "prompt_sha256": "d9a989a3aada2f6b8706ad4b11c1e7e4b08f7bcaae9b7cedfa04a3f06aa4465b",
+      "references": [
+        "output/imagegen/awakening-v2/references/nezuko-blood_burst.png",
+        "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+      ],
+      "registration": "output/imagegen/awakening-v6/imports/nezuko-blood_burst.json"
+    },
+    {
+      "base_id": "nezuko-awakened_combo",
+      "selected_id": "nezuko-awakened_combo",
+      "clip": "awakened_combo",
+      "frame_count": 12,
+      "source": "output/imagegen/awakening-v6/raw/nezuko-awakened_combo.png",
+      "source_sha256": "4589b45cf6ce15a844a6e8859bd65a4ed0e0e55313717c74e4d5bad028be7420",
+      "prompt": "output/imagegen/awakening-v6/prompts/nezuko-awakened_combo.txt",
+      "prompt_sha256": "1410406e05cefd48ecf0b60a23e08f7d13e75fba1e1cabb76aefca74c80a4c10",
+      "references": [
+        "output/imagegen/awakening-v2/references/nezuko-awakened_combo.png",
+        "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+      ],
+      "registration": "output/imagegen/awakening-v6/imports/nezuko-awakened_combo.json"
+    },
+    {
+      "base_id": "nezuko-thrown_forward",
+      "selected_id": "nezuko-thrown_forward",
+      "clip": "thrown_forward",
+      "frame_count": 12,
+      "source": "output/imagegen/awakening-v6/raw/nezuko-thrown_forward.png",
+      "source_sha256": "9043605e41c39b8e4c71d5745cdde2290684e02db3123f394d39af561e704748",
+      "prompt": "output/imagegen/awakening-v6/prompts/nezuko-thrown_forward.txt",
+      "prompt_sha256": "d072bf125000da6c51d0614c2750cdc774eb15166939eab179c1ba94055e169e",
+      "references": [
+        "output/imagegen/awakening-v2/references/nezuko-thrown_forward.png",
+        "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+      ],
+      "registration": "output/imagegen/awakening-v6/imports/nezuko-thrown_forward.json"
+    },
+    {
+      "base_id": "nezuko-thrown",
+      "selected_id": "nezuko-thrown",
+      "clip": "thrown",
+      "frame_count": 12,
+      "source": "output/imagegen/awakening-v6/raw/nezuko-thrown.png",
+      "source_sha256": "3f276ff9b9b2389abc3f7ab3f716be5ab08c3c4a81a46e7ff576eab26ea7f0ca",
+      "prompt": "output/imagegen/awakening-v6/prompts/nezuko-thrown.txt",
+      "prompt_sha256": "d396e0c9cb80488cf5844bbb6801bff425dfb2c59b48b70ed9ff45b5876008dc",
+      "references": [
+        "output/imagegen/awakening-v2/references/nezuko-thrown.png",
+        "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+      ],
+      "registration": "output/imagegen/awakening-v6/imports/nezuko-thrown.json"
+    },
+    {
+      "base_id": "nezuko-guard_low",
+      "selected_id": "nezuko-guard_low",
+      "clip": "guard_low",
+      "frame_count": 6,
+      "source": "output/imagegen/awakening-v6/raw/nezuko-guard_low.png",
+      "source_sha256": "81d2a07e560e2475e3f33525b990d32da3af1a7683643fd80d2762c690f73422",
+      "prompt": "output/imagegen/awakening-v6/prompts/nezuko-guard_low.txt",
+      "prompt_sha256": "b8d672107b5cb610908f22bb22f91f96a4374c433c45ea43b872af0769b5b629",
+      "references": [
+        "output/imagegen/awakening-v2/references/nezuko-guard_low.png",
+        "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+      ],
+      "registration": "output/imagegen/awakening-v6/imports/nezuko-guard_low.json"
+    }
+  ],
+  "portrait": {
+    "source": "output/imagegen/awakening-v6/raw/nezuko-portrait.png",
+    "source_sha256": "fd24404863f40d549f1c8194902e01cedd0a52dad2e58e2689f46906e054dbca",
+    "source_size": [
+      1254,
+      1254
+    ],
+    "destination": "art/characters/nezuko/awakening/portrait.png",
+    "destination_sha256": "15f3e740c8fc2ae9a918e4412b25f331f2b43ac1e0909d8363fdb9056e3f2f96",
+    "destination_size": [
+      512,
+      512
+    ],
+    "operation": "Uniform Lanczos resize; full square composition preserved"
+  },
+  "runtime_sha256": {
+    "art/characters/nezuko/awakening/atlas-0.png": "55508ff6d7bc8918ec1f2ff06c96e996fe513f38123b1464e2c028c61fe32290",
+    "art/characters/nezuko/awakening/atlas-1.png": "ab3d22824272adbc709475fab11a7867e7d4fb98555d30e0232c0de2462db7e5",
+    "art/characters/nezuko/awakening/atlas-2.png": "f60ff9119ecb12fd226bc9cf21522081cd9999a981f8aff1ea01083039ecd29c",
+    "art/characters/nezuko/awakening/atlas-3.png": "6cbb9d6a2ee9d6a8ebbd383eaed7db15ead7ba5dfe96126582ca7bb548635234",
+    "art/characters/nezuko/awakening/atlas-4.png": "975c02bb212a55705d9dd8172fa49b8643601601c61b3c4f12c62e9df283eb3d",
+    "art/characters/nezuko/awakening/atlas-5.png": "8f57fccb22f4754d5ebe70113c69592f55ad356b5bb317e6dcb13591d2c4eafe",
+    "art/characters/nezuko/awakening/atlas-6.png": "b9fbf41321a937c587853e3939d36fdfe23be63423f7fb5130c575e58723ca83",
+    "art/characters/nezuko/awakening/atlas-7.png": "afa9a45035616a0f4f646102a4c6c6dd16c9672d3e9bbb45b185b4672ae6589c",
+    "art/characters/nezuko/awakening/atlas-8.png": "c2766610d289f2eb28f8baab4864fb8c506050c5f302833d5c31ae7476aa08e4",
+    "art/characters/nezuko/awakening/atlas.json": "142fef74ca38823c3ad99438e06a60fcd8183b5e44d47c5fcf18332475c00480",
+    "art/characters/nezuko/awakening/fx-aura.png": "a8ceb48d15d5a47c8dbc14c9b405252acc498eec60ba2877730815dd6a1454ac",
+    "art/characters/nezuko/awakening/fx-burst.png": "6df3da0988373b9b53b7ae0ee2d65ad2545868143e0cb70e322777c92b73465a",
+    "art/characters/nezuko/awakening/fx-sweep.png": "4e44593c6c7bdb1874ceb547c7534da2a8694ec7a32a859b182b4b4663c0e151",
+    "art/characters/nezuko/awakening/fx-wisp.png": "74a98d5d64be4a29cd715c02848f1f7aeb9f2323f1906ec4fd2e16bcbcb3c931",
+    "art/characters/nezuko/awakening/portrait.png": "15f3e740c8fc2ae9a918e4412b25f331f2b43ac1e0909d8363fdb9056e3f2f96"
+  },
+  "preserved_runtime_sha256": "preserved-runtime.json",
+  "validation": {
+    "full_regression": "passed",
+    "regression_log": "artifacts/awakening-v6-regression.log",
+    "core_checks": 1400,
+    "visual_checks": 1768,
+    "presentation_checks": 30,
+    "art_tests": 5,
+    "legacy_preview_test": "One existing local-preview test skipped by suite; new source and runtime sheets reviewed separately.",
+    "fps_state_hashes": [
+      "213e1c58ac2dd79110edc9d756e5fc311016916c36522c345af328f03c0bb22a",
+      "213e1c58ac2dd79110edc9d756e5fc311016916c36522c345af328f03c0bb22a",
+      "213e1c58ac2dd79110edc9d756e5fc311016916c36522c345af328f03c0bb22a"
+    ],
+    "runtime_capture_checks": 36,
+    "runtime_screenshots": 153,
+    "runtime_capture_report": "artifacts/awakening-v6/captures.json",
+    "source_check": {
+      "ready": 39,
+      "total": 39,
+      "errors": []
+    },
+    "source_all_frames_reviewed": true,
+    "runtime_contact_sheets_reviewed": true,
+    "exported_release_smoke": "passed",
+    "exported_combat_cases": 64,
+    "zip_integrity": "passed"
+  },
+  "release": {
+    "path": "dist/DemonSlayer-0.2.2-nezuko-awakening-windows-x86_64.zip",
+    "size": 437099193,
+    "sha256": "6a36a62be651d9175358288a173c10685565ab1f21fd5225c9d58f49caa68e15"
+  }
+}

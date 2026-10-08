@@ -1,0 +1,23 @@
+{
+  "id": "nezuko-walk_back",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "1536x1024",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/awakening-v7/prompts/nezuko-walk_back.txt",
+  "output": "output/imagegen/awakening-v7/raw/nezuko-walk_back.png",
+  "references": [
+    "output/imagegen/awakening-v7/references/approved-game-idle.png",
+    "output/imagegen/awakening-v7/references/pose-walk_back.png"
+  ],
+  "started_utc": "2026-10-08T13:09:32.8433311Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-08T13:10:24.3750250Z",
+  "sha256": "ed88e8fadf4cd51877e8d81bc440d73993383f0ee5af8d42c78d47afb75e5e63",
+  "reviewed_at": "2026-10-08T13:59:48.637686+00:00",
+  "review_basis": "Native source sheets, shared pixel ruler and actual Godot captures; preserve approved idle exactly."
+}

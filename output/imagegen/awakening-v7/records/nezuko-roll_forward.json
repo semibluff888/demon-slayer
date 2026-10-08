@@ -1,0 +1,73 @@
+{
+  "id": "nezuko-roll_forward",
+  "status": "assembled",
+  "route": "Lossless vertical assembly of generated six-frame source sheets",
+  "output": "output/imagegen/awakening-v7/raw/nezuko-roll_forward-assembled.png",
+  "actual_size": [
+    1536,
+    2048
+  ],
+  "sources": [
+    {
+      "id": "nezuko-roll_forward-part0",
+      "out": "output/imagegen/awakening-v7/raw/nezuko-roll_forward-part0.png",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "columns": 3,
+      "rows": 2,
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-roll_forward-part0.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png",
+        "output/imagegen/awakening-v7/references/nezuko-roll_forward-part0.png"
+      ],
+      "source_sha256": "a85a900fd527e177f5bd82f35f0518f19f3ebc918abe1d6f5ea5f53fbc47672c",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "assembly_offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "nezuko-roll_forward-part1",
+      "out": "output/imagegen/awakening-v7/raw/nezuko-roll_forward-part1.png",
+      "indices": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "columns": 3,
+      "rows": 2,
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-roll_forward-part1.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png",
+        "output/imagegen/awakening-v7/references/nezuko-roll_forward-part1.png"
+      ],
+      "source_sha256": "d61038538432b3bca39f8aaed30374da12ee9ba23cf8fd8e19841d231e5a848c",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "assembly_offset": [
+        0,
+        1024
+      ]
+    }
+  ],
+  "frame_overrides": [],
+  "sha256": "331db6b9ad545a5e442792f8d229b0452577fee148de1f02d922912c66c9b641",
+  "accepted": true,
+  "reviewed_at": "2026-10-08T13:59:48.715141+00:00",
+  "review_basis": "Native source sheets, shared pixel ruler and actual Godot captures; preserve approved idle exactly."
+}

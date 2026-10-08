@@ -1,0 +1,510 @@
+{
+  "revision": "awakening-v8",
+  "baseline": "awakening-v7",
+  "scope": {
+    "updated_clips": [
+      "walk",
+      "walk_back",
+      "dash_forward",
+      "dash_back",
+      "air_light",
+      "air_heavy",
+      "body_air_light",
+      "body_air_heavy",
+      "blood_kick",
+      "rising_kick",
+      "spinning_kick",
+      "blood_burst"
+    ],
+    "updated_frames": 90,
+    "preserved_clips": [
+      "idle",
+      "crouch",
+      "jump",
+      "guard",
+      "hit",
+      "knockdown",
+      "throw",
+      "victory",
+      "stand_light",
+      "stand_heavy",
+      "crouch_light",
+      "crouch_heavy",
+      "body_stand_light",
+      "body_stand_heavy",
+      "body_crouch_light",
+      "body_crouch_heavy",
+      "jump_forward",
+      "jump_back",
+      "roll_forward",
+      "roll_back",
+      "throw_forward",
+      "throw_success",
+      "throw_tech",
+      "round_intro",
+      "round_victory",
+      "round_defeat",
+      "awakened_combo",
+      "thrown_forward",
+      "thrown",
+      "guard_low",
+      "awakening_start"
+    ],
+    "total_clips": 43,
+    "total_frames": 348
+  },
+  "approved_preservation": {
+    "clips": 31,
+    "frames": 258,
+    "idle_frames": 6,
+    "max_frames": 12,
+    "checks": "Pixel bytes, frame sizes, offsets and metadata preserved"
+  },
+  "generation": {
+    "route": "CPA via installed unmodified imagegen CLI",
+    "model": "gpt-image-2",
+    "quality": "high",
+    "requests": 15,
+    "reference_files": {
+      "output/imagegen/awakening-v8/references/approved-idle.png": "e6eb6085952d4665d6bb806a976e8449d7cb09344a98969c6d32770fdb05b4f1",
+      "output/imagegen/awakening-v8/references/approved-max.png": "d524f1310ab979ba0fb51faed5ddafdc8f8adbf14b14b5cdeb5e16751467e62e",
+      "output/imagegen/awakening-v8/references/walk-cycle-guide.png": "dcfd5c8dd8fc2639319636241aa73af33c20ab830926bf7af502fd3c3ca954b2"
+    }
+  },
+  "sources": [
+    {
+      "clip": "walk",
+      "frames": 6,
+      "selected_id": "nezuko-walk-cycle-v2",
+      "source": "output/imagegen/awakening-v8/raw/nezuko-walk-cycle-v2.png",
+      "source_sha256": "1ae1afa328825ed478a7ea963d2722f4c955bbbd2ac9e70629adff27be9179e9",
+      "prompt": "output/imagegen/awakening-v8/prompts/nezuko-walk-cycle-v2.txt",
+      "references": [
+        "output/imagegen/awakening-v8/references/approved-idle.png",
+        "output/imagegen/awakening-v8/references/approved-max.png",
+        "output/imagegen/awakening-v8/references/walk-cycle-guide.png"
+      ],
+      "status": "generated",
+      "sources": [],
+      "registration": "output/imagegen/awakening-v8/imports/nezuko-walk.json",
+      "pose_overrides": []
+    },
+    {
+      "clip": "walk_back",
+      "frames": 6,
+      "selected_id": "nezuko-walk_back",
+      "source": "output/imagegen/awakening-v8/raw/nezuko-walk_back.png",
+      "source_sha256": "fe01efbdba56c8d1f3c5b9a0ce3f0fbf1f82c9e5acdad730f203777e802d0a99",
+      "prompt": "output/imagegen/awakening-v8/prompts/nezuko-walk_back.txt",
+      "references": [
+        "output/imagegen/awakening-v8/references/approved-idle.png",
+        "output/imagegen/awakening-v8/references/approved-max.png"
+      ],
+      "status": "generated",
+      "sources": [],
+      "registration": "output/imagegen/awakening-v8/imports/nezuko-walk_back.json",
+      "pose_overrides": []
+    },
+    {
+      "clip": "dash_forward",
+      "frames": 6,
+      "selected_id": "nezuko-dash_forward",
+      "source": "output/imagegen/awakening-v8/raw/nezuko-dash_forward.png",
+      "source_sha256": "b31a5b614f145e07bee89fb89938c37bed9eae299151f4929fb86ba1412c5c0d",
+      "prompt": "output/imagegen/awakening-v8/prompts/nezuko-dash_forward.txt",
+      "references": [
+        "output/imagegen/awakening-v8/references/approved-idle.png",
+        "output/imagegen/awakening-v8/references/approved-max.png"
+      ],
+      "status": "generated",
+      "sources": [],
+      "registration": "output/imagegen/awakening-v8/imports/nezuko-dash_forward.json",
+      "pose_overrides": []
+    },
+    {
+      "clip": "dash_back",
+      "frames": 6,
+      "selected_id": "nezuko-dash_back",
+      "source": "output/imagegen/awakening-v8/raw/nezuko-dash_back.png",
+      "source_sha256": "a3d99c118da316f7385df69e8daedb3a805035a8424fd20f87ded2f998631ccb",
+      "prompt": "output/imagegen/awakening-v8/prompts/nezuko-dash_back.txt",
+      "references": [
+        "output/imagegen/awakening-v8/references/approved-idle.png",
+        "output/imagegen/awakening-v8/references/approved-max.png"
+      ],
+      "status": "generated",
+      "sources": [],
+      "registration": "output/imagegen/awakening-v8/imports/nezuko-dash_back.json",
+      "pose_overrides": []
+    },
+    {
+      "clip": "air_light",
+      "frames": 6,
+      "selected_id": "nezuko-air_light",
+      "source": "output/imagegen/awakening-v8/raw/nezuko-air_light.png",
+      "source_sha256": "fc898e3d897b31a5a910d022ae26cfaed6e0c7556e7d7dc320ff24de2cc7ccfd",
+      "prompt": "output/imagegen/awakening-v8/prompts/nezuko-air_light.txt",
+      "references": [
+        "output/imagegen/awakening-v8/references/approved-idle.png",
+        "output/imagegen/awakening-v8/references/approved-max.png"
+      ],
+      "status": "generated",
+      "sources": [],
+      "registration": "output/imagegen/awakening-v8/imports/nezuko-air_light.json",
+      "pose_overrides": []
+    },
+    {
+      "clip": "air_heavy",
+      "frames": 6,
+      "selected_id": "nezuko-air_heavy",
+      "source": "output/imagegen/awakening-v8/raw/nezuko-air_heavy.png",
+      "source_sha256": "b0b50b78ed054a43733cda5854ef9c9274bf69d3e132516006cffa97b19998a6",
+      "prompt": "output/imagegen/awakening-v8/prompts/nezuko-air_heavy.txt",
+      "references": [
+        "output/imagegen/awakening-v8/references/approved-idle.png",
+        "output/imagegen/awakening-v8/references/approved-max.png"
+      ],
+      "status": "generated",
+      "sources": [],
+      "registration": "output/imagegen/awakening-v8/imports/nezuko-air_heavy.json",
+      "pose_overrides": []
+    },
+    {
+      "clip": "body_air_light",
+      "frames": 6,
+      "selected_id": "nezuko-body_air_light",
+      "source": "output/imagegen/awakening-v8/raw/nezuko-body_air_light.png",
+      "source_sha256": "ac73428dbb036b887057171ade3ce615ac379478a28e53f180115fa34d6acfe4",
+      "prompt": "output/imagegen/awakening-v8/prompts/nezuko-body_air_light.txt",
+      "references": [
+        "output/imagegen/awakening-v8/references/approved-idle.png",
+        "output/imagegen/awakening-v8/references/approved-max.png"
+      ],
+      "status": "generated",
+      "sources": [],
+      "registration": "output/imagegen/awakening-v8/imports/nezuko-body_air_light.json",
+      "pose_overrides": [
+        {
+          "output_frame": 2,
+          "out": "output/imagegen/awakening-v8/raw/nezuko-body_air_heavy.png",
+          "source_sha256": "4afe1e1badd4d0bf21bfd34c1084728fa3840039c2578dea563f60b760c6b602",
+          "index": 3,
+          "count": 6,
+          "columns": 3,
+          "reason": "Complete equivalent airborne kick; original generated toes touch the right source edge."
+        }
+      ]
+    },
+    {
+      "clip": "body_air_heavy",
+      "frames": 6,
+      "selected_id": "nezuko-body_air_heavy",
+      "source": "output/imagegen/awakening-v8/raw/nezuko-body_air_heavy.png",
+      "source_sha256": "4afe1e1badd4d0bf21bfd34c1084728fa3840039c2578dea563f60b760c6b602",
+      "prompt": "output/imagegen/awakening-v8/prompts/nezuko-body_air_heavy.txt",
+      "references": [
+        "output/imagegen/awakening-v8/references/approved-idle.png",
+        "output/imagegen/awakening-v8/references/approved-max.png"
+      ],
+      "status": "generated",
+      "sources": [],
+      "registration": "output/imagegen/awakening-v8/imports/nezuko-body_air_heavy.json",
+      "pose_overrides": []
+    },
+    {
+      "clip": "blood_kick",
+      "frames": 9,
+      "selected_id": "nezuko-blood_kick",
+      "source": "output/imagegen/awakening-v8/raw/nezuko-blood_kick.png",
+      "source_sha256": "455a5078e7d3fb9b3ec7276d2f1b8cfb21b51f5f9cb01c50f8b2529eab6c25f6",
+      "prompt": "output/imagegen/awakening-v8/prompts/nezuko-blood_kick.txt",
+      "references": [
+        "output/imagegen/awakening-v8/references/approved-idle.png",
+        "output/imagegen/awakening-v8/references/approved-max.png"
+      ],
+      "status": "generated",
+      "sources": [],
+      "registration": "output/imagegen/awakening-v8/imports/nezuko-blood_kick.json",
+      "pose_overrides": [
+        {
+          "output_frame": 4,
+          "out": "output/imagegen/awakening-v8/raw/nezuko-spinning_kick-part0.png",
+          "source_sha256": "94f3cd15a28b119bdc14a5e2e86f565768f9caf5ced25ca991d9d8ec71a4e1d2",
+          "index": 4,
+          "count": 6,
+          "columns": 3,
+          "reason": "Complete equivalent extension; original generated support foot ends at a sheet boundary."
+        }
+      ]
+    },
+    {
+      "clip": "rising_kick",
+      "frames": 9,
+      "selected_id": "nezuko-rising_kick",
+      "source": "output/imagegen/awakening-v8/raw/nezuko-rising_kick.png",
+      "source_sha256": "1787c7d8dce1f852674655d7fe8dbf90b7d9d516f44cbf8d4194f95d5b1933f2",
+      "prompt": "output/imagegen/awakening-v8/prompts/nezuko-rising_kick.txt",
+      "references": [
+        "output/imagegen/awakening-v8/references/approved-idle.png",
+        "output/imagegen/awakening-v8/references/approved-max.png"
+      ],
+      "status": "generated",
+      "sources": [],
+      "registration": "output/imagegen/awakening-v8/imports/nezuko-rising_kick.json",
+      "pose_overrides": []
+    },
+    {
+      "clip": "spinning_kick",
+      "frames": 12,
+      "selected_id": "nezuko-spinning_kick",
+      "source": "output/imagegen/awakening-v8/raw/nezuko-spinning_kick-assembled.png",
+      "source_sha256": "b88eb1a0d24d69e0b49123e0aae287c88c30bf91c0dc18bb74202531c86dff68",
+      "prompt": "output/imagegen/awakening-v8/prompts/nezuko-spinning_kick-part0.txt",
+      "references": [
+        "output/imagegen/awakening-v8/references/approved-idle.png",
+        "output/imagegen/awakening-v8/references/approved-max.png"
+      ],
+      "status": "assembled",
+      "sources": [
+        {
+          "id": "nezuko-spinning_kick-part0",
+          "out": "output/imagegen/awakening-v8/raw/nezuko-spinning_kick-part0.png",
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "columns": 3,
+          "rows": 2,
+          "prompt": "output/imagegen/awakening-v8/prompts/nezuko-spinning_kick-part0.txt",
+          "references": [
+            "output/imagegen/awakening-v8/references/approved-idle.png",
+            "output/imagegen/awakening-v8/references/approved-max.png"
+          ],
+          "source_sha256": "94f3cd15a28b119bdc14a5e2e86f565768f9caf5ced25ca991d9d8ec71a4e1d2",
+          "actual_size": [
+            1536,
+            1024
+          ],
+          "assembly_offset": [
+            0,
+            0
+          ]
+        },
+        {
+          "id": "nezuko-spinning_kick-part1",
+          "out": "output/imagegen/awakening-v8/raw/nezuko-spinning_kick-part1.png",
+          "indices": [
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "columns": 3,
+          "rows": 2,
+          "prompt": "output/imagegen/awakening-v8/prompts/nezuko-spinning_kick-part1.txt",
+          "references": [
+            "output/imagegen/awakening-v8/references/approved-idle.png",
+            "output/imagegen/awakening-v8/references/approved-max.png"
+          ],
+          "source_sha256": "53110dfb1754227ab44196f9b575d945ca8d0cf27681fdd31b1a3e1cbec05779",
+          "actual_size": [
+            1536,
+            1024
+          ],
+          "assembly_offset": [
+            0,
+            1024
+          ]
+        }
+      ],
+      "registration": "output/imagegen/awakening-v8/imports/nezuko-spinning_kick.json",
+      "pose_overrides": []
+    },
+    {
+      "clip": "blood_burst",
+      "frames": 12,
+      "selected_id": "nezuko-blood_burst",
+      "source": "output/imagegen/awakening-v8/raw/nezuko-blood_burst-assembled.png",
+      "source_sha256": "7e6762fd28a469a38b6a1e722118915e3ddcb0e064e02ae3ec7dd554df1cc0ab",
+      "prompt": "output/imagegen/awakening-v8/prompts/nezuko-blood_burst-part0.txt",
+      "references": [
+        "output/imagegen/awakening-v8/references/approved-idle.png",
+        "output/imagegen/awakening-v8/references/approved-max.png"
+      ],
+      "status": "assembled",
+      "sources": [
+        {
+          "id": "nezuko-blood_burst-part0",
+          "out": "output/imagegen/awakening-v8/raw/nezuko-blood_burst-part0.png",
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "columns": 3,
+          "rows": 2,
+          "prompt": "output/imagegen/awakening-v8/prompts/nezuko-blood_burst-part0.txt",
+          "references": [
+            "output/imagegen/awakening-v8/references/approved-idle.png",
+            "output/imagegen/awakening-v8/references/approved-max.png"
+          ],
+          "source_sha256": "63f2e314483d1cb80723aa8bb998f04b14b3c94e2c3f9cee22749307744d54b5",
+          "actual_size": [
+            1536,
+            1024
+          ],
+          "assembly_offset": [
+            0,
+            0
+          ]
+        },
+        {
+          "id": "nezuko-blood_burst-part1",
+          "out": "output/imagegen/awakening-v8/raw/nezuko-blood_burst-part1.png",
+          "indices": [
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "columns": 3,
+          "rows": 2,
+          "prompt": "output/imagegen/awakening-v8/prompts/nezuko-blood_burst-part1.txt",
+          "references": [
+            "output/imagegen/awakening-v8/references/approved-idle.png",
+            "output/imagegen/awakening-v8/references/approved-max.png"
+          ],
+          "source_sha256": "13fb42a187cd61f654e619d7ba0c35a0eee597a09a1ce5a10a35257b67aeec30",
+          "actual_size": [
+            1536,
+            1024
+          ],
+          "assembly_offset": [
+            0,
+            1024
+          ]
+        }
+      ],
+      "registration": "output/imagegen/awakening-v8/imports/nezuko-blood_burst.json",
+      "pose_overrides": [
+        {
+          "output_frame": 8,
+          "out": "output/imagegen/awakening-v8/raw/nezuko-spinning_kick-part1.png",
+          "source_sha256": "53110dfb1754227ab44196f9b575d945ca8d0cf27681fdd31b1a3e1cbec05779",
+          "index": 2,
+          "count": 6,
+          "columns": 3,
+          "reason": "Complete follow-through kick; original generated toes touch the right source edge."
+        }
+      ]
+    }
+  ],
+  "calibration": "motion-calibration.json",
+  "review": {
+    "method": "Shared pixel ruler plus actual game renders; no per-pose thumbnail fit",
+    "manual_measurement_uncertainty_source_pixels": 3,
+    "source_edge_fixes": 3,
+    "walk_registration": [
+      {
+        "clip": "walk",
+        "facing": 1,
+        "samples": 24,
+        "cycle_seams": 3,
+        "min_forward_waist_movement": 7.360837805328572,
+        "max_forward_waist_movement": 7.703950418956538,
+        "no_backward_body_jump": true
+      },
+      {
+        "clip": "walk_back",
+        "facing": 1,
+        "samples": 24,
+        "cycle_seams": 3,
+        "min_forward_waist_movement": 7.48761694536762,
+        "max_forward_waist_movement": 7.65832766188737,
+        "no_backward_body_jump": true
+      },
+      {
+        "clip": "walk",
+        "facing": -1,
+        "samples": 24,
+        "cycle_seams": 3,
+        "min_forward_waist_movement": 7.360837805328629,
+        "max_forward_waist_movement": 7.703950418956538,
+        "no_backward_body_jump": true
+      },
+      {
+        "clip": "walk_back",
+        "facing": -1,
+        "samples": 24,
+        "cycle_seams": 3,
+        "min_forward_waist_movement": 7.487616945367449,
+        "max_forward_waist_movement": 7.65832766188737,
+        "no_backward_body_jump": true
+      }
+    ]
+  },
+  "runtime_assets": {
+    "art/characters/nezuko/awakening/atlas-0.png": "fdfcfbb7bc46dffb73e23758f3d748127a734d883d8ffc1679a854825db38f93",
+    "art/characters/nezuko/awakening/atlas-1.png": "29d0a66bdc353a345ce5aa40ba705a494048cb0b26a501cea329a0f892cc87cc",
+    "art/characters/nezuko/awakening/atlas-2.png": "bc2caecc2393ae4098cab5bc85a79396059a2b538114cacb6cea80d5ff6a5ed9",
+    "art/characters/nezuko/awakening/atlas-3.png": "d941ffe45caeeff269b47f4373925732194dd79be4f4442e8c4e5a10a1930d57",
+    "art/characters/nezuko/awakening/atlas-4.png": "14d50a10657efb4dcace381620042dbd817101d94bb71a7b2a200794c3a575e5",
+    "art/characters/nezuko/awakening/atlas-5.png": "868bbf4b53c9deddcb4b73464d6d1c4cd07c86620715ae686cd7831c3ff505bb",
+    "art/characters/nezuko/awakening/atlas-6.png": "b57242155956e870f76cf5ea8b81b88dfe5318fecbd54de855d1d3434871441a",
+    "art/characters/nezuko/awakening/atlas-7.png": "82b18b266a05843e5b91e1e1a6ece9cbd71e68ddd7ba850c5def5bfdac1ef311",
+    "art/characters/nezuko/awakening/atlas-8.png": "7023fe18fd87c7418b82dadcc0ed02a98e876e8663ea7a773a35a3c979f7d50b",
+    "art/characters/nezuko/awakening/atlas.json": "472b770a15f03d76e0230f0618a0b7274578cbdd9e70694eb522643874e6a5ee",
+    "art/characters/nezuko/awakening/fx-aura.png": "a8ceb48d15d5a47c8dbc14c9b405252acc498eec60ba2877730815dd6a1454ac",
+    "art/characters/nezuko/awakening/fx-burst.png": "6df3da0988373b9b53b7ae0ee2d65ad2545868143e0cb70e322777c92b73465a",
+    "art/characters/nezuko/awakening/fx-sweep.png": "4e44593c6c7bdb1874ceb547c7534da2a8694ec7a32a859b182b4b4663c0e151",
+    "art/characters/nezuko/awakening/fx-wisp.png": "74a98d5d64be4a29cd715c02848f1f7aeb9f2323f1906ec4fd2e16bcbcb3c931",
+    "art/characters/nezuko/awakening/portrait.png": "15f3e740c8fc2ae9a918e4412b25f331f2b43ac1e0909d8363fdb9056e3f2f96"
+  },
+  "verification": {
+    "artwork_tests": 11,
+    "regression_log": "artifacts/awakening-v8-regression.log",
+    "regression": "passed; one existing local-preview test skipped",
+    "frame_rates": [
+      30,
+      60,
+      144
+    ],
+    "state_hash": "213e1c58ac2dd79110edc9d756e5fc311016916c36522c345af328f03c0bb22a",
+    "capture_checks": 92,
+    "capture_failures": [],
+    "screenshots": 931,
+    "real_input_samples": 778,
+    "capture_manifest": "artifacts/awakening-v8/captures.json",
+    "walk_review": "artifacts/awakening-v8/walk-registration-check.json"
+  },
+  "preview": {
+    "source": "Actual Godot captures through combat inputs",
+    "fps": 20,
+    "samples": 656,
+    "duration_seconds": 32.8,
+    "video": "motion-preview.mp4",
+    "overview": "motion-overview.jpg",
+    "walk_contact_sheet": "walk-cycle-contact-sheet.jpg"
+  },
+  "release": {
+    "status": "exported-and-verified",
+    "archive": "dist/DemonSlayer-0.2.4-nezuko-motion-fix-windows-x86_64.zip",
+    "sha256": "e0620e12de624b6379969235dd07c82f379e45c5f814b5f6526e69ecd5c3fd77",
+    "bytes": 437527398,
+    "zip_integrity": "passed",
+    "combat_cases": 64,
+    "move_manifest_count": 84,
+    "smoke_log": "dist/DemonSlayer-0.2.4-nezuko-motion-fix-windows-x86_64-smoke.log"
+  }
+}

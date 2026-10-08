@@ -1,0 +1,1434 @@
+{
+  "status": "integrated-and-verified",
+  "production": "awakening-v7",
+  "approved_idle": "output/imagegen/awakening-v7/master.json",
+  "generation": {
+    "route": "CPA via installed imagegen CLI",
+    "model": "gpt-image-2",
+    "quality": "high",
+    "reference_attachments": true
+  },
+  "scope": {
+    "preserved_idle_frames": 6,
+    "redrawn_dynamic_clips": 38,
+    "redrawn_dynamic_frames": 300,
+    "unchanged_round_frames": 42,
+    "atlas_clips": 43,
+    "atlas_frames": 348
+  },
+  "calibration": {
+    "file": "output/imagegen/awakening-v7/anatomy-calibration.json",
+    "target_skull_length": 59.5,
+    "approximate_source_measurement_error": 3,
+    "review": "Shared-scale full-body and real game visual review; numerical head calibration is not an exact anatomical guarantee."
+  },
+  "sources": [
+    {
+      "clip": "awakening_start",
+      "frames": 6,
+      "selected_id": "nezuko-awakening_start",
+      "source": "output/imagegen/awakening-v7/raw/nezuko-awakening_start.png",
+      "source_sha256": "e17bd18ded33c825285625ff29a4b79c3c3a6ebfd98c2d5cf0dae419efea87e9",
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-awakening_start.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png",
+        "output/imagegen/awakening-v7/references/pose-awakening_start.png"
+      ],
+      "status": "generated",
+      "sources": [],
+      "frame_overrides": [],
+      "registration": "output/imagegen/awakening-v7/imports/nezuko-awakening_start.json"
+    },
+    {
+      "clip": "idle",
+      "frames": 6,
+      "selected_id": "nezuko-idle",
+      "source": "output/imagegen/awakening-v6/raw/nezuko-idle.png",
+      "source_sha256": "6b1252f1725d89db1c7586397f1ee8dc44593e0c2ff1d33aeae27821824943f5",
+      "prompt": "output/imagegen/awakening-v6/prompts/nezuko-idle.txt",
+      "references": [
+        "output/imagegen/awakening-v2/references/nezuko-idle.png",
+        "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+      ],
+      "status": "generated",
+      "sources": [],
+      "frame_overrides": [],
+      "registration": "output/imagegen/awakening-v7/imports/nezuko-idle.json"
+    },
+    {
+      "clip": "walk",
+      "frames": 6,
+      "selected_id": "nezuko-walk",
+      "source": "output/imagegen/awakening-v7/raw/nezuko-walk.png",
+      "source_sha256": "7135a1de7eca0611a1c953bc4218189fc26c0a604bb1504cd520bb6d5bca489f",
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-walk.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png",
+        "output/imagegen/awakening-v7/references/pose-walk.png"
+      ],
+      "status": "generated",
+      "sources": [],
+      "frame_overrides": [],
+      "registration": "output/imagegen/awakening-v7/imports/nezuko-walk.json"
+    },
+    {
+      "clip": "walk_back",
+      "frames": 6,
+      "selected_id": "nezuko-walk_back",
+      "source": "output/imagegen/awakening-v7/raw/nezuko-walk_back.png",
+      "source_sha256": "ed88e8fadf4cd51877e8d81bc440d73993383f0ee5af8d42c78d47afb75e5e63",
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-walk_back.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png",
+        "output/imagegen/awakening-v7/references/pose-walk_back.png"
+      ],
+      "status": "generated",
+      "sources": [],
+      "frame_overrides": [],
+      "registration": "output/imagegen/awakening-v7/imports/nezuko-walk_back.json"
+    },
+    {
+      "clip": "crouch",
+      "frames": 6,
+      "selected_id": "nezuko-crouch",
+      "source": "output/imagegen/awakening-v7/raw/nezuko-crouch.png",
+      "source_sha256": "cee7c61e3c1daf40b4ce8f06be9116c6a37050e7a988cd30f06ff2f98ba0241a",
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-crouch.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png",
+        "output/imagegen/awakening-v7/references/pose-crouch.png"
+      ],
+      "status": "generated",
+      "sources": [],
+      "frame_overrides": [],
+      "registration": "output/imagegen/awakening-v7/imports/nezuko-crouch.json"
+    },
+    {
+      "clip": "jump",
+      "frames": 6,
+      "selected_id": "nezuko-jump",
+      "source": "output/imagegen/awakening-v7/raw/nezuko-jump.png",
+      "source_sha256": "e89560695ec3e417fb098bf9fe3c609ec2ca4aa06929d50d9ab9eb553669dff0",
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-jump.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png",
+        "output/imagegen/awakening-v7/references/pose-jump.png"
+      ],
+      "status": "generated",
+      "sources": [],
+      "frame_overrides": [],
+      "registration": "output/imagegen/awakening-v7/imports/nezuko-jump.json"
+    },
+    {
+      "clip": "guard",
+      "frames": 6,
+      "selected_id": "nezuko-guard-model-v2",
+      "source": "output/imagegen/awakening-v7/raw/nezuko-guard-model-v2.png",
+      "source_sha256": "f0153235b5ea7c52717c20a7d9a54082236ebee575f82cb633c338cc8b67a68f",
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-guard-model-v2.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png"
+      ],
+      "status": "generated",
+      "sources": [],
+      "frame_overrides": [],
+      "registration": "output/imagegen/awakening-v7/imports/nezuko-guard.json"
+    },
+    {
+      "clip": "hit",
+      "frames": 6,
+      "selected_id": "nezuko-hit-model-v2",
+      "source": "output/imagegen/awakening-v7/raw/nezuko-hit-model-v2.png",
+      "source_sha256": "4d89bad72a175f246e28b840d83ce7e95124a0f089b659c97587e682283f7230",
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-hit-model-v2.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png"
+      ],
+      "status": "generated",
+      "sources": [],
+      "frame_overrides": [],
+      "registration": "output/imagegen/awakening-v7/imports/nezuko-hit.json"
+    },
+    {
+      "clip": "knockdown",
+      "frames": 6,
+      "selected_id": "nezuko-knockdown",
+      "source": "output/imagegen/awakening-v7/raw/nezuko-knockdown.png",
+      "source_sha256": "7f4703a710aaf65794fe9921ef7273d7b284e510051828d13a7bfc426595c4fb",
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-knockdown.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png",
+        "output/imagegen/awakening-v7/references/pose-knockdown.png"
+      ],
+      "status": "generated",
+      "sources": [],
+      "frame_overrides": [],
+      "registration": "output/imagegen/awakening-v7/imports/nezuko-knockdown.json"
+    },
+    {
+      "clip": "throw",
+      "frames": 6,
+      "selected_id": "nezuko-throw-model-v2",
+      "source": "output/imagegen/awakening-v7/raw/nezuko-throw-model-v2.png",
+      "source_sha256": "149395010e8d9174467c620ed538c1d0a5c9573f0c8dac1950c2afa94f51d6f0",
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-throw-model-v2.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png"
+      ],
+      "status": "generated",
+      "sources": [],
+      "frame_overrides": [],
+      "registration": "output/imagegen/awakening-v7/imports/nezuko-throw.json"
+    },
+    {
+      "clip": "stand_light",
+      "frames": 6,
+      "selected_id": "nezuko-stand_light-model-v2",
+      "source": "output/imagegen/awakening-v7/raw/nezuko-stand_light-model-v2.png",
+      "source_sha256": "5707367394e10f0e56f8c18739624e65c8e61470368fe2602a80a651a49fe765",
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-stand_light-model-v2.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png"
+      ],
+      "status": "generated",
+      "sources": [],
+      "frame_overrides": [],
+      "registration": "output/imagegen/awakening-v7/imports/nezuko-stand_light.json"
+    },
+    {
+      "clip": "stand_heavy",
+      "frames": 6,
+      "selected_id": "nezuko-stand_heavy-model-v2",
+      "source": "output/imagegen/awakening-v7/raw/nezuko-stand_heavy-model-v2.png",
+      "source_sha256": "10a897566ef95250db48387f62c127bbad41abcb4174a2feedba5b0d02bd39cd",
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-stand_heavy-model-v2.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png"
+      ],
+      "status": "generated",
+      "sources": [],
+      "frame_overrides": [],
+      "registration": "output/imagegen/awakening-v7/imports/nezuko-stand_heavy.json"
+    },
+    {
+      "clip": "crouch_light",
+      "frames": 6,
+      "selected_id": "nezuko-crouch_light-model-v2",
+      "source": "output/imagegen/awakening-v7/raw/nezuko-crouch_light-model-v2.png",
+      "source_sha256": "5e56086f77b0a639032908b763219883fe178a5dcec7149e24ecb0399b9a3ac0",
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-crouch_light-model-v2.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png"
+      ],
+      "status": "generated",
+      "sources": [],
+      "frame_overrides": [],
+      "registration": "output/imagegen/awakening-v7/imports/nezuko-crouch_light.json"
+    },
+    {
+      "clip": "crouch_heavy",
+      "frames": 6,
+      "selected_id": "nezuko-crouch_heavy-model-v2",
+      "source": "output/imagegen/awakening-v7/raw/nezuko-crouch_heavy-model-v2.png",
+      "source_sha256": "a08525f8d02ac8be72ac91c80b64cc088af5264ea09cc7ad7f4ced6361026784",
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-crouch_heavy-model-v2.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png"
+      ],
+      "status": "generated",
+      "sources": [],
+      "frame_overrides": [],
+      "registration": "output/imagegen/awakening-v7/imports/nezuko-crouch_heavy.json"
+    },
+    {
+      "clip": "air_light",
+      "frames": 6,
+      "selected_id": "nezuko-air_light",
+      "source": "output/imagegen/awakening-v7/raw/nezuko-air_light.png",
+      "source_sha256": "44af4ed3482d888678aa1ac42b5ec275abc944c085b0f24bc8808b90972b8332",
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-air_light.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png",
+        "output/imagegen/awakening-v7/references/pose-air_light.png"
+      ],
+      "status": "generated",
+      "sources": [],
+      "frame_overrides": [],
+      "registration": "output/imagegen/awakening-v7/imports/nezuko-air_light.json"
+    },
+    {
+      "clip": "air_heavy",
+      "frames": 6,
+      "selected_id": "nezuko-air_heavy",
+      "source": "output/imagegen/awakening-v7/raw/nezuko-air_heavy.png",
+      "source_sha256": "ad5c156a532effefb137beb5f1289fef0e3a82be05e527fd404b0904f1f479df",
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-air_heavy.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png",
+        "output/imagegen/awakening-v7/references/pose-air_heavy.png"
+      ],
+      "status": "generated",
+      "sources": [],
+      "frame_overrides": [],
+      "registration": "output/imagegen/awakening-v7/imports/nezuko-air_heavy.json"
+    },
+    {
+      "clip": "body_stand_light",
+      "frames": 6,
+      "selected_id": "nezuko-body_stand_light-model-v2",
+      "source": "output/imagegen/awakening-v7/raw/nezuko-body_stand_light-model-v2.png",
+      "source_sha256": "dc240b91358bbb2a1f9602e788535721b04045fb727cd1fc90275dc1c25f9856",
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-body_stand_light-model-v2.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png"
+      ],
+      "status": "generated",
+      "sources": [],
+      "frame_overrides": [],
+      "registration": "output/imagegen/awakening-v7/imports/nezuko-body_stand_light.json"
+    },
+    {
+      "clip": "body_stand_heavy",
+      "frames": 6,
+      "selected_id": "nezuko-body_stand_heavy-model-v2",
+      "source": "output/imagegen/awakening-v7/raw/nezuko-body_stand_heavy-model-v2.png",
+      "source_sha256": "85b8802621459971394aa469d47bb9c7858ad86906dd130377580b179a750d83",
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-body_stand_heavy-model-v2.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png"
+      ],
+      "status": "generated",
+      "sources": [],
+      "frame_overrides": [],
+      "registration": "output/imagegen/awakening-v7/imports/nezuko-body_stand_heavy.json"
+    },
+    {
+      "clip": "body_crouch_light",
+      "frames": 6,
+      "selected_id": "nezuko-body_crouch_light-model-v2",
+      "source": "output/imagegen/awakening-v7/raw/nezuko-body_crouch_light-model-v2.png",
+      "source_sha256": "c1ae61777890ad0782978c7d4492adeff01e0d86156a104fe42914ed098c2b83",
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-body_crouch_light-model-v2.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png"
+      ],
+      "status": "generated",
+      "sources": [],
+      "frame_overrides": [],
+      "registration": "output/imagegen/awakening-v7/imports/nezuko-body_crouch_light.json"
+    },
+    {
+      "clip": "body_crouch_heavy",
+      "frames": 6,
+      "selected_id": "nezuko-body_crouch_heavy-model-v2",
+      "source": "output/imagegen/awakening-v7/raw/nezuko-body_crouch_heavy-model-v2.png",
+      "source_sha256": "d3dabb9d3665a144535736cd472ef5cea9b520dfe52c340389894717ee72ea66",
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-body_crouch_heavy-model-v2.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png"
+      ],
+      "status": "generated",
+      "sources": [],
+      "frame_overrides": [],
+      "registration": "output/imagegen/awakening-v7/imports/nezuko-body_crouch_heavy.json"
+    },
+    {
+      "clip": "body_air_light",
+      "frames": 6,
+      "selected_id": "nezuko-body_air_light",
+      "source": "output/imagegen/awakening-v7/raw/nezuko-body_air_light.png",
+      "source_sha256": "6f7d1c7f3303e6a834ce7766725faa6573468913f2c60d9a0a263b7f17283eda",
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-body_air_light.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png",
+        "output/imagegen/awakening-v7/references/pose-body_air_light.png"
+      ],
+      "status": "generated",
+      "sources": [],
+      "frame_overrides": [],
+      "registration": "output/imagegen/awakening-v7/imports/nezuko-body_air_light.json"
+    },
+    {
+      "clip": "body_air_heavy",
+      "frames": 6,
+      "selected_id": "nezuko-body_air_heavy",
+      "source": "output/imagegen/awakening-v7/raw/nezuko-body_air_heavy.png",
+      "source_sha256": "43669873613ae6a7be835b21eb5b37e5cb4f6cf14fc55b5b6bed0c596340b81e",
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-body_air_heavy.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png",
+        "output/imagegen/awakening-v7/references/pose-body_air_heavy.png"
+      ],
+      "status": "generated",
+      "sources": [],
+      "frame_overrides": [],
+      "registration": "output/imagegen/awakening-v7/imports/nezuko-body_air_heavy.json"
+    },
+    {
+      "clip": "dash_forward",
+      "frames": 6,
+      "selected_id": "nezuko-dash_forward",
+      "source": "output/imagegen/awakening-v7/raw/nezuko-dash_forward.png",
+      "source_sha256": "e98e13fc0170a452f64bd8bc4f54406e92ce84fd82cef337376c967b0a12ec4b",
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-dash_forward.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png",
+        "output/imagegen/awakening-v7/references/pose-dash_forward.png"
+      ],
+      "status": "generated",
+      "sources": [],
+      "frame_overrides": [],
+      "registration": "output/imagegen/awakening-v7/imports/nezuko-dash_forward.json"
+    },
+    {
+      "clip": "dash_back",
+      "frames": 6,
+      "selected_id": "nezuko-dash_back",
+      "source": "output/imagegen/awakening-v7/raw/nezuko-dash_back.png",
+      "source_sha256": "056f1e6af679f2e14bb1625f48b36dcc7c9443426ba40cbea685e4afaab4b4c6",
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-dash_back.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png",
+        "output/imagegen/awakening-v7/references/pose-dash_back.png"
+      ],
+      "status": "generated",
+      "sources": [],
+      "frame_overrides": [],
+      "registration": "output/imagegen/awakening-v7/imports/nezuko-dash_back.json"
+    },
+    {
+      "clip": "jump_forward",
+      "frames": 12,
+      "selected_id": "nezuko-jump_forward",
+      "source": "output/imagegen/awakening-v7/raw/nezuko-jump_forward-assembled.png",
+      "source_sha256": "5f769db6cb41b1e7aab9c3bfd684ee3105d76a3f9f240ee03561af207c94063f",
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-jump_forward.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png",
+        "output/imagegen/awakening-v7/references/pose-jump_forward.png"
+      ],
+      "status": "assembled",
+      "sources": [
+        {
+          "id": "nezuko-jump_forward-part0",
+          "out": "output/imagegen/awakening-v7/raw/nezuko-jump_forward-part0.png",
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "columns": 3,
+          "rows": 2,
+          "prompt": "output/imagegen/awakening-v7/prompts/nezuko-jump_forward-part0.txt",
+          "references": [
+            "output/imagegen/awakening-v7/references/approved-game-idle.png",
+            "output/imagegen/awakening-v7/references/nezuko-jump_forward-part0.png"
+          ],
+          "source_sha256": "8afee39d947ae583637e18cbb8e8b09ed1d72b148988f0c5b74d769844e7af5e",
+          "actual_size": [
+            1536,
+            1024
+          ],
+          "assembly_offset": [
+            0,
+            0
+          ]
+        },
+        {
+          "id": "nezuko-jump_forward-part1",
+          "out": "output/imagegen/awakening-v7/raw/nezuko-jump_forward-part1.png",
+          "indices": [
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "columns": 3,
+          "rows": 2,
+          "prompt": "output/imagegen/awakening-v7/prompts/nezuko-jump_forward-part1.txt",
+          "references": [
+            "output/imagegen/awakening-v7/references/approved-game-idle.png",
+            "output/imagegen/awakening-v7/references/nezuko-jump_forward-part1.png"
+          ],
+          "source_sha256": "7f0ae4a63c4a5c54700e7a94468905c7406cc7d4c5a6ae6a938d23183a1340bc",
+          "actual_size": [
+            1536,
+            1024
+          ],
+          "assembly_offset": [
+            0,
+            1024
+          ]
+        }
+      ],
+      "frame_overrides": [],
+      "registration": "output/imagegen/awakening-v7/imports/nezuko-jump_forward.json"
+    },
+    {
+      "clip": "jump_back",
+      "frames": 12,
+      "selected_id": "nezuko-jump_back",
+      "source": "output/imagegen/awakening-v7/raw/nezuko-jump_back-assembled.png",
+      "source_sha256": "9a187c1124ac2e2d1957a1f6414a745c693a257358c584e2fa5ad22da21fe2a1",
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-jump_back.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png",
+        "output/imagegen/awakening-v7/references/pose-jump_back.png"
+      ],
+      "status": "assembled",
+      "sources": [
+        {
+          "id": "nezuko-jump_back-part0",
+          "out": "output/imagegen/awakening-v7/raw/nezuko-jump_back-part0.png",
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "columns": 3,
+          "rows": 2,
+          "prompt": "output/imagegen/awakening-v7/prompts/nezuko-jump_back-part0.txt",
+          "references": [
+            "output/imagegen/awakening-v7/references/approved-game-idle.png",
+            "output/imagegen/awakening-v7/references/nezuko-jump_back-part0.png"
+          ],
+          "source_sha256": "bfa8ebd4788d133d6975f9f0aa6ad044813cab9443e5039610d2831b8330e569",
+          "actual_size": [
+            1536,
+            1024
+          ],
+          "assembly_offset": [
+            0,
+            0
+          ]
+        },
+        {
+          "id": "nezuko-jump_back-part1",
+          "out": "output/imagegen/awakening-v7/raw/nezuko-jump_back-part1.png",
+          "indices": [
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "columns": 3,
+          "rows": 2,
+          "prompt": "output/imagegen/awakening-v7/prompts/nezuko-jump_back-part1.txt",
+          "references": [
+            "output/imagegen/awakening-v7/references/approved-game-idle.png",
+            "output/imagegen/awakening-v7/references/nezuko-jump_back-part1.png"
+          ],
+          "source_sha256": "adb132afbd2ebf8b2ee4fccd1f6ee4e13a9d7eaf58e4e68732301aac691c1a1a",
+          "actual_size": [
+            1536,
+            1024
+          ],
+          "assembly_offset": [
+            0,
+            1024
+          ]
+        }
+      ],
+      "frame_overrides": [],
+      "registration": "output/imagegen/awakening-v7/imports/nezuko-jump_back.json"
+    },
+    {
+      "clip": "roll_forward",
+      "frames": 12,
+      "selected_id": "nezuko-roll_forward",
+      "source": "output/imagegen/awakening-v7/raw/nezuko-roll_forward-assembled.png",
+      "source_sha256": "331db6b9ad545a5e442792f8d229b0452577fee148de1f02d922912c66c9b641",
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-roll_forward.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png",
+        "output/imagegen/awakening-v7/references/pose-roll_forward.png"
+      ],
+      "status": "assembled",
+      "sources": [
+        {
+          "id": "nezuko-roll_forward-part0",
+          "out": "output/imagegen/awakening-v7/raw/nezuko-roll_forward-part0.png",
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "columns": 3,
+          "rows": 2,
+          "prompt": "output/imagegen/awakening-v7/prompts/nezuko-roll_forward-part0.txt",
+          "references": [
+            "output/imagegen/awakening-v7/references/approved-game-idle.png",
+            "output/imagegen/awakening-v7/references/nezuko-roll_forward-part0.png"
+          ],
+          "source_sha256": "a85a900fd527e177f5bd82f35f0518f19f3ebc918abe1d6f5ea5f53fbc47672c",
+          "actual_size": [
+            1536,
+            1024
+          ],
+          "assembly_offset": [
+            0,
+            0
+          ]
+        },
+        {
+          "id": "nezuko-roll_forward-part1",
+          "out": "output/imagegen/awakening-v7/raw/nezuko-roll_forward-part1.png",
+          "indices": [
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "columns": 3,
+          "rows": 2,
+          "prompt": "output/imagegen/awakening-v7/prompts/nezuko-roll_forward-part1.txt",
+          "references": [
+            "output/imagegen/awakening-v7/references/approved-game-idle.png",
+            "output/imagegen/awakening-v7/references/nezuko-roll_forward-part1.png"
+          ],
+          "source_sha256": "d61038538432b3bca39f8aaed30374da12ee9ba23cf8fd8e19841d231e5a848c",
+          "actual_size": [
+            1536,
+            1024
+          ],
+          "assembly_offset": [
+            0,
+            1024
+          ]
+        }
+      ],
+      "frame_overrides": [],
+      "registration": "output/imagegen/awakening-v7/imports/nezuko-roll_forward.json"
+    },
+    {
+      "clip": "roll_back",
+      "frames": 12,
+      "selected_id": "nezuko-roll_back",
+      "source": "output/imagegen/awakening-v7/raw/nezuko-roll_back-assembled.png",
+      "source_sha256": "8d4955db674b188d64659fd187a1a0455ab86dc58fcbdf8f00483367ba32d772",
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-roll_back.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png",
+        "output/imagegen/awakening-v7/references/pose-roll_back.png"
+      ],
+      "status": "assembled",
+      "sources": [
+        {
+          "id": "nezuko-roll_back-face-cleanup",
+          "out": "output/imagegen/awakening-v7/raw/nezuko-roll_back-face-cleanup.png",
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "columns": 3,
+          "rows": 2,
+          "prompt": "output/imagegen/awakening-v7/prompts/nezuko-roll_back-face-cleanup.txt",
+          "references": [
+            "output/imagegen/awakening-v7/raw/nezuko-roll_back-part0.png",
+            "output/imagegen/awakening-v7/references/approved-game-idle.png"
+          ],
+          "source_sha256": "47ad58fcd12b21b1e7d4be0627a0b6eeeecbfda09872ca778ae4af1039bb2675",
+          "actual_size": [
+            1536,
+            1024
+          ],
+          "assembly_offset": [
+            0,
+            0
+          ]
+        },
+        {
+          "id": "nezuko-roll_back-part1",
+          "out": "output/imagegen/awakening-v7/raw/nezuko-roll_back-part1.png",
+          "indices": [
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "columns": 3,
+          "rows": 2,
+          "prompt": "output/imagegen/awakening-v7/prompts/nezuko-roll_back-part1.txt",
+          "references": [
+            "output/imagegen/awakening-v7/references/approved-game-idle.png",
+            "output/imagegen/awakening-v7/references/nezuko-roll_back-part1.png"
+          ],
+          "source_sha256": "77c6e3da0cc74921d8f1de848ea41ac31f4ea34c5af3297ae6c5bdde7a79e440",
+          "actual_size": [
+            1536,
+            1024
+          ],
+          "assembly_offset": [
+            0,
+            1024
+          ]
+        }
+      ],
+      "frame_overrides": [],
+      "registration": "output/imagegen/awakening-v7/imports/nezuko-roll_back.json"
+    },
+    {
+      "clip": "throw_forward",
+      "frames": 12,
+      "selected_id": "nezuko-throw_forward",
+      "source": "output/imagegen/awakening-v7/raw/nezuko-throw_forward-assembled.png",
+      "source_sha256": "b3084a187afe37f2feb9f1f637c94f6e8e423fc9b995231a4f258214b2da0743",
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-throw_forward.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png",
+        "output/imagegen/awakening-v7/references/pose-throw_forward.png"
+      ],
+      "status": "assembled",
+      "sources": [
+        {
+          "id": "nezuko-throw_forward-part0",
+          "out": "output/imagegen/awakening-v7/raw/nezuko-throw_forward-part0.png",
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "columns": 3,
+          "rows": 2,
+          "prompt": "output/imagegen/awakening-v7/prompts/nezuko-throw_forward-part0.txt",
+          "references": [
+            "output/imagegen/awakening-v7/references/approved-game-idle.png",
+            "output/imagegen/awakening-v7/references/nezuko-throw_forward-part0.png"
+          ],
+          "source_sha256": "bad430b5016be8e1c9f20773e063a8f88f0762ac47cb333035b11545874fdb94",
+          "actual_size": [
+            1536,
+            1024
+          ],
+          "assembly_offset": [
+            0,
+            0
+          ]
+        },
+        {
+          "id": "nezuko-throw_forward-part1",
+          "out": "output/imagegen/awakening-v7/raw/nezuko-throw_forward-part1.png",
+          "indices": [
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "columns": 3,
+          "rows": 2,
+          "prompt": "output/imagegen/awakening-v7/prompts/nezuko-throw_forward-part1.txt",
+          "references": [
+            "output/imagegen/awakening-v7/references/approved-game-idle.png",
+            "output/imagegen/awakening-v7/references/nezuko-throw_forward-part1.png"
+          ],
+          "source_sha256": "ee1ef4b17dfa445b30c7b8505bf689094e1646875f481ec03cd8117960e24434",
+          "actual_size": [
+            1536,
+            1024
+          ],
+          "assembly_offset": [
+            0,
+            1024
+          ]
+        }
+      ],
+      "frame_overrides": [],
+      "registration": "output/imagegen/awakening-v7/imports/nezuko-throw_forward.json"
+    },
+    {
+      "clip": "throw_success",
+      "frames": 12,
+      "selected_id": "nezuko-throw_success",
+      "source": "output/imagegen/awakening-v7/raw/nezuko-throw_success-assembled.png",
+      "source_sha256": "00fab847e0d67ddc1745321bdd31f0c0c74f3ad5b11cc28cc8fbe72fc1ea07e0",
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-throw_success.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png",
+        "output/imagegen/awakening-v7/references/pose-throw_success.png"
+      ],
+      "status": "assembled",
+      "sources": [
+        {
+          "id": "nezuko-throw_success-part0",
+          "out": "output/imagegen/awakening-v7/raw/nezuko-throw_success-part0.png",
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "columns": 3,
+          "rows": 2,
+          "prompt": "output/imagegen/awakening-v7/prompts/nezuko-throw_success-part0.txt",
+          "references": [
+            "output/imagegen/awakening-v7/references/approved-game-idle.png",
+            "output/imagegen/awakening-v7/references/nezuko-throw_success-part0.png"
+          ],
+          "source_sha256": "8ac4c71125ee2659c71bf77aa1b426932b5ae2188deb2c19611acd986992474f",
+          "actual_size": [
+            1536,
+            1024
+          ],
+          "assembly_offset": [
+            0,
+            0
+          ]
+        },
+        {
+          "id": "nezuko-throw_success-part1",
+          "out": "output/imagegen/awakening-v7/raw/nezuko-throw_success-part1.png",
+          "indices": [
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "columns": 3,
+          "rows": 2,
+          "prompt": "output/imagegen/awakening-v7/prompts/nezuko-throw_success-part1.txt",
+          "references": [
+            "output/imagegen/awakening-v7/references/approved-game-idle.png",
+            "output/imagegen/awakening-v7/references/nezuko-throw_success-part1.png"
+          ],
+          "source_sha256": "99415e246c5e4140ae8c0f23c65123d287d33443c4c8743b780586d9949e2639",
+          "actual_size": [
+            1536,
+            1024
+          ],
+          "assembly_offset": [
+            0,
+            1024
+          ]
+        }
+      ],
+      "frame_overrides": [],
+      "registration": "output/imagegen/awakening-v7/imports/nezuko-throw_success.json"
+    },
+    {
+      "clip": "throw_tech",
+      "frames": 6,
+      "selected_id": "nezuko-throw_tech",
+      "source": "output/imagegen/awakening-v7/raw/nezuko-throw_tech.png",
+      "source_sha256": "62fbb83ca30e5b2124d5fa5c760b6cef086f7eab5c6d96cd06863fc644a3b534",
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-throw_tech.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png",
+        "output/imagegen/awakening-v7/references/pose-throw_tech.png"
+      ],
+      "status": "generated",
+      "sources": [],
+      "frame_overrides": [],
+      "registration": "output/imagegen/awakening-v7/imports/nezuko-throw_tech.json"
+    },
+    {
+      "clip": "blood_kick",
+      "frames": 9,
+      "selected_id": "nezuko-blood_kick",
+      "source": "output/imagegen/awakening-v7/raw/nezuko-blood_kick-assembled.png",
+      "source_sha256": "a0def84de39f9a7b8358123c6aabcee35d8084403431d06004103e5fe302ce74",
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-blood_kick.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png",
+        "output/imagegen/awakening-v7/references/pose-blood_kick.png"
+      ],
+      "status": "assembled",
+      "sources": [
+        {
+          "id": "nezuko-blood_kick-part0",
+          "out": "output/imagegen/awakening-v7/raw/nezuko-blood_kick-part0.png",
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "columns": 3,
+          "rows": 2,
+          "prompt": "output/imagegen/awakening-v7/prompts/nezuko-blood_kick-part0.txt",
+          "references": [
+            "output/imagegen/awakening-v7/references/approved-game-idle.png",
+            "output/imagegen/awakening-v7/references/nezuko-blood_kick-part0.png"
+          ],
+          "source_sha256": "a56bc02897bbfff1c673638f430c3b55a2baecbd934cbbd1a5e125eb5087ab2e",
+          "actual_size": [
+            1536,
+            1024
+          ],
+          "assembly_offset": [
+            318,
+            0
+          ]
+        },
+        {
+          "id": "nezuko-blood_kick-part1",
+          "out": "output/imagegen/awakening-v7/raw/nezuko-blood_kick-part1.png",
+          "indices": [
+            6,
+            7,
+            8
+          ],
+          "columns": 3,
+          "rows": 1,
+          "prompt": "output/imagegen/awakening-v7/prompts/nezuko-blood_kick-part1.txt",
+          "references": [
+            "output/imagegen/awakening-v7/references/approved-game-idle.png",
+            "output/imagegen/awakening-v7/references/nezuko-blood_kick-part1.png"
+          ],
+          "source_sha256": "e0539e8d348423beca5712d8dbd52d03305ea817f410a761316f10d685b214a1",
+          "actual_size": [
+            2172,
+            724
+          ],
+          "assembly_offset": [
+            0,
+            1024
+          ]
+        }
+      ],
+      "frame_overrides": [],
+      "registration": "output/imagegen/awakening-v7/imports/nezuko-blood_kick.json"
+    },
+    {
+      "clip": "rising_kick",
+      "frames": 9,
+      "selected_id": "nezuko-rising_kick",
+      "source": "output/imagegen/awakening-v7/raw/nezuko-rising_kick-assembled.png",
+      "source_sha256": "cff29d6271547f93dbe79e738bdc28fad93d29f6cd31ebe7960870d37c5d43c6",
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-rising_kick.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png",
+        "output/imagegen/awakening-v7/references/pose-rising_kick.png"
+      ],
+      "status": "assembled",
+      "sources": [
+        {
+          "id": "nezuko-rising_kick-part0",
+          "out": "output/imagegen/awakening-v7/raw/nezuko-rising_kick-part0.png",
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "columns": 3,
+          "rows": 2,
+          "prompt": "output/imagegen/awakening-v7/prompts/nezuko-rising_kick-part0.txt",
+          "references": [
+            "output/imagegen/awakening-v7/references/approved-game-idle.png",
+            "output/imagegen/awakening-v7/references/nezuko-rising_kick-part0.png"
+          ],
+          "source_sha256": "e8925075ddc1b51fb3fe17b956e118080009cd2e81caec7f9dabb195a455903e",
+          "actual_size": [
+            1536,
+            1024
+          ],
+          "assembly_offset": [
+            318,
+            0
+          ]
+        },
+        {
+          "id": "nezuko-rising_kick-part1",
+          "out": "output/imagegen/awakening-v7/raw/nezuko-rising_kick-part1.png",
+          "indices": [
+            6,
+            7,
+            8
+          ],
+          "columns": 3,
+          "rows": 1,
+          "prompt": "output/imagegen/awakening-v7/prompts/nezuko-rising_kick-part1.txt",
+          "references": [
+            "output/imagegen/awakening-v7/references/approved-game-idle.png",
+            "output/imagegen/awakening-v7/references/nezuko-rising_kick-part1.png"
+          ],
+          "source_sha256": "83e52256c3aa20015bad12f25810292c9202fd8496798d8eeb9787394b0c4421",
+          "actual_size": [
+            2172,
+            724
+          ],
+          "assembly_offset": [
+            0,
+            1024
+          ]
+        }
+      ],
+      "frame_overrides": [],
+      "registration": "output/imagegen/awakening-v7/imports/nezuko-rising_kick.json"
+    },
+    {
+      "clip": "spinning_kick",
+      "frames": 12,
+      "selected_id": "nezuko-spinning_kick",
+      "source": "output/imagegen/awakening-v7/raw/nezuko-spinning_kick-assembled.png",
+      "source_sha256": "ec44cd9df124dc589b68cecdeca492cdaf7fcc933dd639cbbe50eb7e4cd80e3a",
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-spinning_kick.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png",
+        "output/imagegen/awakening-v7/references/pose-spinning_kick.png"
+      ],
+      "status": "assembled",
+      "sources": [
+        {
+          "id": "nezuko-spinning_kick-part0",
+          "out": "output/imagegen/awakening-v7/raw/nezuko-spinning_kick-part0.png",
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "columns": 3,
+          "rows": 2,
+          "prompt": "output/imagegen/awakening-v7/prompts/nezuko-spinning_kick-part0.txt",
+          "references": [
+            "output/imagegen/awakening-v7/references/approved-game-idle.png",
+            "output/imagegen/awakening-v7/references/nezuko-spinning_kick-part0.png"
+          ],
+          "source_sha256": "8fd62ab361e068bcef400abab7bca3f0650b660c1f37bf3a5f9f3269910e2079",
+          "actual_size": [
+            1536,
+            1024
+          ],
+          "assembly_offset": [
+            0,
+            0
+          ]
+        },
+        {
+          "id": "nezuko-spinning_kick-part1",
+          "out": "output/imagegen/awakening-v7/raw/nezuko-spinning_kick-part1.png",
+          "indices": [
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "columns": 3,
+          "rows": 2,
+          "prompt": "output/imagegen/awakening-v7/prompts/nezuko-spinning_kick-part1.txt",
+          "references": [
+            "output/imagegen/awakening-v7/references/approved-game-idle.png",
+            "output/imagegen/awakening-v7/references/nezuko-spinning_kick-part1.png"
+          ],
+          "source_sha256": "5bc4f0a64620fe9e6f0ff0bf47a4087f0ef77d56b8e5e61f5899ebdbd96d58db",
+          "actual_size": [
+            1536,
+            1024
+          ],
+          "assembly_offset": [
+            0,
+            1024
+          ]
+        }
+      ],
+      "frame_overrides": [],
+      "registration": "output/imagegen/awakening-v7/imports/nezuko-spinning_kick.json"
+    },
+    {
+      "clip": "blood_burst",
+      "frames": 12,
+      "selected_id": "nezuko-blood_burst",
+      "source": "output/imagegen/awakening-v7/raw/nezuko-blood_burst-assembled.png",
+      "source_sha256": "13e652f5528feb0d9e978598ef829f44c515711d992ea20fe3eb8ecc54c2885c",
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-blood_burst.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png",
+        "output/imagegen/awakening-v7/references/pose-blood_burst.png"
+      ],
+      "status": "assembled",
+      "sources": [
+        {
+          "id": "nezuko-blood_burst-part0",
+          "out": "output/imagegen/awakening-v7/raw/nezuko-blood_burst-part0.png",
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "columns": 3,
+          "rows": 2,
+          "prompt": "output/imagegen/awakening-v7/prompts/nezuko-blood_burst-part0.txt",
+          "references": [
+            "output/imagegen/awakening-v7/references/approved-game-idle.png",
+            "output/imagegen/awakening-v7/references/nezuko-blood_burst-part0.png"
+          ],
+          "source_sha256": "118e62fda9737cc9579045e844ed7f6b1489b4b11eabfbca120cbd18fae8e4cc",
+          "actual_size": [
+            1536,
+            1024
+          ],
+          "assembly_offset": [
+            0,
+            0
+          ]
+        },
+        {
+          "id": "nezuko-blood_burst-part1",
+          "out": "output/imagegen/awakening-v7/raw/nezuko-blood_burst-part1.png",
+          "indices": [
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "columns": 3,
+          "rows": 2,
+          "prompt": "output/imagegen/awakening-v7/prompts/nezuko-blood_burst-part1.txt",
+          "references": [
+            "output/imagegen/awakening-v7/references/approved-game-idle.png",
+            "output/imagegen/awakening-v7/references/nezuko-blood_burst-part1.png"
+          ],
+          "source_sha256": "76b381fbfbc39c2669fb5909d9aa01dc76aab739824eae6c4521a3058500595d",
+          "actual_size": [
+            1536,
+            1024
+          ],
+          "assembly_offset": [
+            0,
+            1024
+          ]
+        }
+      ],
+      "frame_overrides": [],
+      "registration": "output/imagegen/awakening-v7/imports/nezuko-blood_burst.json"
+    },
+    {
+      "clip": "awakened_combo",
+      "frames": 12,
+      "selected_id": "nezuko-awakened_combo",
+      "source": "output/imagegen/awakening-v7/raw/nezuko-awakened_combo-assembled.png",
+      "source_sha256": "57634b177ba88b755f6cb6ea129be88063e0cdd7490ccae90563b89c751ad0ac",
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-awakened_combo.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png",
+        "output/imagegen/awakening-v7/references/pose-awakened_combo.png"
+      ],
+      "status": "assembled",
+      "sources": [
+        {
+          "id": "nezuko-awakened_combo-part0",
+          "out": "output/imagegen/awakening-v7/raw/nezuko-awakened_combo-part0.png",
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "columns": 3,
+          "rows": 2,
+          "prompt": "output/imagegen/awakening-v7/prompts/nezuko-awakened_combo-part0.txt",
+          "references": [
+            "output/imagegen/awakening-v7/references/approved-game-idle.png"
+          ],
+          "source_sha256": "d524f1310ab979ba0fb51faed5ddafdc8f8adbf14b14b5cdeb5e16751467e62e",
+          "actual_size": [
+            1536,
+            1024
+          ],
+          "assembly_offset": [
+            0,
+            0
+          ]
+        },
+        {
+          "id": "nezuko-awakened_combo-part1",
+          "out": "output/imagegen/awakening-v7/raw/nezuko-awakened_combo-part1.png",
+          "indices": [
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "columns": 3,
+          "rows": 2,
+          "prompt": "output/imagegen/awakening-v7/prompts/nezuko-awakened_combo-part1.txt",
+          "references": [
+            "output/imagegen/awakening-v7/references/approved-game-idle.png"
+          ],
+          "source_sha256": "4c2b9294d4f8b8622ba8760c6533bb2a871a0b682cd1110f635e22510de856a0",
+          "actual_size": [
+            1536,
+            1024
+          ],
+          "assembly_offset": [
+            0,
+            1024
+          ]
+        }
+      ],
+      "frame_overrides": [],
+      "registration": "output/imagegen/awakening-v7/imports/nezuko-awakened_combo.json"
+    },
+    {
+      "clip": "thrown_forward",
+      "frames": 12,
+      "selected_id": "nezuko-thrown_forward",
+      "source": "output/imagegen/awakening-v7/raw/nezuko-thrown_forward-assembled.png",
+      "source_sha256": "39a4efe1542964e9af143cf22c079fc0c8ca55ab6e76bfcec583d64ee8ea8ca7",
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-thrown_forward.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png",
+        "output/imagegen/awakening-v7/references/pose-thrown_forward.png"
+      ],
+      "status": "assembled",
+      "sources": [
+        {
+          "id": "nezuko-thrown_forward-identity-part0",
+          "out": "output/imagegen/awakening-v7/raw/nezuko-thrown_forward-identity-part0.png",
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "columns": 3,
+          "rows": 2,
+          "prompt": "output/imagegen/awakening-v7/prompts/nezuko-thrown_forward-identity-part0.txt",
+          "references": [
+            "output/imagegen/awakening-v7/references/approved-game-idle.png"
+          ],
+          "source_sha256": "526766858008bfa68ccf30bdf1ca7f44de6739a8732ebe2b3d308591f14a11a7",
+          "actual_size": [
+            1536,
+            1024
+          ],
+          "assembly_offset": [
+            0,
+            0
+          ]
+        },
+        {
+          "id": "nezuko-thrown_forward-identity-part1",
+          "out": "output/imagegen/awakening-v7/raw/nezuko-thrown_forward-identity-part1.png",
+          "indices": [
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "columns": 3,
+          "rows": 2,
+          "prompt": "output/imagegen/awakening-v7/prompts/nezuko-thrown_forward-identity-part1.txt",
+          "references": [
+            "output/imagegen/awakening-v7/references/approved-game-idle.png"
+          ],
+          "source_sha256": "5a4abead443de2f6cb8c4829b6836da460d47637e872c34a9d595b88786a97f6",
+          "actual_size": [
+            1536,
+            1024
+          ],
+          "assembly_offset": [
+            0,
+            1024
+          ]
+        }
+      ],
+      "frame_overrides": [],
+      "registration": "output/imagegen/awakening-v7/imports/nezuko-thrown_forward.json"
+    },
+    {
+      "clip": "thrown",
+      "frames": 12,
+      "selected_id": "nezuko-thrown",
+      "source": "output/imagegen/awakening-v7/raw/nezuko-thrown-assembled.png",
+      "source_sha256": "86e1d07efa78e905d5ab172dfb9153198a34162ccad65f585fa93c5e5e2ca692",
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-thrown.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png",
+        "output/imagegen/awakening-v7/references/pose-thrown.png"
+      ],
+      "status": "assembled",
+      "sources": [
+        {
+          "id": "nezuko-thrown-identity-part0",
+          "out": "output/imagegen/awakening-v7/raw/nezuko-thrown-identity-part0.png",
+          "indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "columns": 3,
+          "rows": 2,
+          "prompt": "output/imagegen/awakening-v7/prompts/nezuko-thrown-identity-part0.txt",
+          "references": [
+            "output/imagegen/awakening-v7/references/approved-game-idle.png"
+          ],
+          "source_sha256": "9abc20253ab921965b04a42bb9f607eb3514effecf938c558848b2bd9707760c",
+          "actual_size": [
+            1536,
+            1024
+          ],
+          "assembly_offset": [
+            0,
+            0
+          ]
+        },
+        {
+          "id": "nezuko-thrown-identity-part1",
+          "out": "output/imagegen/awakening-v7/raw/nezuko-thrown-identity-part1.png",
+          "indices": [
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "columns": 3,
+          "rows": 2,
+          "prompt": "output/imagegen/awakening-v7/prompts/nezuko-thrown-identity-part1.txt",
+          "references": [
+            "output/imagegen/awakening-v7/references/approved-game-idle.png"
+          ],
+          "source_sha256": "d3ba320573293db1ad3b5ed358aca4ede641ea279bd5274158b02926415a5127",
+          "actual_size": [
+            1536,
+            1024
+          ],
+          "assembly_offset": [
+            0,
+            1024
+          ]
+        }
+      ],
+      "frame_overrides": [
+        {
+          "index": 0,
+          "source": "output/imagegen/awakening-v7/raw/nezuko-thrown_forward-identity-part0.png",
+          "source_index": 0,
+          "count": 6,
+          "columns": 3,
+          "reason": "Use the reviewed anatomically valid equivalent recoil pose; the discarded first drawing has an extra hand.",
+          "source_sha256": "526766858008bfa68ccf30bdf1ca7f44de6739a8732ebe2b3d308591f14a11a7",
+          "placement": [
+            20,
+            19
+          ],
+          "replaced_bounds": [
+            16,
+            14,
+            497,
+            504
+          ]
+        }
+      ],
+      "registration": "output/imagegen/awakening-v7/imports/nezuko-thrown.json"
+    },
+    {
+      "clip": "guard_low",
+      "frames": 6,
+      "selected_id": "nezuko-guard_low-model-v2",
+      "source": "output/imagegen/awakening-v7/raw/nezuko-guard_low-model-v2.png",
+      "source_sha256": "7d92ff541e8d0e516138820005a75e124617d88ab079c778e94c09afff9df5c9",
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-guard_low-model-v2.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png"
+      ],
+      "status": "generated",
+      "sources": [],
+      "frame_overrides": [],
+      "registration": "output/imagegen/awakening-v7/imports/nezuko-guard_low.json"
+    }
+  ],
+  "runtime_assets": {
+    "art/characters/nezuko/awakening/atlas-0.png": "397b5e4d4f625bf63c5ab6fc3ebf3277179b21050a7d3cc7866b92c0a6e058b8",
+    "art/characters/nezuko/awakening/atlas-1.png": "030f7a198c4069dac4e309aa23fe4935cdf485a47aa9213559d86cff9da9a49c",
+    "art/characters/nezuko/awakening/atlas-2.png": "717d8c345b47eafbc6840f5f13410a56305842fd6ecc08fe5634f9ce023ee64a",
+    "art/characters/nezuko/awakening/atlas-3.png": "cb203c05660d1c798d0b7366359d4b1d01ca0fa2b3e9030ccce058e45746fc58",
+    "art/characters/nezuko/awakening/atlas-4.png": "432d4c68732d61c368bff65f51687ebfd0ccb3014fe3a77bbeee69f6fc5eba36",
+    "art/characters/nezuko/awakening/atlas-5.png": "a27272fe30846db51f86e7d60efc973ac6e6308e66aeb86f9a4d6a6b7a61a865",
+    "art/characters/nezuko/awakening/atlas-6.png": "ad11a5b1991f6c2b509cc5ebbae2e37774353f1cb8eeefe6242ee907af466c57",
+    "art/characters/nezuko/awakening/atlas-7.png": "c70fd960861300e192454ffe17a908afccbf80a2b13014c67dd31aea7d64cf96",
+    "art/characters/nezuko/awakening/atlas.json": "a79d3f98e5bbb796a0b92ef277ea3abab55ea7af6d14b7f8d1121d97259290b4",
+    "art/characters/nezuko/awakening/fx-aura.png": "a8ceb48d15d5a47c8dbc14c9b405252acc498eec60ba2877730815dd6a1454ac",
+    "art/characters/nezuko/awakening/fx-burst.png": "6df3da0988373b9b53b7ae0ee2d65ad2545868143e0cb70e322777c92b73465a",
+    "art/characters/nezuko/awakening/fx-sweep.png": "4e44593c6c7bdb1874ceb547c7534da2a8694ec7a32a859b182b4b4663c0e151",
+    "art/characters/nezuko/awakening/fx-wisp.png": "74a98d5d64be4a29cd715c02848f1f7aeb9f2323f1906ec4fd2e16bcbcb3c931",
+    "art/characters/nezuko/awakening/portrait.png": "15f3e740c8fc2ae9a918e4412b25f331f2b43ac1e0909d8363fdb9056e3f2f96"
+  },
+  "verification": {
+    "artwork_tests": 8,
+    "regression_log": "artifacts/awakening-v7-regression.log",
+    "regression": "passed; one pre-existing local-preview test skipped",
+    "frame_rates": [
+      30,
+      60,
+      144
+    ],
+    "state_hash": "213e1c58ac2dd79110edc9d756e5fc311016916c36522c345af328f03c0bb22a",
+    "capture_checks": 48,
+    "capture_failures": [],
+    "screenshots": 310,
+    "real_input_samples": 157,
+    "capture_manifest": "artifacts/awakening-v7/captures.json"
+  },
+  "preview": {
+    "still": "artifacts/awakening-v7/motion-overview.jpg",
+    "video": "artifacts/awakening-v7/motion-preview.mp4",
+    "gif": "artifacts/awakening-v7/motion-preview.gif"
+  },
+  "release": {
+    "status": "exported-and-verified",
+    "archive": "dist/DemonSlayer-0.2.3-nezuko-motion-windows-x86_64.zip",
+    "sha256": "2c7cdc450603993287c421e11d7727a9353b336cc071a10e3ce7d040eefe1981",
+    "zip_integrity": "passed",
+    "combat_cases": 64,
+    "move_manifest_count": 84,
+    "smoke_log": "dist/DemonSlayer-0.2.3-nezuko-motion-windows-x86_64-smoke.log"
+  }
+}

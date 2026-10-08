@@ -1,0 +1,155 @@
+[
+  {
+    "id": "nezuko-knockdown-anatomy-v2",
+    "group": "correction",
+    "out": "output/imagegen/awakening-v6/raw/nezuko-knockdown-anatomy-v2.png",
+    "prompt": "output/imagegen/awakening-v6/prompts/nezuko-knockdown-anatomy-v2.txt",
+    "references": [
+      "output/imagegen/awakening-v6/raw/nezuko-knockdown.png",
+      "output/imagegen/awakening-v6-preview/raw/nezuko-idle-v6.png"
+    ],
+    "size": "2112x1408",
+    "model": "gpt-image-2",
+    "metadata": {
+      "character": "nezuko",
+      "clip": "knockdown",
+      "count": 6,
+      "columns": 3,
+      "rows": 2,
+      "cell": [
+        704,
+        704
+      ],
+      "original_clip": {
+        "loop": false,
+        "fps": 12,
+        "phase_breaks": [
+          2,
+          4
+        ],
+        "frames": [
+          {
+            "texture": "atlas-3.png",
+            "region": [
+              563,
+              2,
+              291,
+              335
+            ],
+            "offset": [
+              285,
+              234
+            ]
+          },
+          {
+            "texture": "atlas-5.png",
+            "region": [
+              1275,
+              2,
+              359,
+              314
+            ],
+            "offset": [
+              250,
+              254
+            ]
+          },
+          {
+            "texture": "atlas-7.png",
+            "region": [
+              1441,
+              1274,
+              361,
+              227
+            ],
+            "offset": [
+              243,
+              342
+            ]
+          },
+          {
+            "texture": "atlas-7.png",
+            "region": [
+              570,
+              1739,
+              372,
+              217
+            ],
+            "offset": [
+              278,
+              352
+            ]
+          },
+          {
+            "texture": "atlas-7.png",
+            "region": [
+              1534,
+              1739,
+              353,
+              209
+            ],
+            "offset": [
+              281,
+              360
+            ]
+          },
+          {
+            "texture": "atlas-8.png",
+            "region": [
+              1066,
+              476,
+              359,
+              95
+            ],
+            "offset": [
+              264,
+              474
+            ]
+          }
+        ],
+        "segment_sync": false,
+        "anchor_mode": "feet",
+        "timeline": []
+      },
+      "source_bounds": [
+        [
+          285,
+          234,
+          576,
+          569
+        ],
+        [
+          250,
+          254,
+          609,
+          568
+        ],
+        [
+          243,
+          342,
+          604,
+          569
+        ],
+        [
+          278,
+          352,
+          650,
+          569
+        ],
+        [
+          281,
+          360,
+          634,
+          569
+        ],
+        [
+          264,
+          474,
+          623,
+          569
+        ]
+      ],
+      "registration_profile": "v2"
+    }
+  }
+]

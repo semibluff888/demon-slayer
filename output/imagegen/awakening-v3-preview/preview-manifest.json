@@ -1,0 +1,88 @@
+{
+  "status": "akaza_integrated_nezuko_superseded_and_integrated",
+  "created_at": "2026-10-07T16:09:26.387761+00:00",
+  "generation": "Authorized CPA API through existing helper and installed unmodified image_gen.py, gpt-image-2, high quality",
+  "integration_authorized": false,
+  "runtime_changes": true,
+  "full_animation_production_started": false,
+  "scope": "Akaza portrait approved and integrated. Nezuko v3 designs require revision and are superseded by the v4 preview; Nezuko runtime replacement remains unauthorized.",
+  "pose_order": [
+    "idle",
+    "crouching_guard",
+    "forward_kick",
+    "jump",
+    "hit_reaction",
+    "awakening_start"
+  ],
+  "preview_board": "output/imagegen/awakening-v3-preview/review/character-preview.jpg",
+  "face_detail": "output/imagegen/awakening-v3-preview/review/nezuko-face-detail.jpg",
+  "assets": [
+    {
+      "id": "nezuko-model-v3",
+      "image": "output/imagegen/awakening-v3-preview/raw/nezuko-model-v3.png",
+      "actual_size": [
+        1024,
+        1536
+      ],
+      "prompt": "output/imagegen/awakening-v3-preview/prompts/nezuko-model-v3.txt",
+      "references": [
+        "output/imagegen/awakening-v3-preview/references/nezuko-user-reference.png"
+      ],
+      "sha256": "17e0a7e5826def9781c76a314b2733148c1ee77e56b4f797a647a6166ca52cad",
+      "preview_reviewed": true,
+      "user_approved": false,
+      "status": "revision_requested",
+      "superseded_by": "output/imagegen/awakening-v4-preview/raw/nezuko-idle-v4.png"
+    },
+    {
+      "id": "akaza-awakening-portrait-v3",
+      "image": "output/imagegen/awakening-v3-preview/raw/akaza-awakening-portrait-v3.png",
+      "actual_size": [
+        1254,
+        1254
+      ],
+      "prompt": "output/imagegen/awakening-v3-preview/prompts/akaza-awakening-portrait-v3.txt",
+      "references": [
+        "art/characters/akaza/battle-portrait.png"
+      ],
+      "sha256": "6d2536bb8725bfdfdcce66182c56e0611c28091d84f2402c599c102d9968b7fe",
+      "preview_reviewed": true,
+      "user_approved": true,
+      "status": "integrated",
+      "runtime_asset": "art/characters/akaza/awakening/portrait.png",
+      "import_record": "output/imagegen/awakening-v3-preview/imports/akaza-portrait.json"
+    },
+    {
+      "id": "nezuko-six-poses-v3",
+      "image": "output/imagegen/awakening-v3-preview/raw/nezuko-six-poses-v3.png",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "prompt": "output/imagegen/awakening-v3-preview/prompts/nezuko-six-poses-v3.txt",
+      "references": [
+        "output/imagegen/awakening-v3-preview/raw/nezuko-model-v3.png",
+        "output/imagegen/awakening-v3-preview/references/nezuko-six-pose-reference.png"
+      ],
+      "sha256": "8003d2f06c4500f71297c08e2548c380572aa4ac755921106bbb8a003370bf77",
+      "preview_reviewed": true,
+      "user_approved": false,
+      "status": "revision_requested",
+      "superseded_by": "output/imagegen/awakening-v4-preview/raw/nezuko-idle-v4.png"
+    }
+  ],
+  "review_notes": [
+    "Nezuko follows the uploaded horn, expression, facial markings, leaf vines and battle-worn outer garment; costume includes a secure crossed neckline and opaque fighting trousers.",
+    "Akaza retains the existing identity and tattoo geometry with illuminated eyes and stripe edges.",
+    "Six poses are design samples, not finalized animation frames or registered runtime atlases."
+  ],
+  "updated_at": "2026-10-07T16:46:24.412857+00:00",
+  "integration_authorized_for": [
+    "akaza-awakening-portrait-v3"
+  ],
+  "runtime_changed_characters": [
+    "akaza"
+  ],
+  "current_nezuko_preview": "output/imagegen/awakening-v6-preview/preview-manifest.json",
+  "current_nezuko_acceptance": "output/imagegen/awakening-v6/acceptance.json"
+}

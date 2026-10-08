@@ -1,0 +1,99 @@
+{
+  "source": "output/imagegen/awakening-v6/raw/nezuko-idle.png",
+  "source_sha256": "6b1252f1725d89db1c7586397f1ee8dc44593e0c2ff1d33aeae27821824943f5",
+  "preserved_idle": {
+    "loop": true,
+    "fps": 12,
+    "phase_breaks": [
+      2,
+      4
+    ],
+    "segment_sync": false,
+    "anchor_mode": "feet",
+    "timeline": [],
+    "frames": [
+      {
+        "texture": "atlas-0.png",
+        "region": [
+          901,
+          1471,
+          247,
+          356
+        ],
+        "offset": [
+          318,
+          213
+        ]
+      },
+      {
+        "texture": "atlas-1.png",
+        "region": [
+          807,
+          362,
+          254,
+          354
+        ],
+        "offset": [
+          306,
+          215
+        ]
+      },
+      {
+        "texture": "atlas-1.png",
+        "region": [
+          1415,
+          1079,
+          287,
+          350
+        ],
+        "offset": [
+          290,
+          218
+        ]
+      },
+      {
+        "texture": "atlas-3.png",
+        "region": [
+          328,
+          344,
+          262,
+          337
+        ],
+        "offset": [
+          328,
+          232
+        ]
+      },
+      {
+        "texture": "atlas-2.png",
+        "region": [
+          1765,
+          704,
+          241,
+          343
+        ],
+        "offset": [
+          318,
+          226
+        ]
+      },
+      {
+        "texture": "atlas-2.png",
+        "region": [
+          276,
+          354,
+          261,
+          345
+        ],
+        "offset": [
+          286,
+          224
+        ]
+      }
+    ]
+  },
+  "reference_frame": 0,
+  "reference": "references/approved-game-idle.png",
+  "target_skull_length": 59.5,
+  "measurement": "Crown-to-chin excludes horn and loose hair; final measurement follows visual annotation."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "nezuko-spinning_kick",
+  "status": "assembled",
+  "route": "Lossless vertical assembly of generated six-frame source sheets",
+  "output": "output/imagegen/awakening-v8/raw/nezuko-spinning_kick-assembled.png",
+  "actual_size": [
+    1536,
+    2048
+  ],
+  "sources": [
+    {
+      "id": "nezuko-spinning_kick-part0",
+      "out": "output/imagegen/awakening-v8/raw/nezuko-spinning_kick-part0.png",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "columns": 3,
+      "rows": 2,
+      "prompt": "output/imagegen/awakening-v8/prompts/nezuko-spinning_kick-part0.txt",
+      "references": [
+        "output/imagegen/awakening-v8/references/approved-idle.png",
+        "output/imagegen/awakening-v8/references/approved-max.png"
+      ],
+      "source_sha256": "94f3cd15a28b119bdc14a5e2e86f565768f9caf5ced25ca991d9d8ec71a4e1d2",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "assembly_offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "nezuko-spinning_kick-part1",
+      "out": "output/imagegen/awakening-v8/raw/nezuko-spinning_kick-part1.png",
+      "indices": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "columns": 3,
+      "rows": 2,
+      "prompt": "output/imagegen/awakening-v8/prompts/nezuko-spinning_kick-part1.txt",
+      "references": [
+        "output/imagegen/awakening-v8/references/approved-idle.png",
+        "output/imagegen/awakening-v8/references/approved-max.png"
+      ],
+      "source_sha256": "53110dfb1754227ab44196f9b575d945ca8d0cf27681fdd31b1a3e1cbec05779",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "assembly_offset": [
+        0,
+        1024
+      ]
+    }
+  ],
+  "frame_overrides": [],
+  "sha256": "b88eb1a0d24d69e0b49123e0aae287c88c30bf91c0dc18bb74202531c86dff68"
+}

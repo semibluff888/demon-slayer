@@ -79,3 +79,68 @@ CharacterDefinition.awakening 引用 AwakeningDefinition。运行中的时间、
 验证日志：`artifacts/awakening-v2-final-regression.log`、`artifacts/awakening-v2-final-import.log`、`artifacts/awakening-v2-final-capture.log`。
 
 Windows试玩包：`dist/DemonSlayer-0.2.1-awakening-art-windows-x86_64.zip`。最终导出EXE通过84招资源逐项一致性、64条真实输入连招以及资源/觉醒冒烟检查；ZIP完整性校验通过。首次全量导入遇到Godot原生异常，在同一暂存目录单次重新导入后完成导出与验证，未调整游戏代码。SHA-256：`44664d189c0c6dc30cbe966052d68e34505f8e4989c1dd5a8121427ef1c0459c`。
+
+## 祢豆子外观修订 v6（2026-10-08）
+
+以用户参考图衍生的最终模型重绘祢豆子39组战斗/发动动作、306帧，包含MAX。取消肩顶破洞，保留更明显的单角、藤纹、长发、战损羽织与不对称裙摆；待机双手自然下垂。胸前保持衣料遮盖。用户已明确授权修改后直接接入，无需再等待预览确认。
+
+生产目录为 `output/imagegen/awakening-v6/`，`master.json`记录模型，`jobs.json`记录原动作时间轴与参考姿势，`selected.json`固定倒地第三帧多余手部的修正版。图集43组、348帧中，39组/306帧为新生成动作，另外4组/42帧为原有回合演出；游戏在回合结束时沿用既有解除形态规则。普通形态、其他角色与特效的保留哈希见 `preserved-runtime.json`。
+
+新头像同时用于HUD觉醒状态和MAX发动特写，`awakened_combo.tres`以及对应资源生成器使用同一路径。猗窝座已确认的觉醒头像另行接入，来源与实机核对在 `output/imagegen/awakening-v3-preview/imports/akaza-portrait.json`。
+
+离线重建：
+
+    .venv/Scripts/python.exe tools/build_awakening_art.py --source-dir output/imagegen/awakening-v6 --character nezuko
+    .venv/Scripts/python.exe tools/build_nezuko_awakening_static.py
+    .venv/Scripts/python.exe tools/review_awakening_v2.py --source-dir output/imagegen/awakening-v6 --all-frames
+
+完整回归通过（`artifacts/awakening-v6-regression.log`），觉醒核心1400项、形态1768项、表现30项，美术专项5项；30/60/144 FPS状态一致。实机检查36项通过，153张截图覆盖单边镜像觉醒、960/1280/1920宽度、起手、跳跃、蹲身、受击、受投、暂停、到期、重置，以及左右朝向的普通MAX/觉醒MAX特写与结束还原。见 `artifacts/awakening-v6/captures.json` 及五张 `runtime-gallery-*.jpg`。
+
+本轮生图使用已授权CPA服务与安装的imagegen CLI。动作参考和模型作为实际附件传入；全部提示词、生成记录、源文件哈希、逐帧注册及最终验收摘要均留存在生产目录中。
+
+本轮已完成接入与导出验证：Windows试玩包为 `dist/DemonSlayer-0.2.2-nezuko-awakening-windows-x86_64.zip`，SHA-256为 `6a36a62be651d9175358288a173c10685565ab1f21fd5225c9d58f49caa68e15`。发布版资源检查与64条真实输入连招通过，ZIP完整性通过。最终验收与来源汇总见 `output/imagegen/awakening-v6/acceptance.json`。
+
+## 祢豆子动态比例修订 v7（2026-10-08）
+
+以用户已认可的游戏内 v6 待机作为统一模型，6 帧待机逐像素保留；重制其余38组动态动作、300帧，包含移动、前后冲刺、跳跃、蹲身、普通攻击、技能、投技、防御、受击与 MAX。持续觉醒与未持续觉醒的 MAX 共用最终图集；头像和其他角色保留。
+
+修复两类比例漂移：动态图源混入原普通形态的短肢、大头体态，以及按完整轮廓适配尺寸导致头发、踢腿、蹲身影响人体缩放。v7使用约59.5图集像素的头骨长度为共同标尺，沿头部轴线测量，排除角、松散头发和张嘴的下颌延伸；横向按腰带定位，底部保持原动作接触位置。人工标尺有约3个源像素的量测误差，因此同时检查同尺度全身对照和实机画面，不将数值相同当成造型完全一致的证明。12组地面动作及MAX、受投动作在初版审核后使用待机作为唯一造型图片附件再次重绘。
+
+发力阶段增加张嘴、露牙和咬牙表情，移动、准备与收招按动作保持克制。画帧数、阶段和战斗时序不变；原1.15倍鬼化规则仍只应用一次。脚底锚点、普通形态以及其他角色资产由自动化检查验证。
+
+生产目录 `output/imagegen/awakening-v7/` 保存实际参考附件、提示词、请求记录、最终选择和逐帧标定。`selected.json`固定12组地面修订，`anatomy-calibration.json`绑定源图SHA-256，防止替换源图后误用旧缩放。长动作由六帧以内的图表无缩放拼接；全部来源及受投等效帧替换见 `records/`。`review/fixed-ruler.html`提供同一尺度的完整动作对照。
+
+离线重建：
+
+    .venv/Scripts/python.exe tools/build_awakening_art.py --source-dir output/imagegen/awakening-v7 --character nezuko
+    .venv/Scripts/python.exe tools/review_awakening_motion.py
+
+最终完整回归通过，觉醒核心1400项、形态1768项、表现30项、美术专项8项；30/60/144 FPS状态哈希一致。现有本地预览测试按原规则跳过一次，新素材已另行完成源图和实机检查。实机专项48项通过，310张截图包含153张流程/图库画面及157张真实输入动作样本，验证左右朝向的普通MAX/持续MAX、单边镜像形态、暂停、到期和重置。运动展示使用已有练习无限觉醒选项。
+
+验证日志：`artifacts/awakening-v7-regression.log`、`artifacts/awakening-v7-final-import.log`、`artifacts/awakening-v7-final-capture.log`。预览与实机记录位于 `artifacts/awakening-v7/`，最终文件哈希和发布信息见生产目录的 `acceptance.json`。
+
+Windows试玩包：`dist/DemonSlayer-0.2.3-nezuko-motion-windows-x86_64.zip`。发布版通过84招资源逐项一致性、64条真实输入连招及ZIP完整性检查。SHA-256：`2c7cdc450603993287c421e11d7727a9353b336cc071a10e3ce7d040eefe1981`。
+
+
+## 祢豆子移动与技能修订 v8（2026-10-08）
+
+按用户反馈，本轮采用已认可的 v7 MAX 和静态待机作为实际图片附件，重绘前后行走、前后冲刺、四种空中攻击、爆血飞踢、升空踢、回旋踢及血鬼术·爆血，共12组90帧。其他31组258帧的画面、偏移和动作元数据完整保留，包括待机与 MAX。普通形态、其他角色与战斗逻辑未在本轮修改。
+
+v7 行走不仅存在体态偏小，也继承了不稳定的横向基准：六帧腰部位置跨越约79图集像素，末段身高由356降到324。v8 将前后行走的腰部固定在 x=449，站立高度控制在354～357，脚底为 y=569；修正循环首尾的身体跳动，并将步态动画播放速度从12调整到20 FPS，配合原有世界移动速度。此调整只影响两组行走动画，攻击、技能、MAX时序保持原值。
+
+冲刺和技能按 MAX 的头骨、躯干与腿长统一尺度。空中攻击固定腰部基准 (449,322)，保留姿态产生的高低变化；脚尖或发梢不会成为整个人物缩放的依据。明确的逐帧腰部坐标替代了服饰颜色启发式定位。三帧图源边缘的截脚风险使用本轮完整等效踢腿姿势替换，逐项保留来源和理由。
+
+生产文件位于 `output/imagegen/awakening-v8/`：`selected.json`保存最终行走版本，`motion-calibration.json`保存逐帧标尺与源图 SHA-256，`imports/`保存最终偏移，`baseline/`保存完整 v7 基线，`acceptance.json`保存最终验证结果。人工头骨测量约有3个源像素误差，仍需结合相同像素尺度下的全身对照和实机画面判断。
+
+离线重建使用 `.venv/Scripts/python.exe tools/build_nezuko_awakening_v8.py`，随后执行 Godot 导入与 `tests/run_tests.ps1`。最终导入不得带 `--partial`。美术11项专项验证素材来源、循环定位、身高稳定性与258帧保留内容；完整回归通过，30/60/144 FPS状态一致。实机脚本追加左右朝向各四个完整步态循环、四种空中攻击及全部技能，并保持普通MAX/持续觉醒MAX、暂停、到期和重置检查。
+
+最终实机92项检查全部通过，输出931张截图，其中778张为真实输入动作样本。左右朝向的前后行走各覆盖四轮循环；结合角色世界坐标和最终绘图腰部位置计算，所有采样（含首尾接缝）均沿输入方向持续移动。采集窗口曾暂时停止出帧后自行恢复，原流程最终完成，无需替换或合成缺失画面。详见 `artifacts/awakening-v8/captures.json` 和 `walk-registration-check.json`。最终视频与对照图为真实游戏截图拼接。
+
+
+## 祢豆子细节修订 v9（2026-10-09）
+
+前后行走从20 FPS恢复12 FPS，保留全部已认可行走画帧。站立重攻击中间帧横向收窄4%；升空踢中间帧补正3%～9%；重攻击、升空踢和飞踢首尾直接复用静态待机，消除完全收招时的尺寸跳变。飞踢第2/7帧复用MAX弓步、第4帧复用MAX发力姿势并对齐腰部，修正夸张腿长。蹲防使用一次CPA局部编辑，仅合成双拳与前臂区域，保留其余造型。
+
+正面投技保留动作并逐帧补正5.5%～12%，修正原第3帧横向偏移，首尾复用待机。反向投技前四帧复用正面抓取，第4/5帧保留转身过渡，第6～11帧使用修正后正面动作的镜像。投技期间渲染朝向固定，因此镜像写入反投画帧；围绕实际脚底锚点翻转，末帧恰好接入结束后朝向落地对手的待机。
+
+本轮改动54帧，294帧像素保留；MAX、战斗判定及动作时序保持原样。生产与离线重建见 `output/imagegen/awakening-v9/README.md`、`corrections.json` 和 `tools/build_nezuko_awakening_v9.py`。按用户要求只做素材及资源校验、场景加载与打包必要检查，未执行实机画面验收、录像或完整战斗回归。

@@ -1,0 +1,73 @@
+{
+  "id": "nezuko-blood_burst",
+  "status": "assembled",
+  "route": "Lossless vertical assembly of generated six-frame source sheets",
+  "output": "output/imagegen/awakening-v7/raw/nezuko-blood_burst-assembled.png",
+  "actual_size": [
+    1536,
+    2048
+  ],
+  "sources": [
+    {
+      "id": "nezuko-blood_burst-part0",
+      "out": "output/imagegen/awakening-v7/raw/nezuko-blood_burst-part0.png",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "columns": 3,
+      "rows": 2,
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-blood_burst-part0.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png",
+        "output/imagegen/awakening-v7/references/nezuko-blood_burst-part0.png"
+      ],
+      "source_sha256": "118e62fda9737cc9579045e844ed7f6b1489b4b11eabfbca120cbd18fae8e4cc",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "assembly_offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "nezuko-blood_burst-part1",
+      "out": "output/imagegen/awakening-v7/raw/nezuko-blood_burst-part1.png",
+      "indices": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "columns": 3,
+      "rows": 2,
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-blood_burst-part1.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png",
+        "output/imagegen/awakening-v7/references/nezuko-blood_burst-part1.png"
+      ],
+      "source_sha256": "76b381fbfbc39c2669fb5909d9aa01dc76aab739824eae6c4521a3058500595d",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "assembly_offset": [
+        0,
+        1024
+      ]
+    }
+  ],
+  "frame_overrides": [],
+  "sha256": "13e652f5528feb0d9e978598ef829f44c515711d992ea20fe3eb8ecc54c2885c",
+  "accepted": true,
+  "reviewed_at": "2026-10-08T13:59:48.759123+00:00",
+  "review_basis": "Native source sheets, shared pixel ruler and actual Godot captures; preserve approved idle exactly."
+}

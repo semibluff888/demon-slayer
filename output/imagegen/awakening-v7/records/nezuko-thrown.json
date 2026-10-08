@@ -1,0 +1,91 @@
+{
+  "id": "nezuko-thrown",
+  "status": "assembled",
+  "route": "Lossless vertical assembly of generated six-frame source sheets",
+  "output": "output/imagegen/awakening-v7/raw/nezuko-thrown-assembled.png",
+  "actual_size": [
+    1536,
+    2048
+  ],
+  "sources": [
+    {
+      "id": "nezuko-thrown-identity-part0",
+      "out": "output/imagegen/awakening-v7/raw/nezuko-thrown-identity-part0.png",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "columns": 3,
+      "rows": 2,
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-thrown-identity-part0.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png"
+      ],
+      "source_sha256": "9abc20253ab921965b04a42bb9f607eb3514effecf938c558848b2bd9707760c",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "assembly_offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "nezuko-thrown-identity-part1",
+      "out": "output/imagegen/awakening-v7/raw/nezuko-thrown-identity-part1.png",
+      "indices": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "columns": 3,
+      "rows": 2,
+      "prompt": "output/imagegen/awakening-v7/prompts/nezuko-thrown-identity-part1.txt",
+      "references": [
+        "output/imagegen/awakening-v7/references/approved-game-idle.png"
+      ],
+      "source_sha256": "d3ba320573293db1ad3b5ed358aca4ede641ea279bd5274158b02926415a5127",
+      "actual_size": [
+        1536,
+        1024
+      ],
+      "assembly_offset": [
+        0,
+        1024
+      ]
+    }
+  ],
+  "frame_overrides": [
+    {
+      "index": 0,
+      "source": "output/imagegen/awakening-v7/raw/nezuko-thrown_forward-identity-part0.png",
+      "source_index": 0,
+      "count": 6,
+      "columns": 3,
+      "reason": "Use the reviewed anatomically valid equivalent recoil pose; the discarded first drawing has an extra hand.",
+      "source_sha256": "526766858008bfa68ccf30bdf1ca7f44de6739a8732ebe2b3d308591f14a11a7",
+      "placement": [
+        20,
+        19
+      ],
+      "replaced_bounds": [
+        16,
+        14,
+        497,
+        504
+      ]
+    }
+  ],
+  "sha256": "86e1d07efa78e905d5ab172dfb9153198a34162ccad65f585fa93c5e5e2ca692",
+  "accepted": true,
+  "reviewed_at": "2026-10-08T13:59:48.775122+00:00",
+  "review_basis": "Native source sheets, shared pixel ruler and actual Godot captures; preserve approved idle exactly."
+}

@@ -1,0 +1,22 @@
+{
+  "id": "nezuko-crouch_light-model-v2",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "1536x1024",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/awakening-v7/prompts/nezuko-crouch_light-model-v2.txt",
+  "output": "output/imagegen/awakening-v7/raw/nezuko-crouch_light-model-v2.png",
+  "references": [
+    "output/imagegen/awakening-v7/references/approved-game-idle.png"
+  ],
+  "started_utc": "2026-10-08T13:35:52.7278655Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": "",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-08T13:36:33.2746759Z",
+  "sha256": "5e56086f77b0a639032908b763219883fe178a5dcec7149e24ecb0399b9a3ac0",
+  "reviewed_at": "2026-10-08T13:59:48.664687+00:00",
+  "review_basis": "Native source sheets, shared pixel ruler and actual Godot captures; preserve approved idle exactly."
+}

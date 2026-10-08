@@ -1,0 +1,16 @@
+[
+  {
+    "id": "nezuko-idle-v4",
+    "group": "concept",
+    "out": "output/imagegen/awakening-v4-preview/raw/nezuko-idle-v4.png",
+    "prompt": "output/imagegen/awakening-v4-preview/prompts/nezuko-idle-v4.txt",
+    "references": ["output/imagegen/awakening-v3-preview/references/nezuko-user-reference.png"],
+    "size": "1024x1536",
+    "model": "gpt-image-2",
+    "metadata": {
+      "character": "nezuko",
+      "purpose": "approval preview only; do not integrate until the user approves",
+      "reference_role": "actual user attachment used as visual input"
+    }
+  }
+]
