@@ -239,7 +239,7 @@ func step(commands: Array) -> void:
 			f.move_frame += 1
 			if f.move_frame >= f.move.total_frames():
 				f.move = null
-				f.state = "idle" if f.grounded else "air"
+				_restore_stance(f)
 		if f.awakening_startup == 0:
 			f.buffer_left = maxi(0, f.buffer_left - 1)
 		f.jump_buffer = maxi(0, f.jump_buffer - 1)
@@ -247,6 +247,11 @@ func step(commands: Array) -> void:
 	_tick_awakenings()
 	if not practice and (fighters[0].hp <= 0 or fighters[1].hp <= 0 or remaining <= 0):
 		_finish_round()
+
+func _restore_stance(f: Fighter) -> void:
+	# Resolve held input on the completion tick, before presentation reads state.
+	f.crouching = f.grounded and f.down
+	f.state = ("crouch" if f.crouching else "idle") if f.grounded else "air"
 
 func _update_sequences() -> void:
 	for i in range(2):
@@ -292,7 +297,7 @@ func _read_command(f: Fighter, command: Dictionary) -> void:
 func _advance(f: Fighter) -> void:
 	f.previous_x = f.x
 	if f.state == "awakening" and f.awakening_startup == 0:
-		f.state = "idle"
+		_restore_stance(f)
 	f.throw_invulnerable = maxi(0, f.throw_invulnerable - 1)
 	if f.stun > 0:
 		_stop_dash(f)
@@ -301,7 +306,7 @@ func _advance(f: Fighter) -> void:
 			f.reaction = ""
 			if f.state == "knockdown":
 				f.throw_invulnerable = 8
-			f.state = "idle" if f.grounded else "air"
+			_restore_stance(f)
 		_integrate(f)
 		return
 	if f.awakening_startup > 0:
@@ -320,7 +325,7 @@ func _advance(f: Fighter) -> void:
 		f.roll_frame += 1
 		if f.roll_frame >= 28:
 			f.roll_frame = -1
-			f.state = "idle"
+			_restore_stance(f)
 		f.clear_buffer()
 		_integrate(f)
 		return
@@ -525,7 +530,7 @@ func _integrate(f: Fighter, delta_ticks: float = 1.0, air_tick_step: int = 1) ->
 				f.stun = maxi(f.stun, 5)
 				f.state = "landing"
 			elif f.stun == 0 and f.move == null:
-				f.state = "idle"
+				_restore_stance(f)
 	var bounded := clampf(f.x, LEFT, RIGHT)
 	if not is_equal_approx(bounded, f.x):
 		_stop_dash(f)
@@ -903,7 +908,7 @@ func _advance_outro() -> void:
 				f.move_frame += move_steps
 				if f.move_frame >= f.move.total_frames():
 					f.move = null
-					f.state = "idle" if f.grounded else "air"
+					_restore_stance(f)
 			if previous_move != null and f.move == null and previous_move.presentation != null:
 				var tail := maxf(0, previous_move.presentation.trail_lifetime * 60 - previous_move.recovery)
 				outro_tail_until = maxf(outro_tail_until, after + tail)
@@ -1075,7 +1080,7 @@ func _advance_throw() -> void:
 	if frame >= Arena.THROW_TICKS:
 		a.x = throw_link.final_a
 		d.x = throw_link.final_d
-		a.state = "idle"
+		_restore_stance(a)
 		d.state = "knockdown"
 		a.throw_role = ""
 		d.throw_role = ""

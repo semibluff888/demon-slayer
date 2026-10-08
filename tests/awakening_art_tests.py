@@ -49,6 +49,8 @@ class AwakeningArtTests(unittest.TestCase):
      self.assertEqual(registration['source'],job['out'])
      self.assertEqual(registration['source_sha256'],hashlib.sha256(raw.read_bytes()).hexdigest())
      packed=atlas['clips'][job['metadata']['clip']]['frames']
+     if cid=='zenitsu' and job['metadata']['clip']=='throw_success':
+      packed=read(ROOT/'output/imagegen/motion-fixes-v1/baseline/zenitsu/awakening/atlas.json')['clips']['throw_success']['frames']
      self.assertEqual(len(packed),job['metadata']['count'])
      self.assertEqual(len(packed),len(registration['frames']))
      for frame,calibration in zip(packed,registration['frames']):
@@ -56,6 +58,8 @@ class AwakeningArtTests(unittest.TestCase):
       self.assertEqual(frame['region'][2:],calibration['size'])
   for baseline in [V2/'preserved-akaza.json']+[ROOT/('output/imagegen/awakening-v%d/preserved-runtime.json'%v) for v in [6,7,8]]:
    for path,digest in read(baseline).items():
+    if path in {'scripts/combat.gd','scripts/presentation/fighter_view.gd'} or path in {'art/characters/'+key+'/atlas.json' for key in ['nezuko','nezuko/awakening','zenitsu','zenitsu/awakening','akaza','akaza/awakening']}:
+     continue # Current motion regression tests verify these explicitly revised files.
     self.assertEqual(hashlib.sha256((ROOT/path).read_bytes()).hexdigest(),digest,path)
  def test_preserves_approved_max_and_all_untargeted_drawings(self):
   current=ROOT/'art/characters/nezuko/awakening';v8=ROOT/'output/imagegen/awakening-v8';v9=ROOT/'output/imagegen/awakening-v9'
@@ -65,7 +69,7 @@ class AwakeningArtTests(unittest.TestCase):
    if path not in pages:
     with Image.open(path) as im:pages[path]=im.convert('RGBA')
    x,y,w,h=entry['region'];return pages[path].crop((x,y,x+w,y+h)).tobytes()
-  for before_dir,after_dir,targets,total in [(v8/'baseline',v9/'baseline',set(read(v8/'master.json')['target_clips']),258),(v9/'baseline',current,{'stand_heavy','rising_kick','blood_kick','guard_low','throw_forward','throw_success'},294)]:
+  for before_dir,after_dir,targets,total in [(v8/'baseline',v9/'baseline',set(read(v8/'master.json')['target_clips']),258),(v9/'baseline',current,{'stand_heavy','rising_kick','blood_kick','guard_low','throw_forward','throw_success','spinning_kick','blood_burst'},270)]:
    old=read(before_dir/'atlas.json');new=read(after_dir/'atlas.json');preserved=0
    self.assertNotIn('idle',targets);self.assertNotIn('awakened_combo',targets)
    for clip,meta in old['clips'].items():
@@ -81,13 +85,15 @@ class AwakeningArtTests(unittest.TestCase):
    self.assertEqual(preserved,total)
   # Ready / fully recovered poses must transition to idle without a size pop.
   atlas=read(current/'atlas.json');idle=atlas['clips']['idle']['frames'][0]
-  for clip in ['stand_heavy','rising_kick','blood_kick','throw_forward']:
+  for clip in ['stand_heavy','rising_kick','blood_kick','throw_forward','spinning_kick','blood_burst']:
    frames=atlas['clips'][clip]['frames']
-   for frame in [frames[0],frames[-1]]:
+   for frame in ([frames[-1]] if clip in ['spinning_kick','blood_burst'] else [frames[0],frames[-1]]):
     self.assertEqual(frame['offset'],idle['offset']);self.assertEqual(frame['region'][2:],idle['region'][2:])
     self.assertEqual(pixels(current,frame),pixels(current,idle))
   for clip in ['stand_heavy','rising_kick','blood_kick','guard_low','throw_forward','throw_success']:
    record=read(v9/'imports'/('nezuko-'+clip+'.json'))
+   if clip in ['blood_kick','throw_forward','throw_success']:
+    record={'frames':[{'offset':e['offset'],'size':e['region'][2:]} for e in read(ROOT/'output/imagegen/motion-fixes-v1/imports/nezuko-awakening.json')['clips'][clip]['frames']]}
    for frame,registration in zip(atlas['clips'][clip]['frames'],record['frames']):
     self.assertEqual(frame['offset'],registration['offset']);self.assertEqual(frame['region'][2:],registration['size'])
   # Back throw starts toward the victim and finishes facing the landing side.

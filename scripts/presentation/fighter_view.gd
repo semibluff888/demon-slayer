@@ -88,10 +88,10 @@ func sync(delta: float, freeze_pose: bool) -> void:
 	var new_attack: bool = fighter.move != null and fighter.attack_instance != previous_attack_instance
 	if desired != clip or restart_requested or repeat_move or renewed_stun or new_attack:
 		clock_ticks = 0
-		# Releasing back keeps an already crouched fighter low instead of standing
-		# through the start of the crouch animation again.
-		if desired == "crouch" and clip == "guard_low" and visual.frames != null and visual.frames.has_animation(desired):
-			clock_ticks = maxi(0, visual.frames.get_frame_count(desired) - 1) * 3
+		# Recovery must not replay the standing lead-in of the crouch clip.
+		# A fresh crouch from idle/walk still plays its authored transition.
+		if desired == "crouch" and (clip == "guard_low" or previous_move_frame >= 0 or last_state in ["attack", "throwing", "landing", "block", "hit", "knockdown", "roll", "awakening"]) and _frames() != null and _frames().has_animation(desired):
+			clock_ticks = maxi(0, _frames().get_frame_count(desired) - 1) * 3
 		if combat.phase != "round_end" or fighter.hp <= 0:
 			afterimages.clear()
 			last_trail_pose.clear()
@@ -99,6 +99,7 @@ func sync(delta: float, freeze_pose: bool) -> void:
 		clip = desired
 		restart_requested = false
 	previous_move_frame = fighter.move_frame if fighter.move != null else -1
+	last_state = fighter.state
 	previous_stun = fighter.stun
 	previous_attack_instance = fighter.attack_instance
 	if not freeze_pose:

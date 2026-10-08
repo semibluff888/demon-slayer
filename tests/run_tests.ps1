@@ -52,6 +52,8 @@ Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script',
 
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/battle_visual_tests.gd') -Expected 'BATTLE VISUAL TESTS: \d+ passed, 0 failed' | Out-Null
 
+Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/motion_fixes_tests.gd') -Expected 'MOTION FIXES: \d+ passed, 0 failed' | Out-Null
+
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/combat_polish_tests.gd') -Expected 'COMBAT POLISH TESTS: \d+ passed, 0 failed' | Out-Null
 
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/round_flow_tests.gd') -Expected 'ROUND FLOW TESTS: \d+ passed, 0 failed' | Out-Null
@@ -97,6 +99,8 @@ if (Test-Path -LiteralPath $artPython) {
     if ($LASTEXITCODE -ne 0) { throw 'Uppercut artwork validation failed.' }
     & $artPython (Join-Path $projectRoot 'tests/awakening_art_tests.py')
     if ($LASTEXITCODE -ne 0) { throw 'Awakening artwork validation failed.' }
+    & $artPython (Join-Path $projectRoot 'tests/motion_art_tests.py')
+    if ($LASTEXITCODE -ne 0) { throw 'Motion artwork validation failed.' }
     & $artPython (Join-Path $projectRoot 'tests/fate_art_tests.py')
     if ($LASTEXITCODE -ne 0) { throw 'Fate artwork validation failed.' }
 }

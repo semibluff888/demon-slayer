@@ -1,0 +1,537 @@
+{
+  "clips": {
+    "blood_burst": {
+      "loop": false,
+      "fps": 12,
+      "phase_breaks": [
+        3,
+        10
+      ],
+      "frames": [
+        {
+          "texture": "motion-fixes-0.png",
+          "region": [
+            2,
+            2,
+            226,
+            356
+          ],
+          "offset": [
+            329,
+            213
+          ]
+        },
+        {
+          "texture": "motion-fixes-0.png",
+          "region": [
+            232,
+            2,
+            252,
+            358
+          ],
+          "offset": [
+            336,
+            212
+          ]
+        },
+        {
+          "texture": "motion-fixes-0.png",
+          "region": [
+            488,
+            2,
+            280,
+            356
+          ],
+          "offset": [
+            274,
+            213
+          ]
+        },
+        {
+          "texture": "motion-fixes-0.png",
+          "region": [
+            772,
+            2,
+            306,
+            356
+          ],
+          "offset": [
+            251,
+            213
+          ]
+        },
+        {
+          "texture": "motion-fixes-0.png",
+          "region": [
+            1082,
+            2,
+            334,
+            337
+          ],
+          "offset": [
+            316,
+            233
+          ]
+        },
+        {
+          "texture": "motion-fixes-0.png",
+          "region": [
+            1420,
+            2,
+            316,
+            334
+          ],
+          "offset": [
+            289,
+            235
+          ]
+        },
+        {
+          "texture": "motion-fixes-0.png",
+          "region": [
+            2,
+            364,
+            340,
+            335
+          ],
+          "offset": [
+            268,
+            234
+          ]
+        },
+        {
+          "texture": "motion-fixes-0.png",
+          "region": [
+            346,
+            364,
+            374,
+            337
+          ],
+          "offset": [
+            240,
+            233
+          ]
+        },
+        {
+          "texture": "motion-fixes-0.png",
+          "region": [
+            724,
+            364,
+            407,
+            342
+          ],
+          "offset": [
+            281,
+            227
+          ]
+        },
+        {
+          "texture": "motion-fixes-0.png",
+          "region": [
+            1135,
+            364,
+            320,
+            347
+          ],
+          "offset": [
+            296,
+            222
+          ]
+        },
+        {
+          "texture": "motion-fixes-0.png",
+          "region": [
+            1459,
+            364,
+            296,
+            349
+          ],
+          "offset": [
+            268,
+            220
+          ]
+        },
+        {
+          "texture": "motion-fixes-0.png",
+          "region": [
+            1759,
+            364,
+            226,
+            356
+          ],
+          "offset": [
+            329,
+            213
+          ]
+        }
+      ],
+      "segment_sync": true,
+      "anchor_mode": "feet",
+      "timeline": []
+    },
+    "throw_forward": {
+      "loop": false,
+      "fps": 12,
+      "phase_breaks": [
+        4,
+        8
+      ],
+      "frames": [
+        {
+          "texture": "motion-fixes-0.png",
+          "region": [
+            2,
+            724,
+            226,
+            356
+          ],
+          "offset": [
+            329,
+            213
+          ]
+        },
+        {
+          "texture": "motion-fixes-0.png",
+          "region": [
+            232,
+            724,
+            332,
+            354
+          ],
+          "offset": [
+            279,
+            215
+          ]
+        },
+        {
+          "texture": "motion-fixes-0.png",
+          "region": [
+            568,
+            724,
+            354,
+            351
+          ],
+          "offset": [
+            260,
+            218
+          ]
+        },
+        {
+          "texture": "motion-fixes-0.png",
+          "region": [
+            926,
+            724,
+            292,
+            355
+          ],
+          "offset": [
+            292,
+            214
+          ]
+        },
+        {
+          "texture": "motion-fixes-0.png",
+          "region": [
+            1222,
+            724,
+            287,
+            312
+          ],
+          "offset": [
+            296,
+            257
+          ]
+        },
+        {
+          "texture": "motion-fixes-0.png",
+          "region": [
+            1513,
+            724,
+            283,
+            317
+          ],
+          "offset": [
+            295,
+            253
+          ]
+        },
+        {
+          "texture": "motion-fixes-0.png",
+          "region": [
+            2,
+            1084,
+            276,
+            313
+          ],
+          "offset": [
+            288,
+            256
+          ]
+        },
+        {
+          "texture": "motion-fixes-0.png",
+          "region": [
+            282,
+            1084,
+            427,
+            315
+          ],
+          "offset": [
+            214,
+            254
+          ]
+        },
+        {
+          "texture": "motion-fixes-0.png",
+          "region": [
+            713,
+            1084,
+            402,
+            319
+          ],
+          "offset": [
+            268,
+            250
+          ]
+        },
+        {
+          "texture": "motion-fixes-0.png",
+          "region": [
+            1119,
+            1084,
+            287,
+            324
+          ],
+          "offset": [
+            333,
+            245
+          ]
+        },
+        {
+          "texture": "motion-fixes-0.png",
+          "region": [
+            1410,
+            1084,
+            257,
+            309
+          ],
+          "offset": [
+            317,
+            260
+          ]
+        },
+        {
+          "texture": "motion-fixes-0.png",
+          "region": [
+            1671,
+            1084,
+            226,
+            356
+          ],
+          "offset": [
+            329,
+            213
+          ]
+        }
+      ],
+      "segment_sync": false,
+      "anchor_mode": "feet",
+      "timeline": [
+        0,
+        3,
+        5,
+        8,
+        10,
+        13,
+        15,
+        18,
+        20,
+        23,
+        26,
+        29
+      ]
+    },
+    "throw_success": {
+      "loop": false,
+      "fps": 12,
+      "phase_breaks": [
+        4,
+        8
+      ],
+      "frames": [
+        {
+          "texture": "motion-fixes-0.png",
+          "region": [
+            2,
+            1444,
+            226,
+            356
+          ],
+          "offset": [
+            329,
+            213
+          ]
+        },
+        {
+          "texture": "motion-fixes-0.png",
+          "region": [
+            232,
+            1444,
+            332,
+            354
+          ],
+          "offset": [
+            279,
+            215
+          ]
+        },
+        {
+          "texture": "motion-fixes-0.png",
+          "region": [
+            568,
+            1444,
+            354,
+            351
+          ],
+          "offset": [
+            260,
+            218
+          ]
+        },
+        {
+          "texture": "motion-fixes-0.png",
+          "region": [
+            926,
+            1444,
+            292,
+            355
+          ],
+          "offset": [
+            292,
+            214
+          ]
+        },
+        {
+          "texture": "motion-fixes-0.png",
+          "region": [
+            1222,
+            1444,
+            331,
+            344
+          ],
+          "offset": [
+            312,
+            225
+          ]
+        },
+        {
+          "texture": "motion-fixes-0.png",
+          "region": [
+            1557,
+            1444,
+            275,
+            351
+          ],
+          "offset": [
+            320,
+            218
+          ]
+        },
+        {
+          "texture": "motion-fixes-1.png",
+          "region": [
+            2,
+            2,
+            276,
+            313
+          ],
+          "offset": [
+            332,
+            256
+          ]
+        },
+        {
+          "texture": "motion-fixes-1.png",
+          "region": [
+            282,
+            2,
+            427,
+            315
+          ],
+          "offset": [
+            255,
+            254
+          ]
+        },
+        {
+          "texture": "motion-fixes-1.png",
+          "region": [
+            713,
+            2,
+            402,
+            319
+          ],
+          "offset": [
+            226,
+            250
+          ]
+        },
+        {
+          "texture": "motion-fixes-1.png",
+          "region": [
+            1119,
+            2,
+            287,
+            324
+          ],
+          "offset": [
+            276,
+            245
+          ]
+        },
+        {
+          "texture": "motion-fixes-1.png",
+          "region": [
+            1410,
+            2,
+            257,
+            309
+          ],
+          "offset": [
+            322,
+            260
+          ]
+        },
+        {
+          "texture": "motion-fixes-1.png",
+          "region": [
+            1671,
+            2,
+            226,
+            356
+          ],
+          "offset": [
+            341,
+            213
+          ]
+        }
+      ],
+      "segment_sync": false,
+      "anchor_mode": "feet",
+      "timeline": [
+        0,
+        3,
+        5,
+        8,
+        10,
+        13,
+        15,
+        18,
+        20,
+        23,
+        26,
+        29
+      ]
+    }
+  }
+}

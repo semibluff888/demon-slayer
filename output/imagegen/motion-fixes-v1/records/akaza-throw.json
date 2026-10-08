@@ -1,0 +1,21 @@
+{
+  "id": "akaza-throw",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "1536x1024",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/motion-fixes-v1/prompts/akaza-throw.txt",
+  "output": "output/imagegen/motion-fixes-v1/raw/akaza-throw.png",
+  "references": [
+    "output/imagegen/motion-fixes-v1/references/akaza-idle.png"
+  ],
+  "started_utc": "2026-10-08T18:28:15.8840876Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": ".venv-imagegen/Scripts/python.exe",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-08T18:29:05.3653390Z",
+  "sha256": "4b09aa0c079d195ac036c1a24d3cc1874db8c0dfd2e4f46aafdd7b5baf73a00f",
+  "review": "Uniform head ruler, same feet anchor, forward/back turn and recovery inspected in Godot. Eight authored key poses with explicit timing."
+}
