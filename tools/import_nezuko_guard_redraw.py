@@ -25,7 +25,7 @@ def main():
   a=np.array(frame);a[a[:,:,3]<8]=0;frame=Image.fromarray(a);bbox=frame.getbbox();assert bbox
   frame=match_colors(frame.crop(bbox))
   offset=[old['offset'][0]+bbox[0]-12,old['offset'][1]+old['region'][3]-frame.height]
-  x=i%4*256;y=i//4*256;assert frame.width<=256 and frame.height<=256
+  x=i%4*256+2;y=i//4*256+2;assert frame.width<=252 and frame.height<=252
   page.paste(frame,(x,y));entries.append(dict(texture='guard-low-redraw.png',region=[x,y,*frame.size],offset=offset))
   (OUT/'frames').mkdir(exist_ok=True);frame.save(OUT/'frames'/f'{i}.png')
   records.append(dict(frame=i,source_cell=[i%3*512,i//3*512,512,512],scale=0.5,bounds=list(bbox),size=list(frame.size),offset=offset,feet_y=offset[1]+frame.height,original_size=old['region'][2:],original_feet_y=old['offset'][1]+old['region'][3],height_ratio=frame.height/old['region'][3],width_ratio=frame.width/old['region'][2],sha256=sha(OUT/'frames'/f'{i}.png')))

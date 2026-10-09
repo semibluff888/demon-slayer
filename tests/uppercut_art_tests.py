@@ -29,13 +29,28 @@ class UppercutArtTests(unittest.TestCase):
     self.assertLess(ratio,1.04,(clip,index,ratio))
     self.assertLessEqual(abs(bounds[3]-self.atlas.data['feet_anchor'][1]),1)
  def test_crouch_guard_keeps_head_scale_and_foot_contact(self):
-  reference=face_span(self.atlas.frame('idle',0))
-  # Other drawings join the guarding hand to the face's skin-color component;
-  # use the four frames with an independently exposed face as an anatomy ruler.
-  for index in [1,3,4,5]:
-   ratio=face_span(self.atlas.frame('guard_low',index))/reference
-   self.assertGreater(ratio,.90,(index,ratio))
-   self.assertLess(ratio,1.06,(index,ratio))
+  import json,hashlib
+  from PIL import Image
+  # The approved redraw covers the face with fists in some frames. Skin-color
+  # components no longer measure its head; enforce the reviewed pixel scale
+  # and registered drawings directly instead of measuring a visible hand.
+  folder=ROOT/'output/imagegen/normal-guard-redraw-v3'
+  registration=json.loads((folder/'import.json').read_text(encoding='utf-8-sig'))
+  self.assertEqual(registration['shared_scale'],0.5)
+  self.assertEqual(hashlib.sha256((ROOT/registration['source']).read_bytes()).hexdigest(),registration['source_sha256'])
+  self.assertEqual(len(registration['frames']),6)
+  for index,record in enumerate(registration['frames']):
+   entry=self.atlas.data['clips']['guard_low']['frames'][index]
+   self.assertEqual(entry['offset'],record['offset'])
+   self.assertEqual(entry['region'][2:],record['size'])
+   self.assertGreater(entry['region'][3]/record['original_size'][1],.90)
+   self.assertLess(entry['region'][3]/record['original_size'][1],1.10)
+   approved=folder/'frames'/f'{index}.png'
+   self.assertEqual(hashlib.sha256(approved.read_bytes()).hexdigest(),record['sha256'])
+   with Image.open(approved) as frame:
+    actual=self.atlas.frame('guard_low',index)
+    ox,oy=entry['offset'];w,h=entry['region'][2:]
+    self.assertEqual(actual.crop((ox,oy,ox+w,oy+h)).tobytes(),frame.convert('RGBA').tobytes())
   for index in range(6):
    bounds=self.atlas.frame('guard_low',index).getbbox()
    self.assertLessEqual(abs(bounds[3]-self.atlas.data['feet_anchor'][1]),1)
