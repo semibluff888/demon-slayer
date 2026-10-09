@@ -1,0 +1,20 @@
+{
+  "id": "awakening-hands-ipv6",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "1536x1024",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/guard-hands-v2/prompts/awakening-hands.txt",
+  "output": "output/imagegen/guard-hands-v2/raw/awakening-hands-ipv6.png",
+  "references": [
+    "output/imagegen/guard-hands-v2/references/awakening-edit-target.png"
+  ],
+  "started_utc": "2026-10-09T13:18:35.8998478Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": ".venv-imagegen/Scripts/python.exe",
+  "prefer_ipv6": true,
+  "completed_utc": "2026-10-09T13:20:26.7170450Z",
+  "review_note": "Only registered fist patches imported locally into both forms; original frames retained outside reviewed masks."
+}

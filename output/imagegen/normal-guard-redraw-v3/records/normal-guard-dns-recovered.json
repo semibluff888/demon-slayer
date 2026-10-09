@@ -1,0 +1,25 @@
+{
+  "id": "normal-guard-dns-recovered",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "1536x1024",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/normal-guard-redraw-v3/prompts/normal-guard.txt",
+  "output": "output/imagegen/normal-guard-redraw-v3/raw/normal-guard-dns-recovered.png",
+  "references": [
+    "output/imagegen/guard-hands-v2/references/normal-edit-target.png"
+  ],
+  "started_utc": "2026-10-09T13:57:29.1312237Z",
+  "cost": null,
+  "accepted": true,
+  "python_runtime": ".venv-imagegen/Scripts/python.exe",
+  "prefer_ipv6": false,
+  "completed_utc": "2026-10-09T13:58:22.1450960Z",
+  "sha256": "1aaa1497e33ea686d5bc24c3d3a92b005431bc984bc0190377488ee71e39f298",
+  "actual_size": [
+    1536,
+    1024
+  ],
+  "review_note": "Full normal guard redraw accepted. Both arms, rear wrist and far fist reconnected. Imported all six full sprites at shared 0.5 scale and original foot baselines. Awakening unchanged. No full test suite requested."
+}

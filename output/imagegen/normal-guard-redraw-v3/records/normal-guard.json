@@ -1,0 +1,20 @@
+{
+  "id": "normal-guard",
+  "status": "failed_before_connection",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "1536x1024",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/normal-guard-redraw-v3/prompts/normal-guard.txt",
+  "output": "output/imagegen/normal-guard-redraw-v3/raw/normal-guard.png",
+  "references": [
+    "output/imagegen/guard-hands-v2/references/normal-edit-target.png"
+  ],
+  "started_utc": "2026-10-09T13:53:22.0471493Z",
+  "cost": null,
+  "accepted": false,
+  "python_runtime": ".venv-imagegen/Scripts/python.exe",
+  "prefer_ipv6": true,
+  "error_type": "RuntimeException",
+  "review_note": "DNS getaddrinfo failed before TCP connection; no generated output. DNS subsequently resolved in both Windows and image runtime."
+}

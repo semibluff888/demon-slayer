@@ -1,4 +1,4 @@
-param([switch]$Apply)
+param([switch]$Apply, [ValidateRange(1, 100)][int]$KeepReleaseArchives = 1)
 $ErrorActionPreference = 'Stop'
 $root = [IO.Path]::GetFullPath((Split-Path -Parent $PSScriptRoot))
 function Assert-LocalPath([string]$path) {
@@ -16,6 +16,16 @@ $targets = @('artifacts', 'tmp', 'output/pip-cache', 'output/font-sources',
     'output/imagegen/anime-v2/review', 'output/imagegen/roster-v1/review',
     'output/imagegen/round-selected/review', 'output/imagegen/round-selected/packed',
     'demo/round-presentation/previews/frames', 'demo/round-presentation/previews/audio')
+# Comparison sheets are derived from retained raw sources and registrations.
+$imagegen = Join-Path $root 'output/imagegen'
+if (Test-Path -LiteralPath $imagegen) {
+    Get-ChildItem -LiteralPath $imagegen -Directory | ForEach-Object {
+        $targets += 'output/imagegen/' + $_.Name + '/review'
+    }
+}
+# The selected, licensed offline upscaler lives in runtime/. These are duplicate
+# extracted distributions and downloads, not the runtime used by build tools.
+$targets += @('output/super-resolution/models', 'output/super-resolution/realesrgan-ncnn-vulkan-v0.2.0-windows')
 $files = [Collections.Generic.List[IO.FileInfo]]::new()
 foreach ($relative in $targets) {
     $path = Join-Path $root $relative
@@ -23,6 +33,23 @@ foreach ($relative in $targets) {
         $path = Assert-LocalPath $path
         Get-ChildItem -LiteralPath $path -Recurse -File -Force | Where-Object Name -NE '.gdignore' | ForEach-Object { $files.Add($_) }
     }
+}
+$downloadRoot = Join-Path $root 'output/super-resolution'
+if (Test-Path -LiteralPath $downloadRoot) {
+    Get-ChildItem -LiteralPath $downloadRoot -File | Where-Object {
+        $_.Name -like 'realesrgan-ncnn-vulkan-*-windows.zip' -or
+        $_.Name -in @('input.jpg', 'input2.jpg', 'onepiece_demo.mp4', 'README_windows.md',
+            'realesrgan-ncnn-vulkan.exe', 'vcomp140.dll', 'vcomp140d.dll')
+    } | ForEach-Object { $files.Add($_) }
+}
+# Keep the newest release archive(s) by version, plus all release notes and hashes.
+$releaseRoot = Join-Path $root 'dist'
+$releases = @()
+if (Test-Path -LiteralPath $releaseRoot) {
+    $releases = @(Get-ChildItem -LiteralPath $releaseRoot -Filter 'DemonSlayer-*.zip' -File |
+        Where-Object { $_.Name -match '^DemonSlayer-(\d+\.\d+\.\d+)(?:-|\.)' } |
+        Sort-Object @{ Expression = { [version]([regex]::Match($_.Name, '^DemonSlayer-(\d+\.\d+\.\d+)').Groups[1].Value) }; Descending = $true }, @{ Expression = 'LastWriteTimeUtc'; Descending = $true })
+    $releases | Select-Object -Skip $KeepReleaseArchives | ForEach-Object { $files.Add($_) }
 }
 # Keep every imported resource still referenced by the game or historical demo.
 $keep = [Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
@@ -43,11 +70,15 @@ if (Test-Path -LiteralPath $imported) {
 $tracked = [Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
 & git -C $root -c core.quotepath=false ls-files | ForEach-Object { $null = $tracked.Add([IO.Path]::GetFullPath((Join-Path $root $_))) }
 if ($LASTEXITCODE -ne 0) { throw 'Cannot inspect tracked files; aborting cleanup.' }
-$total = 0L; $count = 0
+$total = 0L; $count = 0; $groups = @{}
 foreach ($file in ($files | Sort-Object FullName -Unique)) {
     if ($tracked.Contains($file.FullName)) { continue }
     $path = Assert-LocalPath $file.FullName
     $total += $file.Length; $count++
+    $relative = $path.Substring($root.Length + 1).Replace('\', '/')
+    $category = $relative.Split('/')[0]
+    if (-not $groups.ContainsKey($category)) { $groups[$category] = @{ Files = 0; Bytes = 0L } }
+    $groups[$category].Files++; $groups[$category].Bytes += $file.Length
     if ($Apply) { Remove-Item -LiteralPath $path -Force }
 }
 if ($Apply) {
@@ -61,4 +92,8 @@ if ($Apply) {
             }
     }
 }
-[pscustomobject]@{ Applied = [bool]$Apply; Files = $count; FreedGiB = [math]::Round($total / 1GB, 3) }
+[pscustomobject]@{
+    Applied = [bool]$Apply; Files = $count; Bytes = $total; FreedGiB = [math]::Round($total / 1GB, 3)
+    KeptReleaseArchives = @($releases | Select-Object -First $KeepReleaseArchives -ExpandProperty Name)
+    Categories = $groups
+}

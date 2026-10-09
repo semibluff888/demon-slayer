@@ -40,7 +40,10 @@ def pack(key,m,frames):
    page.alpha_composite(im,(x,y));entries.append(dict(texture=f'motion-fixes-{page_id}.png',region=[x,y,*im.size],offset=list(offset)))
    x+=im.width+4;rh=max(rh,im.height)
   m['clips'][c]['frames']=entries
- page.save(d/f'motion-fixes-{page_id}.png');m['motion_revision']='motion-fixes-v1';save(d/'atlas.json',m)
+ page.save(d/f'motion-fixes-{page_id}.png')
+ current=read(d/'atlas.json')
+ for c in TARGETS[key]:current['clips'][c]=m['clips'][c]
+ current['motion_revision']='motion-fixes-v1';save(d/'atlas.json',current)
  save(OUT/'imports'/f'{key.replace("/","-")}.json',dict(clips={c:m['clips'][c] for c in TARGETS[key]}))
 
 def akaza_poses():

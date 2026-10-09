@@ -1,0 +1,20 @@
+{
+  "id": "normal-hands-ipv6",
+  "status": "generated",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "1536x1024",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/guard-hands-v2/prompts/normal-hands.txt",
+  "output": "output/imagegen/guard-hands-v2/raw/normal-hands-ipv6.png",
+  "references": [
+    "output/imagegen/guard-hands-v2/references/normal-edit-target.png"
+  ],
+  "started_utc": "2026-10-09T13:10:11.0349938Z",
+  "cost": null,
+  "accepted": false,
+  "python_runtime": ".venv-imagegen/Scripts/python.exe",
+  "prefer_ipv6": true,
+  "completed_utc": "2026-10-09T13:16:29.4703830Z",
+  "review_note": "Generated successfully; not imported because the fist lacked a clear thumb and some forearm overlaps drifted."
+}

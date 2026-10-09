@@ -27,7 +27,7 @@
 | build/、dist/ | 导出工具、暂存文件、最终发行包 | Git 忽略，Godot 忽略 |
 | .git/ | 版本历史 | 保留，不改写历史 |
 
-clean-local.ps1 默认只报告；-Apply 才删除。它验证路径在本项目内、拒绝链接路径，并跳过所有 Git 跟踪文件。不要在录制或导入过程中运行清理。有效的 art/ 和 demo/ 导入缓存仍会保留。
+clean-local.ps1 默认只报告；-Apply 才删除。它验证路径在本项目内、拒绝链接路径，并跳过所有 Git 跟踪文件。不要在录制或导入过程中运行清理。有效的 art/ 和 demo/ 导入缓存仍会保留。 清理同时覆盖各版素材 review 目录与重复超分下载；发行 ZIP 默认按版本保留最新 1 份，可用 -KeepReleaseArchives 2 改为保留最近 2 份。发布说明、SHA256 记录、所选离线运行时及全部制作源图保留。
 
 历史说明中提及的 artifacts 截图/录像已清理，可通过 tools/capture_*.gd 和 tools/build_*_review.py 重新生成。制作源图及其 provenance 仍保留在 output/，避免丢失离线复现能力。
 

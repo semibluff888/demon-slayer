@@ -1,0 +1,62 @@
+[
+  {
+    "id": "normal-hands",
+    "group": "animation",
+    "prompt": "output/imagegen/guard-hands-v2/prompts/normal-hands.txt",
+    "out": "output/imagegen/guard-hands-v2/raw/normal-hands.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/guard-hands-v2/references/normal-edit-target.png"
+    ],
+    "metadata": {
+      "form": "normal",
+      "count": 6,
+      "columns": 3
+    }
+  },
+  {
+    "id": "awakening-hands",
+    "group": "animation",
+    "prompt": "output/imagegen/guard-hands-v2/prompts/awakening-hands.txt",
+    "out": "output/imagegen/guard-hands-v2/raw/awakening-hands.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/guard-hands-v2/references/awakening-edit-target.png"
+    ],
+    "metadata": {
+      "form": "awakening",
+      "count": 6,
+      "columns": 3
+    }
+  },
+  {
+    "id": "normal-hands-ipv6",
+    "group": "animation",
+    "prompt": "output/imagegen/guard-hands-v2/prompts/normal-hands.txt",
+    "out": "output/imagegen/guard-hands-v2/raw/normal-hands-ipv6.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/guard-hands-v2/references/normal-edit-target.png"
+    ],
+    "metadata": {
+      "form": "normal",
+      "count": 6,
+      "columns": 3
+    }
+  },
+  {
+    "id": "awakening-hands-ipv6",
+    "group": "animation",
+    "prompt": "output/imagegen/guard-hands-v2/prompts/awakening-hands.txt",
+    "out": "output/imagegen/guard-hands-v2/raw/awakening-hands-ipv6.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/guard-hands-v2/references/awakening-edit-target.png"
+    ],
+    "metadata": {
+      "form": "awakening",
+      "count": 6,
+      "columns": 3
+    }
+  }
+]

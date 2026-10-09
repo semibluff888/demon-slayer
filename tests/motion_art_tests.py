@@ -15,7 +15,18 @@ class MotionArtTests(unittest.TestCase):
    folder=ROOT/'art/characters'/key;old=read(OUT/'baseline'/key/'atlas.json');new=read(folder/'atlas.json')
    self.assertEqual(set(old['clips']),set(new['clips']))
    for c in old['clips']: 
-    if c not in targets:self.assertEqual(old['clips'][c],new['clips'][c],key+'/'+c)
+    if c=='guard_low' and key.startswith('nezuko'):
+     self.assertEqual({k:v for k,v in old['clips'][c].items() if k!='frames'},{k:v for k,v in new['clips'][c].items() if k!='frames'})
+     if key=='nezuko':
+      redraw=read(ROOT/'output/imagegen/normal-guard-redraw-v3/import.json')
+      self.assertEqual(len(new['clips'][c]['frames']),6)
+      for frame,registration in zip(new['clips'][c]['frames'],redraw['frames']):
+       self.assertEqual(frame['offset'],registration['offset']);self.assertEqual(frame['region'][2:],registration['size'])
+       self.assertEqual(registration['scale'],0.5);self.assertEqual(registration['feet_y'],registration['original_feet_y'])
+     else:
+      for before,after in zip(old['clips'][c]['frames'],new['clips'][c]['frames']):
+       self.assertEqual(before['offset'],after['offset']);self.assertEqual(before['region'][2:],after['region'][2:])
+    elif c not in targets:self.assertEqual(old['clips'][c],new['clips'][c],key+'/'+c)
    for field in ['canvas_size','feet_anchor','source_height','canonical_height']:self.assertEqual(old[field],new[field])
  def test_return_to_exact_idle(self):
   for key,clips in {'nezuko/awakening':['blood_kick','spinning_kick','blood_burst','throw_forward'],'nezuko':['blood_burst','throw_forward'],'akaza':['throw_forward'],'akaza/awakening':['throw_forward']}.items():

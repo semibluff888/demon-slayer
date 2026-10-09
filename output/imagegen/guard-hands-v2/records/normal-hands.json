@@ -1,0 +1,19 @@
+{
+  "id": "normal-hands",
+  "status": "uncertain",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "1536x1024",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/guard-hands-v2/prompts/normal-hands.txt",
+  "output": "output/imagegen/guard-hands-v2/raw/normal-hands.png",
+  "references": [
+    "output/imagegen/guard-hands-v2/references/normal-edit-target.png"
+  ],
+  "started_utc": "2026-10-09T11:59:16.0918522Z",
+  "cost": null,
+  "accepted": false,
+  "python_runtime": ".venv-imagegen/Scripts/python.exe",
+  "prefer_ipv6": false,
+  "error_type": "RuntimeException"
+}

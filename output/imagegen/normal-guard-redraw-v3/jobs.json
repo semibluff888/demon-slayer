@@ -1,0 +1,34 @@
+[
+  {
+    "id": "normal-guard",
+    "group": "animation",
+    "prompt": "output/imagegen/normal-guard-redraw-v3/prompts/normal-guard.txt",
+    "out": "output/imagegen/normal-guard-redraw-v3/raw/normal-guard.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/guard-hands-v2/references/normal-edit-target.png"
+    ],
+    "metadata": {
+      "form": "normal",
+      "clip": "guard_low",
+      "count": 6,
+      "columns": 3
+    }
+  },
+  {
+    "id": "normal-guard-dns-recovered",
+    "group": "animation",
+    "prompt": "output/imagegen/normal-guard-redraw-v3/prompts/normal-guard.txt",
+    "out": "output/imagegen/normal-guard-redraw-v3/raw/normal-guard-dns-recovered.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/guard-hands-v2/references/normal-edit-target.png"
+    ],
+    "metadata": {
+      "form": "normal",
+      "clip": "guard_low",
+      "count": 6,
+      "columns": 3
+    }
+  }
+]

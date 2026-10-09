@@ -1,0 +1,19 @@
+{
+  "id": "awakening-hands",
+  "status": "uncertain",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "requested_size": "1536x1024",
+  "route": "CPA via installed image_gen.py",
+  "prompt": "output/imagegen/guard-hands-v2/prompts/awakening-hands.txt",
+  "output": "output/imagegen/guard-hands-v2/raw/awakening-hands.png",
+  "references": [
+    "output/imagegen/guard-hands-v2/references/awakening-edit-target.png"
+  ],
+  "started_utc": "2026-10-09T12:06:19.9840389Z",
+  "cost": null,
+  "accepted": false,
+  "python_runtime": ".venv-imagegen/Scripts/python.exe",
+  "prefer_ipv6": false,
+  "error_type": "RuntimeException"
+}

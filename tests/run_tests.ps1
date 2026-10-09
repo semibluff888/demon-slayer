@@ -99,6 +99,8 @@ if (Test-Path -LiteralPath $artPython) {
     if ($LASTEXITCODE -ne 0) { throw 'Uppercut artwork validation failed.' }
     & $artPython (Join-Path $projectRoot 'tests/awakening_art_tests.py')
     if ($LASTEXITCODE -ne 0) { throw 'Awakening artwork validation failed.' }
+    & $artPython (Join-Path $projectRoot 'tests/guard_fist_art_tests.py')
+    if ($LASTEXITCODE -ne 0) { throw 'Guard fist artwork validation failed.' }
     & $artPython (Join-Path $projectRoot 'tests/motion_art_tests.py')
     if ($LASTEXITCODE -ne 0) { throw 'Motion artwork validation failed.' }
     & $artPython (Join-Path $projectRoot 'tests/fate_art_tests.py')
