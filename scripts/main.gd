@@ -43,6 +43,7 @@ func _ready() -> void:
 	view.combat = combat
 	view.catalog = catalog
 	add_child(view)
+	view.cinematic.app = self
 	sound = Sound.new()
 	add_child(sound)
 	sound.set_levels(settings.muted,settings.volume)
@@ -57,7 +58,7 @@ func _ready() -> void:
 		preload("res://scripts/release_verifier.gd").run.call_deferred(self)
 
 func _physics_process(_delta: float) -> void:
-	if screen != "battle" or paused:
+	if screen != "battle" or paused or view.cinematic.blocks_combat():
 		return
 	var commands: Array = [router.read(0, devices[0]), Combat.neutral()]
 	if mode == "cpu":
@@ -67,7 +68,15 @@ func _physics_process(_delta: float) -> void:
 	else:
 		commands[1] = router.read(1, devices[1])
 	var previous_phase := combat.phase
+	combat.cinematic_moves = view.cinematic.available_moves() if settings.cinematic_enabled else {}
 	combat.step(commands)
+	if not combat.cinematic.is_empty() and not view.cinematic.active:
+		if mode == "practice":
+			practice_controller.after_step(combat)
+		view.hud.consume(combat.events)
+		view.cinematic.begin()
+		_reset_inputs()
+		return
 	if mode == "practice":
 		practice_controller.after_step(combat)
 	view.consume(combat.events)
@@ -142,6 +151,9 @@ func _back_or_pause() -> void:
 		show_title()
 
 func _change_screen(next_screen: String) -> void:
+	if next_screen in ["title", "setup", "stage", "result"]:
+		view.cinematic.cancel()
+	gui.visible = true
 	screen = next_screen
 	view.screen = next_screen
 	view.characters = characters
@@ -201,6 +213,7 @@ func start_match() -> void:
 	selection.modal = false
 	view.reset_effects()
 	catalog.prepare_match(characters, stage_id)
+	view.cinematic.prepare(characters)
 	view.set_stage(stage_id)
 	combat.practice = mode == "practice"
 	combat.new_match(characters[0], characters[1])
@@ -245,6 +258,7 @@ func _menu_keyboard(event: InputEvent) -> bool:
 func toggle_audio() -> void:
 	sound.toggle()
 	settings.muted=sound.muted
+	view.cinematic.sync_audio()
 	settings.save_config()
 	if screen=="settings":gui.actions.audio_mute.set_pressed_no_signal(settings.muted)
 
@@ -280,6 +294,7 @@ func set_paused(value: bool, reason: String = "") -> void:
 	_reset_inputs()
 	pause_reason = reason
 	gui.clear()
+	gui.visible = value or view.cinematic.phase != "video"
 	if not paused:
 		gui.battle()
 	else:

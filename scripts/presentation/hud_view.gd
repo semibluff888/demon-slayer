@@ -16,6 +16,7 @@ var training: RefCounted
 var input_device: String = "keyboard:0"
 var awakening_hints: Array[String] = ["I+J", "Num6+Num2"]
 var frozen: bool = false
+var cinematic_mode: bool = false
 var playback_speed: float = 1.0
 var practice_details: bool = false
 var input_hints: Array[String] = ["WASD / UI · JK", "↑↓←→ / Num56 · Num23"]
@@ -269,10 +270,11 @@ func _draw() -> void:
 		var visual = catalog.characters[f.character]
 		_portrait(i, visual)
 		_health_bar(i, f, visual)
-		_meter(i, f, visual)
-		_awakening_status(i, f)
+		if not cinematic_mode:
+			_meter(i, f, visual)
+			_awakening_status(i, f)
 		_combo(i, f)
-		if callout_time[i] > 0 and not has_super_title() and not frozen:
+		if callout_time[i] > 0 and not cinematic_mode and not has_super_title() and not frozen:
 			var alpha := minf(1, callout_time[i] * 3)
 			var value: String = callouts[i]
 			var measured: float = catalog.body_font.get_string_size(value, HORIZONTAL_ALIGNMENT_LEFT, -1, 20).x
@@ -289,6 +291,10 @@ func _draw() -> void:
 	_text(round_label, Vector2(640 - label_width / 2, 81), 12, GOLD)
 	draw_line(Vector2(606, 74), Vector2(611, 74), Color(GOLD, 0.6), 1, true)
 	draw_line(Vector2(669, 74), Vector2(674, 74), Color(GOLD, 0.6), 1, true)
+	if round_banner != null:
+		round_banner.visible = not cinematic_mode
+	if cinematic_mode:
+		return
 	if combat.practice and training != null:
 		_practice()
 	else:

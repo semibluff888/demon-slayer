@@ -38,3 +38,7 @@ This fan game uses characters and names from Demon Slayer / Kimetsu no Yaiba.
 The third-party software licenses above do not grant rights to those characters,
 names, or the game's artwork. Source-art provenance and production records are
 retained in the repository's output/ directory.
+
+## 必杀演出视频
+
+`art/cinematics/*.ogv` 为用户指定的《Demon Slayer: The Hinokami Chronicles》无 HUD 游戏录像剪辑。来源：https://www.youtube.com/watch?v=-cnMjZ1v4fU 。视频中的游戏画面、角色、配音及声音的权利仍归各自权利方；项目自身的许可不覆盖这些视频。剪辑来源及映射见 `docs/cinematic-ultimates.md`。

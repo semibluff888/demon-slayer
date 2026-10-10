@@ -18,6 +18,7 @@ var stage: Node2D
 var effects: Node2D
 var hud: Control
 var super_view: Node2D
+var cinematic: Node2D
 var fighters: Array[Node2D] = []
 var shadow_layer: Node2D
 var debug_layer: Node2D
@@ -61,6 +62,10 @@ func _ready() -> void:
 	hud.size = Vector2(1280, 720)
 	hud.z_index = 30
 	add_child(hud)
+	cinematic = preload("res://scripts/presentation/cinematic_view.gd").new()
+	cinematic.world = self
+	cinematic.z_index = 25
+	add_child(cinematic)
 	debug_layer = Node2D.new()
 	debug_layer.z_index = 40
 	debug_layer.draw.connect(_draw_debug)
@@ -68,25 +73,30 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	var battle: bool = screen == "battle" and combat.fighters.size() == 2
-	var speed: float = combat.presentation_speed() if battle else 1.0
+	var cinematic_active: bool = cinematic.active
+	var cinematic_locked: bool = cinematic.blocks_combat()
+	var movie_active: bool = cinematic_active and cinematic.phase == "video"
+	var speed: float = 1.0 if cinematic_locked else (combat.presentation_speed() if battle else 1.0)
 	var presentation_delta: float = delta * speed
-	var visual_freeze: bool = paused or (battle and (combat.hitstop > 0 or combat.super_freeze > 0 or is_zero_approx(speed)))
+	var visual_freeze: bool = paused or cinematic_locked or (battle and (combat.hitstop > 0 or combat.super_freeze > 0 or is_zero_approx(speed)))
 	if not paused and combat.hitstop == 0 and combat.super_freeze == 0:
 		time += presentation_delta
+	stage.visible = not movie_active
+	foreground_layer.visible = not movie_active
 	stage.menu_mode = not battle
-	stage.freeze = visual_freeze
+	stage.freeze = paused or movie_active or (battle and (combat.hitstop > 0 or combat.super_freeze > 0 or is_zero_approx(speed)))
 	stage.playback_speed = speed
 	hud.visible = screen == "battle"
-	effects.visible = battle
-	super_view.visible = battle
+	effects.visible = battle and not cinematic_locked
+	super_view.visible = battle and not cinematic_locked
 	# KO freezes the observed presentation clock, but keeps cinematic artwork visible.
 	super_view.paused = paused
 	effects.playback_speed = speed
 	effects.freeze = visual_freeze
-	shadow_layer.visible = battle
-	debug_layer.visible = battle and debug_boxes
+	shadow_layer.visible = battle and not movie_active
+	debug_layer.visible = battle and debug_boxes and not movie_active
 	for i in range(2):
-		fighters[i].visible = battle
+		fighters[i].visible = battle and not movie_active
 	if not battle:
 		return
 	for i in range(2):
@@ -111,6 +121,7 @@ func _process(delta: float) -> void:
 		fighters[i].position = camera.point(Vector2(f.x, f.y))
 		fighters[i].scale = Vector2.ONE * camera.zoom
 	hud.cpu = cpu
+	hud.cinematic_mode = movie_active
 	hud.frozen = paused
 	hud.playback_speed = speed
 	hud.input_hints = input_hints
@@ -118,6 +129,8 @@ func _process(delta: float) -> void:
 	debug_layer.queue_redraw()
 
 func reset_effects() -> void:
+	if cinematic != null:
+		cinematic.cancel()
 	for actor in fighters:
 		actor.reset_pose()
 	if effects != null:

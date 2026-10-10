@@ -46,6 +46,9 @@ var round_open_hp: Array[int] = [1000, 1000]
 var practice: bool = false
 var awakening_infinite: bool = false
 var pending_healing: Array[int] = [0, 0]
+# The application supplies only playable assets; headless combat stays opt-in.
+var cinematic_moves: Dictionary = {}
+var cinematic: Dictionary = {}
 const AWAKENING_COST := 200
 const AWAKENING_FREEZE := 12
 
@@ -97,6 +100,7 @@ func start_round(meters: Array = []) -> void:
 		round_open_meter[i] = fresh.meter
 		round_open_hp[i] = fresh.hp
 		fighters[i] = fresh
+	cinematic.clear()
 	remaining = ROUND_TICKS
 	throw_link.clear()
 	projectiles.clear()
@@ -124,6 +128,8 @@ func clear_inputs(held: Array = []) -> void:
 
 func step(commands: Array) -> void:
 	events.clear()
+	if cinematic_blocks_combat():
+		return
 	ticks += 1
 	if phase == "match_end":
 		return
@@ -151,7 +157,10 @@ func step(commands: Array) -> void:
 	var samples: Array[Dictionary] = []
 	for i in range(2):
 		samples.append(fighters[i].input.sample(commands[i], fighters[i].facing))
-		_read_command(fighters[i], samples[i])
+		if cinematic_holds_victim(i):
+			fighters[i].clear_buffer()
+		else:
+			_read_command(fighters[i], samples[i])
 	if not throw_link.is_empty():
 		var victim: int = 1 - int(throw_link.attacker)
 		if int(throw_link.frame) < 7 and (int(samples[victim].pressed) & Commands.D) != 0:
@@ -182,7 +191,8 @@ func step(commands: Array) -> void:
 		remaining = maxi(0, remaining - 1)
 	_update_sequences()
 	for f in fighters:
-		_advance(f)
+		if not cinematic_holds_victim(f.slot):
+			_advance(f)
 	_resolve_push()
 	_constrain_separation()
 	_face_opponent()
@@ -231,6 +241,12 @@ func step(commands: Array) -> void:
 	elif grabs.size() == 1:
 		_start_throw(grabs[0])
 	projectiles = projectiles.filter(func(p: Dictionary) -> bool: return int(p.life) > 0)
+	# Resolve trades first. Interrupted or defeated attackers cannot capture a victim.
+	for contact in contacts:
+		var actor: Fighter = fighters[contact.attacker]
+		if not contact.blocked and contact.move.is_super() and cinematic_moves.has(contact.move.id) and actor.hp > 0 and actor.move == contact.move and actor.attack_instance == contact.instance:
+			_begin_cinematic(contact)
+			return
 	if not throw_link.is_empty():
 		_tick_awakenings()
 		return
@@ -245,8 +261,112 @@ func step(commands: Array) -> void:
 		f.jump_buffer = maxi(0, f.jump_buffer - 1)
 		f.combo_display = maxi(0, f.combo_display - 1)
 	_tick_awakenings()
+	if cinematic.is_empty() and not practice and (fighters[0].hp <= 0 or fighters[1].hp <= 0 or remaining <= 0):
+		_finish_round()
+
+func _begin_cinematic(contact: Dictionary) -> void:
+	cinematic = {"contact":contact.duplicate(), "attacker":int(contact.attacker), "move":str(contact.move.id),
+		"next_segment":int(contact.segment) + 1, "facing":int(contact.facing), "tail":false}
+	hitstop = 0
+	super_freeze = 0
+	clear_inputs()
+	events.append({"type":"cinematic_start", "attacker":contact.attacker, "move":contact.move.id})
+
+func advance_cinematic(progress: float) -> void:
+	events.clear()
+	if cinematic.is_empty() or cinematic.tail:
+		return
+	var attack: Move = moves[cinematic.move]
+	var target := mini(attack.hit_count() - 1, floori(clampf(progress, 0, 1) * (attack.hit_count() - 1) / 0.9))
+	var actor: Fighter = fighters[cinematic.attacker]
+	var victim: Fighter = fighters[1 - int(cinematic.attacker)]
+	while int(cinematic.next_segment) <= target:
+		var segment: int = cinematic.next_segment
+		cinematic.next_segment += 1
+		if victim.hp <= 0:
+			continue
+		var contact: Dictionary = cinematic.contact.duplicate()
+		contact.segment = segment
+		contact.position = Vector2(victim.x, victim.y - 36)
+		_resolve_contact(contact)
+		if not segment in actor.hit_registry:
+			actor.hit_registry.append(segment)
+	hitstop = 0
+	super_freeze = 0
+
+func begin_cinematic_tail(face_away: bool) -> void:
+	if cinematic.is_empty() or cinematic.tail:
+		return
+	advance_cinematic(1.0)
+	cinematic.tail = true
+	var actor: Fighter = fighters[cinematic.attacker]
+	var victim: Fighter = fighters[1 - int(cinematic.attacker)]
+	var direction: int = cinematic.facing
+	var center := clampf((actor.x + victim.x) * 0.5, LEFT + 95, RIGHT - 95)
+	actor.x = center - direction * 60
+	victim.x = center + direction * 70
+	actor.facing = -direction if face_away else direction
+	victim.facing = -direction
+	for f in fighters:
+		f.previous_x = f.x
+		f.y = FLOOR_Y
+		f.grounded = true
+		f.vx = 0
+		f.vy = 0
+		f.move = null
+		f.stun = 0
+		f.knockdown_pending = false
+		f.roll_frame = -1
+		f.flip_jump = false
+		f.crouching = false
+		f.axis = 0
+		f.down = false
+		_stop_dash(f)
+	actor.state = "idle"
+	victim.state = "knockdown"
+	victim.reaction = "cinematic_landed"
+	victim.stun = 24
+	projectiles.clear()
+	clear_inputs()
+
+func cinematic_blocks_combat() -> bool:
+	return not cinematic.is_empty() and not bool(cinematic.get("released", false))
+
+func cinematic_holds_victim(slot: int) -> bool:
+	return not cinematic.is_empty() and bool(cinematic.get("tail", false)) and slot != int(cinematic.attacker)
+
+func release_cinematic_actor() -> void:
+	if cinematic.is_empty() or not cinematic.tail or bool(cinematic.get("released", false)):
+		return
+	cinematic.released = true
+	# The attacker can start a fresh action while the victim finishes landing.
+	var actor: Fighter = fighters[cinematic.attacker]
+	actor.quick_awakening_used = false
+	actor.combo_active = false
+	actor.combo_instances.clear()
+	actor.chain_instances.clear()
+	actor.chain_normals.clear()
+	actor.chain_counts.clear()
+	clear_inputs()
+
+func finish_cinematic() -> void:
+	if cinematic.is_empty():
+		return
+	if not cinematic.tail:
+		begin_cinematic_tail(false)
+	var victim_slot: int = 1 - int(cinematic.attacker)
+	var released := bool(cinematic.get("released", false))
+	cinematic.clear()
+	events.clear()
+	if not released:
+		hitstop = 0
+		super_freeze = 0
+		clear_inputs()
 	if not practice and (fighters[0].hp <= 0 or fighters[1].hp <= 0 or remaining <= 0):
 		_finish_round()
+		if fighters[victim_slot].hp <= 0:
+			outro_paths[victim_slot]["settled"] = true
+			outro_landed_at[victim_slot] = 0.0
 
 func _restore_stance(f: Fighter) -> void:
 	# Resolve held input on the completion tick, before presentation reads state.
@@ -547,8 +667,13 @@ func _resolve_push() -> void:
 	_stop_dash(left)
 	_stop_dash(right)
 	var overlap: float = 26.0 - (right.x - left.x)
-	left.x -= overlap / 2
-	right.x += overlap / 2
+	if cinematic_holds_victim(left.slot):
+		right.x += overlap
+	elif cinematic_holds_victim(right.slot):
+		left.x -= overlap
+	else:
+		left.x -= overlap / 2
+		right.x += overlap / 2
 	if left.x < LEFT:
 		right.x += LEFT - left.x
 		left.x = LEFT
@@ -573,7 +698,7 @@ func _throwable(f: Fighter) -> bool:
 	return f.grounded and f.stun == 0 and f.hp > 0 and f.throw_role.is_empty() and f.throw_invulnerable == 0
 
 func _can_be_struck(d: Fighter, a: Fighter, _move: Move, instance: int, projectile: bool) -> bool:
-	if d.strike_invulnerable():
+	if cinematic_holds_victim(d.slot) or d.strike_invulnerable():
 		return false
 	if d.move != null and d.move_frame < d.move.anti_air_until and not a.grounded and not projectile:
 		return false
@@ -774,7 +899,7 @@ func defeat_frame(slot: int) -> int:
 	var path: Dictionary = outro_paths[slot]
 	if path.is_empty():
 		return 0
-	if path.thrown:
+	if path.thrown or path.get("settled", false):
 		return 11 # The throw has already finished landing; never replay a second impact.
 	var motion := Flow.motion_ticks(outro_ticks, is_knockout())
 	if motion < float(path.flight):
@@ -783,6 +908,8 @@ func defeat_frame(slot: int) -> int:
 
 func _advance_defeat(f: Fighter, motion: float) -> void:
 	var path: Dictionary = outro_paths[f.slot]
+	if path.get("settled", false):
+		return
 	var flight: float = path.flight
 	var progress := 1.0 if is_zero_approx(flight) else clampf(motion / flight, 0, 1)
 	var travel := 1.0 - pow(1.0 - progress, 1.25)
@@ -941,7 +1068,7 @@ func snapshot() -> Dictionary:
 		"reason": reason, "next_instance": next_instance, "practice": practice, "awakening_infinite": awakening_infinite,
 		"round_open_hp": round_open_hp.duplicate(),
 		"round_open_meter": round_open_meter.duplicate(), "projectiles": projectiles.duplicate(true),
-		"throw_link": throw_link.duplicate(true)}
+		"throw_link": throw_link.duplicate(true), "cinematic": {"move":cinematic.get("move", ""), "next_segment":cinematic.get("next_segment", 0), "tail":cinematic.get("tail", false), "released":cinematic.get("released", false)}}
 
 func _stop_dash(f: Fighter) -> void:
 	f.dash_ticks = 0

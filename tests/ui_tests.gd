@@ -35,6 +35,9 @@ func _run() -> void:
 	game = MainScene.instantiate()
 	game.settings.path = "res://artifacts/ui_tests-settings.cfg"
 	DirAccess.make_dir_recursive_absolute("res://artifacts")
+	# These full matches fast-forward physics without advancing wall-clock media.
+	# Real video playback is covered by capture_cinematics.gd.
+	game.settings.cinematic_enabled = false
 	game.settings.save_config()
 	root.add_child(game)
 	game.set_physics_process(false)

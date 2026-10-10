@@ -42,6 +42,11 @@ static func run(game: Node) -> void:
 		stage.release_assets()
 	if game.screen != "title" or catalog.body_font == null or catalog.title_font == null:
 		failures.append("Title screen or fonts did not initialize")
+	game.view.cinematic.prepare(["tanjiro", "zenitsu", "nezuko", "akaza"])
+	if game.view.cinematic.available_moves().size() != 8:
+		failures.append("Packaged cinematic videos missing")
+	if game.view.cinematic.profiles.get("akaza_max", {}).get("video", "") != game.view.cinematic.profiles.get("akaza_super", {}).get("video", ""):
+		failures.append("Akaza should share one cinematic for both supers")
 	# Validate these rules inside the exported PCK, not only in the source checkout.
 	var expected_keys := [
 		[KEY_A, KEY_D, KEY_S, KEY_W, KEY_U, KEY_I, KEY_J, KEY_K],

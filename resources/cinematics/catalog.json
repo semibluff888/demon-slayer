@@ -1,0 +1,162 @@
+{
+  "source_url": "https://www.youtube.com/watch?v=-cnMjZ1v4fU",
+  "fps": 60,
+  "moves": {
+    "tanjiro_super": {
+      "video": "res://art/cinematics/tanjiro_super.ogv",
+      "audio": "res://art/cinematics/tanjiro_super.ogg",
+      "duration": 10.716666666666667,
+      "source_start_frame": 144,
+      "source_end_frame_exclusive": 787,
+      "recovery_clip": "water_dragon",
+      "recovery_frames": [
+        11,
+        12,
+        13,
+        14
+      ],
+      "effect": "water",
+      "face_away": false,
+      "attacker_height": 0.0,
+      "tail_seconds": 1.15,
+      "recovery_seconds": 0.65
+    },
+    "tanjiro_max": {
+      "video": "res://art/cinematics/tanjiro_max.ogv",
+      "audio": "res://art/cinematics/tanjiro_max.ogg",
+      "duration": 11.983333333333333,
+      "source_start_frame": 2184,
+      "source_end_frame_exclusive": 2903,
+      "recovery_clip": "sun_arc",
+      "recovery_frames": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "effect": "flame",
+      "face_away": false,
+      "attacker_height": 35.0,
+      "tail_seconds": 1.15,
+      "recovery_seconds": 0.65
+    },
+    "nezuko_super": {
+      "video": "res://art/cinematics/nezuko_super.ogv",
+      "audio": "res://art/cinematics/nezuko_super.ogg",
+      "duration": 13.15,
+      "source_start_frame": 5493,
+      "source_end_frame_exclusive": 6282,
+      "recovery_clip": "blood_burst",
+      "recovery_frames": [
+        4,
+        10,
+        11
+      ],
+      "effect": "blood",
+      "face_away": false,
+      "attacker_height": 0.0,
+      "tail_seconds": 1.15,
+      "recovery_seconds": 0.65
+    },
+    "nezuko_max": {
+      "video": "res://art/cinematics/nezuko_max.ogv",
+      "audio": "res://art/cinematics/nezuko_max.ogg",
+      "duration": 12.483333333333333,
+      "source_start_frame": 6684,
+      "source_end_frame_exclusive": 7433,
+      "recovery_clip": "awakened_combo",
+      "recovery_frames": [
+        9,
+        11
+      ],
+      "effect": "blood",
+      "face_away": false,
+      "attacker_height": 0.0,
+      "tail_seconds": 1.15,
+      "recovery_seconds": 0.65
+    },
+    "zenitsu_super": {
+      "video": "res://art/cinematics/zenitsu_super.ogv",
+      "audio": "res://art/cinematics/zenitsu_super.ogg",
+      "duration": 11.316666666666666,
+      "source_start_frame": 12366,
+      "source_end_frame_exclusive": 13045,
+      "recovery_clip": "sixfold",
+      "recovery_frames": [
+        14,
+        15,
+        16,
+        17
+      ],
+      "effect": "thunder",
+      "face_away": true,
+      "attacker_height": 0.0,
+      "tail_seconds": 1.15,
+      "recovery_seconds": 0.65
+    },
+    "zenitsu_max": {
+      "video": "res://art/cinematics/zenitsu_max.ogv",
+      "audio": "res://art/cinematics/zenitsu_max.ogg",
+      "duration": 11.833333333333334,
+      "source_start_frame": 13404,
+      "source_end_frame_exclusive": 14114,
+      "recovery_clip": "godspeed",
+      "recovery_frames": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "effect": "thunder",
+      "face_away": true,
+      "attacker_height": 30.0,
+      "tail_seconds": 1.15,
+      "recovery_seconds": 0.65
+    },
+    "akaza_super": {
+      "video": "res://art/cinematics/akaza_super.ogv",
+      "audio": "res://art/cinematics/akaza_super.ogg",
+      "duration": 15.45,
+      "source_start_frame": 31584,
+      "source_end_frame_exclusive": 32511,
+      "recovery_clip": "annihilation",
+      "recovery_frames": [
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "effect": "shockwave",
+      "face_away": false,
+      "attacker_height": 0.0,
+      "tail_seconds": 1.15,
+      "recovery_seconds": 0.65
+    },
+    "akaza_max": {
+      "video": "res://art/cinematics/akaza_super.ogv",
+      "audio": "res://art/cinematics/akaza_super.ogg",
+      "duration": 15.45,
+      "source_start_frame": 31584,
+      "source_end_frame_exclusive": 32511,
+      "recovery_clip": "annihilation",
+      "recovery_frames": [
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "effect": "shockwave",
+      "face_away": false,
+      "attacker_height": 0.0,
+      "tail_seconds": 1.15,
+      "shared_with": "akaza_super",
+      "recovery_seconds": 0.65
+    }
+  }
+}

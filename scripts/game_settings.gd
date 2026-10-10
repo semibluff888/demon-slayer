@@ -9,15 +9,19 @@ const RESERVED := [KEY_ESCAPE, KEY_F1, KEY_F2, KEY_F3, KEY_BACKSPACE, KEY_SHIFT,
 var path: String = "user://settings.cfg"
 var muted: bool = false
 var volume: float = 1.0
+var cinematic_enabled: bool = true
 var keymaps: Array = Router.KEYS.duplicate(true)
 var last_error: String = ""
 
 func load_config() -> void:
 	muted = false
 	volume = 1.0
+	cinematic_enabled = true
 	keymaps = Router.KEYS.duplicate(true)
 	var file := ConfigFile.new()
 	if file.load(path) != OK: return
+	var saved_cinematic = file.get_value("presentation", "cinematic_enabled", true)
+	cinematic_enabled = saved_cinematic if saved_cinematic is bool else true
 	muted = bool(file.get_value("audio", "muted", false))
 	var saved_volume = file.get_value("audio", "volume", 1.0)
 	if saved_volume is float or saved_volume is int:
@@ -67,6 +71,7 @@ func restore_keyboard(player: int) -> bool:
 
 func save_config() -> Error:
 	var file := ConfigFile.new()
+	file.set_value("presentation", "cinematic_enabled", cinematic_enabled)
 	file.set_value("audio", "muted", muted)
 	file.set_value("audio", "volume", volume)
 	file.set_value("keyboard", "version", KEYMAP_VERSION)

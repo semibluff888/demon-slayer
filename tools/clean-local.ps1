@@ -50,6 +50,11 @@ if (Test-Path -LiteralPath $releaseRoot) {
         Where-Object { $_.Name -match '^DemonSlayer-(\d+\.\d+\.\d+)(?:-|\.)' } |
         Sort-Object @{ Expression = { [version]([regex]::Match($_.Name, '^DemonSlayer-(\d+\.\d+\.\d+)').Groups[1].Value) }; Descending = $true }, @{ Expression = 'LastWriteTimeUtc'; Descending = $true })
     $releases | Select-Object -Skip $KeepReleaseArchives | ForEach-Object { $files.Add($_) }
+    # Remove replaced ZIPs while retaining their hashes, notes and logs.
+    Get-ChildItem -LiteralPath $releaseRoot -Directory -Filter 'superseded-*' | ForEach-Object {
+        $backup = Assert-LocalPath $_.FullName
+        Get-ChildItem -LiteralPath $backup -File -Filter 'DemonSlayer-*.zip' | ForEach-Object { $files.Add($_) }
+    }
 }
 # Keep every imported resource still referenced by the game or historical demo.
 $keep = [Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)

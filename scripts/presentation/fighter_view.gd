@@ -26,6 +26,7 @@ var was_grounded: bool = true
 var landing_ticks: float = 0.0
 var restart_requested: bool = false
 var previous_form: bool = false
+var cinematic_pose: Dictionary = {}
 var awakening_effects: Node2D
 
 func _ready() -> void:
@@ -42,6 +43,7 @@ func _ready() -> void:
 	trail_layer.draw.connect(_draw_super_trails)
 
 func reset_pose() -> void:
+	cinematic_pose.clear()
 	clock_ticks = 0
 	previous_form = false
 	if awakening_effects != null:
@@ -70,6 +72,19 @@ func consume(events: Array, slot: int) -> void:
 
 func sync(delta: float, freeze_pose: bool) -> void:
 	if fighter == null or visual == null:
+		return
+	if not cinematic_pose.is_empty():
+		clip = cinematic_pose.clip
+		var frames: SpriteFrames = _frames()
+		if frames != null and frames.has_animation(clip):
+			frame_index = clampi(int(cinematic_pose.frame), 0, frames.get_frame_count(clip) - 1)
+			texture = frames.get_frame_texture(clip, frame_index)
+		afterimages.clear()
+		last_trail_pose.clear()
+		if awakening_effects != null:
+			awakening_effects.sync(delta, freeze_pose)
+		queue_redraw()
+		trail_layer.queue_redraw()
 		return
 	if not freeze_pose:
 		if not was_grounded and fighter.grounded and fighter.move == null and fighter.state == "idle":
@@ -153,6 +168,8 @@ func sync(delta: float, freeze_pose: bool) -> void:
 		trail_layer.queue_redraw()
 
 func _clip() -> String:
+	if fighter.reaction == "cinematic_landed" and fighter.state == "knockdown":
+		return _state_clip("round_defeat", "knockdown")
 	if fighter.awakening_startup > 0 and fighter.state == "awakening" and visual.awakening_frames != null:
 		return visual.awakening.start_clip
 	if combat.phase == "intro" and combat.phase_frames > Flow.INTRO:
@@ -215,6 +232,8 @@ func _frame_index() -> int:
 		return mini(count - 1, int(float(duration - fighter.awakening_startup) / duration * count))
 	if clip == "round_intro":
 		return mini(count - 1, int(combat.actor_intro_ticks() * float(count) / Flow.ACTOR_INTRO))
+	if fighter.reaction == "cinematic_landed" and fighter.state == "knockdown":
+		return count - 1
 	if clip == "round_defeat":
 		return mini(count - 1, combat.defeat_frame(fighter.slot))
 	if clip == "round_victory":
@@ -345,6 +364,8 @@ func _draw_super_trails() -> void:
 	trail_layer.draw_set_transform(Vector2.ZERO)
 
 func pose_facing() -> int:
+	if not cinematic_pose.is_empty():
+		return int(cinematic_pose.facing)
 	if clip == "round_defeat" and not combat.outro_paths[fighter.slot].is_empty():
 		return int(combat.outro_paths[fighter.slot].pose_facing)
 	if not fighter.throw_role.is_empty() or (fighter.state == "knockdown" and fighter.throw_frame >= Arena.THROW_IMPACT_TICK):
@@ -356,6 +377,8 @@ func pose_facing() -> int:
 func form_active() -> bool:
 	if fighter == null or fighter.hp <= 0:
 		return false
+	if not cinematic_pose.is_empty() and cinematic_pose.get("awakened", false):
+		return true
 	return fighter.awakening_ticks > 0 or (fighter.character == "nezuko" and fighter.move != null and fighter.move.clip_id() == "awakened_combo")
 
 func _frames() -> SpriteFrames:

@@ -31,13 +31,24 @@ func build(owner: Control) -> void:
 	var slider := HSlider.new()
 	slider.name = "audio_volume"
 	slider.position = Vector2(483,138)
-	slider.size = Vector2(502,40)
+	slider.size = Vector2(246,40)
 	slider.min_value=0;slider.max_value=100;slider.step=1
 	slider.value=roundi(app.settings.volume*100)
 	menu.add_child(slider)
 	menu.actions.audio_volume=slider
-	volume_label=menu.label("%d%%" % slider.value,Rect2(1020,140,146,32),22,menu.GOLD)
+	volume_label=menu.label("%d%%" % slider.value,Rect2(748,140,95,32),22,menu.GOLD)
 	slider.value_changed.connect(func(value: float): app.settings.volume=value/100.0; volume_label.text="%d%%" % value; _audio_changed())
+	var cinematic := CheckButton.new()
+	cinematic.name = "cinematic_enabled"
+	cinematic.text = "必杀动画演出"
+	cinematic.position = Vector2(884,127)
+	cinematic.size = Vector2(308,43)
+	cinematic.button_pressed = app.settings.cinematic_enabled
+	cinematic.tooltip_text = "奥义 / MAX 命中后播放；关闭后沿用简化演出。"
+	cinematic.toggled.connect(func(value: bool): app.settings.cinematic_enabled = value; _save())
+	menu.add_child(cinematic)
+	menu.actions.cinematic_enabled = cinematic
+	menu.label("命中后播放 · 奥义 / MAX",Rect2(901,170,285,23),13,menu.MUTED)
 	for player in range(2):
 		var x := 48 + player*618
 		menu.panel(Rect2(x,230,566,372))
@@ -62,7 +73,7 @@ func build(owner: Control) -> void:
 	menu.reveal()
 	mute.grab_focus()
 	# Include the slider and dropdowns in a logical tab order.
-	var focus_order: Array[Control]=[mute,slider]
+	var focus_order: Array[Control]=[mute,slider,cinematic]
 	for player in range(2):
 		focus_order.append(control_options[player])
 		for row in range(4):
@@ -85,6 +96,7 @@ func _save() -> void:
 
 func _audio_changed() -> void:
 	app.sound.set_levels(app.settings.muted,app.settings.volume)
+	app.view.cinematic.sync_audio()
 	_save()
 
 func _listen(player: int, action: int) -> void:
