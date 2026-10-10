@@ -73,16 +73,16 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	var battle: bool = screen == "battle" and combat.fighters.size() == 2
-	var cinematic_active: bool = cinematic.active
 	var cinematic_locked: bool = cinematic.blocks_combat()
-	var movie_active: bool = cinematic_active and cinematic.phase == "video"
+	var movie_active: bool = cinematic.is_video_visible()
+	var stage_hidden: bool = cinematic.hides_stage()
 	var speed: float = 1.0 if cinematic_locked else (combat.presentation_speed() if battle else 1.0)
 	var presentation_delta: float = delta * speed
 	var visual_freeze: bool = paused or cinematic_locked or (battle and (combat.hitstop > 0 or combat.super_freeze > 0 or is_zero_approx(speed)))
 	if not paused and combat.hitstop == 0 and combat.super_freeze == 0:
 		time += presentation_delta
-	stage.visible = not movie_active
-	foreground_layer.visible = not movie_active
+	stage.visible = not stage_hidden
+	foreground_layer.visible = not stage_hidden
 	stage.menu_mode = not battle
 	stage.freeze = paused or movie_active or (battle and (combat.hitstop > 0 or combat.super_freeze > 0 or is_zero_approx(speed)))
 	stage.playback_speed = speed
@@ -93,10 +93,10 @@ func _process(delta: float) -> void:
 	super_view.paused = paused
 	effects.playback_speed = speed
 	effects.freeze = visual_freeze
-	shadow_layer.visible = battle and not movie_active
-	debug_layer.visible = battle and debug_boxes and not movie_active
+	shadow_layer.visible = battle and not stage_hidden
+	debug_layer.visible = battle and debug_boxes and not stage_hidden
 	for i in range(2):
-		fighters[i].visible = battle and not movie_active
+		fighters[i].visible = battle and not stage_hidden
 	if not battle:
 		return
 	for i in range(2):

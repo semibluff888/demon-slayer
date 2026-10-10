@@ -136,7 +136,7 @@ func _portrait(slot: int, visual: Resource) -> void:
 	draw_polyline(frame, Color(INK, 0.9), 3, true)
 	draw_polyline(frame, Color(GOLD, 0.72), 1.2, true)
 	var texture: Texture2D = visual.battle_portrait if visual.battle_portrait != null else visual.avatar
-	if combat.fighters[slot].awakening_ticks > 0 and visual.awakened_portrait != null:
+	if (combat.fighters[slot].awakening_ticks > 0 or (combat.cinematic_victory_form_slot == slot and combat.phase in ["round_end", "match_end"])) and visual.awakened_portrait != null:
 		texture = visual.awakened_portrait
 	if texture != null:
 		draw_texture_rect(texture, Rect2(0, 0, 88, 88), false)

@@ -49,6 +49,7 @@ var pending_healing: Array[int] = [0, 0]
 # The application supplies only playable assets; headless combat stays opt-in.
 var cinematic_moves: Dictionary = {}
 var cinematic: Dictionary = {}
+var cinematic_victory_form_slot: int = -1
 const AWAKENING_COST := 200
 const AWAKENING_FREEZE := 12
 
@@ -101,6 +102,7 @@ func start_round(meters: Array = []) -> void:
 		round_open_hp[i] = fresh.hp
 		fighters[i] = fresh
 	cinematic.clear()
+	cinematic_victory_form_slot = -1
 	remaining = ROUND_TICKS
 	throw_link.clear()
 	projectiles.clear()
@@ -266,7 +268,8 @@ func step(commands: Array) -> void:
 
 func _begin_cinematic(contact: Dictionary) -> void:
 	cinematic = {"contact":contact.duplicate(), "attacker":int(contact.attacker), "move":str(contact.move.id),
-		"next_segment":int(contact.segment) + 1, "facing":int(contact.facing), "tail":false}
+		"next_segment":int(contact.segment) + 1, "facing":int(contact.facing), "tail":false,
+		"awakened":fighters[contact.attacker].awakening_ticks > 0, "ko_announced":false}
 	hitstop = 0
 	super_freeze = 0
 	clear_inputs()
@@ -332,11 +335,20 @@ func begin_cinematic_tail(face_away: bool) -> void:
 func cinematic_blocks_combat() -> bool:
 	return not cinematic.is_empty() and not bool(cinematic.get("released", false))
 
+func cinematic_is_lethal() -> bool:
+	return not practice and not cinematic.is_empty() and fighters[1 - int(cinematic.attacker)].hp <= 0
+
+func announce_cinematic_ko() -> void:
+	if not cinematic_is_lethal() or cinematic.get("ko_announced", false):
+		return
+	cinematic.ko_announced = true
+	events.append({"type":"ko_announce"})
+
 func cinematic_holds_victim(slot: int) -> bool:
 	return not cinematic.is_empty() and bool(cinematic.get("tail", false)) and slot != int(cinematic.attacker)
 
 func release_cinematic_actor() -> void:
-	if cinematic.is_empty() or not cinematic.tail or bool(cinematic.get("released", false)):
+	if cinematic.is_empty() or not cinematic.tail or bool(cinematic.get("released", false)) or cinematic_is_lethal():
 		return
 	cinematic.released = true
 	# The attacker can start a fresh action while the victim finishes landing.
@@ -356,6 +368,9 @@ func finish_cinematic() -> void:
 		begin_cinematic_tail(false)
 	var victim_slot: int = 1 - int(cinematic.attacker)
 	var released := bool(cinematic.get("released", false))
+	var presented_ko := cinematic_is_lethal() and bool(cinematic.get("ko_announced", false))
+	var actor_slot: int = cinematic.attacker
+	var victory_form: bool = fighters[actor_slot].character == "nezuko" and (cinematic.get("awakened", false) or cinematic.move == "nezuko_max")
 	cinematic.clear()
 	events.clear()
 	if not released:
@@ -367,6 +382,12 @@ func finish_cinematic() -> void:
 		if fighters[victim_slot].hp <= 0:
 			outro_paths[victim_slot]["settled"] = true
 			outro_landed_at[victim_slot] = 0.0
+			if presented_ko:
+				# Video and local landing already presented the entire knockout.
+				outro_ticks = victory_at
+				phase_frames = Flow.RESULT
+				if victory_form:
+					cinematic_victory_form_slot = actor_slot
 
 func _restore_stance(f: Fighter) -> void:
 	# Resolve held input on the completion tick, before presentation reads state.
@@ -1062,13 +1083,13 @@ func snapshot() -> Dictionary:
 	return {"fighters": data, "phase": phase, "phase_frames": phase_frames, "remaining": remaining,
 		"go_frames": go_frames, "outro_ticks": outro_ticks, "outro_landed_at": outro_landed_at.duplicate(),
 		"outro_paths": outro_paths.duplicate(true),
-		"victory_at": victory_at, "outro_tail_until": outro_tail_until, "lethal_throw_ticks": lethal_throw_ticks,
+		"cinematic_victory_form_slot": cinematic_victory_form_slot, "victory_at": victory_at, "outro_tail_until": outro_tail_until, "lethal_throw_ticks": lethal_throw_ticks,
 		"wins": wins.duplicate(), "hitstop": hitstop, "super_freeze": super_freeze, "ticks": ticks,
 		"round_number": round_number, "round_winner": round_winner, "match_winner": match_winner,
 		"reason": reason, "next_instance": next_instance, "practice": practice, "awakening_infinite": awakening_infinite,
 		"round_open_hp": round_open_hp.duplicate(),
 		"round_open_meter": round_open_meter.duplicate(), "projectiles": projectiles.duplicate(true),
-		"throw_link": throw_link.duplicate(true), "cinematic": {"move":cinematic.get("move", ""), "next_segment":cinematic.get("next_segment", 0), "tail":cinematic.get("tail", false), "released":cinematic.get("released", false)}}
+		"throw_link": throw_link.duplicate(true), "cinematic": {"move":cinematic.get("move", ""), "next_segment":cinematic.get("next_segment", 0), "tail":cinematic.get("tail", false), "released":cinematic.get("released", false), "awakened":cinematic.get("awakened", false), "ko_announced":cinematic.get("ko_announced", false)}}
 
 func _stop_dash(f: Fighter) -> void:
 	f.dash_ticks = 0

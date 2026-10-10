@@ -107,7 +107,7 @@ func _initialize() -> void:
 		check(model.phase == "fight", "KO deferred through landing")
 		model.release_cinematic_actor()
 		for n in range(25): model.step([{"x":-1,"y":0,"buttons":0},Combat.neutral()])
-		check(model.phase == "fight" and model.wins == [0,0], "KO still deferred during free movement")
+		check(model.phase == "fight" and model.wins == [0,0], "KO still deferred during locked recovery")
 		model.finish_cinematic()
 		check(model.phase == "round_end" and model.wins == [1,0], "KO scored once after landing")
 		var position: float = model.fighters[1].x

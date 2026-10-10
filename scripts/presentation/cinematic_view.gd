@@ -1,5 +1,8 @@
 extends Node2D
 ## Owns video playback and the short in-engine landing. Combat owns damage.
+const KO_SECONDS := 0.8
+const KO_TRANSITION := 0.12
+const RoundBanner = preload("res://scripts/presentation/round_banner.gd")
 const CATALOG := "res://resources/cinematics/catalog.json"
 var app: Node
 var world: Node2D
@@ -11,6 +14,7 @@ var active: bool = false
 var phase: String = ""
 var profile: Dictionary = {}
 var move_id: String = ""
+var profile_id: String = ""
 var actor_slot: int = 0
 var elapsed: float = 0.0
 var tail_time: float = 0.0
@@ -20,6 +24,12 @@ var movie: VideoStreamPlayer
 var backdrop: ColorRect
 var landed: bool = false
 var residual_effect: Sprite2D
+var ko_overlay: Node2D
+var ko_banner: Control
+var freeze_texture: ImageTexture
+var ko_time: float = 0.0
+var tail_prepared: bool = false
+var map_ko: bool = false
 
 func _ready() -> void:
 	if FileAccess.file_exists(CATALOG):
@@ -52,6 +62,15 @@ func _ready() -> void:
 	add_child(movie)
 	backdrop.hide()
 	movie.hide()
+	ko_overlay = Node2D.new()
+	ko_overlay.name = "KnockoutFreeze"
+	add_child(ko_overlay)
+	ko_overlay.draw.connect(_draw_ko_overlay)
+	ko_banner = RoundBanner.new()
+	ko_banner.title_font = world.catalog.title_font
+	ko_banner.body_font = world.catalog.body_font
+	ko_overlay.add_child(ko_banner)
+	ko_overlay.hide()
 
 func prepare(characters: Array) -> void:
 	streams.clear()
@@ -71,8 +90,20 @@ func prepare(characters: Array) -> void:
 func blocks_combat() -> bool:
 	return active and world.combat.cinematic_blocks_combat()
 
+func is_video_visible() -> bool:
+	return active and phase in ["video", "ko_freeze"]
+
+func hides_stage() -> bool:
+	return is_video_visible() and not tail_prepared
+
 func available_moves() -> Dictionary:
-	return streams
+	# A missing alternate must not substitute the wrong character form.
+	var available := streams.duplicate()
+	for id: String in available.keys():
+		var alternate: String = profiles[id].get("awakened_profile", "")
+		if not alternate.is_empty() and not streams.has(alternate):
+			available.erase(id)
+	return available
 
 func begin() -> void:
 	var model: RefCounted = world.combat
@@ -80,7 +111,10 @@ func begin() -> void:
 		return
 	actor_slot = int(model.cinematic.attacker)
 	move_id = str(model.cinematic.move)
-	profile = profiles.get(move_id, {})
+	profile_id = move_id
+	if model.cinematic.get("awakened", false):
+		profile_id = profiles.get(move_id, {}).get("awakened_profile", move_id)
+	profile = profiles.get(profile_id, {})
 	active = true
 	phase = "video"
 	elapsed = 0
@@ -88,17 +122,21 @@ func begin() -> void:
 	stalled = 0
 	previous_position = -1
 	landed = false
+	tail_prepared = false
+	map_ko = false
+	ko_time = 0
+	_clear_ko_overlay()
 	world.effects.reset_effects()
 	world.super_view.reset_effects()
 	for actor in world.fighters:
 		actor.reset_pose()
 	app.sound.reset_audio()
-	movie.stream = streams.get(move_id)
+	movie.stream = streams.get(profile_id)
 	if movie.stream == null:
 		# Missing/failed assets cannot leave the match locked.
 		_begin_tail()
 		return
-	soundtrack.stream = audio_streams.get(move_id)
+	soundtrack.stream = audio_streams.get(profile_id)
 	soundtrack.stream_paused = false
 	sync_audio()
 	movie.paused = false
@@ -118,10 +156,10 @@ func _process(delta: float) -> void:
 	if not active or app == null:
 		return
 	var frozen: bool = app.paused or app.screen != "battle"
-	movie.paused = frozen
+	movie.paused = frozen or phase != "video"
 	soundtrack.stream_paused = frozen
 	sync_audio()
-	app.gui.visible = frozen or phase != "video"
+	app.gui.visible = frozen or not is_video_visible()
 	if frozen:
 		return
 	if phase == "video":
@@ -131,33 +169,77 @@ func _process(delta: float) -> void:
 		previous_position = position
 		world.combat.advance_cinematic(position / maxf(0.1, float(profile.get("duration", 1.0))))
 		world.hud.consume(world.combat.events)
+		# Some clips end in a white transition. Cache their authored last impact,
+		# but still play the complete video and soundtrack before showing KO.
+		var frame_limit := float(profile.get("ko_frame_time", profile.get("duration", 1.0)))
+		if world.combat.cinematic_is_lethal() and position >= frame_limit - 0.25 and position <= frame_limit:
+			_cache_video_frame()
 		if app.mode == "practice":
 			app.practice_controller.after_step(world.combat)
 		# Decoder failure fallback, paused time excluded. Normal completion uses finished.
 		if stalled > 2.0 or elapsed > float(profile.get("duration", 1.0)) + 8.0:
+			_finish_video()
+	elif phase == "ko_freeze":
+		ko_time = minf(KO_SECONDS, ko_time + delta)
+		if ko_time >= KO_SECONDS - KO_TRANSITION and not tail_prepared:
+			_prepare_tail()
+		_update_ko_overlay(ko_time)
+		if ko_time >= KO_SECONDS:
 			_begin_tail()
 	elif phase == "tail":
 		tail_time += delta
 		_update_tail()
+		if map_ko:
+			_update_ko_overlay(tail_time)
 		if tail_time >= float(profile.get("tail_seconds", 1.15)):
 			_complete()
 	queue_redraw()
 
+func _cache_video_frame() -> void:
+	if DisplayServer.get_name() == "headless":
+		return
+	var texture := movie.get_video_texture()
+	if texture == null:
+		return
+	var frame := texture.get_image()
+	if frame == null or frame.is_empty():
+		return
+	if freeze_texture == null:
+		freeze_texture = ImageTexture.create_from_image(frame)
+	else:
+		freeze_texture.update(frame)
+
 func _video_finished() -> void:
 	if active and phase == "video":
+		_finish_video()
+
+func _finish_video() -> void:
+	if not active or phase != "video":
+		return
+	world.combat.advance_cinematic(1.0)
+	world.hud.consume(world.combat.events)
+	if world.combat.cinematic_is_lethal() and freeze_texture != null:
+		phase = "ko_freeze"
+		ko_time = 0
+		movie.stop()
+		soundtrack.stop()
+		movie.hide()
+		backdrop.hide()
+		_announce_ko()
+		_update_ko_overlay(0.0)
+	else:
 		_begin_tail()
 
-func _begin_tail() -> void:
-	if not active or phase == "tail":
+func _announce_ko() -> void:
+	world.combat.events.clear()
+	world.combat.announce_cinematic_ko()
+	app.sound.consume(world.combat.events, world.combat)
+
+func _prepare_tail() -> void:
+	if tail_prepared:
 		return
-	phase = "tail"
+	tail_prepared = true
 	tail_time = 0
-	movie.stop()
-	soundtrack.stop()
-	movie.hide()
-	backdrop.hide()
-	world.hud.cinematic_mode = false
-	app.gui.visible = true
 	world.combat.begin_cinematic_tail(bool(profile.get("face_away", false)))
 	world.hud.consume(world.combat.events)
 	if app.mode == "practice":
@@ -165,7 +247,51 @@ func _begin_tail() -> void:
 	world.camera.reset(world.combat.fighters)
 	_update_tail()
 	world._process(0.0)
+
+func _begin_tail() -> void:
+	if not active or phase == "tail":
+		return
+	phase = "tail"
+	movie.stop()
+	soundtrack.stop()
+	movie.hide()
+	backdrop.hide()
+	_clear_ko_overlay()
+	world.hud.cinematic_mode = false
+	app.gui.visible = true
+	_prepare_tail()
+	if world.combat.cinematic_is_lethal() and not world.combat.cinematic.get("ko_announced", false):
+		# Failed video has no trustworthy final frame: announce once on the map.
+		map_ko = true
+		_announce_ko()
+		_update_ko_overlay(0.0)
+	world._process(0.0)
 	app.sound.play(str(profile.get("effect", "shockwave")), 0.75)
+
+func _clear_ko_overlay() -> void:
+	freeze_texture = null
+	if ko_overlay != null:
+		ko_overlay.hide()
+		ko_overlay.modulate = Color.WHITE
+		ko_overlay.queue_redraw()
+		ko_banner.cue = {}
+
+func _update_ko_overlay(age: float) -> void:
+	ko_overlay.visible = age < KO_SECONDS
+	ko_overlay.modulate.a = clampf((KO_SECONDS - age) / KO_TRANSITION, 0, 1)
+	ko_banner.cue = {"text":"K.O.", "age":age * 60.0, "duration":KO_SECONDS * 60.0 + 8.0, "pop_ticks":9.6}
+	ko_banner.queue_redraw()
+	ko_overlay.queue_redraw()
+
+func _draw_ko_overlay() -> void:
+	var age := ko_time if phase == "ko_freeze" else tail_time
+	if phase == "ko_freeze" and freeze_texture != null:
+		var shake := Vector2(sin(age * 83), cos(age * 97)) * (4.0 * maxf(0, 1.0 - age / 0.16))
+		ko_overlay.draw_texture_rect(freeze_texture, Rect2(Vector2(-7, -4) + shake, Vector2(1294, 728)), false)
+		ko_overlay.draw_rect(Rect2(0, 0, 1280, 720), Color(0.02, 0.025, 0.04, 0.18))
+	var flash := 0.5 * maxf(0, 1.0 - age / 0.08)
+	if flash > 0:
+		ko_overlay.draw_rect(Rect2(0, 0, 1280, 720), Color(1, 1, 1, flash))
 
 func _update_tail() -> void:
 	var model: RefCounted = world.combat
@@ -181,8 +307,8 @@ func _update_tail() -> void:
 		var frames: Array = profile.get("recovery_frames", [0])
 		world.fighters[actor_slot].cinematic_pose = {"clip":profile.get("recovery_clip", "idle"),
 			"frame":frames[mini(frames.size() - 1, floori(progress * frames.size()))], "facing":actor.facing,
-			"awakened":move_id == "nezuko_max"}
-		if progress >= 1.0:
+			"awakened":profile_id == "nezuko_max"}
+		if progress >= 1.0 and not model.cinematic_is_lethal():
 			model.release_cinematic_actor()
 			app._reset_inputs()
 			# Hand off without clearing the current texture or restarting other effects.
@@ -201,8 +327,15 @@ func _update_tail() -> void:
 func _complete() -> void:
 	residual_effect.hide()
 	var model: RefCounted = world.combat
-	world.fighters[1 - actor_slot].cinematic_pose.clear()
+	var actor_locked: bool = blocks_combat()
 	model.finish_cinematic()
+	# Switch directly from the held recovery to the first victory drawing.
+	if actor_locked:
+		world.fighters[actor_slot].cinematic_pose.clear()
+		world.fighters[actor_slot].sync(0.0, true)
+		app._reset_inputs()
+	world.fighters[1 - actor_slot].cinematic_pose.clear()
+	_clear_ko_overlay()
 	active = false
 	phase = ""
 	world.hud.cinematic_mode = false
@@ -213,6 +346,10 @@ func _complete() -> void:
 	queue_redraw()
 
 func cancel() -> void:
+	_clear_ko_overlay()
+	tail_prepared = false
+	map_ko = false
+	ko_time = 0
 	if residual_effect != null:
 		residual_effect.hide()
 	active = false
@@ -228,6 +365,7 @@ func cancel() -> void:
 		actor.cinematic_pose.clear()
 	world.hud.cinematic_mode = false
 	world.combat.cinematic.clear()
+	world.combat.cinematic_victory_form_slot = -1
 	if app != null:
 		app.gui.visible = true
 	queue_redraw()
@@ -251,7 +389,7 @@ func _update_residual_effect() -> void:
 	residual_effect.position = at - Vector2(0, extent.x * 0.45 if kind == "thunder" else extent.y * 0.38)
 
 func _draw() -> void:
-	if not active or phase != "tail":
+	if not active or not tail_prepared:
 		return
 	var model: RefCounted = world.combat
 	var victim: RefCounted = model.fighters[1 - actor_slot]

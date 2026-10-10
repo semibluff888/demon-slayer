@@ -14,7 +14,7 @@ func _draw() -> void:
 	var age := float(cue.get("age", 0))
 	var duration := float(cue.get("duration", 60))
 	var alpha := clampf((duration - age) / 8.0, 0, 1)
-	var pop := 1.0 + 0.22 * pow(1.0 - clampf(age / 7.0, 0, 1), 3)
+	var pop := 1.0 + 0.22 * pow(1.0 - clampf(age / float(cue.get("pop_ticks", 7.0)), 0, 1), 3)
 	var message: String = cue.text
 	var font_size := 76 if message.length() < 10 else 60
 	if message == "GO!":

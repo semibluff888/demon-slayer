@@ -141,3 +141,12 @@ func _load_awakening_assets() -> void:
 			packed.margin = Rect2(entry.offset[0], entry.offset[1], canvas[0] - region[2], canvas[1] - region[3])
 			packed.filter_clip = true
 			awakening_frames.add_frame(clip, packed)
+	# Some form atlases still contain normal-form victory placeholders. Reuse
+	# the configured form pose while keeping the authored victory timeline.
+	var source: String = awakening.victory_source_clip
+	if not source.is_empty() and awakening_frames.has_animation(source) and awakening_frames.has_animation("round_victory"):
+		var count := awakening_frames.get_frame_count("round_victory")
+		var source_count := awakening_frames.get_frame_count(source)
+		for i in range(count):
+			var index := mini(source_count - 1, int(float(i) * source_count / count))
+			awakening_frames.set_frame("round_victory", i, awakening_frames.get_frame_texture(source, index))

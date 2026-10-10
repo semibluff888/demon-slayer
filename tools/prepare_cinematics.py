@@ -28,8 +28,11 @@ def main():
   print(f'Encoded {move}: {duration:.6f}s / {end-start} frames',flush=True)
   return move,dict(video='res://art/cinematics/'+move+'.ogv',audio='res://art/cinematics/'+move+'.ogg',duration=duration,source_start_frame=start,source_end_frame_exclusive=end,recovery_clip=clip,recovery_frames=frames,effect=effect,face_away=away,attacker_height=height,tail_seconds=1.15,recovery_seconds=0.65)
  with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool: entries=dict(pool.map(build,DATA))
+ # The final 0.3 seconds are a white transition; freeze the last impact instead.
+ entries['akaza_super']['ko_frame_time']=14.8
  entries['akaza_max']=dict(entries['akaza_super'])
  entries['akaza_max']['shared_with']='akaza_super'
+ entries['nezuko_super']['awakened_profile']='nezuko_max'
  out=ROOT/'resources/cinematics';out.mkdir(parents=True,exist_ok=True)
  (out/'catalog.json').write_text(json.dumps(dict(source_url='https://www.youtube.com/watch?v=-cnMjZ1v4fU',fps=60,moves=entries),ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
  print('CINEMATIC ASSETS READY',flush=True)

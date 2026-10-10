@@ -294,7 +294,7 @@ func set_paused(value: bool, reason: String = "") -> void:
 	_reset_inputs()
 	pause_reason = reason
 	gui.clear()
-	gui.visible = value or view.cinematic.phase != "video"
+	gui.visible = value or not view.cinematic.is_video_visible()
 	if not paused:
 		gui.battle()
 	else:

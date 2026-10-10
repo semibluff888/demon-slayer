@@ -13,6 +13,8 @@ extends Resource
 @export var sound: String = "flame"
 @export var form_atlas: String = ""
 @export var form_scale: float = 1.0
+# Optional reuse of an authored form pose for a calm victory sequence.
+@export var victory_source_clip: String = ""
 @export var start_clip: String = "awakening_start"
 
 func effect_summary() -> String:

@@ -73,6 +73,7 @@ Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script',
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/settings_tests.gd') -Expected 'SETTINGS TESTS: \d+ passed, 0 failed' | Out-Null
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/cinematic_tests.gd') -Expected 'CINEMATIC TESTS: \d+ passed, 0 failed' | Out-Null
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/cinematic_handoff_tests.gd') -Expected 'CINEMATIC HANDOFF: \d+ passed, 0 failed' | Out-Null
+Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/cinematic_ko_tests.gd') -Expected 'CINEMATIC KO: \d+ passed, 0 failed' | Out-Null
 
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/cancel_assist_tests.gd') -Expected 'CANCEL ASSIST: \d+ passed, 0 failed' | Out-Null
 
