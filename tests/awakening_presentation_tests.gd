@@ -12,6 +12,7 @@ func check(value: bool, label: String) -> void:
 	else: failures.append(label); printerr("FAIL: ",label)
 func _run() -> void:
 	var art := Art.new()
+	var hud := HUD.new()
 	for cid in ["tanjiro","zenitsu","nezuko","akaza"]:
 		var combat := Combat.new()
 		combat.new_match(cid,cid)
@@ -46,9 +47,16 @@ func _run() -> void:
 			actor.fighter.hp = 0
 			actor.sync(0,false)
 			check(not fx.visible,cid+" KO removes VFX")
+		for meter in [0, 99, 100]:
+			actor.fighter.meter = meter
+			var caption := hud.awakening_meter_caption(actor.fighter)
+			check(caption.contains("气量不足") if meter < 100 else caption.contains("保留觉醒"), cid+" HUD reflects super affordability")
+			check(caption.contains("MAX") and caption.contains("1格"), cid+" HUD states MAX stock cost")
+			check(art.body_font.get_string_size(caption, HORIZONTAL_ALIGNMENT_LEFT, -1, 13).x <= 248, cid+" awakening caption fits each meter")
 		actor.reset_pose()
 		check(is_zero_approx(fx.phase),cid+" reset clears VFX clock")
 		actor.queue_free()
 		await process_frame
+	hud.free()
 	print("AWAKENING PRESENTATION V2: %d passed, %d failed" % [passed,failures.size()])
 	quit(0 if failures.is_empty() else 1)

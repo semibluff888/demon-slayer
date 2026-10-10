@@ -72,7 +72,11 @@ func command(self_state: Dictionary, opponent: Dictionary) -> Dictionary:
 			elif move.kind == "heavy" and not move.knockdown and move.stance != "air":
 				_enqueue("236A" if rng.randf() < 0.7 else "214B", facing)
 			elif move.kind == "skill" and self_state.get("confirmed", false) and int(self_state.meter) >= 100 and rng.randf() < 0.7:
-				_enqueue("236236AC" if int(self_state.meter) >= 300 and rng.randf() < 0.6 else "236236A", facing)
+				var awakening_left := int(self_state.get("awakening_ticks", 0))
+				if awakening_left > 0:
+					_enqueue("236236AC" if awakening_left <= 120 else "236236A", facing)
+				else:
+					_enqueue("236236AC" if int(self_state.meter) >= 300 and rng.randf() < 0.6 else "236236A", facing)
 	if not queue.is_empty():
 		return queue.pop_front()
 	if self_state.grounded and self_state.state in ["idle", "walk", "crouch"] and observed.state == "knockdown" and int(self_state.meter) >= 200 and int(self_state.get("awakening_ticks", 0)) == 0:

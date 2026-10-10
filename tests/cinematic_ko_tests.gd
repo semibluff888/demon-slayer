@@ -121,9 +121,32 @@ func _run() -> void:
 			check(c.profile.duration == c.profiles[expected].duration, "matching alternate duration")
 			c._video_finished()
 			var attack = m.moves["nezuko_" + kind]
-			check(m.fighters[1].hp == 1000 - attack.damage and m.fighters[0].meter == 300 - attack.meter_cost, "profile preserves damage and meter")
+			var damage: int = int(attack.damage * 110 / 100) if awakened and kind == "super" else attack.damage
+			var cost: int = 100 if awakened else attack.meter_cost
+			check(m.fighters[1].hp == 1000 - damage and m.fighters[0].meter == 300 - cost, "profile uses actual move damage and one-stock awakening cost")
+			check((m.fighters[0].awakening_ticks > 0) == (awakened and kind == "super"), "only enhanced ordinary super retains mode")
 			c._process(0.66)
 			check(not c.blocks_combat() and c.phase == "tail", "nonlethal release unchanged")
+	# A consumed awakening remains visual through recovery for every character.
+	for cid in ["tanjiro", "zenitsu", "nezuko", "akaza"]:
+		trigger(cid, "max", 0, 1, 1000, true)
+		var c = game.view.cinematic
+		check(game.combat.fighters[0].awakening_ticks == 0, cid + " cinematic MAX already consumed mode")
+		c._video_finished(); c._process(0.2)
+		check(game.view.fighters[0].form_active(), cid + " cinematic recovery preserves launch form")
+		c._process(0.5)
+		check(not game.view.fighters[0].form_active(), cid + " playable actor returns to ordinary form")
+		c._process(0.6)
+	for cid in ["tanjiro", "zenitsu", "nezuko", "akaza"]:
+		trigger(cid, "super", 0, 1, 1000, true)
+		var c = game.view.cinematic
+		var a = game.combat.fighters[0]
+		var time: int = a.awakening_ticks
+		c._video_finished(); c._process(0.2)
+		check(a.awakening_ticks == time and a.meter == 200, cid + " video freezes enhanced super mode without refund")
+		check(game.view.fighters[0].form_active(), cid + " enhanced super tail keeps form")
+		c._process(1.0)
+		check(a.awakening_ticks == time and game.view.fighters[0].form_active(), cid + " enhanced super handoff retains remaining mode")
 	# Decoder fallback, pause/settings, cancellation and practice never strand locks.
 	trigger("nezuko", "super", 0, 1, 1, true)
 	game.view.cinematic._process(3.0)

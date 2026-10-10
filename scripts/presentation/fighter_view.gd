@@ -381,7 +381,9 @@ func form_active() -> bool:
 		return true
 	if combat != null and combat.cinematic_victory_form_slot == fighter.slot and combat.phase in ["round_end", "match_end"]:
 		return true
-	return fighter.awakening_ticks > 0 or (fighter.character == "nezuko" and fighter.move != null and fighter.move.clip_id() == "awakened_combo")
+	if fighter.awakening_ticks > 0 or fighter.presents_awakened_finisher():
+		return true
+	return fighter.character == "nezuko" and fighter.move != null and fighter.move.clip_id() == "awakened_combo"
 
 func _frames() -> SpriteFrames:
 	if form_active() and visual.awakening_frames != null and visual.awakening_frames.has_animation(clip):

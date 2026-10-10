@@ -51,6 +51,8 @@ var cinematic_moves: Dictionary = {}
 var cinematic: Dictionary = {}
 var cinematic_victory_form_slot: int = -1
 const AWAKENING_COST := 200
+const AWAKENING_MAX_COST := 100
+const AWAKENING_SUPER_DAMAGE_PERCENT := 110
 const AWAKENING_FREEZE := 12
 
 func _init() -> void:
@@ -269,7 +271,7 @@ func step(commands: Array) -> void:
 func _begin_cinematic(contact: Dictionary) -> void:
 	cinematic = {"contact":contact.duplicate(), "attacker":int(contact.attacker), "move":str(contact.move.id),
 		"next_segment":int(contact.segment) + 1, "facing":int(contact.facing), "tail":false,
-		"awakened":fighters[contact.attacker].awakening_ticks > 0, "ko_announced":false}
+		"awakened":fighters[contact.attacker].attack_awakened, "ko_announced":false}
 	hitstop = 0
 	super_freeze = 0
 	clear_inputs()
@@ -577,8 +579,9 @@ func _try_action(f: Fighter) -> void:
 		for p in projectiles:
 			if int(p.owner) == f.slot:
 				return
-	if f.meter < selected.meter_cost:
-		events.append({"type": "meter_empty", "attacker": f.slot, "cost": selected.meter_cost})
+	var cost := move_meter_cost(f, selected)
+	if f.meter < cost:
+		events.append({"type": "meter_empty", "attacker": f.slot, "cost": cost})
 		f.clear_buffer()
 		return
 	_begin_move(f, selected)
@@ -589,7 +592,9 @@ func _choose_move(f: Fighter) -> Move:
 	if request.type == "max":
 		return data.motions.get("max")
 	if request.type == "motion":
-		return data.motions.get("super" if request.motion == "236236" else str(request.motion) + str(request.button))
+		if request.motion == "236236":
+			return data.motions.get("super")
+		return data.motions.get(str(request.motion) + str(request.button))
 	if request.type == "normal":
 		var d: Fighter = fighters[1 - f.slot]
 		if request.button == "D" and int(request.x) != 0 and int(request.y) == 0 and f.grounded and f.move == null and _throwable(d) and absf(f.x - d.x) <= 40:
@@ -599,7 +604,13 @@ func _choose_move(f: Fighter) -> Move:
 		return data.normals.get(stance + str(request.button))
 	return null
 
+func move_meter_cost(f: Fighter, selected: Move) -> int:
+	# An awakened MAX costs one stock plus all remaining awakening time.
+	return AWAKENING_MAX_COST if selected.kind == "max" and f.awakening_ticks > 0 else selected.meter_cost
+
 func _begin_move(f: Fighter, selected: Move) -> void:
+	var cost := move_meter_cost(f, selected)
+	f.attack_awakened = f.awakening_ticks > 0
 	_stop_dash(f)
 	# A hit-confirmed uppercut cancel arrests ascent; the ground super falls naturally
 	# into its stance instead of carrying a standing animation through the whole arc.
@@ -612,7 +623,12 @@ func _begin_move(f: Fighter, selected: Move) -> void:
 		if victim.state == "hit" and victim.stun > 0 and not victim.grounded:
 			victim.vy = minf(victim.vy, -3.2)
 	f.move = selected
-	f.attack_damage_percent = int(definition(f).awakening.damage_percent) if f.awakening_ticks > 0 and selected.kind in ["light", "heavy", "skill"] else 100
+	f.attack_damage_percent = 100
+	if f.attack_awakened:
+		if selected.kind == "super":
+			f.attack_damage_percent = AWAKENING_SUPER_DAMAGE_PERCENT
+		elif selected.kind in ["light", "heavy", "skill"]:
+			f.attack_damage_percent = int(definition(f).awakening.damage_percent)
 	f.attack_instance = next_instance
 	next_instance += 1
 	f.hit_registry.clear()
@@ -631,8 +647,11 @@ func _begin_move(f: Fighter, selected: Move) -> void:
 		f.vx = 0
 	if selected.lift != 0 and selected.lift_frame == 0:
 		_take_off(f, selected.lift)
-	if selected.meter_cost > 0:
-		_change_meter(f, -selected.meter_cost)
+	if cost > 0:
+		_change_meter(f, -cost)
+	if selected.kind == "max" and f.attack_awakened:
+		_end_awakening(f)
+	if selected.is_super():
 		super_freeze = maxi(super_freeze, selected.freeze_frames)
 		events.append({"type": "super", "attacker": f.slot, "move": selected.id})
 	events.append({"type": "swing", "attacker": f.slot, "move": selected.id, "effect": selected.effect()})

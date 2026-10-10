@@ -180,7 +180,7 @@ func _nezuko_max_review() -> void:
 			await _shot(label)
 			for tick in range(230): _step()
 			_check(fighter.move == null, label + " MAX completed")
-			_check(actor.form_active() == sustained, label + " correct form after MAX")
+			_check(not actor.form_active() and fighter.awakening_ticks == 0, label + " correct form after MAX")
 			await _shot(label + "-finished")
 
 # Real input through the simulation, sampled every three logic ticks for visual review.

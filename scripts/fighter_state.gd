@@ -20,6 +20,8 @@ var awakening_heal_left: int = 0
 var awakening_heal_fraction: int = 0
 var quick_awakening_used: bool = false
 var attack_damage_percent: int = 100
+# Presentation snapshot only; never extends awakening bonuses or meter lockout.
+var attack_awakened: bool = false
 var state: String = "idle"
 var grounded: bool = true
 var knockdown_pending: bool = false
@@ -68,6 +70,9 @@ var chain_normals: Array[String] = []
 var chain_counts: Dictionary = {}
 var juggle_instances: Array[int] = []
 var last_move: String = ""
+
+func presents_awakened_finisher() -> bool:
+	return attack_awakened and move != null and move.is_super()
 
 func hurtbox() -> Rect2:
 	if state == "knockdown" or hp <= 0 or not throw_role.is_empty():

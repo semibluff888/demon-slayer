@@ -43,15 +43,32 @@ func _initialize() -> void:
 		actor.clock_ticks = 7
 		c._end_awakening(f); actor.sync(0,false)
 		check(actor.clock_ticks == 7 and not actor.form_active(),cid+" expiry preserves reaction timing")
+		f.stun = 0; f.meter = 100; f.awakening_ticks = 300; f.awakening_duration = 360
+		c._begin_move(f, c.definition(f).motions.max); actor.sync(0, false)
+		check(f.awakening_ticks == 0 and actor.form_active(), cid+" MAX retains launch form after consuming mode")
+		check(actor._frames() == visual.awakening_frames, cid+" MAX uses awakened atlas")
+		f.move = null; f.state = "idle"; actor.sync(0, false)
+		check(not actor.form_active() and actor._frames() == visual.frames, cid+" MAX recovery returns to base atlas")
+		f.meter = 100; f.awakening_ticks = 300; f.awakening_duration = 360
+		c._begin_move(f, c.definition(f).motions.super); actor.sync(0, false)
+		check(f.meter == 0 and f.awakening_ticks == 300 and actor.form_active(), cid+" enhanced super preserves mode and form")
+		f.move = null; f.state = "idle"; actor.sync(0, false)
+		check(actor.form_active(), cid+" enhanced super recovery retains active mode")
+		f.meter = 100
+		c._begin_move(f, c.definition(f).motions.super)
+		c._end_awakening(f); actor.sync(0, false)
+		check(actor.form_active(), cid+" enhanced super retains launch form if mode expires mid-move")
+		f.move = null; f.state = "idle"; actor.sync(0, false)
+		check(not actor.form_active(), cid+" expired super recovery restores base form")
 		if cid == "nezuko":
 			f.stun = 0; f.meter = 300
 			c._begin_move(f,c.definition(f).motions.max); actor.sync(0,false)
 			check(actor.form_active() and is_equal_approx(actor._pose_scale().x,1.15),"MAX uses same enlarged demon form")
 			f.awakening_ticks = 300; f.awakening_duration = 360
-			actor.sync(0,false)
+			c._begin_move(f,c.definition(f).motions.max); actor.sync(0,false)
 			check(is_equal_approx(actor._pose_scale().x,1.15),"MAX never double scales")
 			f.move = null; f.state = "idle"; actor.sync(0,false)
-			check(actor.form_active(),"MAX ending retains active awakening")
+			check(not actor.form_active(),"MAX ending restores ordinary form")
 			f.hp = 0; actor.sync(0,false)
 			check(not actor.form_active(),"KO returns to ordinary form")
 		for item in actors:item.free()

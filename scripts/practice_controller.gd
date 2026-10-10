@@ -46,7 +46,7 @@ func command(model: Combat) -> Dictionary:
 
 func after_step(model: Combat) -> void:
 	model.awakening_infinite = awakening_infinite
-	if meter_mode == 3:
+	if meter_mode == 3 and model.fighters[0].awakening_ticks <= 0:
 		model.fighters[0].meter = 300
 	for event in model.events:
 		if event.type in ["hit", "throw"] and event.attacker == 0:

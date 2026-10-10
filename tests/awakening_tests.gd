@@ -22,6 +22,7 @@ func _initialize() -> void:
 	_healing_and_projectiles()
 	_combo_matrix()
 	_resource_comparison()
+	_max_finishers()
 	_ai_activation()
 	_practice_and_rounds()
 	var report := FileAccess.open("res://artifacts/awakening-balance.json", FileAccess.WRITE)
@@ -189,36 +190,41 @@ func _combo_matrix() -> void:
 			for facing in [-1,1]:
 				for corner in [false,true]:
 					for stocks in [2,3]:
-						var c := s.duel(cid,facing,corner)
-						c.fighters[1].character = opponent
-						c.fighters[0].meter = stocks*100
-						var guard := {"x":facing}
-						var label := "%s/%s/%d/%s/%d" % [cid,opponent,facing,str(corner),stocks]
-						s.input(c,"5A")
-						check(s.wait_contact(c), "starter "+label)
-						s.input(c,"5C",guard)
-						check(s.wait_contact(c,100,guard), "heavy confirm "+label)
-						var f = c.fighters[0]
-						var instances: int = f.combo_instances.size()
-						s.input(c,"BC",guard)
-						for n in range(10):
-							if f.awakening_ticks > 0: break
-							s.tick(c,{},guard)
-						check(f.awakening_ticks == 360 and f.quick_awakening_used and f.combo_instances.size() == instances,"quick preserves scaling "+label)
-						for notation in ["5A","5C","236A"]:
-							s.input(c,notation,guard)
-							check(s.wait_contact(c,100,guard),"quick continuation "+notation+" "+label)
-						if stocks == 3:
-							s.input(c,"236236A",guard)
-							check(s.wait_contact(c,100,guard),"super finisher "+label)
-						s.advance(c,100,{},guard)
-						var blocked := s.events.any(func(e): return e.type == "block" and e.attacker == 0)
-						var spent := 0
-						for e in s.events:
-							if e.type == "meter" and e.attacker == 0 and e.amount < 0: spent -= e.amount
-						check(not blocked and f.combo_instances.size() == 0 and f.combo >= 5,"true combo and eventual recovery "+label)
-						check(spent == stocks*100 and c.fighters[1].hp > 0,"resource total and bounded route "+label)
-						routes.append({"character":cid,"opponent":opponent,"facing":facing,"corner":corner,"stocks":stocks,"damage":1000-c.fighters[1].hp,"combo":f.combo})
+						for finisher in ["236236A", "236236AC"]:
+							var c := s.duel(cid,facing,corner)
+							c.fighters[1].character = opponent
+							c.fighters[0].meter = stocks*100
+							var guard := {"x":facing}
+							var label: String = "%s/%s/%d/%s/%d" % [cid,opponent,facing,str(corner),stocks] + " / " + finisher
+							s.input(c,"5A")
+							check(s.wait_contact(c), "starter "+label)
+							s.input(c,"5C",guard)
+							check(s.wait_contact(c,100,guard), "heavy confirm "+label)
+							var f = c.fighters[0]
+							var instances: int = f.combo_instances.size()
+							s.input(c,"BC",guard)
+							for n in range(10):
+								if f.awakening_ticks > 0: break
+								s.tick(c,{},guard)
+							check(f.awakening_ticks == 360 and f.quick_awakening_used and f.combo_instances.size() == instances,"quick preserves scaling "+label)
+							for notation in ["5A","5C","236A"]:
+								s.input(c,notation,guard)
+								check(s.wait_contact(c,100,guard),"quick continuation "+notation+" "+label)
+							s.input(c,finisher,guard)
+							if stocks == 3:
+								check(s.wait_contact(c,100,guard),"one-stock finisher "+label)
+								check(f.move.kind == ("max" if finisher == "236236AC" else "super"),"distinct quick finisher "+label)
+								check((f.awakening_ticks == 0) == (finisher == "236236AC"),"only MAX consumes awakening "+label)
+							else:
+								check(f.awakening_ticks > 0 and not s.events.any(func(e): return e.type == "super" and e.attacker == 0),"two-stock route cannot afford a super "+label)
+							s.advance(c,100,{},guard)
+							var blocked := s.events.any(func(e): return e.type == "block" and e.attacker == 0)
+							var spent := 0
+							for e in s.events:
+								if e.type == "meter" and e.attacker == 0 and e.amount < 0: spent -= e.amount
+							check(not blocked and f.combo_instances.size() == 0 and f.combo >= 5,"true combo and eventual recovery "+label)
+							check(spent == stocks*100 and c.fighters[1].hp > 0,"correct total cost and bounded route "+label)
+							routes.append({"character":cid,"opponent":opponent,"facing":facing,"corner":corner,"stocks":stocks,"finisher":finisher,"damage":1000-c.fighters[1].hp,"combo":f.combo})
 
 func _practice_and_rounds() -> void:
 	var c := s.duel()
@@ -258,7 +264,7 @@ func _boundaries() -> void:
 		for key in ["super","max"]:
 			f.meter = 300
 			c._begin_move(f,c.definition(f).motions[key])
-			check(f.attack_damage_percent == 100,"no attack multiplier on "+cid+"/"+key)
+			check(f.attack_damage_percent == (110 if key == "super" else 100),"only ordinary super gets uniform bonus "+cid+"/"+key)
 		c = s.duel(cid); awaken(c)
 		f = c.fighters[0]
 		var expected: float = c.definition(f).walk_speed
@@ -293,7 +299,7 @@ func _boundaries() -> void:
 func _resource_comparison() -> void:
 	# Fixed opponent, spacing and starter; measure resource tradeoffs, not an optimal combo claim.
 	for cid in ["tanjiro","zenitsu","nezuko","akaza"]:
-		for route in ["base","super","max","normal","normal_super","quick","quick_super"]:
+		for route in ["base","super","max","normal","normal_super","normal_max","quick","quick_super","quick_max"]:
 			var c := s.duel(cid)
 			c.fighters[1].character = "tanjiro"
 			var f = c.fighters[0]
@@ -312,8 +318,8 @@ func _resource_comparison() -> void:
 					check(s.wait_contact(c,100,guard),"comparison extension "+label+"/"+notation)
 			s.input(c,"236A",guard)
 			check(s.wait_contact(c,100,guard),"comparison special "+label)
-			if route.ends_with("super") or route == "max":
-				s.input(c,"236236AC" if route == "max" else "236236A",guard)
+			if route.ends_with("super") or route.ends_with("max"):
+				s.input(c,"236236AC" if route.ends_with("max") else "236236A",guard)
 				check(s.wait_contact(c,100,guard),"comparison finisher "+label)
 			s.advance(c,100,{},guard)
 			var spent := 0
@@ -342,3 +348,176 @@ func _ai_activation() -> void:
 			s.tick(c,ai.command(f.observable(),d.observable()))
 			if f.awakening_ticks > 0: break
 		check(f.awakening_ticks == 360 and f.quick_awakening_used and f.meter >= 100 and f.meter < 200,"AI confirmed heavy quick awakening "+cid)
+
+func _max_finishers() -> void:
+	for cid in ["tanjiro", "zenitsu", "nezuko", "akaza"]:
+		for facing in [-1, 1]:
+			for quick in [false, true]:
+				for stocks in [2, 3]:
+					for notation in ["236236A", "236236C", "236236AC"]:
+						for outcome in ["hit", "block", "whiff"]:
+							var c := s.duel(cid, facing)
+							var f = c.fighters[0]
+							var d = c.fighters[1]
+							f.meter = stocks * 100
+							if quick:
+								s.input(c, "5C"); check(s.wait_contact(c), "quick finisher starter")
+							s.input(c, "BC"); s.advance(c, 31)
+							var before: int = f.meter
+							var time: int = f.awakening_ticks
+							var hp: int = d.hp
+							var kind := "max" if notation == "236236AC" else "super"
+							var guard := {"x":facing} if outcome == "block" else {}
+							d.x = f.x + facing * (350 if outcome == "whiff" else 34)
+							var label: String = "%s/%d/%s/%d/%s/%s" % [cid, facing, str(quick), stocks, notation, outcome]
+							s.input(c, notation, guard)
+							if stocks == 2:
+								check(f.meter == before and f.awakening_ticks > 0, "unaffordable super retains both resources " + label)
+								check(not s.events.any(func(e): return e.type == "super" and e.attacker == 0), "no free or fallback super " + label)
+								check(s.events.any(func(e): return e.type == "meter_empty" and e.cost == 100), "one-stock cost feedback " + label)
+								continue
+							check(f.move == c.definition(f).motions[kind], "input selects requested move " + label)
+							check(f.meter == before - 100, "both supers spend exactly one stock " + label)
+							check(f.attack_damage_percent == (100 if kind == "max" else 110), "separate launch multipliers " + label)
+							if kind == "max":
+								check(f.awakening_ticks == 0 and f.awakening_duration == 0 and f.awakening_heal_left == 0, "MAX consumes all awakening " + label)
+							else:
+								check(f.awakening_ticks > 0 and f.awakening_ticks <= time and f.awakening_duration == (360 if quick else 600), "super retains mode without refreshing " + label)
+							check(f.presents_awakened_finisher() and c.super_freeze > 0, "super retains launch appearance and freeze " + label)
+							s.advance(c, 160, {}, guard)
+							check(s.events.filter(func(e): return e.type == "awakening_end" and e.attacker == 0).size() == (1 if kind == "max" else 0), "only MAX ends mode once " + label)
+							check(not f.presents_awakened_finisher(), "attack snapshot stops displaying after recovery " + label)
+							if outcome == "hit":
+								check(hp - d.hp == (289 if kind == "max" else 200), "complete finisher damage " + label)
+							elif outcome == "block":
+								var move = c.definition(f).motions[kind]
+								var chip := 0
+								for segment in range(move.hit_count()): chip += maxi(1, int(move.segment_damage(segment) * 0.08))
+								check(hp - d.hp == chip, "enhanced super does not increase chip " + label)
+							else:
+								check(d.hp == hp, "whiff consumes resources without damage " + label)
+							var left: int = f.meter
+							s.input(c, notation, guard)
+							check(f.meter == left and s.events.filter(func(e): return e.type == "super" and e.attacker == 0).size() == 1, "repeat without meter cannot launch " + label)
+							c._change_meter(f, 7)
+							check(f.meter == left + (7 if kind == "max" else 0), "only ended mode resumes meter gain " + label)
+	_super_choice_boundaries()
+	_super_choice_damage()
+	_super_choice_practice_and_ai()
+
+func _super_choice_boundaries() -> void:
+	for cid in ["tanjiro", "zenitsu", "nezuko", "akaza"]:
+		for notation in ["236236A", "236236AC"]:
+			var kind := "max" if notation == "236236AC" else "super"
+			# The mode may expire while the motion is still being entered.
+			for meter in [0, 99, 100, 300]:
+				var c := s.duel(cid); awaken(c)
+				var f = c.fighters[0]
+				f.meter = meter; f.awakening_ticks = 1
+				s.input(c, notation)
+				var cost := 300 if kind == "max" else 100
+				check(f.awakening_ticks == 0 and f.meter == (meter - cost if meter >= cost else meter), "expiry rechecks normal cost " + cid + notation + str(meter))
+				check((f.move == c.definition(f).motions[kind] if meter >= cost else f.move == null), "expiry keeps input identity without fallback " + cid + notation)
+				if f.move != null: check(f.attack_damage_percent == 100, "no expired bonus " + cid + notation)
+			for state in ["hit", "air", "whiff", "blocked"]:
+				var c := s.duel(cid); awaken(c)
+				var f = c.fighters[0]
+				f.meter = 100
+				if state == "hit":
+					f.stun = 60; f.state = "hit"
+				elif state == "air":
+					f.grounded = false; f.y -= 100; f.vy = -3; f.state = "air"
+				else:
+					c._begin_move(f, c.definition(f).normals["5C"])
+					f.connected = state == "blocked"; f.confirmed = false
+					c.fighters[1].x = f.x + 280
+				s.input(c, notation)
+				check(f.meter == 100 and f.awakening_ticks > 0 and not s.events.any(func(e): return e.type == "super"), "invalid action retains resources " + cid + notation + state)
+			var c := s.duel(cid); awaken(c)
+			var f = c.fighters[0]
+			f.meter = 100
+			s.input(c, notation)
+			c._resolve_contact(c._contact(c.fighters[1], f, c.definition(c.fighters[1]).normals["5A"], 999, 0, false))
+			check(f.move == null and not f.presents_awakened_finisher(), "interrupted super clears launch appearance " + cid + notation)
+			check((f.awakening_ticks == 0) == (kind == "max"), "interruption keeps mode decision " + cid + notation)
+			check(s.events.filter(func(e): return e.type == "meter" and e.attacker == 0 and e.amount == -100).size() == 1, "interruption does not refund launch cost " + cid + notation)
+			# Actual input launches the cinematic after resource payment.
+			c = s.duel(cid); awaken(c); f = c.fighters[0]; f.meter = 100
+			c.cinematic_moves[c.definition(f).motions[kind].id] = true
+			s.input(c, notation)
+			for n in range(100):
+				if not c.cinematic.is_empty(): break
+				s.tick(c)
+			check(c.cinematic.get("awakened", false) and c.cinematic.get("move", "") == c.definition(f).motions[kind].id, "cinematic records real move and launch form " + cid + notation)
+			var time: int = f.awakening_ticks
+			s.advance(c, 20)
+			check(f.awakening_ticks == time, "cinematic freezes remaining time " + cid + notation)
+			c.finish_cinematic()
+			check(c.fighters[1].hp == 1000 - (289 if kind == "max" else 200) and f.meter == 0, "cinematic applies all segments and spends once " + cid + notation)
+			check(f.awakening_ticks == time and f.move == null, "cinematic completion preserves chosen mode result " + cid + notation)
+		# A launched enhanced super keeps its damage when the mode expires mid-move.
+		var c := s.duel(cid); awaken(c)
+		var f = c.fighters[0]; f.meter = 100
+		s.input(c, "236236A"); f.awakening_ticks = 1
+		s.advance(c, 180)
+		check(c.fighters[1].hp == 800 and f.awakening_ticks == 0 and f.attack_damage_percent == 110, "enhanced damage persists through expiry " + cid)
+		# Launching MAX on the last actionable mode tick still pays its awakened cost.
+		c = s.duel(cid); awaken(c); f = c.fighters[0]; f.meter = 100; f.awakening_ticks = 1
+		f.buffer_action = {"type":"max"}; f.buffer_left = 10
+		s.tick(c)
+		check(f.move == c.definition(f).motions.max and f.meter == 0 and f.awakening_ticks == 0, "last active tick can cash out " + cid)
+
+func _super_choice_damage() -> void:
+	for cid in ["tanjiro", "zenitsu", "nezuko", "akaza"]:
+		for target in ["tanjiro", "zenitsu", "nezuko", "akaza"]:
+			for kind in ["super", "max"]:
+				var c := s.duel(cid); awaken(c)
+				var f = c.fighters[0]; var d = c.fighters[1]
+				d.character = target; d.awakening_ticks = 500; d.awakening_duration = 600
+				f.hp = 600; f.meter = 100
+				var move = c.definition(f).motions[kind]
+				c._begin_move(f, move)
+				for segment in range(move.hit_count()):
+					c._resolve_contact(c._contact(f, d, move, f.attack_instance, segment, false))
+				c._flush_awakening_healing()
+				var attack_percent := 110 if kind == "super" else 100
+				var expected := int(move.damage * attack_percent * c.definition(d).awakening.received_percent / 10000)
+				check(1000-d.hp == expected, "single-rounding damage and defense " + cid + target + kind)
+				check(f.hp == 600 and f.meter == 0 and d.meter == 0, "supers cannot heal or gain meter " + cid + target + kind)
+
+func _super_choice_practice_and_ai() -> void:
+	for notation in ["236236A", "236236AC"]:
+		var c := s.duel()
+		var p := Practice.new()
+		p.meter_mode = 3; p.awakening_infinite = true
+		c.practice = true; c.awakening_infinite = true
+		awaken(c)
+		var f = c.fighters[0]
+		f.meter = 0; p.after_step(c)
+		check(f.meter == 0, "infinite meter never refills during awakening")
+		s.input(c, notation)
+		check(f.move == null and f.awakening_ticks > 0, "infinite awakening does not bypass cost " + notation)
+		f.meter = 100; s.advance(c, 12); s.input(c, notation)
+		check(f.meter == 0 and (f.awakening_ticks == 0) == (notation == "236236AC"), "infinite duration obeys chosen super " + notation)
+		p.after_step(c)
+		check(f.meter == (300 if notation == "236236AC" else 0), "refill only after mode actually ends " + notation)
+	for time in [300, 121, 120, 60]:
+		for meter in [0, 99, 100]:
+			var finishes := 0
+			for seed_value in range(4):
+				var c := s.duel("zenitsu"); awaken(c)
+				var f = c.fighters[0]; f.meter = meter
+				s.input(c, "236A"); check(s.wait_contact(c), "AI choice setup confirms skill")
+				f.awakening_ticks = time
+				var ai := AI.new(seed_value)
+				for n in range(12): ai.command(f.observable(), c.fighters[1].observable())
+				for n in range(24):
+					s.tick(c, ai.command(f.observable(), c.fighters[1].observable()))
+					if f.move != null and f.move.is_super():
+						finishes += 1
+						check(f.move.kind == ("max" if time <= 120 else "super"), "AI chooses finisher by remaining mode time")
+						check(f.meter == 0 and (f.awakening_ticks == 0) == (time <= 120), "AI choice pays stock and consumes mode only for MAX")
+						break
+				if meter < 100:
+					check(not s.events.any(func(e): return e.type in ["super", "meter_empty"]), "AI never attempts unaffordable super")
+			check(finishes > 0 if meter == 100 else finishes == 0, "AI real input follows cost requirement")

@@ -10,6 +10,7 @@ var scripted := Combat.new()
 var finishing := Combat.new()
 var lethal_throw := Combat.new()
 var awakened := Combat.new()
+var super_choices: Array = [Combat.new(), Combat.new()]
 var polish_trace := HashingContext.new()
 
 func _initialize() -> void:
@@ -89,9 +90,35 @@ func _physics_process(_delta: float) -> bool:
 		held.buttons = 8
 	scripted.step([held, Combat.neutral()])
 	_polish_step()
+	_super_choice_step()
 	ticks += 1
 	if ticks == 1800:
 		print("FRAME RATE RESULT: physics=", ticks, " render=", draw_ticks,
 			" hash=", JSON.stringify([model.snapshot(),scripted.snapshot(),polish_trace.finish().hex_encode()]).sha256_text())
 		quit(0)
 	return false
+
+func _super_choice_step() -> void:
+	var cycle := ticks % 450
+	for index in range(super_choices.size()):
+		var c: Combat = super_choices[index]
+		if cycle == 0:
+			var ids: Array = c.catalog.characters.keys()
+			c.new_match(ids[int(ticks / 450) % ids.size()], "tanjiro")
+			c.phase = "fight"
+			c.fighters[0].x = 480; c.fighters[1].x = 514
+			c.fighters[0].meter = 300
+		var input := Combat.neutral()
+		if cycle == 0:
+			input.buttons = 6
+		elif cycle >= 40 and cycle <= 45:
+			var digit := int("236236"[cycle - 40])
+			input.x = (digit - 1) % 3 - 1
+			input.y = 1 - int((digit - 1) / 3)
+			input.buttons = (1 if index == 0 else 5) if cycle == 45 else 0
+		c.step([input, Combat.neutral()])
+		if cycle == 160:
+			if c.fighters[0].meter != 0 or c.fighters[1].hp != (800 if index == 0 else 711) or (c.fighters[0].awakening_ticks > 0) != (index == 0):
+				printerr("FAIL: frame-rate trace did not exercise awakening super choice ", index)
+				quit(1)
+		polish_trace.update(JSON.stringify(c.snapshot()).to_utf8_buffer())

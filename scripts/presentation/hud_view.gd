@@ -136,7 +136,13 @@ func _portrait(slot: int, visual: Resource) -> void:
 	draw_polyline(frame, Color(INK, 0.9), 3, true)
 	draw_polyline(frame, Color(GOLD, 0.72), 1.2, true)
 	var texture: Texture2D = visual.battle_portrait if visual.battle_portrait != null else visual.avatar
-	if (combat.fighters[slot].awakening_ticks > 0 or (combat.cinematic_victory_form_slot == slot and combat.phase in ["round_end", "match_end"])) and visual.awakened_portrait != null:
+	var fighter = combat.fighters[slot]
+	var awakened: bool = fighter.awakening_ticks > 0 or fighter.presents_awakened_finisher()
+	if not combat.cinematic.is_empty() and combat.cinematic.attacker == slot and not combat.cinematic.get("released", false):
+		awakened = awakened or combat.cinematic.get("awakened", false)
+	if combat.cinematic_victory_form_slot == slot and combat.phase in ["round_end", "match_end"]:
+		awakened = true
+	if awakened and visual.awakened_portrait != null:
 		texture = visual.awakened_portrait
 	if texture != null:
 		draw_texture_rect(texture, Rect2(0, 0, 88, 88), false)
@@ -182,6 +188,11 @@ func meter_fill_rect(slot: int, value: int, index: int) -> Rect2:
 	var fill := clampf((value - (index if slot == 0 else 2 - index) * 100) / 100.0, 0, 1)
 	return Rect2(cell.position + Vector2(0 if slot == 0 else cell.size.x * (1 - fill), 0), Vector2(cell.size.x * fill, cell.size.y))
 
+func awakening_meter_caption(f: RefCounted) -> String:
+	if f.meter < 100:
+		return "气量不足 · 超杀 / MAX需1格"
+	return "超杀1格保留觉醒 / MAX1格耗尽"
+
 func _meter(slot: int, f: RefCounted, visual: Resource) -> void:
 	var left := slot == 0
 	var stock := clampi(int(f.meter / 100), 0, 3)
@@ -205,7 +216,7 @@ func _meter(slot: int, f: RefCounted, visual: Resource) -> void:
 	if f.awakening_ticks > 0:
 		var data: Resource = combat.definition(f).awakening
 		caption_color = data.color
-		caption = "奥义可用" if stock >= 1 else "觉醒中"
+		caption = awakening_meter_caption(f)
 	if meter_error[slot] > 0:
 		caption = "气量不足"
 	elif spent_time[slot] > 0 and f.awakening_ticks <= 0:

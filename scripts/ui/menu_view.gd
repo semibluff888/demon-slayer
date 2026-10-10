@@ -364,7 +364,7 @@ func help(page: String = "basics", character_id: String = "") -> void:
 			"轻技 → 重技 → 必杀 → 超杀；空挥不能取消。",
 			"236236+A/C 超杀耗 1 格；236236+A+C MAX 耗 3 格。",
 			"B+C 耗2格：普通觉醒10秒，普通技命中快速觉醒6秒。",
-			"觉醒停止回气；快速觉醒可再接一轮普通技。"]
+			"觉醒不回气：超杀1格保留觉醒；MAX1格耗尽觉醒。"]
 		for i in range(lessons.size()):
 			label(lessons[i], Rect2(654, 244 + i * 43, 549, 39), 17, PAPER)
 	else:
@@ -384,7 +384,12 @@ func help(page: String = "basics", character_id: String = "") -> void:
 				var y := 170 + i * 58
 				label(row.input, Rect2(75, y, 246, 43), 22, definition.accent)
 				label(row.name, Rect2(330, y, 860, 29), 22, PAPER, true)
-				label(row.description, Rect2(333, y + 28, 855, 24), 15, MUTED)
+				var description: String = row.description
+				if i == 3:
+					description += "；觉醒中伤害110%，耗1格，保留觉醒"
+				elif i == 4:
+					description += "；觉醒中耗1格，并耗尽觉醒"
+				label(description, Rect2(333, y + 28, 855, 24), 15, MUTED)
 				rule(Vector2(75, y + 57), 1115, Color(GOLD, 0.18))
 			label("B+C · " + definition.awakening.display_name + " · 2格 / 普通10秒、快速6秒", Rect2(75, 464, 1115, 24), 16, definition.accent)
 			label(definition.awakening.effect_summary(), Rect2(75, 491, 1115, 24), 15, MUTED)

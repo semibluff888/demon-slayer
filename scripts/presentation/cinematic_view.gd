@@ -307,7 +307,7 @@ func _update_tail() -> void:
 		var frames: Array = profile.get("recovery_frames", [0])
 		world.fighters[actor_slot].cinematic_pose = {"clip":profile.get("recovery_clip", "idle"),
 			"frame":frames[mini(frames.size() - 1, floori(progress * frames.size()))], "facing":actor.facing,
-			"awakened":profile_id == "nezuko_max"}
+			"awakened":profile_id == "nezuko_max" or model.cinematic.get("awakened", false)}
 		if progress >= 1.0 and not model.cinematic_is_lethal():
 			model.release_cinematic_actor()
 			app._reset_inputs()
