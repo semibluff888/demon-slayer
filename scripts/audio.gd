@@ -7,7 +7,7 @@ var muted := false
 var volume: float = 1.0
 var paused := false
 const SAMPLE_RATE := 22050
-const KINDS := ["hit", "body_hit", "block", "swing", "body_swing", "select", "fight", "round_end", "throw", "clash", "water_slash", "water_wheel", "iai", "thunder", "super", "max", "roll", "meter_empty", "meter_spend", "throw_tech", "flame", "blood", "shockwave"]
+const KINDS := ["hit", "body_hit", "block", "swing", "body_swing", "select", "fight", "round_end", "throw", "clash", "water_slash", "water_wheel", "iai", "thunder", "super", "max", "roll", "meter_empty", "meter_spend", "throw_tech", "flame", "blood", "shockwave", "ui_move", "ui_back"]
 
 func _ready() -> void:
 	for n in range(10):
@@ -115,6 +115,7 @@ func _make_sound(kind: String) -> AudioStreamWAV:
 	if kind in ["water_slash","water_wheel","super","max"]: duration = 0.28
 	if kind in ["fight","round_end","throw","throw_tech","meter_empty","meter_spend"]: duration = 0.20
 	if kind in ["thunder","flame","blood","shockwave"]: duration = 0.16
+	if kind in ["ui_move","ui_back"]: duration = 0.07
 	var frames := int(SAMPLE_RATE * duration)
 	var bytes := PackedByteArray()
 	bytes.resize(frames*2)
@@ -144,6 +145,9 @@ func _make_sound(kind: String) -> AudioStreamWAV:
 			"throw_tech": value = sin(TAU*(820*t+2100*t*t))*0.30+sin(TAU*1370*t)*0.20
 			"block", "clash": value = sin(TAU*1200*t)*0.28+sin(TAU*1760*t)*0.16
 			"select": value = sin(TAU*660*t)*0.35
+			# Menu focus: a short wooden tick; back: a softer falling tone.
+			"ui_move": value = (sin(TAU*1320*t)*0.18+sin(TAU*1980*t)*0.08)*exp(-t*55)+noise.randf_range(-0.05,0.05)*exp(-t*90)
+			"ui_back": value = sin(TAU*(780*t-1600*t*t))*0.22
 			_: value = (sin(TAU*440*t)+sin(TAU*660*t))*0.25
 		bytes.encode_s16(i*2,int(clampf(value*envelope,-1,1)*32767))
 	var stream := AudioStreamWAV.new()

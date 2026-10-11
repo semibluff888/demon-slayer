@@ -62,6 +62,8 @@ func _ready() -> void:
 	banner = Banner.new()
 	banner.title_font = catalog.title_font
 	banner.body_font = catalog.body_font
+	banner.display_font = catalog.display_font
+	banner.numeric_font = catalog.numeric_font
 	banner.z_index = 10
 	add_child(banner)
 	sound = Sound.new()

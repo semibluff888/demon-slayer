@@ -8,10 +8,24 @@ var stage := Stage.new()
 var stages: Dictionary = {}
 var body_font: Font
 var title_font: Font
+## Brush calligraphy for screen titles, names and battle callouts.
+var display_font: Font
+## Condensed numerals and English captions (timer, combo, kickers).
+var numeric_font: Font
+var _ui_assets: RefCounted
 
 func _init(load_combat_art: bool = true) -> void:
-	body_font = _font("res://art/fonts/NotoSansSC-ui.ttf", "Microsoft YaHei UI", 450)
-	title_font = _font("res://art/fonts/NotoSerifSC-title.ttf", "KaiTi", 700)
+	body_font = _font("res://art/fonts/NotoSansSC-ui.ttf", ["Microsoft YaHei UI", "Microsoft YaHei"], 500)
+	title_font = _font("res://art/fonts/NotoSerifSC-title.ttf", ["SimSun", "Microsoft YaHei"], 900)
+	display_font = _font("res://art/fonts/MaShanZheng-display.ttf", ["KaiTi", "STKaiti"], 400)
+	numeric_font = _font("res://art/fonts/Oswald-numeric.ttf", ["Bahnschrift", "Arial Narrow"], 700)
+	# Missing glyphs fall through the families, then to the operating system.
+	var system := SystemFont.new()
+	system.font_names = PackedStringArray(["Microsoft YaHei UI", "Microsoft YaHei", "sans-serif"])
+	_fallback(body_font, system)
+	_fallback(title_font, body_font)
+	_fallback(display_font, title_font)
+	_fallback(numeric_font, body_font)
 	for id in data.characters:
 		var definition = data.characters[id]
 		var visual := Character.new()
@@ -47,16 +61,26 @@ func _init(load_combat_art: bool = true) -> void:
 	if load_combat_art:
 		stage.load_local_assets()
 
-func _font(path: String, fallback: String, weight: int) -> Font:
+func _font(path: String, fallbacks: Array, weight: int) -> Font:
+	# Bundled fonts are static instances subset by tools/subset_fonts.py.
 	if ResourceLoader.exists(path):
 		var font := FontVariation.new()
 		font.base_font = load(path)
-		font.variation_opentype = {"wght": weight}
 		return font
 	var system := SystemFont.new()
-	system.font_names = PackedStringArray([fallback, "Microsoft YaHei", "sans-serif"])
+	system.font_names = PackedStringArray(fallbacks + ["Microsoft YaHei", "sans-serif"])
 	system.font_weight = weight
 	return system
+
+func _fallback(font: Font, next: Font) -> void:
+	var chain: Array[Font] = [next]
+	font.fallbacks = chain
+
+## Rasterized UI icons, generated textures and the menu Theme, built on first use.
+func ui_assets() -> RefCounted:
+	if _ui_assets == null:
+		_ui_assets = preload("res://scripts/ui/ui_assets.gd").new()
+	return _ui_assets
 
 func readiness() -> Dictionary:
 	var report := {"stage": stage.art_ready, "characters": {}}

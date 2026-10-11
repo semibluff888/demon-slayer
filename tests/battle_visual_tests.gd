@@ -168,7 +168,7 @@ func _check_hud(game: Node2D) -> void:
 			check(hud.meter_cell(0, cell).encloses(first) and hud.meter_cell(1, 2 - cell).encloses(second), "partial meter fill stays inside each cell")
 			check(first.size.is_equal_approx(second.size) and is_equal_approx(first.position.x, 1280 - second.end.x), "P2 meter grows as the mirrored P1 meter")
 			total += first.size.x
-		check(is_equal_approx(total, value * 0.8), "meter fill represents exact resource at threshold " + str(value))
+		check(is_equal_approx(total, value / 100.0 * hud.meter_cell(0, 0).size.x), "meter fill represents exact resource at threshold " + str(value))
 	hud.consume([{"type":"meter_empty", "attacker":0, "cost":300}, {"type":"meter", "attacker":1, "amount":-100}])
 	check(hud.meter_error[0] > 0 and hud.meter_spent[1] == 100 and hud.spent_time[1] > 0, "bare meter keeps insufficient/spent feedback")
 	hud.frozen = true

@@ -27,10 +27,13 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
-## Noto Sans SC and Noto Serif SC
+## Noto Sans SC, Noto Serif SC, Ma Shan Zheng and Oswald
 
 Fonts are distributed under the SIL Open Font License 1.1. Full license texts
 are included in art/fonts/ in the project and licenses/ in the player ZIP.
+Ma Shan Zheng (马善政毛笔楷书) is used for brush-calligraphy titles and Oswald
+for numerals; all four families are subset to the game's text by
+tools/subset_fonts.py, with sources and SHA-256 recorded in art/fonts/fonts.json.
 
 ## Game content
 

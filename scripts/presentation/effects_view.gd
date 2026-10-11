@@ -1,7 +1,12 @@
 extends Node2D
 ## Attack effects follow the actual move phase without changing combat timing.
 # Sword ribbons follow the drawn blade. Skill reach is guided by move.box;
-# lightning keeps its pointed silhouette and a softer movement wake.
+# lightning keeps its pointed silhouette and a softer movement wake. Impacts
+# layer a light core, star streaks and per-character motes; every particle list
+# freezes with `freeze` and expires well within half a second.
+const Kit = preload("res://scripts/ui/kit.gd")
+## Character flavor for blade trails and impact motes.
+const FLAVORS := {"tanjiro": "water", "zenitsu": "thunder", "nezuko": "blood", "akaza": "compass"}
 const CUT_CURVES := {
 	"stand_light": [Vector2(13, -43), Vector2(38, -60), Vector2(61, -40)],
 	"stand_heavy": [Vector2(9, -70), Vector2(96, -65), Vector2(45, -16)],
@@ -16,6 +21,12 @@ var combat: RefCounted
 var sparks: Array[Dictionary] = []
 var rings: Array[Dictionary] = []
 var pulses: Array[Dictionary] = []
+var flashes: Array[Dictionary] = []
+var streaks: Array[Dictionary] = []
+var shards: Array[Dictionary] = []
+var motes: Array[Dictionary] = []
+var screen_flash: float = 0.0
+var glow: GradientTexture2D
 var time: float = 0
 var trauma: float = 0
 var freeze: bool = false
@@ -38,6 +49,16 @@ func _ready() -> void:
 			for suffix in ["", "-body"]:
 				var path: String = "res://art/effects/" + key + suffix + ".png"
 				if ResourceLoader.exists(path): textures[key + suffix] = load(path)
+	var falloff := Gradient.new()
+	falloff.colors = PackedColorArray([Color(1, 1, 1, 1), Color(1, 1, 1, 0.38), Color(1, 1, 1, 0.08), Color(1, 1, 1, 0)])
+	falloff.offsets = PackedFloat32Array([0.0, 0.2, 0.55, 1.0])
+	glow = GradientTexture2D.new()
+	glow.gradient = falloff
+	glow.fill = GradientTexture2D.FILL_RADIAL
+	glow.fill_from = Vector2(0.5, 0.5)
+	glow.fill_to = Vector2(1.0, 0.5)
+	glow.width = 128
+	glow.height = 128
 	body_layer = Node2D.new()
 	body_layer.z_index = -1
 	body_layer.material = CanvasItemMaterial.new()
@@ -83,8 +104,32 @@ func consume(events: Array) -> void:
 		if rings.size() > 5:
 			rings.pop_front()
 		trauma = maxf(trauma, (0.04 if blocked else 0.16) * intensity)
+		var attacker = combat.fighters[event.attacker] if event.has("attacker") else null
+		var facing: int = int(attacker.facing) if attacker != null else 1
+		if event.type == "clash":
+			flashes.append({"at": event.position, "life": 0.16, "duration": 0.16, "radius": 30.0 * intensity, "color": Color("fff0c2")})
+			_spawn_streaks(event.position, 10, 26.0 * intensity, 1.2, Color("ffe2a0"), 0.15, facing, true)
+		elif blocked:
+			flashes.append({"at": event.position, "life": 0.12, "duration": 0.12, "radius": 20.0 * intensity, "color": Kit.GUARD})
+			shards.append({"at": event.position, "life": 0.2, "duration": 0.2, "facing": facing, "intensity": intensity})
+		else:
+			var heavy: bool = move != null and move.kind in ["heavy", "skill", "super", "max"]
+			_spawn_hit(event.position, color, intensity, repeated, heavy, facing, _flavor(attacker), move != null and move.is_super())
+			if event.type == "throw":
+				for n in range(6):
+					var side := -1.0 if n % 2 == 0 else 1.0
+					motes.append({"kind": "dust", "at": event.position + Vector2(side * 4, 6), "velocity": Vector2(side * (24 + n * 6), -6),
+						"life": 0.32, "duration": 0.32, "size": 3.0 + n % 3, "color": Color(0.8, 0.82, 0.86)})
 	while pulses.size() > 6:
 		pulses.pop_front()
+	while flashes.size() > 10:
+		flashes.pop_front()
+	while streaks.size() > 80:
+		streaks.pop_front()
+	while shards.size() > 4:
+		shards.pop_front()
+	while motes.size() > 120:
+		motes.pop_front()
 	queue_redraw()
 	if body_layer != null:
 		body_layer.queue_redraw()
@@ -93,6 +138,11 @@ func reset_effects() -> void:
 	sparks.clear()
 	rings.clear()
 	pulses.clear()
+	flashes.clear()
+	streaks.clear()
+	shards.clear()
+	motes.clear()
+	screen_flash = 0
 	trauma = 0
 	time = 0
 
@@ -113,6 +163,19 @@ func _process(delta: float) -> void:
 	for pulse: Dictionary in pulses:
 		pulse.life -= delta
 	pulses = pulses.filter(func(p: Dictionary) -> bool: return p.life > 0)
+	for list in [flashes, streaks, shards]:
+		for item: Dictionary in list:
+			item.life -= delta
+	flashes = flashes.filter(func(p: Dictionary) -> bool: return p.life > 0)
+	streaks = streaks.filter(func(p: Dictionary) -> bool: return p.life > 0)
+	shards = shards.filter(func(p: Dictionary) -> bool: return p.life > 0)
+	for mote: Dictionary in motes:
+		mote.life -= delta
+		mote.at += mote.velocity * delta
+		mote.velocity.y += float({"drop": 260.0, "petal": -40.0, "dust": -10.0}.get(mote.kind, 0.0)) * delta
+		mote.velocity *= 1.0 - minf(0.9, delta * (3.0 if mote.kind == "dust" else 0.8))
+	motes = motes.filter(func(p: Dictionary) -> bool: return p.life > 0)
+	screen_flash = maxf(0, screen_flash - delta / 0.09)
 	queue_redraw()
 	if body_layer != null:
 		body_layer.queue_redraw()
@@ -158,7 +221,7 @@ func _iai_slash(attack: Rect2, strength: float) -> void:
 	_lightning(center - direction * half_length, center + direction * half_length,
 		attack.size.x * 0.4, Color(1, 0.89, 0.59, strength * 0.9))
 
-func _draw_normal_cut(id: String, progress: float) -> void:
+func _draw_normal_cut(id: String, progress: float, tint: Color = Color(0.53, 0.73, 1.0), flavor: String = "neutral") -> void:
 	if not CUT_CURVES.has(id):
 		return
 	var curve: Array = CUT_CURVES[id]
@@ -178,10 +241,13 @@ func _draw_normal_cut(id: String, progress: float) -> void:
 		normals.append(tangent.orthogonal() * amount)
 		taper.append(sqrt(amount))
 	var heavy := id.ends_with("heavy")
-	var opacity := 0.45 + sin(progress * PI) * 0.55
-	_draw_cut_ribbon(points, normals, taper, 4.0 if heavy else 2.4, Color(0.53, 0.73, 1.0, opacity * 0.09))
-	_draw_cut_ribbon(points, normals, taper, 1.7 if heavy else 0.9, Color(0.75, 0.88, 1.0, opacity * 0.27))
-	_draw_cut_ribbon(points, normals, taper, 0.55 if heavy else 0.32, Color(1.0, 0.97, 0.86, opacity * 0.64))
+	var opacity := 0.5 + sin(progress * PI) * 0.5
+	_draw_cut_ribbon(points, normals, taper, 7.5 if heavy else 4.8, Color(tint, opacity * 0.13))
+	_draw_cut_ribbon(points, normals, taper, 3.4 if heavy else 2.2, Color(tint.lightened(0.3), opacity * 0.4))
+	_draw_cut_ribbon(points, normals, taper, 1.2 if heavy else 0.75, Color(1.0, 0.98, 0.92, opacity * 0.86))
+	var head: Vector2 = points[int(CUT_SEGMENTS * 0.86)]
+	_glow_at(head, 9.0 if heavy else 6.0, Color(tint.lightened(0.4), opacity * 0.42))
+	_cut_flavor(flavor, points, normals, progress, tint, heavy)
 
 func _draw_cut_ribbon(points: PackedVector2Array, normals: PackedVector2Array, taper: PackedFloat32Array, width: float, color: Color) -> void:
 	var vertices := PackedVector2Array()
@@ -240,6 +306,15 @@ func _charge(fighter: RefCounted, color: Color) -> void:
 		_ellipse(Rect2(-radius-4,-10,radius*2+8,17),1.8,PI*1.4,Color(color.lightened(0.6),0.34),0.7)
 		for side in [-1,1]:
 			draw_line(Vector2(side*12,-12),Vector2(side*18,-38),Color(color,0.18),1.0,true)
+	# Rotating ground sigil: outer ring with notches and an inner counter ring.
+	var spin := ready * (2.4 if max_move else 1.6)
+	var sigil := Vector2(radius * 1.3, 5.5)
+	_ellipse(Rect2(-sigil.x, -sigil.y, sigil.x * 2, sigil.y * 2), spin, TAU, Color(color.lightened(0.3), 0.32 + ready * 0.3), 0.7)
+	_ellipse(Rect2(-sigil.x * 0.7, -sigil.y * 0.7, sigil.x * 1.4, sigil.y * 1.4), -spin, PI * 1.6, Color(color, 0.3), 0.5)
+	for n in range(12):
+		var a := spin + n * TAU / 12
+		var on := Vector2(cos(a) * sigil.x, sin(a) * sigil.y)
+		draw_line(on, on * 1.12, Color(color.lightened(0.5), 0.5 * ready), 0.6, true)
 
 func _water_dragon(attack: Rect2, progress: float, segment: int, color: Color) -> void:
 	var points := PackedVector2Array()
@@ -260,6 +335,8 @@ func _water_dragon(attack: Rect2, progress: float, segment: int, color: Color) -
 func _draw_attack(fighter: RefCounted) -> void:
 	var move: Resource = fighter.move
 	var color: Color = move.presentation.color if move.presentation != null else Color("c4e7ff")
+	var tint := _accent(fighter)
+	var flavor := _flavor(fighter)
 	_charge(fighter,color)
 	var segment: int = move.segment(fighter.move_frame)
 	if segment < 0:
@@ -275,6 +352,10 @@ func _draw_attack(fighter: RefCounted) -> void:
 			if move.projectile_speed > 0: bounds = Rect2(16,-47,29,28)
 			_effect(key,bounds,Color(color,0.30),element_angle(move,progress,segment),move.presentation.texture_flip_h)
 			_element_motes(bounds,progress,color,18 if move.is_super() else 8)
+			if shape == "blood":
+				_embers(bounds,progress,Color(1.0,0.45,0.66),12 if move.is_super() else 6)
+			else:
+				_compass_ring(bounds.get_center(),bounds.size.length()*(0.18+progress*0.22),progress,color)
 			if not move.presentation.sigil_texture_key.is_empty():
 				_effect(move.presentation.sigil_texture_key,Rect2(-45,-9,90,18),Color(color,0.32))
 		"water_slash":
@@ -284,14 +365,17 @@ func _draw_attack(fighter: RefCounted) -> void:
 			_effect("water-wheel",attack.grow(5),Color(color,strength*0.45),progress*TAU)
 			_element_motes(attack,progress,color,16)
 			_ellipse(attack.grow(-3),progress*TAU,PI*1.35,Color(color.lightened(0.5),0.62),1.4)
+			_droplets(attack,progress,color,14)
 		"water_vortex":
 			var plane := Rect2(attack.position.x-6,-48,attack.size.x+12,44)
 			_effect("water-wheel",plane,Color(color,0.28),progress*TAU)
 			_ellipse(plane.grow(-2),progress*TAU,PI*1.55,Color(color.lightened(0.45),0.57),1.7)
 			_ellipse(Rect2(plane.position+Vector2(7,-7),plane.size-Vector2(14,4)),-progress*TAU,PI,Color(color,0.25),0.8)
+			_droplets(plane,progress,color,16)
 		"water_dragon":
 			_water_dragon(attack,progress,segment,color)
 			_element_motes(attack,progress,color,24)
+			_droplets(attack,progress,color,22)
 			_effect("water-dragon",attack.grow(7),Color(color,0.20))
 		"sun_arc", "flame":
 			_effect("sun-flame-arc",attack.grow(10),Color(1,0.67,0.35,0.24),-0.75+progress*TAU)
@@ -303,14 +387,16 @@ func _draw_attack(fighter: RefCounted) -> void:
 				var a := angle+n*0.5
 				var at := attack.get_center()+Vector2(cos(a),sin(a))*attack.size*0.40
 				draw_line(at,at-Vector2(cos(a),sin(a))*3,Color(1,0.60,0.1,0.4),1.0,true)
+			_embers(attack,progress,Color(1.0,0.62,0.22),14)
 		"body":
-			var at := Vector2(minf(attack.end.x-7,attack.get_center().x+3),attack.get_center().y)
-			draw_arc(at,6+progress*3,-0.6,0.6,10,Color(color,0.24),0.7,true)
+			_draw_body_strike(attack,progress,tint,flavor)
 		"thunder":
 			_thunder_dash(attack,strength)
 			_element_motes(attack,progress,color,10)
+			_crackle(attack,progress,color,2)
 		"iai":
 			_iai_slash(attack,strength)
+			_crackle(attack,progress,color,2)
 		"iai_return":
 			var center := attack.get_center()
 			_lightning(Vector2(attack.position.x,center.y+8),Vector2(attack.end.x,center.y-7 if segment==0 else center.y+3),15,Color(color,strength),0.35)
@@ -318,15 +404,17 @@ func _draw_attack(fighter: RefCounted) -> void:
 			var height: float = [-0.18,0.18,-0.28,0.0,0.24,-0.05][segment % 6]
 			var tip := Vector2(attack.end.x,attack.get_center().y+height*attack.size.y)
 			_lightning(Vector2(attack.position.x-12,attack.get_center().y-height*12),tip,18,Color(color,strength),0.32)
+			_crackle(attack,progress,color,2)
 		"godspeed":
 			var y: float = attack.get_center().y
 			_element_motes(attack,progress,color,26)
 			_lightning(Vector2(attack.position.x-18,y+3),Vector2(attack.end.x,y-3),23,Color(color,0.55),0.23)
 			_lightning(Vector2(attack.position.x,y+13),Vector2(attack.end.x-3,y-7),9,Color(1,0.79,0.35,0.42),0.20)
+			_crackle(attack,progress,color,3)
 		"blade":
-			_draw_normal_cut(move.effect(),progress)
+			_draw_normal_cut(move.effect(),progress,tint,flavor)
 		_:
-			_draw_normal_cut(move.effect(),progress)
+			_draw_normal_cut(move.effect(),progress,tint,flavor)
 
 func _draw() -> void:
 	if camera == null or combat == null:
@@ -344,6 +432,12 @@ func _draw() -> void:
 			var key := _projectile_key(move)
 			# Authored vertical foam crest, without distorting the old horizontal slash.
 			_effect(key,bounds,Color(0.78,0.95,1,0.28),PI if key=="water-slash" else 0.0)
+			_glow_at(bounds.get_center(),bounds.size.length()*0.6,Color(0.55,0.85,1,0.18))
+			var wake: float = move.projectile_lifetime - projectile.life
+			for n in range(6):
+				var drift := fposmod(wake*0.9+n/6.0,1.0)
+				var at := Vector2(bounds.position.x-drift*16,lerpf(bounds.position.y+3,bounds.end.y-3,_hash(n+1.0)))
+				draw_circle(at,0.5+_hash(n+3.0)*0.6,Color(0.8,0.96,1,(1-drift)*0.5),true,-1,true)
 			if key != "water-slash":
 				var age: float = move.projectile_lifetime - projectile.life
 				for n in range(3):
@@ -383,6 +477,7 @@ func _draw() -> void:
 		else:
 			for n in range(3):
 				draw_line(at+Vector2(-8+n*6,-3)*camera.zoom,at+Vector2(-8+n*6,-7)*camera.zoom,color,1.7,true)
+	_draw_impacts()
 
 func _element_motes(attack: Rect2, progress: float, color: Color, count: int) -> void:
 	for n in range(count):
@@ -476,3 +571,189 @@ func _body_ribbon(key: String, tail: Vector2, tip: Vector2, width: float, color:
 	body_layer.draw_polygon(PackedVector2Array([tail-normal,tip-normal,tip+normal,tail+normal]),
 		PackedColorArray([Color(color,color.a*0.30),color,color,Color(color,color.a*0.30)]),
 		PackedVector2Array([Vector2.ZERO,Vector2.RIGHT,Vector2.ONE,Vector2.DOWN]),textures[key])
+
+# --- Impact layers and character flavor ------------------------------------------
+
+static func _hash(n: float) -> float:
+	return fposmod(sin(n * 12.9898) * 43758.5453, 1.0)
+
+func _accent(fighter: RefCounted) -> Color:
+	var definition: Resource = combat.definition(fighter)
+	if fighter.awakening_ticks > 0 and definition.awakening != null:
+		return definition.awakening.color
+	return definition.accent
+
+func _flavor(fighter: RefCounted) -> String:
+	return FLAVORS.get(str(fighter.character), "neutral") if fighter != null else "neutral"
+
+func _glow_at(at: Vector2, radius: float, color: Color) -> void:
+	if glow != null and radius > 0 and color.a > 0:
+		draw_texture_rect(glow, Rect2(at - Vector2.ONE * radius, Vector2.ONE * radius * 2), false, color)
+
+func _spawn_streaks(at: Vector2, count: int, length: float, line_width: float, color: Color, life: float, facing: int, around: bool) -> void:
+	for n in range(count):
+		var spread := (_hash(n * 1.7 + at.x * 0.13 + at.y) - 0.5) * (TAU if around or n % 3 == 0 else 2.4)
+		streaks.append({"at": at, "angle": (0.0 if facing > 0 else PI) + spread,
+			"length": length * (0.6 + _hash(n + at.y * 0.7) * 0.8), "width": line_width, "life": life, "duration": life, "color": color})
+
+func _spawn_hit(at: Vector2, color: Color, intensity: float, repeated: bool, heavy: bool, facing: int, flavor: String, super_move: bool) -> void:
+	var life := 0.2 if heavy else 0.14
+	flashes.append({"at": at, "life": life, "duration": life, "radius": (16.0 if repeated else (27.0 if heavy else 19.0)) * intensity, "color": color.lightened(0.2)})
+	_spawn_streaks(at, 4 if repeated else (11 if heavy else 7), (18.0 if repeated else (32.0 if heavy else 24.0)) * intensity,
+		(1.5 if heavy else 1.1) * intensity, color.lightened(0.35), life, facing, false)
+	var count := 3 if repeated else (8 if heavy else 5)
+	for n in range(count):
+		var lift := -40.0 - _hash(n + at.x) * 70.0
+		var push := float(facing) * (20.0 + _hash(n * 3.1 + at.y) * 60.0) * (1.0 if n % 3 else -0.5)
+		match flavor:
+			"water":
+				motes.append({"kind": "drop", "at": at, "velocity": Vector2(push, lift), "life": 0.3, "duration": 0.3,
+					"size": 1.2 + _hash(n + 5.0) * 1.0, "color": Color(0.72, 0.93, 1.0)})
+			"thunder":
+				motes.append({"kind": "bolt", "at": at, "velocity": Vector2(push, lift * 0.5).normalized() * 14.0, "life": 0.12, "duration": 0.12,
+					"size": 8.0 + _hash(n + 2.0) * 8.0, "color": Color(1.0, 0.94, 0.6)})
+			"blood":
+				motes.append({"kind": "petal", "at": at, "velocity": Vector2(push * 0.6, lift * 0.6), "life": 0.32, "duration": 0.32,
+					"size": 1.4 + _hash(n + 7.0), "color": Color(1.0, 0.5, 0.72)})
+	if flavor == "compass" and not repeated:
+		motes.append({"kind": "ring", "at": at, "velocity": Vector2.ZERO, "life": 0.22, "duration": 0.22, "size": 5.0 * intensity, "color": Color(0.55, 0.88, 1.0)})
+	if super_move and not repeated:
+		screen_flash = 1.0
+
+func _draw_impacts() -> void:
+	for flash: Dictionary in flashes:
+		var at: Vector2 = camera.point(flash.at)
+		var amount: float = 1.0 - flash.life / flash.duration
+		var radius: float = flash.radius * camera.zoom * (0.55 + amount * 0.6)
+		var alpha: float = (1.0 - amount) * 0.95
+		_glow_at(at, radius, Color(flash.color, alpha))
+		_glow_at(at, radius * 0.38, Color(1, 1, 1, alpha))
+	for streak: Dictionary in streaks:
+		var at: Vector2 = camera.point(streak.at)
+		var amount: float = 1.0 - streak.life / streak.duration
+		var direction := Vector2.from_angle(streak.angle)
+		var reach: float = streak.length * camera.zoom
+		var start := at + direction * reach * (0.12 + amount * 0.3)
+		var tip := at + direction * reach * (0.5 + amount * 0.5)
+		var normal: Vector2 = direction.orthogonal() * float(streak.width) * camera.zoom * (1.0 - amount * 0.7)
+		draw_colored_polygon(PackedVector2Array([start + normal, tip, start - normal]), Color(streak.color, (1.0 - amount) * 0.9))
+	for shard: Dictionary in shards:
+		var at: Vector2 = camera.point(shard.at)
+		var amount: float = 1.0 - shard.life / shard.duration
+		var toward: float = PI if int(shard.facing) > 0 else 0.0
+		var alpha: float = (1.0 - amount) * float(shard.intensity)
+		# Translucent hex shield facing the attacker, then layered rims.
+		var shield := PackedVector2Array([at])
+		for k in range(5):
+			shield.append(at + Vector2.from_angle(toward - 1.1 + k * 0.55) * (9.0 + amount * 9.0) * camera.zoom)
+		draw_colored_polygon(shield, Color(Kit.GUARD, alpha * 0.16))
+		for n in range(3):
+			var radius: float = (7.0 + n * 3.0 + amount * 9.0) * camera.zoom
+			draw_arc(at, radius, toward - 1.15, toward + 1.15, 6, Color(Kit.GUARD.lightened(0.2), alpha * (0.95 - n * 0.25)), 3.0 - n * 0.7, true)
+		for n in range(5):
+			var a := toward + (n - 2) * 0.42
+			var from: Vector2 = at + Vector2.from_angle(a) * (6.0 + amount * 6.0) * camera.zoom
+			draw_line(from, from + Vector2.from_angle(a) * (3.0 + amount * 5.0) * camera.zoom, Color(0.85, 0.95, 1.0, alpha * 0.8), 1.2, true)
+	for mote: Dictionary in motes:
+		var at: Vector2 = camera.point(mote.at)
+		var alpha: float = clampf(mote.life / mote.duration, 0, 1)
+		var color: Color = mote.color
+		match mote.kind:
+			"drop":
+				draw_circle(at, float(mote.size) * camera.zoom * 0.5, Color(color, alpha * 0.85), true, -1, true)
+			"petal":
+				draw_colored_polygon(Kit.diamond_points(at, float(mote.size) * camera.zoom * 0.5, 1.7), Color(color, alpha))
+			"bolt":
+				var velocity: Vector2 = mote.velocity
+				var direction: Vector2 = velocity.normalized() if velocity.length() > 0 else Vector2.RIGHT
+				var points := PackedVector2Array([at])
+				for k in range(1, 5):
+					var jitter := (_hash(k + float(mote.size) * 3.0 + floorf(time * 30.0)) - 0.5) * 6.0
+					points.append(at + direction * float(mote.size) * camera.zoom * k / 4.0 + direction.orthogonal() * jitter)
+				draw_polyline(points, Color(color, alpha), 1.4, true)
+			"ring":
+				var radius: float = (float(mote.size) + (1.0 - alpha) * 12.0) * camera.zoom
+				draw_arc(at, radius, 0, TAU, 40, Color(color, alpha * 0.8), 1.6, true)
+				for n in range(8):
+					var direction := Vector2.from_angle(n * TAU / 8 + (1.0 - alpha))
+					draw_line(at + direction * radius * 0.55, at + direction * radius * 1.15, Color(color, alpha * 0.7), 1.2, true)
+			"dust":
+				draw_circle(at, float(mote.size) * camera.zoom * (1.6 - alpha * 0.6), Color(color, alpha * 0.12), true, -1, true)
+	if screen_flash > 0:
+		draw_rect(Rect2(-40, -40, 1360, 800), Color(1.0, 0.96, 0.88, 0.12 * screen_flash))
+
+func _cut_flavor(flavor: String, points: PackedVector2Array, normals: PackedVector2Array, progress: float, tint: Color, heavy: bool) -> void:
+	var count := 7 if heavy else 4
+	match flavor:
+		"water":
+			for i in range(count):
+				var index := clampi(int((0.25 + i * 0.1) * CUT_SEGMENTS), 1, CUT_SEGMENTS - 1)
+				var spread := 2.5 + progress * (7.0 + _hash(i) * 6.0)
+				var side := 1.0 if i % 2 == 0 else -0.6
+				var at: Vector2 = points[index] + normals[index].normalized() * spread * side + Vector2(0, progress * progress * 6.0 * _hash(i + 3.0))
+				draw_circle(at, (0.55 + _hash(i + 7.0) * 0.6) * (1.0 - progress * 0.4), Color(0.8, 0.95, 1.0, 0.7 * (1.0 - progress)), true, -1, true)
+		"thunder":
+			var frame := floorf(time * 24.0)
+			for i in range(3 if heavy else 2):
+				var index := clampi(int((0.3 + i * 0.22) * CUT_SEGMENTS), 1, CUT_SEGMENTS - 2)
+				var start: Vector2 = points[index]
+				var across := (points[index + 1] - points[index - 1]).normalized().orthogonal()
+				var bolt := PackedVector2Array([start])
+				for k in range(1, 5):
+					bolt.append(start + across * k * 2.6 + across.orthogonal() * (_hash(frame + i * 7.0 + k) - 0.5) * 4.0)
+				draw_polyline(bolt, Color(1.0, 0.95, 0.65, 0.8 * (1.0 - progress * 0.5)), 0.6, true)
+		"blood":
+			for i in range(count):
+				var index := clampi(int((0.2 + i * 0.11) * CUT_SEGMENTS), 1, CUT_SEGMENTS - 1)
+				var at: Vector2 = points[index] + Vector2((_hash(i + 2.0) - 0.5) * 4.0, -progress * (6.0 + _hash(i) * 8.0))
+				draw_colored_polygon(Kit.diamond_points(at, 0.9 + _hash(i + 5.0) * 0.8, 1.6), Color(1.0, 0.45, 0.65, 0.75 * (1.0 - progress)))
+
+func _draw_body_strike(attack: Rect2, progress: float, tint: Color, flavor: String) -> void:
+	var at := Vector2(minf(attack.end.x - 5, attack.get_center().x + 5), attack.get_center().y)
+	var fade := 1.0 - progress
+	var swing := sin(progress * PI)
+	for n in range(3):
+		var radius := 7.0 + n * 2.6 + progress * 3.0
+		draw_arc(at - Vector2(3, 0), radius, -0.9 - n * 0.12, 0.9 + n * 0.12, 18, Color(tint, (0.42 - n * 0.11) * swing), 2.2 - n * 0.5, true)
+	draw_arc(at - Vector2(3, 0), 6.0 + progress * 3.0, -0.75, 0.75, 14, Color(1, 0.98, 0.94, 0.7 * swing), 0.7, true)
+	for n in range(3):
+		var y := at.y + (n - 1) * 3.5
+		draw_line(Vector2(attack.position.x - 4, y), Vector2(at.x - 8, y), Color(tint, 0.22 * swing), 0.6, true)
+	_glow_at(at, 10.0, Color(tint.lightened(0.3), 0.35 * swing))
+	if flavor == "compass":
+		_compass_ring(at, 4.0 + progress * 9.0, progress, tint)
+	elif flavor == "blood":
+		for n in range(5):
+			var a := -0.8 + n * 0.4
+			draw_colored_polygon(Kit.diamond_points(at + Vector2(cos(a), sin(a)) * (5.0 + progress * 10.0), 1.0, 1.7), Color(1.0, 0.5, 0.7, 0.7 * fade))
+
+func _droplets(area: Rect2, progress: float, color: Color, count: int) -> void:
+	var center := area.get_center()
+	for n in range(count):
+		var a := n * 2.399 + progress * 1.4
+		var at := center + Vector2(cos(a), sin(a)) * area.size * (0.45 + progress * 0.35 + _hash(n) * 0.15)
+		at.y += progress * progress * 8.0 * _hash(n + 1.0)
+		draw_circle(at, 0.5 + _hash(n + 3.0) * 0.9, Color(color.lightened(0.6), sin(progress * PI) * (0.4 + _hash(n + 2.0) * 0.4)), true, -1, true)
+
+func _crackle(area: Rect2, progress: float, color: Color, bolts: int) -> void:
+	var frame := floorf(time * 24.0)
+	for b in range(bolts):
+		var y := lerpf(area.position.y, area.end.y, _hash(b + frame * 0.37))
+		var points := PackedVector2Array()
+		for k in range(7):
+			var x := lerpf(area.position.x, area.end.x, k / 6.0)
+			points.append(Vector2(x, y + (_hash(frame + b * 11.0 + k) - 0.5) * minf(area.size.y * 0.14, 5.0)))
+		draw_polyline(points, Color(color.lightened(0.55), 0.4 * sin(progress * PI) + 0.08), 0.5, true)
+
+func _embers(area: Rect2, progress: float, color: Color, count: int) -> void:
+	for n in range(count):
+		var a := n * 2.399 + progress * 3.0
+		var at := area.get_center() + Vector2(cos(a), sin(a)) * area.size * (0.3 + 0.3 * _hash(n))
+		at.y -= progress * (6.0 + 10.0 * _hash(n + 4.0))
+		draw_colored_polygon(Kit.diamond_points(at, 0.7 + _hash(n + 2.0), 1.6), Color(color.lightened(0.35), sin(progress * PI) * (0.5 + 0.4 * _hash(n + 1.0))))
+
+func _compass_ring(at: Vector2, radius: float, progress: float, color: Color) -> void:
+	draw_arc(at, radius, 0, TAU, 48, Color(color.lightened(0.4), 0.6 * (1.0 - progress)), 0.8, true)
+	for n in range(8):
+		var direction := Vector2.from_angle(n * TAU / 8 + progress)
+		draw_line(at + direction * radius * (0.35 if n % 2 == 0 else 0.7), at + direction * radius * 1.15, Color(color.lightened(0.5), 0.7 * (1.0 - progress)), 0.6, true)

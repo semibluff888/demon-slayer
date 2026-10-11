@@ -1,19 +1,41 @@
 extends Control
-## Native controls over illustrated scenery; the title poster includes its own lettering.
+## Native controls over illustrated scenery in the 「大正墨金」style. The title
+## poster carries its own lettering; every other screen is built from the kit.
+## Entry motion only offsets drawing, so controls are clickable immediately.
 const SettingsPanel = preload("res://scripts/ui/settings_panel.gd")
-var settings_panel: RefCounted
 const RosterCard = preload("res://scripts/ui/roster_card.gd")
 const StageCard = preload("res://scripts/ui/stage_card.gd")
 const DuelButton = preload("res://scripts/ui/duel_button.gd")
 const BattleStyle = preload("res://scripts/presentation/battle_style.gd")
-const PAPER := Color("fff0c8")
-const GOLD := Color("e6c77f")
-const MUTED := Color("b7bfd0")
-const RED := Color("9f3549")
+const Kit = preload("res://scripts/ui/kit.gd")
+const Backdrop = preload("res://scripts/ui/screen_backdrop.gd")
+const Header = preload("res://scripts/ui/screen_header.gd")
+const PromptBar = preload("res://scripts/ui/prompt_bar.gd")
+const PromptLabel = preload("res://scripts/ui/prompt_label.gd")
+const Wipe = preload("res://scripts/ui/screen_wipe.gd")
+const Showcase = preload("res://scripts/ui/fighter_showcase.gd")
+const StagePreview = preload("res://scripts/ui/stage_preview.gd")
+const Glyphs = preload("res://scripts/ui/command_glyphs.gd")
+const GradientText = preload("res://scripts/ui/gradient_text.gd")
+const Brush = preload("res://scripts/ui/brush_stroke.gd")
+const PAUSE_SHADER = preload("res://scripts/ui/shaders/pause_backdrop.gdshader")
+const PAPER := Kit.PAPER
+const GOLD := Kit.GOLD
+const MUTED := Kit.MUTED
+const RED := Kit.CRIMSON
+const STEPS := ["角色", "场景", "开战"]
+const MODE_NAMES := {"cpu": "单人对战 · VS CPU", "local": "双人对战", "practice": "自由练习"}
+const TITLE_ITEMS := [
+	["mode_cpu", "单人对战", "ARCADE · VS CPU", "与电脑对手一决胜负，先取两回合者获胜。"],
+	["mode_local", "双人对战", "VERSUS · LOCAL", "两名玩家同屏对战，可用键盘或手柄。"],
+	["mode_practice", "自由练习", "TRAINING", "木桩练习连段、必杀、超杀与觉醒。"],
+	["help", "帮助", "GUIDE · MOVE LIST", "按键、攻防规则与全角色招式表。"],
+	["settings", "游戏设置", "OPTIONS", "音量、按键、手柄与必杀动画演出。"]]
+var settings_panel: RefCounted
 var roster_scroll: ScrollContainer
 var roster_cards: Dictionary = {}
 var stage_cards: Dictionary = {}
-var fighter_portraits: Array[TextureRect] = []
+var fighter_portraits: Array = []
 var fighter_names: Array[Label] = []
 var fighter_states: Array[Label] = []
 var slot_buttons: Array[Button] = []
@@ -27,6 +49,12 @@ var shades: Dictionary = {}
 var result_spark_time: float = 0.0
 var result_sparks: Node2D
 var battle_style: bool = false
+var backdrop: Control
+var preview: Control
+var footer: Control
+var embers: Node2D
+var _last_screen: String = ""
+var _quiet: bool = true
 
 func _ready() -> void:
 	# Godot's defaults may only bind keyboard accept/cancel; native menus also
@@ -42,14 +70,12 @@ func _ready() -> void:
 	name = "Interface"
 	size = Vector2(1280, 720)
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
-	var ui_theme := Theme.new()
-	ui_theme.default_font = catalog.body_font
-	ui_theme.default_font_size = 18
-	theme = ui_theme
+	texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
+	theme = catalog.ui_assets().build_theme(catalog.body_font, catalog.title_font)
 	for side in ["left", "right", "bottom"]:
 		var gradient := Gradient.new()
-		gradient.colors = PackedColorArray([Color(0.022, 0.035, 0.075, 0.98), Color(0.028, 0.045, 0.09, 0.83), Color(0.025, 0.04, 0.07, 0)])
-		gradient.offsets = PackedFloat32Array([0, 0.47, 1])
+		gradient.colors = PackedColorArray([Color(Kit.INK_900, 0.97), Color(Kit.INK_800, 0.8), Color(Kit.INK_800, 0)])
+		gradient.offsets = PackedFloat32Array([0, 0.5, 1])
 		var shade := GradientTexture2D.new()
 		shade.gradient = gradient
 		shade.width = 256
@@ -63,7 +89,9 @@ func _process(delta: float) -> void:
 	if app.paused:
 		return
 	motion_time += delta
-	if is_instance_valid(result_sparks) and result_spark_time < 1.1:
+	if is_instance_valid(embers):
+		embers.queue_redraw()
+	if is_instance_valid(result_sparks) and result_spark_time < 2.4:
 		result_spark_time += delta
 		result_sparks.queue_redraw()
 	for entry: Dictionary in decorative:
@@ -71,7 +99,7 @@ func _process(delta: float) -> void:
 			entry.node.position = entry.origin + Vector2(sin(motion_time * 0.38 + entry.phase) * 2, cos(motion_time * 0.32 + entry.phase) * 1.8)
 
 func clear() -> void:
-	settings_panel=null
+	settings_panel = null
 	roster_cards.clear()
 	stage_cards.clear()
 	fighter_portraits.clear()
@@ -85,6 +113,11 @@ func clear() -> void:
 	decorative.clear()
 	result_sparks = null
 	result_spark_time = 0
+	backdrop = null
+	preview = null
+	footer = null
+	embers = null
+	_quiet = true
 	for child in get_children():
 		remove_child(child)
 		child.queue_free()
@@ -94,11 +127,19 @@ func clear() -> void:
 	app.start_button = null
 
 func reveal() -> void:
-	modulate.a = 0.25
-	transition = create_tween()
-	transition.tween_property(self, "modulate:a", 1.0, 0.24).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	var fresh: bool = app.screen != _last_screen
+	_last_screen = app.screen
+	modulate = Color.WHITE
+	if fresh and app.screen != "battle":
+		add_child(Wipe.new())
 	var focusable: Array[Control] = []
+	var order := 0
 	for child in actions.values():
+		if child is DuelButton and not child.battle_style and not child.keycap and not child.tab:
+			# Short, capped stagger: everything settles within ~0.35 s.
+			child.intro_delay = (0.04 if fresh else 0.0) + mini(order, 5) * 0.025
+			child.intro_time = 0.0
+			order += 1
 		if child is BaseButton and child.focus_mode != Control.FOCUS_NONE and not child.disabled:
 			focusable.append(child)
 	for i in range(focusable.size()):
@@ -108,71 +149,159 @@ func reveal() -> void:
 		focusable[i].focus_neighbor_bottom = focusable[i].get_path_to(next)
 		focusable[i].focus_previous = focusable[i].get_path_to(previous)
 		focusable[i].focus_next = focusable[i].get_path_to(next)
+	_unquiet.call_deferred()
+
+func _unquiet() -> void:
+	_quiet = false
+
+func _focus_cue() -> void:
+	if not _quiet and app.sound != null:
+		app.sound.play("ui_move", 0.35)
+
+# --- Shared prompts ---------------------------------------------------------------
+
+func _prompts(back_label: String = "返回", extra: String = "") -> String:
+	var parts: Array[String] = []
+	if str(app.menu_device).begins_with("pad:"):
+		parts.append("十字键 选择")
+		parts.append("A 确认")
+		if not back_label.is_empty():
+			parts.append("B " + back_label)
+	else:
+		var keys: Array = app.router.current_keys(0)
+		parts.append("%s 确认" % app.router.key_name(keys[4]))
+		if not back_label.is_empty():
+			parts.append("%s %s" % [app.router.key_name(keys[5]), back_label])
+	if not extra.is_empty():
+		parts.append(extra)
+	return " · ".join(parts)
+
+func _footer(bounds: Rect2, prompts: String, note: String = "", align: int = 2) -> Control:
+	var bar := PromptBar.new()
+	bar.position = bounds.position
+	bar.size = bounds.size
+	bar.font = catalog.body_font
+	bar.note_font = catalog.body_font
+	bar.align = align
+	bar.text = prompts
+	bar.note = note
+	add_child(bar)
+	footer = bar
+	return bar
+
+func _header(title_text: String, kicker: String, chip: String = "", step: int = -1) -> Control:
+	var header := Header.new()
+	header.title = title_text
+	header.kicker = kicker
+	header.chip = chip
+	header.step = step
+	if step >= 0:
+		header.steps = PackedStringArray(STEPS)
+	header.display_font = catalog.display_font
+	header.title_font = catalog.title_font
+	header.numeric_font = catalog.numeric_font
+	add_child(header)
+	return header
+
+func _backdrop(left: Color, right: Color, strength: float = 0.55) -> Control:
+	backdrop = Backdrop.new()
+	backdrop.set_tints(left, right, strength)
+	add_child(backdrop)
+	return backdrop
+
+func _pause_veil() -> void:
+	var veil := ColorRect.new()
+	veil.name = "PauseVeil"
+	veil.size = Vector2(1280, 720)
+	veil.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var paint := ShaderMaterial.new()
+	paint.shader = PAUSE_SHADER
+	veil.material = paint
+	add_child(veil)
+
+# --- Title --------------------------------------------------------------------------
 
 func title() -> void:
 	var poster := texture(load("res://art/ui/title-poster.png"), Rect2(0,0,1280,720))
 	poster.name="TitlePoster"
 	poster.texture_filter=CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
-	button("mode_cpu","单人对战",Rect2(55,357,300,51),func():app.choose_mode("cpu"),true,true,26).grab_focus()
-	button("mode_local","双人对战",Rect2(55,420,300,51),func():app.choose_mode("local"),false,true,25)
-	button("mode_practice","自由练习",Rect2(55,483,300,51),func():app.choose_mode("practice"),false,true,25)
-	button("help","帮助",Rect2(55,546,300,51),app.show_help,false,true,25)
-	button("settings","游戏设置",Rect2(55,609,300,51),app.show_settings,false,true,25)
+	# Soft ink wash under the menu keeps it legible over the crowded poster.
+	paint(Rect2(0, 0, 1280, 720), func(canvas: Control):
+		Kit.shade(canvas, Rect2(0, 180, 760, 540), Kit.INK_900, func(u: float, v: float) -> float:
+			return 0.9 * (1.0 - smoothstep(0.35, 1.0, u)) * smoothstep(0.0, 0.42, v))
+		Kit.shade(canvas, Rect2(0, 560, 1280, 160), Kit.INK_900, func(_u: float, v: float) -> float:
+			return 0.85 * smoothstep(0.0, 1.0, v)))
+	embers = Node2D.new()
+	var additive := CanvasItemMaterial.new()
+	additive.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
+	embers.material = additive
+	embers.draw.connect(_draw_embers)
+	add_child(embers)
+	var captions := {}
+	var callbacks := {"mode_cpu": func(): app.choose_mode("cpu"), "mode_local": func(): app.choose_mode("local"),
+		"mode_practice": func(): app.choose_mode("practice"), "help": app.show_help, "settings": app.show_settings}
+	for i in range(TITLE_ITEMS.size()):
+		var item: Array = TITLE_ITEMS[i]
+		var node := button(item[0], item[1], Rect2(56, 350 + i * 60, 336, 54), callbacks[item[0]], false, true, 24)
+		node.kicker = Kit.numeral(i + 1)
+		node.subtitle = item[2]
+		captions[node] = item[3]
+	var bar := _footer(Rect2(56, 666, 1168, 36), _prompts("", "F2 静音"), TITLE_ITEMS[0][3])
+	for node: Control in captions:
+		node.focus_entered.connect(func(): bar.note = captions[node])
+	actions.mode_cpu.grab_focus()
 	reveal()
+
+func _draw_embers() -> void:
+	for i in range(26):
+		var phase := i * 2.399
+		var y := fposmod(700.0 - motion_time * (14.0 + (i % 5) * 6.0) - i * 61.0, 760.0) - 20.0
+		var x := fposmod(80.0 + i * 197.3 + sin(motion_time * 0.5 + phase) * 26.0, 1280.0)
+		var life := clampf(y / 720.0, 0, 1)
+		var flicker := 0.55 + 0.45 * sin(motion_time * 3.0 + phase * 2.0)
+		var color := Color(1.0, 0.62 + (i % 3) * 0.08, 0.32, 0.5 * flicker * life)
+		embers.draw_circle(Vector2(x, y), 4.0 + (i % 3), Color(color, color.a * 0.25), true, -1, true)
+		embers.draw_circle(Vector2(x, y), 1.4 + (i % 3) * 0.5, color, true, -1, true)
 
 func settings() -> void:
 	settings_panel=SettingsPanel.new()
 	settings_panel.build(self)
 
-func slash(bounds: Rect2, color: Color, cut: float = 40) -> void:
-	var polygon := Polygon2D.new()
-	polygon.polygon = PackedVector2Array([bounds.position + Vector2(cut, 0), Vector2(bounds.end.x, bounds.position.y), bounds.end - Vector2(cut, 0), Vector2(bounds.position.x, bounds.end.y)])
-	polygon.color = color
-	add_child(polygon)
-
-func hero_portrait(id: String, bounds: Rect2, faces_right: bool) -> TextureRect:
-	var visual = catalog.characters[id]
-	var node := TextureRect.new()
-	node.position = bounds.position
-	node.size = bounds.size
-	node.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	node.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	node.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	add_child(node)
-	_set_hero(node, visual, faces_right)
-	return node
-
-func _set_hero(node: TextureRect, visual: Resource, faces_right: bool) -> void:
-	if visual.portrait == null: return
-	var crop := AtlasTexture.new()
-	crop.atlas = visual.portrait
-	var height: float = visual.portrait.get_height() * 0.72
-	var width: float = minf(visual.portrait.get_width(), height * node.size.x / node.size.y)
-	var center: float = visual.menu_focus_x * visual.portrait.get_width()
-	crop.region = Rect2(clampf(center - width * 0.5, 0, visual.portrait.get_width() - width), 0, width, height)
-	node.texture = crop
-	node.flip_h = faces_right != visual.portrait_faces_right
+# --- Character select ------------------------------------------------------------------
 
 func setup() -> void:
-	rect(Rect2(0, 0, 1280, 720), Color("09111f"))
-	slash(Rect2(0, 76, 529, 351), Color("153642"), 72)
-	slash(Rect2(751, 76, 529, 351), Color("422639"), 72)
-	label("选择角色", Rect2(47, 22, 495, 56), 36, PAPER, true)
-	label("练习" if app.mode == "practice" else ("单人" if app.mode == "cpu" else "双人"), Rect2(1053, 30, 179, 30), 17, MUTED, false, HORIZONTAL_ALIGNMENT_RIGHT)
-	rule(Vector2(49, 83), 1182, Color(GOLD, 0.28))
+	_backdrop(Color("1d4f5c"), Color("5c1d2a"))
+	_header("选择角色", "CHARACTER SELECT", MODE_NAMES.get(app.mode, ""), 0)
+	for slot in range(2):
+		var showcase := Showcase.new()
+		showcase.slot = slot
+		showcase.display_font = catalog.display_font
+		showcase.title_font = catalog.title_font
+		showcase.body_font = catalog.body_font
+		add_child(showcase)
+		fighter_portraits.append(showcase)
+	var vs_band := Brush.new(6.1)
+	vs_band.configure(Rect2(548, 252, 184, 74), Color(Kit.CRIMSON, 0.92), 24.0)
+	add_child(vs_band)
+	var vs := GradientText.new()
+	vs.setup(catalog.numeric_font, "VS", 92)
+	vs.skew = -0.2
+	vs.outline = 10
+	vs.position = Vector2(640, 322)
+	add_child(vs)
+	paint(Rect2(520, 330, 240, 40), func(canvas: Control):
+		Kit.tracked(canvas, catalog.display_font, "宿命对决", Vector2(120, 26), 22, Kit.GOLD_HI, 6.0, 1, 4))
 	for slot in range(2):
 		var left := slot == 0
-		var x := 56.0 if left else 872.0
-		var portrait_node := hero_portrait(app.characters[slot], Rect2(48 if left else 796, 92, 436, 304), left)
-		fighter_portraits.append(portrait_node)
-		slot_buttons.append(button("slot_%d" % [slot+1], "P%d" % [slot+1], Rect2(56 if left else 1110, 394, 114, 35), func(): app.selection.activate(slot), false, false, 17))
-		fighter_states.append(label("", Rect2(x, 432, 352, 25), 16, MUTED, false, HORIZONTAL_ALIGNMENT_RIGHT if not left else HORIZONTAL_ALIGNMENT_LEFT))
-		fighter_names.append(label("", Rect2(191 if left else 758, 389, 333, 47), 31, PAPER, true, HORIZONTAL_ALIGNMENT_RIGHT if not left else HORIZONTAL_ALIGNMENT_LEFT))
-	label("VS", Rect2(529, 209, 222, 103), 77, GOLD, true, HORIZONTAL_ALIGNMENT_CENTER)
+		var align := HORIZONTAL_ALIGNMENT_LEFT if left else HORIZONTAL_ALIGNMENT_RIGHT
+		slot_buttons.append(button("slot_%d" % [slot+1], "P%d" % [slot+1], Rect2(40 if left else 1130, 102, 110, 34), func(): app.selection.activate(slot), false, false, 17))
+		fighter_states.append(label("", Rect2(162 if left else 918, 106, 200, 26), 15, MUTED, false, align))
+		fighter_names.append(label("", Rect2(36 if left else 904, 438, 340, 70), 56, PAPER, false, align, "display"))
+	paint(Rect2(298, 534, 684, 124), _draw_roster_plate)
 	roster_scroll = ScrollContainer.new()
 	roster_scroll.name = "RosterScroll"
-	roster_scroll.position = Vector2(319, 450)
-	roster_scroll.size = Vector2(642, 192)
+	roster_scroll.position = Vector2(319, 556)
+	roster_scroll.size = Vector2(642, 96)
 	roster_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	roster_scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
 	add_child(roster_scroll)
@@ -190,6 +319,8 @@ func setup() -> void:
 		card.name = "character_" + id
 		card.custom_minimum_size = Vector2(96, 88)
 		card.portrait = catalog.characters[id].avatar
+		card.accent = catalog.characters[id].accent
+		card.tag_font = catalog.numeric_font
 		card.tooltip_text = catalog.characters[id].display_name
 		card.pressed.connect(func(): app.select_character(app.selection.active_slot, id))
 		card.mouse_entered.connect(card.queue_redraw)
@@ -199,22 +330,34 @@ func setup() -> void:
 		grid.add_child(card)
 		roster_cards[id] = card
 		actions["character_" + id] = card
-	button("back", "返回", Rect2(48, 663, 130, 39), app.show_title, false, false, 17)
-	app.device_notice = label("", Rect2(213, 669, 760, 29), 15, MUTED)
-	app.start_button = button("start", "确认", Rect2(1006, 654, 225, 48), func(): app.selection.confirm(app.selection.active_slot), true, true, 21)
+	button("back", "返回", Rect2(40, 664, 150, 44), app.show_title, false, false, 18)
+	app.device_notice = prompt_label(Rect2(210, 668, 810, 36))
+	app.start_button = button("start", "确认", Rect2(1040, 658, 200, 50), func(): app.selection.confirm(app.selection.active_slot), true, true, 22)
 	refresh_setup()
 	reveal()
+
+func _draw_roster_plate(canvas: Control) -> void:
+	var rect := Rect2(Vector2.ZERO, canvas.size)
+	var shape := Kit.chamfer(rect, 14, 6)
+	Kit.gradient_fill(canvas, shape, Color(Kit.INK_700, 0.9), Color(Kit.INK_900, 0.94))
+	Kit.frame(canvas, shape, Kit.GOLD, 0.8, 2.0, 1.0)
+	Kit.tracked(canvas, catalog.numeric_font, "ROSTER", Vector2(18, 16), 10, Color(Kit.GOLD, 0.7), 3.0)
+	Kit.brackets(canvas, rect.grow(-5), 10, Color(Kit.GOLD_HI, 0.5), 1.2)
 
 func refresh_setup() -> void:
 	if app.screen != "setup" or fighter_portraits.size() != 2: return
 	for slot in range(2):
 		var visual = catalog.characters[app.characters[slot]]
-		_set_hero(fighter_portraits[slot], visual, slot == 0)
+		var definition: Resource = app.combat.catalog.characters.get(app.characters[slot])
+		var active: bool = app.mode == "local" or app.selection.active_slot == slot
+		fighter_portraits[slot].configure(visual, definition, app.selection.ready[slot], active)
 		fighter_names[slot].text = visual.display_name
-		fighter_states[slot].text = "已就绪" if app.selection.ready[slot] else ("选择中" if app.mode == "local" or app.selection.active_slot == slot else "")
-		fighter_states[slot].modulate = Color("69dbea") if slot == 0 else Color("f191ae")
+		fighter_states[slot].text = "已就绪" if app.selection.ready[slot] else ("选择中…" if app.mode == "local" or app.selection.active_slot == slot else "")
+		fighter_states[slot].modulate = Kit.player_color(slot)
 		slot_buttons[slot].text = "P1" if slot == 0 else ("木桩" if app.mode == "practice" else "CPU" if app.mode == "cpu" else "P2")
 		slot_buttons[slot].selected = app.selection.active_slot == slot
+	if backdrop != null:
+		backdrop.set_tints(catalog.characters[app.characters[0]].accent.darkened(0.45), catalog.characters[app.characters[1]].accent.darkened(0.45), 0.6)
 	for id: String in roster_cards:
 		var card: Button = roster_cards[id]
 		card.cursors.clear()
@@ -228,34 +371,44 @@ func refresh_setup() -> void:
 	app.start_button.text = "确认 P%d" % [app.selection.active_slot + 1] if app.mode == "local" else "确认"
 	app._validate_setup()
 
+# --- Stage select -------------------------------------------------------------------
+
 func stages() -> void:
-	rect(Rect2(0, 0, 1280, 720), Color("09111f"))
-	slash(Rect2(623, 0, 657, 720), Color("202b40"), 140)
-	label("选择场景", Rect2(49, 35, 600, 63), 41, PAPER, true)
-	rule(Vector2(51, 113), 1178, Color(GOLD, 0.32))
+	_backdrop(Color("27304f"), Color("4a2034"))
+	_header("选择场景", "STAGE SELECT", MODE_NAMES.get(app.mode, ""), 1)
+	preview = StagePreview.new()
+	preview.display_font = catalog.display_font
+	preview.title_font = catalog.title_font
+	preview.body_font = catalog.body_font
+	preview.numeric_font = catalog.numeric_font
+	for slot in range(2):
+		preview.avatars.append(catalog.characters[app.characters[slot]].avatar)
+	add_child(preview)
+	var count: int = catalog.stages.size()
+	var gap := 14.0
+	var card_height := minf(106.0, (470.0 - (count - 1) * gap) / count)
+	var top := 140.0 + (470.0 - count * card_height - (count - 1) * gap) * 0.5
 	var index := 0
-	var columns := mini(4, catalog.stages.size())
-	var rows := ceili(float(catalog.stages.size()) / columns)
-	var card_width := (1178.0 - (columns - 1) * 20.0) / columns
-	var card_height := minf(337.0, (432.0 - (rows - 1) * 18.0) / rows)
-	var top := 158.0 + (432.0 - rows * card_height - (rows - 1) * 18.0) * 0.5
 	for id: String in catalog.stages:
 		var visual = catalog.stages[id]
 		var card := StageCard.new()
 		card.name = "stage_" + id
 		card.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
 		card.caption = visual.display_name
+		card.subtitle = visual.subtitle
 		card.preview = visual.thumbnail
-		card.position = Vector2(51 + (index % columns) * (card_width + 20), top + (index / columns) * (card_height + 18))
-		card.size = Vector2(card_width, card_height)
+		card.title_font = catalog.title_font
+		card.body_font = catalog.body_font
+		card.position = Vector2(840, top + index * (card_height + gap))
+		card.size = Vector2(400, card_height)
 		card.pressed.connect(func(): app.stage_id = id; refresh_stages())
 		add_child(card)
 		actions["stage_" + id] = card
 		stage_cards[id] = card
 		index += 1
-	button("back", "返回选人", Rect2(51, 660, 180, 42), app.show_setup, false, false, 18)
-	app.device_notice = label("", Rect2(274, 666, 677, 30), 15, MUTED)
-	app.start_button = button("start", "开战", Rect2(974, 647, 257, 56), func(): app.selection.confirm(0), true, true, 25)
+	button("back", "返回选人", Rect2(40, 664, 190, 44), app.show_setup, false, false, 18)
+	app.device_notice = prompt_label(Rect2(250, 668, 740, 36))
+	app.start_button = button("start", "开战", Rect2(1010, 656, 230, 54), func(): app.selection.confirm(0), true, true, 25)
 	refresh_stages()
 	reveal()
 
@@ -263,6 +416,8 @@ func refresh_stages() -> void:
 	for id: String in stage_cards:
 		stage_cards[id].selected = id == app.stage_id
 		stage_cards[id].queue_redraw()
+	if preview != null and catalog.stages.has(app.stage_id):
+		preview.set_stage(catalog.stages[app.stage_id])
 	if stage_cards.has(app.stage_id): stage_cards[app.stage_id].grab_focus()
 	app._validate_setup()
 
@@ -276,207 +431,363 @@ func portrait(id: String, bounds: Rect2, flip: bool = false, moving: bool = fals
 	if moving:
 		decorative.append({"node": node, "origin": bounds.position, "phase": decorative.size() * 1.7})
 
+# --- Battle footer and pause ------------------------------------------------------------
+
 func battle() -> void:
 	battle_style = true
 	if app.mode == "practice":
-		button("practice_options", "练习设置 F3", Rect2(507, 694, 150, 26), app.show_practice_options, false, false, 13).focus_mode = Control.FOCUS_NONE
-	button("pause", "暂停  Esc", Rect2(680, 694, 112, 26), func(): app.set_paused(true), false, false, 13).focus_mode = Control.FOCUS_NONE
+		var options := button("practice_options", "练习设置", Rect2(486, 694, 150, 26), app.show_practice_options, false, false, 13)
+		options.focus_mode = Control.FOCUS_NONE
+		options.hotkey = "F3"
+	var pause_button := button("pause", "暂停", Rect2(652, 694, 128, 26), func(): app.set_paused(true), false, false, 13)
+	pause_button.focus_mode = Control.FOCUS_NONE
+	pause_button.hotkey = "Esc"
 
 func pause(reason: String) -> void:
 	battle_style=false
-	rect(Rect2(0,0,1280,720),Color(0.018,0.03,0.065,0.72))
-	panel(Rect2(399,43,482,634))
-	label("P A U S E",Rect2(434,77,412,23),14,GOLD,false,HORIZONTAL_ALIGNMENT_CENTER)
-	label("暂停对战",Rect2(424,111,432,67),45,PAPER,true,HORIZONTAL_ALIGNMENT_CENTER)
-	label(reason,Rect2(426,187,428,54),16,MUTED,false,HORIZONTAL_ALIGNMENT_CENTER)
-	var resume:=button("resume","继续练习" if app.mode=="practice" else "继续对战",Rect2(449,260,382,49),func():app.set_paused(false),true,true)
+	_pause_veil()
+	paint(Rect2(0, 0, 1280, 720), _draw_pause_panel)
+	var resume:=button("resume","继续练习" if app.mode=="practice" else "继续对战",Rect2(48,252,410,58),func():app.set_paused(false),true,true,24)
+	resume.subtitle = "RESUME"
 	resume.disabled=not app._devices_ready()
-	button("restart","重置练习" if app.mode=="practice" else "重新开始比赛",Rect2(449,323,382,43),app.start_match,false,false,19)
-	button("move_list","帮助与招式表",Rect2(449,379,382,43),app.show_help,false,false,19)
-	button("settings","游戏设置",Rect2(449,435,382,43),app.show_settings,false,false,19)
+	var items := [["restart","重置练习" if app.mode=="practice" else "重新开始比赛","RESTART",app.start_match],
+		["move_list","帮助与招式表","MOVE LIST",app.show_help],["settings","游戏设置","OPTIONS",app.show_settings]]
 	if app.mode=="practice":
-		button("practice_options","木桩与气槽设置",Rect2(449,491,382,43),app.show_practice_options,false,false,19)
-	button("setup","返回选人",Rect2(449,574,382,43),app.show_setup,false,false,19)
+		items.append(["practice_options","木桩与气槽设置","TRAINING",app.show_practice_options])
+	items.append(["setup","返回选人","CHARACTER SELECT",app.show_setup])
+	for i in range(items.size()):
+		var node := button(items[i][0],items[i][1],Rect2(48,322+i*56,410,50),items[i][3],false,true,19)
+		node.subtitle = items[i][2]
+	label(reason,Rect2(56,206,410,40),14,Kit.GOLD_HI,false,HORIZONTAL_ALIGNMENT_LEFT)
+	_footer(Rect2(48,666,1184,36),_prompts("继续"),"",2)
 	if resume.disabled:actions.settings.grab_focus()
 	else:resume.grab_focus()
 	reveal()
 
+func _draw_pause_panel(canvas: Control) -> void:
+	var panel := PackedVector2Array([Vector2(0, 0), Vector2(520, 0), Vector2(470, 720), Vector2(0, 720)])
+	var colors := PackedColorArray([Color(Kit.INK_800, 0.97), Color(Kit.INK_800, 0.9), Color(Kit.INK_900, 0.9), Color(Kit.INK_900, 0.97)])
+	canvas.draw_polygon(panel, colors)
+	canvas.draw_line(Vector2(520, 0), Vector2(470, 720), Kit.GOLD, 2.0, true)
+	canvas.draw_line(Vector2(530, 0), Vector2(480, 720), Color(Kit.CRIMSON, 0.7), 1.0, true)
+	Kit.diamond(canvas, Vector2(62, 62), 3.5, Kit.CRIMSON)
+	Kit.tracked(canvas, catalog.numeric_font, "PAUSED", Vector2(74, 67), 13, Kit.GOLD, 4.0)
+	Kit.text(canvas, catalog.display_font, "暂停", Vector2(54, 150), 76, Kit.PAPER, 6)
+	var model = app.combat
+	var info := "修炼模式" if model.practice else "第%s回合  ·  比分 %d : %d" % [Kit.numeral(model.round_number), model.wins[0], model.wins[1]]
+	Kit.text(canvas, catalog.title_font, info, Vector2(58, 186), 16, Kit.GOLD_HI, 3)
+	Kit.rule_out(canvas, Vector2(56, 200), Vector2(440, 200), Kit.GOLD, 1.5)
+	# Quick reference for P1's specials on the right.
+	var definition = model.catalog.characters.get(app.characters[0])
+	if definition == null:
+		return
+	var card := Rect2(574, 118, 650, 460)
+	var shape := Kit.chamfer(card, 18, 5)
+	Kit.gradient_fill(canvas, shape, Color(Kit.INK_700, 0.9), Color(Kit.INK_900, 0.92))
+	Kit.frame(canvas, shape, Kit.GOLD, 0.9, 2.0, 1.0)
+	Kit.tracked(canvas, catalog.numeric_font, "COMMAND LIST", Vector2(card.position.x + 28, card.position.y + 34), 12, Kit.GOLD, 3.0)
+	Kit.text(canvas, catalog.display_font, catalog.characters[app.characters[0]].display_name + " · 招式速查", Vector2(card.position.x + 26, card.position.y + 72), 30, Kit.PAPER, 4)
+	Kit.rule_out(canvas, card.position + Vector2(24, 88), card.position + Vector2(card.size.x - 24, 88), Color(Kit.GOLD, 0.7))
+	for i in range(definition.move_list.size()):
+		var row: Dictionary = definition.move_list[i]
+		var y := card.position.y + 126 + i * 64
+		Glyphs.paint(canvas, catalog.numeric_font, row.input, Vector2(card.position.x + 28, y), 22)
+		var size := Kit.fitted(catalog.title_font, row.name, 18, 330)
+		Kit.text(canvas, catalog.title_font, row.name, Vector2(card.position.x + 290, y + 2), size, Kit.PAPER, 3)
+		Kit.text(canvas, catalog.body_font, row.description, Vector2(card.position.x + 290, y + 24), 13, Kit.MUTED, 2)
+		if i < definition.move_list.size() - 1:
+			Kit.rule(canvas, Vector2(card.position.x + 24, y + 38), Vector2(card.end.x - 24, y + 38), Color(Kit.GOLD, 0.2))
+
+# --- Result -------------------------------------------------------------------------------
+
 func result() -> void:
-	rect(Rect2(0, 0, 1280, 720), Color(0.025, 0.035, 0.075, 0.40))
 	var winner: int = app.combat.match_winner
 	var visual = catalog.characters[app.characters[winner]]
-	portrait(visual.character_id, Rect2(86, 23, 531, 694), true, true)
-	texture(shades.right, Rect2(502, 0, 778, 720))
-	texture(shades.bottom, Rect2(0, 615, 1280, 105))
-	label("胜", Rect2(1060, 96, 157, 207), 154, Color(RED, 0.62), true)
-	label("V I C T O R Y", Rect2(683, 131, 423, 27), 18, GOLD)
-	rule(Vector2(684, 184), 62, RED)
-	label(visual.display_name, Rect2(678, 211, 544, 79), 54, PAPER, true)
-	label(visual.epithet, Rect2(685, 306, 498, 34), 23, MUTED, true)
-	label("P%d  获胜" % [winner + 1], Rect2(687, 377, 241, 33), 19, visual.accent)
-	label("%d  :  %d" % [app.combat.wins[0], app.combat.wins[1]], Rect2(969, 363, 211, 60), 42, GOLD, true, HORIZONTAL_ALIGNMENT_RIGHT)
-	button("replay", "再来一场", Rect2(685, 472, 495, 61), app.start_match, true, true).grab_focus()
-	button("setup", "返回选人", Rect2(685, 558, 237, 44), app.show_setup, false, false, 18)
-	button("home", "返回主菜单", Rect2(943, 558, 237, 44), app.show_title, false, false, 18)
-	label("月色如初，再决胜负。", Rect2(685, 662, 495, 26), 17, MUTED, true)
+	_backdrop(visual.accent.darkened(0.35), Color("5c1222"), 0.7)
+	var slash := Brush.new(3.3)
+	slash.configure(Rect2(-60, 250, 820, 230), Color(Kit.CRIMSON, 0.55), 60.0)
+	add_child(slash)
+	portrait(visual.character_id, Rect2(70, 12, 560, 700), true, true)
+	texture(shades.right, Rect2(560, 0, 720, 720))
+	texture(shades.bottom, Rect2(0, 600, 1280, 120))
+	var big := GradientText.new()
+	big.setup(catalog.display_font, "胜", 240)
+	big.position = Vector2(1146, 296)
+	big.outline = 12
+	big.glow_size = 30
+	big.glow_color = Color(Kit.GOLD, 0.18)
+	big.set_glint(0.35)
+	add_child(big)
+	var name_size := Kit.fitted(catalog.display_font, visual.display_name, 64, 330)
+	paint(Rect2(0, 0, 1280, 720), func(canvas: Control):
+		Kit.diamond(canvas, Vector2(690, 124), 4, Kit.CRIMSON)
+		Kit.tracked(canvas, catalog.numeric_font, "VICTORY", Vector2(704, 130), 18, Kit.GOLD, 8.0)
+		Kit.rule_out(canvas, Vector2(686, 150), Vector2(1000, 150), Kit.GOLD, 1.5)
+		var chip := Rect2(686, 372, 112, 30)
+		canvas.draw_colored_polygon(Kit.slant(chip, 8), Kit.player_color(winner))
+		Kit.text_aligned(canvas, catalog.numeric_font, "P%d WINS" % [winner + 1], Vector2(chip.get_center().x, chip.end.y - 8), 17, Kit.INK_900, 1)
+		var score := "%d  :  %d" % [app.combat.wins[0], app.combat.wins[1]]
+		var score_width := Kit.width(catalog.numeric_font, score, 54)
+		Kit.text_aligned(canvas, catalog.numeric_font, score, Vector2(1204, 410), 54, Kit.GOLD_HI, 2, 6)
+		Kit.text_aligned(canvas, catalog.numeric_font, "P1", Vector2(1196 - score_width, 392), 14, Kit.P1, 2, 3)
+		Kit.text_aligned(canvas, catalog.numeric_font, "P2", Vector2(1212, 392), 14, Kit.P2, 0, 3)
+		Kit.rule_out(canvas, Vector2(686, 432), Vector2(1204, 432), Color(Kit.GOLD, 0.5)))
+	label(visual.display_name, Rect2(684, 160, 350, 90), name_size, PAPER, false, HORIZONTAL_ALIGNMENT_LEFT, "display")
+	label(visual.epithet, Rect2(688, 252, 340, 34), 21, Kit.GOLD_HI, true)
+	label(visual.element_name, Rect2(688, 296, 340, 30), 16, visual.accent.lightened(0.3), true)
+	var replay := button("replay", "再来一场", Rect2(684, 470, 520, 62), app.start_match, true, true, 26)
+	replay.subtitle = "REMATCH"
+	replay.grab_focus()
+	button("setup", "返回选人", Rect2(684, 548, 254, 46), app.show_setup, false, false, 18)
+	button("home", "返回主菜单", Rect2(950, 548, 254, 46), app.show_title, false, false, 18)
+	label("月色如初，再决胜负。", Rect2(688, 612, 520, 40), 26, Color(PAPER, 0.85), false, HORIZONTAL_ALIGNMENT_LEFT, "display")
+	_footer(Rect2(684, 668, 556, 36), _prompts(""), "", 2)
 	result_sparks = Node2D.new()
+	var additive := CanvasItemMaterial.new()
+	additive.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
+	result_sparks.material = additive
 	result_sparks.draw.connect(_draw_result_sparks)
 	add_child(result_sparks)
 	reveal()
 
 func _draw_result_sparks() -> void:
-	var amount := clampf(result_spark_time / 1.1, 0, 1)
-	for i in range(23):
+	# Gold leaf bursts out of the victory mark, then drifts down.
+	for i in range(46):
 		var angle := i * 2.399
-		var at := Vector2(389, 370) + Vector2(cos(angle) * (90 + amount * 220), sin(angle) * (160 + amount * 120))
-		at.y -= amount * 37
-		result_sparks.draw_line(at, at - Vector2(cos(angle), sin(angle)) * (3 + i % 4), Color(GOLD, (1 - amount) * 0.75), 1, true)
+		var speed := 120.0 + (i % 7) * 34.0
+		var t := clampf(result_spark_time - (i % 5) * 0.05, 0, 2.4)
+		var at := Vector2(1146, 210) + Vector2(cos(angle), sin(angle) * 0.7) * speed * Kit.ease_out(t / 1.1)
+		at.y += t * t * 22.0
+		var alpha := clampf(1.0 - t / 2.4, 0, 1) * 0.85
+		var spin := t * 5.0 + i
+		var size := 3.0 + (i % 4)
+		var leaf := PackedVector2Array([at + Vector2(cos(spin), sin(spin)) * size, at + Vector2(cos(spin + 1.9), sin(spin + 1.9)) * size * 0.45,
+			at + Vector2(cos(spin + PI), sin(spin + PI)) * size, at + Vector2(cos(spin + 4.4), sin(spin + 4.4)) * size * 0.45])
+		result_sparks.draw_colored_polygon(leaf, Color(Kit.GOLD_HI if i % 3 else Kit.GOLD, alpha))
+
+# --- Help -------------------------------------------------------------------------------------
 
 func help(page: String = "basics", character_id: String = "") -> void:
-	rect(Rect2(0, 0, 1280, 720), Color(0.02, 0.035, 0.07, 0.9))
-	label("操作指南", Rect2(48, 25, 560, 64), 43, PAPER, true)
-	label("A / B 轻攻击 · C / D 重攻击  /  方向随朝向解释", Rect2(52, 104, 1176, 30), 19, MUTED)
+	_backdrop(Color("1d3e52"), Color("3d1d2c"), 0.45)
+	_header("操作指南", "HOW TO PLAY")
+	var home := button("home", "返回对战" if app.help_return == "battle" else "返回主菜单", Rect2(40, 664, 230, 44), app.close_help, true, true, 18)
+	var tabs := [["guide_basics", "基础攻防", "basics", Rect2(56, 104, 170, 40)], ["guide_normals", "普通技", "normals", Rect2(236, 104, 150, 40)],
+		["guide_moves", "必杀与奥义", "moves", Rect2(396, 104, 190, 40)]]
+	if character_id.is_empty():
+		character_id = app.characters[0]
+	for entry in tabs:
+		var target: String = entry[2]
+		var node := button(entry[0], entry[1], entry[3], func(): _help_page(target, character_id if target != "basics" else ""), false, false, 18)
+		node.tab = true
+		node.selected = page == target
 	if page == "basics":
-		panel(Rect2(50, 164, 553, 461))
-		panel(Rect2(627, 164, 604, 461))
-		label("壹 / 按键与移动", Rect2(75, 181, 508, 42), 25, Color("82d4de"), true)
-		var keys1: Array=app.router.current_keys(0)
-		var keys2: Array=app.router.current_keys(1)
-		var rows := [["移动 / 跳跃",app.router.movement_hint(0),app.router.movement_hint(1)]]
-		for index in range(4):
-			rows.append([["A 轻攻击","B 轻体术","C 重攻击","D 重体术"][index],app.router.key_name(keys1[index+4]),app.router.key_name(keys2[index+4])])
-		label("键盘 P1", Rect2(280, 233, 123, 24), 15, GOLD, false, HORIZONTAL_ALIGNMENT_CENTER)
-		label("键盘 P2", Rect2(439, 233, 123, 24), 15, GOLD, false, HORIZONTAL_ALIGNMENT_CENTER)
-		for i in range(rows.size()):
-			var y := 273 + i * 43
-			label(rows[i][0], Rect2(77, y, 181, 31), 18)
-			keycap(rows[i][1], Rect2(280, y, 123, 32))
-			keycap(rows[i][2], Rect2(439, y, 123, 32))
-		label("觉醒 B+C：P1 %s+%s / P2 %s+%s" % [app.router.key_name(keys1[5]), app.router.key_name(keys1[6]), app.router.key_name(keys2[5]), app.router.key_name(keys2[6])], Rect2(75, 489, 508, 27), 16, GOLD)
-		label("手柄 X/A/Y/B 对应 A/B/C/D；觉醒 A+Y", Rect2(75, 517, 508, 27), 15, MUTED)
-		label("236 = ↓↘→；214 = ↓↙←，朝左时镜像。\n双击前后可短冲刺；按键可在游戏设置中修改。",Rect2(75,547,508,56),16,GOLD)
-		label("贰 / 攻防与资源", Rect2(652, 181, 553, 42), 25, GOLD, true)
-		var lessons := [
-			"后方向站防，后下方向蹲防；跳攻站防、下段蹲防。",
-			"近身 6+D 前投 / 4+D 背投，抓取后 7 帧内 D 拆投。",
-			"A+B 前滚 / 4+A+B 后滚；可躲打击，但全程可被投。",
-			"236 / 214 可省斜方向，0.5秒完成；攻击可晚0.2秒。",
-			"轻技 → 重技 → 必杀 → 超杀；空挥不能取消。",
-			"236236+A/C 超杀耗 1 格；236236+A+C MAX 耗 3 格。",
-			"B+C 耗2格：普通觉醒10秒，普通技命中快速觉醒6秒。",
-			"觉醒不回气：超杀1格保留觉醒；MAX1格耗尽觉醒。"]
-		for i in range(lessons.size()):
-			label(lessons[i], Rect2(654, 244 + i * 43, 549, 39), 17, PAPER)
+		paint(Rect2(40, 160, 1200, 490), _draw_basics)
 	else:
-		if character_id.is_empty():
-			character_id = app.characters[0]
 		var definition = app.combat.catalog.characters[character_id]
-		var selector := device_option("guide_character", Rect2(865, 41, 365, 43))
+		var selector := device_option("guide_character", Rect2(880, 102, 352, 42))
 		var ids: Array = app.combat.catalog.characters.keys()
 		for id in ids:
 			selector.add_item(app.combat.catalog.characters[id].display_name)
 		selector.select(ids.find(character_id))
 		selector.item_selected.connect(func(index: int): _help_page(page, ids[index]))
-		panel(Rect2(50, 160, 1180, 471))
 		if page == "moves":
-			for i in range(definition.move_list.size()):
-				var row: Dictionary = definition.move_list[i]
-				var y := 170 + i * 58
-				label(row.input, Rect2(75, y, 246, 43), 22, definition.accent)
-				label(row.name, Rect2(330, y, 860, 29), 22, PAPER, true)
-				var description: String = row.description
-				if i == 3:
-					description += "；觉醒中伤害110%，耗1格，保留觉醒"
-				elif i == 4:
-					description += "；觉醒中耗1格，并耗尽觉醒"
-				label(description, Rect2(333, y + 28, 855, 24), 15, MUTED)
-				rule(Vector2(75, y + 57), 1115, Color(GOLD, 0.18))
-			label("B+C · " + definition.awakening.display_name + " · 2格 / 普通10秒、快速6秒", Rect2(75, 464, 1115, 24), 16, definition.accent)
-			label(definition.awakening.effect_summary(), Rect2(75, 491, 1115, 24), 15, MUTED)
-			label("示例连段 / j. 为空中，5 为站立，2 为蹲下", Rect2(75, 520, 1115, 26), 17, GOLD)
-			for i in range(definition.combos.size()):
-				label(definition.combos[i], Rect2(76 + (i % 2) * 571, 553 + int(i / 2) * 36, 554, 30), 18)
+			paint(Rect2(40, 160, 1200, 490), func(canvas: Control): _draw_moves(canvas, definition))
 		else:
-			var keys: Array = definition.normals.keys()
-			for i in range(keys.size()):
-				var move: Resource = definition.normals[keys[i]]
-				var x := 76 + int(i / 6) * 576
-				var y := 179 + (i % 6) * 69
-				label(keys[i], Rect2(x, y, 67, 32), 24, definition.accent)
-				label(move.display_name, Rect2(x + 83, y, 426, 30), 20, PAPER, true)
-				var guard := "站防" if move.level == "high" else ("蹲防" if move.level == "low" else "站蹲均可防")
-				label("起手 %d 帧 / 伤害 %d / %s%s" % [move.startup, move.damage, guard, " / 扫倒终结" if move.knockdown else ""],
-					Rect2(x + 84, y + 32, 427, 24), 15, MUTED)
-	button("home", "返回对战" if app.help_return == "battle" else "返回主菜单", Rect2(51, 660, 224, 42), app.close_help, true, true, 18).grab_focus()
-	button("guide_basics", "基础攻防", Rect2(296, 660, 180, 42), func(): _help_page("basics"), false, false, 18)
-	button("guide_normals", "普通技", Rect2(491, 660, 165, 42), func(): _help_page("normals", character_id), false, false, 18)
-	button("guide_moves", "必杀与奥义", Rect2(671, 660, 210, 42), func(): _help_page("moves", character_id), false, false, 18)
-	label("F1 判定框 / F2 静音", Rect2(916, 667, 314, 27), 15, MUTED, false, HORIZONTAL_ALIGNMENT_RIGHT)
+			paint(Rect2(40, 160, 1200, 490), func(canvas: Control): _draw_normals(canvas, definition))
+	_footer(Rect2(300, 668, 932, 36), _prompts("返回", "F1 判定框 · F2 静音"), "", 2)
+	home.grab_focus()
 	reveal()
 
 func _help_page(page: String, id: String = "") -> void:
 	clear()
 	help(page, id)
 
+func _section(canvas: Control, rect: Rect2, numeral: String, heading: String, accent: Color = Kit.GOLD_HI) -> void:
+	var shape := Kit.chamfer(rect, 16, 5)
+	Kit.gradient_fill(canvas, shape, Color(Kit.INK_700, 0.88), Color(Kit.INK_900, 0.92))
+	Kit.frame(canvas, shape, Kit.GOLD, 0.85, 2.0, 1.0)
+	Kit.seal(canvas, Rect2(rect.position + Vector2(20, 18), Vector2(34, 34)), catalog.display_font, numeral)
+	Kit.text(canvas, catalog.title_font, heading, rect.position + Vector2(66, 44), 22, accent, 3)
+	Kit.rule_out(canvas, rect.position + Vector2(20, 64), rect.position + Vector2(rect.size.x - 20, 64), Color(Kit.GOLD, 0.6))
+
+func _draw_basics(canvas: Control) -> void:
+	var router = app.router
+	var keys1: Array = router.current_keys(0)
+	var keys2: Array = router.current_keys(1)
+	var font: Font = catalog.body_font
+	_section(canvas, Rect2(0, 0, 580, 490), "壹", "按键与移动", Color("8fdde6"))
+	Kit.text_aligned(canvas, catalog.title_font, "键盘 P1", Vector2(306, 96), 15, Kit.P1, 1, 3)
+	Kit.text_aligned(canvas, catalog.title_font, "键盘 P2", Vector2(466, 96), 15, Kit.P2, 1, 3)
+	var rows := [["移动 / 跳跃", router.movement_hint(0), router.movement_hint(1)]]
+	for index in range(4):
+		rows.append([["A 轻攻击", "B 轻体术", "C 重攻击", "D 重体术"][index], router.key_name(keys1[index + 4]), router.key_name(keys2[index + 4])])
+	for i in range(rows.size()):
+		var y := 128.0 + i * 46
+		if i % 2 == 0:
+			canvas.draw_rect(Rect2(16, y - 20, 548, 40), Color(Kit.INK_600, 0.35))
+		Kit.text(canvas, catalog.title_font, rows[i][0], Vector2(30, y + 6), 17, Kit.PAPER, 3)
+		for column in range(2):
+			var value: String = rows[i][column + 1]
+			var center := 306.0 + column * 160
+			Kit.keycap(canvas, font, value, Vector2(center - Kit.keycap_width(font, value, 26) * 0.5, y), 26)
+	var y2 := 370.0
+	Kit.text(canvas, font, "觉醒 B+C：P1 %s+%s / P2 %s+%s" % [router.key_name(keys1[5]), router.key_name(keys1[6]), router.key_name(keys2[5]), router.key_name(keys2[6])], Vector2(30, y2), 16, Kit.GOLD_HI, 3)
+	Kit.text(canvas, font, "手柄 X/A/Y/B 对应 A/B/C/D；觉醒 A+Y", Vector2(30, y2 + 30), 15, Kit.MUTED, 3)
+	Kit.text(canvas, font, "236 = ↓↘→；214 = ↓↙←，朝左时镜像。", Vector2(30, y2 + 62), 15, Kit.PAPER_DIM, 3)
+	Kit.text(canvas, font, "双击前后可短冲刺；按键可在游戏设置中修改。", Vector2(30, y2 + 90), 15, Kit.PAPER_DIM, 3)
+	_section(canvas, Rect2(600, 0, 600, 490), "贰", "攻防与资源")
+	var lessons := [
+		"后方向站防，后下方向蹲防；跳攻站防、下段蹲防。",
+		"近身 6+D 前投 / 4+D 背投，抓取后 7 帧内 D 拆投。",
+		"A+B 前滚 / 4+A+B 后滚；可躲打击，但全程可被投。",
+		"236 / 214 可省斜方向，0.5秒完成；攻击可晚0.2秒。",
+		"轻技 → 重技 → 必杀 → 超杀；空挥不能取消。",
+		"236236+A/C 超杀耗 1 格；236236+A+C MAX 耗 3 格。",
+		"B+C 耗2格：普通觉醒10秒，普通技命中快速觉醒6秒。",
+		"觉醒不回气：超杀1格保留觉醒；MAX1格耗尽觉醒。"]
+	for i in range(lessons.size()):
+		var y := 106.0 + i * 47
+		Kit.diamond(canvas, Vector2(626, y - 6), 4, Kit.CRIMSON if i % 2 == 0 else Kit.GOLD)
+		var size := Kit.fitted(font, lessons[i], 17, 540)
+		Kit.text(canvas, font, lessons[i], Vector2(642, y), size, Kit.PAPER, 3)
+		if i < lessons.size() - 1:
+			Kit.rule(canvas, Vector2(620, y + 18), Vector2(1180, y + 18), Color(Kit.GOLD, 0.16))
+
+func _draw_moves(canvas: Control, definition: Resource) -> void:
+	var accent: Color = definition.accent
+	_section(canvas, Rect2(0, 0, 1200, 490), "叁", definition.display_name + " · 必杀与奥义", accent.lightened(0.3))
+	for i in range(definition.move_list.size()):
+		var row: Dictionary = definition.move_list[i]
+		var y := 100.0 + i * 54
+		Glyphs.paint(canvas, catalog.numeric_font, row.input, Vector2(26, y), 24)
+		var description: String = row.description
+		if i == 3:
+			description += "；觉醒中伤害110%，耗1格，保留觉醒"
+		elif i == 4:
+			description += "；觉醒中耗1格，并耗尽觉醒"
+		Kit.text(canvas, catalog.title_font, row.name, Vector2(330, y), 20, Kit.PAPER, 3)
+		Kit.text(canvas, catalog.body_font, description, Vector2(332, y + 22), 14, Kit.MUTED, 2)
+		Kit.rule(canvas, Vector2(20, y + 34), Vector2(1180, y + 34), Color(Kit.GOLD, 0.16))
+	var awakening: Resource = definition.awakening
+	Kit.seal(canvas, Rect2(24, 362, 26, 26), catalog.display_font, "醒", Kit.CRIMSON)
+	Kit.text(canvas, catalog.title_font, "B+C · " + awakening.display_name + " · 2格 / 普通10秒、快速6秒", Vector2(60, 382), 16, awakening.color.lightened(0.2), 3)
+	Kit.text(canvas, catalog.body_font, awakening.effect_summary(), Vector2(60, 406), 14, Kit.MUTED, 2)
+	Kit.text(canvas, catalog.title_font, "示例连段 / j. 为空中，5 为站立，2 为蹲下", Vector2(26, 436), 15, Kit.GOLD_HI, 3)
+	for i in range(definition.combos.size()):
+		Kit.text(canvas, catalog.body_font, definition.combos[i], Vector2(26 + (i % 2) * 590, 462 + int(i / 2) * 24), 15, Kit.PAPER, 2)
+
+func _draw_normals(canvas: Control, definition: Resource) -> void:
+	var accent: Color = definition.accent
+	_section(canvas, Rect2(0, 0, 1200, 490), "肆", definition.display_name + " · 普通技", accent.lightened(0.3))
+	var keys: Array = definition.normals.keys()
+	for i in range(keys.size()):
+		var move: Resource = definition.normals[keys[i]]
+		var x := 22.0 + int(i / 6) * 590
+		var y := 82.0 + (i % 6) * 66
+		var cell := Rect2(x, y, 566, 58)
+		canvas.draw_colored_polygon(Kit.chamfer(cell, 8, 6), Color(Kit.INK_600, 0.4))
+		Kit.seal(canvas, Rect2(x + 10, y + 9, 40, 40), catalog.numeric_font, keys[i], Kit.INK_900, accent.lightened(0.35))
+		Kit.text(canvas, catalog.title_font, move.display_name, Vector2(x + 64, y + 26), 18, Kit.PAPER, 3)
+		var guard := "站防" if move.level == "high" else ("蹲防" if move.level == "low" else "站蹲均可防")
+		var chips := ["起手 %d 帧" % move.startup, "伤害 %d" % move.damage, guard]
+		if move.knockdown:
+			chips.append("扫倒终结")
+		var cx := x + 64
+		for chip_text: String in chips:
+			var w := Kit.width(catalog.body_font, chip_text, 12) + 14
+			var chip := Rect2(cx, y + 34, w, 18)
+			canvas.draw_colored_polygon(Kit.slant(chip, 4), Color(Kit.INK_900, 0.8))
+			canvas.draw_polyline(Kit.closed(Kit.slant(chip, 4)), Color(Kit.GOLD, 0.35), 1.0, true)
+			Kit.text_aligned(canvas, catalog.body_font, chip_text, Vector2(chip.get_center().x, chip.end.y - 4), 12, Kit.PAPER_DIM, 1)
+			cx += w + 6
+
+# --- Practice options ---------------------------------------------------------------------
+
 func training_options() -> void:
 	battle_style = false
-	rect(Rect2(0, 0, 1280, 720), Color(0.018, 0.03, 0.065, 0.78))
-	panel(Rect2(318, 115, 644, 495))
-	label("练习设置", Rect2(350, 145, 580, 62), 38, PAPER, true)
-	label("木桩防御", Rect2(355, 247, 156, 42), 21, GOLD)
-	var guard := device_option("practice_guard", Rect2(530, 247, 392, 43))
+	_pause_veil()
+	paint(Rect2(316, 92, 648, 536), func(canvas: Control):
+		var rect := Rect2(Vector2.ZERO, canvas.size)
+		var shape := Kit.chamfer(rect, 22, 5)
+		Kit.gradient_fill(canvas, shape, Color(Kit.INK_700, 0.95), Color(Kit.INK_900, 0.97))
+		Kit.frame(canvas, shape, Kit.GOLD, 1.0, 3.0, 1.4)
+		Kit.brackets(canvas, rect.grow(-8), 14, Color(Kit.GOLD_HI, 0.6), 1.5)
+		Kit.diamond(canvas, Vector2(40, 40), 3.5, Kit.CRIMSON)
+		Kit.tracked(canvas, catalog.numeric_font, "TRAINING OPTIONS", Vector2(52, 45), 12, Kit.GOLD, 3.5)
+		Kit.text(canvas, catalog.display_font, "练习设置", Vector2(36, 104), 50, Kit.PAPER, 6)
+		Kit.rule_out(canvas, Vector2(36, 120), Vector2(600, 120), Kit.GOLD, 1.5))
+	label("木桩防御", Rect2(356, 236, 156, 42), 19, Kit.GOLD_HI, true)
+	var guard := device_option("practice_guard", Rect2(530, 236, 392, 44))
 	for item in ["站立不防", "站立防御", "蹲下防御", "首击后防（检验真连）"]:
 		guard.add_item(item)
 	guard.select(app.practice_controller.guard_mode)
 	guard.item_selected.connect(func(index: int): app.practice_controller.guard_mode = index; app.practice_controller.first_hit = false)
-	label("呼吸槽", Rect2(355, 323, 156, 42), 21, GOLD)
-	var meter := device_option("practice_meter", Rect2(530, 323, 392, 43))
+	label("呼吸槽", Rect2(356, 296, 156, 42), 19, Kit.GOLD_HI, true)
+	var meter := device_option("practice_meter", Rect2(530, 296, 392, 44))
 	for item in [["0 格", 0], ["1 格", 1], ["2 格", 4], ["3 格", 2], ["无限气", 3]]:
 		meter.add_item(item[0], item[1])
 	meter.select(meter.get_item_index(app.practice_controller.meter_mode))
 	meter.item_selected.connect(func(index: int): app.practice_controller.meter_mode = meter.get_item_id(index); app.practice_controller.apply_meter(app.combat))
 	var details := CheckButton.new()
 	details.text = "展开输入指导与搓招提示"
-	details.position = Vector2(355, 380)
-	details.size = Vector2(567, 42)
+	details.position = Vector2(350, 356)
+	details.size = Vector2(574, 44)
 	details.button_pressed = app.view.hud.practice_details
 	details.toggled.connect(func(value: bool): app.view.hud.practice_details = value)
-	details.add_theme_color_override("font_color", PAPER)
 	add_child(details)
 	actions["practice_details"] = details
 	var awakening := CheckButton.new()
 	awakening.text = "觉醒时间无限（仍需 B+C 发动）"
-	awakening.position = Vector2(355, 423)
-	awakening.size = Vector2(567, 42)
+	awakening.position = Vector2(350, 404)
+	awakening.size = Vector2(574, 44)
 	awakening.button_pressed = app.practice_controller.awakening_infinite
 	awakening.toggled.connect(func(value: bool): app.practice_controller.awakening_infinite = value; app.combat.awakening_infinite = value)
-	awakening.add_theme_color_override("font_color", PAPER)
 	add_child(awakening)
 	actions["practice_awakening"] = awakening
-	label("连段结束后自动补血；Backspace 重置并解除觉醒。", Rect2(355, 474, 567, 30), 16, MUTED)
-	button("resume", "继续练习", Rect2(355, 515, 267, 49), func(): app.set_paused(false), true, true, 21).grab_focus()
-	button("practice_reset", "重置位置", Rect2(649, 515, 273, 49), func(): app.reset_practice(); app.set_paused(false), false, false, 21)
+	label("连段结束后自动补血；Backspace 重置并解除觉醒。", Rect2(358, 462, 564, 30), 15, MUTED)
+	var resume := button("resume", "继续练习", Rect2(356, 520, 278, 54), func(): app.set_paused(false), true, true, 21)
+	resume.subtitle = "RESUME"
+	resume.grab_focus()
+	button("practice_reset", "重置位置", Rect2(646, 520, 278, 54), func(): app.reset_practice(); app.set_paused(false), false, false, 21).subtitle = "RESET"
 	reveal()
 
+# --- Builders -----------------------------------------------------------------------------
+
+## Decorative custom-drawn control; `painter` receives the control to draw on.
+func paint(bounds: Rect2, painter: Callable) -> Control:
+	var node := Control.new()
+	node.position = bounds.position
+	node.size = bounds.size
+	node.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	node.focus_mode = Control.FOCUS_NONE
+	node.draw.connect(func(): painter.call(node))
+	add_child(node)
+	return node
+
+func prompt_label(bounds: Rect2) -> Label:
+	var node := PromptLabel.new()
+	node.position = bounds.position
+	node.add_theme_font_override("font", catalog.body_font)
+	add_child(node)
+	node.size = bounds.size
+	return node
 
 func keycap(value: String, bounds: Rect2) -> void:
-	rect(bounds, Color("242d43"))
-	rule(bounds.position + Vector2(0, bounds.size.y - 1), bounds.size.x, Color("6d738a"))
-	label(value, bounds, 17, PAPER, false, HORIZONTAL_ALIGNMENT_CENTER)
+	paint(bounds, func(canvas: Control):
+		Kit.keycap(canvas, catalog.body_font, value, Vector2(0, canvas.size.y * 0.5), canvas.size.y))
 
-func label(value: String, bounds: Rect2, font_size: int = 18, color: Color = PAPER, serif: bool = false, align: int = HORIZONTAL_ALIGNMENT_LEFT) -> Label:
-	if battle_style:
-		if color == PAPER: color = BattleStyle.PAPER
-		elif color == GOLD: color = BattleStyle.GOLD
-		elif color == MUTED: color = BattleStyle.MUTED
+func label(value: String, bounds: Rect2, font_size: int = 18, color: Color = PAPER, serif: bool = false, align: int = HORIZONTAL_ALIGNMENT_LEFT, kind: String = "") -> Label:
 	var node := Label.new()
 	node.text = value
 	node.position = bounds.position
-	node.add_theme_font_override("font", catalog.title_font if serif else catalog.body_font)
+	var face: Font = catalog.display_font if kind == "display" else (catalog.title_font if serif else catalog.body_font)
+	node.add_theme_font_override("font", face)
 	node.add_theme_font_size_override("font_size", font_size)
 	node.add_theme_color_override("font_color", color)
-	node.add_theme_color_override("font_shadow_color", Color(0.01, 0.02, 0.04, 0.55))
+	node.add_theme_color_override("font_shadow_color", Color(Kit.INK_900, 0.6))
 	node.add_theme_constant_override("shadow_offset_y", 2)
+	node.add_theme_color_override("font_outline_color", Color(Kit.INK_900, 0.85))
+	node.add_theme_constant_override("outline_size", 6 if font_size >= 40 else (4 if font_size >= 20 else 3))
 	node.horizontal_alignment = align
 	node.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	node.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -493,8 +804,15 @@ func button(id: String, value: String, bounds: Rect2, callback: Callable, primar
 	node.battle_style = battle_style
 	node.text_only = battle_style and bounds.size.y < 30
 	node.arrow = arrow
+	node.caption_font = catalog.numeric_font
+	node.seal_font = catalog.display_font
+	node.add_theme_font_override("font", catalog.body_font if battle_style else catalog.title_font)
 	node.add_theme_font_size_override("font_size", font_size)
 	node.pressed.connect(callback)
+	if not battle_style:
+		node.focus_entered.connect(_focus_cue)
+		if id in ["back", "home", "settings_back"]:
+			node.pressed.connect(func(): app.sound.play("ui_back", 0.4))
 	add_child(node)
 	node.size = bounds.size
 	actions[id] = node
@@ -519,36 +837,29 @@ func rect(bounds: Rect2, color: Color) -> void:
 	add_child(node)
 
 func rule(at: Vector2, length: float, color: Color) -> void:
-	rect(Rect2(at, Vector2(length, 1)), color)
+	paint(Rect2(at - Vector2(0, 2), Vector2(length, 4)), func(canvas: Control):
+		Kit.rule(canvas, Vector2(0, 2), Vector2(canvas.size.x, 2), color))
+
+func slash(bounds: Rect2, color: Color, cut: float = 40) -> void:
+	var stroke := Brush.new(bounds.position.x * 0.013)
+	stroke.configure(bounds, color, cut * 0.5)
+	add_child(stroke)
 
 func panel(bounds: Rect2) -> void:
-	rect(bounds, Color(0.03, 0.045, 0.084, 0.91))
-	rule(bounds.position, bounds.size.x, Color(GOLD, 0.62))
-	rule(bounds.position + Vector2(0, bounds.size.y - 1), bounds.size.x, Color(GOLD, 0.27))
-	rule(bounds.position + Vector2(0, 4), 21, GOLD)
-	rule(bounds.end - Vector2(21, 5), 21, GOLD)
+	paint(bounds, func(canvas: Control):
+		var area := Rect2(Vector2.ZERO, canvas.size)
+		var shape := Kit.chamfer(area, 16, 5)
+		Kit.gradient_fill(canvas, shape, Color(Kit.INK_700, 0.9), Color(Kit.INK_900, 0.93))
+		Kit.frame(canvas, shape, Kit.GOLD, 0.85, 2.0, 1.0)
+		Kit.brackets(canvas, area.grow(-6), 12, Color(Kit.GOLD_HI, 0.45), 1.2))
 
 func device_option(id: String, bounds: Rect2) -> OptionButton:
 	var node := OptionButton.new()
 	node.name = id
 	node.position = bounds.position
 	node.clip_text = true
-	var style := StyleBoxFlat.new()
-	style.bg_color = Color("182338")
-	style.border_color = Color("6e6581")
-	style.border_width_bottom = 1
-	style.content_margin_left = 14
-	style.content_margin_right = 27
-	for state in ["normal", "hover", "pressed", "disabled"]:
-		node.add_theme_stylebox_override(state, style)
-	var focus := StyleBoxFlat.new()
-	focus.bg_color = Color(0, 0, 0, 0)
-	focus.border_color = GOLD
-	focus.set_border_width_all(2)
-	node.add_theme_stylebox_override("focus", focus)
-	node.get_popup().add_theme_stylebox_override("panel", style)
-	node.get_popup().add_theme_font_override("font", catalog.body_font)
-	node.get_popup().add_theme_font_size_override("font_size", 18)
+	node.add_theme_font_size_override("font_size", 18)
+	node.focus_entered.connect(_focus_cue)
 	add_child(node)
 	node.size = bounds.size
 	actions[id] = node

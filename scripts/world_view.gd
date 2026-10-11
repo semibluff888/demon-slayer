@@ -37,7 +37,7 @@ func _ready() -> void:
 	for i in range(2):
 		var actor := FighterView.new()
 		actor.combat = combat
-		actor.player_accent = Color("75cbd6") if i == 0 else Color("f2c379")
+		actor.player_accent = preload("res://scripts/ui/kit.gd").player_color(i)
 		actor.z_index = 2
 		add_child(actor)
 		fighters.append(actor)

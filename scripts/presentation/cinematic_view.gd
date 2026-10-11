@@ -69,6 +69,8 @@ func _ready() -> void:
 	ko_banner = RoundBanner.new()
 	ko_banner.title_font = world.catalog.title_font
 	ko_banner.body_font = world.catalog.body_font
+	ko_banner.display_font = world.catalog.display_font
+	ko_banner.numeric_font = world.catalog.numeric_font
 	ko_overlay.add_child(ko_banner)
 	ko_overlay.hide()
 
