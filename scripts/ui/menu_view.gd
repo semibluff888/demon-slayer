@@ -53,6 +53,9 @@ var backdrop: Control
 var preview: Control
 var footer: Control
 var embers: Node2D
+# The back label and extra hints the footer is rebuilt from when the device changes.
+var _footer_prompt: Array[String] = ["", ""]
+var _footer_device: String = ""
 var _last_screen: String = ""
 var _quiet: bool = true
 
@@ -86,6 +89,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	app.selection.tick(delta)
+	_refresh_footer()
 	if app.paused:
 		return
 	motion_time += delta
@@ -176,18 +180,27 @@ func _prompts(back_label: String = "返回", extra: String = "") -> String:
 		parts.append(extra)
 	return " · ".join(parts)
 
-func _footer(bounds: Rect2, prompts: String, note: String = "", align: int = 2) -> Control:
+func _footer(bounds: Rect2, back_label: String, extra: String = "", note: String = "", align: int = 2) -> Control:
 	var bar := PromptBar.new()
 	bar.position = bounds.position
 	bar.size = bounds.size
 	bar.font = catalog.body_font
 	bar.note_font = catalog.body_font
 	bar.align = align
-	bar.text = prompts
 	bar.note = note
 	add_child(bar)
 	footer = bar
+	_footer_prompt.assign([back_label, extra])
+	_footer_device = ""
+	_refresh_footer()
 	return bar
+
+## Keeps footer keys on the device that last drove the menu (the title screen
+## switches between keyboard and pad on each press).
+func _refresh_footer() -> void:
+	if is_instance_valid(footer) and _footer_device != app.menu_device:
+		_footer_device = app.menu_device
+		footer.text = _prompts(_footer_prompt[0], _footer_prompt[1])
 
 func _header(title_text: String, kicker: String, chip: String = "", step: int = -1) -> Control:
 	var header := Header.new()
@@ -246,7 +259,7 @@ func title() -> void:
 		node.kicker = Kit.numeral(i + 1)
 		node.subtitle = item[2]
 		captions[node] = item[3]
-	var bar := _footer(Rect2(56, 666, 1168, 36), _prompts("", "F2 静音"), TITLE_ITEMS[0][3])
+	var bar := _footer(Rect2(56, 666, 1168, 36), "", "F2 静音", TITLE_ITEMS[0][3])
 	for node: Control in captions:
 		node.focus_entered.connect(func(): bar.note = captions[node])
 	actions.mode_cpu.grab_focus()
@@ -459,7 +472,7 @@ func pause(reason: String) -> void:
 		var node := button(items[i][0],items[i][1],Rect2(48,322+i*56,410,50),items[i][3],false,true,19)
 		node.subtitle = items[i][2]
 	label(reason,Rect2(56,206,410,40),14,Kit.GOLD_HI,false,HORIZONTAL_ALIGNMENT_LEFT)
-	_footer(Rect2(48,666,1184,36),_prompts("继续"),"",2)
+	_footer(Rect2(48, 666, 1184, 36), "继续")
 	if resume.disabled:actions.settings.grab_focus()
 	else:resume.grab_focus()
 	reveal()
@@ -541,7 +554,7 @@ func result() -> void:
 	button("setup", "返回选人", Rect2(684, 548, 254, 46), app.show_setup, false, false, 18)
 	button("home", "返回主菜单", Rect2(950, 548, 254, 46), app.show_title, false, false, 18)
 	label("月色如初，再决胜负。", Rect2(688, 612, 520, 40), 26, Color(PAPER, 0.85), false, HORIZONTAL_ALIGNMENT_LEFT, "display")
-	_footer(Rect2(684, 668, 556, 36), _prompts(""), "", 2)
+	_footer(Rect2(684, 668, 556, 36), "")
 	result_sparks = Node2D.new()
 	var additive := CanvasItemMaterial.new()
 	additive.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
@@ -594,7 +607,7 @@ func help(page: String = "basics", character_id: String = "") -> void:
 			paint(Rect2(40, 160, 1200, 490), func(canvas: Control): _draw_moves(canvas, definition))
 		else:
 			paint(Rect2(40, 160, 1200, 490), func(canvas: Control): _draw_normals(canvas, definition))
-	_footer(Rect2(300, 668, 932, 36), _prompts("返回", "F1 判定框 · F2 静音"), "", 2)
+	_footer(Rect2(300, 668, 932, 36), "返回", "F1 判定框 · F2 静音")
 	home.grab_focus()
 	reveal()
 

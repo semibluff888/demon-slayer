@@ -1,7 +1,8 @@
 extends Control
 ## Screen-space battle HUD in the 「大正墨金」style. Presentation never changes
-## combat resources. Every animation advances by delta * playback_speed and
-## holds while frozen, so hitstop, KO freezes and pause stop the whole frame.
+## combat resources. Animations advance by delta * playback_speed, so KO freezes
+## stop them; pause (frozen) stops everything, and hitstop or super freeze (held)
+## holds the frame while meter and awakening feedback play through it.
 const RoundBanner = preload("res://scripts/presentation/round_banner.gd")
 const InputRouter = preload("res://scripts/input_router.gd")
 const Style = preload("res://scripts/presentation/battle_style.gd")
@@ -40,6 +41,8 @@ var training: RefCounted
 var input_device: String = "keyboard:0"
 var awakening_hints: Array[String] = ["I+J", "Num6+Num2"]
 var frozen: bool = false
+## Hitstop or super freeze: impact feedback holds with the stage and effects.
+var held: bool = false
 var cinematic_mode: bool = false
 var playback_speed: float = 1.0
 var practice_details: bool = false
@@ -176,18 +179,21 @@ func _process(delta: float) -> void:
 	if combat == null or catalog == null or combat.fighters.is_empty():
 		return
 	if not frozen:
-		time += delta
+		# The meter spend and awakening reveal are choreographed into the super
+		# freeze, like the cut-in, so only impact feedback waits out a freeze.
+		var world_delta := 0.0 if held else delta
+		time += world_delta
 		for i in range(2):
 			var f = combat.fighters[i]
 			awakening_reveal[i] = maxf(0, awakening_reveal[i] - delta)
 			meter_flash[i] = maxf(0, meter_flash[i] - delta)
 			meter_error[i] = maxf(0, meter_error[i] - delta)
 			spent_time[i] = maxf(0, spent_time[i] - delta)
-			combo_pop[i] = maxf(0, combo_pop[i] - delta)
-			trailing[i] = move_toward(trailing[i], f.hp, delta * 270)
-			callout_time[i] = maxf(0, callout_time[i] - delta)
-			damage_flash[i] = maxf(0, damage_flash[i] - delta)
-			win_pop[i] = maxf(0, win_pop[i] - delta)
+			combo_pop[i] = maxf(0, combo_pop[i] - world_delta)
+			trailing[i] = move_toward(trailing[i], f.hp, world_delta * 270)
+			callout_time[i] = maxf(0, callout_time[i] - world_delta)
+			damage_flash[i] = maxf(0, damage_flash[i] - world_delta)
+			win_pop[i] = maxf(0, win_pop[i] - world_delta)
 			if f.hp < hp_seen[i] - 0.5:
 				damage_flash[i] = 0.14
 			hp_seen[i] = f.hp
@@ -199,7 +205,7 @@ func _process(delta: float) -> void:
 				combo_damage_shown[i] = f.combo_damage
 				combo_fade[i] = COMBO_FADE
 			else:
-				combo_fade[i] = maxf(0, combo_fade[i] - delta)
+				combo_fade[i] = maxf(0, combo_fade[i] - world_delta)
 			var stock := int(f.meter / 100)
 			if stock > last_stock[i]:
 				meter_flash[i] = 0.55

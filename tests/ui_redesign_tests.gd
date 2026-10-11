@@ -1,7 +1,7 @@
 extends SceneTree
 ## Regression for the 「大正墨金」front end: bundled glyph coverage, round-cue
 ## mapping, freeze semantics of the new HUD and effect state, mouse-transparent
-## decoration, live hit areas during entry motion, and prompt parsing.
+## decoration, live hit areas during entry motion, and device-aware prompts.
 const Main = preload("res://scenes/main.tscn")
 const Banner = preload("res://scripts/presentation/round_banner.gd")
 const Effects = preload("res://scripts/presentation/effects_view.gd")
@@ -37,6 +37,7 @@ func _run() -> void:
 	await process_frame
 	await _check_screens()
 	_check_hud_freeze()
+	_check_hud_hitstop()
 	game.queue_free()
 	await process_frame
 	for failure in failures:
@@ -135,6 +136,21 @@ func _check_screens() -> void:
 	await process_frame
 	check(game.gui.actions.mode_cpu.get_global_rect().has_point(Vector2(210, 380)), "title hit area is live during entry motion")
 	_decorations_ignore_mouse("title")
+	var confirm := "%s 确认" % game.router.key_name(game.router.current_keys(0)[4])
+	check(game.gui.footer.text.begins_with(confirm), "title prompts start on the keyboard")
+	var pad := InputEventJoypadButton.new()
+	pad.device = 0
+	pad.button_index = JOY_BUTTON_DPAD_DOWN
+	pad.pressed = true
+	game._input(pad)
+	await process_frame
+	check(game.menu_device == "pad:0" and game.gui.footer.text.begins_with("十字键") and game.gui.footer.text.contains("A 确认"), "title prompts follow the gamepad")
+	var key := InputEventKey.new()
+	key.keycode = KEY_SHIFT
+	key.pressed = true
+	game._input(key)
+	await process_frame
+	check(game.menu_device == "keyboard:0" and game.gui.footer.text.begins_with(confirm), "title prompts return to the keyboard")
 	game.choose_mode("local")
 	await process_frame
 	_decorations_ignore_mouse("setup")
@@ -173,6 +189,7 @@ func _check_hud_freeze() -> void:
 	var model = game.combat
 	# The world view refreshes these each battle frame; set them explicitly here.
 	hud.frozen = false
+	hud.held = false
 	hud.playback_speed = 1.0
 	model.phase = "fight"
 	model.fighters[0].combo = 9
@@ -195,3 +212,34 @@ func _check_hud_freeze() -> void:
 	check(hud.combo_fade[0] == 0 and hud.damage_flash[1] == 0, "combo plate fades out after the combo ends")
 	hud.reset_effects()
 	check(hud.combo_fade == [0.0, 0.0] and hud.wins_seen == [1, 0], "HUD reset clears fades and adopts current wins")
+
+## Hitstop and super freeze hold impact feedback with the stage and effects,
+## while the meter spend and awakening reveal keep playing through the freeze.
+func _check_hud_hitstop() -> void:
+	var hud = game.view.hud
+	var model = game.combat
+	var frame := func() -> void:
+		game.view._process(1.0 / 60) # The world view sets the HUD flags first.
+		hud._process(1.0 / 60)
+	model.phase = "fight"
+	model.fighters[0].combo = 3
+	model.fighters[0].combo_display = 50
+	model.hitstop = 6
+	model.fighters[1].hp -= 80
+	frame.call()
+	check(hud.held and is_equal_approx(hud.damage_flash[1], 0.14), "a hit flashes at full strength when hitstop begins")
+	hud.combo_pop[0] = 0.2
+	hud.awakening_reveal[0] = 0.85
+	hud.spent_time[0] = 0.9
+	var state := [hud.time, hud.damage_flash.duplicate(), hud.trailing.duplicate(), hud.combo_pop.duplicate(), hud.combo_fade.duplicate()]
+	for n in range(5):
+		frame.call()
+	check([hud.time, hud.damage_flash, hud.trailing, hud.combo_pop, hud.combo_fade] == state, "hitstop holds HUD impact feedback")
+	check(hud.awakening_reveal[0] < 0.85 and hud.spent_time[0] < 0.9, "awakening reveal and meter spend play through the freeze")
+	model.hitstop = 0
+	model.super_freeze = 12
+	frame.call()
+	check(hud.held and hud.damage_flash == state[1] and hud.trailing == state[2], "super freeze holds HUD impact feedback")
+	model.super_freeze = 0
+	frame.call()
+	check(not hud.held and hud.damage_flash[1] < 0.14 and hud.trailing[1] < state[2][1], "HUD impact feedback resumes after the freeze")

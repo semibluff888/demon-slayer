@@ -123,6 +123,8 @@ func _process(delta: float) -> void:
 	hud.cpu = cpu
 	hud.cinematic_mode = movie_active
 	hud.frozen = paused
+	# Cinematics keep their own clock; the HUD runs through the video as before.
+	hud.held = not cinematic_locked and (combat.hitstop > 0 or combat.super_freeze > 0)
 	hud.playback_speed = speed
 	hud.input_hints = input_hints
 	shadow_layer.queue_redraw()
