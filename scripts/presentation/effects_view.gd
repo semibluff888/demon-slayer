@@ -5,6 +5,7 @@ extends Node2D
 # layer a light core, star streaks and per-character motes; every particle list
 # freezes with `freeze` and expires well within half a second.
 const Kit = preload("res://scripts/ui/kit.gd")
+const TanjiroVfx = preload("res://scripts/presentation/vfx/tanjiro_vfx.gd")
 ## Character flavor for blade trails and impact motes.
 const FLAVORS := {"tanjiro": "water", "zenitsu": "thunder", "nezuko": "blood", "akaza": "compass"}
 const CUT_CURVES := {
@@ -33,6 +34,10 @@ var freeze: bool = false
 var playback_speed: float = 1.0
 var textures: Dictionary = {}
 var body_layer: Node2D
+## Fighter views by slot, for effects that follow the drawn blade.
+var actors: Array = []
+## Rebuilt character effects draw their own moves; everything else stays here.
+var tanjiro: Node2D
 
 func _ready() -> void:
 	var additive := CanvasItemMaterial.new()
@@ -64,8 +69,20 @@ func _ready() -> void:
 	body_layer.material = CanvasItemMaterial.new()
 	body_layer.draw.connect(_draw_body)
 	add_child(body_layer)
+	tanjiro = TanjiroVfx.new()
+	tanjiro.name = "TanjiroVfx"
+	tanjiro.combat = combat
+	tanjiro.camera = camera
+	tanjiro.actors = actors
+	tanjiro.glow = glow
+	add_child(tanjiro)
+
+func _rebuilt(move: Resource) -> bool:
+	return tanjiro != null and tanjiro.handles(move)
 
 func consume(events: Array) -> void:
+	if tanjiro != null:
+		tanjiro.consume(events)
 	# A tech also emits clash for the combat contract; render one clear escape cue.
 	var tech := events.any(func(event: Dictionary) -> bool: return event.type == "throw_tech")
 	for event: Dictionary in events:
@@ -99,8 +116,11 @@ func consume(events: Array) -> void:
 			sparks.append({"at": event.position, "velocity": Vector2(cos(angle), sin(angle)) * speed, "life": 0.12 + n % 3 * 0.035, "color": color, "length": 1 + n % 3})
 		while sparks.size() > 112:
 			sparks.pop_front()
+		# Rebuilt character effects draw their own contact light; keep the shared
+		# records (and their timing) but render them quietly underneath.
+		var quiet: bool = move != null and _rebuilt(move)
 		rings.append({"at": event.position, "life":0.18, "color":color, "block":blocked, "throw":event.type == "throw", "intensity":intensity,
-			"facing":int(combat.fighters[event.attacker].facing) if event.has("attacker") else 1})
+			"facing":int(combat.fighters[event.attacker].facing) if event.has("attacker") else 1, "quiet":quiet})
 		if rings.size() > 5:
 			rings.pop_front()
 		trauma = maxf(trauma, (0.04 if blocked else 0.16) * intensity)
@@ -114,7 +134,7 @@ func consume(events: Array) -> void:
 			shards.append({"at": event.position, "life": 0.2, "duration": 0.2, "facing": facing, "intensity": intensity})
 		else:
 			var heavy: bool = move != null and move.kind in ["heavy", "skill", "super", "max"]
-			_spawn_hit(event.position, color, intensity, repeated, heavy, facing, _flavor(attacker), move != null and move.is_super())
+			_spawn_hit(event.position, color, intensity, repeated, heavy, facing, _flavor(attacker), move != null and move.is_super(), quiet)
 			if event.type == "throw":
 				for n in range(6):
 					var side := -1.0 if n % 2 == 0 else 1.0
@@ -145,12 +165,17 @@ func reset_effects() -> void:
 	screen_flash = 0
 	trauma = 0
 	time = 0
+	if tanjiro != null:
+		tanjiro.reset()
 
 func _process(delta: float) -> void:
 	delta *= playback_speed
 	if freeze:
 		return
 	time += delta
+	if tanjiro != null:
+		tanjiro.frac = Engine.get_physics_interpolation_fraction() if tanjiro.interpolate else 0.0
+		tanjiro.advance(delta)
 	trauma = maxf(0, trauma - delta * 1.6)
 	for spark: Dictionary in sparks:
 		spark.life -= delta
@@ -421,13 +446,15 @@ func _draw() -> void:
 		return
 	if combat.phase in ["fight", "round_end"]:
 		for fighter in combat.fighters:
-			if fighter.move == null or not combat.presents_attack(fighter.slot):
+			if fighter.move == null or not combat.presents_attack(fighter.slot) or _rebuilt(fighter.move):
 				continue
 			draw_set_transform(camera.point(Vector2(fighter.x,fighter.y)),0,Vector2(camera.zoom*fighter.facing,camera.zoom))
 			_draw_attack(fighter)
 		for projectile in combat.projectiles:
-			draw_set_transform(camera.point(Vector2(projectile.x,projectile.y)),0,Vector2(camera.zoom*projectile.facing,camera.zoom))
 			var move: Resource = combat.moves[projectile.move]
+			if _rebuilt(move):
+				continue
+			draw_set_transform(camera.point(Vector2(projectile.x,projectile.y)),0,Vector2(camera.zoom*projectile.facing,camera.zoom))
 			var bounds: Rect2 = move.projectile_box
 			var key := _projectile_key(move)
 			# Authored vertical foam crest, without distorting the old horizontal slash.
@@ -454,7 +481,7 @@ func _draw() -> void:
 		var at: Vector2 = camera.point(ring.at)
 		var amount: float = 1.0-ring.life/0.18
 		var color: Color = ring.color
-		color.a = (1-amount)*0.55*ring.intensity
+		color.a = (1-amount)*0.55*ring.intensity*(0.35 if ring.get("quiet",false) else 1.0)
 		if not ring.block:
 			var diameter: float = (24+amount*17)*camera.zoom*ring.intensity
 			_effect("impact",Rect2(at-Vector2.ONE*diameter/2,Vector2.ONE*diameter),color)
@@ -492,7 +519,7 @@ func _draw_body() -> void:
 		return
 	for fighter in combat.fighters:
 		var move: Resource = fighter.move
-		if move == null or not combat.presents_attack(fighter.slot) or move.segment(fighter.move_frame) < 0 or move.presentation == null:
+		if move == null or not combat.presents_attack(fighter.slot) or move.segment(fighter.move_frame) < 0 or move.presentation == null or _rebuilt(move):
 			continue
 		var profile: Resource = move.presentation
 		var shape := _profile_shape(move)
@@ -544,8 +571,10 @@ func _draw_body() -> void:
 				continue
 		_body_texture(key,bounds,opacity,angle,profile.texture_flip_h)
 	for projectile in combat.projectiles:
-		body_layer.draw_set_transform(camera.point(Vector2(projectile.x,projectile.y)),0,Vector2(camera.zoom*projectile.facing,camera.zoom))
 		var move: Resource = combat.moves[projectile.move]
+		if _rebuilt(move):
+			continue
+		body_layer.draw_set_transform(camera.point(Vector2(projectile.x,projectile.y)),0,Vector2(camera.zoom*projectile.facing,camera.zoom))
 		var key := _projectile_key(move)
 		_body_texture(key+"-body",move.projectile_box,0.96,PI if key=="water-slash" else 0.0)
 	body_layer.draw_set_transform(Vector2.ZERO)
@@ -590,17 +619,17 @@ func _glow_at(at: Vector2, radius: float, color: Color) -> void:
 	if glow != null and radius > 0 and color.a > 0:
 		draw_texture_rect(glow, Rect2(at - Vector2.ONE * radius, Vector2.ONE * radius * 2), false, color)
 
-func _spawn_streaks(at: Vector2, count: int, length: float, line_width: float, color: Color, life: float, facing: int, around: bool) -> void:
+func _spawn_streaks(at: Vector2, count: int, length: float, line_width: float, color: Color, life: float, facing: int, around: bool, quiet: bool = false) -> void:
 	for n in range(count):
 		var spread := (_hash(n * 1.7 + at.x * 0.13 + at.y) - 0.5) * (TAU if around or n % 3 == 0 else 2.4)
 		streaks.append({"at": at, "angle": (0.0 if facing > 0 else PI) + spread,
-			"length": length * (0.6 + _hash(n + at.y * 0.7) * 0.8), "width": line_width, "life": life, "duration": life, "color": color})
+			"length": length * (0.6 + _hash(n + at.y * 0.7) * 0.8), "width": line_width, "life": life, "duration": life, "color": color, "quiet": quiet})
 
-func _spawn_hit(at: Vector2, color: Color, intensity: float, repeated: bool, heavy: bool, facing: int, flavor: String, super_move: bool) -> void:
+func _spawn_hit(at: Vector2, color: Color, intensity: float, repeated: bool, heavy: bool, facing: int, flavor: String, super_move: bool, quiet: bool = false) -> void:
 	var life := 0.2 if heavy else 0.14
-	flashes.append({"at": at, "life": life, "duration": life, "radius": (16.0 if repeated else (27.0 if heavy else 19.0)) * intensity, "color": color.lightened(0.2)})
+	flashes.append({"at": at, "life": life, "duration": life, "radius": (16.0 if repeated else (27.0 if heavy else 19.0)) * intensity, "color": color.lightened(0.2), "quiet": quiet})
 	_spawn_streaks(at, 4 if repeated else (11 if heavy else 7), (18.0 if repeated else (32.0 if heavy else 24.0)) * intensity,
-		(1.5 if heavy else 1.1) * intensity, color.lightened(0.35), life, facing, false)
+		(1.5 if heavy else 1.1) * intensity, color.lightened(0.35), life, facing, false, quiet)
 	var count := 3 if repeated else (8 if heavy else 5)
 	for n in range(count):
 		var lift := -40.0 - _hash(n + at.x) * 70.0
@@ -625,10 +654,12 @@ func _draw_impacts() -> void:
 		var at: Vector2 = camera.point(flash.at)
 		var amount: float = 1.0 - flash.life / flash.duration
 		var radius: float = flash.radius * camera.zoom * (0.55 + amount * 0.6)
-		var alpha: float = (1.0 - amount) * 0.95
+		var alpha: float = (1.0 - amount) * (0.3 if flash.get("quiet", false) else 0.95)
 		_glow_at(at, radius, Color(flash.color, alpha))
 		_glow_at(at, radius * 0.38, Color(1, 1, 1, alpha))
 	for streak: Dictionary in streaks:
+		if streak.get("quiet", false):
+			continue
 		var at: Vector2 = camera.point(streak.at)
 		var amount: float = 1.0 - streak.life / streak.duration
 		var direction := Vector2.from_angle(streak.angle)

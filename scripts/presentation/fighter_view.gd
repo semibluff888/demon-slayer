@@ -267,24 +267,7 @@ func _frame_index() -> int:
 	if clip in ["jump_forward", "jump_back"]:
 		return mini(count - 1, int(fighter.air_ticks * float(count) / 37))
 	if fighter.move != null and clip == fighter.move.clip_id():
-		var cuts: Array = visual.phases.get(clip, [maxi(1, count / 3), maxi(2, count * 2 / 3)])
-		var first := clampi(int(cuts[0]), 1, count)
-		var second := clampi(int(cuts[1]), first, count)
-		var move: Resource = fighter.move
-		if fighter.move_frame < move.startup:
-			return mini(first - 1, int(float(fighter.move_frame) / move.startup * first))
-		if fighter.move_frame < move.startup + move.active:
-			if visual.clip_metadata.get(clip, {}).get("segment_sync", false):
-				var segment: int = move.segment(fighter.move_frame)
-				var group_start := first + int(segment * float(second - first) / move.hit_count())
-				var group_end := first + int((segment + 1) * float(second - first) / move.hit_count())
-				return mini(group_end - 1, group_start + int(move.segment_progress(fighter.move_frame) * (group_end - group_start)))
-			return mini(count - 1, first + int(float(fighter.move_frame - move.startup) / move.active * maxi(1, second - first)))
-		if move.lift != 0 and not fighter.grounded:
-			# Active ascent -> apex -> falling pose. Never show the planted final
-			# recovery drawing in midair (especially visible on Zenitsu's upward iai).
-			return maxi(first, second - 1) if fighter.vy < 0 else mini(count - 2, second)
-		return mini(count - 1, second + int(float(fighter.move_frame - move.startup - move.active) / move.recovery * maxi(1, count - second)))
+		return move_clip_frame(fighter.move_frame)
 	if clip == "jump":
 		if fighter.grounded:
 			return mini(count - 1, 4 if fighter.state == "landing" or landing_ticks > 3 else 5)
@@ -302,6 +285,45 @@ func _frame_index() -> int:
 		return mini(count - 1, int(clock_ticks / 3))
 	var frame := int(clock_ticks / 60.0 * _frames().get_animation_speed(clip))
 	return frame % count if _frames().get_animation_loop(clip) else mini(frame, count - 1)
+
+## Drawing of the current move's own clip on `tick` of that move. Effects use
+## it to find where the blade was on earlier ticks of the same swing.
+func move_clip_frame(tick: int) -> int:
+	var count: int = _frames().get_frame_count(clip)
+	var cuts: Array = visual.phases.get(clip, [maxi(1, count / 3), maxi(2, count * 2 / 3)])
+	var first := clampi(int(cuts[0]), 1, count)
+	var second := clampi(int(cuts[1]), first, count)
+	var move: Resource = fighter.move
+	if tick < move.startup:
+		return mini(first - 1, int(float(tick) / move.startup * first))
+	if tick < move.startup + move.active:
+		if visual.clip_metadata.get(clip, {}).get("segment_sync", false):
+			var segment: int = move.segment(tick)
+			var group_start := first + int(segment * float(second - first) / move.hit_count())
+			var group_end := first + int((segment + 1) * float(second - first) / move.hit_count())
+			return mini(group_end - 1, group_start + int(move.segment_progress(tick) * (group_end - group_start)))
+		return mini(count - 1, first + int(float(tick - move.startup) / move.active * maxi(1, second - first)))
+	if move.lift != 0 and not fighter.grounded:
+		# Active ascent -> apex -> falling pose. Never show the planted final
+		# recovery drawing in midair (especially visible on Zenitsu's upward iai).
+		return maxi(first, second - 1) if fighter.vy < 0 else mini(count - 2, second)
+	return mini(count - 1, second + int(float(tick - move.startup - move.active) / move.recovery * maxi(1, count - second)))
+
+## Maps a point on the shared atlas canvas to effect-local units, where +x is
+## the fighter's forward (EffectsView draws with fighter.facing).
+func canvas_to_local(point: Vector2) -> Vector2:
+	var local: Vector2 = (point - visual.feet_anchor) * _pose_scale() * visual.drawing_scale()
+	if pose_facing() != fighter.facing:
+		local.x = -local.x
+	return local
+
+func uses_awakened_frames() -> bool:
+	return visual.awakening_frames != null and _frames() == visual.awakening_frames
+
+## Current drawing's rectangle in actor units before the pose_facing() flip.
+func sprite_rect() -> Rect2:
+	var pose_factor: Vector2 = _pose_scale() * visual.drawing_scale()
+	return Rect2(-visual.feet_anchor * pose_factor, texture.get_size() * pose_factor)
 
 func visual_bounds() -> Rect2:
 	if texture == null or visual == null:

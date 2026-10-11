@@ -1,0 +1,271 @@
+{
+  "note": "Generated with gpt-image-2 through the CPA endpoint; imported by tools/build_tanjiro_vfx_art.py.",
+  "assets": {
+    "water-strands": {
+      "source": "output/imagegen/tanjiro-vfx-v1/raw/water-strands.png",
+      "source_sha256": "83cd678134f0e2be66aae884d0db3684241d8ca8f009d678576ab7c6cf69daed",
+      "kind": "band",
+      "key": "magenta",
+      "prompt": "output/imagegen/tanjiro-vfx-v1/prompts/water-strands.txt",
+      "size": [
+        2048,
+        320
+      ],
+      "sha256": "695190344ae96d52b9c9756ea9beed0c6594047d42c0900ef553cd9aefcb7cda"
+    },
+    "fire-strands": {
+      "source": "output/imagegen/tanjiro-vfx-v1/raw/fire-strands.png",
+      "source_sha256": "cebc9918c872734a2b7f47a3b78a90033e66f43269d2b053e06f46c8603e060c",
+      "kind": "band",
+      "key": "black",
+      "prompt": "output/imagegen/tanjiro-vfx-v1/prompts/fire-strands.txt",
+      "size": [
+        2048,
+        320
+      ],
+      "sha256": "375d893dd51762a40a242795b15d76fe138954b6cc4c46f90d533a02751fe30a"
+    },
+    "water-crescent": {
+      "source": "output/imagegen/tanjiro-vfx-v1/raw/water-crescent.png",
+      "source_sha256": "3ac44419ba03f84f2a1b052a3c16f705d06edf008ddb8e02b87197774ff6ebbd",
+      "kind": "sprite",
+      "key": "alpha",
+      "prompt": "output/imagegen/tanjiro-vfx-v1/prompts/water-crescent.txt",
+      "size": [
+        671,
+        1024
+      ],
+      "sha256": "5379e7f29ff643a57ec107f55b6d64929636bfe3cc9c20a5a414dfa6491ead0c"
+    },
+    "water-crescent-heavy": {
+      "source": "output/imagegen/tanjiro-vfx-v1/raw/water-crescent-v2.png",
+      "source_sha256": "5fad28b56434c03ee4b65670c6c98b91d4e0823f7b02b271f5bd604189d7b8ae",
+      "kind": "sprite",
+      "key": "magenta",
+      "prompt": "output/imagegen/tanjiro-vfx-v1/prompts/water-crescent-v2.txt",
+      "size": [
+        651,
+        1024
+      ],
+      "sha256": "f936e2d0e5c828091d950270138432dffd3dfb9c591616b3671f85e9fafe9cc9"
+    },
+    "water-impact": {
+      "source": "output/imagegen/tanjiro-vfx-v1/raw/water-impact.png",
+      "source_sha256": "ae115a4c77281d7e00efa3aaa8c05d7bcd1d344042c4bdcc85070a9d7ce8eb84",
+      "kind": "sprite",
+      "key": "magenta",
+      "prompt": "output/imagegen/tanjiro-vfx-v1/prompts/water-impact.txt",
+      "size": [
+        1024,
+        683
+      ],
+      "sha256": "52f752e33fdd6fe27bc15ee0fc82821c1347d0cb12bebc1814ed0f7cfc75cd00"
+    },
+    "water-foam": {
+      "source": "output/imagegen/tanjiro-vfx-v1/raw/water-foam-sheet.png",
+      "source_sha256": "4e158e0af8200c097cf525f4fafd3ec44294028c78b76d9b695340b7916bb323",
+      "kind": "sheet",
+      "key": "magenta",
+      "prompt": "output/imagegen/tanjiro-vfx-v1/prompts/water-foam-sheet.txt",
+      "grid": [
+        4,
+        4
+      ],
+      "cells": [
+        {
+          "aspect": 1.447
+        },
+        {
+          "aspect": 1.23
+        },
+        {
+          "aspect": 1.25
+        },
+        {
+          "aspect": 1.465
+        },
+        {
+          "aspect": 2.11
+        },
+        {
+          "aspect": 1.394
+        },
+        {
+          "aspect": 1.337
+        },
+        {
+          "aspect": 1.544
+        },
+        {
+          "aspect": 1.117
+        },
+        {
+          "aspect": 1.0
+        },
+        {
+          "aspect": 1.783
+        },
+        {
+          "aspect": 1.23
+        },
+        {
+          "aspect": 1.394
+        },
+        {
+          "aspect": 1.223
+        },
+        {
+          "aspect": 1.503
+        },
+        {
+          "aspect": 1.198
+        }
+      ],
+      "size": [
+        1024,
+        1024
+      ],
+      "sha256": "7ca519b0f120ac6688be82401e508b4cf42d15c5f7a76689f51b8c664ac9fcc9"
+    },
+    "fire-petals": {
+      "source": "output/imagegen/tanjiro-vfx-v1/raw/fire-petals-sheet-v2.png",
+      "source_sha256": "739468f5db578ae6ebf89f77b57850dc72d7d4d4b0b5fc6f880d87f73eb9c822",
+      "kind": "sheet",
+      "key": "alpha",
+      "prompt": "output/imagegen/tanjiro-vfx-v1/prompts/fire-petals-sheet-v2.txt",
+      "grid": [
+        4,
+        4
+      ],
+      "cells": [
+        {
+          "aspect": 1.122
+        },
+        {
+          "aspect": 0.9
+        },
+        {
+          "aspect": 0.578
+        },
+        {
+          "aspect": 1.027
+        },
+        {
+          "aspect": 1.106
+        },
+        {
+          "aspect": 1.278
+        },
+        {
+          "aspect": 0.604
+        },
+        {
+          "aspect": 0.783
+        },
+        {
+          "aspect": 0.917
+        },
+        {
+          "aspect": 0.939
+        },
+        {
+          "aspect": 1.06
+        },
+        {
+          "aspect": 0.835
+        },
+        {
+          "aspect": 0.809
+        },
+        {
+          "aspect": 0.717
+        },
+        {
+          "aspect": 1.07
+        },
+        {
+          "aspect": 1.095
+        }
+      ],
+      "size": [
+        1024,
+        1024
+      ],
+      "sha256": "a77be61f8fa834e9a36259c1a661155f87d0dc07ed15dce631e2112ac41f6185"
+    },
+    "fire-wisps": {
+      "source": "output/imagegen/tanjiro-vfx-v1/raw/fire-petals-sheet.png",
+      "source_sha256": "8a225e2053969e812dfd493ae3cf0a375989671abc520d671d6ab40d8ea9ae6e",
+      "kind": "sheet",
+      "key": "alpha",
+      "prompt": "output/imagegen/tanjiro-vfx-v1/prompts/fire-petals-sheet.txt",
+      "grid": [
+        4,
+        4
+      ],
+      "cells": [
+        {
+          "aspect": 1.322
+        },
+        {
+          "aspect": 0.804
+        },
+        {
+          "aspect": 1.055
+        },
+        {
+          "aspect": 1.314
+        },
+        {
+          "aspect": 1.065
+        },
+        {
+          "aspect": 1.117
+        },
+        {
+          "aspect": 1.111
+        },
+        {
+          "aspect": 0.961
+        },
+        {
+          "aspect": 1.23
+        },
+        {
+          "aspect": 1.84
+        },
+        {
+          "aspect": 1.204
+        },
+        {
+          "aspect": 0.678
+        },
+        {
+          "aspect": 1.223
+        },
+        {
+          "aspect": 0.748
+        },
+        {
+          "aspect": 1.036
+        },
+        {
+          "aspect": 1.484
+        }
+      ],
+      "size": [
+        1024,
+        1024
+      ],
+      "sha256": "9196e71dd1b044ae14c0429a32aa6c4372b7769760a952953b3e2ca154ca37b0"
+    },
+    "noise": {
+      "kind": "procedural",
+      "size": [
+        256,
+        256
+      ],
+      "sha256": "6631879024401ca066398e2337407cfb937bc4d0e62ba4dd69c3a3475a882292"
+    }
+  }
+}

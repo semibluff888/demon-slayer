@@ -44,6 +44,7 @@ func _ready() -> void:
 	effects = EffectsView.new()
 	effects.combat = combat
 	effects.camera = camera
+	effects.actors = fighters
 	effects.z_index = 10
 	add_child(effects)
 	foreground_layer = Node2D.new()

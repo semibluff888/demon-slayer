@@ -1,0 +1,158 @@
+extends SceneTree
+## Regression for Tanjiro's rebuilt effects: routing, blade tracks, freeze and
+## expiry semantics, deterministic emission, and that presentation never
+## touches combat.
+const Main = preload("res://scenes/main.tscn")
+const Combat = preload("res://scripts/combat.gd")
+const Blade = preload("res://scripts/presentation/vfx/blade_track.gd")
+var passed := 0
+var failures: Array[String] = []
+var game: Node2D
+
+func _initialize() -> void:
+	_run.call_deferred()
+
+func check(ok: bool, label: String) -> void:
+	if ok: passed += 1
+	else: failures.append(label)
+
+func _run() -> void:
+	create_timer(120).timeout.connect(func(): printerr("Tanjiro VFX watchdog expired"); quit(1))
+	_check_tracks()
+	game = Main.instantiate()
+	game.settings.path = "res://artifacts/tanjiro_vfx_tests-settings.cfg"
+	DirAccess.make_dir_recursive_absolute("res://artifacts")
+	game.settings.cinematic_enabled = false
+	root.add_child(game)
+	game.set_physics_process(false)
+	game.sound.muted = true
+	game.mode = "local"
+	await process_frame
+	_check_routing()
+	for spec in [["236A", false], ["236C", true]]:
+		await _check_slash(spec[0], spec[1])
+	await _check_determinism()
+	game.queue_free()
+	await process_frame
+	for failure in failures:
+		printerr("FAIL: ", failure)
+	print("TANJIRO VFX TESTS: %d passed, %d failed" % [passed, failures.size()])
+	quit(0 if failures.is_empty() else 1)
+
+## Every water slash drawing that holds the sword has a plausible blade.
+func _check_tracks() -> void:
+	for directory in ["res://art/characters/tanjiro/", "res://art/characters/tanjiro/awakening/"]:
+		check(not Blade.clips(directory).is_empty(), "blade tracks load: " + directory)
+		for index in [2, 3, 4, 6]:
+			var pose := Blade.pose(directory, "water_slash", index)
+			var length := pose[0].distance_to(pose[1]) if pose.size() == 2 else 0.0
+			# The raised drawing foreshortens the blade behind the head.
+			check(length > 60.0 and length < 260.0, "water slash drawing %d holds the blade: %s" % [index, directory])
+
+func _check_routing() -> void:
+	var tanjiro = game.view.effects.tanjiro
+	check(tanjiro != null and tanjiro.layers.size() == 5, "Tanjiro effects mount five layers")
+	for id in ["tanjiro_236A", "tanjiro_236C"]:
+		check(tanjiro.handles(game.combat.moves[id]), "rebuilt effect owns " + id)
+	for id in ["zenitsu_236A", "nezuko_super", "akaza_max"]:
+		check(not tanjiro.handles(game.combat.moves[id]), "other fighters keep their effects: " + id)
+	for layer: Node2D in tanjiro.layers.slice(0, 2):
+		check(layer.z_index == -1, "solid water stays under a struck fighter: " + layer.name)
+
+func _start(move_id: String, awakened: bool) -> Resource:
+	game.characters.assign(["tanjiro", "zenitsu"])
+	game.start_match()
+	var model = game.combat
+	model.phase = "fight"
+	model.remaining = 5400
+	var attacker = model.fighters[0]
+	attacker.x = 380.0
+	model.fighters[1].x = 530.0
+	attacker.facing = 1
+	model.fighters[1].facing = -1
+	if awakened:
+		attacker.awakening_ticks = 900
+		attacker.awakening_duration = 900
+	game.view.reset_effects()
+	game.view.effects.tanjiro.interpolate = false
+	var move: Resource = model.moves[move_id]
+	model._begin_move(attacker, move)
+	game.view.consume(model.events)
+	return move
+
+func _tick() -> void:
+	game.combat.step([Combat.neutral(), Combat.neutral()])
+	game.view.consume(game.combat.events)
+	game.view._process(1.0 / 60)
+	game.view.effects._process(1.0 / 60)
+
+func _check_slash(id: String, awakened: bool) -> void:
+	var move := _start("tanjiro_" + id, awakened)
+	var model = game.combat
+	var tanjiro = game.view.effects.tanjiro
+	var actor = game.view.fighters[0]
+	var label := "%s %s" % [id, "awakened" if awakened else "normal"]
+	for n in range(move.startup + 2):
+		_tick()
+	await process_frame # draws every layer once with the cut on screen
+	check(actor.form_active() == awakened, label + " form matches")
+	var arc: Dictionary = tanjiro._slash_arc(actor, id.ends_with("C"))
+	check(arc.a0 < -PI * 0.5 and arc.a1 > -PI * 0.5, label + " cut passes overhead")
+	check(arc.r0 > 20.0 and arc.r1 < 90.0, label + " cut hugs the sword")
+	check(tanjiro.drops.count() > 10 and tanjiro._projectiles.size() == 1, label + " cut sprays and the wave is tracked")
+	check(tanjiro.petals.count() > 0 if awakened else tanjiro.petals.count() == 0, label + " flame petals only while awakened")
+	# Hitstop, pause and KO speed hold every layer.
+	var held := [tanjiro.drops.pos.duplicate(), tanjiro.foam.pos.duplicate(), tanjiro.mist.life.duplicate(), tanjiro.time]
+	game.view.effects.freeze = true
+	game.view.effects._process(0.5)
+	check([tanjiro.drops.pos, tanjiro.foam.pos, tanjiro.mist.life, tanjiro.time] == held, label + " freeze holds particles")
+	game.view.effects.freeze = false
+	game.view.effects.playback_speed = 0.0
+	game.view.effects._process(0.5)
+	check([tanjiro.drops.pos, tanjiro.foam.pos, tanjiro.mist.life, tanjiro.time] == held, label + " zero presentation speed holds particles")
+	game.view.effects.playback_speed = 1.0
+	# Presentation never writes combat state.
+	var snapshot: Dictionary = model.snapshot()
+	tanjiro.advance(0.1)
+	tanjiro.consume([{"type": "hit", "attacker": 0, "move": move.id, "segment": 0, "position": Vector2(500, 250)}])
+	check(model.snapshot() == snapshot, label + " effects never mutate combat")
+	check(tanjiro.bursts.size() == 3, label + " a hit adds splash, cross and ring")
+	# Fly the wave until it lands or expires, then let everything settle.
+	var hit := false
+	for n in range(move.projectile_lifetime + 10):
+		_tick()
+		hit = hit or model.events.any(func(e: Dictionary) -> bool: return e.type == "hit")
+		if n == 12:
+			await process_frame # draws the travelling wave
+	check(hit, label + " wave reaches the target")
+	check(tanjiro._projectiles.is_empty(), label + " finished waves are released")
+	await process_frame # draws the impact
+	for n in range(90):
+		game.view.effects._process(1.0 / 60)
+	check(tanjiro.drops.count() == 0 and tanjiro.foam.count() == 0 and tanjiro.mist.count() == 0 and tanjiro.petals.count() == 0 and tanjiro.bursts.is_empty(),
+		label + " every particle expires within a second and a half")
+	_start("tanjiro_" + id, awakened)
+	for n in range(move.startup + 1):
+		_tick()
+	game.view.reset_effects()
+	check(tanjiro.drops.count() == 0 and tanjiro._ticks.is_empty() and tanjiro._projectiles.is_empty(), label + " reset clears effect state")
+
+## Emission depends on combat ticks, not on how often frames sample them.
+func _check_determinism() -> void:
+	var results := []
+	for batched in [false, true]:
+		var move := _start("tanjiro_236A", false)
+		var tanjiro = game.view.effects.tanjiro
+		for n in range(move.startup + 3):
+			game.combat.step([Combat.neutral(), Combat.neutral()])
+			game.view.consume(game.combat.events)
+			if not batched:
+				game.view._process(0.0)
+				tanjiro.advance(0.0)
+		game.view._process(0.0)
+		tanjiro.advance(0.0)
+		# Spawn order differs (cut and wave interleave per tick), the set must not.
+		var positions: Array = Array(tanjiro.drops.pos)
+		positions.sort_custom(func(a: Vector2, b: Vector2) -> bool: return a.x < b.x or (a.x == b.x and a.y < b.y))
+		results.append([tanjiro.drops.count(), positions, tanjiro.foam.count(), tanjiro.mist.count()])
+	check(results[0] == results[1], "particles are identical whether ticks are sampled one by one or in a batch")
