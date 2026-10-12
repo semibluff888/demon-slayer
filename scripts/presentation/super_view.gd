@@ -30,6 +30,9 @@ var dim_amount: float = 0.0
 var dimmer: Node2D
 var energy: Node2D
 var elemental_textures: Dictionary = {}
+## Moves whose charge another view draws in its own style; the cue keeps its
+## dimmer, cut-in and title but skips the shared energy sphere.
+var draws_own_charge: Callable
 var cut_in_textures: Dictionary = {}
 var spheres: Array[ColorRect] = []
 var focus_lines: ColorRect
@@ -157,7 +160,7 @@ func _refresh() -> void:
 		if cue.age >= TITLE_LIFETIME or f.state in ["hit","knockdown","thrown"] or f.attack_instance != cue.instance:
 			continue
 		remaining.append(cue)
-		if camera != null and spheres.size()==2 and cue.age<float(cue.duration)+0.23:
+		if camera != null and spheres.size()==2 and cue.age<float(cue.duration)+0.23 and not _owns_charge(cue.move):
 			var sphere: ColorRect = spheres[int(cue.slot)]
 			sphere.visible = true
 			sphere.position = camera.point(Vector2(f.x+f.facing*6,f.y-39))-sphere.size/2
@@ -213,10 +216,15 @@ func _sync_cut_ins() -> void:
 		band.visible = alpha > 0 and not paused
 		band.configure(row, Color(color.darkened(0.62), 0.88 * alpha), 18.0, Kit.ease_out(age / 0.12), int(cue.side) > 0)
 
+func _owns_charge(move: Resource) -> bool:
+	return draws_own_charge.is_valid() and draws_own_charge.call(move)
+
 func _draw_energy() -> void:
 	if camera == null:
 		return
 	for cue: Dictionary in active:
+		if _owns_charge(cue.move):
+			continue
 		var age: float = cue.age
 		var duration: float = cue.duration
 		if age>duration+0.23:

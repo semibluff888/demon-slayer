@@ -21,7 +21,8 @@ REFERENCE = ROOT / 'output/vfx-reference/frames'
 
 
 def font(size):
-    for name in ('consola.ttf', 'arial.ttf'):
+    # YaHei first: captions are Chinese, and Consolas/Arial have no CJK glyphs.
+    for name in ('msyh.ttc', 'consola.ttf', 'arial.ttf'):
         try:
             return ImageFont.truetype(name, size)
         except OSError:

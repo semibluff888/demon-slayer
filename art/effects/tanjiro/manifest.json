@@ -259,6 +259,108 @@
       ],
       "sha256": "9196e71dd1b044ae14c0429a32aa6c4372b7769760a952953b3e2ca154ca37b0"
     },
+    "hybrid-fire-strands": {
+      "source": "output/imagegen/tanjiro-vfx-v1/raw/hybrid-fire-strands-v2.png",
+      "source_sha256": "5a25052ab6520789d86fb59ba0afece336eddcef1104b672a49918bc58e7fc64",
+      "kind": "band",
+      "key": "green",
+      "prompt": "output/imagegen/tanjiro-vfx-v1/prompts/hybrid-fire-strands-v2.txt",
+      "size": [
+        2048,
+        320
+      ],
+      "sha256": "ed190c65e19668925a0b0d4de496ca821ca14b76dc62890cb31356246596709d"
+    },
+    "hybrid-fire-chips": {
+      "source": "output/imagegen/tanjiro-vfx-v1/raw/hybrid-fire-chips-sheet-v2.png",
+      "source_sha256": "fb21852d2590f4706b36f12916f927a097c071e04f83c17531d851abe3bcd30c",
+      "kind": "sheet",
+      "key": "alpha",
+      "prompt": "output/imagegen/tanjiro-vfx-v1/prompts/hybrid-fire-chips-sheet-v2.txt",
+      "grid": [
+        4,
+        4
+      ],
+      "cells": [
+        {
+          "aspect": 1.438
+        },
+        {
+          "aspect": 1.198
+        },
+        {
+          "aspect": 1.484
+        },
+        {
+          "aspect": 1.106
+        },
+        {
+          "aspect": 1.704
+        },
+        {
+          "aspect": 1.179
+        },
+        {
+          "aspect": 1.15
+        },
+        {
+          "aspect": 1.513
+        },
+        {
+          "aspect": 1.022
+        },
+        {
+          "aspect": 1.704
+        },
+        {
+          "aspect": 1.494
+        },
+        {
+          "aspect": 1.23
+        },
+        {
+          "aspect": 1.278
+        },
+        {
+          "aspect": 1.523
+        },
+        {
+          "aspect": 0.978
+        },
+        {
+          "aspect": 1.369
+        }
+      ],
+      "size": [
+        1024,
+        1024
+      ],
+      "sha256": "0b916dcb4dedc743feb5c3ec88ea8b35ae35fa95d238d51491a15cc67f2485fd"
+    },
+    "white-brush-strands": {
+      "source": "output/imagegen/tanjiro-vfx-v1/raw/white-brush-strands.png",
+      "source_sha256": "36953637ac899c7045da7822b3b8ca3c2be352eea1868ba79865069676cd6d8d",
+      "kind": "band",
+      "key": "magenta",
+      "prompt": "output/imagegen/tanjiro-vfx-v1/prompts/white-brush-strands.txt",
+      "size": [
+        2048,
+        320
+      ],
+      "sha256": "25a54bf6341d5a7b81472449e090b293422f134ccca2aa545fd8ba2241c32104"
+    },
+    "water-dragon-head": {
+      "source": "output/imagegen/tanjiro-vfx-v1/raw/water-dragon-head.png",
+      "source_sha256": "e249732521a4376cd8b320680064eedefc1b600e2e808b6662f680b65ad8c06e",
+      "kind": "sprite",
+      "key": "magenta",
+      "prompt": "output/imagegen/tanjiro-vfx-v1/prompts/water-dragon-head.txt",
+      "size": [
+        1024,
+        683
+      ],
+      "sha256": "d06f6085eb157e7bd3d3d25eb12da9495b3b42bd7f054c2732ba40405e3fa12f"
+    },
     "noise": {
       "kind": "procedural",
       "size": [

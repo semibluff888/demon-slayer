@@ -75,10 +75,15 @@ func _ready() -> void:
 	tanjiro.camera = camera
 	tanjiro.actors = actors
 	tanjiro.glow = glow
+	tanjiro.cut_curves = CUT_CURVES
 	add_child(tanjiro)
 
 func _rebuilt(move: Resource) -> bool:
 	return tanjiro != null and tanjiro.handles(move)
+
+## Rebuilt supers draw their own charge through the freeze.
+func draws_charge(move: Resource) -> bool:
+	return move != null and move.is_super() and _rebuilt(move)
 
 func consume(events: Array) -> void:
 	if tanjiro != null:

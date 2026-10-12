@@ -54,6 +54,7 @@ func _ready() -> void:
 	super_view.combat = combat
 	super_view.catalog = catalog
 	super_view.camera = camera
+	super_view.draws_own_charge = effects.draws_charge
 	super_view.z_index = 20
 	add_child(super_view)
 	hud = HUDView.new()

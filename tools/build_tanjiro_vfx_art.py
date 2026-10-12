@@ -6,7 +6,8 @@ into game textures under art/effects/tanjiro/, with provenance.
   sheet   4x4 element grid -> each element re-centred in a uniform cell
 
 Backgrounds are keyed automatically: real alpha is kept, flat magenta is
-un-mixed, flat black is treated as emitted light (alpha = brightness).
+un-mixed, a green screen (fire art) is solved against the nearest solid flame
+colour, flat black is treated as emitted light (alpha = brightness).
 A tileable erosion noise is generated procedurally.
 
   python tools/build_tanjiro_vfx_art.py
@@ -33,6 +34,12 @@ ASSETS = {
     'water-foam': {'raw': 'water-foam-sheet.png', 'kind': 'sheet', 'grid': [4, 4], 'cell': 256},
     'fire-petals': {'raw': 'fire-petals-sheet-v2.png', 'kind': 'sheet', 'grid': [4, 4], 'cell': 256},
     'fire-wisps': {'raw': 'fire-petals-sheet.png', 'kind': 'sheet', 'grid': [4, 4], 'cell': 256},
+    # Crimson flame with yellow cracks for the awakened water/fire blend.
+    'hybrid-fire-strands': {'raw': 'hybrid-fire-strands-v2.png', 'kind': 'band', 'size': [2048, 320], 'seam': 'cut'},
+    'hybrid-fire-chips': {'raw': 'hybrid-fire-chips-sheet-v2.png', 'kind': 'sheet', 'grid': [4, 4], 'cell': 256},
+    # White dry-brush band for the twisting whirlpool and the water dragon head.
+    'white-brush-strands': {'raw': 'white-brush-strands.png', 'kind': 'band', 'size': [2048, 320]},
+    'water-dragon-head': {'raw': 'water-dragon-head.png', 'kind': 'sprite', 'max': 1024},
 }
 
 
@@ -52,12 +59,34 @@ def matte(image):
         alpha = np.clip(1 - (key - 48 / 255) * 3.5, 0, 1)
         clean = (rgb - np.array([1, 0, 1], np.float32) * (1 - alpha[..., None])) / np.maximum(alpha[..., None], 1 / 255)
         return np.dstack((np.clip(clean, 0, 1), alpha)), 'magenta'
+    if (corners[:, 1] > 0.8).all() and (corners[:, [0, 2]] < 0.2).all():
+        return green_key(rgb, corners.mean(axis=0)), 'green'
     if (corners.max(axis=1) < 0.08).all():
         alpha = rgb.max(axis=2)
         alpha = np.where(alpha < 0.03, 0, alpha)
         clean = rgb / np.maximum(alpha[..., None], 1 / 255)
         return np.dstack((np.clip(clean, 0, 1), alpha)), 'black'
     raise ValueError('unrecognised background')
+
+
+def green_key(rgb, screen):
+    """Green screen for fire art (red to pale yellow, so green never exceeds red).
+    An edge pixel is a mix of the screen and the nearest solid flame colour, so
+    alpha is solved against that colour's own key rather than a global guess;
+    dark crimson outlines stay opaque instead of turning olive."""
+    key = rgb[..., 1] - np.maximum(rgb[..., 0], rgb[..., 2])
+    screen_key = screen[1] - max(screen[0], screen[2])
+    # Pale yellow has green close to red, so allow a small positive key.
+    solid = (key < 0.1) & (rgb[..., 1] <= rgb[..., 0] + 0.08)
+    # Most negative solid key within a few pixels: the flame colour an edge mixes with.
+    nearby = cv2.erode(np.where(solid, key, 1.0).astype(np.float32), np.ones((9, 9), np.uint8))
+    flame_key = np.where(nearby < 0.0, nearby, -0.45)
+    alpha = np.clip((screen_key - key) / (screen_key - flame_key), 0, 1)
+    alpha = np.where(solid, 1.0, np.where(alpha < 0.04, 0.0, alpha))
+    clean = (rgb - screen[None, None, :] * (1 - alpha[..., None])) / np.maximum(alpha[..., None], 1 / 255)
+    clean = np.clip(clean, 0, 1)
+    clean[..., 1] = np.minimum(clean[..., 1], clean[..., 0])  # despill
+    return np.dstack((clean, alpha)).astype(np.float32)
 
 
 def to_image(rgba):
@@ -78,7 +107,27 @@ def bounds(alpha, threshold=0.04):
     return xs.min(), ys.min(), xs.max() + 1, ys.max() + 1
 
 
-def band(rgba, size):
+def seam_cut(a, b):
+    """Per-row column where the joined strip switches from `a` to `b`: the
+    vertical path of least difference, kept off the overlap's ends."""
+    rows, columns = a.shape[:2]
+    cost = np.abs(a - b).sum(axis=2)
+    border = np.abs(np.arange(columns) / (columns - 1) - 0.5)
+    cost += np.clip(border - 0.35, 0, None) * 40
+    total = cost.copy()
+    for y in range(1, rows):
+        above = total[y - 1]
+        total[y] += np.minimum(above, np.minimum(np.r_[np.inf, above[:-1]], np.r_[above[1:], np.inf]))
+    path = np.zeros(rows, int)
+    path[-1] = int(np.argmin(total[-1]))
+    for y in range(rows - 2, -1, -1):
+        x = path[y + 1]
+        lo, hi = max(0, x - 1), min(columns, x + 2)
+        path[y] = lo + int(np.argmin(total[y, lo:hi]))
+    return path
+
+
+def band(rgba, size, seam='fade'):
     alpha = rgba[..., 3]
     rows = np.nonzero((alpha > 0.04).mean(axis=1) > 0.01)[0]
     pad = int((rows[-1] - rows[0]) * 0.04)
@@ -88,10 +137,17 @@ def band(rgba, size):
     overlap = int(width * 0.18)
     strip = resize(strip, (width + overlap, height))
     pre = np.dstack((strip[..., :3] * strip[..., 3:], strip[..., 3:]))
-    # Cross-fade the head into the tail: out[x] continues from out[width - 1].
+    # Join the head onto the tail: out[x] continues from out[width - 1].
     out = pre[:, :width].copy()
-    ramp = (np.arange(overlap, dtype=np.float32) / overlap)[None, :, None]
-    out[:, :overlap] = pre[:, width:width + overlap] * (1 - ramp) + pre[:, :overlap] * ramp
+    tail, head = pre[:, width:width + overlap], pre[:, :overlap]
+    if seam == 'cut':
+        # Hard cel edges ghost under a cross-fade; switch along a seam instead,
+        # softened over a few pixels.
+        path = seam_cut(tail, head)
+        ramp = np.clip((np.arange(overlap)[None, :] - path[:, None] + 2) / 4, 0, 1)[..., None]
+    else:
+        ramp = (np.arange(overlap, dtype=np.float32) / overlap)[None, :, None]
+    out[:, :overlap] = tail * (1 - ramp) + head * ramp
     rgb = out[..., :3] / np.maximum(out[..., 3:], 1e-4)
     return np.dstack((np.clip(rgb, 0, 1), out[..., 3]))
 
@@ -172,7 +228,7 @@ def main():
         info = {'source': raw.relative_to(ROOT).as_posix(), 'source_sha256': digest(raw), 'kind': spec['kind'], 'key': key,
                 'prompt': (SRC / 'prompts' / (Path(spec['raw']).stem + '.txt')).relative_to(ROOT).as_posix()}
         if spec['kind'] == 'band':
-            result = band(source, spec['size'])
+            result = band(source, spec['size'], spec.get('seam', 'fade'))
         elif spec['kind'] == 'sprite':
             result = sprite(source, spec['max'])
         else:

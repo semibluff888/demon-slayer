@@ -31,6 +31,9 @@ func _run() -> void:
 	_check_routing()
 	for spec in [["236A", false], ["236C", true]]:
 		await _check_slash(spec[0], spec[1])
+	for id in ["623A", "623C", "214B", "214D", "super", "max", "5A", "5C", "2A", "2C"]:
+		for awakened in [false, true]:
+			await _check_technique(id, awakened)
 	await _check_determinism()
 	game.queue_free()
 	await process_frame
@@ -51,13 +54,22 @@ func _check_tracks() -> void:
 
 func _check_routing() -> void:
 	var tanjiro = game.view.effects.tanjiro
-	check(tanjiro != null and tanjiro.layers.size() == 5, "Tanjiro effects mount five layers")
-	for id in ["tanjiro_236A", "tanjiro_236C"]:
+	check(tanjiro != null and tanjiro.layers.size() == 6, "Tanjiro effects mount six layers")
+	for id in ["tanjiro_236A", "tanjiro_236C", "tanjiro_623A", "tanjiro_623C", "tanjiro_214B", "tanjiro_214D", "tanjiro_super", "tanjiro_max",
+			"tanjiro_5A", "tanjiro_5C", "tanjiro_2A", "tanjiro_2C", "tanjiro_jA", "tanjiro_jC"]:
 		check(tanjiro.handles(game.combat.moves[id]), "rebuilt effect owns " + id)
-	for id in ["zenitsu_236A", "nezuko_super", "akaza_max"]:
+	for id in ["zenitsu_236A", "nezuko_super", "akaza_max", "tanjiro_5B", "tanjiro_2D"]:
 		check(not tanjiro.handles(game.combat.moves[id]), "other fighters keep their effects: " + id)
-	for layer: Node2D in tanjiro.layers.slice(0, 2):
+	# EffectsView sits at z 10 and fighters at z 2: the far side of wrapped
+	# shapes must land under both fighters.
+	check(tanjiro.layers[0].z_index == -9, "far side of wrapped shapes draws behind the fighters")
+	for layer: Node2D in tanjiro.layers.slice(1, 3):
 		check(layer.z_index == -1, "solid water stays under a struck fighter: " + layer.name)
+	var cues = game.view.super_view
+	check(cues._owns_charge(game.combat.moves["tanjiro_super"]) and cues._owns_charge(game.combat.moves["tanjiro_max"]),
+		"rebuilt supers draw their own charge instead of the shared energy sphere")
+	check(not cues._owns_charge(game.combat.moves["nezuko_super"]) and not cues._owns_charge(game.combat.moves["tanjiro_236A"]),
+		"other supers keep the shared energy sphere")
 
 func _start(move_id: String, awakened: bool) -> Resource:
 	game.characters.assign(["tanjiro", "zenitsu"])
@@ -96,7 +108,7 @@ func _check_slash(id: String, awakened: bool) -> void:
 		_tick()
 	await process_frame # draws every layer once with the cut on screen
 	check(actor.form_active() == awakened, label + " form matches")
-	var arc: Dictionary = tanjiro._slash_arc(actor, id.ends_with("C"))
+	var arc = tanjiro.techniques.slash.sweep(actor, id.ends_with("C"))
 	check(arc.a0 < -PI * 0.5 and arc.a1 > -PI * 0.5, label + " cut passes overhead")
 	check(arc.r0 > 20.0 and arc.r1 < 90.0, label + " cut hugs the sword")
 	check(tanjiro.drops.count() > 10 and tanjiro._projectiles.size() == 1, label + " cut sprays and the wave is tracked")
@@ -136,6 +148,64 @@ func _check_slash(id: String, awakened: bool) -> void:
 		_tick()
 	game.view.reset_effects()
 	check(tanjiro.drops.count() == 0 and tanjiro._ticks.is_empty() and tanjiro._projectiles.is_empty(), label + " reset clears effect state")
+
+## 水车, 扭转漩涡, 生生流转, 碧罗之天 and the sword normals: drawing, emission,
+## freeze, contact, expiry and reset, in both forms.
+func _check_technique(id: String, awakened: bool) -> void:
+	var move := _start("tanjiro_" + id, awakened)
+	var model = game.combat
+	var tanjiro = game.view.effects.tanjiro
+	var attacker = model.fighters[0]
+	var label := "%s %s" % [id, "awakened" if awakened else "normal"]
+	var sun := id == "max"
+	# Through any super freeze and into the active frames, drawing every layer.
+	var guard := 0
+	while attacker.move_frame < move.startup + 2 and guard < 200:
+		_tick()
+		guard += 1
+		if guard % 6 == 0:
+			await process_frame
+	await process_frame
+	check(tanjiro.drops.count() + tanjiro.embers.count() + tanjiro.foam.count() > 0, label + " sheds particles")
+	if sun:
+		check(tanjiro.embers.count() > 0, label + " is sun flame in either form")
+	else:
+		check(tanjiro.petals.count() > 0 if awakened else tanjiro.petals.count() == 0, label + " flame petals only while awakened")
+	var held := [tanjiro.drops.pos.duplicate(), tanjiro.embers.pos.duplicate(), tanjiro.petals.pos.duplicate(), tanjiro.time]
+	game.view.effects.freeze = true
+	game.view.effects._process(0.5)
+	check([tanjiro.drops.pos, tanjiro.embers.pos, tanjiro.petals.pos, tanjiro.time] == held, label + " freeze holds particles")
+	game.view.effects.freeze = false
+	var snapshot: Dictionary = model.snapshot()
+	tanjiro.advance(0.05)
+	tanjiro.bursts.clear()
+	tanjiro.consume([{"type": "hit", "attacker": 0, "move": move.id, "segment": 0, "position": Vector2(500, 250)}])
+	check(model.snapshot() == snapshot, label + " effects never mutate combat")
+	# Light normals skip the gold X flash.
+	check(tanjiro.bursts.size() == (2 if move.kind == "light" else 3), label + " a hit adds its contact bursts")
+	# Play the move out, drawing as it goes, then let everything settle.
+	var anchored := false
+	for n in range(move.total_frames() + 40):
+		_tick()
+		if attacker.move == move and attacker.move_frame == move.startup + move.active + 2:
+			anchored = tanjiro.techniques[tanjiro.MOVES[move.id]]._anchors.has(0)
+			await process_frame
+		elif n % 9 == 0:
+			await process_frame
+	if id in ["623A", "623C", "max"]:
+		check(anchored, label + " leaves its shape where it was drawn")
+	for n in range(90):
+		game.view.effects._process(1.0 / 60)
+	check(tanjiro.drops.count() == 0 and tanjiro.foam.count() == 0 and tanjiro.mist.count() == 0 and tanjiro.petals.count() == 0
+		and tanjiro.embers.count() == 0 and tanjiro.bursts.is_empty(), label + " every particle expires within a second and a half")
+	_start("tanjiro_" + id, awakened)
+	for n in range(move.startup + move.freeze_frames + move.active + 1):
+		_tick()
+	game.view.reset_effects()
+	var cleared := true
+	for each in tanjiro.techniques.values():
+		cleared = cleared and each._anchors.is_empty()
+	check(cleared and tanjiro._ticks.is_empty() and tanjiro.drops.count() == 0, label + " reset clears effect state")
 
 ## Emission depends on combat ticks, not on how often frames sample them.
 func _check_determinism() -> void:
