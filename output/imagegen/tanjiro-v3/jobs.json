@@ -1,0 +1,6353 @@
+[
+  {
+    "id": "tanjiro-v3-model",
+    "group": "canon",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/old-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-model.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+    "size": "1536x1024",
+    "metadata": {
+      "character": "tanjiro",
+      "stage": "checkpoint-1"
+    }
+  },
+  {
+    "id": "tanjiro-v3-idle-candidates",
+    "group": "canon",
+    "references": [
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-idle-candidates.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-idle-candidates.png",
+    "size": "1536x1024",
+    "metadata": {
+      "character": "tanjiro",
+      "stage": "checkpoint-1"
+    }
+  },
+  {
+    "id": "tanjiro-v3-idle-key",
+    "group": "production",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-idle-key.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-idle-key.png",
+    "size": "1536x1024",
+    "metadata": {
+      "character": "tanjiro",
+      "stage": "checkpoint-2",
+      "clip": "idle",
+      "columns": 3,
+      "rows": 2,
+      "count": 6,
+      "cell": [
+        512,
+        512
+      ]
+    }
+  },
+  {
+    "id": "tanjiro-v3-walk-p0",
+    "group": "pilot",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-walk-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-walk-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "after": null,
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "walk",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1,
+        2
+      ],
+      "columns": 3,
+      "rows": 1,
+      "count": 3,
+      "cell": [
+        512,
+        1024
+      ],
+      "layout": "tall"
+    }
+  },
+  {
+    "id": "tanjiro-v3-walk-p1",
+    "group": "pilot",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-walk-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-walk-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-walk-p0.png"
+    ],
+    "after": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-walk-p0.png",
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "walk",
+      "part": 1,
+      "frame_indices": [
+        3,
+        4,
+        5
+      ],
+      "columns": 3,
+      "rows": 1,
+      "count": 3,
+      "cell": [
+        512,
+        1024
+      ],
+      "layout": "tall"
+    }
+  },
+  {
+    "id": "tanjiro-v3-walk-p2",
+    "group": "pilot",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-walk-p2.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-walk-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-walk-p1.png"
+    ],
+    "after": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-walk-p1.png",
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "walk",
+      "part": 2,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "tall"
+    },
+    "superseded_by": "tanjiro-v3-walk-p2-r1"
+  },
+  {
+    "id": "tanjiro-v3-stand_light-p0",
+    "group": "pilot",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-stand_light-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-stand_light-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "after": null,
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "stand_light",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-stand_light-p1",
+    "group": "pilot",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-stand_light-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-stand_light-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-stand_light-p0.png"
+    ],
+    "after": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-stand_light-p0.png",
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "stand_light",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-stand_light-p2",
+    "group": "pilot",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-stand_light-p2.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-stand_light-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-stand_light-p1.png"
+    ],
+    "after": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-stand_light-p1.png",
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "stand_light",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-water_slash-p0",
+    "group": "pilot",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-water_slash-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_slash-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "after": null,
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "water_slash",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-water_slash-p1",
+    "group": "pilot",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-water_slash-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_slash-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_slash-p0.png"
+    ],
+    "after": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_slash-p0.png",
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "water_slash",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "tanjiro-v3-water_slash-p1-r1"
+  },
+  {
+    "id": "tanjiro-v3-water_slash-p2",
+    "group": "pilot",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-water_slash-p2.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_slash-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_slash-p1.png"
+    ],
+    "after": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_slash-p1.png",
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "water_slash",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "tanjiro-v3-water_slash-p2-r1"
+  },
+  {
+    "id": "tanjiro-v3-water_slash-p3",
+    "group": "pilot",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-water_slash-p3.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_slash-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_slash-p2.png"
+    ],
+    "after": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_slash-p2.png",
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "water_slash",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-water_slash-p4",
+    "group": "pilot",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-water_slash-p4.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_slash-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_slash-p3.png"
+    ],
+    "after": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_slash-p3.png",
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "water_slash",
+      "part": 4,
+      "frame_indices": [
+        8
+      ],
+      "columns": 1,
+      "rows": 1,
+      "count": 1,
+      "cell": [
+        1536,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "tanjiro-v3-water_slash-p4-r1"
+  },
+  {
+    "id": "tanjiro-v3-walk-p2-r1",
+    "group": "pilot-r1",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-walk-p2-r1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-walk-p2-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-walk-p1.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "walk",
+      "part": 2,
+      "frame_indices": [
+        5,
+        6,
+        7
+      ],
+      "overlap": [
+        5
+      ],
+      "columns": 3,
+      "rows": 1,
+      "count": 3,
+      "cell": [
+        512,
+        1024
+      ],
+      "layout": "tall"
+    }
+  },
+  {
+    "id": "tanjiro-v3-water_slash-p1-r1",
+    "group": "pilot-r1",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-water_slash-p1-r1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_slash-p1-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_slash-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "water_slash",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-water_slash-p2-r1",
+    "group": "pilot-r1",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-water_slash-p2-r1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_slash-p2-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_slash-p1-r1.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "water_slash",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-water_slash-p4-r1",
+    "group": "pilot-r1",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-water_slash-p4-r1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_slash-p4-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_slash-p3.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "water_slash",
+      "part": 4,
+      "frame_indices": [
+        7,
+        8
+      ],
+      "overlap": [
+        7
+      ],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-round_intro-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-round_intro-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-round_intro-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "round_intro",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-round_intro-p1",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-round_intro-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-round_intro-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-round_intro-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "round_intro",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-round_intro-p2",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-round_intro-p2.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-round_intro-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-round_intro-p1.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "round_intro",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-round_intro-p3",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-round_intro-p3.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-round_intro-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-round_intro-p2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "round_intro",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-round_intro-p4",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-round_intro-p4.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-round_intro-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-round_intro-p3.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "round_intro",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-round_intro-p5",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-round_intro-p5.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-round_intro-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-round_intro-p4.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "round_intro",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-round_intro-p6",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-round_intro-p6.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-round_intro-p6.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-round_intro-p5.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "round_intro",
+      "part": 6,
+      "frame_indices": [
+        12,
+        13
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-round_intro-p7",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-round_intro-p7.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-round_intro-p7.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-round_intro-p6.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "round_intro",
+      "part": 7,
+      "frame_indices": [
+        14,
+        15
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-round_intro-p8",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-round_intro-p8.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-round_intro-p8.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-round_intro-p7.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "round_intro",
+      "part": 8,
+      "frame_indices": [
+        16,
+        17
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-round_victory-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-round_victory-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-round_victory-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "round_victory",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1,
+        2
+      ],
+      "overlap": [],
+      "columns": 3,
+      "rows": 1,
+      "count": 3,
+      "cell": [
+        512,
+        1024
+      ],
+      "layout": "tall"
+    }
+  },
+  {
+    "id": "tanjiro-v3-round_victory-p1",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-round_victory-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-round_victory-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-round_victory-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "round_victory",
+      "part": 1,
+      "frame_indices": [
+        3,
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 3,
+      "rows": 1,
+      "count": 3,
+      "cell": [
+        512,
+        1024
+      ],
+      "layout": "tall"
+    }
+  },
+  {
+    "id": "tanjiro-v3-round_victory-p2",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-round_victory-p2.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-round_victory-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-round_victory-p1.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "round_victory",
+      "part": 2,
+      "frame_indices": [
+        6,
+        7,
+        8
+      ],
+      "overlap": [],
+      "columns": 3,
+      "rows": 1,
+      "count": 3,
+      "cell": [
+        512,
+        1024
+      ],
+      "layout": "tall"
+    }
+  },
+  {
+    "id": "tanjiro-v3-round_victory-p3",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-round_victory-p3.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-round_victory-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-round_victory-p2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "round_victory",
+      "part": 3,
+      "frame_indices": [
+        9,
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 3,
+      "rows": 1,
+      "count": 3,
+      "cell": [
+        512,
+        1024
+      ],
+      "layout": "tall"
+    }
+  },
+  {
+    "id": "tanjiro-v3-round_victory-p4",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-round_victory-p4.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-round_victory-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-round_victory-p3.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "round_victory",
+      "part": 4,
+      "frame_indices": [
+        12,
+        13,
+        14
+      ],
+      "overlap": [],
+      "columns": 3,
+      "rows": 1,
+      "count": 3,
+      "cell": [
+        512,
+        1024
+      ],
+      "layout": "tall"
+    }
+  },
+  {
+    "id": "tanjiro-v3-round_victory-p5",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-round_victory-p5.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-round_victory-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-round_victory-p4.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "round_victory",
+      "part": 5,
+      "frame_indices": [
+        15,
+        16,
+        17
+      ],
+      "overlap": [],
+      "columns": 3,
+      "rows": 1,
+      "count": 3,
+      "cell": [
+        512,
+        1024
+      ],
+      "layout": "tall"
+    }
+  },
+  {
+    "id": "tanjiro-v3-water_dragon-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-water_dragon-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_dragon-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "water_dragon",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-water_dragon-p1",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-water_dragon-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_dragon-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_dragon-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "water_dragon",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-water_dragon-p2",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-water_dragon-p2.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_dragon-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_dragon-p1.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "water_dragon",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-water_dragon-p3",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-water_dragon-p3.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_dragon-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_dragon-p2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "water_dragon",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-water_dragon-p4",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-water_dragon-p4.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_dragon-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_dragon-p3.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "water_dragon",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-water_dragon-p5",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-water_dragon-p5.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_dragon-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_dragon-p4.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "water_dragon",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-water_dragon-p6",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-water_dragon-p6.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_dragon-p6.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_dragon-p5.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "water_dragon",
+      "part": 6,
+      "frame_indices": [
+        12,
+        13
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-water_dragon-p7",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-water_dragon-p7.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_dragon-p7.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_dragon-p6.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "water_dragon",
+      "part": 7,
+      "frame_indices": [
+        13,
+        14
+      ],
+      "overlap": [
+        13
+      ],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-water_wheel-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-water_wheel-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_wheel-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "water_wheel",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-water_wheel-p1",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-water_wheel-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_wheel-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_wheel-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "water_wheel",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-water_wheel-p2",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-water_wheel-p2.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_wheel-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_wheel-p1.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "water_wheel",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-water_wheel-p3",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-water_wheel-p3.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_wheel-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_wheel-p2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "water_wheel",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-water_wheel-p4",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-water_wheel-p4.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_wheel-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_wheel-p3.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "water_wheel",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-water_wheel-p5",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-water_wheel-p5.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_wheel-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_wheel-p4.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "water_wheel",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-roll_forward-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-roll_forward-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-roll_forward-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "roll_forward",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-roll_forward-p1",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-roll_forward-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-roll_forward-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-roll_forward-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "roll_forward",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-roll_forward-p2",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-roll_forward-p2.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-roll_forward-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-roll_forward-p1.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "roll_forward",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-roll_forward-p3",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-roll_forward-p3.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-roll_forward-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-roll_forward-p2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "roll_forward",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-roll_forward-p4",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-roll_forward-p4.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-roll_forward-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-roll_forward-p3.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "roll_forward",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-roll_forward-p5",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-roll_forward-p5.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-roll_forward-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-roll_forward-p4.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "roll_forward",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-roll_back-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-roll_back-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-roll_back-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "roll_back",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-roll_back-p1",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-roll_back-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-roll_back-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-roll_back-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "roll_back",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-roll_back-p2",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-roll_back-p2.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-roll_back-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-roll_back-p1.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "roll_back",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-roll_back-p3",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-roll_back-p3.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-roll_back-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-roll_back-p2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "roll_back",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-roll_back-p4",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-roll_back-p4.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-roll_back-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-roll_back-p3.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "roll_back",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-roll_back-p5",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-roll_back-p5.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-roll_back-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-roll_back-p4.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "roll_back",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-throw_success-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-throw_success-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-throw_success-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "throw_success",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-throw_success-p1",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-throw_success-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-throw_success-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-throw_success-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "throw_success",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-throw_success-p2",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-throw_success-p2.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-throw_success-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-throw_success-p1.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "throw_success",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-throw_success-p3",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-throw_success-p3.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-throw_success-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-throw_success-p2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "throw_success",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-throw_success-p4",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-throw_success-p4.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-throw_success-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-throw_success-p3.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "throw_success",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-throw_success-p5",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-throw_success-p5.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-throw_success-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-throw_success-p4.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "throw_success",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-throw_forward-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-throw_forward-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-throw_forward-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "throw_forward",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-throw_forward-p1",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-throw_forward-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-throw_forward-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-throw_forward-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "throw_forward",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-throw_forward-p2",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-throw_forward-p2.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-throw_forward-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-throw_forward-p1.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "throw_forward",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-throw_forward-p3",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-throw_forward-p3.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-throw_forward-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-throw_forward-p2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "throw_forward",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-throw_forward-p4",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-throw_forward-p4.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-throw_forward-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-throw_forward-p3.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "throw_forward",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-throw_forward-p5",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-throw_forward-p5.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-throw_forward-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-throw_forward-p4.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "throw_forward",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-thrown-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-thrown-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-thrown-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "thrown",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-thrown-p1",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-thrown-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-thrown-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-thrown-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "thrown",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-thrown-p2",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-thrown-p2.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-thrown-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-thrown-p1.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "thrown",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-thrown-p3",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-thrown-p3.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-thrown-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-thrown-p2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "thrown",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-thrown-p4",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-thrown-p4.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-thrown-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-thrown-p3.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "thrown",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-thrown-p5",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-thrown-p5.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-thrown-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-thrown-p4.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "thrown",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-thrown_forward-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-thrown_forward-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-thrown_forward-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "thrown_forward",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-thrown_forward-p1",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-thrown_forward-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-thrown_forward-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-thrown_forward-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "thrown_forward",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-thrown_forward-p2",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-thrown_forward-p2.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-thrown_forward-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-thrown_forward-p1.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "thrown_forward",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-thrown_forward-p3",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-thrown_forward-p3.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-thrown_forward-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-thrown_forward-p2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "thrown_forward",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-thrown_forward-p4",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-thrown_forward-p4.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-thrown_forward-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-thrown_forward-p3.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "thrown_forward",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-thrown_forward-p5",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-thrown_forward-p5.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-thrown_forward-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-thrown_forward-p4.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "thrown_forward",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-water_vortex-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-water_vortex-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_vortex-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "water_vortex",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-water_vortex-p1",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-water_vortex-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_vortex-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_vortex-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "water_vortex",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-water_vortex-p2",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-water_vortex-p2.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_vortex-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_vortex-p1.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "water_vortex",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-water_vortex-p3",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-water_vortex-p3.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_vortex-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_vortex-p2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "water_vortex",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-water_vortex-p4",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-water_vortex-p4.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_vortex-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_vortex-p3.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "water_vortex",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-water_vortex-p5",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-water_vortex-p5.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_vortex-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-water_vortex-p4.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "water_vortex",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-sun_arc-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-sun_arc-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-sun_arc-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "sun_arc",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-sun_arc-p1",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-sun_arc-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-sun_arc-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-sun_arc-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "sun_arc",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-sun_arc-p2",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-sun_arc-p2.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-sun_arc-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-sun_arc-p1.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "sun_arc",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-sun_arc-p3",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-sun_arc-p3.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-sun_arc-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-sun_arc-p2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "sun_arc",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-sun_arc-p4",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-sun_arc-p4.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-sun_arc-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-sun_arc-p3.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "sun_arc",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-sun_arc-p5",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-sun_arc-p5.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-sun_arc-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-sun_arc-p4.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "sun_arc",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-round_defeat-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-round_defeat-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-round_defeat-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "round_defeat",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-round_defeat-p1",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-round_defeat-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-round_defeat-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-round_defeat-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "round_defeat",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-round_defeat-p2",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-round_defeat-p2.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-round_defeat-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-round_defeat-p1.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "round_defeat",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-round_defeat-p3",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-round_defeat-p3.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-round_defeat-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-round_defeat-p2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "round_defeat",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-round_defeat-p4",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-round_defeat-p4.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-round_defeat-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-round_defeat-p3.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "round_defeat",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-round_defeat-p5",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-round_defeat-p5.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-round_defeat-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-round_defeat-p4.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "round_defeat",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-air_water_wheel-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-air_water_wheel-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-air_water_wheel-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "air_water_wheel",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-air_water_wheel-p1",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-air_water_wheel-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-air_water_wheel-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-air_water_wheel-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "air_water_wheel",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-air_water_wheel-p2",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-air_water_wheel-p2.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-air_water_wheel-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-air_water_wheel-p1.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "air_water_wheel",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-air_water_wheel-p3",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-air_water_wheel-p3.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-air_water_wheel-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-air_water_wheel-p2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "air_water_wheel",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-air_water_wheel-p4",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-air_water_wheel-p4.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-air_water_wheel-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-air_water_wheel-p3.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "air_water_wheel",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-body_stand_heavy-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-body_stand_heavy-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_stand_heavy-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "body_stand_heavy",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-body_stand_heavy-p1",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-body_stand_heavy-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_stand_heavy-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_stand_heavy-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "body_stand_heavy",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-body_stand_heavy-p2",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-body_stand_heavy-p2.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_stand_heavy-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_stand_heavy-p1.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "body_stand_heavy",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-body_stand_heavy-p3",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-body_stand_heavy-p3.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_stand_heavy-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_stand_heavy-p2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "body_stand_heavy",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-body_stand_heavy-p4",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-body_stand_heavy-p4.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_stand_heavy-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_stand_heavy-p3.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "body_stand_heavy",
+      "part": 4,
+      "frame_indices": [
+        7,
+        8
+      ],
+      "overlap": [
+        7
+      ],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-body_crouch_heavy-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-body_crouch_heavy-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_crouch_heavy-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "body_crouch_heavy",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-body_crouch_heavy-p1",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-body_crouch_heavy-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_crouch_heavy-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_crouch_heavy-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "body_crouch_heavy",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-body_crouch_heavy-p2",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-body_crouch_heavy-p2.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_crouch_heavy-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_crouch_heavy-p1.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "body_crouch_heavy",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-body_crouch_heavy-p3",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-body_crouch_heavy-p3.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_crouch_heavy-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_crouch_heavy-p2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "body_crouch_heavy",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-body_crouch_heavy-p4",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-body_crouch_heavy-p4.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_crouch_heavy-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_crouch_heavy-p3.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "body_crouch_heavy",
+      "part": 4,
+      "frame_indices": [
+        7,
+        8
+      ],
+      "overlap": [
+        7
+      ],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-body_air_heavy-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-body_air_heavy-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_air_heavy-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "body_air_heavy",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-body_air_heavy-p1",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-body_air_heavy-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_air_heavy-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_air_heavy-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "body_air_heavy",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-body_air_heavy-p2",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-body_air_heavy-p2.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_air_heavy-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_air_heavy-p1.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "body_air_heavy",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-body_air_heavy-p3",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-body_air_heavy-p3.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_air_heavy-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_air_heavy-p2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "body_air_heavy",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-body_air_heavy-p4",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-body_air_heavy-p4.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_air_heavy-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_air_heavy-p3.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "body_air_heavy",
+      "part": 4,
+      "frame_indices": [
+        7,
+        8
+      ],
+      "overlap": [
+        7
+      ],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-takitsubo-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-takitsubo-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-takitsubo-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "takitsubo",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-takitsubo-p1",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-takitsubo-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-takitsubo-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-takitsubo-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "takitsubo",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-takitsubo-p2",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-takitsubo-p2.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-takitsubo-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-takitsubo-p1.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "takitsubo",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-takitsubo-p3",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-takitsubo-p3.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-takitsubo-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-takitsubo-p2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "takitsubo",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-takitsubo-p4",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-takitsubo-p4.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-takitsubo-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-takitsubo-p3.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "takitsubo",
+      "part": 4,
+      "frame_indices": [
+        7,
+        8
+      ],
+      "overlap": [
+        7
+      ],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-walk_back-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-walk_back-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-walk_back-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "walk_back",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1,
+        2
+      ],
+      "overlap": [],
+      "columns": 3,
+      "rows": 1,
+      "count": 3,
+      "cell": [
+        512,
+        1024
+      ],
+      "layout": "tall"
+    }
+  },
+  {
+    "id": "tanjiro-v3-walk_back-p1",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-walk_back-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-walk_back-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-walk_back-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "walk_back",
+      "part": 1,
+      "frame_indices": [
+        3,
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 3,
+      "rows": 1,
+      "count": 3,
+      "cell": [
+        512,
+        1024
+      ],
+      "layout": "tall"
+    }
+  },
+  {
+    "id": "tanjiro-v3-walk_back-p2",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-walk_back-p2.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-walk_back-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-walk_back-p1.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "walk_back",
+      "part": 2,
+      "frame_indices": [
+        5,
+        6,
+        7
+      ],
+      "overlap": [
+        5
+      ],
+      "columns": 3,
+      "rows": 1,
+      "count": 3,
+      "cell": [
+        512,
+        1024
+      ],
+      "layout": "tall"
+    }
+  },
+  {
+    "id": "tanjiro-v3-dash_forward-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-dash_forward-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-dash_forward-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "dash_forward",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-dash_forward-p1",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-dash_forward-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-dash_forward-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-dash_forward-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "dash_forward",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-dash_forward-p2",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-dash_forward-p2.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-dash_forward-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-dash_forward-p1.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "dash_forward",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-dash_forward-p3",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-dash_forward-p3.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-dash_forward-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-dash_forward-p2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "dash_forward",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-dash_back-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-dash_back-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-dash_back-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "dash_back",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1,
+        2
+      ],
+      "overlap": [],
+      "columns": 3,
+      "rows": 1,
+      "count": 3,
+      "cell": [
+        512,
+        1024
+      ],
+      "layout": "tall"
+    }
+  },
+  {
+    "id": "tanjiro-v3-dash_back-p1",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-dash_back-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-dash_back-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-dash_back-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "dash_back",
+      "part": 1,
+      "frame_indices": [
+        3,
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 3,
+      "rows": 1,
+      "count": 3,
+      "cell": [
+        512,
+        1024
+      ],
+      "layout": "tall"
+    }
+  },
+  {
+    "id": "tanjiro-v3-dash_back-p2",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-dash_back-p2.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-dash_back-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-dash_back-p1.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "dash_back",
+      "part": 2,
+      "frame_indices": [
+        5,
+        6,
+        7
+      ],
+      "overlap": [
+        5
+      ],
+      "columns": 3,
+      "rows": 1,
+      "count": 3,
+      "cell": [
+        512,
+        1024
+      ],
+      "layout": "tall"
+    }
+  },
+  {
+    "id": "tanjiro-v3-jump_forward-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-jump_forward-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-jump_forward-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "jump_forward",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-jump_forward-p1",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-jump_forward-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-jump_forward-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-jump_forward-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "jump_forward",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-jump_forward-p2",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-jump_forward-p2.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-jump_forward-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-jump_forward-p1.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "jump_forward",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-jump_forward-p3",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-jump_forward-p3.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-jump_forward-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-jump_forward-p2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "jump_forward",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-jump_back-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-jump_back-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-jump_back-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "jump_back",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-jump_back-p1",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-jump_back-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-jump_back-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-jump_back-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "jump_back",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-jump_back-p2",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-jump_back-p2.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-jump_back-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-jump_back-p1.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "jump_back",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-jump_back-p3",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-jump_back-p3.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-jump_back-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-jump_back-p2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "jump_back",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-uchishio_3-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-uchishio_3-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-uchishio_3-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "uchishio_3",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-uchishio_3-p1",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-uchishio_3-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-uchishio_3-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-uchishio_3-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "uchishio_3",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-uchishio_3-p2",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-uchishio_3-p2.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-uchishio_3-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-uchishio_3-p1.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "uchishio_3",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-uchishio_3-p3",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-uchishio_3-p3.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-uchishio_3-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-uchishio_3-p2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "uchishio_3",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-headbutt-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-headbutt-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-headbutt-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "headbutt",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-headbutt-p1",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-headbutt-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-headbutt-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-headbutt-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "headbutt",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-headbutt-p2",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-headbutt-p2.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-headbutt-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-headbutt-p1.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "headbutt",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-headbutt-p3",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-headbutt-p3.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-headbutt-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-headbutt-p2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "headbutt",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-ripple_thrust-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-ripple_thrust-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-ripple_thrust-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "ripple_thrust",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-ripple_thrust-p1",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-ripple_thrust-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-ripple_thrust-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-ripple_thrust-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "ripple_thrust",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-ripple_thrust-p2",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-ripple_thrust-p2.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-ripple_thrust-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-ripple_thrust-p1.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "ripple_thrust",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-ripple_thrust-p3",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-ripple_thrust-p3.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-ripple_thrust-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-ripple_thrust-p2.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "ripple_thrust",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-throw-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-throw-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-throw-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "throw",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-throw-p1",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-throw-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-throw-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-throw-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "throw",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-throw-p2",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-throw-p2.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-throw-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-throw-p1.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "throw",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-victory-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-victory-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-victory-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "victory",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1,
+        2
+      ],
+      "overlap": [],
+      "columns": 3,
+      "rows": 1,
+      "count": 3,
+      "cell": [
+        512,
+        1024
+      ],
+      "layout": "tall"
+    }
+  },
+  {
+    "id": "tanjiro-v3-victory-p1",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-victory-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-victory-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-victory-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "victory",
+      "part": 1,
+      "frame_indices": [
+        3,
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 3,
+      "rows": 1,
+      "count": 3,
+      "cell": [
+        512,
+        1024
+      ],
+      "layout": "tall"
+    }
+  },
+  {
+    "id": "tanjiro-v3-stand_heavy-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-stand_heavy-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-stand_heavy-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "stand_heavy",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-stand_heavy-p1",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-stand_heavy-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-stand_heavy-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-stand_heavy-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "stand_heavy",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-stand_heavy-p2",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-stand_heavy-p2.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-stand_heavy-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-stand_heavy-p1.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "stand_heavy",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-crouch_light-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-crouch_light-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-crouch_light-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "crouch_light",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-crouch_light-p1",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-crouch_light-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-crouch_light-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-crouch_light-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "crouch_light",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-crouch_light-p2",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-crouch_light-p2.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-crouch_light-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-crouch_light-p1.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "crouch_light",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-crouch_heavy-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-crouch_heavy-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-crouch_heavy-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "crouch_heavy",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-crouch_heavy-p1",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-crouch_heavy-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-crouch_heavy-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-crouch_heavy-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "crouch_heavy",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "tanjiro-v3-crouch_heavy-p1-r1"
+  },
+  {
+    "id": "tanjiro-v3-crouch_heavy-p2",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-crouch_heavy-p2.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-crouch_heavy-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-crouch_heavy-p1.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "crouch_heavy",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-air_light-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-air_light-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-air_light-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "air_light",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-air_light-p1",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-air_light-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-air_light-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-air_light-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "air_light",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-air_light-p2",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-air_light-p2.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-air_light-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-air_light-p1.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "air_light",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-air_heavy-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-air_heavy-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-air_heavy-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "air_heavy",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-air_heavy-p1",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-air_heavy-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-air_heavy-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-air_heavy-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "air_heavy",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-air_heavy-p2",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-air_heavy-p2.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-air_heavy-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-air_heavy-p1.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "air_heavy",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-jump-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-jump-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-jump-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "jump",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-jump-p1",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-jump-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-jump-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-jump-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "jump",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-jump-p2",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-jump-p2.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-jump-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-jump-p1.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "jump",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-body_stand_light-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-body_stand_light-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_stand_light-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "body_stand_light",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-body_stand_light-p1",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-body_stand_light-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_stand_light-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_stand_light-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "body_stand_light",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-body_stand_light-p2",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-body_stand_light-p2.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_stand_light-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_stand_light-p1.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "body_stand_light",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-body_crouch_light-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-body_crouch_light-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_crouch_light-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "body_crouch_light",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-body_crouch_light-p1",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-body_crouch_light-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_crouch_light-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_crouch_light-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "body_crouch_light",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-body_crouch_light-p2",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-body_crouch_light-p2.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_crouch_light-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_crouch_light-p1.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "body_crouch_light",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-body_air_light-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-body_air_light-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_air_light-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "body_air_light",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-body_air_light-p1",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-body_air_light-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_air_light-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_air_light-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "body_air_light",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-body_air_light-p2",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-body_air_light-p2.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_air_light-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_air_light-p1.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "body_air_light",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-throw_tech-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-throw_tech-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-throw_tech-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "throw_tech",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1,
+        2
+      ],
+      "overlap": [],
+      "columns": 3,
+      "rows": 1,
+      "count": 3,
+      "cell": [
+        512,
+        1024
+      ],
+      "layout": "tall"
+    }
+  },
+  {
+    "id": "tanjiro-v3-throw_tech-p1",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-throw_tech-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-throw_tech-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-throw_tech-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "throw_tech",
+      "part": 1,
+      "frame_indices": [
+        3,
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 3,
+      "rows": 1,
+      "count": 3,
+      "cell": [
+        512,
+        1024
+      ],
+      "layout": "tall"
+    }
+  },
+  {
+    "id": "tanjiro-v3-awakening_start-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-awakening_start-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-awakening_start-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "awakening_start",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1,
+        2
+      ],
+      "overlap": [],
+      "columns": 3,
+      "rows": 1,
+      "count": 3,
+      "cell": [
+        512,
+        1024
+      ],
+      "layout": "tall"
+    }
+  },
+  {
+    "id": "tanjiro-v3-awakening_start-p1",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-awakening_start-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-awakening_start-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-awakening_start-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "awakening_start",
+      "part": 1,
+      "frame_indices": [
+        3,
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 3,
+      "rows": 1,
+      "count": 3,
+      "cell": [
+        512,
+        1024
+      ],
+      "layout": "tall"
+    }
+  },
+  {
+    "id": "tanjiro-v3-uchishio_2-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-uchishio_2-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-uchishio_2-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "uchishio_2",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-uchishio_2-p1",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-uchishio_2-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-uchishio_2-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-uchishio_2-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "uchishio_2",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-uchishio_2-p2",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-uchishio_2-p2.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-uchishio_2-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-uchishio_2-p1.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "uchishio_2",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-knockdown-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-knockdown-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-knockdown-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "knockdown",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-knockdown-p1",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-knockdown-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-knockdown-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-knockdown-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "knockdown",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-knockdown-p2",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-knockdown-p2.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-knockdown-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-knockdown-p1.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "knockdown",
+      "part": 2,
+      "frame_indices": [
+        3,
+        4
+      ],
+      "overlap": [
+        3
+      ],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-hit-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-hit-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-hit-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "hit",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1,
+        2
+      ],
+      "overlap": [],
+      "columns": 3,
+      "rows": 1,
+      "count": 3,
+      "cell": [
+        512,
+        1024
+      ],
+      "layout": "tall"
+    }
+  },
+  {
+    "id": "tanjiro-v3-hit-p1",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-hit-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-hit-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-hit-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "hit",
+      "part": 1,
+      "frame_indices": [
+        1,
+        2,
+        3
+      ],
+      "overlap": [
+        1,
+        2
+      ],
+      "columns": 3,
+      "rows": 1,
+      "count": 3,
+      "cell": [
+        512,
+        1024
+      ],
+      "layout": "tall"
+    }
+  },
+  {
+    "id": "tanjiro-v3-takitsubo_land-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-takitsubo_land-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-takitsubo_land-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "takitsubo_land",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-takitsubo_land-p1",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-takitsubo_land-p1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-takitsubo_land-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-takitsubo_land-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "takitsubo_land",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "tanjiro-v3-crouch-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-crouch-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-crouch-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "crouch",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1,
+        2
+      ],
+      "overlap": [],
+      "columns": 3,
+      "rows": 1,
+      "count": 3,
+      "cell": [
+        512,
+        1024
+      ],
+      "layout": "tall"
+    }
+  },
+  {
+    "id": "tanjiro-v3-guard-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-guard-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-guard-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "guard",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1,
+        2
+      ],
+      "overlap": [],
+      "columns": 3,
+      "rows": 1,
+      "count": 3,
+      "cell": [
+        512,
+        1024
+      ],
+      "layout": "tall"
+    }
+  },
+  {
+    "id": "tanjiro-v3-guard_low-p0",
+    "group": "production",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-guard_low-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-guard_low-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "guard_low",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1,
+        2
+      ],
+      "overlap": [],
+      "columns": 3,
+      "rows": 1,
+      "count": 3,
+      "cell": [
+        512,
+        1024
+      ],
+      "layout": "tall"
+    }
+  },
+  {
+    "id": "tanjiro-v3-crouch_heavy-p1-r1",
+    "group": "fix-r1",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-crouch_heavy-p1-r1.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-crouch_heavy-p1-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-crouch_heavy-p0.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "crouch_heavy",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  }
+]

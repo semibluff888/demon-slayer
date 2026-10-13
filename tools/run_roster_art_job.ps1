@@ -2,7 +2,8 @@ param([Parameter(Mandatory=$true)][string]$Id, [string]$Manifest = 'output/image
 $ErrorActionPreference = 'Stop'
 $productionRoot = Split-Path -Parent $PSScriptRoot
 Set-Location -LiteralPath $productionRoot
-$job = Get-Content -Raw -LiteralPath $Manifest -Encoding UTF8 | ConvertFrom-Json | Where-Object { $_.id -eq $Id }
+# Parenthesised so Windows PowerShell 5.1 enumerates the JSON array like PowerShell 7.
+$job = (Get-Content -Raw -LiteralPath $Manifest -Encoding UTF8 | ConvertFrom-Json) | Where-Object { $_.id -eq $Id }
 if (-not $job) { throw 'Unknown artwork job' }
 if ($job.skip_reason) { Write-Output ('SKIPPED ' + $Id + ': ' + $job.skip_reason); exit 0 }
 $recordPath = Join-Path (Split-Path -Parent (Join-Path $productionRoot $Manifest)) ('records/' + $Id + '.json')

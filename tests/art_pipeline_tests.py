@@ -17,7 +17,14 @@ EXPECTED = {'idle':6, 'walk':8, 'walk_back':8, 'crouch':3, 'jump':6, 'guard':3,
 EXPECTED.update({'body_'+s+'_'+w:(6 if w=='light' else 9) for s in ('stand','crouch','air') for w in ('light','heavy')})
 EXPECTED.update({'roll_forward':12,'roll_back':12,'throw_forward':12,'thrown_forward':12,'throw_tech':6})
 
+def v3(character):
+    """True once the character ships the v3 redraw (tools/art_v3, tests/art_v3_tests.py)."""
+    atlas = json.loads((ROOT / 'art/characters' / character / 'atlas.json').read_text(encoding='utf-8'))
+    return atlas.get('revision') == character + '-v3'
+
 def clip_counts(character):
+    if v3(character):
+        return dict(json.loads((ROOT / 'output/imagegen' / (character + '-v3') / 'pack.json').read_text(encoding='utf-8'))['clips'])
     result = dict(EXPECTED)
     result.update({'water_slash':9,'water_wheel':12} if character=='tanjiro' else {'iai':9,'thunder':9,'body_crouch_heavy':8})
     result.update({'water_vortex':12,'water_dragon':15,'sun_arc':12} if character=='tanjiro' else {'iai_return':12,'sixfold':18,'godspeed':15})
@@ -54,7 +61,14 @@ class ArtworkTests(unittest.TestCase):
                     hashes.add(hashlib.sha256(image.tobytes()).hexdigest())
                 self.assertEqual(len(hashes), count, character + '/' + clip + ' must not duplicate static poses')
             idle_height = max(f['region'][3] for f in atlas['clips']['idle']['frames'])
-            sweep_height = max(f['region'][3] for f in atlas['clips']['crouch_heavy']['frames'])
+            sweep = atlas['clips']['crouch_heavy']
+            frames = sweep['frames']
+            if v3(character):
+                # The v3 rising slash lifts the blade overhead from the crouch; the body
+                # stays low in windup and recovery, which is what this check protects.
+                first, second = sweep['phase_breaks']
+                frames = frames[:first] + frames[second:]
+            sweep_height = max(f['region'][3] for f in frames)
             self.assertLess(sweep_height, idle_height * 0.82,
                             character + '/crouch_heavy must stay low through windup and recovery')
             for page in pages.values():
@@ -125,7 +139,7 @@ class ArtworkTests(unittest.TestCase):
                 self.assertEqual(portrait.getchannel('A').getextrema(), (0,255))
             with Image.open(path / 'avatar.png') as avatar:
                 self.assertEqual(avatar.size, (192,192))
-            for clip in clip_counts(character):
+            for clip in ([] if v3(character) else clip_counts(character)):
                 # Later targeted replacements are represented by their real imports.
                 candidates = list((ROOT/'output/imagegen/anime-v2/imports').glob(character+'-'+clip+'*.json'))
                 self.assertTrue(candidates, character+'/'+clip)
@@ -209,6 +223,8 @@ class ArtworkTests(unittest.TestCase):
         if not CHECK_PREVIEWS:
             self.skipTest('Local previews are not versioned; rebuild art and pass --with-previews to validate them.')
         for character in ('tanjiro','zenitsu'):
+            if v3(character):
+                continue
             for clip in clip_counts(character):
                 with Image.open(ROOT/'output/imagegen/anime-v2/review'/(character+'-'+clip+'.gif')) as preview:
                     self.assertTrue(preview.is_animated)

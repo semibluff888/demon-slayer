@@ -1,0 +1,58 @@
+{
+  "character": "tanjiro",
+  "revision": "tanjiro-v3",
+  "background": [
+    255,
+    0,
+    255
+  ],
+  "background_name": "MAGENTA #ff00ff",
+  "request_size": "1536x1024",
+  "ruler": {
+    "note": "Every production sheet draws the upright figure at the same physical size, so every clip shares one resample factor (340 / 430 = 0.79). 6 heads matches the generated v3 model sheet (measured about 5.7-6).",
+    "standing_px": 430,
+    "head_px": 72,
+    "heads_tall": 6.0,
+    "runtime_standing_px": 340
+  },
+  "palette": {
+    "note": "Material targets in sRGB, sampled from the approved anime-v2 model sheet (k-means). Re-measured from the approved v3 idle key at checkpoint 1.",
+    "haori_green": [
+      84,
+      158,
+      130
+    ],
+    "haori_green_shadow": [
+      56,
+      96,
+      83
+    ],
+    "haori_black": [
+      32,
+      30,
+      32
+    ],
+    "uniform": [
+      76,
+      45,
+      54
+    ],
+    "uniform_light": [
+      118,
+      48,
+      65
+    ],
+    "skin": [
+      247,
+      206,
+      170
+    ],
+    "white": [
+      229,
+      227,
+      227
+    ]
+  },
+  "identity": "Kamado Tanjiro: athletic teenage swordsman, 6 heads tall; burgundy-red spiky hair darker at the roots; dark red eyes; small scar on the left side of his forehead; hanafuda earrings; open haori with a green and black checkerboard (equal square size everywhere) and white lining; dark maroon-black Demon Slayer Corps jacket with white collar trim and silver buttons; white belt with square buckle; matching wide trousers gathered below the knee; white leg wraps with small straps; dark sandals with red thongs; black Nichirin katana with black blade, red and black hilt wrap, black scabbard on the left hip.",
+  "style": "Crisp premium anime ink outlines with consistent line weight, flat cel shading with one shadow tone, modern 2D fighting-game sprite finish."
+}

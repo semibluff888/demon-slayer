@@ -24,7 +24,13 @@ class AwakeningArtTests(unittest.TestCase):
     self.assertGreater(np.mean(removable),.3,'Source requires native transparency or removable cyan')
  def test_current_sources_and_preserved_characters(self):
   revisions={'tanjiro':'awakening-v2','zenitsu':'awakening-v2','nezuko':'awakening-v9'}
+  # A character redrawn with tools/art_v3 derives its awakened atlas from the new
+  # base art; tests/art_v3_tests.py checks it instead of the v2 jobs and hashes.
+  redrawn={cid for cid in revisions if read(ROOT/'art/characters'/cid/'atlas.json').get('revision')==cid+'-v3'}
   for cid,revision in revisions.items():
+   if cid in redrawn:
+    self.assertEqual(read(ROOT/'art/characters'/cid/'awakening/atlas.json')['revision'],cid+'-v3')
+    continue
    production=ROOT/'output/imagegen'/('awakening-v8' if cid=='nezuko' else revision)
    atlas=read(ROOT/'art/characters'/cid/'awakening/atlas.json')
    self.assertEqual(atlas['revision'],revision)
@@ -58,6 +64,8 @@ class AwakeningArtTests(unittest.TestCase):
       self.assertEqual(frame['region'][2:],calibration['size'])
   for baseline in [V2/'preserved-akaza.json']+[ROOT/('output/imagegen/awakening-v%d/preserved-runtime.json'%v) for v in [6,7,8]]:
    for path,digest in read(baseline).items():
+    if any(path.startswith('art/characters/'+cid+'/') for cid in redrawn):
+     continue
     if path in {'scripts/combat.gd','scripts/presentation/fighter_view.gd'} or path in {'art/characters/'+key+'/atlas.json' for key in ['nezuko','nezuko/awakening','zenitsu','zenitsu/awakening','akaza','akaza/awakening']}:
      continue # Current motion regression tests verify these explicitly revised files.
     self.assertEqual(hashlib.sha256((ROOT/path).read_bytes()).hexdigest(),digest,path)

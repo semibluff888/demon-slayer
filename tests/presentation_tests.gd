@@ -222,6 +222,10 @@ func _test_calm_idle(visual: Resource) -> void:
 	actor.combat = model
 	actor.fighter = model.fighters[0]
 	actor.sync(0, false)
+	if actor.idle_cycles():
+		_test_idle_loop(actor)
+		actor.free()
+		return
 	var initial := actor.visual_bounds()
 	var low: float = initial.size.y
 	var high: float = low
@@ -238,6 +242,24 @@ func _test_calm_idle(visual: Resource) -> void:
 	actor.sync(1.0, true)
 	check(actor.visual_bounds() == before, "pause freezes the continuous idle breath")
 	actor.free()
+
+## An authored idle loop: every drawing plays, feet stay planted, the silhouette
+## only breathes (no sway beyond a few percent), and pause freezes the loop.
+func _test_idle_loop(actor) -> void:
+	var count: int = actor.visual.frames.get_frame_count("idle")
+	var initial: Rect2 = actor.visual_bounds()
+	var seen := {}
+	for tick in range(240):
+		actor.sync(1.0 / 60, false)
+		seen[actor.frame_index] = true
+		var bounds: Rect2 = actor.visual_bounds()
+		check(absf(bounds.end.y - initial.end.y) < 0.02, "idle loop keeps its ground contact planted")
+		check(absf(bounds.size.x - initial.size.x) < initial.size.x * 0.04 and absf(bounds.size.y - initial.size.y) < initial.size.y * 0.03, "idle loop only breathes")
+	check(seen.size() == count, "idle loop plays every authored drawing")
+	var before: int = actor.frame_index
+	for tick in range(30):
+		actor.sync(1.0 / 60, true)
+	check(actor.frame_index == before, "pause freezes the idle loop")
 
 func _test_freeze() -> void:
 	var instance := Main.instantiate()

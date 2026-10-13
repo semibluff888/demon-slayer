@@ -227,6 +227,10 @@ func _landing_clip() -> String:
 	var landing: String = move.presentation.landing_clip
 	return landing if not landing.is_empty() and _frames() != null and _frames().has_animation(landing) else ""
 
+## True when the atlas authors the idle as a breathing loop instead of one held drawing.
+func idle_cycles() -> bool:
+	return visual != null and bool(visual.clip_metadata.get("idle", {}).get("cycle", false))
+
 func _state_clip(key: String, fallback: String) -> String:
 	return visual.state_animations.get(key, fallback)
 
@@ -257,9 +261,10 @@ func _frame_index() -> int:
 		return clampi(visual.hit_reaction_frames[reaction_step], 0, count - 1)
 	if combat.phase == "round_end" and clip in ["victory", "knockdown", "hit"]:
 		return mini(count - 1, int(clock_ticks / 60.0 * _frames().get_animation_speed(clip)))
-	# Hold the relaxed drawing; the other idle poses shift the cloth and weight sharply.
-	# Smooth breathing below is anchored at the feet and freezes with the pose clock.
-	if clip == "idle":
+	# Legacy atlases hold the relaxed drawing (their other idle poses shift the cloth
+	# and weight sharply) and breathe procedurally below; a "cycle" idle is an
+	# authored loop deformed from one key drawing, played at its own fps.
+	if clip == "idle" and not idle_cycles():
 		return 0
 	if fighter.reaction == "throw_tech" and fighter.stun > 0:
 		return mini(count - 1, int((16 - fighter.stun) * float(count) / 16))
@@ -355,7 +360,7 @@ func visual_bounds() -> Rect2:
 
 func _pose_scale() -> Vector2:
 	var size: float = float(visual.awakening.form_scale) if form_active() and visual.awakening != null else 1.0
-	var breath := 1.0 + sin(clock_ticks / 60.0 * TAU / IDLE_BREATH_SECONDS) * IDLE_BREATH_AMOUNT if clip == "idle" else 1.0
+	var breath := 1.0 + sin(clock_ticks / 60.0 * TAU / IDLE_BREATH_SECONDS) * IDLE_BREATH_AMOUNT if clip == "idle" and not idle_cycles() else 1.0
 	return Vector2(size, size * breath)
 
 func _draw() -> void:

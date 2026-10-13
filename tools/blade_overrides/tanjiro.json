@@ -1,9 +1,51 @@
 {
-  "_note": "Manual blade points in 1024x640 canvas pixels, read from gridded crops (tools/build_blade_tracks.py). null = no held blade.",
-  "normal": {},
+  "_note": "Manual blade points in 1024x640 canvas pixels, read from gridded crops (tools/build_blade_tracks.py). null = no held blade. Reset for the v3 redraw.",
+  "normal": {
+    "water_slash": {
+      "2": {
+        "hilt": [
+          415,
+          402
+        ],
+        "tip": [
+          306,
+          338
+        ]
+      },
+      "6": {
+        "hilt": [
+          430,
+          405
+        ],
+        "tip": [
+          569,
+          448
+        ]
+      }
+    }
+  },
   "awakened": {
     "water_slash": {
-      "5": {"hilt": [476, 378], "tip": [630, 382]}
+      "2": {
+        "hilt": [
+          415,
+          402
+        ],
+        "tip": [
+          306,
+          338
+        ]
+      },
+      "6": {
+        "hilt": [
+          430,
+          405
+        ],
+        "tip": [
+          569,
+          448
+        ]
+      }
     }
   }
 }

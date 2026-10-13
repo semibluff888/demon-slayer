@@ -1,0 +1,22 @@
+{
+  "checkpoint-1": {
+    "date": "2026-10-13",
+    "idle_candidate": 1,
+    "idle_candidate_name": "中段架势 (Water Breathing middle guard)",
+    "model_sheet": "raw/tanjiro-v3-model.png",
+    "model_sheet_approved": true,
+    "source": "raw/tanjiro-v3-idle-candidates.png",
+    "isolated": "references/approved-idle-candidate.png",
+    "isolated_sha256": "0c381f5827f70c8e2a1e532476e0bac9423d4ce53b5d2b1ab7604c8e0e09ffdf"
+  },
+  "checkpoint-2": {
+    "date": "2026-10-13",
+    "idle_loop": "approved",
+    "rig": "tools/art_v3/spec/tanjiro-idle-rig.json",
+    "frames": 12,
+    "fps": 10,
+    "rejected": {
+      "raw/tanjiro-v3-idle-key.png": "512x512 production cells drifted from the approved pose and drew stockier, larger-headed anatomy (about 5.2 heads); production switches to 512x1024 cells like the approved candidates."
+    }
+  }
+}

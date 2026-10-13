@@ -1,0 +1,132 @@
+{
+  "character": "tanjiro",
+  "clip": "crouch",
+  "canvas_size": [
+    1024,
+    640
+  ],
+  "feet_anchor": [
+    448,
+    568
+  ],
+  "runtime_head_ruler": 39.08,
+  "parts": [
+    {
+      "id": "tanjiro-v3-crouch-p0",
+      "source": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-crouch-p0.png",
+      "sha256": "0e11a73f794495b3f6b11f4c0bd30f4382c0236b8e2b8a748dcc54f6b1a1dfee",
+      "ruler": 102.12,
+      "scale": 0.3826,
+      "scale_method": "head-ruler",
+      "resample_vs_idle": 0.991,
+      "palette_shift": {
+        "skin": [
+          -1.45,
+          1.14,
+          -1.23
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori_green": 1.48,
+        "uniform": 1.23,
+        "skin": 2.03,
+        "hair": 1.85
+      },
+      "palette_delta_e_after": {
+        "haori_green": 1.48,
+        "uniform": 1.23,
+        "skin": 0.8,
+        "hair": 1.85
+      }
+    }
+  ],
+  "frames": [
+    {
+      "frame": 0,
+      "part": "tanjiro-v3-crouch-p0",
+      "crop": [
+        2,
+        144,
+        562,
+        950
+      ],
+      "head_ruler": 102.12,
+      "head_box": [
+        147,
+        6,
+        315,
+        167
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3826,
+      "flags": [],
+      "notes": [],
+      "root_x": 223.0,
+      "anchor_mode": "feet",
+      "offset": [
+        363,
+        261
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.941
+    },
+    {
+      "frame": 1,
+      "part": "tanjiro-v3-crouch-p0",
+      "crop": [
+        464,
+        222,
+        1068,
+        948
+      ],
+      "head_ruler": 102.49,
+      "head_box": [
+        198,
+        6,
+        366,
+        165
+      ],
+      "ratio_to_sheet": 1.004,
+      "scale": 0.3826,
+      "flags": [],
+      "notes": [],
+      "root_x": 249.0,
+      "anchor_mode": "feet",
+      "offset": [
+        353,
+        291
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.851
+    },
+    {
+      "frame": 2,
+      "part": "tanjiro-v3-crouch-p0",
+      "crop": [
+        910,
+        376,
+        1534,
+        944
+      ],
+      "head_ruler": 101.81,
+      "head_box": [
+        235,
+        5,
+        403,
+        165
+      ],
+      "ratio_to_sheet": 0.997,
+      "scale": 0.3826,
+      "flags": [],
+      "notes": [],
+      "root_x": 254.0,
+      "anchor_mode": "feet",
+      "offset": [
+        351,
+        353
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.659
+    }
+  ]
+}

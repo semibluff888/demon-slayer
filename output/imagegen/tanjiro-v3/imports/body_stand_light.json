@@ -1,0 +1,274 @@
+{
+  "character": "tanjiro",
+  "clip": "body_stand_light",
+  "canvas_size": [
+    1024,
+    640
+  ],
+  "feet_anchor": [
+    448,
+    568
+  ],
+  "runtime_head_ruler": 39.08,
+  "parts": [
+    {
+      "id": "tanjiro-v3-body_stand_light-p0",
+      "source": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_stand_light-p0.png",
+      "sha256": "abcffcec235f4ffce0c413460df77ed95dc810df76781d3af9c758f443b3e23f",
+      "ruler": 116.48,
+      "scale": 0.3355,
+      "scale_method": "head-ruler",
+      "resample_vs_idle": 0.869,
+      "palette_shift": {
+        "haori_green": [
+          -2.44,
+          0.75,
+          -0.62
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori_green": 2.15,
+        "uniform": 1.51,
+        "skin": 1.53,
+        "hair": 1.52
+      },
+      "palette_delta_e_after": {
+        "haori_green": 1.23,
+        "uniform": 1.51,
+        "skin": 1.54,
+        "hair": 1.52
+      }
+    },
+    {
+      "id": "tanjiro-v3-body_stand_light-p1",
+      "source": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_stand_light-p1.png",
+      "sha256": "b4ccf2e1d5df7fdb4b09ea191aaeb532cda8dd4be5bb34ed7b7004429c16cf7e",
+      "ruler": 118.97,
+      "scale": 0.3285,
+      "scale_method": "head-ruler",
+      "resample_vs_idle": 0.851,
+      "palette_shift": {},
+      "palette_delta_e_before": {
+        "haori_green": 1.95,
+        "uniform": 1.38,
+        "skin": 0.45,
+        "hair": 0.3
+      },
+      "palette_delta_e_after": {
+        "haori_green": 1.95,
+        "uniform": 1.38,
+        "skin": 0.45,
+        "hair": 0.3
+      }
+    },
+    {
+      "id": "tanjiro-v3-body_stand_light-p2",
+      "source": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-body_stand_light-p2.png",
+      "sha256": "806db6f08b6ff9e58d1ef815206e788f4ee60e7e1ceca63bfe7132df0522f550",
+      "ruler": 122.38,
+      "scale": 0.3193,
+      "scale_method": "head-ruler",
+      "resample_vs_idle": 0.827,
+      "palette_shift": {
+        "haori_green": [
+          -3.08,
+          0.97,
+          0.31
+        ],
+        "uniform": [
+          2.64,
+          1.04,
+          -0.76
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori_green": 2.62,
+        "uniform": 2.44,
+        "skin": 0.95,
+        "hair": 2.55
+      },
+      "palette_delta_e_after": {
+        "haori_green": 1.42,
+        "uniform": 1.46,
+        "skin": 0.95,
+        "hair": 2.55
+      }
+    }
+  ],
+  "frames": [
+    {
+      "frame": 0,
+      "part": "tanjiro-v3-body_stand_light-p0",
+      "crop": [
+        142,
+        20,
+        753,
+        1004
+      ],
+      "head_ruler": 116.48,
+      "head_box": [
+        153,
+        4,
+        343,
+        186
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3355,
+      "flags": [],
+      "notes": [],
+      "root_x": 246.0,
+      "anchor_mode": "feet",
+      "offset": [
+        365,
+        239
+      ],
+      "clipped": false,
+      "height_vs_idle": 1.012
+    },
+    {
+      "frame": 1,
+      "part": "tanjiro-v3-body_stand_light-p0",
+      "crop": [
+        820,
+        13,
+        1404,
+        1000
+      ],
+      "head_ruler": 115.74,
+      "head_box": [
+        101,
+        4,
+        287,
+        186
+      ],
+      "ratio_to_sheet": 0.994,
+      "scale": 0.3355,
+      "flags": [],
+      "notes": [],
+      "root_x": 222.0,
+      "anchor_mode": "feet",
+      "offset": [
+        374,
+        238
+      ],
+      "clipped": false,
+      "height_vs_idle": 1.015
+    },
+    {
+      "frame": 2,
+      "part": "tanjiro-v3-body_stand_light-p1",
+      "crop": [
+        26,
+        29,
+        746,
+        994
+      ],
+      "head_ruler": 118.97,
+      "head_box": [
+        164,
+        22,
+        356,
+        207
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3285,
+      "flags": [],
+      "notes": [],
+      "root_x": 276.0,
+      "anchor_mode": "feet",
+      "offset": [
+        357,
+        252
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.954
+    },
+    {
+      "frame": 3,
+      "part": "tanjiro-v3-body_stand_light-p1",
+      "crop": [
+        778,
+        44,
+        1516,
+        994
+      ],
+      "head_ruler": 115.7,
+      "head_box": [
+        108,
+        10,
+        294,
+        194
+      ],
+      "ratio_to_sheet": 0.973,
+      "scale": 0.3285,
+      "flags": [],
+      "notes": [],
+      "root_x": 266.0,
+      "anchor_mode": "feet",
+      "offset": [
+        361,
+        257
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.95
+    },
+    {
+      "frame": 4,
+      "part": "tanjiro-v3-body_stand_light-p2",
+      "crop": [
+        40,
+        18,
+        766,
+        998
+      ],
+      "head_ruler": 122.38,
+      "head_box": [
+        165,
+        4,
+        370,
+        194
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3193,
+      "flags": [],
+      "notes": [],
+      "root_x": 300.0,
+      "anchor_mode": "feet",
+      "offset": [
+        352,
+        256
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.96
+    },
+    {
+      "frame": 5,
+      "part": "tanjiro-v3-body_stand_light-p2",
+      "crop": [
+        838,
+        18,
+        1516,
+        1000
+      ],
+      "head_ruler": 121.8,
+      "head_box": [
+        152,
+        4,
+        347,
+        195
+      ],
+      "ratio_to_sheet": 0.995,
+      "scale": 0.3193,
+      "flags": [],
+      "notes": [],
+      "root_x": 265.0,
+      "anchor_mode": "feet",
+      "offset": [
+        363,
+        256
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.963
+    }
+  ]
+}

@@ -111,5 +111,7 @@ if (Test-Path -LiteralPath $artPython) {
     if ($LASTEXITCODE -ne 0) { throw 'Motion artwork validation failed.' }
     & $artPython (Join-Path $projectRoot 'tests/fate_art_tests.py')
     if ($LASTEXITCODE -ne 0) { throw 'Fate artwork validation failed.' }
+    & $artPython (Join-Path $projectRoot 'tests/art_v3_tests.py')
+    if ($LASTEXITCODE -ne 0) { throw 'Art v3 validation failed.' }
 }
 Write-Host 'All checks passed. Combat state is identical at 30 / 60 / 144 FPS.'

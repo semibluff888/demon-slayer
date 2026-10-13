@@ -1,0 +1,251 @@
+{
+  "character": "tanjiro",
+  "clip": "throw_tech",
+  "canvas_size": [
+    1024,
+    640
+  ],
+  "feet_anchor": [
+    448,
+    568
+  ],
+  "runtime_head_ruler": 39.08,
+  "parts": [
+    {
+      "id": "tanjiro-v3-throw_tech-p0",
+      "source": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-throw_tech-p0.png",
+      "sha256": "bafaab4fa160546511c6929b5402c6692f72f84eb4a131bb8dc3b5f7c456f5a8",
+      "ruler": 110.47,
+      "scale": 0.3537,
+      "scale_method": "head-ruler",
+      "resample_vs_idle": 0.916,
+      "palette_shift": {
+        "haori_green": [
+          -0.29,
+          2.56,
+          -0.8
+        ],
+        "uniform": [
+          -6.03,
+          -3.47,
+          -2.32
+        ],
+        "skin": [
+          -1.54,
+          1.84,
+          -0.76
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori_green": 2.69,
+        "uniform": 6.31,
+        "skin": 2.33,
+        "hair": 3.93
+      },
+      "palette_delta_e_after": {
+        "haori_green": 0.32,
+        "uniform": 3.49,
+        "skin": 0.69,
+        "hair": 4.06
+      }
+    },
+    {
+      "id": "tanjiro-v3-throw_tech-p1",
+      "source": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-throw_tech-p1.png",
+      "sha256": "4a708017276fe0c6e0eaaa0513a9ed769cf132255bf641d0579b3688980ea0d0",
+      "ruler": 111.68,
+      "scale": 0.3499,
+      "scale_method": "head-ruler",
+      "resample_vs_idle": 0.906,
+      "palette_shift": {},
+      "palette_delta_e_before": {
+        "haori_green": 1.13,
+        "uniform": 1.47,
+        "skin": 0.73,
+        "hair": 1.31
+      },
+      "palette_delta_e_after": {
+        "haori_green": 1.13,
+        "uniform": 1.47,
+        "skin": 0.73,
+        "hair": 1.31
+      }
+    }
+  ],
+  "frames": [
+    {
+      "frame": 0,
+      "part": "tanjiro-v3-throw_tech-p0",
+      "crop": [
+        3,
+        102,
+        536,
+        943
+      ],
+      "head_ruler": 116.72,
+      "head_box": [
+        251,
+        1,
+        445,
+        185
+      ],
+      "ratio_to_sheet": 1.057,
+      "scale": 0.3537,
+      "flags": [],
+      "notes": [],
+      "root_x": 249.0,
+      "anchor_mode": "feet",
+      "offset": [
+        360,
+        271
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.916
+    },
+    {
+      "frame": 1,
+      "part": "tanjiro-v3-throw_tech-p0",
+      "crop": [
+        480,
+        95,
+        948,
+        943
+      ],
+      "head_ruler": 110.47,
+      "head_box": [
+        216,
+        0,
+        398,
+        177
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3537,
+      "flags": [],
+      "notes": [],
+      "root_x": 269.0,
+      "anchor_mode": "feet",
+      "offset": [
+        353,
+        268
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.926
+    },
+    {
+      "frame": 2,
+      "part": "tanjiro-v3-throw_tech-p0",
+      "crop": [
+        925,
+        91,
+        1528,
+        943
+      ],
+      "head_ruler": 109.73,
+      "head_box": [
+        229,
+        3,
+        415,
+        175
+      ],
+      "ratio_to_sheet": 0.993,
+      "scale": 0.3537,
+      "flags": [],
+      "notes": [],
+      "root_x": 288.0,
+      "anchor_mode": "feet",
+      "offset": [
+        346,
+        267
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.926
+    },
+    {
+      "frame": 3,
+      "part": "tanjiro-v3-throw_tech-p1",
+      "crop": [
+        11,
+        130,
+        539,
+        908
+      ],
+      "head_ruler": 114.89,
+      "head_box": [
+        124,
+        1,
+        312,
+        182
+      ],
+      "ratio_to_sheet": 1.029,
+      "scale": 0.3499,
+      "flags": [],
+      "notes": [],
+      "root_x": 191.0,
+      "anchor_mode": "feet",
+      "offset": [
+        381,
+        296
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.839
+    },
+    {
+      "frame": 4,
+      "part": "tanjiro-v3-throw_tech-p1",
+      "crop": [
+        490,
+        90,
+        1066,
+        960
+      ],
+      "head_ruler": 110.1,
+      "head_box": [
+        175,
+        38,
+        357,
+        209
+      ],
+      "ratio_to_sheet": 0.986,
+      "scale": 0.3499,
+      "flags": [],
+      "notes": [],
+      "root_x": 271.0,
+      "anchor_mode": "feet",
+      "offset": [
+        353,
+        264
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.901
+    },
+    {
+      "frame": 5,
+      "part": "tanjiro-v3-throw_tech-p1",
+      "crop": [
+        1022,
+        121,
+        1526,
+        961
+      ],
+      "head_ruler": 111.68,
+      "head_box": [
+        108,
+        2,
+        288,
+        176
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3499,
+      "flags": [],
+      "notes": [],
+      "root_x": 213.0,
+      "anchor_mode": "feet",
+      "offset": [
+        373,
+        274
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.907
+    }
+  ]
+}

@@ -56,9 +56,10 @@ func _check_routing() -> void:
 	var tanjiro = game.view.effects.tanjiro
 	check(tanjiro != null and tanjiro.layers.size() == 6, "Tanjiro effects mount six layers")
 	for id in ["tanjiro_236A", "tanjiro_236C", "tanjiro_623A", "tanjiro_623C", "tanjiro_214B", "tanjiro_214D", "tanjiro_super", "tanjiro_max",
-			"tanjiro_5A", "tanjiro_5C", "tanjiro_2A", "tanjiro_2C", "tanjiro_jA", "tanjiro_jC"]:
+			"tanjiro_5A", "tanjiro_5C", "tanjiro_2A", "tanjiro_2C", "tanjiro_jA", "tanjiro_jC",
+			"tanjiro_5AA", "tanjiro_5AAC", "tanjiro_6C", "tanjiro_j236A", "tanjiro_j236C", "tanjiro_j214B", "tanjiro_j214D"]:
 		check(tanjiro.handles(game.combat.moves[id]), "rebuilt effect owns " + id)
-	for id in ["zenitsu_236A", "nezuko_super", "akaza_max", "tanjiro_5B", "tanjiro_2D"]:
+	for id in ["zenitsu_236A", "nezuko_super", "akaza_max", "tanjiro_5B", "tanjiro_2D", "tanjiro_6B"]:
 		check(not tanjiro.handles(game.combat.moves[id]), "other fighters keep their effects: " + id)
 	# EffectsView sits at z 10 and fighters at z 2: the far side of wrapped
 	# shapes must land under both fighters.

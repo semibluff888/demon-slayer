@@ -32,6 +32,10 @@ const MOVES := {
 	"tanjiro_super": "dragon",
 	"tanjiro_max": "sun",
 	"tanjiro_5A": "blade", "tanjiro_5C": "blade", "tanjiro_2A": "blade", "tanjiro_2C": "blade", "tanjiro_jA": "blade", "tanjiro_jC": "blade",
+	# Move-set expansion: Striking Tide, Drop Ripple Thrust and Waterfall Basin follow
+	# the drawn blade; the air Water Wheel draws the wheel ring.
+	"tanjiro_5AA": "blade", "tanjiro_5AAC": "blade", "tanjiro_6C": "blade", "tanjiro_j236A": "blade", "tanjiro_j236C": "blade",
+	"tanjiro_j214B": "wheel", "tanjiro_j214D": "wheel",
 }
 const TEXTURES := ["water-strands", "hybrid-fire-strands", "fire-strands", "white-brush-strands", "water-crescent", "water-crescent-heavy",
 	"water-impact", "water-foam", "water-dragon-head", "hybrid-fire-chips", "fire-petals", "noise"]

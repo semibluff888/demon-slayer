@@ -1,0 +1,29 @@
+{
+  "key": "output/imagegen/tanjiro-v3/references/approved-idle-candidate.png",
+  "frames": 12,
+  "fps": 10,
+  "grid": 6,
+  "alpha": 1.4,
+  "head_ruler_px": 158,
+  "pelvis": [200, 430],
+  "points": {
+    "heel_back": [48, 830], "foot_back": [75, 834], "toe_back": [112, 834],
+    "heel_front": [225, 796], "foot_front": [265, 800], "toe_front": [322, 800],
+    "ankle_back": [95, 765], "ankle_front": [255, 745],
+    "knee_back": [115, 660], "knee_front": [290, 640],
+    "pelvis": [200, 430], "waist": [210, 395],
+    "chest": [215, 260], "collar": [215, 170],
+    "shoulder_back": [110, 200], "shoulder_front": [300, 215],
+    "head": [225, 110], "crown": [200, 25], "hair_back": [140, 70], "hair_front": [290, 60],
+    "hilt": [215, 330], "guard": [260, 275], "elbow_back": [120, 320],
+    "blade_mid": [380, 160], "blade_tip": [497, 25],
+    "hem_back": [60, 545], "hem_front": [410, 545], "sleeve_back": [60, 380], "scabbard": [25, 600]
+  },
+  "motions": [
+    {"name": "breath", "phase": 0.0, "points": {"chest": [0, -8], "collar": [0, -8], "shoulder_back": [0, -8], "shoulder_front": [0, -7], "head": [0, -7], "crown": [0, -7], "hair_back": [0, -7], "hair_front": [0, -7], "hilt": [0, -6], "guard": [0, -6], "elbow_back": [0, -5], "blade_mid": [0, -7], "blade_tip": [0, -8], "waist": [0, -3], "sleeve_back": [0, -3]}},
+    {"name": "settle", "phase": 0.5, "points": {"pelvis": [0, 2]}},
+    {"name": "cloth", "phase": -0.15, "points": {"hem_back": [6, 1], "hem_front": [5, 1], "sleeve_back": [4, 1], "scabbard": [2, 0]}},
+    {"name": "hair", "phase": -0.3, "points": {"hair_back": [3, -1], "crown": [1, -2], "hair_front": [2, -1]}},
+    {"name": "tip", "phase": -0.08, "points": {"blade_tip": [3, -4], "blade_mid": [1, -1]}}
+  ]
+}

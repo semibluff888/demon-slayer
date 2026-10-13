@@ -1,0 +1,246 @@
+{
+  "character": "tanjiro",
+  "clip": "awakening_start",
+  "canvas_size": [
+    1024,
+    640
+  ],
+  "feet_anchor": [
+    448,
+    568
+  ],
+  "runtime_head_ruler": 39.08,
+  "parts": [
+    {
+      "id": "tanjiro-v3-awakening_start-p0",
+      "source": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-awakening_start-p0.png",
+      "sha256": "e8b84788a8b8bf380e0c40e6bbb83f93577345f6be35b70b362617a9909f96ad",
+      "ruler": 112.56,
+      "scale": 0.3472,
+      "scale_method": "head-ruler",
+      "resample_vs_idle": 0.899,
+      "palette_shift": {},
+      "palette_delta_e_before": {
+        "haori_green": 1.83,
+        "uniform": 1.75,
+        "skin": 0.74,
+        "hair": 0.85
+      },
+      "palette_delta_e_after": {
+        "haori_green": 1.83,
+        "uniform": 1.75,
+        "skin": 0.74,
+        "hair": 0.85
+      }
+    },
+    {
+      "id": "tanjiro-v3-awakening_start-p1",
+      "source": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-awakening_start-p1.png",
+      "sha256": "8572e1cf22c1740cf5d8fc6775ad9ad6c020eb2cdb7b640c75d5991d7d89bfb8",
+      "ruler": 105.86,
+      "scale": 0.3691,
+      "scale_method": "head-ruler",
+      "resample_vs_idle": 0.956,
+      "palette_shift": {
+        "haori_green": [
+          -2.23,
+          4.33,
+          -0.43
+        ],
+        "uniform": [
+          -3.26,
+          -1.8,
+          -1.37
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori_green": 4.69,
+        "uniform": 3.41,
+        "skin": 1.55,
+        "hair": 5.77
+      },
+      "palette_delta_e_after": {
+        "haori_green": 1.37,
+        "uniform": 1.1,
+        "skin": 1.55,
+        "hair": 5.78
+      }
+    }
+  ],
+  "frames": [
+    {
+      "frame": 0,
+      "part": "tanjiro-v3-awakening_start-p0",
+      "crop": [
+        6,
+        42,
+        568,
+        994
+      ],
+      "head_ruler": 112.56,
+      "head_box": [
+        153,
+        4,
+        336,
+        182
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3472,
+      "flags": [],
+      "notes": [],
+      "root_x": 242.0,
+      "anchor_mode": "feet",
+      "offset": [
+        364,
+        239
+      ],
+      "clipped": false,
+      "height_vs_idle": 1.015
+    },
+    {
+      "frame": 1,
+      "part": "tanjiro-v3-awakening_start-p0",
+      "crop": [
+        520,
+        60,
+        1074,
+        994
+      ],
+      "head_ruler": 112.21,
+      "head_box": [
+        170,
+        3,
+        356,
+        181
+      ],
+      "ratio_to_sheet": 0.997,
+      "scale": 0.3472,
+      "flags": [],
+      "notes": [],
+      "root_x": 240.0,
+      "anchor_mode": "feet",
+      "offset": [
+        365,
+        245
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.994
+    },
+    {
+      "frame": 2,
+      "part": "tanjiro-v3-awakening_start-p0",
+      "crop": [
+        1018,
+        56,
+        1536,
+        994
+      ],
+      "head_ruler": 112.71,
+      "head_box": [
+        161,
+        4,
+        348,
+        183
+      ],
+      "ratio_to_sheet": 1.001,
+      "scale": 0.3472,
+      "flags": [],
+      "notes": [],
+      "root_x": 243.0,
+      "anchor_mode": "feet",
+      "offset": [
+        364,
+        243
+      ],
+      "clipped": false,
+      "height_vs_idle": 1.0
+    },
+    {
+      "frame": 3,
+      "part": "tanjiro-v3-awakening_start-p1",
+      "crop": [
+        8,
+        165,
+        621,
+        992
+      ],
+      "head_ruler": 107.22,
+      "head_box": [
+        240,
+        3,
+        420,
+        170
+      ],
+      "ratio_to_sheet": 1.013,
+      "scale": 0.3691,
+      "flags": [],
+      "notes": [],
+      "root_x": 289.0,
+      "anchor_mode": "feet",
+      "offset": [
+        341,
+        263
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.941
+    },
+    {
+      "frame": 4,
+      "part": "tanjiro-v3-awakening_start-p1",
+      "crop": [
+        521,
+        17,
+        1005,
+        993
+      ],
+      "head_ruler": 105.64,
+      "head_box": [
+        170,
+        138,
+        343,
+        302
+      ],
+      "ratio_to_sheet": 0.998,
+      "scale": 0.3691,
+      "flags": [],
+      "notes": [],
+      "root_x": 262.0,
+      "anchor_mode": "feet",
+      "offset": [
+        351,
+        208
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.957
+    },
+    {
+      "frame": 5,
+      "part": "tanjiro-v3-awakening_start-p1",
+      "crop": [
+        1010,
+        153,
+        1525,
+        992
+      ],
+      "head_ruler": 105.86,
+      "head_box": [
+        147,
+        3,
+        322,
+        173
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3691,
+      "flags": [],
+      "notes": [],
+      "root_x": 236.0,
+      "anchor_mode": "feet",
+      "offset": [
+        361,
+        258
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.957
+    }
+  ]
+}

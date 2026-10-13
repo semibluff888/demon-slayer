@@ -1,0 +1,132 @@
+{
+  "character": "tanjiro",
+  "clip": "guard_low",
+  "canvas_size": [
+    1024,
+    640
+  ],
+  "feet_anchor": [
+    448,
+    568
+  ],
+  "runtime_head_ruler": 39.08,
+  "parts": [
+    {
+      "id": "tanjiro-v3-guard_low-p0",
+      "source": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-guard_low-p0.png",
+      "sha256": "0591e3d7f85796caebf09e7f9d45fcd7dea7646458e9e453e06dada5c15bad44",
+      "ruler": 101.7,
+      "scale": 0.3842,
+      "scale_method": "head-ruler",
+      "resample_vs_idle": 0.995,
+      "palette_shift": {
+        "uniform": [
+          2.49,
+          1.7,
+          -0.31
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori_green": 1.6,
+        "uniform": 2.61,
+        "skin": 0.92,
+        "hair": 2.65
+      },
+      "palette_delta_e_after": {
+        "haori_green": 1.6,
+        "uniform": 0.88,
+        "skin": 0.92,
+        "hair": 2.66
+      }
+    }
+  ],
+  "frames": [
+    {
+      "frame": 0,
+      "part": "tanjiro-v3-guard_low-p0",
+      "crop": [
+        6,
+        207,
+        576,
+        914
+      ],
+      "head_ruler": 104.85,
+      "head_box": [
+        223,
+        5,
+        396,
+        173
+      ],
+      "ratio_to_sheet": 1.031,
+      "scale": 0.3842,
+      "flags": [],
+      "notes": [],
+      "root_x": 263.0,
+      "anchor_mode": "feet",
+      "offset": [
+        347,
+        298
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.83
+    },
+    {
+      "frame": 1,
+      "part": "tanjiro-v3-guard_low-p0",
+      "crop": [
+        514,
+        253,
+        1050,
+        914
+      ],
+      "head_ruler": 101.43,
+      "head_box": [
+        213,
+        5,
+        385,
+        169
+      ],
+      "ratio_to_sheet": 0.997,
+      "scale": 0.3842,
+      "flags": [],
+      "notes": [],
+      "root_x": 254.0,
+      "anchor_mode": "feet",
+      "offset": [
+        350,
+        315
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.777
+    },
+    {
+      "frame": 2,
+      "part": "tanjiro-v3-guard_low-p0",
+      "crop": [
+        1030,
+        252,
+        1536,
+        913
+      ],
+      "head_ruler": 101.7,
+      "head_box": [
+        208,
+        4,
+        379,
+        168
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3842,
+      "flags": [],
+      "notes": [],
+      "root_x": 245.0,
+      "anchor_mode": "feet",
+      "offset": [
+        354,
+        315
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.777
+    }
+  ]
+}

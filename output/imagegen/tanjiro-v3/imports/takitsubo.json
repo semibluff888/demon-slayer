@@ -1,0 +1,435 @@
+{
+  "character": "tanjiro",
+  "clip": "takitsubo",
+  "canvas_size": [
+    1024,
+    640
+  ],
+  "feet_anchor": [
+    448,
+    568
+  ],
+  "runtime_head_ruler": 39.08,
+  "parts": [
+    {
+      "id": "tanjiro-v3-takitsubo-p0",
+      "source": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-takitsubo-p0.png",
+      "sha256": "0e7344e1e37a7739256cf0c7268400f0759bedb8eafe51018b70f6aa2dce2983",
+      "ruler": 89.53,
+      "scale": 0.3312,
+      "scale_method": "clip-median",
+      "resample_vs_idle": 0.858,
+      "palette_shift": {
+        "uniform": [
+          2.03,
+          1.74,
+          -0.52
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori_green": 0.91,
+        "uniform": 2.41,
+        "skin": 1.2,
+        "hair": 3.4
+      },
+      "palette_delta_e_after": {
+        "haori_green": 0.91,
+        "uniform": 0.41,
+        "skin": 1.2,
+        "hair": 3.37
+      }
+    },
+    {
+      "id": "tanjiro-v3-takitsubo-p1",
+      "source": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-takitsubo-p1.png",
+      "sha256": "d6e1ca29033c62fdd2f1be8eba20d63692a6f19eca32c588e070c134ac4ce5bf",
+      "ruler": 113.81,
+      "scale": 0.3433,
+      "scale_method": "head-ruler",
+      "resample_vs_idle": 0.889,
+      "palette_shift": {
+        "haori_green": [
+          -3.62,
+          -0.23,
+          -0.63
+        ],
+        "skin": [
+          -2.53,
+          1.85,
+          1.2
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori_green": 2.92,
+        "uniform": 1.75,
+        "skin": 2.96,
+        "hair": 1.73
+      },
+      "palette_delta_e_after": {
+        "haori_green": 1.5,
+        "uniform": 1.75,
+        "skin": 1.03,
+        "hair": 1.75
+      }
+    },
+    {
+      "id": "tanjiro-v3-takitsubo-p2",
+      "source": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-takitsubo-p2.png",
+      "sha256": "ff41e88d62ee93c971894866b3d0856328b28920c25cd89c5063e9666a714f5d",
+      "ruler": 118.47,
+      "scale": 0.3299,
+      "scale_method": "head-ruler",
+      "resample_vs_idle": 0.854,
+      "palette_shift": {
+        "haori_green": [
+          -5.01,
+          -0.78,
+          0.14
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori_green": 4.01,
+        "uniform": 0.46,
+        "skin": 1.26,
+        "hair": 1.52
+      },
+      "palette_delta_e_after": {
+        "haori_green": 2.2,
+        "uniform": 0.46,
+        "skin": 1.26,
+        "hair": 1.52
+      }
+    },
+    {
+      "id": "tanjiro-v3-takitsubo-p3",
+      "source": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-takitsubo-p3.png",
+      "sha256": "898f28a8c24c560fa8a222be42150940faae48c5b828ffdf062ec37ec9abdf9c",
+      "ruler": 122.28,
+      "scale": 0.3196,
+      "scale_method": "head-ruler",
+      "resample_vs_idle": 0.827,
+      "palette_shift": {
+        "haori_green": [
+          -5.34,
+          4.16,
+          -0.66
+        ],
+        "skin": [
+          -0.86,
+          1.55,
+          -2.56
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori_green": 5.94,
+        "uniform": 1.21,
+        "skin": 3.07,
+        "hair": 7.03
+      },
+      "palette_delta_e_after": {
+        "haori_green": 2.6,
+        "uniform": 1.31,
+        "skin": 0.48,
+        "hair": 7.01
+      }
+    },
+    {
+      "id": "tanjiro-v3-takitsubo-p4",
+      "source": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-takitsubo-p4.png",
+      "sha256": "2f9c30cc49ae3fff2767e04c41964b663b911c926ea713c947f06e459638e32d",
+      "ruler": 117.98,
+      "scale": 0.3153,
+      "scale_method": "overlap",
+      "resample_vs_idle": 0.817,
+      "palette_shift": {
+        "haori_green": [
+          -3.59,
+          0.18,
+          -0.07
+        ],
+        "uniform": [
+          4.78,
+          2.71,
+          -1.06
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori_green": 2.82,
+        "uniform": 4.75,
+        "skin": 1.23,
+        "hair": 3.55
+      },
+      "palette_delta_e_after": {
+        "haori_green": 1.5,
+        "uniform": 4.22,
+        "skin": 1.24,
+        "hair": 3.55
+      }
+    }
+  ],
+  "frames": [
+    {
+      "frame": 0,
+      "part": "tanjiro-v3-takitsubo-p0",
+      "crop": [
+        32,
+        9,
+        766,
+        950
+      ],
+      "head_ruler": 86.88,
+      "head_box": [
+        454,
+        158,
+        592,
+        272
+      ],
+      "ratio_to_sheet": 0.97,
+      "scale": 0.3312,
+      "flags": [],
+      "notes": [],
+      "root_x": 508.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        280,
+        224
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.873
+    },
+    {
+      "frame": 1,
+      "part": "tanjiro-v3-takitsubo-p0",
+      "crop": [
+        722,
+        78,
+        1506,
+        942
+      ],
+      "head_ruler": 89.53,
+      "head_box": [
+        425,
+        23,
+        556,
+        185
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3312,
+      "flags": [],
+      "notes": [],
+      "root_x": 580.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        256,
+        232
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.854
+    },
+    {
+      "frame": 2,
+      "part": "tanjiro-v3-takitsubo-p1",
+      "crop": [
+        18,
+        13,
+        816,
+        981
+      ],
+      "head_ruler": 93.96,
+      "head_box": [
+        501,
+        165,
+        653,
+        286
+      ],
+      "ratio_to_sheet": 0.826,
+      "scale": 0.3433,
+      "flags": [],
+      "notes": [
+        "head partly hidden or turned (83%)"
+      ],
+      "root_x": 561.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        255,
+        206
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.929
+    },
+    {
+      "frame": 3,
+      "part": "tanjiro-v3-takitsubo-p1",
+      "crop": [
+        783,
+        156,
+        1518,
+        1006
+      ],
+      "head_ruler": 113.81,
+      "head_box": [
+        456,
+        4,
+        643,
+        200
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3433,
+      "flags": [],
+      "notes": [],
+      "root_x": 378.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        318,
+        248
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.895
+    },
+    {
+      "frame": 4,
+      "part": "tanjiro-v3-takitsubo-p2",
+      "crop": [
+        42,
+        14,
+        739,
+        996
+      ],
+      "head_ruler": 118.47,
+      "head_box": [
+        437,
+        5,
+        634,
+        193
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3299,
+      "flags": [],
+      "notes": [],
+      "root_x": 364.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        328,
+        265
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.991
+    },
+    {
+      "frame": 5,
+      "part": "tanjiro-v3-takitsubo-p2",
+      "crop": [
+        820,
+        12,
+        1456,
+        1014
+      ],
+      "head_ruler": 112.79,
+      "head_box": [
+        273,
+        4,
+        458,
+        182
+      ],
+      "ratio_to_sheet": 0.952,
+      "scale": 0.3299,
+      "flags": [],
+      "notes": [],
+      "root_x": 316.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        344,
+        220
+      ],
+      "clipped": false,
+      "height_vs_idle": 1.009
+    },
+    {
+      "frame": 6,
+      "part": "tanjiro-v3-takitsubo-p3",
+      "crop": [
+        36,
+        16,
+        788,
+        972
+      ],
+      "head_ruler": 122.28,
+      "head_box": [
+        445,
+        2,
+        654,
+        194
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3196,
+      "flags": [],
+      "notes": [],
+      "root_x": 300.5,
+      "anchor_mode": "pelvis",
+      "offset": [
+        352,
+        237
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.941
+    },
+    {
+      "frame": 7,
+      "part": "tanjiro-v3-takitsubo-p3",
+      "crop": [
+        823,
+        122,
+        1500,
+        1009
+      ],
+      "head_ruler": 119.41,
+      "head_box": [
+        280,
+        4,
+        481,
+        191
+      ],
+      "ratio_to_sheet": 0.977,
+      "scale": 0.3196,
+      "flags": [],
+      "notes": [],
+      "root_x": 277.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        359,
+        216
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.867
+    },
+    {
+      "frame": 8,
+      "part": "tanjiro-v3-takitsubo-p4",
+      "crop": [
+        736,
+        115,
+        1521,
+        996
+      ],
+      "head_ruler": 116.41,
+      "head_box": [
+        405,
+        36,
+        606,
+        223
+      ],
+      "ratio_to_sheet": 0.987,
+      "scale": 0.3153,
+      "flags": [],
+      "notes": [],
+      "root_x": 397.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        323,
+        249
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.817
+    }
+  ]
+}

@@ -1,0 +1,828 @@
+{
+  "note": "Per-frame pose scripts for the v3 redraw. Frame counts, phase breaks and timing semantics match the shipped atlas so combat data and tests stay valid. Layout tall = 512x1024 columns, wide = 768x1024 columns; both keep the approved 1024 px figure scale.",
+  "clips": {
+    "walk": {
+      "layout": "tall",
+      "loop": true,
+      "intro": "In-place forward walk cycle that keeps the approved middle guard: both hands on the hilt in front of the navel, blade pointing forward and up. Torso, head and blade stay steady (at most 6 px of bob); the pelvis stays at the same X in every frame. It is a seamless loop, not a story of moving right.",
+      "frames": [
+        "Contact: near leg reaches forward RIGHT with the heel touching the ground, far leg behind on its toes; guard held.",
+        "Down: weight moves onto the near foot, both knees bend a little, far heel lifts.",
+        "Passing: far foot swings forward close to the ground under the pelvis, near leg supports; body at its highest.",
+        "Up: far foot travels ahead of the support foot, about to land.",
+        "Opposite contact: far leg now forward RIGHT with the heel down, near leg behind on its toes (the legs swapped compared with frame 1).",
+        "Opposite down: weight moves onto the far foot, knees bend a little, near heel lifts.",
+        "Opposite passing: near foot swings forward under the pelvis, far leg supports; body at its highest.",
+        "Opposite up: near foot travels ahead, about to land; flows directly into frame 1."
+      ],
+      "upright": true
+    },
+    "stand_light": {
+      "layout": "wide",
+      "intro": "Standing light slash (5A): a quick diagonal cut that starts and ends in the approved middle guard.",
+      "frames": [
+        "Startup: from the approved guard take a short step forward with the near foot and lift the blade slightly back toward the far shoulder.",
+        "Wind-up peak: blade raised up and back above the near shoulder, both hands on the hilt, torso coiled, eyes on the target.",
+        "Active: fast diagonal slash downward and forward, both arms extended, blade level with the chest pointing RIGHT, short lunge on the near leg, mouth slightly open.",
+        "Follow-through: blade continues low forward and down past the hips, body leaning forward over the near knee.",
+        "Recovery: draw the blade back up toward the guard, weight returning over the centre.",
+        "Return: back in the approved middle guard, almost identical to input image 1."
+      ]
+    },
+    "water_slash": {
+      "layout": "wide",
+      "intro": "Water Breathing First Form, Water Surface Slash (236A/C): a powerful two-handed horizontal sweep. Draw no water or effects; the game adds them.",
+      "frames": [
+        "Startup: from the approved guard inhale, lower the stance and turn the torso away, blade drawn back horizontally to the LEFT at waist height with both hands.",
+        "Deep coil: rear knee bent, blade fully behind the body pointing LEFT, torso twisted, focused eyes.",
+        "Launch: push off the rear foot, hips begin rotating forward, the blade starts sweeping from behind.",
+        "Release: wide horizontal slash sweeping forward through the front of the body at chest height, long front lunge.",
+        "Full extension: arms and blade fully extended straight forward to the RIGHT at shoulder height, long lunge, mouth open in a shout.",
+        "Follow-through: blade continues past to the right and slightly up, torso fully rotated forward.",
+        "Recover: the lunge holds while the blade drifts back toward the body.",
+        "Rise from the lunge and bring the hilt back toward the navel.",
+        "Settle back into the approved middle guard, almost identical to input image 1."
+      ]
+    },
+    "walk_back": {
+      "layout": "tall",
+      "intro": "In-place backward walk cycle keeping the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up). The body faces RIGHT while stepping toward the LEFT; torso, head and blade stay steady; pelvis at the same X in every frame; seamless loop.",
+      "frames": [
+        "Contact: far leg reaches back LEFT with the toes touching, near leg forward bearing weight.",
+        "Down: weight moves back onto the far leg, knees bend a little, near heel lifts.",
+        "Passing: near foot draws back under the pelvis close to the ground; body at its highest.",
+        "Up: near foot travels behind the support foot, about to land.",
+        "Opposite contact: near leg reaches back LEFT toes down, far leg forward bearing weight.",
+        "Opposite down: weight moves back onto the near leg, far heel lifts.",
+        "Opposite passing: far foot draws back under the pelvis; body at its highest.",
+        "Opposite up: far foot travels behind, about to land; flows into the first frame of the cycle."
+      ],
+      "upright": true
+    },
+    "crouch": {
+      "layout": "tall",
+      "intro": "Crouching from the guard, blade kept forward.",
+      "frames": [
+        "Start: the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up), knees beginning to bend.",
+        "Half crouch: hips lowering, torso leaning slightly forward, blade still forward.",
+        "Full crouch: deep knee bend with the rear knee near the ground, torso low and compact, both hands on the hilt, blade pointing forward at waist height."
+      ]
+    },
+    "guard": {
+      "layout": "tall",
+      "intro": "Standing block with the katana held up as a shield.",
+      "frames": [
+        "Ready: the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up), weight shifting back.",
+        "Block impact: blade held diagonally in front of the face and chest with both hands, flat side forward, rear knee bent, teeth clenched, slight lean back.",
+        "Hold: the same block a moment later, braced and steady, eyes on the opponent."
+      ]
+    },
+    "guard_low": {
+      "layout": "tall",
+      "intro": "Crouching block.",
+      "frames": [
+        "Ready: crouching, blade forward low.",
+        "Block impact: crouched low, blade held horizontally in front of the shins and knees with both hands, braced, teeth clenched.",
+        "Hold: the same crouching block, braced and steady."
+      ]
+    },
+    "hit": {
+      "layout": "tall",
+      "intro": "Taking a hit while standing; keep the katana in hand.",
+      "frames": [
+        "Impact: head snaps back, torso bends backward, eyes squeezed, mouth open in pain, blade hand low.",
+        "Recoil: stumble back on the rear foot, shoulders hunched, grimace.",
+        "Recover: regain balance, knees bent, blade coming back up.",
+        "Back to guard: nearly the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up) with a pained look."
+      ]
+    },
+    "knockdown": {
+      "layout": "wide",
+      "intro": "Knocked off his feet onto his back; keep the katana in his right hand.",
+      "frames": [
+        "Hit hard: body flung backward, feet leaving the ground, arms thrown forward.",
+        "Falling: body diagonal in the air, legs up, head going down toward the LEFT.",
+        "Impact: back hits the ground, legs raised, haori spreading.",
+        "Bounce: lying on his back, knees bent, slight lift from the bounce.",
+        "Down: lying flat on his back, head to the LEFT, feet to the RIGHT, eyes closed, katana loose beside him."
+      ],
+      "anchor": "feet",
+      "ground_mode": "lying",
+      "ground_frames": [
+        2,
+        3,
+        4
+      ]
+    },
+    "throw": {
+      "layout": "wide",
+      "intro": "Grab attempt (whiff animation of the close throw).",
+      "frames": [
+        "Start: from the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up) the left hand leaves the hilt.",
+        "Reach: lunge forward reaching out with the open left hand at chest height, blade held back in the right hand.",
+        "Full reach: arm fully extended forward grabbing at air.",
+        "Miss: hand closes on nothing, weight overextended forward.",
+        "Pull back: drawing the hand back, rebalancing.",
+        "Recover: back to the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up)."
+      ]
+    },
+    "victory": {
+      "layout": "tall",
+      "intro": "Calm victory: sheathing the katana.",
+      "frames": [
+        "Lower the blade, exhale, relaxed stance.",
+        "The blade swings down to the side in a short flick.",
+        "Guide the blade tip toward the scabbard on the left hip.",
+        "Slide the blade into the scabbard, left hand holding the scabbard.",
+        "Blade fully sheathed, hand on the hilt, standing upright.",
+        "Standing upright facing slightly toward the viewer, gentle determined smile, hands relaxed, katana sheathed."
+      ],
+      "upright": true
+    },
+    "stand_heavy": {
+      "layout": "wide",
+      "intro": "Standing heavy slash (5C): a big overhead-to-forward cut, starting and ending in the guard.",
+      "frames": [
+        "Startup: from the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up) step forward and raise the blade.",
+        "Wind-up: blade raised high above and behind the head with both hands, torso arched back.",
+        "Active: powerful downward-forward cut, blade sweeping in front at shoulder height, long lunge.",
+        "Extension: blade extended forward and slightly down, arms straight, deep lunge, shout.",
+        "Recovery: the lunge holds, blade drifting low, breathing out.",
+        "Return: pulling back up toward the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up)."
+      ]
+    },
+    "crouch_light": {
+      "layout": "wide",
+      "intro": "Crouching light slash (2A): a quick low cut from a crouch.",
+      "frames": [
+        "Crouch ready: deep crouch, blade forward low.",
+        "Draw back: blade pulled back beside the hip, still crouching.",
+        "Active: quick horizontal slash at shin height, arms extended forward, crouch held.",
+        "Follow-through: blade past the front, low.",
+        "Recover: blade returning toward the body, crouch held.",
+        "Crouch ready again: deep crouch, blade forward low."
+      ]
+    },
+    "crouch_heavy": {
+      "layout": "wide",
+      "intro": "Crouching heavy slash (2C): a rising diagonal slash from a deep crouch.",
+      "frames": [
+        "Crouch ready, blade low.",
+        "Wind-up: blade drawn back low behind the rear hip, deep crouch, torso twisted.",
+        "Active: rising diagonal slash from low to shoulder height while STAYING in the deep crouch (hips low, rear knee near the ground); only the arms and blade rise.",
+        "Extension: blade high in front at head height, arms extended upward and forward, the body still in the deep crouch with the hips low - never standing up.",
+        "Recovery: blade coming down, settling back into the crouch.",
+        "Crouch ready again, blade low."
+      ]
+    },
+    "air_light": {
+      "layout": "wide",
+      "intro": "Air light slash (jA): a quick cut while airborne. Airborne in every frame: no floor contact, legs bent beneath him.",
+      "frames": [
+        "Airborne ready: knees bent, blade held forward.",
+        "Wind-up: blade drawn back to the far shoulder, knees tucked.",
+        "Active: quick horizontal slash in front at chest height, arms extended.",
+        "Extension: follow-through at full reach.",
+        "Recover: pulling the blade back, legs extending downward.",
+        "Airborne ready for landing: legs extended down, blade forward."
+      ]
+    },
+    "air_heavy": {
+      "layout": "wide",
+      "intro": "Air heavy slash (jC): a big downward cut while airborne. Airborne in every frame: no floor contact, legs bent beneath him.",
+      "frames": [
+        "Airborne ready: knees bent, blade held forward.",
+        "Wind-up: blade raised high overhead, knees tucked, torso arched.",
+        "Active: powerful downward diagonal cut in front, blade pointing down and forward.",
+        "Extension: follow-through at full reach.",
+        "Recover: pulling the blade back, legs extending downward.",
+        "Airborne ready for landing: legs extended down, blade forward."
+      ]
+    },
+    "water_wheel": {
+      "layout": "wide",
+      "intro": "Water Breathing Second Form, Water Wheel (623A/C): a rising forward somersault that slashes in a full vertical circle. Draw no water or effects.",
+      "frames": [
+        "Startup: crouch from the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up), blade lowered behind.",
+        "Spring: legs push off, blade swinging up from low behind.",
+        "Rise: body leaves the ground, blade sweeping up in front, knees tucked.",
+        "Flip begins: body rotating forward, head going down, blade circling over the top.",
+        "Upside down: head at the bottom, legs up, blade extended making the circle.",
+        "Rotation: body sideways continuing the forward flip, blade sweeping down in front.",
+        "Completing: legs coming over, blade finishing the circle below.",
+        "Upright in the air: knees tucked, blade forward and down.",
+        "Descending: legs extending downward, blade held forward.",
+        "Landing: feet touch down in a crouch, blade low.",
+        "Absorb: crouch, blade low and forward.",
+        "Rise back to the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up)."
+      ],
+      "anchor": "pelvis",
+      "ground_frames": [
+        0,
+        1,
+        9,
+        10,
+        11
+      ]
+    },
+    "dash_forward": {
+      "layout": "wide",
+      "intro": "Forward dash: a fast low run with the blade held low and back, looping.",
+      "frames": [
+        "Push off: torso leaning forward, rear leg extended, blade held low behind in the right hand.",
+        "Stride: front knee high, rear leg stretched, haori flowing back.",
+        "Contact: front foot lands, body low and forward.",
+        "Passing: rear leg swings through, torso forward.",
+        "Opposite push: the other leg extended behind.",
+        "Opposite stride: the other knee high, haori streaming back.",
+        "Opposite contact.",
+        "Opposite passing; flows into the first frame."
+      ]
+    },
+    "dash_back": {
+      "layout": "tall",
+      "intro": "Backstep: a quick hop backward while facing RIGHT, blade kept forward.",
+      "frames": [
+        "Crouch from the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up), weight on the front foot.",
+        "Push off the front foot, body moving LEFT, front knee rising.",
+        "Airborne hop backward, legs tucked, blade forward.",
+        "Still airborne, rear foot reaching back LEFT to land.",
+        "Rear foot lands, front leg still raised.",
+        "Front foot comes down, knees bent absorbing.",
+        "Settling, slight crouch, blade forward.",
+        "Back in the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up)."
+      ]
+    },
+    "jump_forward": {
+      "layout": "wide",
+      "intro": "Forward somersault jump: a full flip in the air holding the katana tight to the body.",
+      "frames": [
+        "Takeoff: legs pushing off, arms swinging up, blade held close.",
+        "Tuck: knees pulled to the chest, rising.",
+        "Flip forward: body horizontal, head leading RIGHT, tucked.",
+        "Upside down: head at the bottom, tucked tight.",
+        "Rotation continues: body horizontal the other way.",
+        "Untuck: coming upright, legs extending.",
+        "Upright descending: legs extended below, blade forward.",
+        "Pre-landing: legs reaching for the ground, knees slightly bent."
+      ],
+      "anchor": "pelvis"
+    },
+    "jump_back": {
+      "layout": "wide",
+      "intro": "Backward somersault jump: a full flip in the air holding the katana tight to the body.",
+      "frames": [
+        "Takeoff: legs pushing off, arms swinging up, blade held close.",
+        "Tuck: knees pulled to the chest, rising.",
+        "Flip backward: body horizontal, head leading LEFT, tucked.",
+        "Upside down: head at the bottom, tucked tight.",
+        "Rotation continues: body horizontal the other way.",
+        "Untuck: coming upright, legs extending.",
+        "Upright descending: legs extended below, blade forward.",
+        "Pre-landing: legs reaching for the ground, knees slightly bent."
+      ],
+      "anchor": "pelvis"
+    },
+    "jump": {
+      "layout": "wide",
+      "intro": "Neutral jump and landing pieces (each frame is a separate state).",
+      "frames": [
+        "Pre-jump crouch from the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up).",
+        "Rising: body stretched upward, knees bent beneath, blade forward.",
+        "Apex: knees tucked, blade forward, body compact.",
+        "Falling: legs extending down, blade forward.",
+        "Landing impact: deep crouch absorbing the landing, blade low.",
+        "Recover: rising back toward the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up)."
+      ]
+    },
+    "body_stand_light": {
+      "layout": "wide",
+      "intro": "Light body attack (5B): a quick front snap kick while the blade stays in guard.",
+      "frames": [
+        "Guard, weight shifting to the far leg.",
+        "Chamber: near knee lifted to the waist.",
+        "Active: snap kick to the stomach, leg extended RIGHT, blade held up in guard.",
+        "Kick extended, toes pointed.",
+        "Retract the knee.",
+        "Back to the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up)."
+      ]
+    },
+    "body_crouch_light": {
+      "layout": "wide",
+      "intro": "Crouching light body attack (2B): a quick low kick to the shin from a crouch.",
+      "frames": [
+        "Crouch, blade forward low.",
+        "Chamber the near leg low.",
+        "Active: low kick extended at ankle height, crouching on the other leg.",
+        "Kick extended.",
+        "Retract the leg.",
+        "Crouch, blade forward low."
+      ]
+    },
+    "body_air_light": {
+      "layout": "wide",
+      "intro": "Air light body attack (jB): a quick knee strike while airborne.",
+      "frames": [
+        "Airborne ready, blade forward.",
+        "Chamber the near knee.",
+        "Active: knee driven forward and up at chest height, blade held back.",
+        "Knee extended.",
+        "Retract.",
+        "Airborne ready, legs below."
+      ],
+      "anchor": "pelvis"
+    },
+    "body_stand_heavy": {
+      "layout": "wide",
+      "intro": "Heavy body attack (5D): a spinning back kick.",
+      "frames": [
+        "Guard, weight on the front foot.",
+        "Turn: back begins to face RIGHT, rear leg lifting.",
+        "Spin: back to the viewer, knee chambered.",
+        "Active: powerful back kick extended RIGHT at chest height, blade held low.",
+        "Kick fully extended.",
+        "Leg retracting while turning back.",
+        "Rebalancing.",
+        "Settling into the stance.",
+        "Back to the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up)."
+      ]
+    },
+    "body_crouch_heavy": {
+      "layout": "wide",
+      "intro": "Crouching heavy body attack (2D): a low sweeping kick that knocks down.",
+      "frames": [
+        "Crouch, blade forward low.",
+        "Drop lower, one hand on the ground for support, blade in the other hand.",
+        "Sweep wind-up: near leg drawn back along the ground.",
+        "Active: sweeping kick across the ground, leg fully extended RIGHT at ankle height.",
+        "Sweep extended.",
+        "Leg returning along the ground.",
+        "Rising to a crouch.",
+        "Crouch, blade forward.",
+        "Crouch ready."
+      ]
+    },
+    "body_air_heavy": {
+      "layout": "wide",
+      "intro": "Air heavy body attack (jD): a downward stomp kick while airborne.",
+      "frames": [
+        "Airborne ready.",
+        "Pull both knees up.",
+        "Chamber the near leg high.",
+        "Active: kick driven downward and forward, sole first.",
+        "Kick extended down and forward.",
+        "Retract.",
+        "Legs below, falling.",
+        "Airborne ready, blade forward.",
+        "Pre-landing, legs extended."
+      ],
+      "anchor": "pelvis"
+    },
+    "roll_forward": {
+      "layout": "wide",
+      "intro": "Evasive roll forward (to the RIGHT) along the ground, blade held close to the body.",
+      "frames": [
+        "Start: the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up), dipping.",
+        "Crouch low, shoulder dropping.",
+        "Dive: body low, about to roll.",
+        "Rolling on the shoulder, legs tucked.",
+        "Upside down mid-roll, curled tight.",
+        "Rolling over the back.",
+        "Coming up onto the knees.",
+        "Kneeling, rising.",
+        "Rising on one knee.",
+        "Half standing.",
+        "Standing, blade coming up.",
+        "Back in the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up)."
+      ]
+    },
+    "roll_back": {
+      "layout": "wide",
+      "intro": "Evasive roll backward (to the LEFT) along the ground, blade held close to the body.",
+      "frames": [
+        "Start: the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up), dipping.",
+        "Crouch low, shoulder dropping.",
+        "Dive: body low, about to roll.",
+        "Rolling on the shoulder, legs tucked.",
+        "Upside down mid-roll, curled tight.",
+        "Rolling over the back.",
+        "Coming up onto the knees.",
+        "Kneeling, rising.",
+        "Rising on one knee.",
+        "Half standing.",
+        "Standing, blade coming up.",
+        "Back in the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up)."
+      ]
+    },
+    "throw_success": {
+      "layout": "wide",
+      "intro": "Back throw (4D): grab the opponent, turn and throw them behind. Draw only Tanjiro; no opponent.",
+      "frames": [
+        "Reach forward and grab with the left hand at chest height, blade back in the right hand.",
+        "Grip and pull toward himself.",
+        "Turn the hips, pulling across the body.",
+        "Pivot on the front foot, back turning RIGHT.",
+        "Mid-turn, hauling with both arms.",
+        "Facing LEFT now, swinging the arms over the left shoulder.",
+        "Throw release over the shoulder toward the LEFT.",
+        "Follow-through, leaning LEFT.",
+        "Arms down after the release.",
+        "Turning back toward RIGHT.",
+        "Facing RIGHT, rebalancing.",
+        "Back in the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up)."
+      ]
+    },
+    "throw_forward": {
+      "layout": "wide",
+      "intro": "Forward throw (6D): grab, then a headbutt and a shove forward. Draw only Tanjiro; no opponent.",
+      "frames": [
+        "Reach forward and grab with the left hand at chest height.",
+        "Grip and pull in.",
+        "Lean back, chin tucked, preparing a headbutt.",
+        "Headbutt forward, forehead driving RIGHT.",
+        "Impact pose, forehead forward, eyes shut.",
+        "Push with both hands forward.",
+        "Shove extended, arms straight forward.",
+        "Follow-through lean forward.",
+        "Arms returning.",
+        "Rebalancing.",
+        "Settling.",
+        "Back in the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up)."
+      ]
+    },
+    "thrown": {
+      "layout": "wide",
+      "intro": "Being thrown over the thrower's shoulder and slammed down behind (back throw victim): Tanjiro is the victim; draw only him, keep the katana in his right hand.",
+      "frames": [
+        "Grabbed: jolted, leaning forward, startled.",
+        "Pulled: off balance, feet sliding.",
+        "Lifted: feet leaving the ground.",
+        "Swung: body rising sideways in the air.",
+        "High in the air, body horizontal.",
+        "Rotating head down.",
+        "Upside down, falling.",
+        "Coming down toward the ground, back first.",
+        "Slam: back hits the ground hard, legs up.",
+        "Bounce: lying on the back, legs bending.",
+        "Down: lying flat, head to the LEFT.",
+        "Down: lying flat, motionless, eyes closed."
+      ],
+      "anchor": "pelvis",
+      "ground_frames": [
+        0,
+        1,
+        8,
+        9,
+        10,
+        11
+      ],
+      "ground_mode": "lying"
+    },
+    "thrown_forward": {
+      "layout": "wide",
+      "intro": "Being thrown forward and slammed down (forward throw victim): Tanjiro is the victim; draw only him, keep the katana in his right hand.",
+      "frames": [
+        "Grabbed: jolted, leaning forward, startled.",
+        "Pulled: off balance, feet sliding.",
+        "Lifted: feet leaving the ground.",
+        "Swung: body rising sideways in the air.",
+        "High in the air, body horizontal.",
+        "Rotating head down.",
+        "Upside down, falling.",
+        "Coming down toward the ground, back first.",
+        "Slam: back hits the ground hard, legs up.",
+        "Bounce: lying on the back, legs bending.",
+        "Down: lying flat, head to the LEFT.",
+        "Down: lying flat, motionless, eyes closed."
+      ],
+      "anchor": "pelvis",
+      "ground_frames": [
+        0,
+        1,
+        8,
+        9,
+        10,
+        11
+      ],
+      "ground_mode": "lying"
+    },
+    "throw_tech": {
+      "layout": "tall",
+      "intro": "Throw escape: breaking a grab and pushing apart.",
+      "frames": [
+        "Grabbed: startled lean forward.",
+        "Break: left forearm knocks the hand away.",
+        "Push apart: both hands shoving forward.",
+        "Sliding back, braced.",
+        "Settling, blade coming up.",
+        "Back in the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up)."
+      ]
+    },
+    "water_vortex": {
+      "layout": "wide",
+      "intro": "Water Breathing Sixth Form, Twisting Whirlpool (214B/D): two spinning horizontal slashes while advancing. Draw no water.",
+      "frames": [
+        "Startup: from the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up) lower and coil the torso, blade drawn back LEFT.",
+        "Deep coil, back half-turned.",
+        "Spin begins, blade sweeping around low.",
+        "First slash: horizontal cut in front at waist height, body spinning.",
+        "First slash extended RIGHT.",
+        "Continuing the spin, back turned to the viewer, blade trailing.",
+        "Second slash wind-up, body coming around.",
+        "Second slash: horizontal cut at chest height, full extension RIGHT.",
+        "Second slash follow-through, blade past the front.",
+        "Recover: stance settling, blade returning.",
+        "Recover: drawing the blade in.",
+        "Back in the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up)."
+      ]
+    },
+    "water_dragon": {
+      "layout": "wide",
+      "intro": "Water Breathing Tenth Form, Constant Flux (super): four flowing slashes advancing like a dragon. Draw no water.",
+      "frames": [
+        "Startup: from the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up) breathe in, lower the stance.",
+        "Coil: blade drawn far back.",
+        "Launch: driving forward off the rear foot.",
+        "Slash 1: horizontal cut RIGHT, lunge.",
+        "Slash 1 follow-through.",
+        "Slash 2: rising diagonal cut, stepping forward.",
+        "Slash 2 high extension.",
+        "Slash 3: descending diagonal cut, body turning.",
+        "Slash 3 follow-through low.",
+        "Slash 4: final powerful horizontal cut, full extension, shout.",
+        "Slash 4 follow-through, body fully rotated forward.",
+        "Recover: the lunge holds, breathing out.",
+        "Rise from the lunge.",
+        "Blade drawn back toward the body.",
+        "Back in the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up)."
+      ]
+    },
+    "sun_arc": {
+      "layout": "wide",
+      "intro": "Sun Breathing, Dance: Clear Blue Sky (MAX): a full vertical circular slash with a forward somersault. Draw no fire.",
+      "frames": [
+        "Startup: from the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up) crouch, blade low behind.",
+        "Coil, eyes fierce, blade drawn back.",
+        "Spring upward, blade rising in front.",
+        "Leaping, blade overhead starting the circle.",
+        "Rotating forward in the air, blade sweeping down in front.",
+        "Upside down, blade completing the lower arc.",
+        "Coming out of the flip, blade rising behind.",
+        "Landing in a deep lunge, blade sweeping low forward.",
+        "Lunge with the blade extended RIGHT.",
+        "Rising, blade high.",
+        "Settling.",
+        "Back in the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up)."
+      ],
+      "anchor": "pelvis",
+      "ground_frames": [
+        0,
+        1,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    "round_intro": {
+      "layout": "wide",
+      "intro": "Round intro: draw the katana and settle into the guard (the katana starts sheathed).",
+      "frames": [
+        "Standing relaxed, katana sheathed on the left hip, eyes closed.",
+        "Eyes open, left hand grips the scabbard.",
+        "Right hand reaches for the hilt.",
+        "Grip the hilt, knees bending.",
+        "Begin drawing, blade sliding out.",
+        "Half drawn, body turning.",
+        "Fully drawn: blade swept out to the right side.",
+        "Blade raised overhead in a flourish.",
+        "Blade high, deep breath.",
+        "Blade swinging down in front.",
+        "Blade crossing in front of the body.",
+        "Both hands on the hilt.",
+        "Settling the feet into the stance.",
+        "Knees bending into the guard.",
+        "Blade angled forward and up.",
+        "Breath out, focused glare.",
+        "Holding the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up).",
+        "Final: the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up), identical to input image 1."
+      ]
+    },
+    "round_victory": {
+      "layout": "tall",
+      "intro": "Round victory: lower the blade and sheathe it calmly.",
+      "frames": [
+        "the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up).",
+        "Exhale, lower the blade.",
+        "Blade at the side.",
+        "Flick the blade.",
+        "Blade pointing down.",
+        "Bring the blade to the scabbard.",
+        "Tip into the scabbard.",
+        "Sliding in.",
+        "Sheathed halfway.",
+        "Fully sheathed, hand on the hilt.",
+        "Standing upright.",
+        "Release the hilt.",
+        "Hands at the sides.",
+        "Look toward the viewer.",
+        "Gentle smile.",
+        "Nod.",
+        "Relaxed upright pose.",
+        "Final calm upright pose, katana sheathed."
+      ],
+      "upright": true
+    },
+    "round_defeat": {
+      "layout": "wide",
+      "intro": "Round defeat: knocked down and collapsing; the katana falls beside him.",
+      "frames": [
+        "Hit: head thrown back, staggering, katana in hand.",
+        "Stagger back, knees buckling.",
+        "Falling backward, body diagonal.",
+        "Mid-fall, feet leaving the ground.",
+        "Back hits the ground, katana slipping from the hand.",
+        "Bounce, legs raised.",
+        "Lying on the back, the katana landing beside him.",
+        "Lying, arm stretched out, hand open.",
+        "Lying still, eyes closed.",
+        "Lying still.",
+        "Lying still.",
+        "Lying still, the katana on the ground beside his hand."
+      ],
+      "ground_frames": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "ground_mode": "lying"
+    },
+    "awakening_start": {
+      "layout": "tall",
+      "intro": "Awakening (Total Concentration): a focused breathing pose.",
+      "frames": [
+        "the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up), inhaling deeply.",
+        "Head bowed, eyes closed, gathering breath.",
+        "Eyes snapping open, fierce.",
+        "Body tensed, haori billowing up.",
+        "Blade raised slightly, fierce glare.",
+        "Back in the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up), intense eyes."
+      ]
+    },
+    "uchishio_2": {
+      "layout": "wide",
+      "intro": "Water Breathing Fourth Form, Striking Tide, second cut (follow-up after 5A): a quick returning diagonal cut stepping forward.",
+      "frames": [
+        "From the end of a downward cut, blade low in front.",
+        "Turn the wrists, blade rising behind the near hip.",
+        "Active: rising diagonal cut forward at chest height, small step.",
+        "Blade high in front, extended.",
+        "Recover slightly, blade held high.",
+        "Ready for the next cut, blade at shoulder height."
+      ],
+      "new": {
+        "phase_breaks": [
+          2,
+          4
+        ],
+        "fps": 12
+      }
+    },
+    "uchishio_3": {
+      "layout": "wide",
+      "intro": "Striking Tide, third cut: a strong horizontal cut with a big forward step.",
+      "frames": [
+        "Blade at shoulder height, stepping forward.",
+        "Wind-up: blade pulled back across the body to the LEFT.",
+        "Big step forward, hips turning.",
+        "Active: powerful horizontal cut at waist height, long lunge.",
+        "Full extension RIGHT, shout.",
+        "Follow-through past the front.",
+        "Recover, breathing out.",
+        "Back to the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up)."
+      ],
+      "new": {
+        "phase_breaks": [
+          3,
+          5
+        ],
+        "fps": 12
+      }
+    },
+    "headbutt": {
+      "layout": "wide",
+      "intro": "Headbutt (6B, an overhead): Tanjiro's famous hard head. Lean back, then drive the forehead down and forward.",
+      "frames": [
+        "From the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up) lean back, chin up.",
+        "Lean back further, eyes fierce.",
+        "Step forward, torso swinging forward.",
+        "Head coming down and forward.",
+        "Active: forehead slams down and forward at head height, eyes shut, blade held low to the side.",
+        "Impact hold, forehead forward.",
+        "Pull back, shaking it off.",
+        "Back to the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up)."
+      ],
+      "new": {
+        "phase_breaks": [
+          4,
+          6
+        ],
+        "fps": 12
+      }
+    },
+    "ripple_thrust": {
+      "layout": "wide",
+      "intro": "Water Breathing Seventh Form, Drop Ripple Thrust (6C): a lightning-fast long straight thrust.",
+      "frames": [
+        "From the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up) draw the blade back to the right hip, point forward.",
+        "Coil, weight on the rear foot.",
+        "Launch: front foot stepping far forward.",
+        "Active: full straight thrust, blade horizontal RIGHT at chest height, both arms extended, very long lunge.",
+        "Thrust held at maximum reach.",
+        "Recover: drawing the blade back.",
+        "Rising from the lunge.",
+        "Back to the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up)."
+      ],
+      "new": {
+        "phase_breaks": [
+          3,
+          5
+        ],
+        "fps": 12
+      }
+    },
+    "takitsubo": {
+      "layout": "wide",
+      "intro": "Water Breathing Eighth Form, Waterfall Basin (air special): a brief hover, then a vertical downward cut while dropping. Airborne in every frame.",
+      "frames": [
+        "Airborne, blade raised overhead with both hands, knees tucked.",
+        "Hover: arched back, blade high behind the head.",
+        "Peak of the wind-up, eyes fierce.",
+        "Active: plunging downward, blade cutting straight down in front.",
+        "Dropping fast, blade pointing down past the feet.",
+        "Dropping, blade down, body vertical.",
+        "Still dropping, haori streaming upward.",
+        "Nearly landing, knees bending, blade down.",
+        "Blade down, legs reaching for the ground."
+      ],
+      "new": {
+        "phase_breaks": [
+          3,
+          7
+        ],
+        "fps": 12,
+        "anchor_mode": "pelvis"
+      },
+      "anchor": "pelvis"
+    },
+    "takitsubo_land": {
+      "layout": "wide",
+      "intro": "Landing recovery after Waterfall Basin: kneeling with the blade planted down.",
+      "frames": [
+        "Impact: crouched landing, one knee down, blade pointing down into the ground in front.",
+        "Kneeling, head down, blade planted.",
+        "Rising on one knee.",
+        "Standing up, blade lifting."
+      ],
+      "new": {
+        "phase_breaks": [
+          1,
+          2
+        ],
+        "fps": 12
+      }
+    },
+    "air_water_wheel": {
+      "layout": "wide",
+      "intro": "Water Breathing Second Form in the air: a forward somersault slashing twice in a vertical wheel. Airborne in every frame.",
+      "frames": [
+        "Airborne, blade low behind.",
+        "Begin the forward flip, blade rising in front.",
+        "Slash 1: blade sweeping over the top in front, head going down.",
+        "Upside down, blade circling.",
+        "Coming around.",
+        "Slash 2: second circle, blade sweeping down in front.",
+        "Upside down again.",
+        "Completing the wheel.",
+        "Upright, blade forward and down.",
+        "Legs extending down, preparing to land."
+      ],
+      "new": {
+        "phase_breaks": [
+          2,
+          8
+        ],
+        "fps": 18,
+        "segment_sync": true,
+        "anchor_mode": "pelvis"
+      },
+      "anchor": "pelvis"
+    }
+  }
+}
