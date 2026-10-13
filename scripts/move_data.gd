@@ -33,6 +33,21 @@ extends Resource
 @export var projectile_speed: float = 0.0
 @export var projectile_lifetime: int = 0
 @export var projectile_box: Rect2 = Rect2(-12, -18, 24, 36)
+# Optional move-set expansion; every default keeps the original behaviour.
+# Target-combo stages: button letter -> next DuelMove. Reached only after this
+# move made contact; skips cancel categories but not the chain limits.
+@export var follow_ups: Dictionary = {}
+# Cancels and follow-ups from this move require a hit, not a block.
+@export var cancel_requires_hit: bool = false
+# Recovery after an air move is cut short by landing.
+@export var landing_recovery: int = 5
+# Airborne motion while this move runs: gravity scale and velocity keyframes
+# (move frame -> (forward, down) velocity, forward mirrored by facing).
+@export var air_gravity_percent: int = 100
+@export var air_velocity_frames: PackedInt32Array = []
+@export var air_velocities: PackedVector2Array = []
+# Vertical projectile speed; non-zero projectiles vanish at the floor.
+@export var projectile_vy: float = 0.0
 
 func total_frames() -> int:
 	return startup + active + recovery
@@ -76,3 +91,8 @@ func segment_damage(index: int, scale_percent: int = 100, attack_percent: int = 
 
 func is_super() -> bool:
 	return kind in ["super", "max"]
+
+## Index into air_velocities for this move frame, or -1.
+func air_velocity_index(frame: int) -> int:
+	var index := air_velocity_frames.find(frame)
+	return index if index < air_velocities.size() else -1

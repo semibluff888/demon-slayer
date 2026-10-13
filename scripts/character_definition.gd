@@ -23,10 +23,22 @@ extends Resource
 @export var move_list: Array[Dictionary] = []
 @export var combos: PackedStringArray = ["2B → 2A → 5C → 236A", "j.C → 5A → 5C → 214B",
 	"5A → 5C → 236A → 236236A", "5C → 214D → 236236AC"]
+# Optional move-set expansion. Empty tables keep the original lookup exactly.
+# command_normals: "6B", "3C"… (direction relative to facing + button).
+# air_motions: "j236A", "j214D"… chosen only while airborne.
+@export var command_normals: Dictionary = {}
+@export var air_motions: Dictionary = {}
+# Help rows for the advanced page, same shape as move_list.
+@export var advanced_list: Array[Dictionary] = []
 
+## Every reachable move: base tables first (original order), then follow-up stages.
 func all_moves() -> Array:
 	var result: Array = []
-	for move in normals.values() + motions.values() + [throw_move]:
-		if move != null and not move in result:
-			result.append(move)
+	var queue: Array = normals.values() + motions.values() + [throw_move] + command_normals.values() + air_motions.values()
+	while not queue.is_empty():
+		var move = queue.pop_front()
+		if move == null or move in result:
+			continue
+		result.append(move)
+		queue.append_array(move.follow_ups.values())
 	return result

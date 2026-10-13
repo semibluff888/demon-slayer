@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="DuelMove" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="1"]
+
+[ext_resource type="Resource" path="res://resources/presentation/air_water_wheel.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+presentation = ExtResource("2")
+display_name = "水之呼吸·贰之型 空中水车·重"
+kind = "skill"
+level = "high"
+startup = 11
+active = 12
+recovery = 18
+damage = 76
+hitstun = 30
+blockstun = 15
+hitstop = 6
+push = 0.8
+stance = "air"
+animation_id = "water_wheel"
+knockdown = true
+launch = -3.2
+hit_frames = PackedInt32Array(11, 17)
+box = Rect2(-4, -70, 70, 80)
+cancel_targets = PackedStringArray()
+landing_recovery = 15
+air_gravity_percent = 80
+air_velocity_frames = PackedInt32Array(0)
+air_velocities = PackedVector2Array(2, -2.4)
+id = "tanjiro_j214D"

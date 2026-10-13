@@ -50,6 +50,11 @@ var roll_frame: int = -1
 var roll_direction: int = 0
 var air_ticks: int = 0
 var air_used_move: bool = false
+# Air moves started during the current jump (cancel repeat ban) and air specials used.
+var air_chain: Array[String] = []
+var air_specials: int = 0
+# Air move whose landing recovery is running (presentation picks its landing clip).
+var landing_move: String = ""
 var jump_facing: int = 1
 var jump_back: bool = false
 var flip_jump: bool = false

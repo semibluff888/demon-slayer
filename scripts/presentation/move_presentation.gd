@@ -23,3 +23,5 @@ extends Resource
 @export var title_texture: Texture2D
 @export var cut_in_path: String = ""
 @export var sigil_texture_key: String = ""
+# Recovery drawing after an air move lands (its landing_recovery ticks); empty keeps jump frames.
+@export var landing_clip: String = ""

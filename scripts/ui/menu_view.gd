@@ -585,7 +585,7 @@ func help(page: String = "basics", character_id: String = "") -> void:
 	_header("操作指南", "HOW TO PLAY")
 	var home := button("home", "返回对战" if app.help_return == "battle" else "返回主菜单", Rect2(40, 664, 230, 44), app.close_help, true, true, 18)
 	var tabs := [["guide_basics", "基础攻防", "basics", Rect2(56, 104, 170, 40)], ["guide_normals", "普通技", "normals", Rect2(236, 104, 150, 40)],
-		["guide_moves", "必杀与奥义", "moves", Rect2(396, 104, 190, 40)]]
+		["guide_moves", "必杀与奥义", "moves", Rect2(396, 104, 190, 40)], ["guide_advanced", "进阶技", "advanced", Rect2(596, 104, 150, 40)]]
 	if character_id.is_empty():
 		character_id = app.characters[0]
 	for entry in tabs:
@@ -605,6 +605,8 @@ func help(page: String = "basics", character_id: String = "") -> void:
 		selector.item_selected.connect(func(index: int): _help_page(page, ids[index]))
 		if page == "moves":
 			paint(Rect2(40, 160, 1200, 490), func(canvas: Control): _draw_moves(canvas, definition))
+		elif page == "advanced":
+			paint(Rect2(40, 160, 1200, 490), func(canvas: Control): _draw_advanced(canvas, definition))
 		else:
 			paint(Rect2(40, 160, 1200, 490), func(canvas: Control): _draw_normals(canvas, definition))
 	_footer(Rect2(300, 668, 932, 36), "返回", "F1 判定框 · F2 静音")
@@ -688,6 +690,20 @@ func _draw_moves(canvas: Control, definition: Resource) -> void:
 	Kit.text(canvas, catalog.title_font, "示例连段 / j. 为空中，5 为站立，2 为蹲下", Vector2(26, 436), 15, Kit.GOLD_HI, 3)
 	for i in range(definition.combos.size()):
 		Kit.text(canvas, catalog.body_font, definition.combos[i], Vector2(26 + (i % 2) * 590, 462 + int(i / 2) * 24), 15, Kit.PAPER, 2)
+
+func _draw_advanced(canvas: Control, definition: Resource) -> void:
+	var accent: Color = definition.accent
+	_section(canvas, Rect2(0, 0, 1200, 490), "伍", definition.display_name + " · 进阶技", accent.lightened(0.3))
+	if definition.advanced_list.is_empty():
+		Kit.text(canvas, catalog.body_font, "该角色的派生连续技、空中必杀与特殊技将在后续版本加入。", Vector2(26, 110), 17, Kit.MUTED, 2)
+		return
+	for i in range(mini(7, definition.advanced_list.size())):
+		var row: Dictionary = definition.advanced_list[i]
+		var y := 100.0 + i * 54
+		Glyphs.paint(canvas, catalog.numeric_font, row.input, Vector2(26, y), 22)
+		Kit.text(canvas, catalog.title_font, row.name, Vector2(330, y), 20, Kit.PAPER, 3)
+		Kit.text(canvas, catalog.body_font, row.description, Vector2(332, y + 22), 14, Kit.MUTED, 2)
+		Kit.rule(canvas, Vector2(20, y + 34), Vector2(1180, y + 34), Color(Kit.GOLD, 0.16))
 
 func _draw_normals(canvas: Control, definition: Resource) -> void:
 	var accent: Color = definition.accent

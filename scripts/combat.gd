@@ -14,6 +14,11 @@ const WIN_RECOVERY_BASE := 100
 const WIN_RECOVERY_TIME_BONUS := 100
 const BUFFER_TICKS := 6
 const SUPER_BUFFER_TICKS := 10
+# Move-set expansion limits; only reachable through optional move data.
+const AIR_CHAIN_LIMIT := 3
+const AIR_SPECIAL_LIMIT := 1
+const AIR_SPECIAL_MIN_HEIGHT := 20.0
+const GRAVITY := 0.42
 const Flow = preload("res://scripts/round_flow.gd")
 var catalog := Catalog.new()
 var fighters: Array = []
@@ -226,7 +231,7 @@ func step(commands: Array) -> void:
 		var d: Fighter = fighters[1 - int(projectile.owner)]
 		var move: Move = moves[projectile.move]
 		var bounds := projectile_box(projectile)
-		bounds = bounds.merge(Rect2(bounds.position - Vector2(projectile.vx, 0), bounds.size))
+		bounds = bounds.merge(Rect2(bounds.position - Vector2(projectile.vx, projectile.get("vy", 0.0)), bounds.size))
 		if bounds.intersects(d.hurtbox()) and _can_be_struck(d, a, move, projectile.instance, true):
 			contacts.append(_contact(a, d, move, projectile.instance, 0, true, projectile.facing, int(projectile.get("damage_percent", 100))))
 			projectile.life = 0
@@ -326,6 +331,9 @@ func begin_cinematic_tail(face_away: bool) -> void:
 		f.crouching = false
 		f.axis = 0
 		f.down = false
+		f.air_chain.clear()
+		f.air_specials = 0
+		f.landing_move = ""
 		_stop_dash(f)
 	actor.state = "idle"
 	victim.state = "knockdown"
@@ -483,6 +491,8 @@ func _advance(f: Fighter) -> void:
 		_stop_dash(f)
 		f.air_ticks = 0
 		f.air_used_move = false
+		f.air_chain.clear()
+		f.air_specials = 0
 		f.flip_jump = true
 		f.jump_facing = f.facing
 		f.jump_back = f.axis * f.facing < 0
@@ -507,6 +517,8 @@ func _advance(f: Fighter) -> void:
 	if f.move != null:
 		if f.move.lift != 0 and f.move.lift_frame > 0 and f.move_frame == f.move.lift_frame:
 			_take_off(f, f.move.lift)
+		if not f.grounded:
+			_apply_air_velocity(f, f.move)
 		if f.move_frame < f.move.startup:
 			f.x += f.move.startup_travel * f.facing
 		elif f.move_frame < f.move.startup + f.move.active:
@@ -560,11 +572,17 @@ func _try_action(f: Fighter) -> void:
 			if f.move.lift != 0 and selected.is_super():
 				f.clear_buffer()
 			return
-		if not f.connected or selected.kind not in f.move.cancel_targets:
+		# Target-combo stages skip the cancel categories; chain limits still apply.
+		var follow_up: bool = selected in f.move.follow_ups.values()
+		if not f.connected or (not follow_up and selected.kind not in f.move.cancel_targets):
+			return
+		if f.move.cancel_requires_hit and not f.confirmed:
 			return
 		if selected.is_super() and not f.confirmed:
 			return
-		if selected.kind == "skill" and not f.grounded:
+		if selected.kind == "skill" and not f.grounded and selected.stance != "air":
+			return
+		if selected.stance == "air" and (selected.id in f.air_chain or f.air_chain.size() >= AIR_CHAIN_LIMIT):
 			return
 	if not f.grounded and selected.stance != "air" and not (selected.is_super() and f.move != null and f.confirmed):
 		return
@@ -594,12 +612,26 @@ func _choose_move(f: Fighter) -> Move:
 	if request.type == "motion":
 		if request.motion == "236236":
 			return data.motions.get("super")
-		return data.motions.get(str(request.motion) + str(request.button))
+		var key := str(request.motion) + str(request.button)
+		# Air specials need height left; otherwise the ground version buffers to landing.
+		if not f.grounded and f.air_specials < AIR_SPECIAL_LIMIT and FLOOR_Y - f.y >= AIR_SPECIAL_MIN_HEIGHT:
+			var air: Move = data.air_motions.get("j" + key)
+			if air != null:
+				return air
+		return data.motions.get(key)
 	if request.type == "normal":
+		if f.move != null and f.connected and int(request.y) == 0:
+			var next: Move = f.move.follow_ups.get(request.button)
+			if next != null:
+				return next
 		var d: Fighter = fighters[1 - f.slot]
 		if request.button == "D" and int(request.x) != 0 and int(request.y) == 0 and f.grounded and f.move == null and _throwable(d) and absf(f.x - d.x) <= 40:
 			f.throw_back = request.x < 0
 			return data.throw_move
+		if f.grounded and f.dash_ticks == 0 and int(request.x) != 0 and int(request.y) >= 0:
+			var command: Move = data.command_normals.get(str(5 + int(request.x) - 3 * int(request.y)) + str(request.button))
+			if command != null:
+				return command
 		var stance := "j" if not f.grounded else ("2" if int(request.y) > 0 else "5")
 		return data.normals.get(stance + str(request.button))
 	return null
@@ -635,6 +667,10 @@ func _begin_move(f: Fighter, selected: Move) -> void:
 	f.projectile_spawned = false
 	if not f.grounded:
 		f.air_used_move = true
+		f.air_chain.append(selected.id)
+		if selected.stance == "air" and selected.kind == "skill":
+			f.air_specials += 1
+	f.landing_move = ""
 	f.move_frame = 0
 	f.connected = false
 	f.confirmed = false
@@ -657,6 +693,15 @@ func _begin_move(f: Fighter, selected: Move) -> void:
 	events.append({"type": "swing", "attacker": f.slot, "move": selected.id, "effect": selected.effect()})
 
 
+## Overwrites airborne velocity on the move frames listed in the move data.
+func _apply_air_velocity(f: Fighter, move: Move) -> void:
+	var index := move.air_velocity_index(f.move_frame)
+	if index < 0:
+		return
+	var velocity: Vector2 = move.air_velocities[index]
+	f.vx = velocity.x * f.facing
+	f.vy = velocity.y
+
 func _take_off(f: Fighter, velocity: float) -> void:
 	f.flip_jump = false
 	f.grounded = false
@@ -672,7 +717,10 @@ func _integrate(f: Fighter, delta_ticks: float = 1.0, air_tick_step: int = 1) ->
 		f.air_ticks += air_tick_step
 		if f.state == "hit":
 			f.vx *= pow(0.94, delta_ticks)
-		f.vy += 0.42 * delta_ticks
+		var gravity := GRAVITY
+		if f.move != null and f.move.air_gravity_percent != 100:
+			gravity *= f.move.air_gravity_percent / 100.0
+		f.vy += gravity * delta_ticks
 		f.y += f.vy * delta_ticks
 		if f.y >= FLOOR_Y:
 			f.y = FLOOR_Y
@@ -680,14 +728,17 @@ func _integrate(f: Fighter, delta_ticks: float = 1.0, air_tick_step: int = 1) ->
 			f.vx = 0
 			f.grounded = true
 			f.flip_jump = false
+			f.air_chain.clear()
+			f.air_specials = 0
 			if f.knockdown_pending:
 				f.knockdown_pending = false
 				f.move = null
 				f.state = "knockdown"
 				f.stun = maxi(24, f.stun)
 			elif f.move != null and f.move.stance == "air":
+				f.landing_move = f.move.id
+				f.stun = maxi(f.stun, f.move.landing_recovery)
 				f.move = null
-				f.stun = maxi(f.stun, 5)
 				f.state = "landing"
 			elif f.stun == 0 and f.move == null:
 				_restore_stance(f)
@@ -817,6 +868,8 @@ func _resolve_contact(contact: Dictionary) -> void:
 		d.vx = contact.facing * attack.push
 		if not d.grounded:
 			d.vy = minf(d.vy, -1.8)
+			# A juggled fighter cannot use an air special to escape before landing.
+			d.air_specials = AIR_SPECIAL_LIMIT
 			if not instance in d.juggle_instances:
 				d.juggle_instances.append(instance)
 		if d.hp == 0:
@@ -841,9 +894,12 @@ func _change_meter(f: Fighter, amount: int) -> void:
 
 func _spawn_projectile(f: Fighter) -> void:
 	f.projectile_spawned = true
-	projectiles.append({"owner": f.slot, "instance": f.attack_instance, "move": f.move.id,
+	var projectile := {"owner": f.slot, "instance": f.attack_instance, "move": f.move.id,
 		"x": f.x + f.facing * 27, "y": f.y - 32, "vx": f.move.projectile_speed * f.facing,
-		"facing": f.facing, "life": f.move.projectile_lifetime, "damage_percent": f.attack_damage_percent})
+		"facing": f.facing, "life": f.move.projectile_lifetime, "damage_percent": f.attack_damage_percent}
+	if f.move.projectile_vy != 0:
+		projectile.vy = f.move.projectile_vy
+	projectiles.append(projectile)
 	events.append({"type": "projectile", "attacker": f.slot, "move": f.move.id})
 
 func projectile_box(projectile: Dictionary) -> Rect2:
@@ -857,6 +913,10 @@ func _advance_projectiles() -> void:
 	for p in projectiles:
 		p.x += p.vx
 		p.life -= 1
+		if p.has("vy"):
+			p.y += float(p.vy)
+			if p.y >= FLOOR_Y - 4:
+				p.life = 0
 		if p.x < LEFT - 40 or p.x > RIGHT + 40:
 			p.life = 0
 	for i in range(projectiles.size()):
@@ -1035,6 +1095,8 @@ func _outro_skill_motion(f: Fighter, delta_ticks: float, advance_tick: bool) -> 
 	var move: Move = f.move
 	if advance_tick and move.lift != 0 and move.lift_frame > 0 and f.move_frame == move.lift_frame:
 		_take_off(f, move.lift)
+	if advance_tick and not f.grounded:
+		_apply_air_velocity(f, move)
 	if f.move_frame < move.startup:
 		f.x += move.startup_travel * f.facing * delta_ticks
 	elif f.move_frame < move.startup + move.active:
@@ -1082,6 +1144,7 @@ func _advance_outro() -> void:
 		# Visual flight only. No contacts, damage, chip, meter, cancels or new input.
 		for p in projectiles:
 			p.x += p.vx * motion_delta
+			p.y += float(p.get("vy", 0.0)) * motion_delta
 			p.life -= motion_delta
 		projectiles = projectiles.filter(func(p: Dictionary) -> bool: return p.life > 0 and p.x >= LEFT - 40 and p.x <= RIGHT + 40)
 		_constrain_separation()

@@ -43,7 +43,7 @@ if (-not $process.WaitForExit(120000)) { $process.Kill(); throw 'Exported runtim
 $process.WaitForExit()
 $smokeText = (Get-Content $smokeLog -Raw) + (Get-Content $smokeError -Raw)
 if ($process.ExitCode -ne 0) { throw "Exported runtime failed: $smokeText" }
-if ($smokeText -match '(SCRIPT ERROR|ERROR:|FAIL:)' -or $smokeText -notmatch 'RELEASE SMOKE: 0 failed' -or $smokeText -notmatch 'RELEASE COMBAT: 64 cases, 0 failed') { throw "Exported runtime smoke failed: $smokeText" }
+if ($smokeText -match '(SCRIPT ERROR|ERROR:|FAIL:)' -or $smokeText -notmatch 'RELEASE SMOKE: 0 failed' -or $smokeText -notmatch 'RELEASE COMBAT: 64 cases, 0 failed' -or $smokeText -notmatch 'RELEASE EXPANSION: \d+ cases, 0 failed') { throw "Exported runtime smoke failed: $smokeText" }
 Copy-Item (Join-Path $root 'docs/PLAYER-README.txt') (Join-Path $package 'README.txt')
 Copy-Item (Join-Path $root 'THIRD-PARTY-NOTICES.md') $package
 $licenses = Join-Path $package 'licenses'

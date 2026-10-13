@@ -6,6 +6,18 @@ ROOT = Path(__file__).resolve().parents[1]
 MOVES = ROOT / "moves" / "core"
 CHARS = ROOT / "resources" / "characters"
 
+EXPANSION_FIELDS = ("follow_ups =", "cancel_requires_hit =", "landing_recovery =", "air_gravity_percent =",
+                    "air_velocity_frames =", "air_velocities =", "projectile_vy =", "command_normals =", "air_motions =", "advanced_list =")
+
+def refuse_expansion_overwrite():
+    """The .tres files are the source of truth once move-set expansion data exists."""
+    root = Path(__file__).resolve().parents[1]
+    for path in list((root / "resources/characters").glob("*.tres")) + list((root / "moves/core").glob("*.tres")):
+        text = path.read_text(encoding="utf-8")
+        if any(field in text for field in EXPANSION_FIELDS):
+            raise SystemExit("Refusing to regenerate: " + path.name + " carries move-set expansion data "
+                             "(docs/moveset-expansion.md). Edit the .tres files directly.")
+
 class Raw(str):
     pass
 
@@ -181,5 +193,6 @@ if __name__ == "__main__":
     parser.add_argument("--specials", action="store_true", help="Enable validated phase-two specials and presentation profiles")
     parser.add_argument("--basics-only", action="store_true", help="Reproduce the first-batch checkpoint without dedicated specials")
     args = parser.parse_args()
+    refuse_expansion_overwrite()
     make_roster(True, not args.basics_only)
     print("Authored 42 combat moves and 2 character definitions.")

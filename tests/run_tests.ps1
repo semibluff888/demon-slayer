@@ -36,7 +36,7 @@ function Invoke-DuelCheck {
 }
 
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/compile_check.gd') -Expected 'COMPILE / SCENE LOAD OK' | Out-Null
-Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/release_combat_tests.gd') -Expected 'RELEASE COMBAT: 64 cases, 0 failed' | Out-Null
+Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/release_combat_tests.gd') -Expected '(?s)RELEASE COMBAT: 64 cases, 0 failed.*RELEASE EXPANSION: \d+ cases, 0 failed' | Out-Null
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/input_tests.gd') -Expected 'INPUT TESTS: \d+ passed, 0 failed' | Out-Null
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/combat_tests.gd') -Expected 'COMBAT TESTS: \d+ passed, 0 failed' | Out-Null
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/damage_tests.gd') -Expected 'DAMAGE TESTS: \d+ passed, 0 failed' | Out-Null
@@ -44,6 +44,7 @@ Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script',
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/awakening_visual_tests.gd') -Expected 'AWAKENING VISUAL: \d+ passed, 0 failed' | Out-Null
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/awakening_presentation_tests.gd') -Expected 'AWAKENING PRESENTATION V2: \d+ passed, 0 failed' | Out-Null
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/movement_tests.gd') -Expected 'MOVEMENT TESTS: \d+ passed, 0 failed' | Out-Null
+Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/move_expansion_tests.gd') -Expected 'MOVE EXPANSION TESTS: \d+ passed, 0 failed' | Out-Null
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/combo_practice_tests.gd') -Expected 'COMBO / PRACTICE TESTS: \d+ passed, 0 failed' | Out-Null
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/ui_tests.gd') -Expected 'UI TESTS: \d+ passed, 0 failed' | Out-Null
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/ui_redesign_tests.gd') -Expected 'UI REDESIGN TESTS: \d+ passed, 0 failed' | Out-Null

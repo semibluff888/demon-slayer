@@ -47,6 +47,9 @@ func _init(load_combat_art: bool = true) -> void:
 		for move in definition.all_moves():
 			if not move.clip_id() in visual.required_move_clips:
 				visual.required_move_clips.append(move.clip_id())
+			var landing: String = move.presentation.landing_clip if move.presentation != null else ""
+			if not landing.is_empty() and not landing in visual.required_move_clips:
+				visual.required_move_clips.append(landing)
 		visual.load_local_assets(load_combat_art)
 		characters[id] = visual
 	var definitions: Array = []

@@ -204,6 +204,10 @@ func _clip() -> String:
 	# Blockstun ends in idle for one tick; retain the held crouch on that tick.
 	if fighter.grounded and fighter.crouching and fighter.stun == 0 and fighter.state in ["idle", "crouch"]:
 		return "guard_low" if fighter.down and fighter.axis == -fighter.facing else "crouch"
+	if fighter.state == "landing":
+		var landing := _landing_clip()
+		if not landing.is_empty():
+			return landing
 	if landing_ticks > 0 and fighter.state == "idle":
 		return "jump"
 	match fighter.state:
@@ -214,6 +218,14 @@ func _clip() -> String:
 		"hit": return "hit"
 		"knockdown": return "knockdown"
 	return "idle"
+
+## Dedicated recovery clip of the air move that just landed, if its profile has one.
+func _landing_clip() -> String:
+	var move: Resource = combat.moves.get(fighter.landing_move)
+	if move == null or move.presentation == null:
+		return ""
+	var landing: String = move.presentation.landing_clip
+	return landing if not landing.is_empty() and _frames() != null and _frames().has_animation(landing) else ""
 
 func _state_clip(key: String, fallback: String) -> String:
 	return visual.state_animations.get(key, fallback)
@@ -268,6 +280,9 @@ func _frame_index() -> int:
 		return mini(count - 1, int(fighter.air_ticks * float(count) / 37))
 	if fighter.move != null and clip == fighter.move.clip_id():
 		return move_clip_frame(fighter.move_frame)
+	if fighter.state == "landing" and not fighter.landing_move.is_empty() and clip == _landing_clip():
+		var recovery: int = maxi(1, combat.moves[fighter.landing_move].landing_recovery)
+		return mini(count - 1, int(clock_ticks * count / recovery))
 	if clip == "jump":
 		if fighter.grounded:
 			return mini(count - 1, 4 if fighter.state == "landing" or landing_ticks > 3 else 5)

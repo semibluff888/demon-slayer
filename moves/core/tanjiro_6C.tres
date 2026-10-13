@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="DuelMove" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="1"]
+
+[ext_resource type="Resource" path="res://resources/presentation/blade.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+presentation = ExtResource("2")
+display_name = "水之呼吸·柒之型 波纹突刺"
+kind = "heavy"
+level = "mid"
+startup = 12
+active = 3
+recovery = 22
+damage = 46
+hitstun = 28
+blockstun = 15
+hitstop = 6
+push = 1.4
+startup_travel = 0.9
+stance = "stand"
+animation_id = "stand_heavy"
+effect_id = "stand_heavy"
+knockdown = false
+box = Rect2(10, -42, 92, 16)
+cancel_targets = PackedStringArray("skill", "super", "max")
+id = "tanjiro_6C"

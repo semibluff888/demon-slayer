@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="DuelMove" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="1"]
+
+[ext_resource type="Resource" path="res://resources/presentation/takitsubo.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+presentation = ExtResource("2")
+display_name = "水之呼吸·捌之型 泷壶·重"
+kind = "skill"
+level = "high"
+startup = 13
+active = 18
+recovery = 14
+damage = 86
+hitstun = 34
+blockstun = 18
+hitstop = 8
+push = 0.4
+stance = "air"
+animation_id = "air_heavy"
+effect_id = "air_heavy"
+knockdown = true
+box = Rect2(-8, -38, 66, 52)
+cancel_targets = PackedStringArray()
+landing_recovery = 23
+air_gravity_percent = 40
+air_velocity_frames = PackedInt32Array(0, 13)
+air_velocities = PackedVector2Array(0.4, -1.6, 3.4, 6.2)
+id = "tanjiro_j236C"

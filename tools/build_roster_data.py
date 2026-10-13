@@ -12,6 +12,8 @@ def field(s,k,v):
 def quoted(v):return json.dumps(v,ensure_ascii=False)
 def main():
  p=argparse.ArgumentParser();p.add_argument('--character',choices=list(PROFILES));args=p.parse_args()
+ from build_combat_data import refuse_expansion_overwrite
+ refuse_expansion_overwrite()
  for cid,c in PROFILES.items():
   if args.character and args.character!=cid:continue
   base=c['base'];definition=(ROOT/f'resources/characters/{base}.tres').read_text(encoding='utf-8').replace(base,cid)

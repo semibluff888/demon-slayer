@@ -65,13 +65,20 @@ func command(self_state: Dictionary, opponent: Dictionary) -> Dictionary:
 		var move: Resource = catalog.moves.get(current)
 		if move != null:
 			cancelled_move = current
+			# Expansion branches read the move data, so characters without it keep
+			# their exact decisions and random sequence.
+			var string_stage: Resource = move.follow_ups.get("A") if move.kind == "light" and move.stance != "air" else null
 			if move.kind == "heavy" and not move.knockdown and self_state.grounded and self_state.get("confirmed", false) and int(self_state.get("awakening_ticks", 0)) == 0 and not self_state.get("quick_awakening_used", false) and int(self_state.meter) >= 200:
 				_enqueue("BC", facing)
+			elif string_stage != null and self_state.get("confirmed", false) and rng.randf() < 0.45:
+				_enqueue("5A", facing)
 			elif move.kind == "light" and move.stance != "air":
 				_enqueue("5C", facing)
-			elif move.kind == "heavy" and not move.knockdown and move.stance != "air":
+			elif move.kind == "light" and "heavy" in move.cancel_targets:
+				_enqueue("5C", facing)
+			elif move.kind == "heavy" and not move.knockdown and move.stance != "air" and (self_state.get("confirmed", false) or not move.cancel_requires_hit):
 				_enqueue("236A" if rng.randf() < 0.7 else "214B", facing)
-			elif move.kind == "skill" and self_state.get("confirmed", false) and int(self_state.meter) >= 100 and rng.randf() < 0.7:
+			elif move.kind == "skill" and move.stance != "air" and self_state.get("confirmed", false) and int(self_state.meter) >= 100 and rng.randf() < 0.7:
 				var awakening_left := int(self_state.get("awakening_ticks", 0))
 				if awakening_left > 0:
 					_enqueue("236236AC" if awakening_left <= 120 else "236236A", facing)
@@ -98,6 +105,9 @@ func command(self_state: Dictionary, opponent: Dictionary) -> Dictionary:
 	if cooldown <= 0 and self_state.state not in ["attack", "hit", "block", "knockdown", "thrown", "roll"]:
 		cooldown = rng.randi_range(15, 28)
 		var roll := rng.randf()
+		var definition: Resource = catalog.characters.get(str(self_state.get("character", "")))
+		var commands: Dictionary = definition.command_normals if definition != null else {}
+		var air_specials: Dictionary = definition.air_motions if definition != null else {}
 		if not observed.grounded and distance < 80:
 			_enqueue("623A", facing)
 		elif observed.state == "attack" and distance < 100 and roll < 0.18:
@@ -105,9 +115,22 @@ func command(self_state: Dictionary, opponent: Dictionary) -> Dictionary:
 		elif distance < 37 and roll < 0.16:
 			_enqueue("6D" if rng.randf() < 0.5 else "4D", facing)
 		elif distance < 66:
-			_enqueue("2B" if roll < 0.35 else ("5A" if roll < 0.78 else "5C"), facing)
+			# The slow overhead is a mix-up against a crouching opponent, not a poke.
+			if commands.has("6B") and observed.crouching and observed.state != "attack" and roll >= 0.35 and roll < 0.60:
+				_enqueue("6B", facing)
+			else:
+				_enqueue("2B" if roll < 0.35 else ("5A" if roll < 0.78 else "5C"), facing)
+		elif commands.has("6C") and distance < 118 and roll < 0.14 and self_state.grounded and observed.state != "attack":
+			_enqueue("6C", facing)
 		elif distance < 210 and roll < 0.72:
-			_enqueue("236A", facing)
+			if not self_state.grounded and not air_specials.is_empty():
+				# Airborne: a close dive or an air normal; far away, wait to land.
+				if distance < 120 and roll < 0.30:
+					_enqueue("236A", facing)
+				elif distance < 70:
+					_enqueue("C", facing)
+			else:
+				_enqueue("236A", facing)
 		elif distance > 80 and roll > 0.83:
 			result.y = -1
 			result.x = facing
