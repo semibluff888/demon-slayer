@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="DuelMove" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="1"]
+
+[ext_resource type="Resource" path="res://resources/presentation/blade.tres" id="2"]
+
+[ext_resource type="Resource" path="res://moves/core/zenitsu_5AAC.tres" id="3"]
+
+[resource]
+script = ExtResource("1")
+presentation = ExtResource("2")
+display_name = "雷之呼吸·贰之型 稻魂·贰"
+kind = "light"
+level = "mid"
+startup = 5
+active = 3
+recovery = 12
+damage = 19
+hitstun = 25
+blockstun = 11
+hitstop = 4
+push = 0.6
+startup_travel = 0.8
+stance = "stand"
+animation_id = "stand_light"
+effect_id = "stand_light"
+knockdown = false
+box = Rect2(7, -52, 48, 37)
+cancel_targets = PackedStringArray("skill", "super", "max")
+cancel_window = 16
+follow_ups = {
+"C": ExtResource("3")
+}
+id = "zenitsu_5AA"

@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="DuelMove" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="1"]
+
+[ext_resource type="Resource" path="res://resources/presentation/iai.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+presentation = ExtResource("2")
+display_name = "雷之呼吸·伍之型 热界雷"
+kind = "heavy"
+level = "mid"
+startup = 11
+active = 5
+recovery = 20
+damage = 46
+hitstun = 30
+blockstun = 15
+hitstop = 6
+push = 0.6
+startup_travel = 0.6
+stance = "stand"
+animation_id = "iai"
+effect_id = "stand_heavy"
+knockdown = false
+launch = -3.2
+anti_air_until = 10
+box = Rect2(4, -96, 58, 90)
+cancel_targets = PackedStringArray("skill", "super", "max")
+cancel_window = 14
+cancel_requires_hit = true
+id = "zenitsu_6C"

@@ -26,6 +26,7 @@ func _initialize() -> void:
 	_air_chains()
 	_frame_targets()
 	_routes()
+	_zenitsu()
 	var file := FileAccess.open("res://artifacts/move-expansion.json", FileAccess.WRITE)
 	file.store_string(JSON.stringify(report, "  "))
 	for failure in failures:
@@ -34,7 +35,10 @@ func _initialize() -> void:
 	quit(0 if failures.is_empty() else 1)
 
 func _tanjiro(key: String) -> Move:
-	var definition: Resource = Combat.new().catalog.characters.tanjiro
+	return _move_of("tanjiro", key)
+
+func _move_of(character: String, key: String) -> Move:
+	var definition: Resource = Combat.new().catalog.characters[character]
 	for table in ["normals", "motions", "command_normals", "air_motions"]:
 		var entries: Dictionary = definition.get(table)
 		if entries.has(key):
@@ -58,7 +62,7 @@ func _registration() -> void:
 		"tanjiro_jA", "tanjiro_jB", "tanjiro_jC", "tanjiro_jD", "tanjiro_236A", "tanjiro_236C", "tanjiro_623A", "tanjiro_623C",
 		"tanjiro_214B", "tanjiro_214D", "tanjiro_super", "tanjiro_max", "tanjiro_throw"], "base moves keep their original order")
 	check(tanjiro.normals.size() == 12 and tanjiro.motions.size() == 8, "base tables stay complete and unchanged in size")
-	for id in ["zenitsu", "nezuko", "akaza"]:
+	for id in ["nezuko", "akaza"]:
 		var other: Resource = model.catalog.characters[id]
 		check(other.all_moves().size() == 21 and other.command_normals.is_empty() and other.air_motions.is_empty(), "untouched roster: " + id)
 	var manifest: Dictionary = JSON.parse_string(Verifier.resource_snapshot())
@@ -249,12 +253,12 @@ func _air_specials() -> void:
 		s.advance(model, 4)
 		check(f.last_move == "tanjiro_236A", "low air input buffers the ground 水面斩, facing %d" % facing)
 	# Characters without air specials keep the original airborne behaviour.
-	var model = s.duel("zenitsu")
+	var model = s.duel("nezuko")
 	model.fighters[1].x = model.fighters[0].x + 150
 	_jump(model)
 	s.advance(model, 10)
 	s.input(model, "236A")
-	check(model.fighters[0].move == null and not model.fighters[0].grounded, "Zenitsu has no air special")
+	check(model.fighters[0].move == null and not model.fighters[0].grounded, "Nezuko has no air special")
 	# Juggled fighters cannot use an air special before landing.
 	model = Probe.duel("tanjiro")
 	var victim = model.fighters[0]
@@ -350,7 +354,7 @@ func _routes() -> void:
 				_run_route(facing, corner, example)
 
 func _run_route(facing: int, corner: bool, example: Dictionary) -> void:
-	var model = s.duel("tanjiro", facing, corner)
+	var model = s.duel(str(example.get("character", "tanjiro")), facing, corner)
 	var distance: float = example.get("distance", 34.0)
 	if corner:
 		model.fighters[1].x = Combat.RIGHT if facing == 1 else Combat.LEFT
@@ -393,3 +397,120 @@ func _run_route(facing: int, corner: bool, example: Dictionary) -> void:
 	check(connected and not blocked and hits == expected, "route connects in order (%s): %s" % [hits, label])
 	check(total == int(example.damage), "route damage %d (got %d): %s" % [example.damage, total, label])
 	report.append({"route": expected, "facing": facing, "corner": corner, "damage": total})
+
+## Zenitsu: 稻魂 (5A > A > C), 热界雷 (6C, anti-air), 低身斩 (3C, low), 霹雳一闪·空 (j.236) and 远雷 (j.214).
+func _zenitsu() -> void:
+	var model := Combat.new()
+	var zenitsu: Resource = model.catalog.characters.zenitsu
+	var ids: Array[String] = []
+	for move in zenitsu.all_moves():
+		ids.append(move.id)
+	for id in ["zenitsu_5AA", "zenitsu_5AAC", "zenitsu_6C", "zenitsu_3C", "zenitsu_j236A", "zenitsu_j236C", "zenitsu_j214B", "zenitsu_j214D"]:
+		check(ids.count(id) == 1 and model.catalog.moves.has(id), "Zenitsu expansion move registered once: " + id)
+	check(ids.size() == 29 and zenitsu.normals.size() == 12 and zenitsu.motions.size() == 8, "Zenitsu has 21 base and 8 expansion moves")
+	check(ids.slice(0, 21) == ["zenitsu_5A", "zenitsu_5B", "zenitsu_5C", "zenitsu_5D", "zenitsu_2A", "zenitsu_2B", "zenitsu_2C", "zenitsu_2D",
+		"zenitsu_jA", "zenitsu_jB", "zenitsu_jC", "zenitsu_jD", "zenitsu_236A", "zenitsu_236C", "zenitsu_623A", "zenitsu_623C",
+		"zenitsu_214B", "zenitsu_214D", "zenitsu_super", "zenitsu_max", "zenitsu_throw"], "Zenitsu base moves keep their original order")
+	for facing in [-1, 1]:
+		# 稻魂: hit and block both continue.
+		var duel = s.duel("zenitsu", facing)
+		s.input(duel, "5A")
+		s.wait_contact(duel)
+		s.input(duel, "5A")
+		s.wait_contact(duel)
+		check(duel.fighters[0].last_move == "zenitsu_5AA", "Zenitsu 5A then A reaches 稻魂 two, facing %d" % facing)
+		s.input(duel, "5C")
+		s.wait_contact(duel)
+		check(duel.fighters[0].last_move == "zenitsu_5AAC", "稻魂 two then C reaches stage three, facing %d" % facing)
+		# 低身斩 is a low: a standing guard is hit, a crouching guard blocks.
+		for crouch in [true, false]:
+			duel = s.duel("zenitsu", facing)
+			duel.fighters[0].x = duel.fighters[1].x - facing * 70
+			var guard := {"x": facing, "y": 1 if crouch else 0}
+			s.input(duel, "3C")
+			_guard_until_contact(duel, guard)
+			s.advance(duel, 40, {}, guard)
+			check(duel.fighters[0].last_move == "zenitsu_3C", "3C selects 低身斩, facing %d" % facing)
+			check((duel.fighters[1].hp < 1000) == (not crouch), "低身斩 is a low (crouch=%s), facing %d" % [crouch, facing])
+		# 热界雷 is chosen by 6C; other inputs keep their original moves.
+		duel = s.duel("zenitsu", facing)
+		s.input(duel, "6C")
+		s.advance(duel, 4)
+		check(duel.fighters[0].last_move == "zenitsu_6C", "6C selects 热界雷, facing %d" % facing)
+		for pair in [["2C", "zenitsu_2C"], ["5C", "zenitsu_5C"], ["3B", "zenitsu_2B"]]:
+			duel = s.duel("zenitsu", facing)
+			s.input(duel, pair[0])
+			s.advance(duel, 4)
+			check(duel.fighters[0].last_move == pair[1], "Zenitsu %s keeps %s" % [pair[0], pair[1]])
+	# 热界雷 beats air attacks during its early frames, never ground attacks.
+	var probe = Probe.duel("zenitsu")
+	var zen = probe.fighters[0]
+	var other = probe.fighters[1]
+	probe._begin_move(zen, _move_of("zenitsu", "6C"))
+	zen.move_frame = 5
+	other.grounded = false
+	check(not probe._can_be_struck(zen, other, _move_of("zenitsu", "jC"), 9, false), "热界雷 is safe from an air attack on frame 5")
+	other.grounded = true
+	check(probe._can_be_struck(zen, other, _move_of("zenitsu", "5A"), 9, false), "热界雷 can still be hit from the ground")
+	zen.move_frame = 12
+	other.grounded = false
+	check(probe._can_be_struck(zen, other, _move_of("zenitsu", "jC"), 9, false), "热界雷's air protection ends on frame 10")
+	# Air specials: one per jump; 远雷 stops the fall during its startup.
+	for facing in [-1, 1]:
+		var duel = s.duel("zenitsu", facing)
+		duel.fighters[1].x = duel.fighters[0].x + facing * 150
+		_jump(duel)
+		s.advance(duel, 10)
+		s.input(duel, "236A")
+		var f = duel.fighters[0]
+		check(f.last_move == "zenitsu_j236A" and not f.grounded, "airborne 236A selects 霹雳一闪·空, facing %d" % facing)
+		s.input(duel, "214B")
+		check(f.last_move == "zenitsu_j236A", "Zenitsu: one air special per jump, facing %d" % facing)
+		for n in range(80):
+			if f.grounded:
+				break
+			s.tick(duel)
+		check(f.state == "landing" and f.stun >= 14, "霹雳一闪·空 lands into its recovery, facing %d" % facing)
+		duel = s.duel("zenitsu", facing)
+		duel.fighters[1].x = duel.fighters[0].x + facing * 150
+		_jump(duel)
+		s.advance(duel, 10)
+		s.input(duel, "214B")
+		f = duel.fighters[0]
+		var height: float = f.y
+		s.advance(duel, 5)
+		check(f.last_move == "zenitsu_j214B" and is_equal_approx(f.y, height) and is_equal_approx(f.vy, 0.0), "远雷 stops in the air, facing %d (y %s -> %s, vy %s)" % [facing, height, f.y, f.vy])
+	for key in ["j236A", "j214B"]:
+		for crouch in [true, false]:
+			# Both are mid-range dashes: point blank they pass over a crouching opponent, and
+			# 远雷 started at the top of a jump stays above one, so it is sampled lower.
+			var sample: Dictionary = Probe.air("zenitsu", _move_of("zenitsu", key), 18 if key == "j236A" else 26, "crouch" if crouch else "stand", 70)
+			check(sample.contact == ("hit" if crouch else "block"), "%s must be stand-blocked (crouch=%s, got %s)" % [key, crouch, sample.contact])
+	# Frame data on the ground; air specials punishable on block at every sampled height.
+	var targets := {"5AA": [-3, 11], "5AAC": [-6, 7], "6C": [-9, 6], "3C": [-8, null]}
+	for key: String in targets:
+		var move := _move_of("zenitsu", "zenitsu_" + key)
+		var blocked: Dictionary = Probe.ground("zenitsu", move, "crouch" if move.level == "low" else "stand")
+		var struck: Dictionary = Probe.ground("zenitsu", move, "")
+		check(blocked.contact == "block" and blocked.advantage == targets[key][0], "Zenitsu %s block advantage %d (got %s)" % [key, targets[key][0], blocked.advantage])
+		if targets[key][1] != null:
+			check(struck.contact == "hit" and struck.advantage == targets[key][1], "Zenitsu %s hit advantage %d (got %s)" % [key, targets[key][1], struck.advantage])
+		report.append({"move": "zenitsu_" + key, "block": blocked.advantage, "hit": struck.advantage})
+	for key in ["j236A", "j236C", "j214B", "j214D"]:
+		var move := _move_of("zenitsu", key)
+		var worst := -999
+		for tick in [12, 16, 20, 24, 28]:
+			for distance in [24.0, 32.0, 40.0]:
+				var sample: Dictionary = Probe.air("zenitsu", move, tick, "stand", distance)
+				if sample.contact == "block" and sample.advantage != null:
+					worst = maxi(worst, int(sample.advantage))
+		check(worst != -999 and worst <= -5, "Zenitsu %s is punishable on block (best case %d)" % [key, worst])
+		report.append({"move": "zenitsu_" + key, "best_block": worst})
+	var routes := [
+		{"character": "zenitsu", "route": [["5A", "zenitsu_5A"], ["5A", "zenitsu_5AA"], ["5C", "zenitsu_5AAC"], ["236A", "zenitsu_236A"]], "damage": 122},
+		{"character": "zenitsu", "route": [["5A", "zenitsu_5A"], ["5A", "zenitsu_5AA"], ["5C", "zenitsu_5AAC"], ["236A", "zenitsu_236A"], ["236236A", "zenitsu_super"]], "damage": 304},
+		{"character": "zenitsu", "route": [["6C", "zenitsu_6C"], ["236A", "zenitsu_236A", "delay"]], "damage": 110}]
+	for example in routes:
+		for facing in [-1, 1]:
+			for corner in [false, true]:
+				_run_route(facing, corner, example)

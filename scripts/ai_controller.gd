@@ -108,8 +108,13 @@ func command(self_state: Dictionary, opponent: Dictionary) -> Dictionary:
 		var definition: Resource = catalog.characters.get(str(self_state.get("character", "")))
 		var commands: Dictionary = definition.command_normals if definition != null else {}
 		var air_specials: Dictionary = definition.air_motions if definition != null else {}
+		# A 6C that beats air attacks (Zenitsu's 热界雷) shares the anti-air job with 623.
+		var anti_air: Resource = commands.get("6C")
 		if not observed.grounded and distance < 80:
-			_enqueue("623A", facing)
+			if anti_air != null and anti_air.anti_air_until > 0 and self_state.grounded and rng.randf() < 0.4:
+				_enqueue("6C", facing)
+			else:
+				_enqueue("623A", facing)
 		elif observed.state == "attack" and distance < 100 and roll < 0.18:
 			_enqueue("4AB", facing)
 		elif distance < 37 and roll < 0.16:
@@ -120,7 +125,10 @@ func command(self_state: Dictionary, opponent: Dictionary) -> Dictionary:
 				_enqueue("6B", facing)
 			else:
 				_enqueue("2B" if roll < 0.35 else ("5A" if roll < 0.78 else "5C"), facing)
-		elif commands.has("6C") and distance < 118 and roll < 0.14 and self_state.grounded and observed.state != "attack":
+		elif commands.has("3C") and distance < 96 and roll < 0.12 and self_state.grounded and not observed.crouching and observed.state != "attack":
+			# The sliding low catches a standing opponent from just outside poke range.
+			_enqueue("3C", facing)
+		elif anti_air != null and anti_air.anti_air_until == 0 and distance < 118 and roll < 0.14 and self_state.grounded and observed.state != "attack":
 			_enqueue("6C", facing)
 		elif distance < 210 and roll < 0.72:
 			if not self_state.grounded and not air_specials.is_empty():

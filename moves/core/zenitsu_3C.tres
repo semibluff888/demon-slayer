@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="DuelMove" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="1"]
+
+[ext_resource type="Resource" path="res://resources/presentation/thunder.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+presentation = ExtResource("2")
+display_name = "居合·低身斩"
+kind = "heavy"
+level = "low"
+startup = 13
+active = 3
+recovery = 21
+damage = 44
+hitstun = 30
+blockstun = 15
+hitstop = 6
+push = 0.9
+startup_travel = 3.0
+travel = 4.0
+stance = "crouch"
+animation_id = "crouch_heavy"
+effect_id = "crouch_heavy"
+knockdown = true
+box = Rect2(10, -26, 66, 24)
+cancel_targets = PackedStringArray("super", "max")
+cancel_requires_hit = true
+id = "zenitsu_3C"

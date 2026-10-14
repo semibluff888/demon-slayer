@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="DuelMove" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="1"]
+
+[ext_resource type="Resource" path="res://resources/presentation/thunder.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+presentation = ExtResource("2")
+display_name = "雷之呼吸·壹之型 霹雳一闪·空·轻"
+kind = "skill"
+level = "high"
+startup = 8
+active = 10
+recovery = 12
+damage = 62
+hitstun = 34
+blockstun = 16
+hitstop = 7
+push = 0.5
+stance = "air"
+animation_id = "thunder"
+knockdown = true
+box = Rect2(-12, -42, 84, 52)
+cancel_targets = PackedStringArray()
+landing_recovery = 16
+air_gravity_percent = 0
+air_velocity_frames = PackedInt32Array(0, 8)
+air_velocities = PackedVector2Array(0.4, -0.6, 5.6, 4.7)
+id = "zenitsu_j236A"

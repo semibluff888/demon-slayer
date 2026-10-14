@@ -66,8 +66,8 @@ func _guards() -> void:
 			s.input(model, pair[0], guard)
 			s.advance(model, 45, {}, guard)
 			check((model.fighters[1].hp == 1000) == pair[2], "standing/crouching guard " + str(pair) + " facing " + str(facing))
-	# Zenitsu: Tanjiro's 5A now has an A follow-up, and this re-press would reach it.
-	var model = s.duel("zenitsu")
+	# Nezuko: Tanjiro's and Zenitsu's 5A now have an A follow-up, and this re-press would reach it.
+	var model = s.duel("nezuko")
 	s.input(model, "5A")
 	s.advance(model, 90, {"buttons": Commands.A})
 	check(model.fighters[1].hp == 971, "held attack and active frames cannot duplicate damage")

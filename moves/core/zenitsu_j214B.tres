@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="DuelMove" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="1"]
+
+[ext_resource type="Resource" path="res://resources/presentation/iai_return.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+presentation = ExtResource("2")
+display_name = "雷之呼吸·肆之型 远雷·轻"
+kind = "skill"
+level = "high"
+startup = 10
+active = 6
+recovery = 16
+damage = 54
+hitstun = 32
+blockstun = 15
+hitstop = 6
+push = 0.6
+stance = "air"
+animation_id = "air_heavy"
+knockdown = true
+box = Rect2(-8, -46, 96, 56)
+cancel_targets = PackedStringArray()
+landing_recovery = 10
+air_gravity_percent = 0
+air_velocity_frames = PackedInt32Array(0, 10, 16)
+air_velocities = PackedVector2Array(0, 0, 6.6, 2.4, 1.2, 2.4)
+id = "zenitsu_j214B"
