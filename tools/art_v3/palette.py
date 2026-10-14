@@ -1,8 +1,11 @@
 """Per-material colour lock in Lab, applied once per generated sheet.
 
-Materials are found with the anatomy colour classes plus the haori green; the mean
-Lab of each material is moved to the approved idle's mean (chroma fully, lightness
-by half) so shading and line work survive while clips stop drifting in hue.
+Materials are the anatomy colour classes (uniform, skin, hair) plus the character's
+costume classes from spec/<id>.json "materials" (Tanjiro's haori green; Zenitsu's
+haori in a yellow and an orange band, because a gradient's mean moves with how much
+hem a pose shows). The mean Lab of each locked material is moved to the approved
+idle's mean (chroma fully, lightness by half) so shading and line work survive while
+clips stop drifting in hue.
 """
 import cv2
 import numpy as np
@@ -12,23 +15,45 @@ import anatomy
 LIGHTNESS_SHARE = 0.5
 # Only drift beyond this CIE76 distance is corrected; closer sheets stay untouched.
 MIN_DELTA_E = 2.0
-# Hair is measured for QA only: its saturated class also catches trouser highlights.
-LOCKED = ('haori_green', 'uniform', 'skin')
+
+
+def materials():
+    return anatomy.profile()['materials']
+
+
+def locked():
+    """Hair is measured for QA only: its saturated class also catches costume highlights."""
+    return tuple(materials()['locked'])
 
 
 def classes(rgba):
     hair, skin, uniform = anatomy.masks(rgba)
-    # Hair only inside the measured head: trousers can share its saturated hue.
     measured = anatomy.head(rgba)
-    head_only = np.zeros_like(hair)
-    if measured:
-        x0, y0, x1, y1 = measured['box']
-        head_only[y0:y1, x0:x1] = True
-    hair = hair & head_only
+    if anatomy.profile()['anatomy'].get('hair_cut'):
+        # Hair cut out of the shared costume colours by the head measurement itself.
+        hair = measured['hair'] if measured else np.zeros_like(hair)
+    else:
+        # Hair only inside the measured head: trousers can share its saturated hue.
+        head_only = np.zeros_like(hair)
+        if measured:
+            x0, y0, x1, y1 = measured['box']
+            head_only[y0:y1, x0:x1] = True
+        hair = hair & head_only
     hsv = cv2.cvtColor(rgba[:, :, :3], cv2.COLOR_RGB2HSV).astype(np.int16)
     alpha = rgba[:, :, 3] > 160
-    green = alpha & (hsv[:, :, 0] >= 60) & (hsv[:, :, 0] <= 95) & (hsv[:, :, 1] >= 70) & (hsv[:, :, 2] >= 80)
-    return dict(haori_green=green, uniform=uniform, skin=skin, hair=hair)
+    head = None
+    result = {}
+    for name, rule in materials()['classes'].items():
+        mask = anatomy.select(rgba, rule, hsv, alpha)
+        if rule.get('exclude_head'):
+            if head is None:
+                head = np.zeros_like(mask)
+                if measured:
+                    head = cv2.dilate(measured['region'].astype(np.uint8), np.ones((7, 7), np.uint8)).astype(bool)
+            mask = mask & ~head
+        result[name] = mask
+    result.update(uniform=uniform, skin=skin, hair=hair)
+    return result
 
 
 def lab(rgba):
@@ -60,7 +85,7 @@ def lock(rgba, target, sheet_stats=None):
     touched = np.zeros(rgba.shape[:2], np.float32)
     shifts = {}
     for name, mask in classes(rgba).items():
-        if name not in LOCKED or name not in target or name not in sheet_stats:
+        if name not in locked() or name not in target or name not in sheet_stats:
             continue
         if delta_e(sheet_stats[name], target[name]) < MIN_DELTA_E:
             continue

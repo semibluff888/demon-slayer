@@ -32,13 +32,13 @@ Input image 1: APPROVED IDLE POSE. Exact character design, proportions, scale, l
 Input image 2: APPROVED MODEL SHEET. Costume construction and colours.
 Input image 3: PORTRAIT. {portrait}.
 {previous}Primary request: {count} sequential full-body drawings side by side in {count} equal columns ({cell} px wide, the full 1024 px image height), left to right, one drawing per column, all facing RIGHT.
-Scale (critical): every drawing uses exactly the scale of input image 1. In the guard stance of input image 1 he is 840 px tall from the top of the hair to the soles; upright he would be about 880 px; hair top to chin is 160 px. Bent knees or a lunge lower the body, but the head, torso and legs keep exactly these lengths. Never enlarge the head, never shorten the legs; no chibi. Feet touching the ground stand on one shared baseline 40 px above the bottom edge. Blades, sleeves and the haori stay inside their own column.
-Katana (critical): the blade from the guard to the tip is about 350 px in every drawing, as long as in input image 1. Never shorten it; when it points across the body or straight forward, show its full length.
+Scale (critical): every drawing uses exactly the scale of input image 1. In the {stance} of input image 1 he is {stance_px} px tall from the top of the hair to the soles; upright he would be about {upright_px} px; hair top to chin is {head_px} px. Bent knees or a lunge lower the body, but the head, torso and legs keep exactly these lengths. Never enlarge the head, never shorten the legs; no chibi. Feet touching the ground stand on one shared baseline 40 px above the bottom edge. Blades, sleeves and the haori stay inside their own column.
+Katana (critical): {katana}
 Motion: {intro}
 {frames}
 Identity: {identity}
 Rendering: {style} Same line weight and colours as input image 1 in every drawing.
-Constraints: no effects (no water, fire, trails or speed lines), no opponent, no floor, no shadow, no text, no grid lines, no borders, no watermark. Pure solid {background} background everywhere. Do not add the reference images as extra figures.
+Constraints: no effects (no {effects}), no opponent, no floor, no shadow, no text, no grid lines, no borders, no watermark. Pure solid {background} background everywhere. Do not add the reference images as extra figures.
 """
 
 
@@ -48,12 +48,12 @@ Input image 1: THE DRAWINGS TO EDIT. {count} copies of the same drawing, one per
 Input image 2: APPROVED MODEL SHEET. Costume construction and colours.
 Input image 3: PORTRAIT. {portrait}.
 {previous}Primary request: edit every column of input image 1. Keep EXACTLY as in input image 1: {keep}. Change ONLY {change}, as each frame describes. {rule}
-Katana (critical): the blade from the guard to the tip is about 350 px, as long as in input image 1. Never shorten it.
+Katana (critical): {katana_edit}
 Motion: {intro}
 {frames}
 Identity: {identity}
 Rendering: {style} Same line weight and colours as input image 1.
-Constraints: no effects (no water, fire, trails or speed lines), no opponent, no floor, no shadow, no text, no grid lines, no borders, no watermark. Pure solid {background} background everywhere. Do not add the reference images as extra figures.
+Constraints: no effects (no {effects}), no opponent, no floor, no shadow, no text, no grid lines, no borders, no watermark. Pure solid {background} background everywhere. Do not add the reference images as extra figures.
 """
 
 
@@ -111,10 +111,12 @@ def make_job(args, data, pose, clip, index, chunk, overlap, previous_out, revisi
         previous += 'Input image %d: %s\n' % (5 if previous_out else 4, extra['role'])
     template = EDIT_PROMPT if pose.get('edit') else PROMPT
     edit = pose.get('edit') or {}
-    prompt = template.format(name=data.get('name', 'Kamado Tanjiro'), clip=clip, first=chunk[0] + 1, last=chunk[-1] + 1, total=len(frames),
+    # Rulers, the katana sentence and the banned effects come from spec/<id>.json "prompt".
+    prompt = template.format(name=data['name'], clip=clip, first=chunk[0] + 1, last=chunk[-1] + 1, total=len(frames),
                              previous=previous, count=count, cell=cell, intro=pose['intro'], frames='\n'.join(lines),
                              identity=data['identity'], style=data['style'], background=data['background_name'],
-                             keep=edit.get('keep', EDIT_KEEP), change=edit.get('change', EDIT_CHANGE), rule=edit.get('rule', EDIT_RULE), portrait=data.get('portrait_note', 'Face, eyes, hair and forehead scar'))
+                             keep=edit.get('keep', EDIT_KEEP), change=edit.get('change', EDIT_CHANGE), rule=edit.get('rule', EDIT_RULE),
+                             portrait=data['portrait_note'], **{k: v for k, v in data['prompt'].items() if k != 'note'})
     prompt_path = out / 'prompts' / (job_id + '.txt')
     prompt_path.write_text(prompt, encoding='utf-8')
     first = ('output/imagegen/%s-v3/references/approved-idle-candidate.png' % args.character if not pose.get('edit')

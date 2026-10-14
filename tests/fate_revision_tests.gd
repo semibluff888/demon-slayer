@@ -33,7 +33,8 @@ func _test_proportions(catalog: RefCounted) -> void:
 		actor.visual = catalog.characters[cid]
 		actor.sync(0, true)
 		var bounds: Rect2 = actor.visual_bounds()
-		heights[cid] = bounds.size.y
+		# A low idle stance (Zenitsu's iai) records its share of the standing height.
+		heights[cid] = bounds.size.y / _idle_vs_upright(cid)
 		check(absf(bounds.end.y) < 0.5, "idle feet stay planted: " + cid)
 		for clip_name in ["crouch", "air_heavy", "roll_forward", "thrown", "round_victory"]:
 			actor.clip = clip_name
@@ -56,6 +57,10 @@ func _test_proportions(catalog: RefCounted) -> void:
 	actor.sync(0, true)
 	check(is_equal_approx(actor.visual_bounds().size.y, heights.nezuko), "reloading atlases never compounds character scale")
 	actor.free()
+
+func _idle_vs_upright(cid: String) -> float:
+	var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string("res://art/characters/%s/atlas.json" % cid))
+	return float(parsed.get("idle_vs_upright", 1.0)) if parsed is Dictionary else 1.0
 
 func _test_pain(catalog: RefCounted) -> void:
 	for attacker: String in ["tanjiro", "zenitsu", "nezuko", "akaza"]:

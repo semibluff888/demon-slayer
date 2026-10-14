@@ -61,6 +61,11 @@ class ArtworkTests(unittest.TestCase):
                     hashes.add(hashlib.sha256(image.tobytes()).hexdigest())
                 self.assertEqual(len(hashes), count, character + '/' + clip + ' must not duplicate static poses')
             idle_height = max(f['region'][3] for f in atlas['clips']['idle']['frames'])
+            if v3(character):
+                # A low idle (Zenitsu's iai stance is 62% of standing) is compared as the
+                # standing height it stands for (tools/art_v3/spec/<id>.json qa).
+                spec = json.loads((ROOT / 'tools/art_v3/spec' / (character + '.json')).read_text(encoding='utf-8'))
+                idle_height /= spec['qa'].get('idle_vs_upright', 1.0)
             sweep = atlas['clips']['crouch_heavy']
             frames = sweep['frames']
             if v3(character):

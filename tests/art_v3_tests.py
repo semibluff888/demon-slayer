@@ -1,16 +1,19 @@
 """Quality gate for the v3 character art (tools/art_v3): provenance, one scale per
-generated sheet, colour lock, head size, the idle loop and the derived awakened atlas."""
+generated sheet, colour lock, head size, the idle loop and the derived awakened atlas.
+Characters, locked materials and the awakening derivation come from tools/art_v3/spec."""
 import hashlib
 import json
 import unittest
 from pathlib import Path
 
+import cv2
 import numpy as np
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
-V3 = {'tanjiro': ROOT / 'output/imagegen/tanjiro-v3'}
-LOCKED = ('haori_green', 'uniform', 'skin')
+SPECS = {path.stem: json.loads(path.read_text(encoding='utf-8')) for path in sorted((ROOT / 'tools/art_v3/spec').glob('*.json'))
+         if not path.stem.endswith('-rig')}
+V3 = {cid: ROOT / 'output/imagegen' / (cid + '-v3') for cid in SPECS}
 
 
 def read(path):
@@ -49,7 +52,7 @@ class ArtV3Tests(unittest.TestCase):
                         modes = {f.get('anchor_mode') for f in record['frames'] if f.get('part') == part['id']}
                         limit = 1.2 if modes and modes <= {'lying', 'pelvis'} else 1.1
                         self.assertTrue(0.62 <= part['resample_vs_idle'] <= limit, '%s resampled %.3f' % (part['id'], part['resample_vs_idle']))
-                        for name in LOCKED:
+                        for name in SPECS[cid]['materials']['locked']:
                             if name in part['palette_delta_e_after']:
                                 self.assertLessEqual(part['palette_delta_e_after'][name], 4.5, '%s %s colour drift' % (part['id'], name))
                     for frame in record['frames']:
@@ -66,8 +69,9 @@ class ArtV3Tests(unittest.TestCase):
             bottoms = {Image.fromarray(f.astype(np.uint8)).getbbox()[3] for f in frames}
             self.assertEqual(len(bottoms), 1, 'feet stay planted through the loop')
 
-    def test_awakened_atlas_is_the_base_art_plus_the_mark(self):
+    def test_awakened_atlas_is_derived_from_the_base_art(self):
         for cid, out in self.characters.items():
+            derivation = SPECS[cid]['awakening']
             folder = ROOT / 'art/characters' / cid
             base = read(folder / 'atlas.json')
             awake = read(folder / 'awakening/atlas.json')
@@ -88,10 +92,36 @@ class ArtV3Tests(unittest.TestCase):
                 canvas.alpha_composite(pages[path].crop((x, y, x + w, y + h)), tuple(entry['offset']))
                 return np.asarray(canvas).astype(np.int16)
 
-            for clip in ('idle', 'walk', 'water_slash'):
+            for clip in SPECS[cid]['qa']['sample_clips']:
                 for normal, awakened in zip(base['clips'][clip]['frames'], awake['clips'][clip]['frames']):
-                    changed = np.any(drawing(folder, normal) != drawing(folder / 'awakening', awakened), axis=2)
-                    self.assertLessEqual(int(changed.sum()), 200, '%s: only the forehead mark differs' % clip)
+                    first, second = drawing(folder, normal), drawing(folder / 'awakening', awakened)
+                    changed = np.any(first != second, axis=2)
+                    if derivation['mode'] == 'mark':
+                        self.assertLessEqual(int(changed.sum()), 200, '%s: only the forehead mark differs' % clip)
+                        continue
+                    # Godspeed grade: same alpha, colour changes only on the gold materials
+                    # and along the silhouette edge.
+                    self.assertTrue(np.array_equal(first[:, :, 3], second[:, :, 3]), '%s: the grade keeps the geometry' % clip)
+                    self.assertTrue(changed.any(), '%s: the awakened form is graded' % clip)
+                    self.assertFalse((changed & ~graded_area(first.astype(np.uint8), derivation)).any(), '%s: grade outside its materials' % clip)
+
+
+def graded_area(rgba, derivation):
+    """Pixels awaken.bake_grade may touch: the gold class (feathered) and the rim band."""
+    rule = derivation['gold']
+    hsv = cv2.cvtColor(np.ascontiguousarray(rgba[:, :, :3]), cv2.COLOR_RGB2HSV).astype(np.int16)
+
+    def within(channel, bounds):
+        low, high = bounds
+        return (channel >= low) & (channel <= high) if low <= high else (channel >= low) | (channel <= high)
+
+    gold = (rgba[:, :, 3] > 160) & within(hsv[:, :, 0], rule['h']) & within(hsv[:, :, 1], rule['s']) & within(hsv[:, :, 2], rule['v'])
+    area = cv2.dilate(gold.astype(np.uint8), np.ones((7, 7), np.uint8)).astype(bool)
+    width = int(derivation.get('rim_px', 0))
+    if width:
+        solid = (rgba[:, :, 3] > 40).astype(np.uint8)
+        area |= (solid > 0) & (cv2.erode(solid, np.ones((2 * width + 1, 2 * width + 1), np.uint8)) == 0)
+    return area
 
 
 if __name__ == '__main__':

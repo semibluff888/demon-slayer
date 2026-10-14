@@ -26,19 +26,25 @@ import process_anime_art as legacy
 
 CANVAS = (1024, 640)
 ANCHOR = (448, 568)
-APPROVED_HEAD_PX = 158          # approved idle candidate, hair top to chin
-RUNTIME_HEAD_PX = 340 * 166 / 925  # model sheet ratio at the 340 px runtime standing height
 RULER_TOLERANCE = 0.08
 LENGTH_LIMIT = 1.05             # longest stretched-out body vs the approved idle (upright is ~5% taller)
 
 
 def canonical(character):
+    """The approved key and its scale. spec/<id>.json "ruler": the key's hair top to chin
+    (approved_head_px) and the model sheet's head and height give the runtime head at the
+    runtime standing height. Also selects the character's colour classes (anatomy.configure)."""
+    data = anatomy.configure(character)
+    ruler = data['ruler']
     out = production(character)
     key = np.asarray(Image.open(out / 'references/approved-idle-candidate.png').convert('RGBA'))
     measured = anatomy.head(key)
-    scale = RUNTIME_HEAD_PX / APPROVED_HEAD_PX
+    runtime_head = ruler['runtime_standing_px'] * ruler['model_head_px'] / ruler['model_height_px']
+    scale = runtime_head / ruler['approved_head_px']
+    # A wide crouching key's main axis is shorter than the body; the spec then gives it.
+    length = data.get('qa', {}).get('length_px') or anatomy.body_axes(key)[0]
     return dict(ruler=measured['ruler'], runtime_ruler=measured['ruler'] * scale, scale=scale,
-                length=anatomy.body_axes(key)[0], palette=palette.stats(key), key=key)
+                length=length, palette=palette.stats(key), key=key, qa=data.get('qa', {}))
 
 
 PELVIS_HEIGHT = round(340 * 34 / 70)  # pelvis above the feet anchor for rotating poses (old pipeline convention)
@@ -186,9 +192,10 @@ def body_height(rgba):
     return anatomy.sole_y(rgba) - top
 
 
-def process_clip(character, clip, jobs, canon, upright=False, pose=None):
+def process_clip(character, clip, jobs, canon, band=None, pose=None):
     """Overlap frames (padding repeated from the previous sheet) calibrate a sheet's
-    scale directly against already registered drawings; other sheets use the head ruler."""
+    scale directly against already registered drawings; other sheets use the head ruler.
+    `band` is the allowed height of standing drawings relative to the idle (spec "qa")."""
     reference = np.asarray(Image.open(production(character) / 'imports/idle/frame-00.png').convert('RGBA'))
     idle_height = body_height(reference)
     pose = pose or {}
@@ -311,8 +318,9 @@ def process_clip(character, clip, jobs, canon, upright=False, pose=None):
             if placement['clipped']:
                 flags.append('clipped on canvas')
             height_ratio = body_height(np.asarray(canvas)) / idle_height
-            # Standing fully upright is about 5% taller than the bent-knee guard.
-            if upright and mode == 'feet' and not 0.95 <= height_ratio <= 1.07:
+            # Upright clips stand taller than the idle (5% over Tanjiro's bent-knee guard,
+            # 1.6x Zenitsu's low iai stance); stance clips keep the idle's height.
+            if band and mode == 'feet' and not band[0] <= height_ratio <= band[1]:
                 flags.append('height %.0f%% of the idle' % (height_ratio * 100))
             placement['height_vs_idle'] = round(height_ratio, 3)
             if pose.get('helper'):
@@ -478,7 +486,9 @@ def main():
         if not clip_jobs or not all((ROOT / j['out']).exists() for j in clip_jobs):
             print('skip', clip, '(sheets missing)')
             continue
-        frames, record = process_clip(args.character, clip, clip_jobs, canon, bool(poses.get(clip, {}).get('upright')), poses.get(clip))
+        pose = poses.get(clip, {})
+        band = canon['qa'].get('upright') if pose.get('upright') else canon['qa'].get('stance') if pose.get('stance') else None
+        frames, record = process_clip(args.character, clip, clip_jobs, canon, band, poses.get(clip))
         reference = Image.open(production(args.character) / 'imports/idle/frame-00.png').convert('RGBA')
         fps = atlas['clips'].get(clip, {}).get('fps') or poses.get(clip, {}).get('new', {}).get('fps', 12)
         review(args.character, clip, frames, record, fps, reference)

@@ -14,7 +14,11 @@
     "standing_px": 430,
     "head_px": 72,
     "heads_tall": 6.0,
-    "runtime_standing_px": 340
+    "runtime_standing_px": 340,
+    "approved_head_px": 158,
+    "model_head_px": 166,
+    "model_height_px": 925,
+    "scale_note": "approved_head_px: hair top to chin on the approved idle key. model_head_px / model_height_px: hair top to chin and hair top to sole on the v3 model sheet; the runtime head is runtime_standing_px * model_head_px / model_height_px."
   },
   "palette": {
     "note": "Material targets in sRGB, sampled from the approved anime-v2 model sheet (k-means). Re-measured from the approved v3 idle key at checkpoint 1.",
@@ -65,6 +69,102 @@
       "Column 2, low ready stance: wider stance with the torso leaning slightly forward, both hands on the hilt at hip height, blade held low and pointing forward and down past the front knee; alert eyes.",
       "Column 3, side-on guard: torso turned more sideways, both hands at chest height, blade almost horizontal pointing straight at the opponent at chest height, rear knee bent more.",
       "All three: the whole katana clearly visible (black blade, red and black hilt wrap, tsuba), scabbard on the left hip, haori open and hanging naturally with a slight flare at the hem, earrings visible, checker squares the same size as the model sheet."
+    ]
+  },
+  "portrait_note": "Face, eyes, hair and forehead scar",
+  "prompt": {
+    "note": "Rulers measured on the approved key (input image 1 of every production sheet).",
+    "stance": "guard stance",
+    "stance_px": 840,
+    "upright_px": 880,
+    "head_px": 160,
+    "katana": "the blade from the guard to the tip is about 350 px in every drawing, as long as in input image 1. Never shorten it; when it points across the body or straight forward, show its full length.",
+    "katana_edit": "the blade from the guard to the tip is about 350 px, as long as in input image 1. Never shorten it.",
+    "effects": "water, fire, trails or speed lines"
+  },
+  "anatomy": {
+    "note": "Inclusive OpenCV HSV boxes (h 0-179, wraps when low > high; s and v 0-255). Burgundy hair, peach skin, dark-maroon uniform.",
+    "hair": {
+      "h": [
+        165,
+        6
+      ],
+      "s": [
+        120,
+        255
+      ],
+      "v": [
+        70,
+        255
+      ]
+    },
+    "skin": {
+      "h": [
+        5,
+        22
+      ],
+      "s": [
+        35,
+        120
+      ],
+      "v": [
+        190,
+        255
+      ]
+    },
+    "uniform": {
+      "h": [
+        165,
+        6
+      ],
+      "s": [
+        50,
+        119
+      ],
+      "v": [
+        35,
+        139
+      ]
+    }
+  },
+  "materials": {
+    "note": "Costume classes for the colour lock; only the locked ones are corrected (hair also catches trouser highlights, so it is QA only).",
+    "classes": {
+      "haori_green": {
+        "h": [
+          60,
+          95
+        ],
+        "s": [
+          70,
+          255
+        ],
+        "v": [
+          80,
+          255
+        ]
+      }
+    },
+    "locked": [
+      "haori_green",
+      "uniform",
+      "skin"
+    ]
+  },
+  "awakening": {
+    "mode": "mark",
+    "note": "The forehead scar grows into the flame-shaped mark (awaken.py)."
+  },
+  "qa": {
+    "note": "upright: hair-top-to-sole height of \"upright\" pose clips vs the idle (standing is about 5% taller than the bent-knee guard). sample_clips: awakened-vs-base pixel check in tests/art_v3_tests.py.",
+    "upright": [
+      0.95,
+      1.07
+    ],
+    "sample_clips": [
+      "idle",
+      "walk",
+      "water_slash"
     ]
   }
 }

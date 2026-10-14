@@ -2,7 +2,7 @@
 
 Writes art/characters/<id>/atlas.json + atlas-N.png (combat clips), round-atlas.json +
 round-N.png (round intro/victory/defeat) and awakening/atlas.json + atlas-N.png (every
-clip with the forehead mark baked by awaken.py, identical geometry). Existing clips
+clip derived by awaken.py, identical geometry: Tanjiro's forehead mark, Zenitsu's Godspeed grade). Existing clips
 keep their timing metadata (fps, loop, phase_breaks, segment_sync, timeline, anchor
 mode) from the previous atlases; new clips take theirs from the pose script; idle
 becomes the authored 12-frame loop ("cycle": true). Stale pages are removed.
@@ -21,6 +21,7 @@ import numpy as np
 from PIL import Image, ImageOps
 
 from common import ROOT, POSES, production, read, rel, save, sha256, spec
+import anatomy
 import awaken
 
 PAGE = 2048
@@ -117,6 +118,7 @@ def main():
     parser.add_argument('--character', default='tanjiro')
     args = parser.parse_args()
     character = args.character
+    anatomy.configure(character)
     folder = ROOT / 'art/characters' / character
     revision = spec(character)['revision']
     poses = read(POSES / (character + '.json'))['clips']
@@ -124,6 +126,11 @@ def main():
     old_round = previous(character, 'round-atlas.json')
     old_awake = previous(character, 'awakening/atlas.json')
     header = dict(canvas_size=[1024, 640], feet_anchor=[448, 568], source_height=340, canonical_height=70, revision=revision)
+    stance = spec(character).get('qa', {}).get('idle_vs_upright')
+    if stance:
+        # A low idle (Zenitsu's iai stance): its share of the standing height, so size
+        # comparisons between characters measure standing bodies (fate_revision_tests).
+        header['idle_vs_upright'] = stance
     # Helper clips (key drawings another clip is assembled from) never ship.
     names = ['idle'] + [name for name in poses if not poses[name].get('helper')]
     available = {name: frames_of(character, name) for name in names}
@@ -150,7 +157,7 @@ def main():
     marks = {}
     baked = {}
     for name in awake_names:
-        # The mark is found on the drawing as generated (facing right), then flipped with it.
+        # The mark or grade is found on the drawing as generated (facing right), then flipped with it.
         for index, image in enumerate(drawn[name]):
             array, count = awaken.bake(np.asarray(image))
             baked[(name, index)] = mirrored(Image.fromarray(array, 'RGBA')) if name in flipped else Image.fromarray(array, 'RGBA')
