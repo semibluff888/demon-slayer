@@ -1,15 +1,15 @@
 # 炭治郎技能特效
 
-目标：复刻《火之神血风谭》中炭治郎的水之呼吸和火之神神乐特效。参考拆解见 [tanjiro-reference.md](tanjiro-reference.md)。已重做水面斩、水车、扭转漩涡、生生流转、碧罗之天和六个刀斩普通技（5A/5C、2A/2C、jA/jC），每招都有普通形态和觉醒水火交融两版（碧罗之天两版都是纯火）。体术普通技（B/D）和投技仍走原有特效。
+目标：复刻《火之神血风谭》中炭治郎的水之呼吸和火之神神乐特效。参考拆解见 [tanjiro-reference.md](tanjiro-reference.md)。已重做水面斩、水车、扭转漩涡、生生流转、碧罗之天、泷壶和六个刀斩普通技（5A/5C、2A/2C、jA/jC），每招都有普通形态和觉醒水火交融两版（碧罗之天两版都是纯火）。体术普通技（B/D）和投技仍走原有特效。
 
 ## 结构
 
 | 文件 | 作用 |
 |---|---|
 | `scripts/presentation/vfx/tanjiro_vfx.gd` | 核心，挂在 `EffectsView` 下：图层、粒子池、命中爆发、共用的笔触绘制；`MOVES` 把招式分派给各招式脚本，其余招式和其他角色仍走原代码 |
-| `scripts/presentation/vfx/tanjiro/technique.gd` | 招式脚本的基类：`emit`（每个战斗 tick 生成粒子）、`draw`（按招式帧画形状）、`contact`（命中）、锚点（判定结束后形状留在原地）、超杀蓄力时钟 |
-| `scripts/presentation/vfx/tanjiro/water_slash.gd` 等 | 每招一个脚本：`water_slash`、`water_wheel`、`water_vortex`、`water_dragon`、`sun_halo`、`blade_trail` |
-| `scripts/presentation/vfx/tanjiro/paths.gd` | 笔触沿着走的中心线：`Arc`（弧/椭圆环）、`Helix`（螺旋，分前后半）、`Wave`（龙身波形）、`Sweep`（普通技刀路） |
+| `scripts/presentation/vfx/tanjiro/technique.gd` | 招式脚本的基类：`emit`（每个战斗 tick 生成粒子）、`draw`（按招式帧画形状）、`contact`（命中）、锚点（判定结束后形状留在原地）、超杀蓄力时钟；`linger` / `draw_lingering` 供招式结束后仍要继续的特效使用（泷壶落地后的瀑布） |
+| `scripts/presentation/vfx/tanjiro/water_slash.gd` 等 | 每招一个脚本：`water_slash`、`water_wheel`、`water_vortex`、`water_dragon`、`sun_halo`、`blade_trail`、`waterfall` |
+| `scripts/presentation/vfx/tanjiro/paths.gd` | 笔触沿着走的中心线：`Arc`（弧/椭圆环）、`Helix`（螺旋，分前后半）、`Wave`（龙身波形）、`Sweep`（普通技刀路）、`Column`（竖直水柱） |
 | `scripts/presentation/vfx/tanjiro/kit.gd` | 共用常量：图层、精灵表格子、水丝束、交融火丝和附着火片的排布、配色 |
 | `scripts/presentation/vfx/vfx_ribbon.gd` | 三角带彩带（直接提交三角形，弧线自交也安全），支持按弧长平铺纹理、选取纹理行 |
 | `scripts/presentation/vfx/vfx_pool.gd` | 确定性粒子池（精灵表、重力、阻力、拉伸），只按传入的演出时间推进 |
@@ -70,6 +70,21 @@
 
 两种形态都是纯火。蓄力：两道细火环绕身旋转收紧，暖光增强；放出时身体金光一闪，配横向金色镜头光芒。后空翻画出三道同心倾斜火环（白黄芯、橙身、红缘，主环外缘生出火舌），前端甩出火粒。判定结束后火环留在原地，约 0.1 秒后开始褪成更细的深红色带，并从尾部碎成深红火片和余烬。命中是金色 X 字、火焰闪光、火环和四散火粒，没有水花。
 
+### 泷壶（j236A/C）
+
+参考视频 0:13–0:19：一道瀑布从画面上方砸下，底部堆起一大片白色泡沫。
+
+| 阶段 | 表现 |
+|---|---|
+| 起手 | 刀身细水带，水珠被吸向刀身，俯冲前身体蓝白闪光 |
+| 俯冲 | 俯冲前 4 帧，水柱从画面上方（地面以上 300 单位）倾泻到刀前（`Column` 路径，宽 38 / 46）；水柱跟随炭治郎下落，下端甩出水珠和水花；身后有一层深蓝底色给水柱厚度，正面两道亮色水光 |
+| 落地 | 水柱砸进地面：水花冠、冲击环，两侧向上喷出大量水珠，脚下涌起水花冠，泡沫沿地面滚开；地面堆起两排白色泡沫团（后排在角色身后，前排压住脚面），从中间向两侧鼓起 |
+| 倾泻 | 落地后再流 8 帧，持续溅水、冒水雾；随后 10 帧内从上往下变细消失并碎成水珠；泡沫堤半宽约 44（后排）/ 52（前排）单位，约 18 帧后各自缩小、淡出，34 帧后全部消失 |
+| 中断 | 俯冲中被打断（招式在空中结束）时不砸地，水柱在原处约 8 帧内碎掉 |
+| 觉醒 | 水柱织入火丝，落地时迸出深红火片 |
+
+招式在落地那一刻就结束了（进入 `landing` 状态），所以落地后的部分由 `linger`（每次推进时检测落地、按落地后的帧数逐帧生成粒子）和 `draw_lingering`（按记录的落点绘制）完成。落地后的时间取演出时间，命中停顿、暂停和 KO 冻结时同样静止。
+
 ### 刀斩普通技（5A/5C、2A/2C、jA/jC）
 
 沿原有的刀路曲线（`EffectsView.CUT_CURVES`）画一段短水丝，外缘有一道亮白刀线，出刀时甩出水珠；重攻击更粗，带卷浪和金色 X 字命中，轻攻击只有水花和冲击环。觉醒时织入火丝（重攻击另有附着火片）。
@@ -98,5 +113,6 @@ python tools/build_tanjiro_vfx_review.py sheet|compare|video|montage <截图目�
 - 命中爆发（轻普通技没有 X 字）
 - 弹道释放、留在原地的锚点
 - 全部粒子在 1.5 秒内消失
+- 泷壶：水柱跟随俯冲、落地砸出水花和泡沫、招式结束后继续倾泻、冻结静止、中断时碎掉、两秒内清空
 - 重置清空
 - 逐帧与批量推进结果一致

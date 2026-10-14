@@ -12,7 +12,9 @@ function Assert-LocalPath([string]$path) {
     }
     return $full
 }
-$targets = @('artifacts', 'tmp', 'output/pip-cache', 'output/font-sources',
+# output/font-sources stays: tools/subset_fonts.py re-subsets the bundled fonts from it
+# after every UI text change (it only re-downloads with --fetch).
+$targets = @('artifacts', 'tmp', 'output/pip-cache',
     'output/imagegen/anime-v2/review', 'output/imagegen/roster-v1/review',
     'output/imagegen/round-selected/review', 'output/imagegen/round-selected/packed',
     'demo/round-presentation/previews/frames', 'demo/round-presentation/previews/audio')

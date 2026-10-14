@@ -22,6 +22,7 @@ const TECHNIQUES := {
 	"dragon": preload("res://scripts/presentation/vfx/tanjiro/water_dragon.gd"),
 	"sun": preload("res://scripts/presentation/vfx/tanjiro/sun_halo.gd"),
 	"blade": preload("res://scripts/presentation/vfx/tanjiro/blade_trail.gd"),
+	"waterfall": preload("res://scripts/presentation/vfx/tanjiro/waterfall.gd"),
 }
 ## Moves drawn here and the technique drawing each; the rest of the kit still
 ## uses EffectsView.
@@ -32,9 +33,10 @@ const MOVES := {
 	"tanjiro_super": "dragon",
 	"tanjiro_max": "sun",
 	"tanjiro_5A": "blade", "tanjiro_5C": "blade", "tanjiro_2A": "blade", "tanjiro_2C": "blade", "tanjiro_jA": "blade", "tanjiro_jC": "blade",
-	# Move-set expansion: Striking Tide, Drop Ripple Thrust and Waterfall Basin follow
-	# the drawn blade; the air Water Wheel draws the wheel ring.
-	"tanjiro_5AA": "blade", "tanjiro_5AAC": "blade", "tanjiro_6C": "blade", "tanjiro_j236A": "blade", "tanjiro_j236C": "blade",
+	# Move-set expansion: Striking Tide and Drop Ripple Thrust follow the drawn blade;
+	# Waterfall Basin pours its own waterfall; the air Water Wheel draws the wheel ring.
+	"tanjiro_5AA": "blade", "tanjiro_5AAC": "blade", "tanjiro_6C": "blade",
+	"tanjiro_j236A": "waterfall", "tanjiro_j236C": "waterfall",
 	"tanjiro_j214B": "wheel", "tanjiro_j214D": "wheel",
 }
 const TEXTURES := ["water-strands", "hybrid-fire-strands", "fire-strands", "white-brush-strands", "water-crescent", "water-crescent-heavy",
@@ -154,6 +156,8 @@ func advance(delta: float) -> void:
 	time += delta
 	for f in combat.fighters:
 		_emit_fighter(f)
+	for each: RefCounted in techniques.values():
+		each.linger(combat.fighters, actors)
 	_track_projectiles()
 	for pool in [drops, foam, petals, embers, mist]:
 		pool.advance(delta)
@@ -286,6 +290,8 @@ func _paint(canvas: Node2D, layer: int) -> void:
 			if handles(move):
 				set_base(canvas, frame_transform(p.x, p.y, p.facing))
 				technique(move).draw_projectile(canvas, layer, p, move)
+		for each: RefCounted in techniques.values():
+			each.draw_lingering(canvas, layer)
 	canvas.draw_set_transform(Vector2.ZERO)
 	var to_screen := Callable(camera, "point")
 	match layer:

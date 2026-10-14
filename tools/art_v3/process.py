@@ -29,6 +29,7 @@ ANCHOR = (448, 568)
 APPROVED_HEAD_PX = 158          # approved idle candidate, hair top to chin
 RUNTIME_HEAD_PX = 340 * 166 / 925  # model sheet ratio at the 340 px runtime standing height
 RULER_TOLERANCE = 0.08
+LENGTH_LIMIT = 1.05             # longest stretched-out body vs the approved idle (upright is ~5% taller)
 
 
 def canonical(character):
@@ -37,7 +38,7 @@ def canonical(character):
     measured = anatomy.head(key)
     scale = RUNTIME_HEAD_PX / APPROVED_HEAD_PX
     return dict(ruler=measured['ruler'], runtime_ruler=measured['ruler'] * scale, scale=scale,
-                palette=palette.stats(key), key=key)
+                length=anatomy.body_axes(key)[0], palette=palette.stats(key), key=key)
 
 
 PELVIS_HEIGHT = round(340 * 34 / 70)  # pelvis above the feet anchor for rotating poses (old pipeline convention)
@@ -46,7 +47,8 @@ PELVIS_HEIGHT = round(340 * 34 / 70)  # pelvis above the feet anchor for rotatin
 def place(drawing, scale, mode='feet'):
     """Scale one drawing onto the shared canvas.
     feet:   body root x to the anchor, lowest pixel (soles) on the floor;
-    lying:  same as feet (the lowest pixel is the back or side on the floor);
+    lying:  body root x to the anchor, lowest row of the body itself on the floor (a dropped
+            katana or an outstretched hand reaching lower would otherwise lift the body);
     pelvis: body centre at PELVIS_HEIGHT above the anchor, for flips and airborne rotations."""
     array = np.asarray(drawing)
     root = anatomy.root_x(array)
@@ -55,7 +57,8 @@ def place(drawing, scale, mode='feet'):
         centre_y = anatomy.root_y(array)
         at = (round(ANCHOR[0] - root * scale), round(ANCHOR[1] - PELVIS_HEIGHT - centre_y * scale))
     else:
-        at = (round(ANCHOR[0] - root * scale), round(ANCHOR[1] - anatomy.sole_y(array) * scale))
+        bottom = anatomy.body_bottom(array) if mode == 'lying' else anatomy.sole_y(array)
+        at = (round(ANCHOR[0] - root * scale), round(ANCHOR[1] - bottom * scale))
     if mode == 'pelvis' and at[1] + scaled.height > CANVAS[1]:
         # An upside-down flip can reach below the canvas; lift it just enough.
         at = (at[0], CANVAS[1] - scaled.height)
@@ -63,6 +66,45 @@ def place(drawing, scale, mode='feet'):
     clipped = at[0] < 0 or at[1] < 0 or at[0] + scaled.width > CANVAS[0] or at[1] + scaled.height > CANVAS[1]
     canvas.alpha_composite(scaled, (max(0, at[0]), max(0, at[1])), (max(0, -at[0]), max(0, -at[1])))
     return canvas, dict(root_x=round(root, 1), anchor_mode=mode, offset=list(at), clipped=clipped)
+
+
+def _ink(rgba):
+    """Luminance weighted by coverage: line art on an empty background."""
+    rgb = rgba[:, :, :3].astype(np.float32)
+    return (rgb @ np.array([0.299, 0.587, 0.114], np.float32)) * (rgba[:, :, 3:4].astype(np.float32)[:, :, 0] / 255.0)
+
+
+def register(drawing, target, guess):
+    """Lays a drawing onto a registered canvas frame of the same body by the lower
+    body only (legs, feet, scabbard), which the edited arms and blade never cover.
+    Searches scale around `guess` and a small offset; returns (canvas, placement)."""
+    goal = np.asarray(target)
+    rows = np.nonzero(goal[:, :, 3] > 150)[0]
+    top, sole = int(rows.min()), int(rows.max()) + 1
+    band = slice(top + int((sole - top) * 0.55), sole)
+    cols = np.nonzero((goal[band, :, 3] > 150).any(axis=0))[0]
+    x0, x1 = int(cols.min()) - 4, int(cols.max()) + 5
+    template = _ink(goal[band, x0:x1])
+    best = None
+    for factor in np.linspace(0.8, 1.2, 81):
+        scale = guess * factor
+        canvas, placement = place(drawing, scale, 'feet')
+        ink = _ink(np.asarray(canvas))
+        y0, margin = band.start, 24
+        window = ink[max(0, y0 - margin):band.stop + margin, max(0, x0 - margin):x1 + margin]
+        result = cv2.matchTemplate(window, template, cv2.TM_CCOEFF_NORMED)
+        _, score, _, at = cv2.minMaxLoc(result)
+        dx = at[0] + max(0, x0 - margin) - x0
+        dy = at[1] + max(0, y0 - margin) - y0
+        if best is None or score > best[0]:
+            best = (score, scale, -dx, -dy)
+    score, scale, dx, dy = best
+    canvas, placement = place(drawing, scale, 'feet')
+    shifted = Image.new('RGBA', canvas.size)
+    shifted.alpha_composite(canvas, (max(0, dx), max(0, dy)), (max(0, -dx), max(0, -dy)))
+    placement.update(offset=[placement['offset'][0] + dx, placement['offset'][1] + dy], anchor_mode='registered',
+                     registration=dict(scale=round(scale, 4), score=round(float(score), 3), exact=float(scale)))
+    return shifted, placement
 
 
 def separate(sheet, count):
@@ -149,6 +191,11 @@ def process_clip(character, clip, jobs, canon, upright=False, pose=None):
     scale directly against already registered drawings; other sheets use the head ruler."""
     reference = np.asarray(Image.open(production(character) / 'imports/idle/frame-00.png').convert('RGBA'))
     idle_height = body_height(reference)
+    pose = pose or {}
+
+    def mode_of(index):
+        return pose.get('ground_mode', 'feet') if index in pose.get('ground_frames', []) else pose.get('anchor', 'feet')
+
     frames = {}
     records = []
     parts = []
@@ -162,7 +209,14 @@ def process_clip(character, clip, jobs, canon, upright=False, pose=None):
         meta = job['metadata']
         drawings = separate(Image.fromarray(locked, 'RGBA'), meta['count'])
         heads = [anatomy.head(np.asarray(image)) for _, image in drawings]
-        rulers = [h['ruler'] for h in heads if h]
+        overlap = meta.get('overlap') or []
+        # "Hair top to sole" of a lying body depends on how its legs happen to be drawn,
+        # so a lying overlap cannot calibrate the sheet (it shrank the knockdown's final
+        # drawing to 66%); the sheet then measures its own drawings' heads.
+        if overlap and all(mode_of(i) == 'lying' for i in overlap):
+            rulers = [h['ruler'] for h, i in zip(heads, meta['frame_indices']) if h and i not in overlap]
+        else:
+            rulers = [h['ruler'] for h in heads if h]
         # Raised arms or a turned head only ever hide part of the head, so with two
         # drawings the clearer (larger) head is the reference; three or more use the median.
         if not rulers:
@@ -175,26 +229,59 @@ def process_clip(character, clip, jobs, canon, upright=False, pose=None):
                            head_scale=canon['runtime_ruler'] / part_ruler, shifts=shifts, before=before, after=after, measured=bool(rulers)))
     # Upright drawings measure their heads reliably. In flips and falls the head is
     # often hidden or upside down, so a rotated sheet far from the clip median takes
-    # the median instead (preferring the upright sheets' median).
-    pose = pose or {}
+    # the median instead (preferring the upright sheets' median). One exception: a
+    # stretched-out body (lying, flying flat) does not fit a column at full size, so
+    # the model draws it smaller and its visible head correctly asks for a larger
+    # scale; that is kept as long as the body stays no longer than the idle allows.
     def rotated(data):
         drawn = [i for i in data['meta']['frame_indices'] if i not in (data['meta'].get('overlap') or [])]
-        return any((pose.get('ground_mode', 'feet') if i in pose.get('ground_frames', []) else pose.get('anchor', 'feet')) != 'feet' for i in drawn)
+        return any(mode_of(i) != 'feet' for i in drawn)
     upright_scales = [d['head_scale'] for d in sheets if d['measured'] and not rotated(d)]
     clip_median = statistics.median(upright_scales or [d['head_scale'] for d in sheets if d['measured']] or [canon['scale']])
     for data in sheets:
         job, raw, meta, drawings, heads, part_ruler = data['job'], data['raw'], data['meta'], data['drawings'], data['heads'], data['part_ruler']
         scale = data['head_scale']
         method = 'head-ruler'
-        if not data['measured'] or (rotated(data) and abs(scale / clip_median - 1) > 0.12):
+        drawn = [np.asarray(image) for (_, image), i in zip(drawings, meta['frame_indices']) if i not in (meta.get('overlap') or [])]
+        axes = [anatomy.body_axes(a) for a in drawn]
+        stretched = max(major / max(1.0, minor) for major, minor in axes) >= 1.8
+        if data['measured'] and rotated(data) and stretched and scale > clip_median * 1.12:
+            cap = canon['length'] * LENGTH_LIMIT * canon['scale'] / max(major for major, _ in axes)
+            if cap < scale:
+                scale, method = max(clip_median, cap), 'length-capped'
+        elif not data['measured'] or (rotated(data) and abs(scale / clip_median - 1) > 0.12):
             scale = clip_median
             method = 'clip-median'
         overlap = meta.get('overlap') or []
+        registered = pose.get('register')
+        if registered:
+            # The body is the referenced drawing (an edit of it): register every drawing
+            # on that frame by its lower body; the sheet records the median scale.
+            reference_record = read(production(character) / 'imports' / (registered['clip'] + '.json'))
+            reference_frame = Image.open(production(character) / 'imports' / registered['clip'] / ('frame-%02d.png' % registered['frame'])).convert('RGBA')
+            guess = next(f['scale'] for f in reference_record['frames'] if f['frame'] == registered['frame'])
+            placed = {index: register(image, reference_frame, guess) for (_, image), index in zip(drawings, meta['frame_indices']) if index not in overlap}
+            scale = statistics.median(p['registration']['scale'] for _, p in placed.values())
+            method = 'registered'
+            part_ruler = canon['runtime_ruler'] / scale
+        match = pose.get('match_height')
+        if match and meta['part'] in match.get('parts', [meta['part']]):
+            # The same body as another drawing: the crouching guard is the crouch with the
+            # arms raised (they hide the head); a later sheet of a still pose matches an
+            # earlier frame of its own clip (already registered above).
+            if match['clip'] == clip:
+                reference_frame = frames[match['frame']]
+            else:
+                reference_frame = Image.open(production(character) / 'imports' / match['clip'] / ('frame-%02d.png' % match['frame'])).convert('RGBA')
+            target = body_height(np.asarray(reference_frame))
+            scale = target / statistics.median(body_height(a) for a in drawn)
+            method = 'height-match'
+            part_ruler = canon['runtime_ruler'] / scale
         calibrations = []
         for (bbox, image), index in zip(drawings, meta['frame_indices']):
-            if index in overlap and index in frames:
+            if index in overlap and index in frames and mode_of(index) != 'lying':
                 calibrations.append(body_height(np.asarray(frames[index])) / body_height(np.asarray(image)))
-        if calibrations:
+        if calibrations and not registered:
             scale = statistics.median(calibrations)
             method = 'overlap'
         before, after, shifts = data['before'], data['after'], data['shifts']
@@ -208,7 +295,10 @@ def process_clip(character, clip, jobs, canon, upright=False, pose=None):
             mode = pose.get('anchor', 'feet')
             if index in pose.get('ground_frames', []):
                 mode = pose.get('ground_mode', 'feet')
-            canvas, placement = place(image, scale, mode)
+            if registered:
+                canvas, placement = placed[index]
+            else:
+                canvas, placement = place(image, scale, mode)
             ratio = head['ruler'] / part_ruler if head else None
             flags = []
             notes = []
@@ -225,6 +315,13 @@ def process_clip(character, clip, jobs, canon, upright=False, pose=None):
             if upright and mode == 'feet' and not 0.95 <= height_ratio <= 1.07:
                 flags.append('height %.0f%% of the idle' % (height_ratio * 100))
             placement['height_vs_idle'] = round(height_ratio, 3)
+            if pose.get('helper'):
+                # Key drawings another clip is assembled from keep their full-resolution
+                # drawing, so that clip can deform them before scaling (intro_warp.py).
+                drawn_at = production(character) / 'imports' / clip / ('drawing-%02d.png' % index)
+                drawn_at.parent.mkdir(parents=True, exist_ok=True)
+                image.save(drawn_at)
+                placement.update(drawing=rel(drawn_at), exact_scale=float(placement.get('registration', {}).get('exact', scale)))
             frames[index] = canvas
             records.append(dict(frame=index, part=job['id'], crop=list(bbox), head_ruler=round(head['ruler'], 2) if head else None,
                                 head_box=head['box'] if head else None, ratio_to_sheet=round(ratio, 3) if ratio else None,
@@ -248,22 +345,45 @@ def save_frames(character, clip, frames):
 
 def process_idle(character, canon):
     """The approved idle loop: warped from the key, so it shares the key's scale exactly."""
-    folder = production(character) / 'imports/idle-warp'
-    drawings = [Image.open(path).convert('RGBA') for path in sorted(folder.glob('idle-*.png'))]
-    root = anatomy.root_x(canon['key'])
-    sole = anatomy.sole_y(canon['key'])
+    return process_warped(character, canon, 'idle', 'idle-warp', 'idle', cycle=True)
+
+
+# Every warped clip is resampled from the key padded the same way, so identical
+# drawings (the intro's last frames are idle frame 0) give identical canvas pixels.
+WARP_PAD = (20, 0, 130, 0)
+
+
+def warped_canvas(warped, canon, pad=(0, 0, 0, 0)):
+    """A key-space drawing (the key padded by `pad`) on the canvas at the key's own scale
+    and placement. Returns (canvas, offset)."""
+    root = anatomy.root_x(canon['key']) + WARP_PAD[0]
+    sole = anatomy.sole_y(canon['key']) + WARP_PAD[1]
+    size = (warped.width + WARP_PAD[0] + WARP_PAD[2] - pad[0] - pad[2], warped.height + WARP_PAD[1] + WARP_PAD[3] - pad[1] - pad[3])
+    drawing = Image.new('RGBA', size)
+    drawing.alpha_composite(warped, (WARP_PAD[0] - pad[0], WARP_PAD[1] - pad[1]))
+    scaled = drawing.resize((round(drawing.width * canon['scale']), round(drawing.height * canon['scale'])), Image.Resampling.LANCZOS)
+    at = (round(ANCHOR[0] - root * canon['scale']), round(ANCHOR[1] - sole * canon['scale']))
+    canvas = Image.new('RGBA', CANVAS)
+    canvas.alpha_composite(scaled, at)
+    return canvas, at
+
+
+def process_warped(character, canon, clip, folder_name, prefix, pad=(0, 0, 0, 0), cycle=False):
+    """Frames warped from the approved key (idle_warp.py, intro_warp.py): the key's own
+    scale and placement. `pad` is what the warp already added around the key."""
+    folder = production(character) / 'imports' / folder_name
+    paths = sorted(folder.glob(prefix + '-*.png'))
     frames, records = [], []
-    for index, drawing in enumerate(drawings):
-        scaled = drawing.resize((round(drawing.width * canon['scale']), round(drawing.height * canon['scale'])), Image.Resampling.LANCZOS)
-        at = (round(ANCHOR[0] - root * canon['scale']), round(ANCHOR[1] - sole * canon['scale']))
-        canvas = Image.new('RGBA', CANVAS)
-        canvas.alpha_composite(scaled, at)
+    for index, path in enumerate(paths):
+        canvas, at = warped_canvas(Image.open(path).convert('RGBA'), canon, pad)
         frames.append(canvas)
-        records.append(dict(frame=index, source=rel(folder / ('idle-%02d.png' % index)), scale=round(canon['scale'], 4), offset=list(at), flags=[]))
-    save_frames(character, 'idle', frames)
-    record = dict(character=character, clip='idle', canvas_size=list(CANVAS), feet_anchor=list(ANCHOR), cycle=True,
+        records.append(dict(frame=index, source=rel(path), scale=round(canon['scale'], 4), offset=list(at), flags=[]))
+    save_frames(character, clip, frames)
+    record = dict(character=character, clip=clip, canvas_size=list(CANVAS), feet_anchor=list(ANCHOR),
                   source='output/imagegen/%s-v3/references/approved-idle-candidate.png' % character, frames=records)
-    save(production(character) / 'imports' / 'idle.json', record)
+    if cycle:
+        record['cycle'] = True
+    save(production(character) / 'imports' / (clip + '.json'), record)
     return frames, record
 
 
@@ -336,6 +456,22 @@ def main():
             frames, record = process_idle(args.character, canon)
             review(args.character, clip, frames, dict(frames=[dict(ratio_to_sheet=1.0, flags=[]) for _ in frames]), 10)
             print('idle: %d frames from the approved key' % len(frames))
+            continue
+        warp = poses.get(clip, {}).get('warp')
+        if warp and warp.get('assembled'):
+            # Key drawings plus warps of the approved key (intro_warp.py builds the canvas frames).
+            import intro_warp
+            frames = intro_warp.build(args.character)
+            review(args.character, clip, frames, dict(frames=[dict(ratio_to_sheet=1.0, flags=[]) for _ in frames]), 9,
+                   Image.open(production(args.character) / 'imports/idle/frame-00.png').convert('RGBA'))
+            print('%s: %d frames assembled from %s' % (clip, len(frames), warp['tool']))
+            continue
+        if warp:
+            pad = read(production(args.character) / 'imports' / (warp['folder'] + '.json'))['pad']
+            frames, record = process_warped(args.character, canon, clip, warp['folder'], warp['prefix'], pad)
+            review(args.character, clip, frames, dict(frames=[dict(ratio_to_sheet=1.0, flags=[]) for _ in frames]), 12,
+                   Image.open(production(args.character) / 'imports/idle/frame-00.png').convert('RGBA'))
+            print('%s: %d frames warped from the approved key' % (clip, len(frames)))
             continue
         clip_jobs = [j for j in jobs if j.get('metadata', {}).get('clip') == clip and j['id'].startswith(args.character + '-v3-' + clip + '-p')
                      and not j.get('superseded_by')]

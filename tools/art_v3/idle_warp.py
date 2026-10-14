@@ -15,6 +15,8 @@ Rig format:
   ]
 }
 Each motion displaces its points by amplitude * sin(2*pi*(t + phase)), t = i / frames.
+Optional "offsets": {"foot_front": [dx, dy], ...} move points by a constant amount in
+every frame (a pose correction of the key, e.g. both soles on one ground line).
 
 Usage: python tools/art_v3/idle_warp.py --key KEY.png --rig RIG.json --out DIR [--preview GIF]
 """
@@ -54,6 +56,8 @@ def displaced(rig, t):
     names = list(rig['points'])
     base = np.array([rig['points'][n] for n in names], dtype=np.float64)
     moved = base.copy()
+    for name, offset in rig.get('offsets', {}).items():
+        moved[names.index(name)] += np.array(offset, dtype=np.float64)
     for motion in rig['motions']:
         wave = math.sin(2 * math.pi * (t + motion.get('phase', 0.0)))
         for name, amplitude in motion['points'].items():
@@ -63,15 +67,19 @@ def displaced(rig, t):
 
 def warp(image, rig, t):
     """Backward map: for each output pixel find where it came from in the key."""
+    base, moved = displaced(rig, t)
+    return warp_points(image, base, moved, int(rig.get('grid', 6)), float(rig.get('alpha', 1.4)))
+
+
+def warp_points(image, base, moved, step=6, alpha=1.4):
+    """Deform `image` so the control points at `base` land on `moved`."""
     height, width = image.shape[:2]
-    step = int(rig.get('grid', 6))
     xs = np.arange(0, width + step, step, dtype=np.float64)
     ys = np.arange(0, height + step, step, dtype=np.float64)
     gx, gy = np.meshgrid(xs, ys)
     grid = np.stack([gx.ravel(), gy.ravel()], axis=1)
-    base, moved = displaced(rig, t)
     # Inverse mapping: deform output positions back onto the source drawing.
-    source_positions = mls_rigid(grid, moved, base, float(rig.get('alpha', 1.4)))
+    source_positions = mls_rigid(grid, moved, base, alpha)
     map_x = source_positions[:, 0].reshape(gy.shape).astype(np.float32)
     map_y = source_positions[:, 1].reshape(gy.shape).astype(np.float32)
     map_x = cv2.resize(map_x, (len(xs) * step, len(ys) * step), interpolation=cv2.INTER_LINEAR)[:height, :width]

@@ -78,13 +78,20 @@
       ]
     },
     "guard_low": {
-      "layout": "tall",
-      "intro": "Crouching block.",
+      "layout": "wide",
+      "intro": "Crouching guard: the crouch of input image 1 stays exactly the same; only the arms and the katana move. He blocks with the katana held HORIZONTAL (level) across the front of his head at the height of his forehead, like a bar shielding his face. The hands and the blade are NEVER raised above his head: the top of his hair stays the highest point of every drawing.",
       "frames": [
-        "Ready: crouching, blade forward low.",
-        "Block impact: crouched low, blade held horizontally in front of the shins and knees with both hands, braced, teeth clenched.",
-        "Hold: the same crouching block, braced and steady."
-      ]
+        "Rising into the block: both hands on the hilt lift from in front of his belly to in front of his chest, the blade turning from pointing forward and up toward level.",
+        "Block impact: elbows bent and low, both forearms raised in front of his face. The katana is LEVEL and HORIZONTAL, held across the front of his head at the height of his forehead and brows, just above his eyes (his eyes stay visible below the blade): one hand grips the hilt on the back side of his head (to the LEFT of his face), the other hand's open palm presses up against the blunt back of the blade in front of his face (to the RIGHT), and the blade continues forward toward the opponent. Edge facing up. The blade is lower than the top of his hair, never above his head. Braced, teeth clenched.",
+        "Hold: the same horizontal block a moment later, the katana LEVEL across the front of his head at forehead height, one hand on the hilt behind his face, the open palm pressing the blunt back of the blade in front of his face; never above his head; steady, eyes on the opponent."
+      ],
+      "edit": {
+        "image": "output/imagegen/tanjiro-v3/references/crouch-key.png"
+      },
+      "register": {
+        "clip": "crouch",
+        "frame": 2
+      }
     },
     "hit": {
       "layout": "tall",
@@ -334,17 +341,17 @@
     },
     "body_stand_heavy": {
       "layout": "wide",
-      "intro": "Heavy body attack (5D): a spinning back kick.",
+      "intro": "Heavy body attack (5D): ONE simple standing side kick seen from the side. Never turn the back to the viewer, never spin. The kicking leg is long: thigh and shin keep their full standing length.",
       "frames": [
-        "Guard, weight on the front foot.",
-        "Turn: back begins to face RIGHT, rear leg lifting.",
-        "Spin: back to the viewer, knee chambered.",
-        "Active: powerful back kick extended RIGHT at chest height, blade held low.",
-        "Kick fully extended.",
-        "Leg retracting while turning back.",
-        "Rebalancing.",
-        "Settling into the stance.",
-        "Back to the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up)."
+        "Start: the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up).",
+        "Shift the weight onto the rear leg, the near knee starting to lift.",
+        "Chamber: near knee raised high to the chest, hips turning sideways, blade held low in the right hand.",
+        "Active: side kick, the near leg fully extended straight to the RIGHT at chest height, sole of the foot forward, torso leaning back, long leg.",
+        "Kick held at full extension.",
+        "Kick still extended, starting to lower slightly.",
+        "Retract the knee back to the chest.",
+        "Foot comes down, weight returning to centre.",
+        "Back in the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up)."
       ]
     },
     "body_crouch_heavy": {
@@ -416,56 +423,56 @@
     },
     "throw_success": {
       "layout": "wide",
-      "intro": "Back throw (4D): grab the opponent, turn and throw them behind. Draw only Tanjiro; no opponent.",
+      "intro": "Back throw (4D): grab the collar, step back and swing the opponent around past his left side, slamming them to the floor BEHIND him (to the LEFT). He keeps facing RIGHT, twisting the upper body and looking back over his shoulder; no full turn, no spin. Draw only Tanjiro; no opponent. Simple, readable poses.",
       "frames": [
-        "Reach forward and grab with the left hand at chest height, blade back in the right hand.",
-        "Grip and pull toward himself.",
-        "Turn the hips, pulling across the body.",
-        "Pivot on the front foot, back turning RIGHT.",
-        "Mid-turn, hauling with both arms.",
-        "Facing LEFT now, swinging the arms over the left shoulder.",
-        "Throw release over the shoulder toward the LEFT.",
-        "Follow-through, leaning LEFT.",
-        "Arms down after the release.",
-        "Turning back toward RIGHT.",
-        "Facing RIGHT, rebalancing.",
+        "Reach forward and grab with the left hand at chest height, blade held low in the right hand.",
+        "Grip the collar and pull in close.",
+        "Step the rear foot back, hips turning, pulling the grip toward his left side.",
+        "Twisting the upper body to the LEFT, left arm hauling the grip past his left hip, chest toward the viewer.",
+        "Looking back over his left shoulder, left arm swinging the grip behind him to the LEFT at waist height.",
+        "Left arm swinging the grip up and over behind him, knees bending.",
+        "Driving down behind: knees bent, left arm pushing down toward the floor behind him on the LEFT.",
+        "Deep crouch, left arm reaching down to the floor behind him on the LEFT, looking back.",
+        "Impact: crouched low, left hand pressing down at floor level behind him on the LEFT, looking back.",
+        "Letting go, rising, turning the head back to the RIGHT.",
+        "Standing, facing RIGHT, rebalancing.",
         "Back in the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up)."
       ]
     },
     "throw_forward": {
       "layout": "wide",
-      "intro": "Forward throw (6D): grab, then a headbutt and a shove forward. Draw only Tanjiro; no opponent.",
+      "intro": "Forward throw (6D): grab the collar and sweep the opponent's leg, slamming them down in front. Draw only Tanjiro; no opponent. Facing RIGHT the whole time; simple, readable poses.",
       "frames": [
-        "Reach forward and grab with the left hand at chest height.",
-        "Grip and pull in.",
-        "Lean back, chin tucked, preparing a headbutt.",
-        "Headbutt forward, forehead driving RIGHT.",
-        "Impact pose, forehead forward, eyes shut.",
-        "Push with both hands forward.",
-        "Shove extended, arms straight forward.",
-        "Follow-through lean forward.",
-        "Arms returning.",
-        "Rebalancing.",
-        "Settling.",
+        "Step in and reach forward with the left hand at chest height, blade held low in the right hand.",
+        "Left hand grips the opponent's collar, arm extended forward.",
+        "Pull the collar in toward himself, stepping the near foot forward.",
+        "Near leg swings forward past the opponent's leg, collar held tight.",
+        "Reap: near leg sweeps backward behind the opponent's leg while the left arm pushes forward and down.",
+        "Sweep completed, near leg high behind, torso leaning forward over the opponent.",
+        "Driving down: left arm pushes down and forward toward the floor, both knees bending.",
+        "Deep forward lean, left arm extended down toward the floor in front.",
+        "Impact: crouched low, left hand pressing down at floor level in front.",
+        "Rising from the crouch, letting go.",
+        "Standing, stepping back.",
         "Back in the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up)."
       ]
     },
     "thrown": {
       "layout": "wide",
-      "intro": "Being thrown over the thrower's shoulder and slammed down behind (back throw victim): Tanjiro is the victim; draw only him, keep the katana in his right hand.",
+      "intro": "Back-throw victim: grabbed, pulled forward over the thrower's shoulder, flipped forward head first and slammed flat on his back. Draw only Tanjiro; keep the katana in his right hand. The flip rotates clockwise: the head leads to the RIGHT and down, the legs swing up and over to the RIGHT.",
       "frames": [
-        "Grabbed: jolted, leaning forward, startled.",
-        "Pulled: off balance, feet sliding.",
-        "Lifted: feet leaving the ground.",
-        "Swung: body rising sideways in the air.",
-        "High in the air, body horizontal.",
-        "Rotating head down.",
-        "Upside down, falling.",
-        "Coming down toward the ground, back first.",
-        "Slam: back hits the ground hard, legs up.",
-        "Bounce: lying on the back, legs bending.",
-        "Down: lying flat, head to the LEFT.",
-        "Down: lying flat, motionless, eyes closed."
+        "Grabbed by the collar: jolted forward, startled, leaning toward the RIGHT.",
+        "Pulled forward and down to the RIGHT, off balance, bending at the waist.",
+        "Loaded as if over a shoulder: bent forward at the waist, head low toward the RIGHT, feet leaving the ground.",
+        "Lifted: body horizontal in the air, face down, head to the RIGHT, legs to the LEFT.",
+        "Flipping forward: body vertical and upside down, head down, legs straight up.",
+        "Legs swinging over the top toward the RIGHT, body tilted, back turning toward the floor.",
+        "Falling on his back: body nearly horizontal in the air, head to the LEFT, feet to the RIGHT.",
+        "About to land: back just above the floor, horizontal, head to the LEFT, feet to the RIGHT.",
+        "Slam: lying flat on his back seen from the SIDE at floor level (never from above, no foreshortening), the whole body HORIZONTAL and parallel to the floor (never diagonal), head to the LEFT, feet to the RIGHT, legs almost straight, the body spanning nearly the full column width, arms out, eyes squeezed.",
+        "Bounce settled: lying flat on his back seen from the SIDE at floor level (never from above, no foreshortening), the whole body HORIZONTAL and parallel to the floor (never diagonal), head to the LEFT, feet to the RIGHT, legs almost straight, the body spanning nearly the full column width.",
+        "Down: lying flat on his back seen from the SIDE at floor level (never from above, no foreshortening), the whole body HORIZONTAL and parallel to the floor (never diagonal), head to the LEFT, feet to the RIGHT, legs almost straight, the body spanning nearly the full column width, eyes closed.",
+        "Down: lying flat on his back seen from the SIDE at floor level (never from above, no foreshortening), the whole body HORIZONTAL and parallel to the floor (never diagonal), head to the LEFT, feet to the RIGHT, legs almost straight, the body spanning nearly the full column width, motionless."
       ],
       "anchor": "pelvis",
       "ground_frames": [
@@ -476,24 +483,25 @@
         10,
         11
       ],
-      "ground_mode": "lying"
+      "ground_mode": "lying",
+      "mirror": true
     },
     "thrown_forward": {
       "layout": "wide",
-      "intro": "Being thrown forward and slammed down (forward throw victim): Tanjiro is the victim; draw only him, keep the katana in his right hand.",
+      "intro": "Forward-throw victim: grabbed by the collar, leg swept out, falling backward and slammed flat on his back. Draw only Tanjiro; keep the katana in his right hand. He falls backward toward the LEFT.",
       "frames": [
-        "Grabbed: jolted, leaning forward, startled.",
-        "Pulled: off balance, feet sliding.",
-        "Lifted: feet leaving the ground.",
-        "Swung: body rising sideways in the air.",
-        "High in the air, body horizontal.",
-        "Rotating head down.",
-        "Upside down, falling.",
-        "Coming down toward the ground, back first.",
-        "Slam: back hits the ground hard, legs up.",
-        "Bounce: lying on the back, legs bending.",
-        "Down: lying flat, head to the LEFT.",
-        "Down: lying flat, motionless, eyes closed."
+        "Grabbed by the collar: jolted forward, startled.",
+        "Pulled in, off balance, leaning forward.",
+        "Leg swept: the front foot kicked out from under him, starting to fall backward to the LEFT.",
+        "Falling backward to the LEFT, body diagonal, arms flailing.",
+        "Falling backward, body tilting toward horizontal, legs lifting.",
+        "Nearly horizontal in the air, back down, head to the LEFT.",
+        "Horizontal in the air, back down, head to the LEFT, feet to the RIGHT.",
+        "About to land: back just above the floor, horizontal, head to the LEFT, feet to the RIGHT.",
+        "Slam: lying flat on his back seen from the SIDE at floor level (never from above, no foreshortening), the whole body HORIZONTAL and parallel to the floor (never diagonal), head to the LEFT, feet to the RIGHT, legs almost straight, the body spanning nearly the full column width, arms out, eyes squeezed.",
+        "Bounce settled: lying flat on his back seen from the SIDE at floor level (never from above, no foreshortening), the whole body HORIZONTAL and parallel to the floor (never diagonal), head to the LEFT, feet to the RIGHT, legs almost straight, the body spanning nearly the full column width.",
+        "Down: lying flat on his back seen from the SIDE at floor level (never from above, no foreshortening), the whole body HORIZONTAL and parallel to the floor (never diagonal), head to the LEFT, feet to the RIGHT, legs almost straight, the body spanning nearly the full column width, eyes closed.",
+        "Down: lying flat on his back seen from the SIDE at floor level (never from above, no foreshortening), the whole body HORIZONTAL and parallel to the floor (never diagonal), head to the LEFT, feet to the RIGHT, legs almost straight, the body spanning nearly the full column width, motionless."
       ],
       "anchor": "pelvis",
       "ground_frames": [
@@ -504,7 +512,8 @@
         10,
         11
       ],
-      "ground_mode": "lying"
+      "ground_mode": "lying",
+      "mirror": true
     },
     "throw_tech": {
       "layout": "tall",
@@ -585,71 +594,165 @@
         11
       ]
     },
+    "intro_keys": {
+      "helper": true,
+      "layout": "wide",
+      "intro": "Key drawings of the round intro, all edits of the approved guard (input image 1): the stance, legs and body never move. He waits with the katana sheathed, eyes closed in full-focus breathing, opens his eyes, draws in one fast motion and arrives in the guard of input image 1. The scabbard stays on his left hip exactly where it is in input image 1.",
+      "frames": [
+        "Sheathed, eyes closed: the katana is fully SHEATHED in the scabbard on his left hip, so no blade is visible; only the red-and-black wrapped hilt and the round black guard stick out forward from the scabbard mouth at the front of his left hip, at belt height. His left hand grips the scabbard just below the guard, thumb pressed against the guard; his right hand rests on the hilt across his body, ready to draw; elbows bent, close to the body. Eyes CLOSED, mouth closed, calm and focused, breathing in deeply.",
+        "The same sheathed pose as frame 1 (hands, hilt and scabbard identical), but his eyes snap OPEN: fierce, sharp, looking straight ahead at the opponent; mouth closed in a determined line.",
+        "Drawing, fast (classic mid-draw): his right hand has pulled the hilt FORWARD, to the RIGHT of his belly, the right arm extending forward at belly height. The black blade is half out: it runs from the guard at his right hand BACK and slightly down to the scabbard mouth at his left hip (to the LEFT), lying almost level across the front of his belly, its tip still inside the scabbard. His left hand holds the scabbard mouth at the left hip and pulls it back. There is only ONE scabbard, the one of input image 1. Eyes open, fierce.",
+        "The blade has just cleared the scabbard: his right hand alone grips the hilt in front of his chest, a little further forward and higher than in input image 1, and the whole katana (full length, about 350 px) points forward and up at the same angle as in input image 1, tip high in front of him. His left hand still holds the now empty scabbard at his left hip. Eyes open, fierce."
+      ],
+      "edit": {
+        "image": "output/imagegen/tanjiro-v3/imports/idle-warp/idle-00.png",
+        "left": 60,
+        "keep": "the size and the position of the figure in its column, the head, hair and face shape, the torso, the haori, both legs, both feet, the scabbard, the line weight and the colours",
+        "change": "his two arms, his hands, the katana and his eyes"
+      },
+      "register": {
+        "clip": "idle",
+        "frame": 0
+      }
+    },
+    "intro_cut": {
+      "helper": true,
+      "layout": "wide",
+      "intro": "Flash-draw in-betweens of the round intro, edits of its drawn-blade key (input image 1): the stance, legs, body, head, face, eyes and the scabbard in his left hand never move. Only his right arm, his right hand and the katana change; the blade rises in one direction from level toward the angle of input image 1.",
+      "frames": [
+        "The cut: his right hand holds the hilt in front of his belly, a little lower and further back than in input image 1, and the whole katana points straight FORWARD, level and horizontal at belly height, at full length (about 350 px from the guard to the tip), the tip far in front of him. His left hand still holds the scabbard at his left hip exactly as in input image 1.",
+        "Rising out of the cut: his right hand a little higher than in frame 1, between frame 1 and input image 1, and the whole katana pointing forward and slightly up, about 20 degrees above level, at full length. His left hand still holds the scabbard at his left hip exactly as in input image 1."
+      ],
+      "edit": {
+        "image": "output/imagegen/tanjiro-v3/imports/intro_keys/drawing-03.png",
+        "left": 40,
+        "keep": "the size and the position of the figure in its column, the head, face, eyes and hair, the torso, the haori, both legs, both feet, the left arm and the scabbard in the left hand, the line weight and the colours",
+        "change": "his right arm, his right hand and the katana"
+      },
+      "register": {
+        "clip": "idle",
+        "frame": 0
+      }
+    },
+    "intro_bow": {
+      "helper": true,
+      "layout": "wide",
+      "intro": "Key drawings of the round intro: a polite bow to the opponent, then the hand goes to the hilt and the sword comes up into the guard. Every drawing is an edit of the approved guard (input image 1) with the sword handled as described; his legs and feet NEVER move (the same stance throughout).",
+      "frames": [
+        "Ready: the katana is fully SHEATHED in the scabbard on his left hip (only the hilt and the round guard show, in front of his left hip at belt height); his left hand holds the scabbard just below the guard; his right arm hangs relaxed at his side, hand open. Standing tall in the stance, calm and polite, looking straight at the opponent.",
+        "Starting a bow: the same sheathed sword and hands as frame 1; his upper body bends forward a little at the hips (about 15 degrees) and his head lowers, eyes lowered.",
+        "Full bow: a respectful bow to the opponent; his upper body bent forward at the hips about 35 degrees, head bowed, eyes closed; the sheathed sword and his left hand on the scabbard as in frame 1, his right arm hanging straight down in front of his thigh.",
+        "Rising from the bow: upper body halfway back up (about 15 degrees forward), eyes opening; his right hand reaching across his body toward the hilt; the sword still sheathed.",
+        "Ready to draw: standing tall in the stance again; his right hand grips the hilt across his body, his left thumb presses the guard; eyes fierce and determined, fixed on the opponent; the sword still sheathed.",
+        "Into the guard: both hands on the hilt in front of his chest, slightly higher and further forward than in input image 1, the drawn katana (full length, about 350 px) pointing forward and up at about 25 degrees above level, lower than in input image 1; the scabbard empty on his left hip; eyes fierce."
+      ],
+      "edit": {
+        "image": "output/imagegen/tanjiro-v3/imports/idle-warp/idle-00.png",
+        "left": 40,
+        "keep": "the size and the position of the figure in its column, both legs and both feet exactly (the stance never moves), the scabbard on his left hip, the costume design, the line weight and the colours",
+        "change": "his upper body, head, face, arms, hands and the katana",
+        "rule": "The legs and feet stay exactly where they are in input image 1; never enlarge or shrink the figure."
+      },
+      "register": {
+        "clip": "idle",
+        "frame": 0
+      }
+    },
+    "intro_point": {
+      "helper": true,
+      "layout": "full",
+      "intro": "The money pose of the round intro, an edit of the drawn-blade drawing (input image 1): he points his katana straight at the opponent. The stance, legs, feet, body, head and the scabbard in his left hand never move; only his right arm and the katana change.",
+      "frames": [
+        "Pointing the sword at the opponent: his right arm raised to shoulder height and fully extended forward; the whole katana LEVEL and HORIZONTAL at the height of his eyes, at full length (about 350 px from the guard to the tip), its tip pointing straight at the opponent far to the RIGHT; his left hand still holds the scabbard at his left hip exactly as in input image 1; fierce, determined eyes on the opponent, mouth closed."
+      ],
+      "edit": {
+        "image": "output/imagegen/tanjiro-v3/imports/intro_cut/drawing-00.png",
+        "left": 60,
+        "keep": "the size and the position of the figure, the head, face, eyes and hair, the torso, the haori, both legs, both feet, the left arm and the scabbard in the left hand, the line weight and the colours",
+        "change": "his right arm, his right hand and the katana"
+      },
+      "register": {
+        "clip": "idle",
+        "frame": 0
+      }
+    },
     "round_intro": {
       "layout": "wide",
-      "intro": "Round intro: draw the katana and settle into the guard (the katana starts sheathed).",
+      "intro": "Round intro assembled by intro_warp.py (no sheets of its own), a KOF-style bow and declaration in one forward action: sheathed in the stance, a polite bow, the hand to the hilt, the draw, the blade pointed straight at the opponent (held), both hands into the guard, a small exhale dip; the last frame is idle frame 0. Keys are the helper clips intro_bow, intro_cut and intro_point (edits registered by the lower body). No effects.",
       "frames": [
-        "Standing relaxed, katana sheathed on the left hip, eyes closed.",
-        "Eyes open, left hand grips the scabbard.",
-        "Right hand reaches for the hilt.",
-        "Grip the hilt, knees bending.",
-        "Begin drawing, blade sliding out.",
-        "Half drawn, body turning.",
-        "Fully drawn: blade swept out to the right side.",
-        "Blade raised overhead in a flourish.",
-        "Blade high, deep breath.",
-        "Blade swinging down in front.",
-        "Blade crossing in front of the body.",
-        "Both hands on the hilt.",
-        "Settling the feet into the stance.",
-        "Knees bending into the guard.",
-        "Blade angled forward and up.",
-        "Breath out, focused glare.",
-        "Holding the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up).",
-        "Final: the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up), identical to input image 1."
-      ]
+        "Ready in the stance, sword sheathed (intro_bow 0).",
+        "Ready, breathing.",
+        "Starting the bow (intro_bow 1).",
+        "Full bow (intro_bow 2).",
+        "Full bow, held.",
+        "Rising, the right hand to the hilt (intro_bow 3).",
+        "Gripping the hilt, eyes on the opponent (intro_bow 4).",
+        "The draw: the blade level at belly height (intro_cut 0).",
+        "The blade pointed straight at the opponent's eyes (intro_point 0).",
+        "Pointing, held.",
+        "Pointing, held.",
+        "Pointing, held.",
+        "Both hands into the guard (intro_bow 5).",
+        "Settling into the guard (warp of the approved key).",
+        "The exhale dip at its lowest.",
+        "Rising out of the dip.",
+        "The dip almost gone.",
+        "Idle frame 0 (the guard)."
+      ],
+      "warp": {
+        "tool": "tools/art_v3/intro_warp.py",
+        "spec": "tools/art_v3/spec/tanjiro-intro-rig.json",
+        "assembled": true
+      }
     },
     "round_victory": {
       "layout": "tall",
-      "intro": "Round victory: lower the blade and sheathe it calmly.",
+      "intro": "Round victory, one calm continuous action: lower the blade, a single flick, sheathe ONCE, then stand still. Never draw again and never repeat a step.",
       "frames": [
         "the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up).",
-        "Exhale, lower the blade.",
-        "Blade at the side.",
-        "Flick the blade.",
-        "Blade pointing down.",
-        "Bring the blade to the scabbard.",
-        "Tip into the scabbard.",
-        "Sliding in.",
-        "Sheathed halfway.",
-        "Fully sheathed, hand on the hilt.",
-        "Standing upright.",
-        "Release the hilt.",
-        "Hands at the sides.",
-        "Look toward the viewer.",
-        "Gentle smile.",
-        "Nod.",
-        "Relaxed upright pose.",
+        "Exhale, lowering the blade.",
+        "Blade lowered to the right side, tip down.",
+        "A single sharp flick of the blade to the side to clean it.",
+        "After the flick, blade held low at the side.",
+        "Left hand takes the scabbard on the left hip.",
+        "Blade tip guided to the mouth of the scabbard.",
+        "Blade sliding in, a third sheathed.",
+        "Blade two thirds sheathed.",
+        "Fully sheathed, right hand still on the hilt.",
+        "Right hand leaves the hilt, standing upright.",
+        "Standing upright, hands relaxed at the sides.",
+        "Turning the face slightly toward the viewer.",
+        "A gentle, determined smile.",
+        "A small respectful nod.",
+        "Standing upright and calm, holding still.",
+        "Standing upright and calm, holding still.",
         "Final calm upright pose, katana sheathed."
       ],
-      "upright": true
+      "upright": true,
+      "match_height": {
+        "clip": "round_victory",
+        "frame": 11,
+        "parts": [
+          5
+        ]
+      }
     },
     "round_defeat": {
       "layout": "wide",
-      "intro": "Round defeat: knocked down and collapsing; the katana falls beside him.",
+      "intro": "Round defeat: knocked down, falling backward to the LEFT and collapsing flat on his back; the katana falls beside him. In the lying frames the body is horizontal, seen from the side.",
       "frames": [
         "Hit: head thrown back, staggering, katana in hand.",
-        "Stagger back, knees buckling.",
-        "Falling backward, body diagonal.",
-        "Mid-fall, feet leaving the ground.",
-        "Back hits the ground, katana slipping from the hand.",
-        "Bounce, legs raised.",
-        "Lying on the back, the katana landing beside him.",
-        "Lying, arm stretched out, hand open.",
-        "Lying still, eyes closed.",
-        "Lying still.",
-        "Lying still.",
-        "Lying still, the katana on the ground beside his hand."
+        "Staggering back to the LEFT, knees buckling.",
+        "Falling backward to the LEFT, body diagonal.",
+        "Falling backward, nearly horizontal, feet leaving the ground.",
+        "Back hits the floor: lying flat on his back seen from the SIDE at floor level (never from above, no foreshortening), the whole body HORIZONTAL and parallel to the floor (never diagonal), head to the LEFT, feet to the RIGHT, legs almost straight, the body spanning nearly the full column width, katana slipping from the hand.",
+        "Bounce: lying flat on his back seen from the SIDE at floor level (never from above, no foreshortening), the whole body HORIZONTAL and parallel to the floor (never diagonal), head to the LEFT, feet to the RIGHT, legs almost straight, the body spanning nearly the full column width, legs slightly lifted.",
+        "Lying flat on his back seen from the SIDE at floor level (never from above, no foreshortening), the whole body HORIZONTAL and parallel to the floor (never diagonal), head to the LEFT, feet to the RIGHT, legs almost straight, the body spanning nearly the full column width, the katana landing beside him.",
+        "Lying flat on his back seen from the SIDE at floor level (never from above, no foreshortening), the whole body HORIZONTAL and parallel to the floor (never diagonal), head to the LEFT, feet to the RIGHT, legs almost straight, the body spanning nearly the full column width, arm stretched out, hand open.",
+        "Lying flat on his back seen from the SIDE at floor level (never from above, no foreshortening), the whole body HORIZONTAL and parallel to the floor (never diagonal), head to the LEFT, feet to the RIGHT, legs almost straight, the body spanning nearly the full column width, eyes closed.",
+        "Lying flat on his back seen from the SIDE at floor level (never from above, no foreshortening), the whole body HORIZONTAL and parallel to the floor (never diagonal), head to the LEFT, feet to the RIGHT, legs almost straight, the body spanning nearly the full column width, still.",
+        "Lying flat on his back seen from the SIDE at floor level (never from above, no foreshortening), the whole body HORIZONTAL and parallel to the floor (never diagonal), head to the LEFT, feet to the RIGHT, legs almost straight, the body spanning nearly the full column width, still.",
+        "Lying flat on his back seen from the SIDE at floor level (never from above, no foreshortening), the whole body HORIZONTAL and parallel to the floor (never diagonal), head to the LEFT, feet to the RIGHT, legs almost straight, the body spanning nearly the full column width, the katana on the floor beside his hand."
       ],
       "ground_frames": [
         4,

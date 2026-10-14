@@ -6,15 +6,25 @@ would get wider columns, and the model then draws a larger figure with different
 proportions, so a short final sheet is padded with the preceding frame(s). Padded
 frames overlap the previous sheet and calibrate its scale in process.py.
 Parts of a clip run in order; each later part also references the previous part.
+A pose may add one more reference image: "reference": {"image": path, "role": text}.
+A pose with "edit": {"image": path} is an edit of an existing drawing instead: input
+image 1 is that drawing repeated once per column on the background, and the prompt
+asks to keep the body exactly and change only what each frame describes (the
+crouching guard is the crouch with the arms and katana moved).
 
 Usage: python tools/art_v3/prepare.py --clips walk,stand_light --group pilot
        python tools/art_v3/prepare.py --redo walk:2,water_slash:1 --group pilot-r1
 """
 import argparse
+import re
 
-from common import POSES, production, read, rel, save, spec
+from PIL import Image
 
-LAYOUTS = {'tall': 3, 'wide': 2}
+from common import POSES, ROOT, production, read, rel, save, spec
+
+# "full" (one 1536 px column) only for edits: an edit keeps its base drawing's size, so a
+# pose reaching far forward (a blade pointed at the opponent) gets the room without growing.
+LAYOUTS = {'tall': 3, 'wide': 2, 'full': 1}
 
 PROMPT = """Use case: identity-preserve
 Asset type: final polished 2D anime fighting-game sprite animation frames, {name} "{clip}" (frames {first}-{last} of {total}).
@@ -32,6 +42,42 @@ Constraints: no effects (no water, fire, trails or speed lines), no opponent, no
 """
 
 
+EDIT_PROMPT = """Use case: precise edit of existing sprite drawings
+Asset type: final polished 2D anime fighting-game sprite animation frames, {name} "{clip}" (frames {first}-{last} of {total}).
+Input image 1: THE DRAWINGS TO EDIT. {count} copies of the same drawing, one per column ({cell} px wide, the full 1024 px image height), all facing RIGHT.
+Input image 2: APPROVED MODEL SHEET. Costume construction and colours.
+Input image 3: PORTRAIT. Face, eyes, hair and forehead scar.
+{previous}Primary request: edit every column of input image 1. Keep EXACTLY as in input image 1: {keep}. Change ONLY {change}, as each frame describes. {rule}
+Katana (critical): the blade from the guard to the tip is about 350 px, as long as in input image 1. Never shorten it.
+Motion: {intro}
+{frames}
+Identity: {identity}
+Rendering: {style} Same line weight and colours as input image 1.
+Constraints: no effects (no water, fire, trails or speed lines), no opponent, no floor, no shadow, no text, no grid lines, no borders, no watermark. Pure solid {background} background everywhere. Do not add the reference images as extra figures.
+"""
+
+
+EDIT_KEEP = ('the size and the position of the figure in its column, the head, face and hair, the torso, the haori, both legs, both feet, '
+             'the scabbard, the line weight and the colours')
+EDIT_CHANGE = 'his two arms, his hands and the katana'
+EDIT_RULE = 'Never move, enlarge, shrink or redraw the body.'
+
+
+def edit_base(data, pose, job_id, count):
+    """Input image 1 of an edit job: the drawing once per column, feet on the baseline,
+    centred or `left` px from the column's left edge (room for a blade reaching forward)."""
+    drawing = Image.open(ROOT / pose['edit']['image']).convert('RGBA')
+    cell = 1536 // count
+    left = pose['edit'].get('left')
+    sheet = Image.new('RGBA', (1536, 1024), tuple(data['background']) + (255,))
+    for column in range(count):
+        at = (column * cell + ((cell - drawing.width) // 2 if left is None else left), 1024 - 40 - drawing.height)
+        sheet.alpha_composite(drawing, at)
+    path = production(data['id']) / 'references' / (job_id + '-base.png')
+    sheet.convert('RGB').save(path)
+    return path
+
+
 def parts(count, columns):
     """Full chunks of `columns`; a short last chunk is padded with preceding frames.
     Returns [(drawn indices, overlap indices)]."""
@@ -47,6 +93,8 @@ def parts(count, columns):
 
 
 def make_job(args, data, pose, clip, index, chunk, overlap, previous_out, revision=''):
+    if pose['layout'] == 'full' and not pose.get('edit'):
+        raise SystemExit('%s: the full layout is for edits only (a lone generated figure is drawn too large)' % clip)
     out = production(args.character)
     frames = pose['frames']
     job_id = '%s-v3-%s-p%d%s' % (args.character, clip, index, revision)
@@ -58,16 +106,26 @@ def make_job(args, data, pose, clip, index, chunk, overlap, previous_out, revisi
         lines.append('Frame %d: %s%s' % (n + 1, frames[i], repeat))
     previous = ('Input image 4: PREVIOUS FRAMES of this same animation. Continue with an identical design, scale and rendering.\n'
                 if previous_out else '')
-    prompt = PROMPT.format(name='Kamado Tanjiro', clip=clip, first=chunk[0] + 1, last=chunk[-1] + 1, total=len(frames),
-                           previous=previous, count=count, cell=cell, intro=pose['intro'], frames='\n'.join(lines),
-                           identity=data['identity'], style=data['style'], background=data['background_name'])
+    extra = pose.get('reference')
+    if extra:
+        previous += 'Input image %d: %s\n' % (5 if previous_out else 4, extra['role'])
+    template = EDIT_PROMPT if pose.get('edit') else PROMPT
+    edit = pose.get('edit') or {}
+    prompt = template.format(name='Kamado Tanjiro', clip=clip, first=chunk[0] + 1, last=chunk[-1] + 1, total=len(frames),
+                             previous=previous, count=count, cell=cell, intro=pose['intro'], frames='\n'.join(lines),
+                             identity=data['identity'], style=data['style'], background=data['background_name'],
+                             keep=edit.get('keep', EDIT_KEEP), change=edit.get('change', EDIT_CHANGE), rule=edit.get('rule', EDIT_RULE))
     prompt_path = out / 'prompts' / (job_id + '.txt')
     prompt_path.write_text(prompt, encoding='utf-8')
-    references = ['output/imagegen/%s-v3/references/approved-idle-candidate.png' % args.character,
+    first = ('output/imagegen/%s-v3/references/approved-idle-candidate.png' % args.character if not pose.get('edit')
+             else rel(edit_base(dict(data, id=args.character), pose, job_id, count)))
+    references = [first,
                   'output/imagegen/%s-v3/raw/%s-v3-model.png' % (args.character, args.character),
                   'output/imagegen/%s-v3/references/portrait.png' % args.character]
     if previous_out:
         references.append(previous_out)
+    if extra:
+        references.append(extra['image'])
     return dict(id=job_id, group=args.group, prompt=rel(prompt_path), out=rel(out / 'raw' / (job_id + '.png')), size='1536x1024',
                 references=references,
                 metadata=dict(character=args.character, clip=clip, part=index, frame_indices=chunk, overlap=overlap,
@@ -115,7 +173,8 @@ def main():
         existing = active(jobs, clip, args.character)
         old = existing[index]
         chunk, overlap = parts(len(pose['frames']), LAYOUTS[pose['layout']])[index]
-        revision = '-r%d' % (sum(1 for j in jobs if j['id'].startswith(old['id'].split('-r')[0])) )
+        base = re.sub(r'-r\d+$', '', old['id'])
+        revision = '-r%d' % sum(1 for j in jobs if j['id'] == base or j['id'].startswith(base + '-r'))
         previous_out = existing[index - 1]['out'] if index > 0 else None
         job = make_job(args, data, pose, clip, index, chunk, overlap, previous_out, revision)
         old['superseded_by'] = job['id']

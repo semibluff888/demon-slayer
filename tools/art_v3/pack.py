@@ -6,6 +6,9 @@ clip with the forehead mark baked by awaken.py, identical geometry). Existing cl
 keep their timing metadata (fps, loop, phase_breaks, segment_sync, timeline, anchor
 mode) from the previous atlases; new clips take theirs from the pose script; idle
 becomes the authored 12-frame loop ("cycle": true). Stale pages are removed.
+Clips marked "mirror" in the pose script are drawn facing right like every sheet but
+ship flipped around the feet anchor: a throw victim is drawn with its thrower's
+facing, so its art faces left (toward the thrower), as in every other atlas.
 
 Usage: python tools/art_v3/pack.py [--character tanjiro]
 """
@@ -15,12 +18,13 @@ import subprocess
 from pathlib import Path
 
 import numpy as np
-from PIL import Image
+from PIL import Image, ImageOps
 
 from common import ROOT, POSES, production, read, rel, save, sha256, spec
 import awaken
 
 PAGE = 2048
+ANCHOR_X = 448
 ROUND = ('round_intro', 'round_victory', 'round_defeat')
 
 
@@ -29,6 +33,16 @@ def previous(character, path):
     text = subprocess.run(['git', 'show', 'HEAD:art/characters/%s/%s' % (character, path)], cwd=ROOT,
                           capture_output=True, text=True, encoding='utf-8').stdout
     return json.loads(text) if text else {'clips': {}}
+
+
+def mirrored(image):
+    """The canvas frame flipped around the feet anchor column."""
+    right = image.getbbox()[2]
+    if right > 2 * ANCHOR_X:
+        raise SystemExit('mirrored frame would leave the canvas (right edge %d)' % right)
+    canvas = Image.new('RGBA', image.size)
+    canvas.paste(ImageOps.mirror(image), (2 * ANCHOR_X - image.width, 0))
+    return canvas
 
 
 def frames_of(character, clip):
@@ -110,11 +124,15 @@ def main():
     old_round = previous(character, 'round-atlas.json')
     old_awake = previous(character, 'awakening/atlas.json')
     header = dict(canvas_size=[1024, 640], feet_anchor=[448, 568], source_height=340, canonical_height=70, revision=revision)
-    names = ['idle'] + list(poses)
+    # Helper clips (key drawings another clip is assembled from) never ship.
+    names = ['idle'] + [name for name in poses if not poses[name].get('helper')]
     available = {name: frames_of(character, name) for name in names}
     missing = [name for name, frames in available.items() if not frames]
     if missing:
         raise SystemExit('Missing processed clips: ' + ', '.join(missing))
+    flipped = [name for name in names if poses.get(name, {}).get('mirror')]
+    drawn = available
+    available = {name: [mirrored(image) for image in frames] if name in flipped else frames for name, frames in drawn.items()}
     base_names = [n for n in names if n not in ROUND and n != 'awakening_start']
     base_meta = {n: (clip_metadata(n, len(available[n]), old_base['clips'], poses), len(available[n])) for n in base_names}
     round_meta = {n: (clip_metadata(n, len(available[n]), old_round['clips'], poses), len(available[n])) for n in ROUND}
@@ -132,15 +150,16 @@ def main():
     marks = {}
     baked = {}
     for name in awake_names:
-        for index, image in enumerate(available[name]):
+        # The mark is found on the drawing as generated (facing right), then flipped with it.
+        for index, image in enumerate(drawn[name]):
             array, count = awaken.bake(np.asarray(image))
-            baked[(name, index)] = Image.fromarray(array, 'RGBA')
+            baked[(name, index)] = mirrored(Image.fromarray(array, 'RGBA')) if name in flipped else Image.fromarray(array, 'RGBA')
             marks.setdefault(name, []).append(count)
     awake_entries, awake_pages = pack(baked, folder / 'awakening', 'atlas')
     write_atlas(folder / 'awakening/atlas.json', header, awake_meta, awake_entries)
     record = dict(revision=revision, clips={n: c for n, (_, c) in base_meta.items()}, round_clips={n: c for n, (_, c) in round_meta.items()},
                   awakened_clips={n: c for n, (_, c) in awake_meta.items()}, pages=dict(base=pages, round=round_pages, awakening=awake_pages),
-                  awakening_marks=marks,
+                  awakening_marks=marks, mirrored_clips=flipped,
                   outputs={rel(path): sha256(path) for path in [folder / 'atlas.json', folder / 'round-atlas.json'] + sorted(folder.glob('atlas-*.png')) + sorted(folder.glob('round-*.png'))
                            + [folder / 'awakening/atlas.json'] + sorted((folder / 'awakening').glob('atlas-*.png'))})
     save(production(character) / 'pack.json', record)

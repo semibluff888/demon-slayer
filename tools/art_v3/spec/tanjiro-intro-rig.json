@@ -1,0 +1,254 @@
+{
+  "idle_rig": "tanjiro-idle-rig.json",
+  "keys": [
+    "intro_bow",
+    "intro_cut",
+    "intro_point"
+  ],
+  "pad": [
+    20,
+    0,
+    130,
+    0
+  ],
+  "note": "Round intro (KOF-style bow and declaration), 18 drawings over 120 ticks, one forward action: sheathed in the stance, a polite bow (intro_bow 0-3), the hand to the hilt (intro_bow 4), the draw (intro_cut 0: the blade level at belly height), the money pose held (intro_point 0: the blade pointed straight at the opponent's eyes, breathing), both hands into the guard (intro_bow 5), then the hands settle with a small exhale dip (warps of the approved key); the last drawing is idle frame 0. Breath only on keys whose torso is the idle's; the bowed drawings only sway the haori hem. The legs never move: every key is an edit registered by the lower body.",
+  "key_motions": {
+    "inhale": {
+      "chest": [
+        0,
+        -10
+      ],
+      "collar": [
+        0,
+        -11
+      ],
+      "shoulder_back": [
+        0,
+        -12
+      ],
+      "shoulder_front": [
+        0,
+        -11
+      ],
+      "head": [
+        0,
+        -10
+      ],
+      "crown": [
+        0,
+        -10
+      ],
+      "hair_back": [
+        0,
+        -10
+      ],
+      "hair_front": [
+        0,
+        -10
+      ],
+      "waist": [
+        0,
+        -3
+      ]
+    },
+    "sway": {
+      "hem_back": [
+        7,
+        1
+      ],
+      "hem_front": [
+        6,
+        1
+      ],
+      "hair_back": [
+        3,
+        -1
+      ],
+      "hair_front": [
+        2,
+        -1
+      ]
+    },
+    "hem": {
+      "hem_back": [
+        6,
+        1
+      ],
+      "hem_front": [
+        5,
+        1
+      ]
+    }
+  },
+  "poses": {
+    "reach": {
+      "hilt": [
+        26,
+        -38
+      ],
+      "elbow_back": [
+        12,
+        -20
+      ],
+      "sleeve_back": [
+        6,
+        -8
+      ],
+      "shoulder_front": [
+        3,
+        -5
+      ],
+      "chest": [
+        0,
+        -3
+      ]
+    },
+    "dip": {
+      "pelvis": [
+        0,
+        4
+      ],
+      "waist": [
+        0,
+        5
+      ],
+      "chest": [
+        0,
+        5
+      ],
+      "collar": [
+        0,
+        5
+      ],
+      "shoulder_back": [
+        0,
+        5
+      ],
+      "shoulder_front": [
+        0,
+        5
+      ],
+      "head": [
+        0,
+        5
+      ],
+      "crown": [
+        0,
+        5
+      ],
+      "hair_back": [
+        0,
+        5
+      ],
+      "hair_front": [
+        0,
+        5
+      ],
+      "hilt": [
+        0,
+        5
+      ],
+      "elbow_back": [
+        0,
+        5
+      ],
+      "sleeve_back": [
+        0,
+        4
+      ],
+      "hem_back": [
+        -3,
+        3
+      ],
+      "hem_front": [
+        -3,
+        3
+      ],
+      "knee_back": [
+        1,
+        2
+      ],
+      "knee_front": [
+        1,
+        2
+      ]
+    }
+  },
+  "sword": {
+    "pivot": "hilt",
+    "points": [
+      "guard",
+      "blade_mid",
+      "blade_tip"
+    ],
+    "extra": 8,
+    "rotate": {
+      "reach": 3,
+      "dip": 2
+    }
+  },
+  "timeline": [
+    {
+      "key": "intro_bow:0"
+    },
+    {
+      "key": "intro_bow:0",
+      "inhale": 0.5,
+      "sway": 0.3
+    },
+    {
+      "key": "intro_bow:1"
+    },
+    {
+      "key": "intro_bow:2"
+    },
+    {
+      "key": "intro_bow:2",
+      "hem": 0.6
+    },
+    {
+      "key": "intro_bow:3"
+    },
+    {
+      "key": "intro_bow:4"
+    },
+    {
+      "key": "intro_cut:0"
+    },
+    {
+      "key": "intro_point:0"
+    },
+    {
+      "key": "intro_point:0",
+      "inhale": 0.4,
+      "sway": -0.3
+    },
+    {
+      "key": "intro_point:0",
+      "inhale": 0.8,
+      "sway": -0.6
+    },
+    {
+      "key": "intro_point:0",
+      "inhale": 0.6,
+      "sway": -0.8
+    },
+    {
+      "key": "intro_bow:5"
+    },
+    {
+      "reach": 0.5,
+      "dip": 0.5
+    },
+    {
+      "dip": 1.0
+    },
+    {
+      "dip": 0.5
+    },
+    {
+      "dip": 0.15
+    },
+    {}
+  ]
+}

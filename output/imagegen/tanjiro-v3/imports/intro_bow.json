@@ -1,0 +1,329 @@
+{
+  "character": "tanjiro",
+  "clip": "intro_bow",
+  "canvas_size": [
+    1024,
+    640
+  ],
+  "feet_anchor": [
+    448,
+    568
+  ],
+  "runtime_head_ruler": 39.08,
+  "parts": [
+    {
+      "id": "tanjiro-v3-intro_bow-p0",
+      "source": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-intro_bow-p0.png",
+      "sha256": "a714b380aaea03b66acb3b36c0f4869d62243e4c4b1d1e75c05f862fc9e170d5",
+      "ruler": 104.85,
+      "scale": 0.3727,
+      "scale_method": "registered",
+      "resample_vs_idle": 0.965,
+      "palette_shift": {
+        "haori_green": [
+          -2.8,
+          1.78,
+          -0.27
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori_green": 2.84,
+        "uniform": 1.57,
+        "skin": 1.73,
+        "hair": 2.5
+      },
+      "palette_delta_e_after": {
+        "haori_green": 1.24,
+        "uniform": 1.57,
+        "skin": 1.73,
+        "hair": 2.5
+      }
+    },
+    {
+      "id": "tanjiro-v3-intro_bow-p1",
+      "source": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-intro_bow-p1.png",
+      "sha256": "1d4c8c9fb900d6806556bc3f03a2eddea9ffe1356bc000ef96f6dc617fbace0a",
+      "ruler": 108.22,
+      "scale": 0.3611,
+      "scale_method": "registered",
+      "resample_vs_idle": 0.935,
+      "palette_shift": {
+        "haori_green": [
+          -0.4,
+          -1.32,
+          1.52
+        ],
+        "uniform": [
+          2.24,
+          1.08,
+          -0.87
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori_green": 2.04,
+        "uniform": 2.23,
+        "skin": 0.52,
+        "hair": 1.48
+      },
+      "palette_delta_e_after": {
+        "haori_green": 0.46,
+        "uniform": 0.6,
+        "skin": 0.52,
+        "hair": 1.48
+      }
+    },
+    {
+      "id": "tanjiro-v3-intro_bow-p2",
+      "source": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-intro_bow-p2.png",
+      "sha256": "820bcbd3f950a0aa775a00403dc7bfeef74ef350cfaf3c512e37621394292198",
+      "ruler": 100.69,
+      "scale": 0.3881,
+      "scale_method": "registered",
+      "resample_vs_idle": 1.005,
+      "palette_shift": {
+        "haori_green": [
+          1.56,
+          -2.97,
+          1.67
+        ],
+        "uniform": [
+          3.01,
+          1.5,
+          -0.89
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori_green": 3.62,
+        "uniform": 2.94,
+        "skin": 0.7,
+        "hair": 2.0
+      },
+      "palette_delta_e_after": {
+        "haori_green": 0.71,
+        "uniform": 1.35,
+        "skin": 0.7,
+        "hair": 2.1
+      }
+    }
+  ],
+  "frames": [
+    {
+      "frame": 0,
+      "part": "tanjiro-v3-intro_bow-p0",
+      "crop": [
+        107,
+        97,
+        453,
+        968
+      ],
+      "head_ruler": 99.75,
+      "head_box": [
+        120,
+        2,
+        283,
+        160
+      ],
+      "ratio_to_sheet": 0.951,
+      "scale": 0.3727,
+      "flags": [],
+      "notes": [],
+      "root_x": 207.0,
+      "anchor_mode": "registered",
+      "offset": [
+        382,
+        245
+      ],
+      "clipped": false,
+      "registration": {
+        "scale": 0.3727,
+        "score": 0.694,
+        "exact": 0.37268300000000004
+      },
+      "height_vs_idle": 1.003,
+      "drawing": "output/imagegen/tanjiro-v3/imports/intro_bow/drawing-00.png",
+      "exact_scale": 0.37268300000000004
+    },
+    {
+      "frame": 1,
+      "part": "tanjiro-v3-intro_bow-p0",
+      "crop": [
+        847,
+        136,
+        1240,
+        968
+      ],
+      "head_ruler": 101.35,
+      "head_box": [
+        219,
+        3,
+        392,
+        166
+      ],
+      "ratio_to_sheet": 0.967,
+      "scale": 0.3727,
+      "flags": [],
+      "notes": [],
+      "root_x": 217.0,
+      "anchor_mode": "registered",
+      "offset": [
+        384,
+        260
+      ],
+      "clipped": false,
+      "registration": {
+        "scale": 0.3727,
+        "score": 0.695,
+        "exact": 0.37268300000000004
+      },
+      "height_vs_idle": 0.957,
+      "drawing": "output/imagegen/tanjiro-v3/imports/intro_bow/drawing-01.png",
+      "exact_scale": 0.37268300000000004
+    },
+    {
+      "frame": 2,
+      "part": "tanjiro-v3-intro_bow-p1",
+      "crop": [
+        110,
+        158,
+        593,
+        972
+      ],
+      "head_ruler": 106.11,
+      "head_box": [
+        305,
+        4,
+        479,
+        169
+      ],
+      "ratio_to_sheet": 0.981,
+      "scale": 0.3611,
+      "flags": [],
+      "notes": [],
+      "root_x": 249.0,
+      "anchor_mode": "registered",
+      "offset": [
+        384,
+        281
+      ],
+      "clipped": false,
+      "registration": {
+        "scale": 0.3553,
+        "score": 0.685,
+        "exact": 0.355304
+      },
+      "height_vs_idle": 0.885,
+      "drawing": "output/imagegen/tanjiro-v3/imports/intro_bow/drawing-02.png",
+      "exact_scale": 0.355304
+    },
+    {
+      "frame": 3,
+      "part": "tanjiro-v3-intro_bow-p1",
+      "crop": [
+        843,
+        114,
+        1216,
+        972
+      ],
+      "head_ruler": 82.35,
+      "head_box": [
+        230,
+        55,
+        358,
+        171
+      ],
+      "ratio_to_sheet": 0.761,
+      "scale": 0.3611,
+      "flags": [],
+      "notes": [
+        "head partly hidden or turned (76%)"
+      ],
+      "root_x": 221.0,
+      "anchor_mode": "registered",
+      "offset": [
+        383,
+        256
+      ],
+      "clipped": false,
+      "registration": {
+        "scale": 0.3669,
+        "score": 0.693,
+        "exact": 0.36689
+      },
+      "height_vs_idle": 0.966,
+      "drawing": "output/imagegen/tanjiro-v3/imports/intro_bow/drawing-03.png",
+      "exact_scale": 0.36689
+    },
+    {
+      "frame": 4,
+      "part": "tanjiro-v3-intro_bow-p2",
+      "crop": [
+        42,
+        140,
+        465,
+        988
+      ],
+      "head_ruler": 101.03,
+      "head_box": [
+        126,
+        5,
+        291,
+        165
+      ],
+      "ratio_to_sheet": 1.003,
+      "scale": 0.3881,
+      "flags": [],
+      "notes": [],
+      "root_x": 207.0,
+      "anchor_mode": "registered",
+      "offset": [
+        370,
+        242
+      ],
+      "clipped": false,
+      "registration": {
+        "scale": 0.3881,
+        "score": 0.989,
+        "exact": 0.38813099999999995
+      },
+      "height_vs_idle": 1.003,
+      "drawing": "output/imagegen/tanjiro-v3/imports/intro_bow/drawing-04.png",
+      "exact_scale": 0.38813099999999995
+    },
+    {
+      "frame": 5,
+      "part": "tanjiro-v3-intro_bow-p2",
+      "crop": [
+        810,
+        140,
+        1457,
+        988
+      ],
+      "head_ruler": 100.57,
+      "head_box": [
+        126,
+        5,
+        290,
+        165
+      ],
+      "ratio_to_sheet": 0.999,
+      "scale": 0.3881,
+      "flags": [],
+      "notes": [],
+      "root_x": 212.0,
+      "anchor_mode": "registered",
+      "offset": [
+        370,
+        242
+      ],
+      "clipped": false,
+      "registration": {
+        "scale": 0.3881,
+        "score": 0.988,
+        "exact": 0.38813099999999995
+      },
+      "height_vs_idle": 1.003,
+      "drawing": "output/imagegen/tanjiro-v3/imports/intro_bow/drawing-05.png",
+      "exact_scale": 0.38813099999999995
+    }
+  ]
+}

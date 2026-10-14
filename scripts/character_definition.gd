@@ -28,7 +28,8 @@ extends Resource
 # air_motions: "j236A", "j214D"… chosen only while airborne.
 @export var command_normals: Dictionary = {}
 @export var air_motions: Dictionary = {}
-# Help rows for the advanced page, same shape as move_list.
+# Help rows for the 特殊技·派生 page (command normals, target combos, air chains),
+# same shape as move_list; air specials are listed in move_list with the ground ones.
 @export var advanced_list: Array[Dictionary] = []
 
 ## Every reachable move: base tables first (original order), then follow-up stages.

@@ -2,8 +2,12 @@ extends SceneTree
 ## Records a scripted input sequence for one fighter in a real match, for art review.
 ## Run with a window and a fixed clock:
 ##   godot --path . --fixed-fps 60 --script res://tools/capture_moves.gd -- --character=tanjiro --script=idle:60,walk:50,idle:20,5A,idle:30,236A
-## Steps: idle:N / walk:N / back:N hold for N ticks; any other token is a move notation
-## (5A, 2C, 236A, 6B, j236A…) pressed like a player and followed by its full recovery.
+## Steps: idle:N / walk:N / back:N hold for N ticks; dK:N holds numpad direction K
+## (d1:40 is the crouching guard); p2=NOTATION/K makes the opponent press NOTATION while
+## this fighter holds K (p2=2B/1 is a blocked low, p2=2D a sweep knockdown) and waits
+## until both have recovered; gap:N puts the opponent N px in front; any other token is a move notation (5A, 2C, 236A, 6B,
+## j236A…) pressed like a player and followed by its full recovery. A leading "intro"
+## step first records the real round intro of both fighters from the round start.
 ## Frames go to artifacts/art-v3/<character>/moves/frame-NNNN.png.
 const Main = preload("res://scenes/main.tscn")
 const Combat = preload("res://scripts/combat.gd")
@@ -37,6 +41,10 @@ func _run() -> void:
 	game.characters.assign([character, "zenitsu" if character != "zenitsu" else "tanjiro"])
 	game.start_match()
 	var model = game.combat
+	if steps.size() > 0 and steps[0] == "intro":
+		steps.remove_at(0)
+		while model.phase == "intro":
+			await _tick(Combat.neutral())
 	model.phase = "fight"
 	model.practice = true
 	model.fighters[0].x = 440
@@ -51,6 +59,17 @@ func _run() -> void:
 	for step: String in steps:
 		var parts := step.split(":")
 		var count := int(parts[1]) if parts.size() > 1 else 0
+		if step.begins_with("p2="):
+			var versus := step.trim_prefix("p2=").split("/")
+			await _versus(versus[0], int(versus[1]) if versus.size() > 1 else 5)
+			continue
+		if parts[0] == "gap":
+			# Puts the opponent `count` px in front (its attacks must reach).
+			model.fighters[1].x = model.fighters[0].x + count * model.fighters[0].facing
+			continue
+		if parts[0].length() == 2 and parts[0][0] == "d":
+			await _hold(_direction(int(parts[0][1]), model.fighters[0].facing), count)
+			continue
 		match parts[0]:
 			"idle": await _hold(Combat.neutral(), count)
 			"walk": await _hold({"x": 1, "y": 0, "buttons": 0}, count)
@@ -64,9 +83,9 @@ func _run() -> void:
 	print("MOVE CAPTURE: %d frames" % saved)
 	quit()
 
-func _tick(command: Dictionary) -> void:
+func _tick(command: Dictionary, other: Dictionary = Combat.neutral()) -> void:
 	var model = game.combat
-	model.step([command, Combat.neutral()])
+	model.step([command, other])
 	game.view.consume(model.events)
 	await process_frame
 	await RenderingServer.frame_post_draw
@@ -76,6 +95,29 @@ func _tick(command: Dictionary) -> void:
 func _hold(command: Dictionary, count: int) -> void:
 	for n in range(count):
 		await _tick(command)
+
+## Numpad direction relative to `facing` as a raw command.
+static func _direction(direction: int, facing: int, buttons: int = 0) -> Dictionary:
+	return {"x": ((direction - 1) % 3 - 1) * facing, "y": 1 - int((direction - 1) / 3), "buttons": buttons}
+
+## The opponent presses `notation` while this fighter holds numpad `hold`; returns once
+## both fighters are back on their feet and free.
+func _versus(notation: String, hold: int) -> void:
+	var digits := ""
+	var mask := 0
+	for token in notation:
+		if token in "123456789": digits += token
+		elif token in "ABCD": mask |= 1 << "ABCD".find(token)
+	if digits.is_empty(): digits = "5"
+	var model = game.combat
+	for n in range(digits.length()):
+		await _tick(_direction(hold, model.fighters[0].facing), _direction(int(digits[n]), model.fighters[1].facing, mask if n == digits.length() - 1 else 0))
+	for n in range(240):
+		var mine = model.fighters[0]
+		var other = model.fighters[1]
+		if n > 6 and other.move == null and mine.move == null and mine.stun == 0 and mine.grounded and mine.state != "knockdown":
+			break
+		await _tick(_direction(hold, mine.facing))
 
 ## Presses one notation; with `link` it returns as soon as the move connects, so the
 ## next press of a target-combo string lands inside the window.

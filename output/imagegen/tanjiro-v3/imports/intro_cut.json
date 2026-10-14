@@ -1,0 +1,111 @@
+{
+  "character": "tanjiro",
+  "clip": "intro_cut",
+  "canvas_size": [
+    1024,
+    640
+  ],
+  "feet_anchor": [
+    448,
+    568
+  ],
+  "runtime_head_ruler": 39.08,
+  "parts": [
+    {
+      "id": "tanjiro-v3-intro_cut-p0",
+      "source": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-intro_cut-p0.png",
+      "sha256": "18dd66460bbb5c46d89d383bb99d346a71bf351f533d874c996aa6496a8506e2",
+      "ruler": 100.17,
+      "scale": 0.3901,
+      "scale_method": "registered",
+      "resample_vs_idle": 1.01,
+      "palette_shift": {},
+      "palette_delta_e_before": {
+        "haori_green": 1.67,
+        "uniform": 0.63,
+        "skin": 0.35,
+        "hair": 1.11
+      },
+      "palette_delta_e_after": {
+        "haori_green": 1.67,
+        "uniform": 0.63,
+        "skin": 0.35,
+        "hair": 1.11
+      }
+    }
+  ],
+  "frames": [
+    {
+      "frame": 0,
+      "part": "tanjiro-v3-intro_cut-p0",
+      "crop": [
+        44,
+        143,
+        755,
+        979
+      ],
+      "head_ruler": 101.71,
+      "head_box": [
+        122,
+        1,
+        286,
+        159
+      ],
+      "ratio_to_sheet": 1.015,
+      "scale": 0.3901,
+      "flags": [],
+      "notes": [],
+      "root_x": 211.0,
+      "anchor_mode": "registered",
+      "offset": [
+        371,
+        243
+      ],
+      "clipped": false,
+      "registration": {
+        "scale": 0.3901,
+        "score": 0.963,
+        "exact": 0.39006199999999996
+      },
+      "height_vs_idle": 1.006,
+      "drawing": "output/imagegen/tanjiro-v3/imports/intro_cut/drawing-00.png",
+      "exact_scale": 0.39006199999999996
+    },
+    {
+      "frame": 1,
+      "part": "tanjiro-v3-intro_cut-p0",
+      "crop": [
+        812,
+        144,
+        1510,
+        979
+      ],
+      "head_ruler": 101.02,
+      "head_box": [
+        122,
+        0,
+        286,
+        158
+      ],
+      "ratio_to_sheet": 1.009,
+      "scale": 0.3901,
+      "flags": [],
+      "notes": [],
+      "root_x": 211.0,
+      "anchor_mode": "registered",
+      "offset": [
+        371,
+        243
+      ],
+      "clipped": false,
+      "registration": {
+        "scale": 0.3901,
+        "score": 0.961,
+        "exact": 0.39006199999999996
+      },
+      "height_vs_idle": 1.009,
+      "drawing": "output/imagegen/tanjiro-v3/imports/intro_cut/drawing-01.png",
+      "exact_scale": 0.39006199999999996
+    }
+  ]
+}

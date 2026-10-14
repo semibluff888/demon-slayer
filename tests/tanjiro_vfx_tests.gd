@@ -34,6 +34,8 @@ func _run() -> void:
 	for id in ["623A", "623C", "214B", "214D", "super", "max", "5A", "5C", "2A", "2C"]:
 		for awakened in [false, true]:
 			await _check_technique(id, awakened)
+	for spec in [["j236A", false], ["j236C", true]]:
+		await _check_waterfall(spec[0], spec[1])
 	await _check_determinism()
 	game.queue_free()
 	await process_frame
@@ -59,6 +61,7 @@ func _check_routing() -> void:
 			"tanjiro_5A", "tanjiro_5C", "tanjiro_2A", "tanjiro_2C", "tanjiro_jA", "tanjiro_jC",
 			"tanjiro_5AA", "tanjiro_5AAC", "tanjiro_6C", "tanjiro_j236A", "tanjiro_j236C", "tanjiro_j214B", "tanjiro_j214D"]:
 		check(tanjiro.handles(game.combat.moves[id]), "rebuilt effect owns " + id)
+	check(tanjiro.MOVES["tanjiro_j236A"] == "waterfall" and tanjiro.MOVES["tanjiro_j236C"] == "waterfall", "Waterfall Basin pours its own waterfall")
 	for id in ["zenitsu_236A", "nezuko_super", "akaza_max", "tanjiro_5B", "tanjiro_2D", "tanjiro_6B"]:
 		check(not tanjiro.handles(game.combat.moves[id]), "other fighters keep their effects: " + id)
 	# EffectsView sits at z 10 and fighters at z 2: the far side of wrapped
@@ -72,7 +75,7 @@ func _check_routing() -> void:
 	check(not cues._owns_charge(game.combat.moves["nezuko_super"]) and not cues._owns_charge(game.combat.moves["tanjiro_236A"]),
 		"other supers keep the shared energy sphere")
 
-func _start(move_id: String, awakened: bool) -> Resource:
+func _start(move_id: String, awakened: bool, height: float = 0.0) -> Resource:
 	game.characters.assign(["tanjiro", "zenitsu"])
 	game.start_match()
 	var model = game.combat
@@ -86,6 +89,10 @@ func _start(move_id: String, awakened: bool) -> Resource:
 	if awakened:
 		attacker.awakening_ticks = 900
 		attacker.awakening_duration = 900
+	if height > 0.0:
+		attacker.y = model.FLOOR_Y - height
+		attacker.grounded = false
+		attacker.vy = 0.0
 	game.view.reset_effects()
 	game.view.effects.tanjiro.interpolate = false
 	var move: Resource = model.moves[move_id]
@@ -207,6 +214,65 @@ func _check_technique(id: String, awakened: bool) -> void:
 	for each in tanjiro.techniques.values():
 		cleared = cleared and each._anchors.is_empty()
 	check(cleared and tanjiro._ticks.is_empty() and tanjiro.drops.count() == 0, label + " reset clears effect state")
+
+## 泷壶: the column rides the dive, slams into the floor, pours on after the
+## move has ended (the move ends at touchdown) and clears; freezes hold it,
+## an interrupted dive breaks it up, and combat is never touched.
+func _check_waterfall(id: String, awakened: bool) -> void:
+	var move := _start("tanjiro_" + id, awakened, 110.0)
+	var model = game.combat
+	var tanjiro = game.view.effects.tanjiro
+	var waterfall = tanjiro.techniques.waterfall
+	var attacker = model.fighters[0]
+	var label := "%s %s" % [id, "awakened" if awakened else "normal"]
+	var guard := 0
+	while attacker.move == move and attacker.move_frame < move.startup + 1 and guard < 100:
+		_tick()
+		guard += 1
+	await process_frame # draws the column riding the dive
+	check(waterfall._columns.size() == 1 and float(waterfall._columns.values()[0].since) < 0.0, label + " column follows the dive")
+	guard = 0
+	while attacker.state != "landing" and guard < 120:
+		_tick()
+		guard += 1
+		if guard % 5 == 0:
+			await process_frame
+	check(attacker.state == "landing" and attacker.move == null, label + " dive ends in its landing")
+	var column: Dictionary = waterfall._columns.values()[0] if waterfall._columns.size() == 1 else {}
+	check(bool(column.get("landed", false)) and float(column.get("since", -1.0)) >= 0.0, label + " column slams into the floor at touchdown")
+	check(tanjiro.bursts.any(func(b: Dictionary) -> bool: return b.kind == "splash") and tanjiro.drops.count() > 20 and tanjiro.foam.count() > 5,
+		label + " touchdown throws up spray and foam")
+	check(tanjiro.petals.count() > 0 if awakened else tanjiro.petals.count() == 0, label + " flame petals only while awakened")
+	await process_frame # draws the landed column and the foam bank
+	var held := [tanjiro.drops.pos.duplicate(), tanjiro.foam.pos.duplicate(), tanjiro.time, column.get("emitted", 0)]
+	game.view.effects.freeze = true
+	game.view.effects._process(0.5)
+	check([tanjiro.drops.pos, tanjiro.foam.pos, tanjiro.time, column.get("emitted", 0)] == held, label + " freeze holds the pour")
+	game.view.effects.freeze = false
+	var snapshot: Dictionary = model.snapshot()
+	tanjiro.advance(0.05)
+	check(model.snapshot() == snapshot, label + " effects never mutate combat")
+	for n in range(30):
+		_tick()
+		if n % 8 == 0:
+			await process_frame # the pour, the erosion and the settling foam
+	check(waterfall._columns.size() == 1 and int(column.get("emitted", 0)) > 20, label + " pours on after the move has ended")
+	for n in range(120):
+		game.view.effects._process(1.0 / 60)
+	check(waterfall._columns.is_empty() and tanjiro.drops.count() == 0 and tanjiro.foam.count() == 0 and tanjiro.mist.count() == 0
+		and tanjiro.bursts.is_empty(), label + " waterfall and spray clear within two seconds")
+	# Knocked out of the dive: the column breaks up where it was, without a slam.
+	move = _start("tanjiro_" + id, awakened, 110.0)
+	attacker = game.combat.fighters[0]
+	while attacker.move == move and attacker.move_frame < move.startup + 2:
+		_tick()
+	attacker.move = null
+	_tick()
+	column = waterfall._columns.values()[0] if waterfall._columns.size() == 1 else {}
+	check(not bool(column.get("landed", true)) and float(column.get("since", -1.0)) >= 0.0, label + " interrupted dive breaks the column up")
+	await process_frame
+	game.view.reset_effects()
+	check(waterfall._columns.is_empty() and tanjiro._ticks.is_empty(), label + " reset clears the waterfall")
 
 ## Emission depends on combat ticks, not on how often frames sample them.
 func _check_determinism() -> void:

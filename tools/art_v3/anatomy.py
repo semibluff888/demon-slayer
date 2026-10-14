@@ -80,3 +80,30 @@ def root_y(rgba):
 def sole_y(rgba):
     ys = np.nonzero(rgba[:, :, 3] > 150)[0]
     return int(ys.max()) + 1
+
+
+def solid_body(rgba, kernel=25):
+    """Silhouette without its thin parts: an opening wider than the katana removes the
+    blade, fingers and loose sleeve tips but keeps the torso, legs and feet."""
+    alpha = (rgba[:, :, 3] > 150).astype(np.uint8)
+    shape = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (kernel, kernel))
+    opened = cv2.morphologyEx(alpha, cv2.MORPH_OPEN, shape).astype(bool)
+    return opened if opened.any() else alpha.astype(bool)
+
+
+def body_bottom(rgba, kernel=25):
+    """Lowest row of the body itself; a dropped katana or a hand may reach lower."""
+    return int(np.nonzero(solid_body(rgba, kernel))[0].max()) + 1
+
+
+def body_axes(rgba, kernel=25):
+    """Extents of the body (blade excluded) along its main axis and across it."""
+    ys, xs = np.nonzero(solid_body(rgba, kernel))
+    points = np.stack([xs, ys], 1).astype(float)
+    points -= points.mean(0)
+    _, vectors = np.linalg.eigh(np.cov(points.T))
+    extent = []
+    for axis in (vectors[:, -1], vectors[:, 0]):
+        projected = points @ axis
+        extent.append(float(np.percentile(projected, 99.5) - np.percentile(projected, 0.5)))
+    return extent

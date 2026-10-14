@@ -1,8 +1,9 @@
 extends RefCounted
 const Arena = preload("res://scripts/arena_rules.gd")
 # The panorama already has 48 world units of painted overscan per side.
-# Keep horizontal throw victims inside the viewport at the actual arena boundary.
-const EDGE_OVERSCAN: float = 16.0
+# Keep horizontal throw victims inside the viewport at the actual arena boundary
+# (a full-length body lying with its head to the wall needs 20).
+const EDGE_OVERSCAN: float = 20.0
 var center_x: float = Arena.CENTER
 var zoom: float = Arena.ZOOM
 var floor_y: float = Arena.FLOOR_SCREEN_Y

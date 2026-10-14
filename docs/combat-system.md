@@ -16,7 +16,7 @@
 
 `tools/build_combat_data.py`是最初42份招式资源的离线作者工具，不是运行依赖。平衡调整直接编辑tres。招式扩展（派生、方向特殊技、空中必杀）落地后，`.tres` 是唯一数据源；只要检测到扩展字段，`build_combat_data.py` 和 `build_roster_data.py` 就会拒绝运行。
 
-可选扩展表：`command_normals`（"6B"、"3C"…）、`air_motions`（"j236A"…）、招式上的 `follow_ups`（派生），以及 `advanced_list`（招式表「进阶技」页）。规则、数据和验证见 [招式扩展](moveset-expansion.md)。
+可选扩展表：`command_normals`（"6B"、"3C"…）、`air_motions`（"j236A"…）、招式上的 `follow_ups`（派生），以及 `advanced_list`（招式表「特殊技·派生」页）。规则、数据和验证见 [招式扩展](moveset-expansion.md)。
 
 ## v0.1.2 伤害节奏
 

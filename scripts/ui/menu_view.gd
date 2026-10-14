@@ -501,15 +501,19 @@ func _draw_pause_panel(canvas: Control) -> void:
 	Kit.tracked(canvas, catalog.numeric_font, "COMMAND LIST", Vector2(card.position.x + 28, card.position.y + 34), 12, Kit.GOLD, 3.0)
 	Kit.text(canvas, catalog.display_font, catalog.characters[app.characters[0]].display_name + " · 招式速查", Vector2(card.position.x + 26, card.position.y + 72), 30, Kit.PAPER, 4)
 	Kit.rule_out(canvas, card.position + Vector2(24, 88), card.position + Vector2(card.size.x - 24, 88), Color(Kit.GOLD, 0.7))
-	for i in range(definition.move_list.size()):
+	# Five rows fill the card; a longer list (air specials) tightens the pitch.
+	var count: int = definition.move_list.size()
+	var pitch := 64.0 if count <= 5 else 300.0 / (count - 1)
+	for i in range(count):
 		var row: Dictionary = definition.move_list[i]
-		var y := card.position.y + 126 + i * 64
-		Glyphs.paint(canvas, catalog.numeric_font, row.input, Vector2(card.position.x + 28, y), 22)
-		var size := Kit.fitted(catalog.title_font, row.name, 18, 330)
+		var y := card.position.y + 126 + i * pitch
+		Glyphs.paint(canvas, catalog.numeric_font, row.input, Vector2(card.position.x + 28, y), 22 if count <= 5 else 20)
+		var size := Kit.fitted(catalog.title_font, row.name, 18 if count <= 5 else 17, 330)
 		Kit.text(canvas, catalog.title_font, row.name, Vector2(card.position.x + 290, y + 2), size, Kit.PAPER, 3)
-		Kit.text(canvas, catalog.body_font, row.description, Vector2(card.position.x + 290, y + 24), 13, Kit.MUTED, 2)
-		if i < definition.move_list.size() - 1:
-			Kit.rule(canvas, Vector2(card.position.x + 24, y + 38), Vector2(card.end.x - 24, y + 38), Color(Kit.GOLD, 0.2))
+		Kit.text(canvas, catalog.body_font, row.description, Vector2(card.position.x + 290, y + (24 if count <= 5 else 21)), 13, Kit.MUTED, 2)
+		if i < count - 1:
+			var rule_y := y + (38.0 if count <= 5 else pitch * 0.68)
+			Kit.rule(canvas, Vector2(card.position.x + 24, rule_y), Vector2(card.end.x - 24, rule_y), Color(Kit.GOLD, 0.2))
 
 # --- Result -------------------------------------------------------------------------------
 
@@ -584,8 +588,10 @@ func help(page: String = "basics", character_id: String = "") -> void:
 	_backdrop(Color("1d3e52"), Color("3d1d2c"), 0.45)
 	_header("操作指南", "HOW TO PLAY")
 	var home := button("home", "返回对战" if app.help_return == "battle" else "返回主菜单", Rect2(40, 664, 230, 44), app.close_help, true, true, 18)
+	# Weakest to strongest: basics, normals, command normals and target combos, then
+	# specials (ground and air), supers and MAX.
 	var tabs := [["guide_basics", "基础攻防", "basics", Rect2(56, 104, 170, 40)], ["guide_normals", "普通技", "normals", Rect2(236, 104, 150, 40)],
-		["guide_moves", "必杀与奥义", "moves", Rect2(396, 104, 190, 40)], ["guide_advanced", "进阶技", "advanced", Rect2(596, 104, 150, 40)]]
+		["guide_specials", "特殊技·派生", "specials", Rect2(396, 104, 200, 40)], ["guide_moves", "必杀与奥义", "moves", Rect2(606, 104, 190, 40)]]
 	if character_id.is_empty():
 		character_id = app.characters[0]
 	for entry in tabs:
@@ -605,8 +611,8 @@ func help(page: String = "basics", character_id: String = "") -> void:
 		selector.item_selected.connect(func(index: int): _help_page(page, ids[index]))
 		if page == "moves":
 			paint(Rect2(40, 160, 1200, 490), func(canvas: Control): _draw_moves(canvas, definition))
-		elif page == "advanced":
-			paint(Rect2(40, 160, 1200, 490), func(canvas: Control): _draw_advanced(canvas, definition))
+		elif page == "specials":
+			paint(Rect2(40, 160, 1200, 490), func(canvas: Control): _draw_specials(canvas, definition))
 		else:
 			paint(Rect2(40, 160, 1200, 490), func(canvas: Control): _draw_normals(canvas, definition))
 	_footer(Rect2(300, 668, 932, 36), "返回", "F1 判定框 · F2 静音")
@@ -668,46 +674,53 @@ func _draw_basics(canvas: Control) -> void:
 		if i < lessons.size() - 1:
 			Kit.rule(canvas, Vector2(620, y + 18), Vector2(1180, y + 18), Color(Kit.GOLD, 0.16))
 
+## Specials (ground and air), supers and MAX, then the awakening.
 func _draw_moves(canvas: Control, definition: Resource) -> void:
 	var accent: Color = definition.accent
-	_section(canvas, Rect2(0, 0, 1200, 490), "叁", definition.display_name + " · 必杀与奥义", accent.lightened(0.3))
-	for i in range(definition.move_list.size()):
+	_section(canvas, Rect2(0, 0, 1200, 490), "伍", definition.display_name + " · 必杀与奥义", accent.lightened(0.3))
+	var count: int = definition.move_list.size()
+	var compact := count > 5
+	var pitch := 276.0 / (count - 1) if compact else 54.0
+	for i in range(count):
 		var row: Dictionary = definition.move_list[i]
-		var y := 100.0 + i * 54
-		Glyphs.paint(canvas, catalog.numeric_font, row.input, Vector2(26, y), 24)
+		var y := 100.0 + i * pitch
+		Glyphs.paint(canvas, catalog.numeric_font, row.input, Vector2(26, y), 22 if compact else 24)
 		var description: String = row.description
-		if i == 3:
-			description += "；觉醒中伤害110%，耗1格，保留觉醒"
-		elif i == 4:
-			description += "；觉醒中耗1格，并耗尽觉醒"
-		Kit.text(canvas, catalog.title_font, row.name, Vector2(330, y), 20, Kit.PAPER, 3)
-		Kit.text(canvas, catalog.body_font, description, Vector2(332, y + 22), 14, Kit.MUTED, 2)
-		Kit.rule(canvas, Vector2(20, y + 34), Vector2(1180, y + 34), Color(Kit.GOLD, 0.16))
+		var input: String = row.input
+		if input.begins_with("236236"):
+			description += "；觉醒中耗1格，并耗尽觉醒" if input.contains("A+C") else "；觉醒中伤害110%，耗1格，保留觉醒"
+		Kit.text(canvas, catalog.title_font, row.name, Vector2(330, y), 18 if compact else 20, Kit.PAPER, 3)
+		Kit.text(canvas, catalog.body_font, description, Vector2(332, y + (20 if compact else 22)), 13 if compact else 14, Kit.MUTED, 2)
+		var rule_y := y + (pitch * 0.7 if compact else 34.0)
+		Kit.rule(canvas, Vector2(20, rule_y), Vector2(1180, rule_y), Color(Kit.GOLD, 0.16))
 	var awakening: Resource = definition.awakening
-	Kit.seal(canvas, Rect2(24, 362, 26, 26), catalog.display_font, "醒", Kit.CRIMSON)
-	Kit.text(canvas, catalog.title_font, "B+C · " + awakening.display_name + " · 2格 / 普通10秒、快速6秒", Vector2(60, 382), 16, awakening.color.lightened(0.2), 3)
-	Kit.text(canvas, catalog.body_font, awakening.effect_summary(), Vector2(60, 406), 14, Kit.MUTED, 2)
-	Kit.text(canvas, catalog.title_font, "示例连段 / j. 为空中，5 为站立，2 为蹲下", Vector2(26, 436), 15, Kit.GOLD_HI, 3)
-	for i in range(definition.combos.size()):
-		Kit.text(canvas, catalog.body_font, definition.combos[i], Vector2(26 + (i % 2) * 590, 462 + int(i / 2) * 24), 15, Kit.PAPER, 2)
+	var top := 100.0 + (count - 1) * pitch + 52.0
+	Kit.seal(canvas, Rect2(24, top, 26, 26), catalog.display_font, "醒", Kit.CRIMSON)
+	Kit.text(canvas, catalog.title_font, "B+C · " + awakening.display_name + " · 2格 / 普通10秒、快速6秒", Vector2(60, top + 20), 16, awakening.color.lightened(0.2), 3)
+	Kit.text(canvas, catalog.body_font, awakening.effect_summary(), Vector2(60, top + 44), 14, Kit.MUTED, 2)
 
-func _draw_advanced(canvas: Control, definition: Resource) -> void:
+## Command normals and target combos, then sample combos.
+func _draw_specials(canvas: Control, definition: Resource) -> void:
 	var accent: Color = definition.accent
-	_section(canvas, Rect2(0, 0, 1200, 490), "伍", definition.display_name + " · 进阶技", accent.lightened(0.3))
-	if definition.advanced_list.is_empty():
-		Kit.text(canvas, catalog.body_font, "该角色的派生连续技、空中必杀与特殊技将在后续版本加入。", Vector2(26, 110), 17, Kit.MUTED, 2)
-		return
-	for i in range(mini(7, definition.advanced_list.size())):
+	_section(canvas, Rect2(0, 0, 1200, 490), "肆", definition.display_name + " · 特殊技与派生", accent.lightened(0.3))
+	var rows := mini(5, definition.advanced_list.size())
+	if rows == 0:
+		Kit.text(canvas, catalog.body_font, "该角色的特殊技与派生连续技将在后续版本加入。", Vector2(26, 110), 17, Kit.MUTED, 2)
+	for i in range(rows):
 		var row: Dictionary = definition.advanced_list[i]
 		var y := 100.0 + i * 54
 		Glyphs.paint(canvas, catalog.numeric_font, row.input, Vector2(26, y), 22)
 		Kit.text(canvas, catalog.title_font, row.name, Vector2(330, y), 20, Kit.PAPER, 3)
 		Kit.text(canvas, catalog.body_font, row.description, Vector2(332, y + 22), 14, Kit.MUTED, 2)
 		Kit.rule(canvas, Vector2(20, y + 34), Vector2(1180, y + 34), Color(Kit.GOLD, 0.16))
+	var top := 100.0 + maxi(rows, 1) * 54 + 30.0
+	Kit.text(canvas, catalog.title_font, "示例连段 / j. 为空中，5 为站立，2 为蹲下", Vector2(26, top), 15, Kit.GOLD_HI, 3)
+	for i in range(definition.combos.size()):
+		Kit.text(canvas, catalog.body_font, definition.combos[i], Vector2(26 + (i % 2) * 590, top + 28 + int(i / 2) * 26), 15, Kit.PAPER, 2)
 
 func _draw_normals(canvas: Control, definition: Resource) -> void:
 	var accent: Color = definition.accent
-	_section(canvas, Rect2(0, 0, 1200, 490), "肆", definition.display_name + " · 普通技", accent.lightened(0.3))
+	_section(canvas, Rect2(0, 0, 1200, 490), "叁", definition.display_name + " · 普通技", accent.lightened(0.3))
 	var keys: Array = definition.normals.keys()
 	for i in range(keys.size()):
 		var move: Resource = definition.normals[keys[i]]

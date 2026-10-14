@@ -159,3 +159,28 @@ class Sweep extends Path:
 
 	func width(u: float) -> float:
 		return thick * pow(sin(clampf(u * 0.9 + 0.05, 0.0, 1.0) * PI), 0.6) * (0.45 + 0.55 * u)
+
+## A falling sheet of water from `top_y` down to `bottom_y` at `x`, rippling a
+## little across its width; constant thickness so it reads as a solid column.
+class Column extends Path:
+	var x := 0.0
+	var top_y := -200.0
+	var bottom_y := 0.0
+	var ripple := 1.5
+	var phase := 0.0
+
+	func _init(at_x: float, from_y: float, to_y: float, thickness: float, wobble: float = 1.5, shift: float = 0.0) -> void:
+		x = at_x
+		top_y = from_y
+		bottom_y = to_y
+		thick = thickness
+		ripple = wobble
+		phase = shift
+		length = absf(to_y - from_y)
+
+	func point(u: float, offset: float) -> Vector2:
+		var y := lerpf(top_y, bottom_y, u)
+		return Vector2(x + offset + sin(y * 0.07 + phase) * ripple, y)
+
+	func width(_u: float) -> float:
+		return thick

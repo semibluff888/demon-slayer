@@ -25,6 +25,15 @@ func contact(_event: Dictionary, _move: Resource, _attacker: RefCounted, _hybrid
 func reset() -> void:
 	clear_anchors()
 
+## Every presentation step, after emission: effects that outlive their move
+## (the waterfall pours on after touchdown) follow the fighters here.
+func linger(_fighters: Array, _actors: Array) -> void:
+	pass
+
+## Shapes that outlive their move, drawn on every layer with no base set.
+func draw_lingering(_canvas: Node2D, _layer: int) -> void:
+	pass
+
 # Released projectiles (only the water slash has one).
 func emit_projectile(_p: Dictionary, _move: Resource, _tick: int, _age: int) -> void:
 	pass

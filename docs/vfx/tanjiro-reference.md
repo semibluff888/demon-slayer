@@ -1,6 +1,6 @@
 # 炭治郎特效参考拆解
 
-来源为本地参考视频 `output/downloads/_5NdDhA1FIg.mp4`（1920×1080，60FPS），截取 0:02–2:34，内容是《火之神血风谭》中五个版本炭治郎的招式演示（不含奥义）。抽帧与参考板由 `tools/build_vfx_reference.py` 生成：大量抽帧放在 `output/vfx-reference/frames/`（不入库），精选参考板放在 `output/vfx-reference/tanjiro/boards/`。
+来源为本地参考视频 `output/downloads/_5NdDhA1FIg_AV1_1080p60.mp4`（1920×1080，60FPS，AV1；同内容的 H.264 副本已删除），截取 0:02–2:34，内容是《火之神血风谭》中五个版本炭治郎的招式演示（不含奥义）。抽帧与参考板由 `tools/build_vfx_reference.py` 生成：大量抽帧放在 `output/vfx-reference/frames/`（不入库），精选参考板放在 `output/vfx-reference/tanjiro/boards/`。
 
 ## 时间索引
 
