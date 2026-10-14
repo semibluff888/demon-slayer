@@ -289,8 +289,16 @@ def process_clip(character, clip, jobs, canon, band=None, pose=None):
             if index in overlap and index in frames and mode_of(index) != 'lying':
                 calibrations.append(body_height(np.asarray(frames[index])) / body_height(np.asarray(image)))
         if calibrations and not registered:
-            scale = statistics.median(calibrations)
-            method = 'overlap'
+            overlap_scale = statistics.median(calibrations)
+            # A redrawn overlap in another pose (more upright, deeper crouch) has another
+            # height; when that disagrees with the sheet's own head ruler beyond the
+            # character's limit (spec "qa" overlap_head_limit), the head ruler wins.
+            limit = canon['qa'].get('overlap_head_limit')
+            if limit and data['measured'] and abs(overlap_scale / scale - 1) > limit:
+                method = 'head-ruler (overlap pose differs %.0f%%)' % (abs(overlap_scale / scale - 1) * 100)
+            else:
+                scale = overlap_scale
+                method = 'overlap'
         before, after, shifts = data['before'], data['after'], data['shifts']
         parts.append(dict(id=job['id'], source=job['out'], sha256=sha256(raw), ruler=round(part_ruler, 2), scale=round(scale, 4), scale_method=method,
                           resample_vs_idle=round(scale / canon['scale'], 3), palette_shift=shifts,
@@ -320,7 +328,8 @@ def process_clip(character, clip, jobs, canon, band=None, pose=None):
             height_ratio = body_height(np.asarray(canvas)) / idle_height
             # Upright clips stand taller than the idle (5% over Tanjiro's bent-knee guard,
             # 1.6x Zenitsu's low iai stance); stance clips keep the idle's height.
-            if band and mode == 'feet' and not band[0] <= height_ratio <= band[1]:
+            standing = pose.get('upright_frames')
+            if band and mode == 'feet' and (standing is None or index in standing) and not band[0] <= height_ratio <= band[1]:
                 flags.append('height %.0f%% of the idle' % (height_ratio * 100))
             placement['height_vs_idle'] = round(height_ratio, 3)
             if pose.get('helper'):
@@ -487,7 +496,9 @@ def main():
             print('skip', clip, '(sheets missing)')
             continue
         pose = poses.get(clip, {})
-        band = canon['qa'].get('upright') if pose.get('upright') else canon['qa'].get('stance') if pose.get('stance') else None
+        # "upright_frames" limits the standing check to the frames that stand (a clip rising from a low stance).
+        band = (canon['qa'].get('upright') if pose.get('upright') or pose.get('upright_frames')
+                else canon['qa'].get('stance') if pose.get('stance') else None)
         frames, record = process_clip(args.character, clip, clip_jobs, canon, band, poses.get(clip))
         reference = Image.open(production(args.character) / 'imports/idle/frame-00.png').convert('RGBA')
         fps = atlas['clips'].get(clip, {}).get('fps') or poses.get(clip, {}).get('new', {}).get('fps', 12)

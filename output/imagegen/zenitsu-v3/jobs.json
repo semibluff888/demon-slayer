@@ -75,5 +75,475 @@
       ],
       "layout": "wide"
     }
+  },
+  {
+    "id": "zenitsu-v3-walk-p0",
+    "group": "pilot",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-walk-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-walk-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "walk",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-walk-p1",
+    "group": "pilot",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-walk-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-walk-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-walk-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "walk",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-walk-p2",
+    "group": "pilot",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-walk-p2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-walk-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-walk-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "walk",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-walk-p3",
+    "group": "pilot",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-walk-p3.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-walk-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-walk-p2.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "walk",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-stand_light-p0",
+    "group": "pilot",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-stand_light-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-stand_light-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "stand_light",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-stand_light-p1",
+    "group": "pilot",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-stand_light-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-stand_light-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-stand_light-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "stand_light",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "zenitsu-v3-stand_light-p1-r1",
+    "rejected": "Frames 3-4 show two swords: the drawn blade in the right hand and a still-sheathed katana (hilt at the scabbard mouth) in the left; the revision states there is one katana and the scabbard is empty once drawn."
+  },
+  {
+    "id": "zenitsu-v3-stand_light-p2",
+    "group": "pilot",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-stand_light-p2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-stand_light-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-stand_light-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "stand_light",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-thunder-p0",
+    "group": "pilot",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-thunder-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-thunder-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "thunder",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-thunder-p1",
+    "group": "pilot",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-thunder-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-thunder-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-thunder-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "thunder",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-thunder-p2",
+    "group": "pilot",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-thunder-p2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-thunder-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-thunder-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "thunder",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "zenitsu-v3-thunder-p2-r1",
+    "rejected": "Frame 6 lost the blade: only the scabbard trails behind him; the revision puts the drawn blade in the right hand behind him and the empty scabbard in the left."
+  },
+  {
+    "id": "zenitsu-v3-thunder-p3",
+    "group": "pilot",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-thunder-p3.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-thunder-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-thunder-p2.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "thunder",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-thunder-p4",
+    "group": "pilot",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-thunder-p4.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-thunder-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-thunder-p3.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "thunder",
+      "part": 4,
+      "frame_indices": [
+        7,
+        8
+      ],
+      "overlap": [
+        7
+      ],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-stand_light-p1-r1",
+    "group": "pilot-r1",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-stand_light-p1-r1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-stand_light-p1-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-stand_light-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "stand_light",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-thunder-p2-r1",
+    "group": "pilot-r1",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-thunder-p2-r1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-thunder-p2-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-thunder-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "thunder",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "zenitsu-v3-thunder-p2-r2",
+    "rejected": "Frame 6 raised the blade above and behind his head (the next frame holds it low behind) and both frames turned the empty scabbard gold tip forward; the revision fixes the blade low behind and the scabbard tip backward."
+  },
+  {
+    "id": "zenitsu-v3-thunder-p2-r2",
+    "group": "pilot-r2",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-thunder-p2-r2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-thunder-p2-r2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-thunder-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "thunder",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
   }
 ]

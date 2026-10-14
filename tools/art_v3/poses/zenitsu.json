@@ -1,5 +1,5 @@
 {
-  "note": "Per-frame pose scripts for Zenitsu's v3 redraw (same conventions as tools/art_v3/poses/tanjiro.json).",
+  "note": "Per-frame pose scripts for Zenitsu's v3 redraw (same conventions as tools/art_v3/poses/tanjiro.json). Frame counts, phase breaks and timing semantics match the shipped atlas. He fights ASLEEP: eyes closed, and the katana rests SHEATHED in every neutral pose; it is drawn only between an attack's startup and its recovery. Every clip uses wide 768x1024 columns: the iai stance and the scabbard behind him do not fit a 512 column. \"stance\": low-stance clips (QA band vs the idle); \"upright_frames\": frames that stand fully upright.",
   "clips": {
     "idle_key": {
       "helper": true,
@@ -13,6 +13,876 @@
         "image": "output/imagegen/zenitsu-v3/references/idle-candidate-1.png",
         "keep": "the size and the position of the figure in its column, the head, closed eyes, face and hair, the torso, the haori, both legs, both feet, the line weight and the colours",
         "change": "his two hands and the katana with its scabbard"
+      }
+    },
+    "walk": {
+      "layout": "wide",
+      "intro": "In-place forward walk cycle in a LOW stance, still asleep: knees deeply bent, torso leaning forward, the katana stays SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed. The top of his head is only about 10 percent higher than in input image 1 (never standing upright). Short gliding steps; torso, head and sword stay steady (at most 6 px of bob); the pelvis stays at the same X in every frame. It is a seamless loop, not a story of moving right.",
+      "frames": [
+        "Contact: near leg reaches forward RIGHT with the heel touching the ground, far leg behind on its toes; low stance held.",
+        "Down: weight moves onto the near foot, both knees bend a little more, far heel lifts.",
+        "Passing: far foot glides forward close to the ground under the pelvis, near leg supports; body at its highest (still low).",
+        "Up: far foot travels ahead of the support foot, about to land.",
+        "Opposite contact: far leg now forward RIGHT with the heel down, near leg behind on its toes (the legs swapped compared with frame 1).",
+        "Opposite down: weight moves onto the far foot, knees bend a little more, near heel lifts.",
+        "Opposite passing: near foot glides forward under the pelvis, far leg supports; body at its highest (still low).",
+        "Opposite up: near foot travels ahead, about to land; flows directly into frame 1."
+      ],
+      "loop": true,
+      "stance": true
+    },
+    "walk_back": {
+      "layout": "wide",
+      "intro": "In-place backward walk cycle in the same LOW stance, still asleep (the katana stays SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed). The body faces RIGHT while stepping toward the LEFT; the top of his head only about 10 percent higher than in input image 1; torso, head and sword stay steady; pelvis at the same X in every frame; seamless loop.",
+      "frames": [
+        "Contact: far leg reaches back LEFT with the toes touching, near leg forward bearing weight.",
+        "Down: weight moves back onto the far leg, knees bend a little, near heel lifts.",
+        "Passing: near foot draws back under the pelvis close to the ground; body at its highest (still low).",
+        "Up: near foot travels behind the support foot, about to land.",
+        "Opposite contact: near leg reaches back LEFT toes down, far leg forward bearing weight.",
+        "Opposite down: weight moves back onto the near leg, far heel lifts.",
+        "Opposite passing: far foot draws back under the pelvis; body at its highest (still low).",
+        "Opposite up: far foot travels behind, about to land; flows into the first frame of the cycle."
+      ],
+      "stance": true
+    },
+    "stand_light": {
+      "layout": "wide",
+      "intro": "Standing light slash (5A): a quick iai draw cut that starts and ends in the approved iai stance with the katana sheathed. Eyes closed (asleep).",
+      "frames": [
+        "Startup: from the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed) his left thumb pushes the guard and his weight shifts onto the front leg.",
+        "Launch: a short low lunge forward; the right hand pulls the hilt forward and up, the blade still inside the scabbard.",
+        "Active: the draw cut: the pale steel blade fully out in his right hand, cutting horizontally forward at chest height, right arm fully extended to the RIGHT, blade pointing RIGHT at full length; low lunge; his left hand holds the EMPTY scabbard at his hip (no hilt in it - the only sword is the one in his right hand).",
+        "Follow-through: the blade continues forward and up past the front, right arm extended high in front; the EMPTY scabbard at his left hip (no hilt in it).",
+        "Recovery: the right hand brings the blade back down; its tip slides into the scabbard mouth at his left hip, the blade almost fully sheathed.",
+        "Sheathed again with a click: back in the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed), almost identical to input image 1."
+      ]
+    },
+    "stand_heavy": {
+      "layout": "wide",
+      "intro": "Standing heavy slash (5C): a big rising diagonal draw cut with a step, starting and ending sheathed in the iai stance. Eyes closed.",
+      "frames": [
+        "Startup: from the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed) the front foot steps forward and the thumb pushes the guard.",
+        "Coil: torso twisted, the right hand gripping the hilt low at the left hip, the katana still sheathed, deep lunge.",
+        "Active: a big rising diagonal draw cut: the blade sweeps from low in front up to high RIGHT, right arm extended up and forward, long lunge.",
+        "Extension: the blade high above in front, pointing up and forward, body stretched over the front leg.",
+        "Recovery: the blade comes down and back; its tip slides into the scabbard mouth at the left hip.",
+        "Sheathed again with a click: back in the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed), almost identical to input image 1."
+      ]
+    },
+    "crouch": {
+      "layout": "wide",
+      "intro": "Crouching from the iai stance, the katana kept sheathed, eyes closed.",
+      "frames": [
+        "Start: the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed), the hips beginning to sink.",
+        "Half crouch: the rear knee lowering toward the ground, torso low.",
+        "Full crouch: the crouch: kneeling on the rear knee, the front knee bent, torso low and forward over the front knee, the katana stays SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed; clearly lower than input image 1."
+      ]
+    },
+    "guard": {
+      "layout": "wide",
+      "intro": "Standing block with the SHEATHED katana held up as a bar (he never draws to block). Eyes closed.",
+      "frames": [
+        "Ready: from the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed) the torso rises a little and both hands lift the sheathed katana from the hip.",
+        "Block impact: the SHEATHED katana held HORIZONTAL in front of his chest and face like a bar, left hand on the scabbard, right hand on the hilt, rear knee bent, braced and leaning back slightly, teeth clenched, eyes closed.",
+        "Hold: the same sheathed horizontal block a moment later, braced and steady."
+      ]
+    },
+    "guard_low": {
+      "layout": "wide",
+      "intro": "Crouching guard: the crouch of input image 1 stays exactly the same; only his arms and the SHEATHED katana move. He lifts the sheathed katana HORIZONTAL in front of his face like a bar (left hand on the scabbard, right hand on the hilt). The hands and the sword are NEVER raised above his head: the top of his hair stays the highest point of every drawing.",
+      "frames": [
+        "Rising into the block: both hands lift the sheathed katana from the hip to in front of his chest.",
+        "Block impact: the sheathed katana LEVEL and HORIZONTAL across the front of his face at forehead height, elbows bent, braced, eyes closed.",
+        "Hold: the same horizontal sheathed block a moment later, steady, never above his head."
+      ],
+      "edit": {
+        "image": "output/imagegen/zenitsu-v3/references/crouch-key.png",
+        "change": "his two arms, his hands and the sheathed katana with its scabbard",
+        "keep": "the size and the position of the figure in its column, the head, closed eyes, face and hair, the torso, the haori, both legs, both feet, the line weight and the colours"
+      },
+      "register": {
+        "clip": "crouch",
+        "frame": 2
+      }
+    },
+    "hit": {
+      "layout": "wide",
+      "intro": "Taking a hit while standing, still asleep; the katana stays SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt.",
+      "frames": [
+        "Impact: head snaps back, torso bends backward, eyes squeezed shut, mouth open in pain, hands still on the sheathed katana.",
+        "Recoil: stumbling back onto the rear foot, shoulders hunched, grimace.",
+        "Recover: knees bending, sinking back down toward the stance.",
+        "Nearly back in the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed), a pained face."
+      ]
+    },
+    "knockdown": {
+      "layout": "wide",
+      "intro": "Knocked off his feet onto his back; the katana stays SHEATHED at his left hip the whole time.",
+      "frames": [
+        "Hit hard: body flung backward, feet leaving the ground, arms thrown forward, eyes squeezed shut.",
+        "Falling: body diagonal in the air, legs up, head going down toward the LEFT.",
+        "Impact: back hits the ground, legs raised, haori spreading.",
+        "Bounce: lying on his back, knees bent, slight lift from the bounce.",
+        "Down: lying flat on his back seen from the SIDE at floor level (never from above, no foreshortening), the whole body HORIZONTAL and parallel to the floor (never diagonal), head to the LEFT, feet to the RIGHT, legs almost straight, the body spanning nearly the full column width, eyes closed, the sheathed katana at his hip."
+      ],
+      "anchor": "feet",
+      "ground_mode": "lying",
+      "ground_frames": [
+        2,
+        3,
+        4
+      ]
+    },
+    "throw": {
+      "layout": "wide",
+      "intro": "Grab attempt (whiff animation of the close throw); the left hand keeps the sheathed katana at his hip. Eyes closed.",
+      "frames": [
+        "Start: from the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed) his right hand leaves the hilt.",
+        "Reach: lunge forward reaching out with the open right hand at chest height.",
+        "Full reach: right arm fully extended forward grabbing at air.",
+        "Miss: the hand closes on nothing, weight overextended forward.",
+        "Pull back: drawing the hand back, rebalancing.",
+        "Back in the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed), almost identical to input image 1."
+      ]
+    },
+    "victory": {
+      "layout": "wide",
+      "intro": "Victory pose, still asleep: he slowly rises from the iai stance to stand upright, the katana sheathed. One calm continuous action.",
+      "frames": [
+        "From the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed), still asleep, he begins to straighten up.",
+        "Rising, knees straightening, head nodding forward.",
+        "Standing up, the left thumb pressing the guard home.",
+        "Standing upright, both hands resting on the sheathed katana, head drooping, asleep.",
+        "Standing upright, still asleep, a peaceful calm face, chin slightly down.",
+        "Standing upright, calm and asleep, hands relaxed at his sides, the katana sheathed on his left hip."
+      ],
+      "upright_frames": [
+        3,
+        4,
+        5
+      ]
+    },
+    "crouch_light": {
+      "layout": "wide",
+      "intro": "Crouching light slash (2A): a quick low draw cut from the crouch, sheathed again at the end. Eyes closed.",
+      "frames": [
+        "Crouch ready: the crouch: kneeling on the rear knee, the front knee bent, torso low and forward over the front knee, the katana stays SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed.",
+        "The right hand pulls the hilt forward, the blade still inside the scabbard, crouch held.",
+        "Active: a quick low draw cut at shin height, the blade fully out and extended forward low to the RIGHT, crouch held.",
+        "Follow-through: the blade low past the front.",
+        "The blade sliding back into the scabbard at his left hip, crouch held.",
+        "Crouch ready again: the crouch: kneeling on the rear knee, the front knee bent, torso low and forward over the front knee, the katana stays SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed."
+      ]
+    },
+    "crouch_heavy": {
+      "layout": "wide",
+      "intro": "Crouching heavy slash (2C): a rising diagonal draw cut from the deep crouch, sheathed again at the end. Eyes closed.",
+      "frames": [
+        "Crouch ready: the crouch: kneeling on the rear knee, the front knee bent, torso low and forward over the front knee, the katana stays SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed.",
+        "Wind-up: torso twisted, the right hand gripping the hilt at the left hip, deep crouch.",
+        "Active: rising diagonal draw cut from low to shoulder height while STAYING in the deep crouch (hips low, rear knee near the ground); only the arm and blade rise.",
+        "Extension: the blade high in front at head height, the arm extended up and forward, the body still in the deep crouch with the hips low - never standing up.",
+        "Recovery: the blade coming down and sliding back into the scabbard, crouch held.",
+        "Crouch ready again: the crouch: kneeling on the rear knee, the front knee bent, torso low and forward over the front knee, the katana stays SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed."
+      ]
+    },
+    "air_light": {
+      "layout": "wide",
+      "intro": "Air light slash (jA): a quick draw cut while airborne, sheathed again at the end. Airborne in every frame: no floor contact, legs bent beneath him. Eyes closed.",
+      "frames": [
+        "Airborne ready: knees bent, the katana stays SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt.",
+        "The right hand pulls the hilt forward, knees tucked.",
+        "Active: quick horizontal draw cut in front at chest height, the blade fully out, right arm extended RIGHT.",
+        "Extension: follow-through at full reach.",
+        "The blade sliding back into the scabbard, legs extending downward.",
+        "Airborne ready for landing: legs extended down, the katana sheathed."
+      ]
+    },
+    "air_heavy": {
+      "layout": "wide",
+      "intro": "Air heavy slash (jC): a big downward draw cut while airborne, sheathed again at the end. Airborne in every frame: no floor contact, legs bent beneath him. Eyes closed.",
+      "frames": [
+        "Airborne ready: knees bent, the katana stays SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt.",
+        "Wind-up: the right hand draws the hilt up and back over the shoulder, knees tucked, torso arched.",
+        "Active: powerful downward diagonal cut in front, the blade fully out pointing down and forward.",
+        "Extension: follow-through at full reach, blade low in front.",
+        "The blade sliding back into the scabbard, legs extending downward.",
+        "Airborne ready for landing: legs extended down, the katana sheathed."
+      ]
+    },
+    "iai": {
+      "layout": "wide",
+      "intro": "Rising iai (623A/C): a crouching draw that leaps upward with a rising cut, then lands and sheathes. Draw no lightning or effects. Eyes closed.",
+      "frames": [
+        "Startup: from the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed) he sinks lower, thumb pushing the guard.",
+        "Coil: the lowest crouch, right hand gripping the hilt, knees loaded.",
+        "Spring: pushing off the ground upward, the hilt pulled up in front.",
+        "Active: leaping upward with a rising draw cut, the blade sweeping from low in front up past his face, body rising off the ground.",
+        "Rising high: the blade high above his head, right arm fully raised, legs trailing below.",
+        "Apex: knees tucked, the blade held high overhead.",
+        "Falling: knees bent beneath him, the blade coming down in front, descending.",
+        "Landing in a low crouch, the blade lowered and brought toward the scabbard mouth.",
+        "Sheathed again with a click: back in the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed), almost identical to input image 1."
+      ],
+      "anchor": "pelvis",
+      "ground_frames": [
+        0,
+        1,
+        2,
+        7,
+        8
+      ]
+    },
+    "thunder": {
+      "layout": "wide",
+      "intro": "Thunder Breathing First Form, Thunderclap and Flash (236A/C): from the sleeping iai stance an explosive flat dash with one draw cut, then a skid and sheathing. Draw no lightning or effects; the game adds them. Eyes closed.",
+      "frames": [
+        "Startup: from the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed) he sinks lower, the left thumb pushing the guard, utterly still.",
+        "Coil: deeper still, rear leg stretched far back, torso nearly parallel to the floor, right hand gripping the hilt.",
+        "Launch: the front foot explodes off the ground, the body tilting forward into a low flat dash, the katana still sheathed.",
+        "Active, the flash: the body stretched almost HORIZONTAL in a low dash just above the floor, the blade fully drawn and extended forward at waist height in the right hand, pointing RIGHT at full length; the empty scabbard in the left hand.",
+        "Dash extended: still low and flat, the blade in his right hand swept from the front down past his right side, now pointing DOWN and BACK at knee height; the EMPTY scabbard stays at his left hip, its gold tip pointing BACKWARD (to the LEFT).",
+        "End of the dash: the drawn blade held LOW behind him at hip height in his RIGHT hand, pointing back and slightly down to the LEFT at full length (the same blade position as the next frame); the EMPTY scabbard at his left hip, its gold tip pointing BACKWARD; the front foot reaching for the ground, body still low.",
+        "Recovery: skidding to a stop in a deep crouch, one knee near the ground, the blade held out low behind him.",
+        "Rising a little; the blade swings forward and its tip slides into the scabbard mouth at the left hip.",
+        "Sheathed again with a click: back in the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed), almost identical to input image 1."
+      ]
+    },
+    "dash_forward": {
+      "layout": "wide",
+      "intro": "Forward dash: Zenitsu's lightning-fast low run, leaning far forward, the katana stays SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed; a looping cycle.",
+      "frames": [
+        "Push off: torso leaning far forward, rear leg extended, haori flowing back.",
+        "Stride: front knee high, rear leg stretched, very low.",
+        "Contact: front foot lands, body low and forward.",
+        "Passing: rear leg swings through, torso forward.",
+        "Opposite push: the other leg extended behind.",
+        "Opposite stride: the other knee high, haori streaming back.",
+        "Opposite contact.",
+        "Opposite passing; flows into the first frame."
+      ]
+    },
+    "dash_back": {
+      "layout": "wide",
+      "intro": "Backstep: a quick low hop backward while facing RIGHT, the katana stays SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed.",
+      "frames": [
+        "Sinking from the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed), weight on the front foot.",
+        "Push off the front foot, body moving LEFT, front knee rising.",
+        "Airborne hop backward, low, legs tucked.",
+        "Still airborne, rear foot reaching back LEFT to land.",
+        "Rear foot lands, front leg still raised.",
+        "Front foot comes down, knees bent absorbing.",
+        "Settling low.",
+        "Back in the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed), almost identical to input image 1."
+      ]
+    },
+    "jump_forward": {
+      "layout": "wide",
+      "intro": "Forward somersault jump: a full flip in the air, both hands holding the SHEATHED katana tight to his left hip, eyes closed.",
+      "frames": [
+        "Takeoff: legs pushing off, the sheathed katana held close.",
+        "Tuck: knees pulled to the chest, rising.",
+        "Flip forward: body horizontal, head leading RIGHT, tucked.",
+        "Upside down: head at the bottom, tucked tight.",
+        "Rotation continues: body horizontal the other way.",
+        "Untuck: coming upright, legs extending.",
+        "Upright descending: legs extended below, the katana sheathed.",
+        "Pre-landing: legs reaching for the ground, knees slightly bent."
+      ],
+      "anchor": "pelvis"
+    },
+    "jump_back": {
+      "layout": "wide",
+      "intro": "Backward somersault jump: a full flip in the air, both hands holding the SHEATHED katana tight to his left hip, eyes closed.",
+      "frames": [
+        "Takeoff: legs pushing off, the sheathed katana held close.",
+        "Tuck: knees pulled to the chest, rising.",
+        "Flip backward: body horizontal, head leading LEFT, tucked.",
+        "Upside down: head at the bottom, tucked tight.",
+        "Rotation continues: body horizontal the other way.",
+        "Untuck: coming upright, legs extending.",
+        "Upright descending: legs extended below, the katana sheathed.",
+        "Pre-landing: legs reaching for the ground, knees slightly bent."
+      ],
+      "anchor": "pelvis"
+    },
+    "jump": {
+      "layout": "wide",
+      "intro": "Neutral jump and landing pieces (each frame is a separate state); the katana stays SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed.",
+      "frames": [
+        "Pre-jump crouch from the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed).",
+        "Rising: body stretched upward, knees bent beneath.",
+        "Apex: knees tucked, body compact.",
+        "Falling: legs extending down.",
+        "Landing impact: deep crouch absorbing the landing.",
+        "Recover: rising back toward the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed)."
+      ]
+    },
+    "body_stand_light": {
+      "layout": "wide",
+      "intro": "Light body attack (5B): a quick front snap kick; the katana stays SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed.",
+      "frames": [
+        "From the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed), weight shifting to the rear leg.",
+        "Chamber: front knee lifted to the waist.",
+        "Active: snap kick to the stomach, leg extended RIGHT, hands still on the sheathed katana.",
+        "Kick extended, toes pointed.",
+        "Retract the knee.",
+        "Back in the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed), almost identical to input image 1."
+      ]
+    },
+    "body_crouch_light": {
+      "layout": "wide",
+      "intro": "Crouching light body attack (2B): a quick low kick to the shin from the crouch; the katana stays SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed.",
+      "frames": [
+        "Crouch: the crouch: kneeling on the rear knee, the front knee bent, torso low and forward over the front knee, the katana stays SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed.",
+        "Chamber the front leg low.",
+        "Active: low kick extended at ankle height, crouching on the other leg.",
+        "Kick extended.",
+        "Retract the leg.",
+        "Crouch: the crouch: kneeling on the rear knee, the front knee bent, torso low and forward over the front knee, the katana stays SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed."
+      ]
+    },
+    "body_air_light": {
+      "layout": "wide",
+      "intro": "Air light body attack (jB): a quick knee strike while airborne; the katana stays SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed.",
+      "frames": [
+        "Airborne ready.",
+        "Chamber the near knee.",
+        "Active: knee driven forward and up at chest height.",
+        "Knee extended.",
+        "Retract.",
+        "Airborne ready, legs below."
+      ],
+      "anchor": "pelvis"
+    },
+    "body_stand_heavy": {
+      "layout": "wide",
+      "intro": "Heavy body attack (5D): ONE simple standing side kick seen from the side. Never turn the back to the viewer, never spin. The kicking leg is long: thigh and shin keep their full length. The katana stays sheathed on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed.",
+      "frames": [
+        "Start: the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed).",
+        "Shift the weight onto the rear leg, the front knee starting to lift.",
+        "Chamber: front knee raised high to the chest, hips turning sideways.",
+        "Active: side kick, the front leg fully extended straight to the RIGHT at chest height, sole of the foot forward, torso leaning back, long leg.",
+        "Kick held at full extension.",
+        "Kick still extended, starting to lower slightly.",
+        "Retract the knee back to the chest.",
+        "Foot comes down, weight returning to centre.",
+        "Back in the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed), almost identical to input image 1."
+      ]
+    },
+    "body_crouch_heavy": {
+      "layout": "wide",
+      "intro": "Crouching heavy body attack (2D): a low sweeping kick that knocks down; the left hand keeps the sheathed katana at his hip. Eyes closed.",
+      "frames": [
+        "Crouch: the crouch: kneeling on the rear knee, the front knee bent, torso low and forward over the front knee, the katana stays SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed.",
+        "Drop lower, the right hand on the ground for support.",
+        "Sweep wind-up: front leg drawn back along the ground.",
+        "Active: sweeping kick across the ground, leg fully extended RIGHT at ankle height.",
+        "Sweep extended.",
+        "Leg returning along the ground.",
+        "Rising to the crouch, the right hand back on the hilt.",
+        "Crouch ready: the crouch: kneeling on the rear knee, the front knee bent, torso low and forward over the front knee, the katana stays SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed."
+      ]
+    },
+    "body_air_heavy": {
+      "layout": "wide",
+      "intro": "Air heavy body attack (jD): a downward stomp kick while airborne; the katana stays SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed.",
+      "frames": [
+        "Airborne ready.",
+        "Pull both knees up.",
+        "Chamber the near leg high.",
+        "Active: kick driven downward and forward, sole first.",
+        "Kick extended down and forward.",
+        "Retract.",
+        "Legs below, falling.",
+        "Airborne ready.",
+        "Pre-landing, legs extended."
+      ],
+      "anchor": "pelvis"
+    },
+    "roll_forward": {
+      "layout": "wide",
+      "intro": "Evasive roll forward (to the RIGHT) along the ground, the SHEATHED katana held close to his left hip, eyes closed.",
+      "frames": [
+        "Start: the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed), dipping.",
+        "Crouch low, shoulder dropping.",
+        "Dive: body low, about to roll.",
+        "Rolling on the shoulder, legs tucked.",
+        "Upside down mid-roll, curled tight.",
+        "Rolling over the back.",
+        "Coming up onto the knees.",
+        "Kneeling, rising.",
+        "Rising on one knee.",
+        "Half up, low.",
+        "Sinking into the stance.",
+        "Back in the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed), almost identical to input image 1."
+      ]
+    },
+    "roll_back": {
+      "layout": "wide",
+      "intro": "Evasive roll backward (to the LEFT) along the ground, the SHEATHED katana held close to his left hip, eyes closed.",
+      "frames": [
+        "Start: the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed), dipping.",
+        "Crouch low, shoulder dropping.",
+        "Dive: body low, about to roll.",
+        "Rolling on the shoulder, legs tucked.",
+        "Upside down mid-roll, curled tight.",
+        "Rolling over the back.",
+        "Coming up onto the knees.",
+        "Kneeling, rising.",
+        "Rising on one knee.",
+        "Half up, low.",
+        "Sinking into the stance.",
+        "Back in the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed), almost identical to input image 1."
+      ]
+    },
+    "throw_success": {
+      "layout": "wide",
+      "intro": "Back throw (4D): grab the collar with BOTH hands (the sheathed katana stays on his left hip), step back and swing the opponent around past his left side, slamming them to the floor BEHIND him (to the LEFT). He keeps facing RIGHT, twisting the upper body and looking back over his shoulder; no full turn, no spin. Draw only Zenitsu; no opponent. Simple, readable poses. Eyes closed.",
+      "frames": [
+        "Reach forward and grab with both hands at chest height.",
+        "Grip the collar and pull in close.",
+        "Step the rear foot back, hips turning, pulling the grip toward his left side.",
+        "Twisting the upper body to the LEFT, both arms hauling the grip past his left hip, chest toward the viewer.",
+        "Looking back over his left shoulder, both arms swinging the grip behind him to the LEFT at waist height.",
+        "Arms swinging the grip up and over behind him, knees bending.",
+        "Driving down behind: knees bent, arms pushing down toward the floor behind him on the LEFT.",
+        "Deep crouch, arms reaching down to the floor behind him on the LEFT, looking back.",
+        "Impact: crouched low, both hands pressing down at floor level behind him on the LEFT, looking back.",
+        "Letting go, rising, turning the head back to the RIGHT.",
+        "Sinking into the stance, facing RIGHT, hands back on the sword.",
+        "Back in the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed), almost identical to input image 1."
+      ]
+    },
+    "throw_forward": {
+      "layout": "wide",
+      "intro": "Forward throw (6D): grab the collar with BOTH hands and sweep the opponent's leg with a fast low kick, slamming them down in front. The sheathed katana stays on his left hip. Draw only Zenitsu; no opponent. Facing RIGHT the whole time; simple, readable poses. Eyes closed.",
+      "frames": [
+        "Step in and reach forward with both hands at chest height.",
+        "Both hands grip the opponent's collar, arms extended forward.",
+        "Pull the collar in toward himself, stepping the near foot forward.",
+        "Near leg swings forward past the opponent's leg, collar held tight.",
+        "Reap: near leg sweeps backward behind the opponent's leg while both arms push forward and down.",
+        "Sweep completed, near leg high behind, torso leaning forward over the opponent.",
+        "Driving down: arms push down and forward toward the floor, both knees bending.",
+        "Deep forward lean, arms extended down toward the floor in front.",
+        "Impact: crouched low, both hands pressing down at floor level in front.",
+        "Rising from the crouch, letting go.",
+        "Sinking into the stance, hands back on the sword.",
+        "Back in the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed), almost identical to input image 1."
+      ]
+    },
+    "thrown": {
+      "layout": "wide",
+      "intro": "Back-throw victim: grabbed, pulled forward over the thrower's shoulder, flipped forward head first and slammed flat on his back. Draw only Zenitsu; the katana stays SHEATHED at his left hip. The flip rotates clockwise: the head leads to the RIGHT and down, the legs swing up and over to the RIGHT.",
+      "frames": [
+        "Grabbed by the collar: jolted forward, eyes squeezed shut, leaning toward the RIGHT.",
+        "Pulled forward and down to the RIGHT, off balance, bending at the waist.",
+        "Loaded as if over a shoulder: bent forward at the waist, head low toward the RIGHT, feet leaving the ground.",
+        "Lifted: body horizontal in the air, face down, head to the RIGHT, legs to the LEFT.",
+        "Flipping forward: body vertical and upside down, head down, legs straight up.",
+        "Legs swinging over the top toward the RIGHT, body tilted, back turning toward the floor.",
+        "Falling on his back: body nearly horizontal in the air, head to the LEFT, feet to the RIGHT.",
+        "About to land: back just above the floor, horizontal, head to the LEFT, feet to the RIGHT.",
+        "Slam: lying flat on his back seen from the SIDE at floor level (never from above, no foreshortening), the whole body HORIZONTAL and parallel to the floor (never diagonal), head to the LEFT, feet to the RIGHT, legs almost straight, the body spanning nearly the full column width, arms out, eyes squeezed.",
+        "Bounce settled: lying flat on his back seen from the SIDE at floor level (never from above, no foreshortening), the whole body HORIZONTAL and parallel to the floor (never diagonal), head to the LEFT, feet to the RIGHT, legs almost straight, the body spanning nearly the full column width.",
+        "Down: lying flat on his back seen from the SIDE at floor level (never from above, no foreshortening), the whole body HORIZONTAL and parallel to the floor (never diagonal), head to the LEFT, feet to the RIGHT, legs almost straight, the body spanning nearly the full column width, eyes closed.",
+        "Down: lying flat on his back seen from the SIDE at floor level (never from above, no foreshortening), the whole body HORIZONTAL and parallel to the floor (never diagonal), head to the LEFT, feet to the RIGHT, legs almost straight, the body spanning nearly the full column width, motionless."
+      ],
+      "anchor": "pelvis",
+      "ground_frames": [
+        0,
+        1,
+        8,
+        9,
+        10,
+        11
+      ],
+      "ground_mode": "lying",
+      "mirror": true
+    },
+    "thrown_forward": {
+      "layout": "wide",
+      "intro": "Forward-throw victim: grabbed by the collar, leg swept out, falling backward and slammed flat on his back. Draw only Zenitsu; the katana stays SHEATHED at his left hip. He falls backward toward the LEFT.",
+      "frames": [
+        "Grabbed by the collar: jolted forward, eyes squeezed shut.",
+        "Pulled in, off balance, leaning forward.",
+        "Leg swept: the front foot kicked out from under him, starting to fall backward to the LEFT.",
+        "Falling backward to the LEFT, body diagonal, arms flailing.",
+        "Falling backward, body tilting toward horizontal, legs lifting.",
+        "Nearly horizontal in the air, back down, head to the LEFT.",
+        "Horizontal in the air, back down, head to the LEFT, feet to the RIGHT.",
+        "About to land: back just above the floor, horizontal, head to the LEFT, feet to the RIGHT.",
+        "Slam: lying flat on his back seen from the SIDE at floor level (never from above, no foreshortening), the whole body HORIZONTAL and parallel to the floor (never diagonal), head to the LEFT, feet to the RIGHT, legs almost straight, the body spanning nearly the full column width, arms out, eyes squeezed.",
+        "Bounce settled: lying flat on his back seen from the SIDE at floor level (never from above, no foreshortening), the whole body HORIZONTAL and parallel to the floor (never diagonal), head to the LEFT, feet to the RIGHT, legs almost straight, the body spanning nearly the full column width.",
+        "Down: lying flat on his back seen from the SIDE at floor level (never from above, no foreshortening), the whole body HORIZONTAL and parallel to the floor (never diagonal), head to the LEFT, feet to the RIGHT, legs almost straight, the body spanning nearly the full column width, eyes closed.",
+        "Down: lying flat on his back seen from the SIDE at floor level (never from above, no foreshortening), the whole body HORIZONTAL and parallel to the floor (never diagonal), head to the LEFT, feet to the RIGHT, legs almost straight, the body spanning nearly the full column width, motionless."
+      ],
+      "anchor": "pelvis",
+      "ground_frames": [
+        0,
+        1,
+        8,
+        9,
+        10,
+        11
+      ],
+      "ground_mode": "lying",
+      "mirror": true
+    },
+    "throw_tech": {
+      "layout": "wide",
+      "intro": "Throw escape: breaking a grab and pushing apart; the sheathed katana stays on his left hip. Eyes closed.",
+      "frames": [
+        "Grabbed: startled lean forward.",
+        "Break: the right forearm knocks the hand away.",
+        "Push apart: both hands shoving forward.",
+        "Sliding back low, braced.",
+        "Sinking into the stance, hands back on the sword.",
+        "Back in the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed), almost identical to input image 1."
+      ]
+    },
+    "iai_return": {
+      "layout": "wide",
+      "intro": "Thunder Breathing turn slash (214B/D): a low backstep, then two horizontal draw cuts, then sheathing. Draw no lightning or effects. Eyes closed.",
+      "frames": [
+        "Startup: from the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed) he hops back low, sliding backward, thumb on the guard.",
+        "Landing low from the backstep, coiled, right hand gripping the hilt.",
+        "Deepest coil, torso twisted away, the katana still sheathed, ready to draw.",
+        "Cut 1: a horizontal draw cut sweeping from beside his left hip around to the front at waist height, the blade fully out, torso twisting (no full turn).",
+        "Cut 1 extended: the blade pointing RIGHT at waist height, right arm fully extended.",
+        "Cut 1 follow-through: the blade past the front, the wrist turning for the return cut.",
+        "Cut 2 wind-up: the blade pulled back across the body to the LEFT, hips turning.",
+        "Cut 2: a wide horizontal sweep forward at chest height, long lunge.",
+        "Cut 2 follow-through: the blade fully extended forward RIGHT, body stretched.",
+        "Recovery: the lunge holds, the blade lowering.",
+        "The blade sliding back into the scabbard at his left hip.",
+        "Sheathed again with a click: back in the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed), almost identical to input image 1."
+      ]
+    },
+    "sixfold": {
+      "layout": "wide",
+      "intro": "Thunder Breathing First Form, Sixfold (super): six flash dash cuts in a row, alternating high and low, all on the ground. Draw no lightning or effects. Eyes closed.",
+      "frames": [
+        "Startup: from the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed) he sinks lower, thumb pressing the guard, utterly still.",
+        "Deep coil: the lowest crouch, rear leg stretched far back, right hand gripping the hilt.",
+        "Launch: exploding forward, body almost horizontal, rear foot pushing off.",
+        "Flash 1: a low dash cut, body almost horizontal, the blade drawn forward at waist height.",
+        "Flash 1 follow-through: skidding, the blade swept back.",
+        "Flash 2: a rising cut while dashing, body lifting, the blade sweeping up to head height.",
+        "Flash 2 follow-through: the blade high, turning for the next dash.",
+        "Flash 3: a low horizontal dash cut at knee height, body very low.",
+        "Flash 3 follow-through: the blade low behind.",
+        "Flash 4: a descending diagonal cut while dashing, the blade sweeping down from high.",
+        "Flash 4 follow-through: the blade low in front.",
+        "Flash 5: a straight forward thrust-cut while dashing, right arm fully extended.",
+        "Flash 5 follow-through: the blade pulled back.",
+        "Flash 6: the final, longest flash: body stretched horizontally, the blade extended far forward at waist height.",
+        "Flash 6 follow-through: the blade swept back behind him.",
+        "Recovery: skidding to a stop in a deep crouch, the blade held low behind him.",
+        "The blade sliding back into the scabbard at his left hip.",
+        "Sheathed again with a click: back in the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed), almost identical to input image 1."
+      ]
+    },
+    "godspeed": {
+      "layout": "wide",
+      "intro": "Thunder Breathing Seventh Form, Flaming Thunder God (MAX): the ultimate coil, then three god-speed strikes - a flat dash cut, a rising leap cut and a diving cut from the air like a dragon - then landing and a slow sheathing. Draw no lightning, fire or effects. Eyes closed.",
+      "frames": [
+        "Startup: from the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed) he sinks to the lowest possible crouch, absolutely still.",
+        "Deeper: the rear knee almost on the ground, the rear leg stretched far back, torso nearly parallel to the floor.",
+        "Coil peak: every muscle tensed, the toes of the front foot digging in, right hand gripping the hilt.",
+        "Launch: exploding forward, rear leg extended, the katana still sheathed.",
+        "Strike 1: a flat dash draw cut at waist height, body horizontal, the blade forward.",
+        "Strike 1 follow-through: the blade sweeping back, the front foot touching down.",
+        "Strike 2: leaping upward, body diagonal rising, a rising cut overhead.",
+        "Strike 2: high in the air, body arched, the blade above his head.",
+        "Strike 3: diving down from the air like a dragon, body diagonal downward, the blade cutting down and forward.",
+        "Strike 3 extended: the blade far forward and down, body stretched, about to land.",
+        "Landing low, skidding, one knee near the ground, the blade held out behind him.",
+        "Low crouch, the blade brought forward toward the scabbard mouth.",
+        "The blade sliding into the scabbard at the left hip.",
+        "Sheathed, still crouched very low, head bowed.",
+        "Sheathed again with a click: back in the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed), almost identical to input image 1."
+      ],
+      "anchor": "pelvis",
+      "ground_frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        10,
+        11,
+        12,
+        13,
+        14
+      ]
+    },
+    "round_intro": {
+      "layout": "wide",
+      "intro": "Round intro assembled by intro_warp.py from helper keys (edits of idle frame 0, registered by the lower body) and warps of the approved key; no sheets of its own and no effects. One forward action with the stance never moving: awake and scared in the stance (eyes open, trembling), dozing off, asleep and slack, then the sleeping iai focus; the last frame is idle frame 0. Keys and timeline are set when the intro is built.",
+      "frames": [
+        "Awake and nervous in the stance, eyes open (intro_keys 0).",
+        "Trembling.",
+        "Trembling.",
+        "Trembling.",
+        "Dozing off (intro_keys 1).",
+        "Nodding.",
+        "Asleep, slack (intro_keys 2).",
+        "Asleep, breathing.",
+        "Asleep, breathing.",
+        "Asleep, breathing.",
+        "Asleep, breathing.",
+        "Settling into the iai focus (warp of the approved key).",
+        "Settling into the iai focus (warp of the approved key).",
+        "Settling into the iai focus (warp of the approved key).",
+        "Settling into the iai focus (warp of the approved key).",
+        "Settling into the iai focus (warp of the approved key).",
+        "Settling into the iai focus (warp of the approved key).",
+        "Idle frame 0."
+      ],
+      "warp": {
+        "tool": "tools/art_v3/intro_warp.py",
+        "spec": "tools/art_v3/spec/zenitsu-intro-rig.json",
+        "assembled": true
+      }
+    },
+    "round_victory": {
+      "layout": "wide",
+      "intro": "Round victory, one continuous action that never repeats: still asleep he rises from the iai stance to stand upright, then wakes up and realises he has won. The katana stays SHEATHED the whole time.",
+      "frames": [
+        "Asleep in the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed).",
+        "Still asleep, the head nodding.",
+        "Rising slowly from the stance, knees straightening.",
+        "Half standing, both hands on the sheathed katana.",
+        "Standing upright asleep, the left thumb pressing the guard home.",
+        "Standing upright, asleep, head drooping.",
+        "Standing upright, asleep, a peaceful face.",
+        "A small sleepy sway, still asleep.",
+        "His eyelids flutter.",
+        "Eyes half open, drowsy.",
+        "Eyes OPEN, blinking, confused.",
+        "Looking around, confused, hands raised a little.",
+        "Looking toward the RIGHT (the fallen opponent off-screen), startled, eyes wide.",
+        "Pointing at himself in disbelief, mouth open.",
+        "A nervous smile, scratching the back of his head.",
+        "A relieved grin, shoulders relaxing.",
+        "Standing upright, a shy proud smile, eyes open.",
+        "Final pose: standing upright, eyes open, a shy proud smile, hands relaxed at his sides, the katana sheathed on his left hip."
+      ],
+      "upright_frames": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ]
+    },
+    "round_defeat": {
+      "layout": "wide",
+      "intro": "Round defeat: knocked down, falling backward to the LEFT and collapsing flat on his back, unconscious; the katana stays SHEATHED at his left hip. In the lying frames the body is horizontal, seen from the side.",
+      "frames": [
+        "Hit: head thrown back, staggering, eyes squeezed shut.",
+        "Staggering back to the LEFT, knees buckling.",
+        "Falling backward to the LEFT, body diagonal.",
+        "Falling backward, nearly horizontal, feet leaving the ground.",
+        "Back hits the floor: lying flat on his back seen from the SIDE at floor level (never from above, no foreshortening), the whole body HORIZONTAL and parallel to the floor (never diagonal), head to the LEFT, feet to the RIGHT, legs almost straight, the body spanning nearly the full column width, arms flung out.",
+        "Bounce: lying flat on his back seen from the SIDE at floor level (never from above, no foreshortening), the whole body HORIZONTAL and parallel to the floor (never diagonal), head to the LEFT, feet to the RIGHT, legs almost straight, the body spanning nearly the full column width, legs slightly lifted.",
+        "Lying flat on his back seen from the SIDE at floor level (never from above, no foreshortening), the whole body HORIZONTAL and parallel to the floor (never diagonal), head to the LEFT, feet to the RIGHT, legs almost straight, the body spanning nearly the full column width, settling.",
+        "Lying flat on his back seen from the SIDE at floor level (never from above, no foreshortening), the whole body HORIZONTAL and parallel to the floor (never diagonal), head to the LEFT, feet to the RIGHT, legs almost straight, the body spanning nearly the full column width, one arm stretched out, hand open.",
+        "Lying flat on his back seen from the SIDE at floor level (never from above, no foreshortening), the whole body HORIZONTAL and parallel to the floor (never diagonal), head to the LEFT, feet to the RIGHT, legs almost straight, the body spanning nearly the full column width, eyes closed, unconscious.",
+        "Lying flat on his back seen from the SIDE at floor level (never from above, no foreshortening), the whole body HORIZONTAL and parallel to the floor (never diagonal), head to the LEFT, feet to the RIGHT, legs almost straight, the body spanning nearly the full column width, still.",
+        "Lying flat on his back seen from the SIDE at floor level (never from above, no foreshortening), the whole body HORIZONTAL and parallel to the floor (never diagonal), head to the LEFT, feet to the RIGHT, legs almost straight, the body spanning nearly the full column width, still.",
+        "Lying flat on his back seen from the SIDE at floor level (never from above, no foreshortening), the whole body HORIZONTAL and parallel to the floor (never diagonal), head to the LEFT, feet to the RIGHT, legs almost straight, the body spanning nearly the full column width, motionless, the sheathed katana at his hip."
+      ],
+      "ground_frames": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "ground_mode": "lying"
+    },
+    "awakening_start": {
+      "layout": "wide",
+      "intro": "Awakening, Thunder Breathing Godspeed (awakened atlas only): warped from the approved key, no sheets of its own and no effects. From the sleeping iai stance he sinks a little lower and tenses, hair and haori lifting as if charged, then settles back toward idle frame 0. The rig is set when the clip is built.",
+      "frames": [
+        "Idle frame 0.",
+        "Sinking lower, breath drawn in.",
+        "Lowest, tensed, hair and haori lifting.",
+        "Charged, hair and haori lifted.",
+        "Releasing.",
+        "Settling toward idle frame 0."
+      ],
+      "warp": {
+        "tool": "tools/art_v3/intro_warp.py",
+        "spec": "tools/art_v3/spec/zenitsu-awakening-rig.json",
+        "assembled": true
+      }
+    },
+    "inadama_2": {
+      "layout": "wide",
+      "intro": "Thunder Breathing Second Form, Rice Spirit, second cut (follow-up after 5A): it starts with the blade still out from the first cut, a quick returning diagonal cut with a small step, then sheathing. Eyes closed.",
+      "frames": [
+        "From the end of the first cut: the blade out in front at chest height in the right hand, the empty scabbard in the left hand at his hip.",
+        "The wrist turns, the blade swings back low past his left hip, a small step forward.",
+        "Active: a returning diagonal cut forward and up at chest height, right arm extended RIGHT, the blade at full length.",
+        "Extension: the blade high in front.",
+        "Recovery: the blade lowered; its tip slides into the scabbard mouth at the left hip.",
+        "Sheathed again with a click: back in the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed), almost identical to input image 1."
+      ],
+      "new": {
+        "phase_breaks": [
+          2,
+          4
+        ],
+        "fps": 12
+      }
+    },
+    "inadama_3": {
+      "layout": "wide",
+      "intro": "Rice Spirit, third cut (after 5A > A): a big step and two quick cuts - a powerful horizontal cut forward, then the blade sweeping back the other way - then sheathing. Eyes closed.",
+      "frames": [
+        "From the end of the second cut: the blade in front at shoulder height.",
+        "Step forward, the blade drawn back across the body to the LEFT.",
+        "Big step, hips turning, the blade low behind.",
+        "Cut 1: a powerful horizontal cut forward at waist height, long lunge.",
+        "Cut 1 extended: the blade fully forward to the RIGHT at full length.",
+        "Cut 2: the blade sweeps back the other way, a reverse cut rising from the RIGHT toward the LEFT at chest height.",
+        "Cut 2 follow-through: the blade high above the left shoulder, torso turned.",
+        "Recovery: the blade lowered toward the scabbard mouth at the left hip.",
+        "The blade slides into the scabbard, still low.",
+        "Sheathed again with a click: back in the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed), almost identical to input image 1."
+      ],
+      "new": {
+        "phase_breaks": [
+          3,
+          7
+        ],
+        "fps": 12,
+        "segment_sync": true
+      }
+    },
+    "heat_lightning": {
+      "layout": "wide",
+      "intro": "Thunder Breathing Fifth Form, Heat Lightning (6C, an anti-air): from the sleeping iai stance a rising draw cut straight up past his head while the feet stay on the ground, then sheathing. Draw no lightning or effects. Eyes closed.",
+      "frames": [
+        "Startup: from the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed) he sinks lower, the right hand gripping the hilt, the thumb pushing the guard.",
+        "Coil: knees deeply bent, the hilt tilted down.",
+        "Rising from the coil, both feet on the ground, the hilt pulled up in front of the chest.",
+        "Active: a rising draw cut: the blade sweeps from low in front straight up past his face, the right arm swinging upward, body rising onto the toes of the front foot.",
+        "Extension: the blade pointing straight up above his head, right arm fully raised, body stretched upward, feet still on the ground.",
+        "Recovery: the blade coming down in front.",
+        "The blade sliding back into the scabbard at the left hip, knees bending.",
+        "Sheathed again with a click: back in the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed), almost identical to input image 1."
+      ],
+      "new": {
+        "phase_breaks": [
+          3,
+          5
+        ],
+        "fps": 12
+      }
+    },
+    "low_iai": {
+      "layout": "wide",
+      "intro": "Iai, Low Body Cut (3C): from the sleeping iai stance he glides forward very low and cuts along the floor at ankle height, then sheathes. Draw no lightning or effects. Eyes closed.",
+      "frames": [
+        "Startup: from the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed) he drops even lower, the rear knee almost touching the floor.",
+        "Gliding forward low, the front foot sliding along the ground, the right hand on the hilt.",
+        "Still gliding, body very low, the head at the height of an opponent's knees.",
+        "The last step of the glide, the hilt pulled forward.",
+        "Active: a horizontal draw cut along the floor at ankle height, the blade fully out to the RIGHT, the rear knee touching the ground, body very low.",
+        "Extension: the blade swept forward past the front at ankle height.",
+        "Recovery: low crouch, the blade swung back and its tip sliding into the scabbard mouth.",
+        "Sheathed again with a click: back in the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed), almost identical to input image 1."
+      ],
+      "new": {
+        "phase_breaks": [
+          4,
+          6
+        ],
+        "fps": 12
+      }
+    },
+    "air_thunder": {
+      "layout": "wide",
+      "intro": "Thunderclap and Flash in the air (j.236A/C): a curled coil in mid-air, then a straight diving dash forward and DOWN at about 40 degrees with one draw cut; the landing has its own clip. Airborne in every frame: no floor contact, legs bent beneath him. Draw no lightning or effects. Eyes closed.",
+      "frames": [
+        "Airborne: knees tucked, body curled forward, the katana stays SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt.",
+        "Airborne coil: tilting forward and down, the right hand gripping the hilt.",
+        "Launch: the body straightening into a diagonal line pointing forward and DOWN, legs pushed back.",
+        "Active, the flash: the whole body stretched in a straight line diving forward and down at about 40 degrees, the blade fully drawn and extended forward-down in the right hand at full length.",
+        "Dive extended: the body still a straight diagonal line, the blade swept from the front to the side.",
+        "Dive follow-through: the blade trailing behind him, body still diving.",
+        "Recovery: the legs swinging down under him, the blade held out behind him.",
+        "Falling, knees bent, the blade behind him.",
+        "About to land: feet reaching down, crouching posture, the blade behind him."
+      ],
+      "anchor": "pelvis",
+      "new": {
+        "phase_breaks": [
+          3,
+          6
+        ],
+        "fps": 12,
+        "anchor_mode": "pelvis"
+      }
+    },
+    "distant_thunder": {
+      "layout": "wide",
+      "intro": "Thunder Breathing Fourth Form, Distant Thunder (j.214B/D): he stops in mid-air curled into a ball, then a nearly HORIZONTAL flash dash forward with one draw cut; the landing has its own clip. Airborne in every frame: no floor contact, legs bent beneath him. Draw no lightning or effects. Eyes closed.",
+      "frames": [
+        "Mid-air stop: knees tucked tight, body curled into a ball, the katana stays SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt.",
+        "Hovering curled, turned sideways, the right hand gripping the hilt.",
+        "Uncurling: legs kicking back, body tilting forward toward horizontal.",
+        "Active: a nearly HORIZONTAL flash dash forward (slightly downward), the body stretched flat, the blade drawn in a horizontal cut forward at chest height.",
+        "Dash extended: the blade fully forward to the RIGHT at full length, body flat.",
+        "Follow-through: the blade swept past and behind.",
+        "Recovery: body tilting upright, legs coming down, the blade behind him.",
+        "Falling, knees bent, the blade behind him.",
+        "About to land, feet below, the blade behind him."
+      ],
+      "anchor": "pelvis",
+      "new": {
+        "phase_breaks": [
+          3,
+          6
+        ],
+        "fps": 12,
+        "anchor_mode": "pelvis"
+      }
+    },
+    "air_iai_land": {
+      "layout": "wide",
+      "intro": "Landing recovery after the air dashes (Thunderclap and Flash in the air, Distant Thunder): a skidding low landing, then sheathing back into the iai stance. Eyes closed.",
+      "frames": [
+        "Touchdown: landing low in a skidding crouch, one knee near the ground, the blade held out low behind him in the right hand.",
+        "Sliding to a stop, the blade swung forward toward the scabbard mouth at the left hip.",
+        "The blade sliding into the scabbard, still crouched low.",
+        "Sheathed again with a click: back in the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed), almost identical to input image 1."
+      ],
+      "new": {
+        "phase_breaks": [
+          1,
+          2
+        ],
+        "fps": 12
       }
     }
   }
