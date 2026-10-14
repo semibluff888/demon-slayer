@@ -30,7 +30,7 @@ PROMPT = """Use case: identity-preserve
 Asset type: final polished 2D anime fighting-game sprite animation frames, {name} "{clip}" (frames {first}-{last} of {total}).
 Input image 1: APPROVED IDLE POSE. Exact character design, proportions, scale, line weight and rendering; it is his neutral fighting stance.
 Input image 2: APPROVED MODEL SHEET. Costume construction and colours.
-Input image 3: PORTRAIT. Face, eyes, hair and forehead scar.
+Input image 3: PORTRAIT. {portrait}.
 {previous}Primary request: {count} sequential full-body drawings side by side in {count} equal columns ({cell} px wide, the full 1024 px image height), left to right, one drawing per column, all facing RIGHT.
 Scale (critical): every drawing uses exactly the scale of input image 1. In the guard stance of input image 1 he is 840 px tall from the top of the hair to the soles; upright he would be about 880 px; hair top to chin is 160 px. Bent knees or a lunge lower the body, but the head, torso and legs keep exactly these lengths. Never enlarge the head, never shorten the legs; no chibi. Feet touching the ground stand on one shared baseline 40 px above the bottom edge. Blades, sleeves and the haori stay inside their own column.
 Katana (critical): the blade from the guard to the tip is about 350 px in every drawing, as long as in input image 1. Never shorten it; when it points across the body or straight forward, show its full length.
@@ -46,7 +46,7 @@ EDIT_PROMPT = """Use case: precise edit of existing sprite drawings
 Asset type: final polished 2D anime fighting-game sprite animation frames, {name} "{clip}" (frames {first}-{last} of {total}).
 Input image 1: THE DRAWINGS TO EDIT. {count} copies of the same drawing, one per column ({cell} px wide, the full 1024 px image height), all facing RIGHT.
 Input image 2: APPROVED MODEL SHEET. Costume construction and colours.
-Input image 3: PORTRAIT. Face, eyes, hair and forehead scar.
+Input image 3: PORTRAIT. {portrait}.
 {previous}Primary request: edit every column of input image 1. Keep EXACTLY as in input image 1: {keep}. Change ONLY {change}, as each frame describes. {rule}
 Katana (critical): the blade from the guard to the tip is about 350 px, as long as in input image 1. Never shorten it.
 Motion: {intro}
@@ -111,10 +111,10 @@ def make_job(args, data, pose, clip, index, chunk, overlap, previous_out, revisi
         previous += 'Input image %d: %s\n' % (5 if previous_out else 4, extra['role'])
     template = EDIT_PROMPT if pose.get('edit') else PROMPT
     edit = pose.get('edit') or {}
-    prompt = template.format(name='Kamado Tanjiro', clip=clip, first=chunk[0] + 1, last=chunk[-1] + 1, total=len(frames),
+    prompt = template.format(name=data.get('name', 'Kamado Tanjiro'), clip=clip, first=chunk[0] + 1, last=chunk[-1] + 1, total=len(frames),
                              previous=previous, count=count, cell=cell, intro=pose['intro'], frames='\n'.join(lines),
                              identity=data['identity'], style=data['style'], background=data['background_name'],
-                             keep=edit.get('keep', EDIT_KEEP), change=edit.get('change', EDIT_CHANGE), rule=edit.get('rule', EDIT_RULE))
+                             keep=edit.get('keep', EDIT_KEEP), change=edit.get('change', EDIT_CHANGE), rule=edit.get('rule', EDIT_RULE), portrait=data.get('portrait_note', 'Face, eyes, hair and forehead scar'))
     prompt_path = out / 'prompts' / (job_id + '.txt')
     prompt_path.write_text(prompt, encoding='utf-8')
     first = ('output/imagegen/%s-v3/references/approved-idle-candidate.png' % args.character if not pose.get('edit')

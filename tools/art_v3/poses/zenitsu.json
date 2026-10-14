@@ -1,0 +1,19 @@
+{
+  "note": "Per-frame pose scripts for Zenitsu's v3 redraw (same conventions as tools/art_v3/poses/tanjiro.json).",
+  "clips": {
+    "idle_key": {
+      "helper": true,
+      "layout": "wide",
+      "intro": "Correction of the chosen idle key pose (input image 1): the Thunder Breathing iai stance, eyes closed. Everything stays exactly as drawn except his two hands and the sword, which are redrawn so the sheathed katana is ONE straight line. Both columns are the same corrected drawing (two attempts).",
+      "frames": [
+        "The katana fully SHEATHED on his left hip as one straight, unbroken line: the white scabbard runs from its gold tip BEHIND him (to the LEFT, where it shows now, at hip height) forward to its mouth at the front of his left hip; the round gold tsuba sits at the scabbard mouth in front of his belly; the straight white-and-gold hilt continues FORWARD from the tsuba toward the opponent (to the RIGHT), never bent and never pointing back. His left hand holds the scabbard just behind the tsuba, thumb on the tsuba; his right hand grips the hilt just in front of the tsuba, ready to draw. No blade showing.",
+        "The same correction as frame 1: one straight sheathed katana from the scabbard tip behind him (left) to the pommel in front (right), left hand on the scabbard at the tsuba, right hand on the hilt in front of it, ready to draw; no blade showing."
+      ],
+      "edit": {
+        "image": "output/imagegen/zenitsu-v3/references/idle-candidate-1.png",
+        "keep": "the size and the position of the figure in its column, the head, closed eyes, face and hair, the torso, the haori, both legs, both feet, the line weight and the colours",
+        "change": "his two hands and the katana with its scabbard"
+      }
+    }
+  }
+}

@@ -1,0 +1,79 @@
+[
+  {
+    "id": "zenitsu-v3-model",
+    "group": "canon",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/old-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-model.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+    "size": "1536x1024",
+    "metadata": {
+      "character": "zenitsu",
+      "stage": "checkpoint-1"
+    }
+  },
+  {
+    "id": "zenitsu-v3-idle-candidates",
+    "group": "canon",
+    "references": [
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-idle-candidates.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-idle-candidates.png",
+    "size": "1536x1024",
+    "metadata": {
+      "character": "zenitsu",
+      "stage": "checkpoint-1"
+    },
+    "superseded_by": "zenitsu-v3-idle-candidates-r1",
+    "rejected": "Hilt drawn behind him and the scabbard tip toward the opponent in all three; the revision states the sword orientation."
+  },
+  {
+    "id": "zenitsu-v3-idle-candidates-r1",
+    "group": "canon-r1",
+    "references": [
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-idle-candidates-r1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-idle-candidates-r1.png",
+    "size": "1536x1024",
+    "metadata": {
+      "character": "zenitsu",
+      "stage": "checkpoint-1"
+    }
+  },
+  {
+    "id": "zenitsu-v3-idle_key-p0",
+    "group": "idle-key",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-idle_key-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-idle_key-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/zenitsu-v3-idle_key-p0-base.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "idle_key",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  }
+]

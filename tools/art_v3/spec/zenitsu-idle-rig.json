@@ -1,0 +1,28 @@
+{
+  "key": "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+  "frames": 12,
+  "fps": 10,
+  "grid": 6,
+  "alpha": 1.4,
+  "note": "Asleep in the Thunder Breathing iai stance: a slow, shallow sleeping breath, the haori flap and hair drifting. The sheathed katana is one straight line (scabbard tip, scabbard, guard, hilt, pommel all carry the same breath offset) so it never bends; feet and knees stay planted.",
+  "points": {
+    "heel_back": [20, 595], "foot_back": [45, 597], "toe_back": [78, 592],
+    "heel_front": [420, 590], "foot_front": [465, 592], "toe_front": [515, 590],
+    "ankle_back": [62, 540], "ankle_front": [455, 540],
+    "knee_back": [140, 455], "knee_front": [495, 370],
+    "pelvis": [320, 345], "waist": [355, 292],
+    "chest": [420, 195], "collar": [420, 120],
+    "shoulder_back": [320, 165], "shoulder_front": [470, 165],
+    "head": [470, 85], "crown": [440, 15], "hair_back": [395, 60], "hair_front": [515, 45],
+    "scabbard_tip": [12, 262], "scabbard_back": [70, 262], "scabbard": [320, 263], "guard": [385, 268], "hilt": [430, 268], "pommel": [500, 268],
+    "elbow_back": [315, 235],
+    "sleeve_back": [110, 310], "lining": [95, 370], "hem_back": [175, 372], "hem_front": [522, 305]
+  },
+  "motions": [
+    {"name": "breath", "phase": 0.0, "points": {"chest": [0, -5], "collar": [0, -5], "shoulder_back": [0, -5], "shoulder_front": [0, -4], "head": [0, -4], "crown": [0, -4], "hair_back": [0, -4], "hair_front": [0, -4], "waist": [0, -2], "elbow_back": [0, -3],
+      "scabbard_tip": [0, -2], "scabbard_back": [0, -2], "scabbard": [0, -2], "guard": [0, -2], "hilt": [0, -2], "pommel": [0, -2]}},
+    {"name": "settle", "phase": 0.5, "points": {"pelvis": [0, 2]}},
+    {"name": "cloth", "phase": -0.15, "points": {"sleeve_back": [-6, 2], "lining": [-6, 2], "hem_back": [-4, 2], "hem_front": [3, 1]}},
+    {"name": "hair", "phase": -0.3, "points": {"hair_back": [-2, -1], "crown": [1, -2], "hair_front": [2, -1]}}
+  ]
+}
