@@ -6,6 +6,7 @@ extends Node2D
 # freezes with `freeze` and expires well within half a second.
 const Kit = preload("res://scripts/ui/kit.gd")
 const TanjiroVfx = preload("res://scripts/presentation/vfx/tanjiro_vfx.gd")
+const ZenitsuVfx = preload("res://scripts/presentation/vfx/zenitsu_vfx.gd")
 ## Character flavor for blade trails and impact motes.
 const FLAVORS := {"tanjiro": "water", "zenitsu": "thunder", "nezuko": "blood", "akaza": "compass"}
 const CUT_CURVES := {
@@ -38,6 +39,7 @@ var body_layer: Node2D
 var actors: Array = []
 ## Rebuilt character effects draw their own moves; everything else stays here.
 var tanjiro: Node2D
+var zenitsu: Node2D
 
 func _ready() -> void:
 	var additive := CanvasItemMaterial.new()
@@ -77,17 +79,26 @@ func _ready() -> void:
 	tanjiro.glow = glow
 	tanjiro.cut_curves = CUT_CURVES
 	add_child(tanjiro)
+	zenitsu = ZenitsuVfx.new()
+	zenitsu.name = "ZenitsuVfx"
+	zenitsu.combat = combat
+	zenitsu.camera = camera
+	zenitsu.actors = actors
+	zenitsu.glow = glow
+	zenitsu.cut_curves = CUT_CURVES
+	add_child(zenitsu)
 
 func _rebuilt(move: Resource) -> bool:
-	return tanjiro != null and tanjiro.handles(move)
+	return (tanjiro != null and tanjiro.handles(move)) or (zenitsu != null and zenitsu.handles(move))
 
 ## Rebuilt supers draw their own charge through the freeze.
 func draws_charge(move: Resource) -> bool:
 	return move != null and move.is_super() and _rebuilt(move)
 
 func consume(events: Array) -> void:
-	if tanjiro != null:
-		tanjiro.consume(events)
+	for rebuilt in [tanjiro, zenitsu]:
+		if rebuilt != null:
+			rebuilt.consume(events)
 	# A tech also emits clash for the combat contract; render one clear escape cue.
 	var tech := events.any(func(event: Dictionary) -> bool: return event.type == "throw_tech")
 	for event: Dictionary in events:
@@ -170,17 +181,19 @@ func reset_effects() -> void:
 	screen_flash = 0
 	trauma = 0
 	time = 0
-	if tanjiro != null:
-		tanjiro.reset()
+	for rebuilt in [tanjiro, zenitsu]:
+		if rebuilt != null:
+			rebuilt.reset()
 
 func _process(delta: float) -> void:
 	delta *= playback_speed
 	if freeze:
 		return
 	time += delta
-	if tanjiro != null:
-		tanjiro.frac = Engine.get_physics_interpolation_fraction() if tanjiro.interpolate else 0.0
-		tanjiro.advance(delta)
+	for rebuilt in [tanjiro, zenitsu]:
+		if rebuilt != null:
+			rebuilt.frac = Engine.get_physics_interpolation_fraction() if rebuilt.interpolate else 0.0
+			rebuilt.advance(delta)
 	trauma = maxf(0, trauma - delta * 1.6)
 	for spark: Dictionary in sparks:
 		spark.life -= delta

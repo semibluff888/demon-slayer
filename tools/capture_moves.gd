@@ -5,7 +5,9 @@ extends SceneTree
 ## Steps: idle:N / walk:N / back:N hold for N ticks; dK:N holds numpad direction K
 ## (d1:40 is the crouching guard); p2=NOTATION/K makes the opponent press NOTATION while
 ## this fighter holds K (p2=2B/1 is a blocked low, p2=2D a sweep knockdown) and waits
-## until both have recovered; gap:N puts the opponent N px in front; any other token is a move notation (5A, 2C, 236A, 6B,
+## until both have recovered; gap:N puts the opponent N px in front; meter:N refills
+## the gauge, home:N puts this fighter back at x = N (--no-cinematic keeps supers
+## in game); any other token is a move notation (5A, 2C, 236A, 6B,
 ## j236A…) pressed like a player and followed by its full recovery. A leading "intro"
 ## step first records the real round intro of both fighters from the round start.
 ## Frames go to artifacts/art-v3/<character>/moves/frame-NNNN.png.
@@ -22,6 +24,7 @@ func _run() -> void:
 	var character := "tanjiro"
 	var steps := "idle:60,walk:50,idle:20,5A,idle:30,236A,idle:40".split(",")
 	var form := "normal"
+	var cinematic := true
 	for argument in OS.get_cmdline_user_args():
 		if argument.begins_with("--character="):
 			character = argument.trim_prefix("--character=")
@@ -29,13 +32,20 @@ func _run() -> void:
 			steps = argument.trim_prefix("--script=").split(",")
 		elif argument.begins_with("--form="):
 			form = argument.trim_prefix("--form=")
+		elif argument == "--no-cinematic":
+			cinematic = false
 	root.size = Vector2i(1280, 720)
 	folder = "res://artifacts/art-v3/%s/moves/" % character
 	DirAccess.make_dir_recursive_absolute(folder)
 	for stale in DirAccess.get_files_at(folder):
 		DirAccess.remove_absolute(folder + stale)
 	game = Main.instantiate()
+	game.settings.path = "res://artifacts/capture_moves-settings.cfg"
 	root.add_child(game)
+	if not cinematic:
+		# In-game effects only: the pre-rendered super videos would cover them
+		# (set after _ready, which loads the defaults).
+		game.settings.cinematic_enabled = false
 	game.set_physics_process(false)
 	game.sound.muted = true
 	game.characters.assign([character, "zenitsu" if character != "zenitsu" else "tanjiro"])
@@ -62,6 +72,13 @@ func _run() -> void:
 		if step.begins_with("p2="):
 			var versus := step.trim_prefix("p2=").split("/")
 			await _versus(versus[0], int(versus[1]) if versus.size() > 1 else 5)
+			continue
+		if parts[0] == "home":
+			# Moves this fighter back to x = N (dashes drift toward the corner).
+			model.fighters[0].x = count
+			continue
+		if parts[0] == "meter":
+			model.fighters[0].meter = count
 			continue
 		if parts[0] == "gap":
 			# Puts the opponent `count` px in front (its attacks must reach).

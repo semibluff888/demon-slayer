@@ -49,6 +49,7 @@ Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script',
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/ui_tests.gd') -Expected 'UI TESTS: \d+ passed, 0 failed' | Out-Null
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/ui_redesign_tests.gd') -Expected 'UI REDESIGN TESTS: \d+ passed, 0 failed' | Out-Null
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/tanjiro_vfx_tests.gd') -Expected 'TANJIRO VFX TESTS: \d+ passed, 0 failed' | Out-Null
+Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/zenitsu_vfx_tests.gd') -Expected 'ZENITSU VFX TESTS: \d+ passed, 0 failed' | Out-Null
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/presentation_tests.gd') -Expected 'PRESENTATION TESTS: \d+ passed, 0 failed' | Out-Null
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/phase2_basics_tests.gd') -Expected 'PHASE TWO BASICS: \d+ passed, 0 failed' | Out-Null
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/phase2_feedback_tests.gd') -Expected 'PHASE TWO FEEDBACK: \d+ passed, 0 failed' | Out-Null
