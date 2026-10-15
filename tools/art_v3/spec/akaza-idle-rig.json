@@ -1,0 +1,43 @@
+{
+  "key": "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+  "frames": 12,
+  "fps": 10,
+  "grid": 6,
+  "alpha": 1.4,
+  "note": "Brawler stance: a boxer's light bounce with the feet planted (the knees give, so the whole upper body dips and rises), a breath in the chest and shoulders a quarter beat later, both clawed hands rising and settling just behind the bounce, the sash ends and the hair trailing. Points are on the padded key (the candidate sits 16 px from the left and 30 px from the top). offsets put the front foot (drawn 22 px higher) on the back foot's ground line.",
+  "points": {
+    "toe_back": [31, 822], "foot_back": [61, 815], "heel_back": [91, 820],
+    "toe_front": [466, 802], "foot_front": [421, 795], "heel_front": [376, 790],
+    "ankle_back": [76, 740], "ankle_front": [391, 735],
+    "hem_back": [126, 685], "hem_front": [376, 680],
+    "knee_back": [106, 590], "knee_front": [416, 580],
+    "pelvis": [246, 430], "sash_end": [266, 530], "sash_tail": [286, 570],
+    "sash_knot": [256, 375], "waist": [256, 350],
+    "vest_back": [156, 325], "vest_front": [301, 330],
+    "chest": [221, 290], "collar": [241, 155],
+    "shoulder_back": [126, 180], "shoulder_front": [326, 190],
+    "elbow_back": [86, 300], "elbow_front": [386, 320],
+    "hand_back": [251, 245], "hand_front": [411, 215],
+    "chin": [301, 160], "head": [286, 110],
+    "crown": [276, 38], "hair_back": [216, 75], "hair_front": [331, 65]
+  },
+  "offsets": {
+    "toe_front": [0, 22], "foot_front": [0, 22], "heel_front": [0, 22],
+    "ankle_front": [0, 18], "hem_front": [0, 8], "knee_front": [0, 4]
+  },
+  "motions": [
+    {"name": "bounce", "phase": 0.0, "points": {
+      "pelvis": [0, 6], "waist": [0, 8], "sash_knot": [0, 8], "vest_back": [0, 8], "vest_front": [0, 8],
+      "chest": [0, 8], "collar": [0, 8], "shoulder_back": [0, 8], "shoulder_front": [0, 8],
+      "elbow_back": [0, 8], "elbow_front": [0, 8], "hand_back": [0, 8], "hand_front": [0, 8],
+      "chin": [0, 8], "head": [0, 8], "crown": [0, 8], "hair_back": [0, 8], "hair_front": [0, 8],
+      "sash_end": [0, 6], "sash_tail": [0, 5], "knee_back": [0, 3], "knee_front": [0, 3], "hem_back": [0, 1], "hem_front": [0, 1]}},
+    {"name": "breath", "phase": 0.25, "points": {
+      "chest": [0, -3], "collar": [0, -3], "shoulder_back": [0, -3], "shoulder_front": [0, -3],
+      "chin": [0, -2], "head": [0, -2], "crown": [0, -2], "hair_back": [0, -2], "hair_front": [0, -2],
+      "elbow_back": [0, -2], "elbow_front": [0, -2], "hand_back": [0, -2], "hand_front": [0, -2]}},
+    {"name": "guard", "phase": 0.1, "points": {"hand_front": [1, -4], "hand_back": [1, -3], "elbow_front": [0, -2]}},
+    {"name": "sash", "phase": -0.2, "points": {"sash_end": [3, 1], "sash_tail": [5, 1]}},
+    {"name": "hair", "phase": -0.3, "points": {"crown": [1, -2], "hair_front": [2, -1], "hair_back": [-2, -1]}}
+  ]
+}

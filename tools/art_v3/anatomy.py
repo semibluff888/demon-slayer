@@ -8,7 +8,10 @@ The head is the face-skin blob that touches the most hair plus the hair attached
 it. Tanjiro's burgundy hair is distinct from his costume. Zenitsu's hair, haori and
 leg wraps share one yellow-to-orange range, so his profile adds "hair_cut": only hair
 on the far side of the chin (seen from the body centre) and within `radius` face sizes
-of the face centre counts, after the gold is split at thin links.
+of the face centre counts, after the gold is split at thin links. Akaza's pink hair
+and magenta vest share hue and saturation but not brightness: his profile adds
+"hair_lit", which keeps only the pink regions where at least `share` of the pixels are
+as bright as the lit hair (`v`); the vest is never that bright, even where lit.
 
 The ruler is sqrt(head area): it does not change when the head rotates, so it
 measures drawing scale in flips and falls as well as upright poses.
@@ -56,7 +59,15 @@ def masks(rgba):
     alpha = rgba[:, :, 3] > 160
     hsv = _hsv(rgba)
     rules = profile()['anatomy']
-    return tuple(select(rgba, rules[name], hsv, alpha) for name in ('hair', 'skin', 'uniform'))
+    hair, skin, uniform = (select(rgba, rules[name], hsv, alpha) for name in ('hair', 'skin', 'uniform'))
+    lit = rules.get('hair_lit')
+    if lit:
+        count, labels, stats, _ = cv2.connectedComponentsWithStats(hair.astype(np.uint8), 8)
+        bright = np.bincount(labels[hair & (hsv[:, :, 2] >= lit['v'])], minlength=count)
+        keep = bright >= lit['share'] * stats[:, cv2.CC_STAT_AREA]
+        keep[0] = False
+        hair = keep[labels]
+    return hair, skin, uniform
 
 
 def _face(hair, skin, toward=None):

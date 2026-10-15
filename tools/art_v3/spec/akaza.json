@@ -11,15 +11,15 @@
   "background_note": "Green, not magenta: Akaza's vest is magenta-pink and his hair pink, so a magenta key would eat them (the roster-v1 art used green too). common.cutout keys it.",
   "request_size": "1536x1024",
   "ruler": {
-    "note": "Checkpoint 1 rulers. Akaza is a tall, muscular adult (about 7 heads in the prompts); the game keeps him visibly taller than Tanjiro and Zenitsu (tests/fate_revision_tests.gd), so he stands about 370 px at runtime against their 340.",
-    "scale_note": "Measured 2026-10-15 on the generated sheets: the v3 model sheet's front view is 959 px from hair top to sole with hair top to chin 146 (6.6 heads), and all three idle candidates measure 129 px hair top to chin. Runtime head = 370 x 146 / 959 = 56.3 px (Tanjiro 61, Zenitsu 60), key scale 56.3 / 129 = 0.437: candidate 1 stands 302 px in game, 2 362 px, 3 349 px (old Akaza idle 366). Re-check approved_head_px on the chosen key at checkpoint 2. Checkpoint 1 (2026-10-16): the user chose candidate 3 (brawler stance, about 349 px in game).",
+    "note": "Akaza is a tall, muscular adult (about 7 heads in the prompts). Runtime heights follow the official character data (Fanbook, as quoted by the Kimetsu no Yaiba Fandom wiki and pixiv encyclopedia): Tanjiro 165 cm, Zenitsu 164.5 cm, Akaza 173 cm, Nezuko 153 cm. Tanjiro and Zenitsu stand 340 px, so Akaza stands 340 x 173 / 165 = 356 px (tests/fate_revision_tests.gd: Akaza stays taller than both).",
+    "scale_note": "Measured 2026-10-16 with anatomy.head (hair_lit rule) on the approved key (candidate 3, references/approved-idle-candidate.png, 493 x 828 with its padding): hair top to chin 132 px, stance 796 px; on the v3 model sheet's front view: hair top to chin 141, hair top to sole 960 (6.8 heads). Runtime head = 356 x 141 / 960 = 52.3 px (Tanjiro 61, Zenitsu 60: an adult drawn at 6.8 heads), key scale 52.3 / 132 = 0.396: the brawler idle stands about 315 px in game and upright 356 (the key's upright height is 960 x 132 / 141 = 899 px, so idle_vs_upright = 0.886). Checkpoint 1 (2026-10-16): the user chose candidate 3; the checkpoint-1 estimates (129 / 146 / 959, 370 px standing, idle about 349 px) were read by eye before the official heights were applied.",
     "standing_px": 460,
     "head_px": 66,
     "heads_tall": 7.0,
-    "runtime_standing_px": 370,
-    "approved_head_px": 129,
-    "model_head_px": 146,
-    "model_height_px": 959
+    "runtime_standing_px": 356,
+    "approved_head_px": 132,
+    "model_head_px": 141,
+    "model_height_px": 960
   },
   "palette": {
     "note": "Material targets are measured from the approved v3 idle key at run time (process.canonical); the colour classes are \"anatomy\" and \"materials\" below."
@@ -48,11 +48,11 @@
     ]
   },
   "prompt": {
-    "note": "Production rulers are measured on the approved key at checkpoint 2 (stance_px, upright_px and head_px are placeholders). He is unarmed, so the weapon line names his hands and the edit defaults change only his arms and hands.",
+    "note": "Production rulers measured on the approved key at checkpoint 2: brawler stance 800 px, upright 900 px (model sheet proportion at the key's head), hair top to chin 132 px. He is unarmed, so the weapon line names his hands and the edit defaults change only his arms and hands.",
     "stance": "fighting stance",
-    "stance_px": 860,
-    "upright_px": 940,
-    "head_px": 134,
+    "stance_px": 800,
+    "upright_px": 900,
+    "head_px": 132,
     "weapon_label": "Hands",
     "katana": "he is UNARMED in every drawing: no sword, no scabbard and no weapon of any kind; both hands are bare, entirely navy-blue with red fingernails, as in input image 1.",
     "katana_edit": "he is UNARMED: no sword, no scabbard and no weapon; both hands are bare, navy-blue with red fingernails.",
@@ -72,7 +72,7 @@
         255
       ],
       "v": [
-        120,
+        90,
         255
       ]
     },
@@ -107,6 +107,10 @@
     "hair_cut": {
       "radius": 2.5,
       "link": 2
+    },
+    "hair_lit": {
+      "v": 215,
+      "share": 0.25
     }
   },
   "materials": {
@@ -151,7 +155,7 @@
   },
   "awakening": {
     "mode": "grade",
-    "note": "Approved at checkpoint 1 (Jutsu Development: Compass Needle): the navy tattoo lines, sash and hands brighten toward a luminous blue and the vest a little more vivid; alpha untouched, so every pixel stays where the base drawing put it. Matches the blue-violet awakened effects.",
+    "note": "Approved at checkpoint 1 (Jutsu Development: Compass Needle): the navy tattoo lines, sash, hands and ankle beads brighten toward a luminous blue (Lab lightness +16, chroma x1.5, tried against +9 / x1.35 and +24 / x1.6 on the idle at checkpoint 2); alpha untouched, so every pixel stays where the base drawing put it. The blue-violet flame outline is drawn in game by vfx/akaza/compass.gd, so there is no baked rim.",
     "gold": {
       "h": [
         100,
@@ -166,8 +170,8 @@
         150
       ]
     },
-    "lightness": 9.0,
-    "chroma": 1.35,
+    "lightness": 16.0,
+    "chroma": 1.5,
     "rim_px": 0,
     "rim_colour": [
       140,
@@ -177,7 +181,7 @@
     "rim_alpha": 0.4
   },
   "qa": {
-    "note": "idle_vs_upright follows the chosen key: candidate 3, the brawler stance (about 0.94 of the upright height); re-measure on the approved key at checkpoint 2.",
+    "note": "idle_vs_upright measured on the approved key (candidate 3, the brawler stance): 796 / 899.",
     "upright": [
       0.95,
       1.15
@@ -191,7 +195,7 @@
       "walk",
       "air_type"
     ],
-    "idle_vs_upright": 0.94
+    "idle_vs_upright": 0.886
   },
   "portrait_note": "Face, eyes, pink hair and the navy face tattoos"
 }

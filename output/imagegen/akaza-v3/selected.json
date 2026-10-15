@@ -1,0 +1,23 @@
+{
+  "checkpoint-1": {
+    "date": "2026-10-16",
+    "idle_candidate": 3,
+    "idle_candidate_name": "拳斗架势 (brawler stance: both hands raised before the chest as half-closed claws)",
+    "model_sheet": "raw/akaza-v3-model.png",
+    "model_sheet_approved": true,
+    "source": "raw/akaza-v3-idle-candidates.png",
+    "column": "x 1060-1536 of the sheet (the third figure), cropped to its alpha bounds as references/idle-candidate-3.png",
+    "correction": {
+      "note": "None needed: unarmed, navy hands with red nails, tattoos, vest, sash, trousers and ankle beads all match the spec. The front foot stands 22 px higher than the back one; the idle rig's offsets put both soles on one ground line."
+    },
+    "isolated": "references/approved-idle-candidate.png",
+    "padding": {
+      "note": "Transparent margin round the candidate (left 16, top 30, right 16, bottom 0) so the idle warp can lift the hair, which touches the top of the drawing.",
+      "left": 16,
+      "top": 30,
+      "right": 16,
+      "bottom": 0
+    },
+    "isolated_sha256": "5cd190978890ec6a56b748e63b7cb14f2ba90837e464191e3008d6675027a135"
+  }
+}
