@@ -6912,7 +6912,9 @@
         1024
       ],
       "layout": "wide"
-    }
+    },
+    "superseded_by": "zenitsu-v3-inadama_2-p0-r2",
+    "rejected": "The empty scabbard sticks out FORWARD in front of his belly with its gold tip toward the opponent, reading as a second weapon; the scabbard-only edit moves it behind his left hip."
   },
   {
     "id": "zenitsu-v3-inadama_2-p1-r1",
@@ -6943,7 +6945,9 @@
         1024
       ],
       "layout": "wide"
-    }
+    },
+    "superseded_by": "zenitsu-v3-inadama_2-p1-r2",
+    "rejected": "The empty scabbard points FORWARD in front of his belly (frame 3 also shows a second white end behind him); the scabbard-only edit moves it behind his left hip."
   },
   {
     "id": "zenitsu-v3-air_thunder-p4-r1",
@@ -7102,6 +7106,167 @@
         1024
       ],
       "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-inadama_2-p0-r2",
+    "group": "scabbard-fix",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-inadama_2-p0-r2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-inadama_2-p0-r2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/zenitsu-v3-inadama_2-p0-r2-base.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "inadama_2",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "zenitsu-v3-inadama_2-p0-r3",
+    "rejected": "Frame 1 fixed, but frame 2 still holds the scabbard pointing forward past the low back-swung blade; the next edit keeps frame 1 and hides the scabbard behind his hip in frame 2."
+  },
+  {
+    "id": "zenitsu-v3-inadama_2-p1-r2",
+    "group": "scabbard-fix",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-inadama_2-p1-r2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-inadama_2-p1-r2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/zenitsu-v3-inadama_2-p1-r2-base.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-inadama_2-p0-r2.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "inadama_2",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-inadama_2-p0-r3",
+    "group": "scabbard-fix-r1",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-inadama_2-p0-r3.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-inadama_2-p0-r3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/zenitsu-v3-inadama_2-p0-r3-base.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "inadama_2",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-portrait-bust-1",
+    "group": "portraits",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-portrait-bust-1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-portrait-bust-1.png",
+    "size": "1024x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/references/old-battle-portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "kind": "bust",
+      "attempt": 1
+    }
+  },
+  {
+    "id": "zenitsu-v3-portrait-bust-2",
+    "group": "portraits",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-portrait-bust-2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-portrait-bust-2.png",
+    "size": "1024x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/references/old-battle-portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "kind": "bust",
+      "attempt": 2
+    }
+  },
+  {
+    "id": "zenitsu-v3-portrait-full-1",
+    "group": "portraits",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-portrait-full-1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-portrait-full-1.png",
+    "size": "1024x1536",
+    "references": [
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/references/old-portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "kind": "full",
+      "attempt": 1
+    }
+  },
+  {
+    "id": "zenitsu-v3-portrait-full-2",
+    "group": "portraits",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-portrait-full-2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-portrait-full-2.png",
+    "size": "1024x1536",
+    "references": [
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/references/old-portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "kind": "full",
+      "attempt": 2
     }
   }
 ]

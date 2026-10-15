@@ -267,13 +267,26 @@ def process_clip(character, clip, jobs, canon, band=None, pose=None):
             method = 'clip-median (head not measurable)'
         overlap = meta.get('overlap') or []
         registered = pose.get('register')
+        if registered and meta['part'] not in registered.get('parts', [meta['part']]):
+            registered = None
         if registered:
             # The body is the referenced drawing (an edit of it): register every drawing
-            # on that frame by its lower body; the sheet records the median scale.
-            reference_record = read(production(character) / 'imports' / (registered['clip'] + '.json'))
-            reference_frame = Image.open(production(character) / 'imports' / registered['clip'] / ('frame-%02d.png' % registered['frame'])).convert('RGBA')
-            guess = next(f['scale'] for f in reference_record['frames'] if f['frame'] == registered['frame'])
-            placed = {index: register(image, reference_frame, guess) for (_, image), index in zip(drawings, meta['frame_indices']) if index not in overlap}
+            # on that frame by its lower body; the sheet records the median scale. With
+            # "frames" (a frozen copy of this clip's frames, record.json beside them) each
+            # drawing is an edit of its own earlier frame and registers on that one.
+            if registered.get('frames'):
+                folder = ROOT / registered['frames']
+                reference_record = read(folder / 'record.json')
+            else:
+                folder = production(character) / 'imports' / registered['clip']
+                reference_record = read(folder.parent / (registered['clip'] + '.json'))
+
+            def placed_on(image, index):
+                frame = index if registered.get('frames') else registered['frame']
+                reference_frame = Image.open(folder / ('frame-%02d.png' % frame)).convert('RGBA')
+                guess = next(f['scale'] for f in reference_record['frames'] if f['frame'] == frame)
+                return register(image, reference_frame, guess)
+            placed = {index: placed_on(image, index) for (_, image), index in zip(drawings, meta['frame_indices']) if index not in overlap}
             scale = statistics.median(p['registration']['scale'] for _, p in placed.values())
             method = 'registered'
             part_ruler = canon['runtime_ruler'] / scale

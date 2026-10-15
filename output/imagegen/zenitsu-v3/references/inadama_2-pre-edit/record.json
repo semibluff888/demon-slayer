@@ -1,0 +1,285 @@
+{
+  "character": "zenitsu",
+  "clip": "inadama_2",
+  "canvas_size": [
+    1024,
+    640
+  ],
+  "feet_anchor": [
+    448,
+    568
+  ],
+  "runtime_head_ruler": 48.24,
+  "parts": [
+    {
+      "id": "zenitsu-v3-inadama_2-p0-r1",
+      "source": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-inadama_2-p0-r1.png",
+      "sha256": "8f6bbe67792dcab06f9281121f0eb0d603610a77297e0668868ea31dfd96d050",
+      "ruler": 135.0,
+      "scale": 0.3573,
+      "scale_method": "head-ruler",
+      "resample_vs_idle": 0.893,
+      "palette_shift": {
+        "haori_yellow": [
+          -1.57,
+          1.11,
+          3.38
+        ],
+        "haori_orange": [
+          -2.09,
+          1.16,
+          2.72
+        ],
+        "uniform": [
+          1.76,
+          0.92,
+          1.51
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori_yellow": 3.77,
+        "haori_orange": 3.38,
+        "uniform": 2.25,
+        "skin": 1.1,
+        "hair": 2.15
+      },
+      "palette_delta_e_after": {
+        "haori_yellow": 0.68,
+        "haori_orange": 0.88,
+        "uniform": 0.78,
+        "skin": 1.08,
+        "hair": 2.14
+      }
+    },
+    {
+      "id": "zenitsu-v3-inadama_2-p1-r1",
+      "source": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-inadama_2-p1-r1.png",
+      "sha256": "ae682b95eb75d43ad9099b41a0461e07f933bec0eb7320200b444e76085ca8a2",
+      "ruler": 134.71,
+      "scale": 0.3581,
+      "scale_method": "head-ruler",
+      "resample_vs_idle": 0.895,
+      "palette_shift": {
+        "haori_orange": [
+          -1.44,
+          0.58,
+          -2.67
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori_yellow": 1.92,
+        "haori_orange": 2.96,
+        "uniform": 0.53,
+        "skin": 0.8,
+        "hair": 3.42
+      },
+      "palette_delta_e_after": {
+        "haori_yellow": 1.79,
+        "haori_orange": 0.87,
+        "uniform": 0.53,
+        "skin": 0.83,
+        "hair": 3.42
+      }
+    },
+    {
+      "id": "zenitsu-v3-inadama_2-p2",
+      "source": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-inadama_2-p2.png",
+      "sha256": "ac3a2578ca7963cb31d279a13e78e51eb885de912199eb1c3e21f7bc19404cb8",
+      "ruler": 162.03,
+      "scale": 0.2977,
+      "scale_method": "head-ruler",
+      "resample_vs_idle": 0.744,
+      "palette_shift": {},
+      "palette_delta_e_before": {
+        "haori_yellow": 0.9,
+        "haori_orange": 1.64,
+        "uniform": 1.42,
+        "skin": 0.56,
+        "hair": 1.11
+      },
+      "palette_delta_e_after": {
+        "haori_yellow": 0.9,
+        "haori_orange": 1.64,
+        "uniform": 1.42,
+        "skin": 0.56,
+        "hair": 1.11
+      }
+    }
+  ],
+  "frames": [
+    {
+      "frame": 0,
+      "part": "zenitsu-v3-inadama_2-p0-r1",
+      "crop": [
+        26,
+        77,
+        908,
+        936
+      ],
+      "head_ruler": 132.4,
+      "head_box": [
+        294,
+        3,
+        463,
+        162
+      ],
+      "ratio_to_sheet": 0.981,
+      "scale": 0.3573,
+      "flags": [],
+      "notes": [],
+      "root_x": 327.0,
+      "anchor_mode": "feet",
+      "offset": [
+        331,
+        262
+      ],
+      "clipped": false,
+      "height_vs_idle": 1.272
+    },
+    {
+      "frame": 1,
+      "part": "zenitsu-v3-inadama_2-p0-r1",
+      "crop": [
+        596,
+        142,
+        1491,
+        936
+      ],
+      "head_ruler": 135.0,
+      "head_box": [
+        658,
+        5,
+        831,
+        168
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3573,
+      "flags": [],
+      "notes": [],
+      "root_x": 666.0,
+      "anchor_mode": "feet",
+      "offset": [
+        210,
+        286
+      ],
+      "clipped": false,
+      "height_vs_idle": 1.176
+    },
+    {
+      "frame": 2,
+      "part": "zenitsu-v3-inadama_2-p1-r1",
+      "crop": [
+        13,
+        187,
+        887,
+        964
+      ],
+      "head_ruler": 134.71,
+      "head_box": [
+        300,
+        1,
+        474,
+        163
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3581,
+      "flags": [],
+      "notes": [],
+      "root_x": 337.0,
+      "anchor_mode": "feet",
+      "offset": [
+        327,
+        290
+      ],
+      "clipped": false,
+      "height_vs_idle": 1.163
+    },
+    {
+      "frame": 3,
+      "part": "zenitsu-v3-inadama_2-p1-r1",
+      "crop": [
+        650,
+        19,
+        1518,
+        965
+      ],
+      "head_ruler": 127.23,
+      "head_box": [
+        306,
+        180,
+        483,
+        314
+      ],
+      "ratio_to_sheet": 0.944,
+      "scale": 0.3581,
+      "flags": [],
+      "notes": [],
+      "root_x": 359.0,
+      "anchor_mode": "feet",
+      "offset": [
+        319,
+        230
+      ],
+      "clipped": false,
+      "height_vs_idle": 1.155
+    },
+    {
+      "frame": 4,
+      "part": "zenitsu-v3-inadama_2-p2",
+      "crop": [
+        14,
+        130,
+        739,
+        922
+      ],
+      "head_ruler": 160.9,
+      "head_box": [
+        492,
+        5,
+        696,
+        197
+      ],
+      "ratio_to_sheet": 0.993,
+      "scale": 0.2977,
+      "flags": [],
+      "notes": [],
+      "root_x": 457.0,
+      "anchor_mode": "feet",
+      "offset": [
+        312,
+        333
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.975
+    },
+    {
+      "frame": 5,
+      "part": "zenitsu-v3-inadama_2-p2",
+      "crop": [
+        768,
+        130,
+        1506,
+        926
+      ],
+      "head_ruler": 162.03,
+      "head_box": [
+        511,
+        4,
+        718,
+        201
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.2977,
+      "flags": [],
+      "notes": [],
+      "root_x": 482.0,
+      "anchor_mode": "feet",
+      "offset": [
+        305,
+        332
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.979
+    }
+  ]
+}

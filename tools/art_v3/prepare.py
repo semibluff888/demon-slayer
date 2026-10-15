@@ -10,17 +10,25 @@ A pose may add one more reference image: "reference": {"image": path, "role": te
 A pose with "edit": {"image": path} is an edit of an existing drawing instead: input
 image 1 is that drawing repeated once per column on the background, and the prompt
 asks to keep the body exactly and change only what each frame describes (the
-crouching guard is the crouch with the arms and katana moved).
+crouching guard is the crouch with the arms and katana moved). An edit with
+"sheet": "redo" instead edits the sheet it replaces (each column keeps its own
+drawing, e.g. only a misdrawn scabbard is corrected); "parts" limits the edit to
+those parts of the clip, and "frames" / "intro" replace the pose's frame lines and
+motion in the edit prompt.
 
 Usage: python tools/art_v3/prepare.py --clips walk,stand_light --group pilot
        python tools/art_v3/prepare.py --redo walk:2,water_slash:1 --group pilot-r1
 """
 import argparse
 import re
+import sys
 
 from PIL import Image
 
 from common import POSES, ROOT, production, read, rel, save, spec
+
+sys.path.insert(0, str(ROOT / 'tools'))
+import process_anime_art as legacy  # noqa: E402
 
 # "full" (one 1536 px column) only for edits: an edit keeps its base drawing's size, so a
 # pose reaching far forward (a blade pointed at the opponent) gets the room without growing.
@@ -44,7 +52,7 @@ Constraints: no effects (no {effects}), no opponent, no floor, no shadow, no tex
 
 EDIT_PROMPT = """Use case: precise edit of existing sprite drawings
 Asset type: final polished 2D anime fighting-game sprite animation frames, {name} "{clip}" (frames {first}-{last} of {total}).
-Input image 1: THE DRAWINGS TO EDIT. {count} copies of the same drawing, one per column ({cell} px wide, the full 1024 px image height), all facing RIGHT.
+Input image 1: THE DRAWINGS TO EDIT. {drawings}, one per column ({cell} px wide, the full 1024 px image height), all facing RIGHT.
 Input image 2: APPROVED MODEL SHEET. Costume construction and colours.
 Input image 3: PORTRAIT. {portrait}.
 {previous}Primary request: edit every column of input image 1. Keep EXACTLY as in input image 1: {keep}. Change ONLY {change}, as each frame describes. {rule}
@@ -78,6 +86,22 @@ def edit_base(data, pose, job_id, count):
     return path
 
 
+def redo_base(data, source, job_id):
+    """Input image 1 of a "sheet": "redo" edit: the sheet being replaced, cut out (the
+    service sometimes returns real alpha over a glow) and laid on the background."""
+    sheet = Image.new('RGBA', (1536, 1024), tuple(data['background']) + (255,))
+    sheet.alpha_composite(legacy.cutout(Image.open(ROOT / source)))
+    path = production(data['id']) / 'references' / (job_id + '-base.png')
+    sheet.convert('RGB').save(path)
+    return path
+
+
+def editing(pose, index):
+    """The pose's edit settings when part `index` is an edit, else None."""
+    edit = pose.get('edit')
+    return edit if edit and index in edit.get('parts', [index]) else None
+
+
 def parts(count, columns):
     """Full chunks of `columns`; a short last chunk is padded with preceding frames.
     Returns [(drawn indices, overlap indices)]."""
@@ -92,11 +116,16 @@ def parts(count, columns):
     return result
 
 
-def make_job(args, data, pose, clip, index, chunk, overlap, previous_out, revision=''):
-    if pose['layout'] == 'full' and not pose.get('edit'):
+def make_job(args, data, pose, clip, index, chunk, overlap, previous_out, revision='', replaced=None):
+    edit = editing(pose, index)
+    if pose['layout'] == 'full' and not edit:
         raise SystemExit('%s: the full layout is for edits only (a lone generated figure is drawn too large)' % clip)
+    if edit and edit.get('sheet') == 'redo' and not replaced:
+        raise SystemExit('%s part %d: a "sheet": "redo" edit needs --redo (it edits the sheet it replaces)' % (clip, index))
     out = production(args.character)
-    frames = pose['frames']
+    frames = list(pose['frames'])
+    if edit:
+        frames[:len(edit.get('frames', []))] = edit.get('frames', [])
     job_id = '%s-v3-%s-p%d%s' % (args.character, clip, index, revision)
     count = len(chunk)
     cell = 1536 // count
@@ -109,18 +138,25 @@ def make_job(args, data, pose, clip, index, chunk, overlap, previous_out, revisi
     extra = pose.get('reference')
     if extra:
         previous += 'Input image %d: %s\n' % (5 if previous_out else 4, extra['role'])
-    template = EDIT_PROMPT if pose.get('edit') else PROMPT
-    edit = pose.get('edit') or {}
+    template = EDIT_PROMPT if edit else PROMPT
+    redo = bool(edit) and edit.get('sheet') == 'redo'
+    drawings = '%d drawings of this animation' % count if redo else '%d copies of the same drawing' % count
+    edit = edit or {}
     # Rulers, the katana sentence and the banned effects come from spec/<id>.json "prompt".
     prompt = template.format(name=data['name'], clip=clip, first=chunk[0] + 1, last=chunk[-1] + 1, total=len(frames),
-                             previous=previous, count=count, cell=cell, intro=pose['intro'], frames='\n'.join(lines),
+                             previous=previous, count=count, cell=cell, intro=edit.get('intro', pose['intro']), frames='\n'.join(lines),
+                             drawings=drawings,
                              identity=data['identity'], style=data['style'], background=data['background_name'],
                              keep=edit.get('keep', EDIT_KEEP), change=edit.get('change', EDIT_CHANGE), rule=edit.get('rule', EDIT_RULE),
                              portrait=data['portrait_note'], **{k: v for k, v in data['prompt'].items() if k != 'note'})
     prompt_path = out / 'prompts' / (job_id + '.txt')
     prompt_path.write_text(prompt, encoding='utf-8')
-    first = ('output/imagegen/%s-v3/references/approved-idle-candidate.png' % args.character if not pose.get('edit')
-             else rel(edit_base(dict(data, id=args.character), pose, job_id, count)))
+    if redo:
+        first = rel(redo_base(dict(data, id=args.character), replaced['out'], job_id))
+    elif edit:
+        first = rel(edit_base(dict(data, id=args.character), pose, job_id, count))
+    else:
+        first = 'output/imagegen/%s-v3/references/approved-idle-candidate.png' % args.character
     references = [first,
                   'output/imagegen/%s-v3/raw/%s-v3-model.png' % (args.character, args.character),
                   'output/imagegen/%s-v3/references/portrait.png' % args.character]
@@ -178,7 +214,7 @@ def main():
         base = re.sub(r'-r\d+$', '', old['id'])
         revision = '-r%d' % sum(1 for j in jobs if j['id'] == base or j['id'].startswith(base + '-r'))
         previous_out = existing[index - 1]['out'] if index > 0 else None
-        job = make_job(args, data, pose, clip, index, chunk, overlap, previous_out, revision)
+        job = make_job(args, data, pose, clip, index, chunk, overlap, previous_out, revision, replaced=old)
         old['superseded_by'] = job['id']
         jobs.append(job)
         added += 1
