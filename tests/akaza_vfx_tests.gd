@@ -179,19 +179,19 @@ func _check_shot(id: String, height: float) -> void:
 			trail = maxi(trail, akaza.sparks.count())
 	check(flew, id + " shot is tracked while it flies")
 	check(trail > 0, id + " shot sheds a trail")
-	var spikes := 0
+	var rubble := 0
 	var rings := 0
 	for n in range(160):
 		_tick()
-		spikes = maxi(spikes, akaza.bursts.filter(func(b: Dictionary) -> bool: return b.kind == "spikes").size())
+		rubble = maxi(rubble, akaza.bursts.filter(func(b: Dictionary) -> bool: return b.kind == "rubble").size())
 		rings = maxi(rings, akaza.bursts.filter(func(b: Dictionary) -> bool: return b.kind == "ring").size())
 		if model.projectiles.is_empty() and n > 4:
 			break
 	if height > 0.0:
-		check(spikes == 1, id + " bursts on the floor exactly once (got %d)" % spikes)
+		check(rubble == 1, id + " breaks the floor exactly once (got %d)" % rubble)
 		check(akaza.bursts.any(func(b: Dictionary) -> bool: return b.kind == "crater"), id + " leaves a crater where it lands")
 	else:
-		check(spikes == 0 and rings >= 1, id + " disperses at the end of its range without a floor burst")
+		check(rubble == 0 and rings >= 1, id + " disperses at the end of its range without a floor burst")
 	for n in range(160):
 		_tick()
 	check(_particles(akaza) == 0 and akaza.bursts.is_empty() and akaza._shots.is_empty(), id + " shot clears")

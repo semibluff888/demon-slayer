@@ -3,8 +3,9 @@ extends "res://scripts/presentation/vfx/akaza/technique.gd"
 ## twists the air in front of the fist into a swirl and a white ring, and the
 ## blow flies on as a comet of compressed air: a white-hot head in a cyan body
 ## (blue-violet when awakened), swirling rings and a tapering tail shedding
-## flakes. The air version flies down at a slant; where it meets the floor it
-## bursts into small crystal spikes, a ring of dust and a shallow crater.
+## glints. The air version flies down at a slant; where it meets the floor it
+## breaks it: a few slabs of stone tip up, rocks fly, dust rings out and a
+## shallow crater stays.
 
 ## The punching fist (drawn air_type frames, roster-v1 art); combat spawns the
 ## shot lower and behind it, at (27, -32).
@@ -89,8 +90,8 @@ func draw_shot(canvas: Node2D, layer: int, shot: Dictionary, awakened: bool) -> 
 				canvas.draw_texture_rect(vfx.glow, Rect2(-Vector2.ONE * r * 2.2, Vector2.ONE * r * 4.4), false, Color(Kit.deep(awakened), 0.5))
 		Kit.FRONT:
 			Ribbon.draw(canvas, tail, widths, vfx._tinted(tint, Color(Kit.tone(awakened), 0.9)), vfx.band)
-			canvas.draw_colored_polygon(vfx.jagged(Vector2.ZERO, r * 0.95, 9, int(shot.instance) * 3 + int(shot.life) % 3, 0.6), Color(Kit.tone(awakened), 0.95))
-			canvas.draw_colored_polygon(vfx.jagged(Vector2.ZERO, r * 0.55, 7, int(shot.instance) * 5 + 1, 0.3), Color(Kit.WHITE, 1.0))
+			# The head: the fluffy shock ball, turning as it flies.
+			vfx.burst_sprite(canvas, Vector2.ZERO, r * 0.95, int(shot.instance) * 3, 0.0, 0.95, awakened, spin * 0.4)
 		Kit.LIGHT:
 			if vfx.glow != null:
 				canvas.draw_texture_rect(vfx.glow, Rect2(-Vector2.ONE * r * 1.2, Vector2.ONE * r * 2.4), false, Color(Kit.ICE, 0.7))
@@ -103,15 +104,15 @@ func shot_ended(shot: Dictionary, awakened: bool) -> void:
 	var at := Vector2(float(shot.x), float(shot.y))
 	var seed: int = int(shot.instance) * 211 + 17
 	if float(shot.vy) > 0.0 and at.y >= Arena.FLOOR_Y - 14.0:
-		# 空式·下 meets the floor: crystal spikes, a ring of dust and a crater.
+		# 空式·下 meets the floor: slabs of stone, flying rock, a ring of dust and a crater.
 		var floor_at := Vector2(at.x, Arena.FLOOR_Y)
 		var facing := 1.0 if float(shot.vx) >= 0.0 else -1.0
-		vfx.bursts.append({"kind": "shock", "at": floor_at + Vector2(0.0, -6.0), "age": 0.0, "life": 0.16, "size": 15.0, "facing": facing, "seed": seed, "awake": awakened})
-		vfx.bursts.append({"kind": "spikes", "technique": self, "at": floor_at, "age": 0.0, "life": 0.42, "size": 18.0, "facing": facing, "seed": seed + 1, "awake": awakened})
+		vfx.bursts.append({"kind": "shock", "at": floor_at + Vector2(0.0, -6.0), "age": 0.0, "life": 0.2, "size": 15.0, "facing": facing, "seed": seed, "awake": awakened})
+		vfx.bursts.append({"kind": "rubble", "technique": self, "at": floor_at, "age": 0.0, "life": 0.5, "size": 18.0, "facing": facing, "seed": seed + 1, "awake": awakened})
 		vfx.bursts.append({"kind": "crater", "technique": self, "at": floor_at, "age": 0.0, "life": CRATER, "size": 14.0, "facing": 1.0, "seed": seed + 2})
 		vfx.dust_burst(floor_at, 5, Vector2(facing * 0.3, 0.0), seed + 3, 0.9)
-		vfx.debris_burst(floor_at, 4, Vector2(facing * 0.3, 0.0), seed + 4, true)
-		vfx.flake_burst(floor_at + Vector2(0.0, -6.0), 5, 60.0, seed + 5, awakened)
+		vfx.debris_burst(floor_at, 6, Vector2(facing * 0.3, 0.0), seed + 4, true)
+		vfx.flake_burst(floor_at + Vector2(0.0, -6.0), 3, 60.0, seed + 5, awakened)
 	else:
 		# Spent at the end of its range (or cancelled by a clash): the air disperses.
 		vfx.bursts.append({"kind": "ring", "at": at, "age": 0.0, "life": 0.2, "size": 12.0, "squash": 1.3, "facing": 1.0, "seed": seed, "awake": awakened})
@@ -119,10 +120,10 @@ func shot_ended(shot: Dictionary, awakened: bool) -> void:
 
 func draw_burst(canvas: Node2D, layer: int, burst: Dictionary, k: float) -> void:
 	match burst.kind:
-		"spikes":
+		"rubble":
 			var rise := 1.0 - pow(1.0 - clampf(k / 0.18, 0.0, 1.0), 3.0)
 			var sink := 1.0 - smoothstep(0.55, 1.0, k)
-			vfx.crystals(canvas, layer, Vector2.ZERO, float(burst.size), rise * sink, int(burst.seed), bool(burst.awake), 5)
+			vfx.rubble(canvas, layer, Vector2.ZERO, float(burst.size), rise * sink, int(burst.seed), bool(burst.awake), 5)
 		"crater":
 			if layer == Kit.FLOOR:
 				vfx.crater(canvas, Vector2.ZERO, float(burst.size), 1.0 - smoothstep(0.6, 1.0, k), int(burst.seed))

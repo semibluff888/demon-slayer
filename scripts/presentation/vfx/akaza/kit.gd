@@ -1,8 +1,8 @@
 extends RefCounted
 ## Shared constants for Akaza's effects after the Hinokami Chronicles look:
-## spiky cyan shock bursts with a white-hot core, white air-pressure arcs and
-## rings, comet-like air fists, a six-fold snowflake compass on the floor,
-## crystal eruptions, dark dust and black rock. In his normal form the shock is
+## full, fluffy cyan shock bursts with a white-hot core and black ink lines, white
+## air-pressure arcs and rings, comet-like air fists, a six-fold snowflake compass
+## on the floor, floors breaking into rubble, dark dust and black rock. In his normal form the shock is
 ## the cyan of the Mugen Train arc; awakened (术式展开·罗针) it turns the blue-violet
 ## of the Infinity Castle arc, while the white-hot cores stay.
 
@@ -10,8 +10,8 @@ extends RefCounted
 ## trenches and floor cracks; the compass, floor light and the awakened flame
 ## outline showing round his body); GLOW is soft additive light one z under
 ## EffectsView so a struck fighter stays readable; FRONT carries the solid
-## shapes (pressure arcs, dust, rock, crystal slabs, ink); LIGHT is additive
-## light over everything (burst cores, sparks, flakes, rays, the red start-up).
+## shapes (bursts, pressure arcs, dust, rock, ink); LIGHT is additive light over
+## everything (burst cores, sparks, glints, rays, the red start-up).
 enum {FLOOR, SIGIL, GLOW, FRONT, LIGHT}
 
 const WHITE := Color(0.95, 0.99, 1.0)
@@ -23,10 +23,14 @@ const VIOLET := Color(0.58, 0.5, 0.97)
 const VIOLET_DEEP := Color(0.28, 0.17, 0.82)
 ## Pale core tint shared by both forms.
 const ICE := Color(0.72, 0.96, 1.0)
-## Crystal slabs of a floor eruption, their grain lines and outlines.
-const CRYSTAL := Color(0.36, 0.8, 0.97)
-const CRYSTAL_LIGHT := Color(0.66, 0.95, 1.0)
-const CRYSTAL_LINE := Color(0.05, 0.14, 0.45)
+## Floating glints of light round strikes and the compass.
+const GLINT := Color(0.66, 0.95, 1.0)
+## Rock, multiplied over the grey chunks of art/effects/akaza/rocks.png: dark
+## slate, and the same lit blue from below by a blast.
+const ROCK := Color(0.36, 0.37, 0.43)
+const ROCK_LIT := Color(0.44, 0.62, 1.0)
+## The black ink lines shooting out of a shock.
+const INK_LINE := Color(0.02, 0.03, 0.08)
 ## The red start-up of every special: glow, hot core, deep blood and black ink.
 const RED := Color(0.86, 0.3, 0.4)
 const RED_HOT := Color(1.0, 0.64, 0.72)

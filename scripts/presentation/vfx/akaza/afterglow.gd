@@ -54,7 +54,7 @@ func emit(f: RefCounted, actor: Node2D, tick: int) -> void:
 		held = {"instance": f.attack_instance, "points": {}}
 		_strikes[f.slot] = held
 	held.points[index] = at
-	vfx.bursts.append({"kind": "shock", "at": at, "age": 0.0, "life": 0.18 if last else 0.12, "size": 26.0 if last else 13.0, "facing": float(f.facing),
+	vfx.bursts.append({"kind": "shock", "at": at, "age": 0.0, "life": 0.22 if last else 0.16, "size": 26.0 if last else 13.0, "facing": float(f.facing),
 		"seed": seed + 3, "awake": awake})
 	vfx.spark_burst(at, 14 if last else 6, Vector2(float(f.facing), -0.2), 90.0, 240.0, seed + 4, Kit.SILVER)
 	if last:

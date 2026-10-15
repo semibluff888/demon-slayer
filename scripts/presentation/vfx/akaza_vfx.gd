@@ -1,8 +1,9 @@
 extends Node2D
-## Akaza's 破坏杀 effects after the Hinokami Chronicles look: spiky cyan shock
-## bursts with a white-hot core, white air-pressure arcs and rings round his
-## fists and feet, comet-like air fists, crystal eruptions from the floor, dark
-## dust and black rock, the red start-up of every special, and while awakened
+## Akaza's 破坏杀 effects after the Hinokami Chronicles look: fluffy cyan shock
+## bursts of fine spikes round a white-hot core with black ink lines shooting
+## out, white air-pressure arcs and rings round his fists and feet, comet-like air
+## fists, floors breaking into rubble, dark dust and black rock, the red start-up
+## of every special, and while awakened
 ## (术式展开·罗针) a snowflake compass under his feet, blue-violet shocks and a
 ## flickering flame outline. Each technique lives in vfx/akaza/; this node owns
 ## the layers, particle pools, contact bursts and the shared drawing helpers.
@@ -16,6 +17,8 @@ const Ribbon = preload("res://scripts/presentation/vfx/vfx_ribbon.gd")
 const Pool = preload("res://scripts/presentation/vfx/vfx_pool.gd")
 const Arena = preload("res://scripts/arena_rules.gd")
 const Compass = preload("res://scripts/presentation/vfx/akaza/compass.gd")
+## Baked textures (tools/build_akaza_vfx_art.py).
+const ART := "res://art/effects/akaza/"
 const TECHNIQUES := {
 	"fist": preload("res://scripts/presentation/vfx/akaza/fist.gd"),
 	"kick": preload("res://scripts/presentation/vfx/akaza/kick.gd"),
@@ -57,16 +60,19 @@ var interpolate: bool = true
 var frac: float = 0.0
 var time: float = 0.0
 var dot: Texture2D
-var chunk: Texture2D
+## Rock chunks, 4 x 4 cells (grey, tinted per particle).
+var rocks: Texture2D
+## Shock bursts: cyan (normal) and violet (awakened), 4 variants x 2 stages.
+var shock_art: Array[Texture2D] = []
 var blob: Texture2D
 var flake: Texture2D
 var band: GradientTexture2D
 ## Cyan-white sparks thrown off strikes; red ones off the start-up.
 var sparks := Pool.new(1, 1, 320)
-## Glittering crystal flakes that drift and turn.
+## Soft glints of light that drift and turn.
 var flakes := Pool.new(1, 1, 240)
-## Black (and, in eruptions, blue) rock chunks.
-var debris := Pool.new(1, 1, 120)
+## Rock chunks: dark slate, or lit blue by a blast.
+var debris := Pool.new(4, 4, 120)
 ## Dark smoke rolling along the floor.
 var dust := Pool.new(1, 1, 90)
 var bursts: Array[Dictionary] = []
@@ -82,7 +88,9 @@ var base := Transform2D.IDENTITY
 
 func _ready() -> void:
 	dot = _spark_texture()
-	chunk = _chunk_texture()
+	rocks = load(ART + "rocks.png")
+	for palette in ["cyan", "violet"]:
+		shock_art.append(load(ART + "shock-%s.png" % palette))
 	blob = _blob_texture()
 	flake = _flake_texture()
 	var falloff := Gradient.new()
@@ -122,22 +130,6 @@ static func _spark_texture() -> Texture2D:
 	image.generate_mipmaps()
 	return ImageTexture.create_from_image(image)
 
-## An irregular rock chunk with a lighter top edge; tinted per particle.
-static func _chunk_texture() -> Texture2D:
-	var image := Image.create(32, 32, false, Image.FORMAT_RGBA8)
-	var corners := PackedVector2Array()
-	for n in range(6):
-		var a := TAU * n / 6.0 + 0.3
-		corners.append(Vector2(16, 16) + Vector2(cos(a), sin(a)) * (9.0 + 5.0 * rand(17, n)))
-	for y in range(32):
-		for x in range(32):
-			var p := Vector2(x + 0.5, y + 0.5)
-			if Geometry2D.is_point_in_polygon(p, corners):
-				var shade := 0.55 + 0.45 * clampf((20.0 - y) / 12.0, 0.0, 1.0)
-				image.set_pixel(x, y, Color(shade, shade, shade, 1.0))
-	image.generate_mipmaps()
-	return ImageTexture.create_from_image(image)
-
 ## A soft round puff for smoke.
 static func _blob_texture() -> Texture2D:
 	var image := Image.create(64, 64, false, Image.FORMAT_RGBA8)
@@ -149,18 +141,17 @@ static func _blob_texture() -> Texture2D:
 	image.generate_mipmaps()
 	return ImageTexture.create_from_image(image)
 
-## A small crystal shard: a bright kite with a white facet.
+## A soft glint: a round glow with a faint four-point twinkle.
 static func _flake_texture() -> Texture2D:
 	var image := Image.create(32, 32, false, Image.FORMAT_RGBA8)
-	var kite := PackedVector2Array([Vector2(16, 2), Vector2(26, 14), Vector2(16, 30), Vector2(7, 15)])
-	var facet := PackedVector2Array([Vector2(16, 4), Vector2(23, 14), Vector2(16, 17)])
 	for y in range(32):
 		for x in range(32):
-			var p := Vector2(x + 0.5, y + 0.5)
-			if Geometry2D.is_point_in_polygon(p, facet):
-				image.set_pixel(x, y, Color(1, 1, 1, 1))
-			elif Geometry2D.is_point_in_polygon(p, kite):
-				image.set_pixel(x, y, Color(0.75, 0.95, 1.0, 0.9))
+			var d := Vector2(x + 0.5 - 16.0, y + 0.5 - 16.0)
+			var core := clampf(1.0 - d.length() / 7.0, 0.0, 1.0)
+			var arms := maxf(clampf(1.0 - absf(d.x) / 15.0, 0.0, 1.0) * clampf(1.0 - absf(d.y) / 1.6, 0.0, 1.0),
+				clampf(1.0 - absf(d.y) / 15.0, 0.0, 1.0) * clampf(1.0 - absf(d.x) / 1.6, 0.0, 1.0))
+			var alpha := clampf(core * core + arms * 0.7, 0.0, 1.0)
+			image.set_pixel(x, y, Color(0.8, 0.96, 1.0).lerp(Color.WHITE, core) * Color(1, 1, 1, alpha))
 	image.generate_mipmaps()
 	return ImageTexture.create_from_image(image)
 
@@ -277,22 +268,23 @@ func spark_burst(at: Vector2, count: int, bias: Vector2, slow: float, fast: floa
 		sparks.spawn(at, direction * lerpf(slow, fast, rand(seed, n + 50)), lerpf(0.16, 0.38, rand(seed, n + 100)), lerpf(1.5, 3.0, rand(seed, n + 150)), 0, tint,
 			220.0, 1.4, 0.0, 0.0, 0.6, 2.2)
 
-## Crystal flakes spinning out of `at`, drifting slowly.
+## Glints of light thrown out of `at`, drifting slowly.
 func flake_burst(at: Vector2, count: int, speed: float, seed: int, awakened_form: bool, lift: float = 30.0) -> void:
 	for n in range(count):
 		var direction := Vector2.from_angle(rand(seed, n) * TAU)
-		var tint := Kit.CRYSTAL_LIGHT.lerp(Kit.tone(awakened_form), 0.35 * rand(seed, n + 7))
+		var tint := Kit.GLINT.lerp(Kit.tone(awakened_form), 0.35 * rand(seed, n + 7))
 		flakes.spawn(at + direction * 4.0, direction * speed * lerpf(0.3, 1.0, rand(seed, n + 20)) + Vector2(0.0, -lift),
 			lerpf(0.35, 0.75, rand(seed, n + 40)), lerpf(2.2, 4.2, rand(seed, n + 50)), 0, tint, 40.0, 1.8, rand(seed, n + 60) * TAU, rand(seed, n + 70) * 10.0 - 5.0, 0.7)
 
-## Rock chunks thrown up from the floor or a struck body; `blue` paints them as
-## the crystal rubble of an eruption.
-func debris_burst(at: Vector2, count: int, bias: Vector2, seed: int, blue: bool = false) -> void:
+## Rock chunks thrown up where a blow breaks the floor; with `blue` every other
+## one is lit blue from below by the blast. `scale` grows them.
+func debris_burst(at: Vector2, count: int, bias: Vector2, seed: int, blue: bool = false, scale: float = 1.0) -> void:
 	for n in range(count):
 		var direction := (Vector2(rand(seed, n) * 2.0 - 1.0, -lerpf(0.5, 1.0, rand(seed, n + 10))) + bias).normalized()
-		var tint := Kit.CYAN_DEEP.lerp(Kit.CRYSTAL, 0.4 * rand(seed, n + 15)) if blue and n % 2 == 0 else Color(0.16, 0.16, 0.18)
-		debris.spawn(at, direction * lerpf(90.0, 230.0, rand(seed, n + 20)), lerpf(0.4, 0.75, rand(seed, n + 30)), lerpf(3.0, 7.0, rand(seed, n + 40)), 0,
-			tint, 420.0, 0.4, rand(seed, n + 50) * TAU, rand(seed, n + 60) * 14.0 - 7.0)
+		var tint := Kit.ROCK_LIT if blue and n % 2 == 0 else Kit.ROCK
+		tint = tint.darkened(0.25 * rand(seed, n + 15))
+		debris.spawn(at, direction * lerpf(90.0, 230.0, rand(seed, n + 20)), lerpf(0.45, 0.8, rand(seed, n + 30)), lerpf(4.5, 9.0, rand(seed, n + 40)) * scale,
+			int(rand(seed, n + 70) * 16.0), tint, 420.0, 0.4, rand(seed, n + 50) * TAU, rand(seed, n + 60) * 14.0 - 7.0)
 
 ## Dark smoke rolling out along the floor from `at`, leaning `bias.x`.
 func dust_burst(at: Vector2, count: int, bias: Vector2, seed: int, size: float = 1.0) -> void:
@@ -302,19 +294,21 @@ func dust_burst(at: Vector2, count: int, bias: Vector2, seed: int, size: float =
 		dust.spawn(at + Vector2(side * 6.0, -2.0), velocity, lerpf(0.4, 0.65, rand(seed, n + 30)), lerpf(10.0, 18.0, rand(seed, n + 40)) * size, 0,
 			Color(Kit.DUST, lerpf(0.35, 0.55, rand(seed, n + 50))), -10.0, 2.6, 0.0, 0.0, 2.2)
 
-## Contact: a spiky shock burst whose first frame is already full size (hitstop
-## holds it there), white pressure rings, rays on big hits, sparks, flakes and
-## rock. `scale` grows everything (light 0.5, heavy 0.75, special 1, supers more).
+## Contact: a fluffy shock burst whose first frame is already full size (hitstop
+## holds it there), white pressure rings, rays on big hits, sparks and glints.
+## Rock only flies where a blow strikes the floor (空式·下 landing, 万叶闪柳), so a
+## body hit throws none. `scale` grows everything (light 0.5, heavy 0.75,
+## special 1, supers more).
 func strike(event: Dictionary, attacker: RefCounted, scale: float, awakened_form: bool, rays_too: bool = false) -> void:
 	var at: Vector2 = event.position
 	var facing := float(attacker.facing)
 	var seed: int = attacker.attack_instance * 977 + int(event.get("segment", 0)) * 31 + attacker.slot * 13
 	if event.type == "block":
 		bursts.append({"kind": "ring", "at": at, "age": 0.0, "life": 0.16, "size": 12.0, "squash": 1.4, "facing": facing, "seed": seed, "awake": awakened_form})
-		bursts.append({"kind": "shock", "at": at, "age": 0.0, "life": 0.1, "size": 9.0, "facing": facing, "seed": seed, "awake": awakened_form, "pale": true})
+		bursts.append({"kind": "shock", "at": at, "age": 0.0, "life": 0.14, "size": 10.0, "facing": facing, "seed": seed, "awake": awakened_form, "pale": true})
 		spark_burst(at, 8, Vector2(-facing, -0.5), 60.0, 140.0, seed, Kit.ICE)
 		return
-	bursts.append({"kind": "shock", "at": at, "age": 0.0, "life": 0.13 + 0.05 * minf(scale, 1.5), "size": 10.0 + 15.0 * scale, "facing": facing, "seed": seed,
+	bursts.append({"kind": "shock", "at": at, "age": 0.0, "life": 0.16 + 0.06 * minf(scale, 1.5), "size": 9.0 + 13.0 * scale, "facing": facing, "seed": seed,
 		"awake": awakened_form})
 	bursts.append({"kind": "ring", "at": at, "age": 0.0, "life": 0.18, "size": 10.0 + 12.0 * scale, "squash": 1.5, "facing": facing, "seed": seed + 1, "awake": awakened_form})
 	spark_burst(at, int(10 + 16 * scale), Vector2(facing, -0.3), 90.0, 240.0, seed)
@@ -323,7 +317,6 @@ func strike(event: Dictionary, attacker: RefCounted, scale: float, awakened_form
 	if scale >= 1.0 or rays_too:
 		bursts.append({"kind": "rays", "at": at, "age": 0.0, "life": 0.2, "size": 70.0 * scale, "facing": facing, "seed": seed + 2, "awake": awakened_form})
 		bursts.append({"kind": "ring", "at": at, "age": 0.0, "life": 0.24, "size": 18.0 + 16.0 * scale, "squash": 0.9, "facing": facing, "seed": seed + 4, "awake": awakened_form})
-		debris_burst(at, int(3 + 3 * scale), Vector2(facing * 0.5, 0.0), seed + 5)
 
 # --- Drawing ---------------------------------------------------------------------
 
@@ -352,7 +345,7 @@ func _paint(canvas: Node2D, layer: int) -> void:
 	match layer:
 		Kit.FRONT:
 			dust.draw(canvas, blob, to_screen, camera.zoom)
-			debris.draw(canvas, chunk, to_screen, camera.zoom)
+			debris.draw(canvas, rocks, to_screen, camera.zoom)
 		Kit.LIGHT:
 			sparks.draw(canvas, dot, to_screen, camera.zoom)
 			flakes.draw(canvas, flake, to_screen, camera.zoom)
@@ -364,16 +357,15 @@ func _draw_burst(canvas: Node2D, layer: int, burst: Dictionary) -> void:
 	var awake: bool = burst.get("awake", false)
 	match burst.kind:
 		"shock":
-			var pop := 1.0 - pow(1.0 - clampf(burst.age / 0.04, 0.0, 1.0), 3.0)
-			var alpha := 1.0 - smoothstep(0.45, 1.0, k)
-			shock(canvas, layer, Vector2.ZERO, float(burst.size) * (0.78 + 0.22 * pop + 0.15 * k), seed, alpha, awake, 14, burst.get("pale", false))
+			var alpha := 1.0 - smoothstep(0.5, 1.0, k)
+			shock(canvas, layer, Vector2.ZERO, float(burst.size), seed, alpha, awake, k, burst.get("pale", false))
 		"ring":
 			var grow := 1.0 - pow(1.0 - k, 2.0)
 			var radius: float = float(burst.size) * (0.6 + 0.8 * grow)
 			ring(canvas, layer, Vector2.ZERO, Vector2(radius, radius * float(burst.squash) * 0.62), 0.0, 1.0 - k, 2.2, awake)
 		"rays":
 			if layer == Kit.LIGHT:
-				rays(canvas, Vector2.ZERO, seed, 14, float(burst.size) * (0.6 + 0.4 * k), 1.0 - k, Kit.tone(awake))
+				rays(canvas, Vector2.ZERO, seed, 10, float(burst.size) * (0.5 + 0.3 * k), 0.7 * (1.0 - k), Kit.tone(awake))
 		_:
 			var owner: RefCounted = burst.get("technique")
 			if owner != null:
@@ -392,45 +384,75 @@ func set_base(canvas: Node2D, transform: Transform2D) -> void:
 	base = transform
 	canvas.draw_set_transform_matrix(base)
 
-## A star polygon round `at`: `spikes` long points alternating with short ones,
-## jittered by `seed`; `flare` stretches every third point into a flame tongue.
-static func jagged(at: Vector2, radius: float, spikes: int, seed: int, flare: float = 1.0) -> PackedVector2Array:
-	var points := PackedVector2Array()
-	var turn := rand(seed, 70) * TAU
-	var count := spikes * 2
-	for n in range(count):
-		var a := turn + TAU * (n + (rand(seed, n + 200) - 0.5) * 0.6) / count
-		var long := n % 2 == 0
-		var r := radius * (lerpf(0.8, 1.15, rand(seed, n)) if long else lerpf(0.42, 0.58, rand(seed, n)))
-		if long and (n >> 1) % 3 == 0:
-			r *= lerpf(1.0, 1.0 + 0.45 * flare, rand(seed, n + 90))
-		points.append(at + Vector2(cos(a), sin(a)) * r)
-	return points
-
-## The signature shock: a deep jagged outer burst, a cyan (violet when awakened)
-## body and a white-hot core, soft glow under the fighters and additive light and
-## thin spikes over them. `pale` keeps a guarded hit small and cool.
-func shock(canvas: Node2D, layer: int, at: Vector2, radius: float, seed: int, alpha: float, awakened_form: bool, spikes: int = 14, pale: bool = false) -> void:
+## The signature shock, after the reference: a fluffy ball of fine spikes round a
+## white-hot core, baked in art/effects/akaza/shock-*.png (four variants, each
+## dense and then breaking up), picked and turned by `seed`. `age` 0..1 runs its
+## life: the first frame is already full size (hitstop holds it), then it swells
+## a little and breaks up. Black ink lines shoot out through it (FRONT), white
+## streaks and a hot flash light it (LIGHT), soft glow sits under the fighters
+## (GLOW). `pale` keeps a guarded hit small and cool.
+func shock(canvas: Node2D, layer: int, at: Vector2, radius: float, seed: int, alpha: float, awakened_form: bool, age: float = 0.0, pale: bool = false) -> void:
 	if alpha <= 0.01 or radius < 1.0:
 		return
 	var tone := Kit.ICE if pale else Kit.tone(awakened_form)
 	var edge := Kit.CYAN_DEEP if pale else Kit.deep(awakened_form)
+	var violet := awakened_form and not pale
+	var size := radius * (1.0 + 0.18 * age)
+	var spin := rand(seed, 70) * TAU + age * 0.5
+	var broken := smoothstep(0.15, 0.65, age)
 	match layer:
 		Kit.GLOW:
 			if glow != null:
-				canvas.draw_texture_rect(glow, Rect2(at - Vector2.ONE * radius * 2.4, Vector2.ONE * radius * 4.8), false, Color(edge, 0.42 * alpha))
+				canvas.draw_texture_rect(glow, Rect2(at - Vector2.ONE * size * 2.0, Vector2.ONE * size * 4.0), false, Color(edge, 0.3 * alpha))
 		Kit.FRONT:
-			canvas.draw_colored_polygon(jagged(at, radius, spikes, seed, 1.0), Color(edge, 0.85 * alpha))
-			canvas.draw_colored_polygon(jagged(at, radius * 0.78, spikes, seed + 1, 0.8), Color(tone, 0.95 * alpha))
-			canvas.draw_colored_polygon(jagged(at, radius * 0.44, maxi(6, spikes >> 1), seed + 2, 0.5), Color(Kit.WHITE, alpha))
+			burst_sprite(canvas, at, size, seed, broken, alpha * (0.8 if pale else 1.0), violet, spin, Color(0.85, 0.95, 1.0) if pale else Color.WHITE)
+			var ink := alpha * (1.0 - smoothstep(0.25, 0.75, age)) * (0.5 if pale else 0.85)
+			var lines := 5 if pale else 9
+			for n in range(lines):
+				if ink <= 0.01:
+					break
+				var direction := Vector2.from_angle(TAU * (n + rand(seed, n + 400) * 0.8) / lines)
+				var from := at + direction * size * lerpf(0.35, 0.7, rand(seed, n + 410))
+				var to := at + direction * size * lerpf(1.45, 2.1, rand(seed, n + 420)) * (1.0 + 0.3 * age)
+				Ribbon.draw(canvas, PackedVector2Array([from, from.lerp(to, 0.4), to]), PackedFloat32Array([0.0, lerpf(1.0, 1.8, rand(seed, n + 430)), 0.0]),
+					PackedColorArray([Color(Kit.INK_LINE, 0.0), Color(Kit.INK_LINE, ink), Color(Kit.INK_LINE, 0.0)]), band)
 		Kit.LIGHT:
-			if glow != null:
-				canvas.draw_texture_rect(glow, Rect2(at - Vector2.ONE * radius * 1.3, Vector2.ONE * radius * 2.6), false, Color(tone, 0.6 * alpha))
-			for n in range(8):
-				var direction := Vector2.from_angle(TAU * n / 8.0 + rand(seed, n + 300) * 0.6)
-				var reach := radius * lerpf(1.1, 1.6, rand(seed, n + 310))
-				Ribbon.draw(canvas, PackedVector2Array([at + direction * radius * 0.5, at + direction * reach]), PackedFloat32Array([1.6, 0.0]),
-					PackedColorArray([Color(Kit.ICE, 0.8 * alpha), Color(Kit.ICE, 0.0)]), band)
+			# The white-hot flash, brightest on the first frames; kept small so the
+			# coloured spikes, not a white blot, carry the burst.
+			var flash := alpha * pow(1.0 - age, 3.0)
+			if glow != null and flash > 0.01:
+				canvas.draw_texture_rect(glow, Rect2(at - Vector2.ONE * size * 0.55, Vector2.ONE * size * 1.1), false, Color(Kit.WHITE, 0.35 * flash))
+				canvas.draw_texture_rect(glow, Rect2(at - Vector2.ONE * size * 1.3, Vector2.ONE * size * 2.6), false, Color(tone, 0.2 * flash))
+			# The spikes again, faint, so they glow on the night stage.
+			burst_sprite(canvas, at, size, seed, broken, alpha * 0.12, violet, spin)
+			# A few short white streaks just past the rim (kept faint: the burst
+			# should read as a full ball, not a spiky star).
+			for n in range(4):
+				var direction := Vector2.from_angle(TAU * (n + rand(seed, n + 300) * 0.7) / 4.0)
+				var reach := size * lerpf(1.1, 1.4, rand(seed, n + 310)) * (1.0 + 0.25 * age)
+				Ribbon.draw(canvas, PackedVector2Array([at + direction * size * 0.5, at + direction * reach]), PackedFloat32Array([1.1, 0.0]),
+					PackedColorArray([Color(Kit.WHITE, 0.45 * alpha), Color(Kit.WHITE, 0.0)]), band)
+
+## One baked burst from the shock sheet centred on `at`, its frayed rim reaching
+## about 1.2 x `radius`, turned by `spin` and mirrored by `seed`; `broken` (0..1)
+## cross-fades the dense first frame into its breaking-up stage.
+func burst_sprite(canvas: Node2D, at: Vector2, radius: float, seed: int, broken: float, alpha: float, awakened_form: bool, spin: float,
+		tint: Color = Color.WHITE) -> void:
+	var sheet: Texture2D = shock_art[1 if awakened_form else 0] if shock_art.size() == 2 else null
+	if sheet == null or alpha <= 0.01:
+		return
+	var cell := sheet.get_width() / 4.0
+	var column := float(int(rand(seed, 71) * 4.0) % 4) * cell
+	var flip := 1.0 if rand(seed, 72) < 0.5 else -1.0
+	# The rim reaches about 0.41 of a cell.
+	var side := radius * 2.9
+	var rect := Rect2(-Vector2.ONE * side * 0.5, Vector2.ONE * side)
+	canvas.draw_set_transform_matrix(base * Transform2D(spin, Vector2(flip, 1.0), 0.0, at))
+	if broken < 1.0:
+		canvas.draw_texture_rect_region(sheet, rect, Rect2(column, 0.0, cell, cell), Color(tint, alpha * (1.0 - broken)))
+	if broken > 0.0:
+		canvas.draw_texture_rect_region(sheet, rect, Rect2(column, cell, cell, cell), Color(tint, alpha * broken))
+	canvas.draw_set_transform_matrix(base)
 
 ## A white air-pressure ring (an ellipse round `center`, rotated), thicker on its
 ## leading side, with a faint coloured rim.
@@ -570,45 +592,40 @@ func activation(canvas: Node2D, layer: int, f: RefCounted, actor: Node2D, k: flo
 				Ribbon.draw(canvas, PackedVector2Array([centre - axis * 110.0, centre, centre + axis * 110.0]), PackedFloat32Array([0.0, 1.6, 0.0]),
 					PackedColorArray([Color(Kit.RED_HOT, 0.0), Color(Kit.RED_HOT, k), Color(Kit.RED_HOT, 0.0)]), band)
 
-## Crystal slabs breaking out of the floor round `at` (local, y = floor): a back
-## row under the fighters (FLOOR) and a front row over them (FRONT), each slab a
-## leaning, pointed plate lit from above with dark grain and outline; `grow`
-## raises and lowers them.
-func crystals(canvas: Node2D, layer: int, at: Vector2, size: float, grow: float, seed: int, awakened_form: bool, count: int = 8) -> void:
+## The floor breaking round `at` (local, y = floor) where a blow drives into it:
+## broken slabs of stone (cells of art/effects/akaza/rocks.png) tip up out of the
+## ground away from the blow and settle back, lit blue from below by the blast,
+## with a cold glow in the cracks (GLOW). `grow` (0..1..0) raises and lowers
+## them; the back row draws under the fighters (FLOOR), the front row over them
+## (FRONT).
+func rubble(canvas: Node2D, layer: int, at: Vector2, size: float, grow: float, seed: int, awakened_form: bool, count: int = 8) -> void:
 	if grow <= 0.01:
 		return
-	var tint := Kit.CRYSTAL.lerp(Kit.tone(awakened_form), 0.25)
-	if layer == Kit.GLOW and glow != null:
-		canvas.draw_texture_rect(glow, Rect2(at + Vector2(-size * 1.6, -size * 2.1), Vector2(size * 3.2, size * 3.2)), false, Color(Kit.tone(awakened_form), 0.4 * grow))
+	if layer == Kit.GLOW:
+		if glow != null:
+			canvas.draw_texture_rect(glow, Rect2(at + Vector2(-size * 1.3, -size * 0.45), Vector2(size * 2.6, size * 0.9)), false, Color(Kit.tone(awakened_form), 0.25 * grow))
 		return
-	if layer != Kit.FLOOR and layer != Kit.FRONT:
+	if (layer != Kit.FLOOR and layer != Kit.FRONT) or rocks == null:
 		return
+	var cell := rocks.get_width() / 4.0
 	for n in range(count):
 		var back := n % 2 == 0
 		if back != (layer == Kit.FLOOR):
 			continue
 		var u := (n + 0.5) / count
-		var x := at.x + lerpf(-size, size, u) + (rand(seed, n + 5) - 0.5) * size * 0.15
-		var y := at.y + (-1.5 if back else 1.5)
-		var h := size * lerpf(0.6, 1.25, rand(seed, n)) * grow * (1.0 - 0.45 * absf(u - 0.5) * 2.0)
-		var w := size * lerpf(0.28, 0.42, rand(seed, n + 10))
-		var lean := (u - 0.5) * 0.9 + (rand(seed, n + 20) - 0.5) * 0.3
-		var up := Vector2(sin(lean), -cos(lean))
-		var side := Vector2(cos(lean), sin(lean))
-		var b0 := Vector2(x, y) - side * w * 0.5
-		var b1 := Vector2(x, y) + side * w * 0.5
-		var t1 := b1 + up * h * lerpf(0.75, 1.0, rand(seed, n + 30))
-		var t0 := b0 + up * h * lerpf(0.85, 1.05, rand(seed, n + 40))
-		var tip := (t0 + t1) * 0.5 + up * h * 0.18
-		var plate := PackedVector2Array([b0, b1, t1, tip, t0])
-		var dark := tint.darkened(0.3)
-		canvas.draw_polygon(plate, PackedColorArray([dark, dark, tint, Kit.CRYSTAL_LIGHT, tint]))
-		for g in range(2):
-			var s := lerpf(0.3, 0.7, (g + rand(seed, n + 50 + g) * 0.5) / 2.0)
-			canvas.draw_line(b0.lerp(b1, s), t0.lerp(t1, s) - up * 2.0, Color(Kit.CRYSTAL_LINE, 0.45), 0.7, true)
-		var outline := plate.duplicate()
-		outline.append(plate[0])
-		canvas.draw_polyline(outline, Color(Kit.CRYSTAL_LINE, 0.9), 0.9, true)
+		var x := at.x + lerpf(-size, size, u) + (rand(seed, n + 5) - 0.5) * size * 0.2
+		# Biggest next to the blow, smaller toward the rim.
+		var w := size * lerpf(0.6, 0.9, rand(seed, n + 10)) * (1.0 - 0.4 * absf(u - 0.5) * 2.0)
+		var h := w * lerpf(0.65, 0.95, rand(seed, n + 20))
+		var lean := (u - 0.5) * 1.3 + (rand(seed, n + 30) - 0.5) * 0.5
+		var lift := h * lerpf(0.15, 0.55, rand(seed, n + 40)) * grow
+		var pivot := Vector2(x, at.y + (-1.0 if back else 2.0) - lift)
+		var tile := int(rand(seed, n + 50) * 16.0)
+		var region := Rect2(float(tile % 4) * cell, float(tile / 4) * cell, cell, cell)
+		var tint := Kit.ROCK.lerp(Kit.ROCK_LIT, 0.4 if back else 0.25).darkened(0.15 * rand(seed, n + 60))
+		canvas.draw_set_transform_matrix(base * Transform2D(lean * grow, Vector2(1.0, grow), 0.0, pivot))
+		canvas.draw_texture_rect_region(rocks, Rect2(-w * 0.5, -h * 0.85, w, h), region, tint)
+	canvas.draw_set_transform_matrix(base)
 
 ## The 罗针 compass: a six-fold snowflake laid flat on the floor round `center`
 ## (local units, y = floor), revealed from the middle outward by `reveal` and

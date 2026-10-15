@@ -1,9 +1,9 @@
 extends "res://scripts/presentation/vfx/akaza/technique.gd"
 ## 破坏杀·碎式 万叶闪柳 (5A > A > C): the raised fist gathers a cold glint and comes
-## down along a streak of light into the floor in front of him, which erupts:
-## a crown of crystal plates breaks out of the ground round the blow with a
-## burst, upward rays and a short pillar, blue and black rubble and a ring of
-## dust; the plates sink back within half a second and a crater stays behind.
+## down along a streak of light into the floor in front of him, which breaks:
+## slabs of stone tip up out of the ground round the blow, lit blue from below,
+## with a burst, upward rays and a short pillar, flying rock and a ring of dust;
+## the slabs settle back within half a second and a crater stays behind.
 
 ## Seconds the eruption stands and the crater stays.
 const ERUPTION := 0.6
@@ -24,10 +24,10 @@ func emit(f: RefCounted, actor: Node2D, tick: int) -> void:
 	var facing := float(f.facing)
 	vfx.bursts.append({"kind": "eruption", "technique": self, "at": at, "age": 0.0, "life": ERUPTION, "size": 34.0, "facing": facing, "seed": seed, "awake": awake})
 	vfx.bursts.append({"kind": "crater", "technique": self, "at": at, "age": 0.0, "life": CRATER, "size": 26.0, "facing": 1.0, "seed": seed + 1})
-	vfx.bursts.append({"kind": "shock", "at": at + Vector2(0.0, -10.0), "age": 0.0, "life": 0.18, "size": 24.0, "facing": facing, "seed": seed + 2, "awake": awake})
-	vfx.debris_burst(at, 6, Vector2(0.0, -0.3), seed + 3, true)
-	vfx.debris_burst(at, 4, Vector2(facing * 0.3, 0.0), seed + 4)
-	vfx.flake_burst(at + Vector2(0.0, -12.0), 10, 90.0, seed + 5, awake, 50.0)
+	vfx.bursts.append({"kind": "shock", "at": at + Vector2(0.0, -10.0), "age": 0.0, "life": 0.24, "size": 24.0, "facing": facing, "seed": seed + 2, "awake": awake})
+	vfx.debris_burst(at, 8, Vector2(0.0, -0.3), seed + 3, true, 1.4)
+	vfx.debris_burst(at, 6, Vector2(facing * 0.3, 0.0), seed + 4, false, 1.2)
+	vfx.flake_burst(at + Vector2(0.0, -12.0), 6, 90.0, seed + 5, awake, 50.0)
 	vfx.dust_burst(at, 6, Vector2.ZERO, seed + 6, 1.2)
 	vfx.spark_burst(at + Vector2(0.0, -6.0), 14, Vector2(0.0, -1.0), 100.0, 260.0, seed + 7)
 
@@ -59,7 +59,7 @@ func draw_burst(canvas: Node2D, layer: int, burst: Dictionary, k: float) -> void
 		"eruption":
 			var rise := 1.0 - pow(1.0 - clampf(k / 0.14, 0.0, 1.0), 3.0)
 			var sink := 1.0 - smoothstep(0.55, 1.0, k)
-			vfx.crystals(canvas, layer, Vector2.ZERO, size, rise * sink, int(burst.seed), awake, 9)
+			vfx.rubble(canvas, layer, Vector2.ZERO, size, rise * sink, int(burst.seed), awake, 9)
 			var flash := 1.0 - clampf(k / 0.4, 0.0, 1.0)
 			if flash > 0.0:
 				if layer == Kit.LIGHT:

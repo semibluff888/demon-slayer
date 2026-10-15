@@ -2,8 +2,8 @@ extends "res://scripts/presentation/vfx/akaza/technique.gd"
 ## 破坏杀·灭式 (super): through the super freeze, after the red start-up, a
 ## blue-white burst swells at his fist inside two big turning crescents and the
 ## floor cracks under his feet; then the punch tears a horizontal blast of
-## white and cyan along the floor, its spiky head far out in front of him, rock
-## and smoke ripped up beneath it and a furrow left behind. The super draws its
+## white and cyan along the floor, its shock head far out in front of him,
+## smoke ripped up beneath it and a furrow left behind. The super draws its
 ## own charge, so SuperView skips the shared energy sphere.
 
 ## The guarding fist the charge gathers at, and the blast height at the extended
@@ -42,9 +42,8 @@ func emit(f: RefCounted, actor: Node2D, tick: int) -> void:
 		vfx.bursts.append({"kind": "trench", "technique": self, "at": vfx.world(f, Vector2.ZERO), "age": 0.0, "life": TRENCH, "size": 1.0,
 			"facing": float(f.facing), "seed": seed, "from": -10.0, "to": move.box.end.x + 10.0})
 		vfx.dust_burst(vfx.world(f, Vector2(-8.0, 0.0)), 6, Vector2(-0.6, 0.0) * float(f.facing), seed + 1, 1.3)
-	# Rock and smoke torn up along the floor under the blast.
+	# Smoke torn up along the floor under the blast.
 	var x := lerpf(0.0, head.x, vfx.rand(seed, 2))
-	vfx.debris_burst(vfx.world(f, Vector2(x, 0.0)), 2, Vector2(0.6 * float(f.facing), -0.2), seed + 3)
 	vfx.dust_burst(vfx.world(f, Vector2(x, 0.0)), 2, Vector2(0.8 * float(f.facing), 0.0), seed + 4, 1.2)
 	vfx.spark_burst(vfx.world(f, head), 6, Vector2(float(f.facing), 0.0), 90.0, 240.0, seed + 5)
 
@@ -66,7 +65,7 @@ func draw(canvas: Node2D, layer: int, f: RefCounted, actor: Node2D) -> void:
 		vfx.activation(canvas, layer, f, actor, red, f.attack_instance * 19)
 	if t < start + 1.0:
 		var k := clampf(age / float(move.freeze_frames + move.startup), 0.0, 1.0)
-		vfx.shock(canvas, layer, FIST, lerpf(6.0, 20.0, k), seed, k, awake, 12)
+		vfx.shock(canvas, layer, FIST, lerpf(6.0, 20.0, k), f.attack_instance * 67, k, awake)
 		for n in range(2):
 			var a0 := age * (0.35 if n == 0 else -0.28) + n * PI
 			var path := Paths.Arc.new(FIST, a0, a0 + 2.4, 28.0 + 10.0 * n, 34.0 + 10.0 * n, 10.0)
@@ -89,7 +88,7 @@ func draw(canvas: Node2D, layer: int, f: RefCounted, actor: Node2D) -> void:
 	if alpha <= 0.01:
 		return
 	tear(canvas, layer, from, head, width, alpha, awake, seed)
-	vfx.shock(canvas, layer, head, width * 0.75, seed + 1, alpha, awake, 16)
+	vfx.shock(canvas, layer, head, width * 0.75, f.attack_instance * 67 + 1, alpha, awake)
 
 ## The blast body: a wavering band (deep edge, coloured body, white core) with
 ## streaks of air spiralling along it.

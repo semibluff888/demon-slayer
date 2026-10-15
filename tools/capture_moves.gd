@@ -7,7 +7,8 @@ extends SceneTree
 ## this fighter holds K (p2=2B/1 is a blocked low, p2=2D a sweep knockdown) and waits
 ## until both have recovered; gap:N puts the opponent N px in front; meter:N refills
 ## the gauge, hp:N sets the opponent's health (a long script would otherwise knock the
-## dummy out, and later moves pass through it), home:N puts this fighter back at x = N
+## dummy out, and later moves pass through it), guard:1 / guard:0 makes the opponent hold
+## down-back (a crouching guard, which stays put) from then on / stop, home:N puts this fighter back at x = N
 ## (--no-cinematic keeps supers in game); any other token is a move notation (5A, 2C, 236A, 6B,
 ## j236A…) pressed like a player and followed by its full recovery. A leading "intro"
 ## step first records the real round intro of both fighters from the round start.
@@ -17,6 +18,8 @@ const Combat = preload("res://scripts/combat.gd")
 var game: Node2D
 var saved := 0
 var folder := ""
+## The opponent holds down-back (crouching guard) while this is set (guard:1 / guard:0).
+var guarding := false
 
 func _initialize() -> void:
 	_run.call_deferred()
@@ -84,6 +87,9 @@ func _run() -> void:
 		if parts[0] == "hp":
 			model.fighters[1].hp = count
 			continue
+		if parts[0] == "guard":
+			guarding = count != 0
+			continue
 		if parts[0] == "gap":
 			# Puts the opponent `count` px in front (its attacks must reach).
 			model.fighters[1].x = model.fighters[0].x + count * model.fighters[0].facing
@@ -104,8 +110,10 @@ func _run() -> void:
 	print("MOVE CAPTURE: %d frames" % saved)
 	quit()
 
-func _tick(command: Dictionary, other: Dictionary = Combat.neutral()) -> void:
+func _tick(command: Dictionary, other: Dictionary = {}) -> void:
 	var model = game.combat
+	if other.is_empty():
+		other = {"x": -model.fighters[1].facing, "y": 1, "buttons": 0} if guarding else Combat.neutral()
 	model.step([command, other])
 	game.view.consume(model.events)
 	await process_frame

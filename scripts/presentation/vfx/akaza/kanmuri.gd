@@ -36,7 +36,7 @@ func emit(f: RefCounted, actor: Node2D, tick: int) -> void:
 		vfx.flake_burst(vfx.world(place, path.point(u, 0.0)), 2, 40.0, seed + 2, awake, 20.0)
 		if tick == move.startup + int(move.active * 0.5):
 			var crest: Vector2 = vfx.world(place, path.point(1.0, 0.0))
-			vfx.bursts.append({"kind": "shock", "at": crest, "age": 0.0, "life": 0.14, "size": 14.0 if heavy(move) else 11.0, "facing": float(f.facing),
+			vfx.bursts.append({"kind": "shock", "at": crest, "age": 0.0, "life": 0.18, "size": 14.0 if heavy(move) else 11.0, "facing": float(f.facing),
 				"seed": seed + 3, "awake": awake})
 
 func contact(event: Dictionary, move: Resource, attacker: RefCounted, awakened: bool) -> void:
