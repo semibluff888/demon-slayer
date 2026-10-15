@@ -48,16 +48,13 @@ func _draw_dash(canvas: Node2D, layer: int, f: RefCounted, actor: Node2D, t: flo
 	var awake: bool = actor.form_active()
 	var start := float(move.startup)
 	var seed: int = f.attack_instance * 53 + f.move_frame
-	var h := height(move)
-	var head := Vector2(10.0, h)
-	var tail := origin_local(f, h)
-	var e := erosion(t, move)
-	var from := tail.lerp(head, e)
-	var alpha := 1.0 - smoothstep(0.8, 1.0, e)
+	var beam := shape(f, t)
+	var from: Vector2 = beam.from
+	var head: Vector2 = beam.head
 	var dashing: bool = t < start + move.active
-	vfx.beam(canvas, layer, from, head, thickness(move), alpha, awake, seed, dashing)
+	draw_beam(canvas, layer, beam, awake, seed)
 	if dashing and layer == Kit.FRONT:
 		vfx.speed_lines(canvas, from, head, seed, 6, 1.0)
 	if dashing and layer == Kit.LIGHT:
 		vfx.body_flash(canvas, f, actor, Color(Kit.CYAN, 0.45))
-	vfx.bolt(canvas, layer, Bolt.path(from, head, seed + 3, 0.07, 4), 1.6, awake, alpha)
+	vfx.bolt(canvas, layer, Bolt.path(from, beam.tip, seed + 3, 0.07, 4), 1.6, awake, beam.alpha)

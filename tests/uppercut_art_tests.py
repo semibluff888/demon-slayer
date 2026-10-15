@@ -55,6 +55,7 @@ class UppercutArtTests(unittest.TestCase):
    bounds=self.atlas.frame('guard_low',index).getbbox()
    self.assertLessEqual(abs(bounds[3]-self.atlas.data['feet_anchor'][1]),1)
 
+ @unittest.skipIf(__import__('json').loads((ROOT/'art/characters/zenitsu/atlas.json').read_text(encoding='utf-8')).get('revision')=='zenitsu-v3','Zenitsu ships the v3 redraw (tests/art_v3_tests.py)')
  def test_zenitsu_replacement_is_calibrated_generated_art(self):
   import json,hashlib
   from PIL import Image

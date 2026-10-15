@@ -545,5 +545,6563 @@
       ],
       "layout": "wide"
     }
+  },
+  {
+    "id": "zenitsu-v3-walk_back-p0",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-walk_back-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-walk_back-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "walk_back",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-walk_back-p1",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-walk_back-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-walk_back-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-walk_back-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "walk_back",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-walk_back-p2",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-walk_back-p2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-walk_back-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-walk_back-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "walk_back",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-walk_back-p3",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-walk_back-p3.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-walk_back-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-walk_back-p2.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "walk_back",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-stand_heavy-p0",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-stand_heavy-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-stand_heavy-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "stand_heavy",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-stand_heavy-p1",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-stand_heavy-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-stand_heavy-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-stand_heavy-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "stand_heavy",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-stand_heavy-p2",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-stand_heavy-p2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-stand_heavy-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-stand_heavy-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "stand_heavy",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "zenitsu-v3-stand_heavy-p2-r1",
+    "rejected": "Recovery frame turned the empty scabbard gold tip forward; revision states the scabbard points backward."
+  },
+  {
+    "id": "zenitsu-v3-crouch-p0",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-crouch-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-crouch-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "crouch",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-crouch-p1",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-crouch-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-crouch-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-crouch-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "crouch",
+      "part": 1,
+      "frame_indices": [
+        1,
+        2
+      ],
+      "overlap": [
+        1
+      ],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-guard-p0",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-guard-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-guard-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "guard",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-guard-p1",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-guard-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-guard-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-guard-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "guard",
+      "part": 1,
+      "frame_indices": [
+        1,
+        2
+      ],
+      "overlap": [
+        1
+      ],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-hit-p0",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-hit-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-hit-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "hit",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-hit-p1",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-hit-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-hit-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-hit-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "hit",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-knockdown-p0",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-knockdown-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-knockdown-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "knockdown",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-knockdown-p1",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-knockdown-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-knockdown-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-knockdown-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "knockdown",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-knockdown-p2",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-knockdown-p2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-knockdown-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-knockdown-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "knockdown",
+      "part": 2,
+      "frame_indices": [
+        3,
+        4
+      ],
+      "overlap": [
+        3
+      ],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-throw-p0",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-throw-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-throw-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "throw",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-throw-p1",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-throw-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-throw-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-throw-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "throw",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-throw-p2",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-throw-p2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-throw-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-throw-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "throw",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-victory-p0",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-victory-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-victory-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "victory",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "zenitsu-v3-victory-p0-r1",
+    "rejected": "Frame 2 already stands fully upright and the next sheet drops back into the stance (up-down-up); revision rises gradually."
+  },
+  {
+    "id": "zenitsu-v3-victory-p1",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-victory-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-victory-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-victory-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "victory",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "zenitsu-v3-victory-p1-r1",
+    "rejected": "Frame 3 sinks back into the iai stance after frame 2 stood up; revision rises gradually."
+  },
+  {
+    "id": "zenitsu-v3-victory-p2",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-victory-p2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-victory-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-victory-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "victory",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-crouch_light-p0",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-crouch_light-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-crouch_light-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "crouch_light",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-crouch_light-p1",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-crouch_light-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-crouch_light-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-crouch_light-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "crouch_light",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-crouch_light-p2",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-crouch_light-p2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-crouch_light-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-crouch_light-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "crouch_light",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-crouch_heavy-p0",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-crouch_heavy-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-crouch_heavy-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "crouch_heavy",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "zenitsu-v3-crouch_heavy-p0-r1",
+    "rejected": "Wind-up frame stands up out of the kneeling crouch; revision keeps the rear knee on the ground."
+  },
+  {
+    "id": "zenitsu-v3-crouch_heavy-p1",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-crouch_heavy-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-crouch_heavy-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-crouch_heavy-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "crouch_heavy",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-crouch_heavy-p2",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-crouch_heavy-p2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-crouch_heavy-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-crouch_heavy-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "crouch_heavy",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-air_light-p0",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-air_light-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-air_light-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "air_light",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-air_light-p1",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-air_light-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-air_light-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-air_light-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "air_light",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-air_light-p2",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-air_light-p2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-air_light-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-air_light-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "air_light",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-air_heavy-p0",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-air_heavy-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-air_heavy-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "air_heavy",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "zenitsu-v3-air_heavy-p0-r1",
+    "rejected": "Wind-up frame shows the drawn blade overhead and the scabbard hanging forward like a second sword; revision keeps the empty scabbard pointing backward."
+  },
+  {
+    "id": "zenitsu-v3-air_heavy-p1",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-air_heavy-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-air_heavy-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-air_heavy-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "air_heavy",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-air_heavy-p2",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-air_heavy-p2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-air_heavy-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-air_heavy-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "air_heavy",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-iai-p0",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-iai-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-iai-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "iai",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-iai-p1",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-iai-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-iai-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-iai-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "iai",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-iai-p2",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-iai-p2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-iai-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-iai-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "iai",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-iai-p3",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-iai-p3.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-iai-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-iai-p2.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "iai",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-iai-p4",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-iai-p4.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-iai-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-iai-p3.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "iai",
+      "part": 4,
+      "frame_indices": [
+        7,
+        8
+      ],
+      "overlap": [
+        7
+      ],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-dash_forward-p0",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-dash_forward-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-dash_forward-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "dash_forward",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-dash_forward-p1",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-dash_forward-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-dash_forward-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-dash_forward-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "dash_forward",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-dash_forward-p2",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-dash_forward-p2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-dash_forward-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-dash_forward-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "dash_forward",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-dash_forward-p3",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-dash_forward-p3.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-dash_forward-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-dash_forward-p2.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "dash_forward",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-dash_back-p0",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-dash_back-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-dash_back-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "dash_back",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-dash_back-p1",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-dash_back-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-dash_back-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-dash_back-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "dash_back",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-dash_back-p2",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-dash_back-p2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-dash_back-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-dash_back-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "dash_back",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-dash_back-p3",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-dash_back-p3.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-dash_back-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-dash_back-p2.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "dash_back",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-jump_forward-p0",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-jump_forward-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-jump_forward-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "jump_forward",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-jump_forward-p1",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-jump_forward-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-jump_forward-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-jump_forward-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "jump_forward",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "zenitsu-v3-jump_forward-p1-r1",
+    "rejected": "Flip shows only one inverted drawing (frame 3 still upright); revision rotates a quarter turn per frame."
+  },
+  {
+    "id": "zenitsu-v3-jump_forward-p2",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-jump_forward-p2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-jump_forward-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-jump_forward-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "jump_forward",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "zenitsu-v3-jump_forward-p2-r1",
+    "rejected": "Frame 5 is upright again right after the inversion; revision gives the three-quarter turn."
+  },
+  {
+    "id": "zenitsu-v3-jump_forward-p3",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-jump_forward-p3.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-jump_forward-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-jump_forward-p2.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "jump_forward",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-jump_back-p0",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-jump_back-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-jump_back-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "jump_back",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-jump_back-p1",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-jump_back-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-jump_back-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-jump_back-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "jump_back",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-jump_back-p2",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-jump_back-p2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-jump_back-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-jump_back-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "jump_back",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-jump_back-p3",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-jump_back-p3.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-jump_back-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-jump_back-p2.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "jump_back",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-jump-p0",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-jump-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-jump-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "jump",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-jump-p1",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-jump-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-jump-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-jump-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "jump",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-jump-p2",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-jump-p2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-jump-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-jump-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "jump",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-body_stand_light-p0",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-body_stand_light-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_stand_light-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "body_stand_light",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-body_stand_light-p1",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-body_stand_light-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_stand_light-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_stand_light-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "body_stand_light",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-body_stand_light-p2",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-body_stand_light-p2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_stand_light-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_stand_light-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "body_stand_light",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-body_crouch_light-p0",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-body_crouch_light-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_crouch_light-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "body_crouch_light",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-body_crouch_light-p1",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-body_crouch_light-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_crouch_light-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_crouch_light-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "body_crouch_light",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-body_crouch_light-p2",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-body_crouch_light-p2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_crouch_light-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_crouch_light-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "body_crouch_light",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-body_air_light-p0",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-body_air_light-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_air_light-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "body_air_light",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-body_air_light-p1",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-body_air_light-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_air_light-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_air_light-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "body_air_light",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-body_air_light-p2",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-body_air_light-p2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_air_light-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_air_light-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "body_air_light",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-body_stand_heavy-p0",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-body_stand_heavy-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_stand_heavy-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "body_stand_heavy",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-body_stand_heavy-p1",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-body_stand_heavy-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_stand_heavy-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_stand_heavy-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "body_stand_heavy",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-body_stand_heavy-p2",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-body_stand_heavy-p2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_stand_heavy-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_stand_heavy-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "body_stand_heavy",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-body_stand_heavy-p3",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-body_stand_heavy-p3.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_stand_heavy-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_stand_heavy-p2.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "body_stand_heavy",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-body_stand_heavy-p4",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-body_stand_heavy-p4.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_stand_heavy-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_stand_heavy-p3.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "body_stand_heavy",
+      "part": 4,
+      "frame_indices": [
+        7,
+        8
+      ],
+      "overlap": [
+        7
+      ],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-body_crouch_heavy-p0",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-body_crouch_heavy-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_crouch_heavy-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "body_crouch_heavy",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-body_crouch_heavy-p1",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-body_crouch_heavy-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_crouch_heavy-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_crouch_heavy-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "body_crouch_heavy",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-body_crouch_heavy-p2",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-body_crouch_heavy-p2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_crouch_heavy-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_crouch_heavy-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "body_crouch_heavy",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-body_crouch_heavy-p3",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-body_crouch_heavy-p3.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_crouch_heavy-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_crouch_heavy-p2.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "body_crouch_heavy",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-body_air_heavy-p0",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-body_air_heavy-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_air_heavy-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "body_air_heavy",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-body_air_heavy-p1",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-body_air_heavy-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_air_heavy-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_air_heavy-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "body_air_heavy",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-body_air_heavy-p2",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-body_air_heavy-p2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_air_heavy-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_air_heavy-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "body_air_heavy",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-body_air_heavy-p3",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-body_air_heavy-p3.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_air_heavy-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_air_heavy-p2.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "body_air_heavy",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-body_air_heavy-p4",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-body_air_heavy-p4.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_air_heavy-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_air_heavy-p3.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "body_air_heavy",
+      "part": 4,
+      "frame_indices": [
+        7,
+        8
+      ],
+      "overlap": [
+        7
+      ],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-roll_forward-p0",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-roll_forward-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-roll_forward-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "roll_forward",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-roll_forward-p1",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-roll_forward-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-roll_forward-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-roll_forward-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "roll_forward",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-roll_forward-p2",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-roll_forward-p2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-roll_forward-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-roll_forward-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "roll_forward",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-roll_forward-p3",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-roll_forward-p3.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-roll_forward-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-roll_forward-p2.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "roll_forward",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-roll_forward-p4",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-roll_forward-p4.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-roll_forward-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-roll_forward-p3.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "roll_forward",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-roll_forward-p5",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-roll_forward-p5.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-roll_forward-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-roll_forward-p4.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "roll_forward",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-roll_back-p0",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-roll_back-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-roll_back-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "roll_back",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-roll_back-p1",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-roll_back-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-roll_back-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-roll_back-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "roll_back",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-roll_back-p2",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-roll_back-p2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-roll_back-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-roll_back-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "roll_back",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-roll_back-p3",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-roll_back-p3.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-roll_back-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-roll_back-p2.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "roll_back",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-roll_back-p4",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-roll_back-p4.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-roll_back-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-roll_back-p3.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "roll_back",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-roll_back-p5",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-roll_back-p5.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-roll_back-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-roll_back-p4.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "roll_back",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-throw_success-p0",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-throw_success-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-throw_success-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "throw_success",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-throw_success-p1",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-throw_success-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-throw_success-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-throw_success-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "throw_success",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-throw_success-p2",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-throw_success-p2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-throw_success-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-throw_success-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "throw_success",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-throw_success-p3",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-throw_success-p3.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-throw_success-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-throw_success-p2.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "throw_success",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-throw_success-p4",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-throw_success-p4.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-throw_success-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-throw_success-p3.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "throw_success",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-throw_success-p5",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-throw_success-p5.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-throw_success-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-throw_success-p4.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "throw_success",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-throw_forward-p0",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-throw_forward-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-throw_forward-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "throw_forward",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-throw_forward-p1",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-throw_forward-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-throw_forward-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-throw_forward-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "throw_forward",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-throw_forward-p2",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-throw_forward-p2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-throw_forward-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-throw_forward-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "throw_forward",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-throw_forward-p3",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-throw_forward-p3.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-throw_forward-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-throw_forward-p2.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "throw_forward",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-throw_forward-p4",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-throw_forward-p4.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-throw_forward-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-throw_forward-p3.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "throw_forward",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-throw_forward-p5",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-throw_forward-p5.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-throw_forward-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-throw_forward-p4.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "throw_forward",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-thrown-p0",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-thrown-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-thrown-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "thrown",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-thrown-p1",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-thrown-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-thrown-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-thrown-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "thrown",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-thrown-p2",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-thrown-p2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-thrown-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-thrown-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "thrown",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-thrown-p3",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-thrown-p3.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-thrown-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-thrown-p2.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "thrown",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-thrown-p4",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-thrown-p4.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-thrown-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-thrown-p3.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "thrown",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-thrown-p5",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-thrown-p5.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-thrown-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-thrown-p4.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "thrown",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-thrown_forward-p0",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-thrown_forward-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-thrown_forward-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "thrown_forward",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-thrown_forward-p1",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-thrown_forward-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-thrown_forward-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-thrown_forward-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "thrown_forward",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-thrown_forward-p2",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-thrown_forward-p2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-thrown_forward-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-thrown_forward-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "thrown_forward",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-thrown_forward-p3",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-thrown_forward-p3.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-thrown_forward-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-thrown_forward-p2.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "thrown_forward",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-thrown_forward-p4",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-thrown_forward-p4.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-thrown_forward-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-thrown_forward-p3.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "thrown_forward",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-thrown_forward-p5",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-thrown_forward-p5.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-thrown_forward-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-thrown_forward-p4.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "thrown_forward",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-throw_tech-p0",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-throw_tech-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-throw_tech-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "throw_tech",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-throw_tech-p1",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-throw_tech-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-throw_tech-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-throw_tech-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "throw_tech",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-throw_tech-p2",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-throw_tech-p2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-throw_tech-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-throw_tech-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "throw_tech",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-iai_return-p0",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-iai_return-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-iai_return-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "iai_return",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-iai_return-p1",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-iai_return-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-iai_return-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-iai_return-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "iai_return",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-iai_return-p2",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-iai_return-p2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-iai_return-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-iai_return-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "iai_return",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "zenitsu-v3-iai_return-p2-r1",
+    "rejected": "Cut frames show two swords (drawn blade plus a hilt in the scabbard); revision: one sword, empty scabbard."
+  },
+  {
+    "id": "zenitsu-v3-iai_return-p3",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-iai_return-p3.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-iai_return-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-iai_return-p2.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "iai_return",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "zenitsu-v3-iai_return-p3-r1",
+    "rejected": "Cut frames show two swords (drawn blade plus a hilt in the scabbard); revision: one sword, empty scabbard."
+  },
+  {
+    "id": "zenitsu-v3-iai_return-p4",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-iai_return-p4.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-iai_return-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-iai_return-p3.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "iai_return",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-iai_return-p5",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-iai_return-p5.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-iai_return-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-iai_return-p4.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "iai_return",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-sixfold-p0",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-sixfold-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-sixfold-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "sixfold",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-sixfold-p1",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-sixfold-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-sixfold-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-sixfold-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "sixfold",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-sixfold-p2",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-sixfold-p2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-sixfold-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-sixfold-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "sixfold",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-sixfold-p3",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-sixfold-p3.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-sixfold-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-sixfold-p2.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "sixfold",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "zenitsu-v3-sixfold-p3-r1",
+    "rejected": "Frame 7 hangs the empty scabbard forward down to the floor, reading as a second sword; revision keeps it pointing backward."
+  },
+  {
+    "id": "zenitsu-v3-sixfold-p4",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-sixfold-p4.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-sixfold-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-sixfold-p3.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "sixfold",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-sixfold-p5",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-sixfold-p5.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-sixfold-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-sixfold-p4.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "sixfold",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-sixfold-p6",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-sixfold-p6.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-sixfold-p6.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-sixfold-p5.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "sixfold",
+      "part": 6,
+      "frame_indices": [
+        12,
+        13
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-sixfold-p7",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-sixfold-p7.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-sixfold-p7.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-sixfold-p6.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "sixfold",
+      "part": 7,
+      "frame_indices": [
+        14,
+        15
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-sixfold-p8",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-sixfold-p8.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-sixfold-p8.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-sixfold-p7.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "sixfold",
+      "part": 8,
+      "frame_indices": [
+        16,
+        17
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-godspeed-p0",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-godspeed-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-godspeed-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "godspeed",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-godspeed-p1",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-godspeed-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-godspeed-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-godspeed-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "godspeed",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-godspeed-p2",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-godspeed-p2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-godspeed-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-godspeed-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "godspeed",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-godspeed-p3",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-godspeed-p3.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-godspeed-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-godspeed-p2.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "godspeed",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-godspeed-p4",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-godspeed-p4.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-godspeed-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-godspeed-p3.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "godspeed",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-godspeed-p5",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-godspeed-p5.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-godspeed-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-godspeed-p4.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "godspeed",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-godspeed-p6",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-godspeed-p6.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-godspeed-p6.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-godspeed-p5.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "godspeed",
+      "part": 6,
+      "frame_indices": [
+        12,
+        13
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-godspeed-p7",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-godspeed-p7.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-godspeed-p7.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-godspeed-p6.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "godspeed",
+      "part": 7,
+      "frame_indices": [
+        13,
+        14
+      ],
+      "overlap": [
+        13
+      ],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-round_victory-p0",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-round_victory-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_victory-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "round_victory",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-round_victory-p1",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-round_victory-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_victory-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_victory-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "round_victory",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "zenitsu-v3-round_victory-p1-r1",
+    "rejected": "Standing frames draw a second white scabbard hanging down in front of the legs besides the one behind the hip; revision: one sword, nothing hanging in front."
+  },
+  {
+    "id": "zenitsu-v3-round_victory-p2",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-round_victory-p2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_victory-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_victory-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "round_victory",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "zenitsu-v3-round_victory-p2-r1",
+    "rejected": "Standing frames draw a second white scabbard hanging down in front of the legs besides the one behind the hip; revision: one sword, nothing hanging in front."
+  },
+  {
+    "id": "zenitsu-v3-round_victory-p3",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-round_victory-p3.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_victory-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_victory-p2.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "round_victory",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "zenitsu-v3-round_victory-p3-r1",
+    "rejected": "Standing frames draw a second white scabbard hanging down in front of the legs besides the one behind the hip; revision: one sword, nothing hanging in front."
+  },
+  {
+    "id": "zenitsu-v3-round_victory-p4",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-round_victory-p4.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_victory-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_victory-p3.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "round_victory",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "zenitsu-v3-round_victory-p4-r1",
+    "rejected": "Standing frames draw a second white scabbard hanging down in front of the legs besides the one behind the hip; revision: one sword, nothing hanging in front."
+  },
+  {
+    "id": "zenitsu-v3-round_victory-p5",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-round_victory-p5.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_victory-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_victory-p4.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "round_victory",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "zenitsu-v3-round_victory-p5-r1",
+    "rejected": "Standing frames draw a second white scabbard hanging down in front of the legs besides the one behind the hip; revision: one sword, nothing hanging in front."
+  },
+  {
+    "id": "zenitsu-v3-round_victory-p6",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-round_victory-p6.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_victory-p6.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_victory-p5.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "round_victory",
+      "part": 6,
+      "frame_indices": [
+        12,
+        13
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "zenitsu-v3-round_victory-p6-r1",
+    "rejected": "Standing frames draw a second white scabbard hanging down in front of the legs besides the one behind the hip; revision: one sword, nothing hanging in front."
+  },
+  {
+    "id": "zenitsu-v3-round_victory-p7",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-round_victory-p7.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_victory-p7.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_victory-p6.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "round_victory",
+      "part": 7,
+      "frame_indices": [
+        14,
+        15
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "zenitsu-v3-round_victory-p7-r1",
+    "rejected": "Standing frames draw a second white scabbard hanging down in front of the legs besides the one behind the hip; revision: one sword, nothing hanging in front."
+  },
+  {
+    "id": "zenitsu-v3-round_victory-p8",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-round_victory-p8.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_victory-p8.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_victory-p7.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "round_victory",
+      "part": 8,
+      "frame_indices": [
+        16,
+        17
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "zenitsu-v3-round_victory-p8-r1",
+    "rejected": "Standing frames draw a second white scabbard hanging down in front of the legs besides the one behind the hip; revision: one sword, nothing hanging in front."
+  },
+  {
+    "id": "zenitsu-v3-round_defeat-p0",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-round_defeat-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_defeat-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "round_defeat",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-round_defeat-p1",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-round_defeat-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_defeat-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_defeat-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "round_defeat",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-round_defeat-p2",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-round_defeat-p2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_defeat-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_defeat-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "round_defeat",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-round_defeat-p3",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-round_defeat-p3.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_defeat-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_defeat-p2.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "round_defeat",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-round_defeat-p4",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-round_defeat-p4.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_defeat-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_defeat-p3.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "round_defeat",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-round_defeat-p5",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-round_defeat-p5.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_defeat-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_defeat-p4.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "round_defeat",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-inadama_2-p0",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-inadama_2-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-inadama_2-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "inadama_2",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "zenitsu-v3-inadama_2-p0-r1",
+    "rejected": "Left hand holds the empty scabbard reversed in front of the belly (gold tip forward), reading as a second sword."
+  },
+  {
+    "id": "zenitsu-v3-inadama_2-p1",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-inadama_2-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-inadama_2-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-inadama_2-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "inadama_2",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "zenitsu-v3-inadama_2-p1-r1",
+    "rejected": "Left hand holds the empty scabbard reversed in front of the belly (gold tip forward), reading as a second sword."
+  },
+  {
+    "id": "zenitsu-v3-inadama_2-p2",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-inadama_2-p2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-inadama_2-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-inadama_2-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "inadama_2",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-inadama_3-p0",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-inadama_3-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-inadama_3-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "inadama_3",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-inadama_3-p1",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-inadama_3-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-inadama_3-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-inadama_3-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "inadama_3",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-inadama_3-p2",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-inadama_3-p2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-inadama_3-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-inadama_3-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "inadama_3",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-inadama_3-p3",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-inadama_3-p3.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-inadama_3-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-inadama_3-p2.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "inadama_3",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-inadama_3-p4",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-inadama_3-p4.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-inadama_3-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-inadama_3-p3.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "inadama_3",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-heat_lightning-p0",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-heat_lightning-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-heat_lightning-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "heat_lightning",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-heat_lightning-p1",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-heat_lightning-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-heat_lightning-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-heat_lightning-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "heat_lightning",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-heat_lightning-p2",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-heat_lightning-p2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-heat_lightning-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-heat_lightning-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "heat_lightning",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-heat_lightning-p3",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-heat_lightning-p3.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-heat_lightning-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-heat_lightning-p2.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "heat_lightning",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-low_iai-p0",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-low_iai-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-low_iai-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "low_iai",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-low_iai-p1",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-low_iai-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-low_iai-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-low_iai-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "low_iai",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-low_iai-p2",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-low_iai-p2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-low_iai-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-low_iai-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "low_iai",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-low_iai-p3",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-low_iai-p3.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-low_iai-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-low_iai-p2.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "low_iai",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-air_thunder-p0",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-air_thunder-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-air_thunder-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "air_thunder",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-air_thunder-p1",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-air_thunder-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-air_thunder-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-air_thunder-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "air_thunder",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-air_thunder-p2",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-air_thunder-p2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-air_thunder-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-air_thunder-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "air_thunder",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-air_thunder-p3",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-air_thunder-p3.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-air_thunder-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-air_thunder-p2.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "air_thunder",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-air_thunder-p4",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-air_thunder-p4.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-air_thunder-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-air_thunder-p3.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "air_thunder",
+      "part": 4,
+      "frame_indices": [
+        7,
+        8
+      ],
+      "overlap": [
+        7
+      ],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "zenitsu-v3-air_thunder-p4-r1",
+    "rejected": "Last frame is already sheathed while the landing clip starts with the blade out behind him; revision keeps the blade drawn."
+  },
+  {
+    "id": "zenitsu-v3-distant_thunder-p0",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-distant_thunder-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-distant_thunder-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "distant_thunder",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-distant_thunder-p1",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-distant_thunder-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-distant_thunder-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-distant_thunder-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "distant_thunder",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-distant_thunder-p2",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-distant_thunder-p2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-distant_thunder-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-distant_thunder-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "distant_thunder",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-distant_thunder-p3",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-distant_thunder-p3.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-distant_thunder-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-distant_thunder-p2.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "distant_thunder",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-distant_thunder-p4",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-distant_thunder-p4.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-distant_thunder-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-distant_thunder-p3.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "distant_thunder",
+      "part": 4,
+      "frame_indices": [
+        7,
+        8
+      ],
+      "overlap": [
+        7
+      ],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-air_iai_land-p0",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-air_iai_land-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-air_iai_land-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "air_iai_land",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-air_iai_land-p1",
+    "group": "production",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-air_iai_land-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-air_iai_land-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-air_iai_land-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "air_iai_land",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-stand_heavy-p2-r1",
+    "group": "production-r1",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-stand_heavy-p2-r1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-stand_heavy-p2-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-stand_heavy-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "stand_heavy",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-victory-p0-r1",
+    "group": "production-r1",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-victory-p0-r1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-victory-p0-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "victory",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-victory-p1-r1",
+    "group": "production-r1",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-victory-p1-r1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-victory-p1-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-victory-p0-r1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "victory",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-crouch_heavy-p0-r1",
+    "group": "production-r1",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-crouch_heavy-p0-r1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-crouch_heavy-p0-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "crouch_heavy",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-air_heavy-p0-r1",
+    "group": "production-r1",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-air_heavy-p0-r1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-air_heavy-p0-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "air_heavy",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-jump_forward-p1-r1",
+    "group": "production-r1",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-jump_forward-p1-r1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-jump_forward-p1-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-jump_forward-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "jump_forward",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-jump_forward-p2-r1",
+    "group": "production-r1",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-jump_forward-p2-r1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-jump_forward-p2-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-jump_forward-p1-r1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "jump_forward",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-iai_return-p2-r1",
+    "group": "production-r1",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-iai_return-p2-r1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-iai_return-p2-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-iai_return-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "iai_return",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-iai_return-p3-r1",
+    "group": "production-r1",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-iai_return-p3-r1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-iai_return-p3-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-iai_return-p2-r1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "iai_return",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-sixfold-p3-r1",
+    "group": "production-r1",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-sixfold-p3-r1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-sixfold-p3-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-sixfold-p2.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "sixfold",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-round_victory-p1-r1",
+    "group": "production-r1",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-round_victory-p1-r1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_victory-p1-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_victory-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "round_victory",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-round_victory-p2-r1",
+    "group": "production-r1",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-round_victory-p2-r1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_victory-p2-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_victory-p1-r1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "round_victory",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-round_victory-p3-r1",
+    "group": "production-r1",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-round_victory-p3-r1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_victory-p3-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_victory-p2-r1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "round_victory",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-round_victory-p4-r1",
+    "group": "production-r1",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-round_victory-p4-r1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_victory-p4-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_victory-p3-r1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "round_victory",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-round_victory-p5-r1",
+    "group": "production-r1",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-round_victory-p5-r1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_victory-p5-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_victory-p4-r1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "round_victory",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-round_victory-p6-r1",
+    "group": "production-r1",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-round_victory-p6-r1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_victory-p6-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_victory-p5-r1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "round_victory",
+      "part": 6,
+      "frame_indices": [
+        12,
+        13
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-round_victory-p7-r1",
+    "group": "production-r1",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-round_victory-p7-r1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_victory-p7-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_victory-p6-r1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "round_victory",
+      "part": 7,
+      "frame_indices": [
+        14,
+        15
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-round_victory-p8-r1",
+    "group": "production-r1",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-round_victory-p8-r1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_victory-p8-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-round_victory-p7-r1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "round_victory",
+      "part": 8,
+      "frame_indices": [
+        16,
+        17
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-inadama_2-p0-r1",
+    "group": "production-r1",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-inadama_2-p0-r1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-inadama_2-p0-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "inadama_2",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-inadama_2-p1-r1",
+    "group": "production-r1",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-inadama_2-p1-r1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-inadama_2-p1-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-inadama_2-p0-r1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "inadama_2",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-air_thunder-p4-r1",
+    "group": "production-r1",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-air_thunder-p4-r1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-air_thunder-p4-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/approved-idle-candidate.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-air_thunder-p3.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "air_thunder",
+      "part": 4,
+      "frame_indices": [
+        7,
+        8
+      ],
+      "overlap": [
+        7
+      ],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-guard_low-p0",
+    "group": "production-edit",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-guard_low-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-guard_low-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/zenitsu-v3-guard_low-p0-base.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "guard_low",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-guard_low-p1",
+    "group": "production-edit",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-guard_low-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-guard_low-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/zenitsu-v3-guard_low-p1-base.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-guard_low-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "guard_low",
+      "part": 1,
+      "frame_indices": [
+        1,
+        2
+      ],
+      "overlap": [
+        1
+      ],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-intro_keys-p0",
+    "group": "production-edit",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-intro_keys-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-intro_keys-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/zenitsu-v3-intro_keys-p0-base.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "intro_keys",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-intro_keys-p1",
+    "group": "production-edit",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-intro_keys-p1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-intro_keys-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/zenitsu-v3-intro_keys-p1-base.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-intro_keys-p0.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "intro_keys",
+      "part": 1,
+      "frame_indices": [
+        1,
+        2
+      ],
+      "overlap": [
+        1
+      ],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
   }
 ]

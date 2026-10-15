@@ -1,0 +1,384 @@
+{
+  "character": "zenitsu",
+  "clip": "jump_forward",
+  "canvas_size": [
+    1024,
+    640
+  ],
+  "feet_anchor": [
+    448,
+    568
+  ],
+  "runtime_head_ruler": 48.24,
+  "parts": [
+    {
+      "id": "zenitsu-v3-jump_forward-p0",
+      "source": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-jump_forward-p0.png",
+      "sha256": "fade8d3f9522443f3a8b42e7dfe63a0af5f7801cdde46e64f93cb3d69bb76779",
+      "ruler": 174.28,
+      "scale": 0.2768,
+      "scale_method": "head-ruler",
+      "resample_vs_idle": 0.692,
+      "palette_shift": {
+        "haori_yellow": [
+          -1.01,
+          0.81,
+          2.36
+        ],
+        "haori_orange": [
+          -2.59,
+          0.31,
+          1.13
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori_yellow": 2.62,
+        "haori_orange": 2.34,
+        "uniform": 1.51,
+        "skin": 0.89,
+        "hair": 1.88
+      },
+      "palette_delta_e_after": {
+        "haori_yellow": 0.55,
+        "haori_orange": 1.02,
+        "uniform": 1.52,
+        "skin": 0.89,
+        "hair": 1.88
+      }
+    },
+    {
+      "id": "zenitsu-v3-jump_forward-p1-r1",
+      "source": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-jump_forward-p1-r1.png",
+      "sha256": "fe13fb2c5c226170f23130bb3e43f51d934160a5379aae93fcf4d0b0b08dbd9c",
+      "ruler": 178.26,
+      "scale": 0.2706,
+      "scale_method": "head-ruler",
+      "resample_vs_idle": 0.676,
+      "palette_shift": {
+        "haori_yellow": [
+          -1.34,
+          0.71,
+          2.47
+        ],
+        "haori_orange": [
+          -4.04,
+          1.51,
+          1.91
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori_yellow": 2.78,
+        "haori_orange": 4.0,
+        "uniform": 1.75,
+        "skin": 1.19,
+        "hair": 4.75
+      },
+      "palette_delta_e_after": {
+        "haori_yellow": 0.8,
+        "haori_orange": 1.72,
+        "uniform": 1.76,
+        "skin": 1.19,
+        "hair": 4.65
+      }
+    },
+    {
+      "id": "zenitsu-v3-jump_forward-p2-r1",
+      "source": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-jump_forward-p2-r1.png",
+      "sha256": "dced739b33c8238a180b45c4daef775e7964cc72a0382a242a48b193c2eed60a",
+      "ruler": 183.21,
+      "scale": 0.2633,
+      "scale_method": "head-ruler",
+      "resample_vs_idle": 0.658,
+      "palette_shift": {
+        "haori_orange": [
+          -3.26,
+          3.35,
+          -1.77
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori_yellow": 1.85,
+        "haori_orange": 4.57,
+        "uniform": 1.05,
+        "skin": 1.34,
+        "hair": 4.41
+      },
+      "palette_delta_e_after": {
+        "haori_yellow": 2.19,
+        "haori_orange": 1.81,
+        "uniform": 1.05,
+        "skin": 1.28,
+        "hair": 4.41
+      }
+    },
+    {
+      "id": "zenitsu-v3-jump_forward-p3",
+      "source": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-jump_forward-p3.png",
+      "sha256": "462ef8b60bba1b771d15bae516fccec2ac0ab363a2e7ee325bfe3328a97dcf3f",
+      "ruler": 171.01,
+      "scale": 0.2821,
+      "scale_method": "head-ruler",
+      "resample_vs_idle": 0.705,
+      "palette_shift": {
+        "haori_yellow": [
+          -1.4,
+          0.52,
+          1.88
+        ],
+        "haori_orange": [
+          -2.55,
+          0.96,
+          1.9
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori_yellow": 2.24,
+        "haori_orange": 2.92,
+        "uniform": 1.13,
+        "skin": 1.04,
+        "hair": 1.73
+      },
+      "palette_delta_e_after": {
+        "haori_yellow": 0.62,
+        "haori_orange": 0.96,
+        "uniform": 1.13,
+        "skin": 1.02,
+        "hair": 1.73
+      }
+    }
+  ],
+  "frames": [
+    {
+      "frame": 0,
+      "part": "zenitsu-v3-jump_forward-p0",
+      "crop": [
+        16,
+        190,
+        784,
+        938
+      ],
+      "head_ruler": 159.78,
+      "head_box": [
+        559,
+        4,
+        762,
+        226
+      ],
+      "ratio_to_sheet": 0.917,
+      "scale": 0.2768,
+      "flags": [],
+      "notes": [],
+      "root_x": 406.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        336,
+        284
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.854
+    },
+    {
+      "frame": 1,
+      "part": "zenitsu-v3-jump_forward-p0",
+      "crop": [
+        806,
+        126,
+        1466,
+        737
+      ],
+      "head_ruler": 174.28,
+      "head_box": [
+        388,
+        5,
+        656,
+        245
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.2768,
+      "flags": [],
+      "notes": [],
+      "root_x": 410.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        335,
+        311
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.695
+    },
+    {
+      "frame": 2,
+      "part": "zenitsu-v3-jump_forward-p1-r1",
+      "crop": [
+        40,
+        246,
+        854,
+        737
+      ],
+      "head_ruler": 176.83,
+      "head_box": [
+        585,
+        42,
+        810,
+        303
+      ],
+      "ratio_to_sheet": 0.992,
+      "scale": 0.2706,
+      "flags": [],
+      "notes": [],
+      "root_x": 415.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        336,
+        313
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.502
+    },
+    {
+      "frame": 3,
+      "part": "zenitsu-v3-jump_forward-p1-r1",
+      "crop": [
+        888,
+        88,
+        1486,
+        902
+      ],
+      "head_ruler": 178.26,
+      "head_box": [
+        356,
+        606,
+        592,
+        810
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.2706,
+      "flags": [],
+      "notes": [],
+      "root_x": 424.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        333,
+        312
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.23
+    },
+    {
+      "frame": 4,
+      "part": "zenitsu-v3-jump_forward-p2-r1",
+      "crop": [
+        28,
+        162,
+        773,
+        625
+      ],
+      "head_ruler": 183.21,
+      "head_box": [
+        3,
+        192,
+        237,
+        441
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.2633,
+      "flags": [],
+      "notes": [],
+      "root_x": 504.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        315,
+        345
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.264
+    },
+    {
+      "frame": 5,
+      "part": "zenitsu-v3-jump_forward-p2-r1",
+      "crop": [
+        801,
+        70,
+        1494,
+        963
+      ],
+      "head_ruler": 162.28,
+      "head_box": [
+        468,
+        2,
+        668,
+        194
+      ],
+      "ratio_to_sheet": 0.886,
+      "scale": 0.2633,
+      "flags": [],
+      "notes": [],
+      "root_x": 435.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        333,
+        271
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.979
+    },
+    {
+      "frame": 6,
+      "part": "zenitsu-v3-jump_forward-p3",
+      "crop": [
+        30,
+        10,
+        720,
+        958
+      ],
+      "head_ruler": 163.89,
+      "head_box": [
+        475,
+        4,
+        685,
+        194
+      ],
+      "ratio_to_sheet": 0.958,
+      "scale": 0.2821,
+      "flags": [],
+      "notes": [],
+      "root_x": 436.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        325,
+        248
+      ],
+      "clipped": false,
+      "height_vs_idle": 1.105
+    },
+    {
+      "frame": 7,
+      "part": "zenitsu-v3-jump_forward-p3",
+      "crop": [
+        782,
+        210,
+        1490,
+        962
+      ],
+      "head_ruler": 171.01,
+      "head_box": [
+        393,
+        5,
+        666,
+        191
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.2821,
+      "flags": [],
+      "notes": [],
+      "root_x": 420.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        330,
+        263
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.874
+    }
+  ]
+}

@@ -1,0 +1,198 @@
+{
+  "character": "zenitsu",
+  "clip": "air_iai_land",
+  "canvas_size": [
+    1024,
+    640
+  ],
+  "feet_anchor": [
+    448,
+    568
+  ],
+  "runtime_head_ruler": 48.24,
+  "parts": [
+    {
+      "id": "zenitsu-v3-air_iai_land-p0",
+      "source": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-air_iai_land-p0.png",
+      "sha256": "59cbbdecaa84cb84f43d2eeac4506f388c341bdc1adb133c52b30d212f98364b",
+      "ruler": 156.24,
+      "scale": 0.3087,
+      "scale_method": "head-ruler",
+      "resample_vs_idle": 0.772,
+      "palette_shift": {
+        "haori_yellow": [
+          -1.39,
+          1.43,
+          -3.39
+        ],
+        "haori_orange": [
+          -1.31,
+          1.61,
+          -2.22
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori_yellow": 3.84,
+        "haori_orange": 2.93,
+        "uniform": 1.25,
+        "skin": 1.52,
+        "hair": 7.06
+      },
+      "palette_delta_e_after": {
+        "haori_yellow": 2.54,
+        "haori_orange": 1.11,
+        "uniform": 1.24,
+        "skin": 1.47,
+        "hair": 7.06
+      }
+    },
+    {
+      "id": "zenitsu-v3-air_iai_land-p1",
+      "source": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-air_iai_land-p1.png",
+      "sha256": "e47bc6ac0cfff969fe9b1bd961fe32b35ad699d46ac2fbd4164a1d3b0710d95b",
+      "ruler": 169.89,
+      "scale": 0.2839,
+      "scale_method": "head-ruler",
+      "resample_vs_idle": 0.71,
+      "palette_shift": {
+        "haori_orange": [
+          -2.46,
+          1.16,
+          1.64
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori_yellow": 1.89,
+        "haori_orange": 2.78,
+        "uniform": 1.45,
+        "skin": 0.94,
+        "hair": 5.01
+      },
+      "palette_delta_e_after": {
+        "haori_yellow": 1.85,
+        "haori_orange": 1.22,
+        "uniform": 1.46,
+        "skin": 0.94,
+        "hair": 5.01
+      }
+    }
+  ],
+  "frames": [
+    {
+      "frame": 0,
+      "part": "zenitsu-v3-air_iai_land-p0",
+      "crop": [
+        10,
+        319,
+        857,
+        906
+      ],
+      "head_ruler": 156.24,
+      "head_box": [
+        637,
+        2,
+        834,
+        203
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3087,
+      "flags": [],
+      "notes": [],
+      "root_x": 507.0,
+      "anchor_mode": "feet",
+      "offset": [
+        291,
+        387
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.753
+    },
+    {
+      "frame": 1,
+      "part": "zenitsu-v3-air_iai_land-p0",
+      "crop": [
+        855,
+        160,
+        1500,
+        908
+      ],
+      "head_ruler": 153.03,
+      "head_box": [
+        432,
+        2,
+        629,
+        187
+      ],
+      "ratio_to_sheet": 0.979,
+      "scale": 0.3087,
+      "flags": [],
+      "notes": [],
+      "root_x": 427.0,
+      "anchor_mode": "feet",
+      "offset": [
+        316,
+        337
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.962
+    },
+    {
+      "frame": 2,
+      "part": "zenitsu-v3-air_iai_land-p1",
+      "crop": [
+        36,
+        240,
+        769,
+        934
+      ],
+      "head_ruler": 169.89,
+      "head_box": [
+        419,
+        5,
+        682,
+        216
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.2839,
+      "flags": [],
+      "notes": [],
+      "root_x": 399.0,
+      "anchor_mode": "feet",
+      "offset": [
+        335,
+        372
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.812
+    },
+    {
+      "frame": 3,
+      "part": "zenitsu-v3-air_iai_land-p1",
+      "crop": [
+        772,
+        156,
+        1494,
+        952
+      ],
+      "head_ruler": 163.62,
+      "head_box": [
+        500,
+        5,
+        708,
+        200
+      ],
+      "ratio_to_sheet": 0.963,
+      "scale": 0.2839,
+      "flags": [],
+      "notes": [],
+      "root_x": 467.0,
+      "anchor_mode": "feet",
+      "offset": [
+        315,
+        343
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.933
+    }
+  ]
+}

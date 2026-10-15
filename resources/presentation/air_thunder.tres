@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="MovePresentation" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/presentation/move_presentation.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+shape = "thunder"
+color = Color(1.0, 0.87, 0.46, 1)
+sound_key = "thunder"
+trail_count = 2
+trail_alpha = 0.12
+texture_key = "thunder"
+body_opacity = 0.86
+glow_strength = 0.58
+particle_scale = 1.1
+super_tier = 0
+landing_clip = "air_iai_land"

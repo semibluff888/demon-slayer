@@ -1,0 +1,308 @@
+{
+  "character": "zenitsu",
+  "clip": "crouch_heavy",
+  "canvas_size": [
+    1024,
+    640
+  ],
+  "feet_anchor": [
+    448,
+    568
+  ],
+  "runtime_head_ruler": 48.24,
+  "parts": [
+    {
+      "id": "zenitsu-v3-crouch_heavy-p0-r1",
+      "source": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-crouch_heavy-p0-r1.png",
+      "sha256": "6672365f567a6b9b00bc898d9ff892ec68653b97778525633c55a5bf4b03f1c4",
+      "ruler": 169.55,
+      "scale": 0.2845,
+      "scale_method": "head-ruler",
+      "resample_vs_idle": 0.711,
+      "palette_shift": {
+        "haori_yellow": [
+          -0.85,
+          0.46,
+          3.03
+        ],
+        "haori_orange": [
+          -2.27,
+          1.03,
+          2.34
+        ],
+        "uniform": [
+          2.2,
+          0.48,
+          0.92
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori_yellow": 3.14,
+        "haori_orange": 3.12,
+        "uniform": 2.02,
+        "skin": 1.97,
+        "hair": 3.87
+      },
+      "palette_delta_e_after": {
+        "haori_yellow": 0.36,
+        "haori_orange": 1.16,
+        "uniform": 1.21,
+        "skin": 1.95,
+        "hair": 3.86
+      }
+    },
+    {
+      "id": "zenitsu-v3-crouch_heavy-p1",
+      "source": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-crouch_heavy-p1.png",
+      "sha256": "a87abc582c6a53ca4fb3ecfa6230330698d76fdaa464fb70c6a18d6dd12bc741",
+      "ruler": 147.91,
+      "scale": 0.3261,
+      "scale_method": "head-ruler",
+      "resample_vs_idle": 0.815,
+      "palette_shift": {
+        "haori_yellow": [
+          -0.48,
+          0.66,
+          4.62
+        ],
+        "haori_orange": [
+          -5.0,
+          3.1,
+          3.37
+        ],
+        "skin": [
+          1.73,
+          0.1,
+          1.63
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori_yellow": 4.68,
+        "haori_orange": 6.02,
+        "uniform": 1.84,
+        "skin": 2.12,
+        "hair": 4.62
+      },
+      "palette_delta_e_after": {
+        "haori_yellow": 0.52,
+        "haori_orange": 2.17,
+        "uniform": 1.85,
+        "skin": 1.13,
+        "hair": 4.62
+      }
+    },
+    {
+      "id": "zenitsu-v3-crouch_heavy-p2",
+      "source": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-crouch_heavy-p2.png",
+      "sha256": "7d46a9ebe281fc942f0a109a925f8fc53b1a05ad2c37a6e7ba624c02f3bbcd4e",
+      "ruler": 161.18,
+      "scale": 0.2993,
+      "scale_method": "head-ruler",
+      "resample_vs_idle": 0.748,
+      "palette_shift": {
+        "haori_yellow": [
+          -1.88,
+          1.2,
+          1.87
+        ],
+        "haori_orange": [
+          -2.66,
+          2.0,
+          3.5
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori_yellow": 2.66,
+        "haori_orange": 4.54,
+        "uniform": 1.86,
+        "skin": 0.96,
+        "hair": 3.21
+      },
+      "palette_delta_e_after": {
+        "haori_yellow": 0.82,
+        "haori_orange": 1.04,
+        "uniform": 1.88,
+        "skin": 0.95,
+        "hair": 3.21
+      }
+    }
+  ],
+  "frames": [
+    {
+      "frame": 0,
+      "part": "zenitsu-v3-crouch_heavy-p0-r1",
+      "crop": [
+        30,
+        220,
+        707,
+        930
+      ],
+      "head_ruler": 163.37,
+      "head_box": [
+        466,
+        5,
+        673,
+        210
+      ],
+      "ratio_to_sheet": 0.964,
+      "scale": 0.2845,
+      "flags": [],
+      "notes": [],
+      "root_x": 372.0,
+      "anchor_mode": "feet",
+      "offset": [
+        342,
+        367
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.837
+    },
+    {
+      "frame": 1,
+      "part": "zenitsu-v3-crouch_heavy-p0-r1",
+      "crop": [
+        786,
+        221,
+        1504,
+        930
+      ],
+      "head_ruler": 169.55,
+      "head_box": [
+        487,
+        5,
+        699,
+        224
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.2845,
+      "flags": [],
+      "notes": [],
+      "root_x": 404.0,
+      "anchor_mode": "feet",
+      "offset": [
+        333,
+        367
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.837
+    },
+    {
+      "frame": 2,
+      "part": "zenitsu-v3-crouch_heavy-p1",
+      "crop": [
+        16,
+        248,
+        834,
+        956
+      ],
+      "head_ruler": 147.91,
+      "head_box": [
+        288,
+        73,
+        498,
+        251
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3261,
+      "flags": [],
+      "notes": [],
+      "root_x": 339.0,
+      "anchor_mode": "feet",
+      "offset": [
+        337,
+        339
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.854
+    },
+    {
+      "frame": 3,
+      "part": "zenitsu-v3-crouch_heavy-p1",
+      "crop": [
+        668,
+        45,
+        1522,
+        958
+      ],
+      "head_ruler": 106.48,
+      "head_box": [
+        393,
+        318,
+        563,
+        451
+      ],
+      "ratio_to_sheet": 0.72,
+      "scale": 0.3261,
+      "flags": [],
+      "notes": [
+        "head partly hidden or turned (72%)"
+      ],
+      "root_x": 383.0,
+      "anchor_mode": "feet",
+      "offset": [
+        323,
+        272
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.808
+    },
+    {
+      "frame": 4,
+      "part": "zenitsu-v3-crouch_heavy-p2",
+      "crop": [
+        16,
+        208,
+        798,
+        913
+      ],
+      "head_ruler": 161.18,
+      "head_box": [
+        463,
+        7,
+        663,
+        198
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.2993,
+      "flags": [],
+      "notes": [],
+      "root_x": 386.0,
+      "anchor_mode": "feet",
+      "offset": [
+        332,
+        358
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.87
+    },
+    {
+      "frame": 5,
+      "part": "zenitsu-v3-crouch_heavy-p2",
+      "crop": [
+        812,
+        210,
+        1512,
+        914
+      ],
+      "head_ruler": 160.97,
+      "head_box": [
+        451,
+        6,
+        655,
+        205
+      ],
+      "ratio_to_sheet": 0.999,
+      "scale": 0.2993,
+      "flags": [],
+      "notes": [],
+      "root_x": 380.0,
+      "anchor_mode": "feet",
+      "offset": [
+        334,
+        358
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.87
+    }
+  ]
+}

@@ -348,6 +348,13 @@ func beam(canvas: Node2D, layer: int, tail: Vector2, head: Vector2, thickness: f
 		points.append(tail.lerp(head, u))
 		widths.append(thickness * (0.18 + 0.82 * pow(u, 0.7)))
 		tint.append(Color(1, 1, 1, alpha * smoothstep(0.0, 0.25, u)))
+	_beam_strip(canvas, layer, points, widths, tint)
+	if head_star:
+		star(canvas, layer, head, thickness * 1.25, 9, seed, alpha, Color(0.9, 0.98, 1.0), Kit.bolt_glow(awakened_form))
+
+## One beam strip on its layer: soft gold glow, gold body with a white core,
+## additive gold light.
+func _beam_strip(canvas: Node2D, layer: int, points: PackedVector2Array, widths: PackedFloat32Array, tint: PackedColorArray) -> void:
 	match layer:
 		Kit.GLOW:
 			Ribbon.draw(canvas, points, _scaled(widths, 2.6), _tinted(tint, Color(Kit.GOLD, 0.3)), band)
@@ -356,8 +363,23 @@ func beam(canvas: Node2D, layer: int, tail: Vector2, head: Vector2, thickness: f
 			Ribbon.draw(canvas, points, _scaled(widths, 0.5), _tinted(tint, Kit.WHITE), band)
 		Kit.LIGHT:
 			Ribbon.draw(canvas, points, _scaled(widths, 1.5), _tinted(tint, Color(Kit.GOLD_HOT, 0.45)), band)
-	if head_star:
-		star(canvas, layer, head, thickness * 1.25, 9, seed, alpha, Color(0.9, 0.98, 1.0), Kit.bolt_glow(awakened_form))
+
+## The pointed front of a dash beam ending at `at` with `thickness`: a lance of
+## light carrying the beam on and tapering to `tip`, and (at `shock` alpha) two
+## thin shock lines folding back from the tip like a bow wave.
+func spearhead(canvas: Node2D, layer: int, at: Vector2, tip: Vector2, thickness: float, alpha: float, shock: float, awakened_form: bool) -> void:
+	var length := at.distance_to(tip)
+	if alpha <= 0.01 or length < 1.0:
+		return
+	var direction := (tip - at) / length
+	var tint := PackedColorArray([Color(1, 1, 1, alpha), Color(1, 1, 1, alpha), Color(1, 1, 1, alpha)])
+	_beam_strip(canvas, layer, PackedVector2Array([at, at.lerp(tip, 0.4), tip]), PackedFloat32Array([thickness, thickness * 0.62, 0.0]), tint)
+	if layer == Kit.LIGHT and shock > 0.01:
+		var edge := Kit.bolt_tint(awakened_form)
+		for side: float in [-1.0, 1.0]:
+			var back := direction.rotated(PI + side * 0.38) * length * 1.4
+			Ribbon.draw(canvas, PackedVector2Array([tip, tip + back * 0.5, tip + back]), PackedFloat32Array([1.8, 1.2, 0.0]),
+				PackedColorArray([Color(Kit.WHITE, 0.9 * shock), Color(edge, 0.6 * shock), Color(edge, 0.0)]), band)
 
 ## A comic starburst: alternating long and short spikes, filled, with a rim line.
 func star(canvas: Node2D, layer: int, at: Vector2, radius: float, spikes: int, seed: int, alpha: float, fill: Color, rim: Color) -> void:

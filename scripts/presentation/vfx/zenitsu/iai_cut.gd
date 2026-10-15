@@ -7,12 +7,27 @@ extends "res://scripts/presentation/vfx/zenitsu/technique.gd"
 func starts(move: Resource) -> Array:
 	return Array(move.hit_frames) if not move.hit_frames.is_empty() else [move.startup]
 
+## Cuts refitted to the v3 drawings (start, control, end in fighter-local units),
+## by clip, one curve per hit segment: 5C and 2C rise from low in front to
+## overhead, jA cuts level at the chest, 稻魂's last stage cuts level at the waist
+## and then sweeps back up over his head. Other clips keep EffectsView's curves.
+const CURVES := {
+	"stand_heavy": [[Vector2(45, -16), Vector2(96, -65), Vector2(9, -70)]],
+	"crouch_heavy": [[Vector2(18, -6), Vector2(70, -16), Vector2(34, -64)]],
+	"air_light": [[Vector2(4, -24), Vector2(68, -36), Vector2(40, -48)]],
+	"inadama_3": [[Vector2(4, -26), Vector2(74, -30), Vector2(42, -46)], [Vector2(46, -40), Vector2(36, -76), Vector2(-12, -60)]],
+}
+
 func sweep(move: Resource, segment: int) -> Paths.Sweep:
-	var curve: Array = vfx.cut_curves.get(move.effect(), [Vector2(10, -45), Vector2(45, -60), Vector2(60, -30)])
+	var thickness := 12.0 if move.kind == "heavy" else 8.0
+	var own: Array = CURVES.get(move.clip_id(), [])
+	if segment < own.size():
+		var cut: Array = own[segment]
+		return Paths.Sweep.new(cut[0], cut[1], cut[2], thickness)
+	var curve: Array = own[0] if not own.is_empty() else vfx.cut_curves.get(move.effect(), [Vector2(10, -45), Vector2(45, -60), Vector2(60, -30)])
 	var a: Vector2 = curve[0]
 	var c: Vector2 = curve[1]
 	var b: Vector2 = curve[2]
-	var thickness := 12.0 if move.kind == "heavy" else 8.0
 	if segment % 2 == 1:
 		# The return cut runs from the end back to the start, bowed the other way.
 		var mid := (a + b) * 0.5

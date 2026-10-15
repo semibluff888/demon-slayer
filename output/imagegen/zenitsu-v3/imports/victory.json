@@ -1,0 +1,306 @@
+{
+  "character": "zenitsu",
+  "clip": "victory",
+  "canvas_size": [
+    1024,
+    640
+  ],
+  "feet_anchor": [
+    448,
+    568
+  ],
+  "runtime_head_ruler": 48.24,
+  "parts": [
+    {
+      "id": "zenitsu-v3-victory-p0-r1",
+      "source": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-victory-p0-r1.png",
+      "sha256": "a7c4f65414c9ae83f4187236e6b02e86337bc332f41dabe4e6272597aa6dc7b1",
+      "ruler": 158.97,
+      "scale": 0.3034,
+      "scale_method": "head-ruler",
+      "resample_vs_idle": 0.759,
+      "palette_shift": {
+        "haori_yellow": [
+          -1.19,
+          1.41,
+          1.72
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori_yellow": 2.41,
+        "haori_orange": 1.67,
+        "uniform": 1.44,
+        "skin": 1.3,
+        "hair": 2.93
+      },
+      "palette_delta_e_after": {
+        "haori_yellow": 1.01,
+        "haori_orange": 1.67,
+        "uniform": 1.45,
+        "skin": 1.29,
+        "hair": 2.93
+      }
+    },
+    {
+      "id": "zenitsu-v3-victory-p1-r1",
+      "source": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-victory-p1-r1.png",
+      "sha256": "d38a40c434d7d0b878f15953d709f1d181f933743dac3c9b67df7baba6b0c5c3",
+      "ruler": 149.62,
+      "scale": 0.3224,
+      "scale_method": "head-ruler",
+      "resample_vs_idle": 0.806,
+      "palette_shift": {
+        "haori_yellow": [
+          -1.41,
+          1.96,
+          2.99
+        ],
+        "haori_orange": [
+          -2.71,
+          1.04,
+          1.91
+        ],
+        "uniform": [
+          1.55,
+          0.37,
+          1.56
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori_yellow": 3.74,
+        "haori_orange": 3.04,
+        "uniform": 2.02,
+        "skin": 0.92,
+        "hair": 2.76
+      },
+      "palette_delta_e_after": {
+        "haori_yellow": 1.06,
+        "haori_orange": 1.04,
+        "uniform": 1.21,
+        "skin": 0.91,
+        "hair": 2.76
+      }
+    },
+    {
+      "id": "zenitsu-v3-victory-p2",
+      "source": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-victory-p2.png",
+      "sha256": "b59bc897a076e9077be7b0064c7d2c410d36792962e4ea0a329bbf3fac7cb0bf",
+      "ruler": 141.03,
+      "scale": 0.342,
+      "scale_method": "head-ruler",
+      "resample_vs_idle": 0.855,
+      "palette_shift": {
+        "haori_yellow": [
+          -1.84,
+          1.3,
+          5.12
+        ],
+        "haori_orange": [
+          -1.75,
+          0.03,
+          4.39
+        ],
+        "uniform": [
+          -0.77,
+          1.53,
+          1.45
+        ],
+        "skin": [
+          -2.12,
+          -0.25,
+          1.72
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori_yellow": 5.48,
+        "haori_orange": 4.6,
+        "uniform": 2.19,
+        "skin": 2.4,
+        "hair": 4.39
+      },
+      "palette_delta_e_after": {
+        "haori_yellow": 0.64,
+        "haori_orange": 0.86,
+        "uniform": 0.58,
+        "skin": 1.27,
+        "hair": 4.39
+      }
+    }
+  ],
+  "frames": [
+    {
+      "frame": 0,
+      "part": "zenitsu-v3-victory-p0-r1",
+      "crop": [
+        12,
+        178,
+        736,
+        954
+      ],
+      "head_ruler": 158.97,
+      "head_box": [
+        494,
+        6,
+        699,
+        202
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3034,
+      "flags": [],
+      "notes": [],
+      "root_x": 451.0,
+      "anchor_mode": "feet",
+      "offset": [
+        311,
+        334
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.971
+    },
+    {
+      "frame": 1,
+      "part": "zenitsu-v3-victory-p0-r1",
+      "crop": [
+        776,
+        88,
+        1505,
+        956
+      ],
+      "head_ruler": 158.46,
+      "head_box": [
+        411,
+        7,
+        618,
+        201
+      ],
+      "ratio_to_sheet": 0.997,
+      "scale": 0.3034,
+      "flags": [],
+      "notes": [],
+      "root_x": 448.0,
+      "anchor_mode": "feet",
+      "offset": [
+        312,
+        306
+      ],
+      "clipped": false,
+      "height_vs_idle": 1.088
+    },
+    {
+      "frame": 2,
+      "part": "zenitsu-v3-victory-p1-r1",
+      "crop": [
+        84,
+        154,
+        740,
+        984
+      ],
+      "head_ruler": 149.62,
+      "head_box": [
+        411,
+        5,
+        608,
+        185
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3224,
+      "flags": [],
+      "notes": [],
+      "root_x": 426.0,
+      "anchor_mode": "feet",
+      "offset": [
+        311,
+        302
+      ],
+      "clipped": false,
+      "height_vs_idle": 1.105
+    },
+    {
+      "frame": 3,
+      "part": "zenitsu-v3-victory-p1-r1",
+      "crop": [
+        876,
+        13,
+        1393,
+        988
+      ],
+      "head_ruler": 146.72,
+      "head_box": [
+        239,
+        4,
+        429,
+        182
+      ],
+      "ratio_to_sheet": 0.981,
+      "scale": 0.3224,
+      "flags": [],
+      "notes": [],
+      "root_x": 321.0,
+      "anchor_mode": "feet",
+      "offset": [
+        345,
+        255
+      ],
+      "clipped": false,
+      "height_vs_idle": 1.297
+    },
+    {
+      "frame": 4,
+      "part": "zenitsu-v3-victory-p2",
+      "crop": [
+        240,
+        10,
+        734,
+        994
+      ],
+      "head_ruler": 137.28,
+      "head_box": [
+        222,
+        6,
+        395,
+        168
+      ],
+      "ratio_to_sheet": 0.973,
+      "scale": 0.342,
+      "flags": [],
+      "notes": [],
+      "root_x": 302.0,
+      "anchor_mode": "feet",
+      "offset": [
+        345,
+        233
+      ],
+      "clipped": false,
+      "height_vs_idle": 1.397
+    },
+    {
+      "frame": 5,
+      "part": "zenitsu-v3-victory-p2",
+      "crop": [
+        832,
+        10,
+        1298,
+        993
+      ],
+      "head_ruler": 141.03,
+      "head_box": [
+        182,
+        5,
+        367,
+        168
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.342,
+      "flags": [],
+      "notes": [],
+      "root_x": 277.0,
+      "anchor_mode": "feet",
+      "offset": [
+        353,
+        233
+      ],
+      "clipped": false,
+      "height_vs_idle": 1.393
+    }
+  ]
+}

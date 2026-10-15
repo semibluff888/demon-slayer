@@ -36,7 +36,7 @@
 
 善逸原上撩主要是地面居合姿势，现在替换为独立九帧序列，包含蓄势、离地、空中屈膝上撩和落地收刀。腾空恢复阶段根据上升／下落保持相应姿势，落地前不显示最后的站立收刀帧。上撩继续属于游戏演绎动作。
 
-使用 imagegen 提示词规范和项目已有 CPA API／CLI，模型 `gpt-image-2.5`。原始输出实际为 1254×1254；提示词、两张角色参考、源图、哈希、逐帧裁切、脚底／骨盆校准均保存于 [uppercut-v1](../output/imagegen/uppercut-v1/jobs.json)。整组动作使用统一尺寸，独立图集为 [uppercut-iai.png](../art/characters/zenitsu/uppercut-iai.png)，旧图集重建后会自动重新应用已登记的动作覆盖。
+使用 imagegen 提示词规范和项目已有 CPA API／CLI，模型 `gpt-image-2.5`。原始输出实际为 1254×1254；提示词、两张角色参考、源图、哈希、逐帧裁切、脚底／骨盆校准均保存于 [uppercut-v1](../output/imagegen/uppercut-v1/jobs.json)。整组动作使用统一尺寸，独立图集为 `uppercut-iai.png`，旧图集重建后会自动重新应用已登记的动作覆盖。（善逸改用美术 v3 后，居合·上撩由 `tools/art_v3` 重绘，这张图集页已移除。）
 
 ## 庭院高清资源
 

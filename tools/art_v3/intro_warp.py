@@ -112,17 +112,21 @@ class KeyToCanvas:
 
     def __init__(self, canon):
         self.scale = canon['scale']
-        root = process.anatomy.root_x(canon['key']) + process.WARP_PAD[0]
-        sole = process.anatomy.sole_y(canon['key']) + process.WARP_PAD[1]
+        margin = canon.get('warp_pad', process.WARP_PAD)
+        root = process.anatomy.root_x(canon['key']) + margin[0]
+        sole = process.anatomy.sole_y(canon['key']) + margin[1]
         self.at = np.array([round(process.ANCHOR[0] - root * self.scale), round(process.ANCHOR[1] - sole * self.scale)], dtype=np.float64)
-        self.pad = np.array(process.WARP_PAD[:2], dtype=np.float64)
+        self.pad = np.array(margin[:2], dtype=np.float64)
 
     def __call__(self, points):
         return (np.asarray(points, dtype=np.float64) + self.pad) * self.scale + self.at
 
 
-def build(character, preview=None):
-    spec = read(SPEC / ('%s-intro-rig.json' % character))
+def build(character, preview=None, clip='round_intro', spec_path=None):
+    """Assembles `clip` (the round intro, or another key-plus-warp clip such as Zenitsu's
+    awakening_start) from the rig at `spec_path` (default spec/<id>-intro-rig.json)."""
+    spec_file = ROOT / spec_path if spec_path else SPEC / ('%s-intro-rig.json' % character)
+    spec = read(spec_file)
     rig = read(SPEC / spec['idle_rig'])
     canon = process.canonical(character)
     key = Image.open(ROOT / rig['key']).convert('RGBA')
@@ -131,11 +135,12 @@ def build(character, preview=None):
     padded.alpha_composite(key, (left, top))
     image = np.asarray(padded)
     base, warps = warp_poses(spec, rig)
-    clips = spec['keys'] if isinstance(spec['keys'], list) else [spec['keys']]
+    clips = spec.get('keys') or []
+    clips = clips if isinstance(clips, list) else [clips]
     key_records = {}
-    for clip in clips:
-        for record in read(production(character) / 'imports' / (clip + '.json'))['frames']:
-            key_records['%s:%d' % (clip, record['frame'])] = record
+    for name in clips:
+        for record in read(production(character) / 'imports' / (name + '.json'))['frames']:
+            key_records['%s:%d' % (name, record['frame'])] = record
     to_canvas = KeyToCanvas(canon)
     grid, alpha = int(rig.get('grid', 6)), float(rig.get('alpha', 1.4))
     frames, records = [], []
@@ -159,11 +164,11 @@ def build(character, preview=None):
             source = rig['key']
         frames.append(frame)
         records.append(dict(frame=index, source=source, weights=weights, flags=[]))
-    process.save_frames(character, 'round_intro', frames)
-    save(production(character) / 'imports/round_intro.json',
-         dict(character=character, clip='round_intro', canvas_size=list(process.CANVAS), feet_anchor=list(process.ANCHOR),
-              source=rig['key'], keys=[rel(production(character) / 'imports' / (clip + '.json')) for clip in clips],
-              spec=rel(SPEC / ('%s-intro-rig.json' % character)), frames=records))
+    process.save_frames(character, clip, frames)
+    save(production(character) / 'imports' / (clip + '.json'),
+         dict(character=character, clip=clip, canvas_size=list(process.CANVAS), feet_anchor=list(process.ANCHOR),
+              source=rig['key'], keys=[rel(production(character) / 'imports' / (name + '.json')) for name in clips],
+              spec=rel(spec_file), frames=records))
     if preview:
         box = None
         for frame in frames:
@@ -182,10 +187,12 @@ def build(character, preview=None):
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('--character', default='tanjiro')
+    parser.add_argument('--clip', default='round_intro')
+    parser.add_argument('--spec', help='rig path relative to the project (default tools/art_v3/spec/<id>-intro-rig.json)')
     parser.add_argument('--preview')
     args = parser.parse_args()
-    frames = build(args.character, args.preview)
-    print('intro frames:', len(frames), '->', production(args.character) / 'imports/round_intro')
+    frames = build(args.character, args.preview, args.clip, args.spec)
+    print('%s frames:' % args.clip, len(frames), '->', production(args.character) / 'imports' / args.clip)
 
 
 if __name__ == '__main__':

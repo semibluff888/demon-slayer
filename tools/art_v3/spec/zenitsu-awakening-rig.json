@@ -1,0 +1,152 @@
+{
+  "idle_rig": "zenitsu-idle-rig.json",
+  "keys": [],
+  "pad": [
+    30,
+    30,
+    30,
+    0
+  ],
+  "note": "Awakening (Thunder Breathing, Godspeed), awakened atlas only: warps of the approved key. He sinks a little and tenses, hair and haori lift as if charged, then settles toward idle frame 0 (frame 0 is idle frame 0 exactly). The sheathed katana moves rigidly with the hilt. Displacements in key pixels.",
+  "key_motions": {},
+  "poses": {
+    "sink": {
+      "chest": [
+        2,
+        8
+      ],
+      "collar": [
+        2,
+        8
+      ],
+      "shoulder_back": [
+        0,
+        8
+      ],
+      "shoulder_front": [
+        2,
+        8
+      ],
+      "head": [
+        3,
+        9
+      ],
+      "crown": [
+        3,
+        9
+      ],
+      "hair_back": [
+        2,
+        9
+      ],
+      "hair_front": [
+        3,
+        9
+      ],
+      "waist": [
+        1,
+        5
+      ],
+      "pelvis": [
+        0,
+        4
+      ],
+      "elbow_back": [
+        0,
+        6
+      ],
+      "hilt": [
+        1,
+        6
+      ],
+      "knee_front": [
+        2,
+        2
+      ],
+      "knee_back": [
+        0,
+        2
+      ],
+      "sleeve_back": [
+        0,
+        6
+      ],
+      "lining": [
+        0,
+        4
+      ],
+      "hem_back": [
+        0,
+        4
+      ],
+      "hem_front": [
+        1,
+        5
+      ]
+    },
+    "charge": {
+      "crown": [
+        0,
+        -14
+      ],
+      "hair_back": [
+        -6,
+        -12
+      ],
+      "hair_front": [
+        4,
+        -12
+      ],
+      "sleeve_back": [
+        -10,
+        -10
+      ],
+      "lining": [
+        -8,
+        -8
+      ],
+      "hem_back": [
+        -6,
+        -10
+      ],
+      "hem_front": [
+        4,
+        -6
+      ]
+    }
+  },
+  "sword": {
+    "pivot": "hilt",
+    "points": [
+      "guard",
+      "pommel",
+      "scabbard",
+      "scabbard_back",
+      "scabbard_tip"
+    ],
+    "extra": 6,
+    "rotate": {}
+  },
+  "timeline": [
+    {},
+    {
+      "sink": 0.5
+    },
+    {
+      "sink": 1.0,
+      "charge": 0.5
+    },
+    {
+      "sink": 1.0,
+      "charge": 1.0
+    },
+    {
+      "sink": 0.6,
+      "charge": 0.8
+    },
+    {
+      "sink": 0.25,
+      "charge": 0.4
+    }
+  ]
+}

@@ -1,0 +1,192 @@
+{
+  "character": "zenitsu",
+  "clip": "intro_keys",
+  "canvas_size": [
+    1024,
+    640
+  ],
+  "feet_anchor": [
+    448,
+    568
+  ],
+  "runtime_head_ruler": 48.24,
+  "parts": [
+    {
+      "id": "zenitsu-v3-intro_keys-p0",
+      "source": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-intro_keys-p0.png",
+      "sha256": "a7a876f7c856fe98e1be2fa598186290d683c4cd1812328aecb4cd66c8f19e8d",
+      "ruler": 120.59,
+      "scale": 0.4,
+      "scale_method": "registered",
+      "resample_vs_idle": 1.0,
+      "palette_shift": {
+        "haori_yellow": [
+          0.15,
+          0.43,
+          2.23
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori_yellow": 2.27,
+        "haori_orange": 1.56,
+        "uniform": 0.52,
+        "skin": 0.42,
+        "hair": 4.97
+      },
+      "palette_delta_e_after": {
+        "haori_yellow": 0.66,
+        "haori_orange": 1.53,
+        "uniform": 0.52,
+        "skin": 0.42,
+        "hair": 4.97
+      }
+    },
+    {
+      "id": "zenitsu-v3-intro_keys-p1",
+      "source": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-intro_keys-p1.png",
+      "sha256": "d111c7c3d0e554e7726d254ba2fe8718ecfe446ec29dc97e335cee0f3b85e55d",
+      "ruler": 121.2,
+      "scale": 0.398,
+      "scale_method": "registered",
+      "resample_vs_idle": 0.995,
+      "palette_shift": {
+        "haori_yellow": [
+          0.54,
+          -0.41,
+          3.03
+        ],
+        "haori_orange": [
+          -0.41,
+          -0.65,
+          2.58
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori_yellow": 3.08,
+        "haori_orange": 2.68,
+        "uniform": 0.83,
+        "skin": 1.14,
+        "hair": 4.65
+      },
+      "palette_delta_e_after": {
+        "haori_yellow": 1.08,
+        "haori_orange": 0.37,
+        "uniform": 0.83,
+        "skin": 1.13,
+        "hair": 4.65
+      }
+    }
+  ],
+  "frames": [
+    {
+      "frame": 0,
+      "part": "zenitsu-v3-intro_keys-p0",
+      "crop": [
+        111,
+        314,
+        660,
+        988
+      ],
+      "head_ruler": 123.96,
+      "head_box": [
+        308,
+        4,
+        498,
+        144
+      ],
+      "ratio_to_sheet": 1.028,
+      "scale": 0.4,
+      "flags": [],
+      "notes": [],
+      "root_x": 363.0,
+      "anchor_mode": "registered",
+      "offset": [
+        305,
+        300
+      ],
+      "clipped": false,
+      "registration": {
+        "scale": 0.4,
+        "score": 0.941,
+        "exact": 0.4
+      },
+      "height_vs_idle": 1.117,
+      "drawing": "output/imagegen/zenitsu-v3/imports/intro_keys/drawing-00.png",
+      "exact_scale": 0.4
+    },
+    {
+      "frame": 1,
+      "part": "zenitsu-v3-intro_keys-p0",
+      "crop": [
+        878,
+        354,
+        1427,
+        988
+      ],
+      "head_ruler": 133.66,
+      "head_box": [
+        301,
+        4,
+        518,
+        153
+      ],
+      "ratio_to_sheet": 1.108,
+      "scale": 0.4,
+      "flags": [
+        "head 11% larger than the sheet reference"
+      ],
+      "notes": [],
+      "root_x": 360.0,
+      "anchor_mode": "registered",
+      "offset": [
+        305,
+        316
+      ],
+      "clipped": false,
+      "registration": {
+        "scale": 0.4,
+        "score": 0.948,
+        "exact": 0.4
+      },
+      "height_vs_idle": 1.05,
+      "drawing": "output/imagegen/zenitsu-v3/imports/intro_keys/drawing-01.png",
+      "exact_scale": 0.4
+    },
+    {
+      "frame": 2,
+      "part": "zenitsu-v3-intro_keys-p1",
+      "crop": [
+        877,
+        380,
+        1426,
+        990
+      ],
+      "head_ruler": 126.8,
+      "head_box": [
+        338,
+        4,
+        537,
+        152
+      ],
+      "ratio_to_sheet": 1.046,
+      "scale": 0.398,
+      "flags": [],
+      "notes": [],
+      "root_x": 378.0,
+      "anchor_mode": "registered",
+      "offset": [
+        305,
+        327
+      ],
+      "clipped": false,
+      "registration": {
+        "scale": 0.398,
+        "score": 0.992,
+        "exact": 0.398
+      },
+      "height_vs_idle": 1.0,
+      "drawing": "output/imagegen/zenitsu-v3/imports/intro_keys/drawing-02.png",
+      "exact_scale": 0.398
+    }
+  ]
+}

@@ -32,6 +32,7 @@ func _run() -> void:
 			await _check_technique(id, awakened)
 	for id in ["j236A", "j236C", "j214B", "j214D"]:
 		await _check_air(id)
+	_check_beam_lead()
 	await _check_determinism()
 	game.queue_free()
 	await process_frame
@@ -96,13 +97,17 @@ func _check_technique(id: String, awakened: bool) -> void:
 	var attacker = model.fighters[0]
 	var label := "%s %s" % [id, "awakened" if awakened else "normal"]
 	var guard := 0
+	var shed := 0
 	while attacker.move == move and attacker.move_frame < move.startup + 2 and guard < 200:
 		_tick()
+		shed = maxi(shed, _particles(zenitsu))
 		guard += 1
 		if guard % 6 == 0:
 			await process_frame
 	await process_frame
-	check(_particles(zenitsu) > 0, label + " sheds particles")
+	# Emission is per combat tick; a slow real-time frame (the first draw uploads the
+	# atlas pages) can already have aged a light cut's short sparks out by now.
+	check(shed > 0, label + " sheds particles")
 	var held := [zenitsu.sparks.pos.duplicate(), zenitsu.motes.pos.duplicate(), zenitsu.time]
 	game.view.effects.freeze = true
 	game.view.effects._process(0.5)
@@ -155,6 +160,32 @@ func _check_air(id: String) -> void:
 	for n in range(90):
 		_tick()
 	check(_particles(zenitsu) == 0 and zenitsu.bursts.is_empty(), id + " clears after landing")
+
+## Dash beams lead him: through the dash the head (with its star and lance) stays
+## clear of the front of his body, about 24 units ahead in the dash poses, and
+## air dashes lead along their dive; 低身斩 barely travels but still streaks.
+func _check_beam_lead() -> void:
+	for id in ["236A", "236C", "3C", "j236A", "j236C", "j214B", "j214D"]:
+		var move := _start("zenitsu_" + id, false, 70.0 if id.begins_with("j") else 0.0)
+		var technique = game.view.effects.zenitsu.technique(move)
+		var attacker = game.combat.fighters[0]
+		var ahead := INF
+		var lead := INF
+		var span := INF
+		var guard := 0
+		while attacker.move == move and attacker.move_frame < move.startup + move.active and guard < 200:
+			_tick()
+			guard += 1
+			if attacker.move == move and attacker.move_frame > move.startup and attacker.move_frame < move.startup + move.active:
+				var beam: Dictionary = technique.shape(attacker, float(attacker.move_frame))
+				var head: Vector2 = beam.head
+				ahead = minf(ahead, head.x)
+				lead = minf(lead, (head - Vector2(0.0, technique.height(move))).dot(beam.dir))
+				span = minf(span, beam.from.distance_to(beam.tip))
+		check(ahead > 28.0 and ahead < INF, id + " beam head clears his body")
+		check(lead >= 40.0, id + " beam head leads along the dash")
+		if id == "3C":
+			check(span >= 84.0, "3C streak is long despite the short travel")
 
 func _check_determinism() -> void:
 	var results := []

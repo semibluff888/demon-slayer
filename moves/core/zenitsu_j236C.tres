@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/move_data.gd" id="1"]
 
-[ext_resource type="Resource" path="res://resources/presentation/thunder.tres" id="2"]
+[ext_resource type="Resource" path="res://resources/presentation/air_thunder.tres" id="2"]
 
 [resource]
 script = ExtResource("1")
@@ -19,7 +19,7 @@ blockstun = 16
 hitstop = 7
 push = 0.5
 stance = "air"
-animation_id = "thunder"
+animation_id = "air_thunder"
 knockdown = true
 box = Rect2(-12, -42, 92, 52)
 cancel_targets = PackedStringArray()

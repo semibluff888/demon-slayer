@@ -44,7 +44,8 @@ def canonical(character):
     # A wide crouching key's main axis is shorter than the body; the spec then gives it.
     length = data.get('qa', {}).get('length_px') or anatomy.body_axes(key)[0]
     return dict(ruler=measured['ruler'], runtime_ruler=measured['ruler'] * scale, scale=scale,
-                length=length, palette=palette.stats(key), key=key, qa=data.get('qa', {}))
+                length=length, palette=palette.stats(key), key=key, qa=data.get('qa', {}),
+                warp_pad=tuple(data.get('warp_pad', WARP_PAD)))
 
 
 PELVIS_HEIGHT = round(340 * 34 / 70)  # pelvis above the feet anchor for rotating poses (old pipeline convention)
@@ -259,6 +260,11 @@ def process_clip(character, clip, jobs, canon, band=None, pose=None):
         elif not data['measured'] or (rotated(data) and abs(scale / clip_median - 1) > 0.12):
             scale = clip_median
             method = 'clip-median'
+        elif canon['qa'].get('head_outlier_limit') and abs(scale / clip_median - 1) > canon['qa']['head_outlier_limit']:
+            # A face in deep shadow or bowed away measures only the bangs: an upright
+            # sheet far off the clip median is a failed measurement, not a drawing scale.
+            scale = clip_median
+            method = 'clip-median (head not measurable)'
         overlap = meta.get('overlap') or []
         registered = pose.get('register')
         if registered:
@@ -367,17 +373,20 @@ def process_idle(character, canon):
 
 # Every warped clip is resampled from the key padded the same way, so identical
 # drawings (the intro's last frames are idle frame 0) give identical canvas pixels.
+# spec "warp_pad" overrides it (Zenitsu's hair touches the top of his key and needs
+# room above to lift).
 WARP_PAD = (20, 0, 130, 0)
 
 
 def warped_canvas(warped, canon, pad=(0, 0, 0, 0)):
     """A key-space drawing (the key padded by `pad`) on the canvas at the key's own scale
     and placement. Returns (canvas, offset)."""
-    root = anatomy.root_x(canon['key']) + WARP_PAD[0]
-    sole = anatomy.sole_y(canon['key']) + WARP_PAD[1]
-    size = (warped.width + WARP_PAD[0] + WARP_PAD[2] - pad[0] - pad[2], warped.height + WARP_PAD[1] + WARP_PAD[3] - pad[1] - pad[3])
+    margin = canon.get('warp_pad', WARP_PAD)
+    root = anatomy.root_x(canon['key']) + margin[0]
+    sole = anatomy.sole_y(canon['key']) + margin[1]
+    size = (warped.width + margin[0] + margin[2] - pad[0] - pad[2], warped.height + margin[1] + margin[3] - pad[1] - pad[3])
     drawing = Image.new('RGBA', size)
-    drawing.alpha_composite(warped, (WARP_PAD[0] - pad[0], WARP_PAD[1] - pad[1]))
+    drawing.alpha_composite(warped, (margin[0] - pad[0], margin[1] - pad[1]))
     scaled = drawing.resize((round(drawing.width * canon['scale']), round(drawing.height * canon['scale'])), Image.Resampling.LANCZOS)
     at = (round(ANCHOR[0] - root * canon['scale']), round(ANCHOR[1] - sole * canon['scale']))
     canvas = Image.new('RGBA', CANVAS)
@@ -478,7 +487,7 @@ def main():
         if warp and warp.get('assembled'):
             # Key drawings plus warps of the approved key (intro_warp.py builds the canvas frames).
             import intro_warp
-            frames = intro_warp.build(args.character)
+            frames = intro_warp.build(args.character, clip=clip, spec_path=warp.get('spec'))
             review(args.character, clip, frames, dict(frames=[dict(ratio_to_sheet=1.0, flags=[]) for _ in frames]), 9,
                    Image.open(production(args.character) / 'imports/idle/frame-00.png').convert('RGBA'))
             print('%s: %d frames assembled from %s' % (clip, len(frames), warp['tool']))

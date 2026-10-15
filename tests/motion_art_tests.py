@@ -6,6 +6,9 @@ ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'output/imagegen/motion-fixes-v1'
 TARGETS={'nezuko/awakening':{'blood_kick','spinning_kick','blood_burst','throw_forward','throw_success'},'nezuko':{'blood_burst','throw_forward','throw_success'},'akaza':{'throw_forward','throw_success'},'akaza/awakening':{'throw_forward','throw_success'},'zenitsu':{'throw_success'},'zenitsu/awakening':{'throw_success'}}
 def read(p):return json.loads(p.read_text(encoding='utf-8-sig'))
+# A character redrawn with tools/art_v3 replaces these motion fixes; tests/art_v3_tests.py checks it.
+REDRAWN={cid for cid in ['zenitsu'] if read(ROOT/'art/characters'/cid/'atlas.json').get('revision')==cid+'-v3'}
+TARGETS={key:clips for key,clips in TARGETS.items() if key.split('/')[0] not in REDRAWN}
 def sprite(folder,e):
  x,y,w,h=e['region']
  with Image.open(folder/e['texture']) as im:return im.convert('RGBA').crop((x,y,x+w,y+h))
@@ -48,6 +51,7 @@ class MotionArtTests(unittest.TestCase):
     self.assertEqual(m['clips'][c]['timeline'],[0,3,8,10,15,20,23,29]);self.assertEqual(len(m['clips'][c]['frames']),8)
     for e in m['clips'][c]['frames']:self.assertEqual(e['offset'][1]+e['region'][3],569)
   for frame in read(OUT/'imports/akaza-generated.json')['frames']:self.assertAlmostEqual(frame['head_length']*frame['scale'],70)
+ @unittest.skipIf('zenitsu' in REDRAWN,'Zenitsu ships the v3 redraw')
  def test_zenitsu_turn_stays_reversed_through_recovery(self):
   for key in ['zenitsu','zenitsu/awakening']:
    folder=ROOT/'art/characters'/key;m=read(folder/'atlas.json');b=OUT/'baseline'/key;old=read(b/'atlas.json')

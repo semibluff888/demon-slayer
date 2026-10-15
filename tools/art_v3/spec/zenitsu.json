@@ -16,9 +16,9 @@
     "heads_tall": 6.0,
     "runtime_standing_px": 340,
     "approved_head_px": 150,
-    "model_head_px": 139,
-    "model_height_px": 901,
-    "scale_note": "Measured 2026-10-14. Approved key (543x605, iai stance): hair top to chin 150. v3 model sheet: hair top to chin 139 of 901 (6.5 heads; Tanjiro's is 5.6), so at the same 340 px standing height his head is about 52 px (Tanjiro 61) and the key resamples by 0.35."
+    "model_head_px": 150,
+    "model_height_px": 850,
+    "scale_note": "Recalibrated 2026-10-15 on the production drawings. The approved key (543x605, iai stance) measures hair top to chin 150 and a head ruler of 120.6. The v3 model sheet is 6.5 heads (hair top to chin 139 of 901), but the generated sheets draw him standing at about 6 heads: standing drawings (victory) are 6.9-7.2 head rulers tall, so at the key's head size he would stand about 850 key px. model_head_px / model_height_px are therefore the key's 150 over that 850, which makes him 340 px standing like Tanjiro (runtime hair top to chin about 60 px, Tanjiro 61; key scale 0.40, idle about 242 px = 71% of standing). Scaling by the model sheet instead (139/901) left standing drawings at 297 px."
   },
   "palette": {
     "note": "Material targets are measured from the approved v3 idle key at run time (process.canonical); the colour classes are \"anatomy\" and \"materials\" below."
@@ -47,7 +47,7 @@
     "stance_px": 605,
     "upright_px": 970,
     "head_px": 150,
-    "katana": "there is only ONE katana. Unless a frame says the sword is drawn, it stays SHEATHED on his left hip: the white scabbard with its gold tip points BACKWARD (to the LEFT, behind his hip) and the hilt points FORWARD toward the opponent (to the RIGHT, in front of his belly), never backward. Once it is drawn the scabbard is EMPTY: no hilt and no guard at its mouth, only the white scabbard in his left hand or at his hip. Drawn, the pale steel blade from the round gold guard to the tip is about 365 px, as long as the scabbard in input image 1. Never shorten it; when it points straight forward or across the body, show its full length.",
+    "katana": "there is only ONE katana. Unless a frame says the sword is drawn, it stays SHEATHED on his left hip: the white scabbard with its gold tip points BACKWARD (to the LEFT, behind his hip) and the hilt points FORWARD toward the opponent (to the RIGHT, in front of his belly), never backward. Once it is drawn the scabbard is EMPTY: no hilt and no guard at its mouth, only the white scabbard in his left hand or at his hip, its gold tip ALWAYS pointing BACKWARD (to the LEFT), never forward. Drawn, the pale steel blade from the round gold guard to the tip is about 365 px, as long as the scabbard in input image 1. Never shorten it; when it points straight forward or across the body, show its full length.",
     "katana_edit": "the drawn pale steel blade from the guard to the tip is about 365 px, as long as the scabbard in input image 1. Never shorten it; a sheathed katana keeps its hilt pointing FORWARD.",
     "effects": "lightning, sparks, glow, trails or speed lines"
   },
@@ -169,23 +169,30 @@
     "rim_alpha": 0.45
   },
   "qa": {
-    "note": "The idle is the low iai stance (62% of standing). upright: standing frames vs the idle (1.6 x 0.95-1.07; a pose's \"upright_frames\" limits the check to those frames). stance: low-stance clips such as the walk, about 70% of standing, a little taller than the idle. length_px: an upright body in key pixels, the longest a stretched-out drawing may be (the wide key's main axis is shorter than his body). idle_vs_upright: the idle height as a share of standing (tests compare low poses with standing). overlap_head_limit: an overlap frame calibrates its sheet by height only while that agrees with the sheet's head ruler within this share (a redrawn overlap in another pose shrank the thunder recovery to 87%).",
+    "note": "The idle is the low iai stance (71% of standing). upright: standing frames vs the idle (1.41 x 0.93-1.07; a pose's \"upright_frames\" limits the check to those frames). stance: low-stance clips such as the walk, a little taller than the idle. length_px: an upright body in key pixels, the longest a stretched-out drawing may be (the wide key's main axis is shorter than his body). idle_vs_upright: the idle height as a share of standing (tests compare low poses with standing). overlap_head_limit: an overlap frame calibrates its sheet by height only while that agrees with the sheet's head ruler within this share (a redrawn overlap in another pose shrank the thunder recovery to 87%). head_outlier_limit: an upright sheet whose head scale is this far off the clip median takes the median (a bowed, shaded face measured only the bangs and asked for 1.6x in iai_return).",
     "upright": [
-      1.52,
-      1.71
+      1.28,
+      1.5
     ],
     "stance": [
       0.95,
       1.2
     ],
-    "length_px": 970,
+    "length_px": 850,
     "sample_clips": [
       "idle",
       "walk",
       "thunder"
     ],
-    "idle_vs_upright": 0.62,
-    "overlap_head_limit": 0.06
+    "idle_vs_upright": 0.71,
+    "overlap_head_limit": 0.06,
+    "head_outlier_limit": 0.3
   },
-  "portrait_note": "Face, eyes and hair"
+  "portrait_note": "Face, eyes and hair",
+  "warp_pad": [
+    40,
+    40,
+    130,
+    0
+  ]
 }

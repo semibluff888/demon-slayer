@@ -1,0 +1,256 @@
+{
+  "idle_rig": "zenitsu-idle-rig.json",
+  "keys": [
+    "intro_keys"
+  ],
+  "pad": [
+    30,
+    30,
+    30,
+    0
+  ],
+  "note": "Round intro, one forward action with the stance never moving: awake and frightened in the stance (intro_keys 0, trembling), dozing off (intro_keys 1, a nod), asleep (intro_keys 2, breathing), then warps of the approved key: slumped asleep, a deep breath, a sudden snap into the iai focus and the settle onto idle frame 0 (the last frame is idle frame 0 exactly). key_motions move the key drawings, poses the approved key; displacements in key pixels. No effects.",
+  "key_motions": {
+    "tremble": {
+      "head": [
+        2,
+        -2
+      ],
+      "crown": [
+        2,
+        -2
+      ],
+      "hair_back": [
+        2,
+        -2
+      ],
+      "hair_front": [
+        2,
+        -2
+      ],
+      "shoulder_back": [
+        1,
+        -2
+      ],
+      "shoulder_front": [
+        2,
+        -1
+      ],
+      "collar": [
+        1,
+        -1
+      ],
+      "chest": [
+        1,
+        -1
+      ]
+    },
+    "nod": {
+      "head": [
+        3,
+        6
+      ],
+      "crown": [
+        3,
+        6
+      ],
+      "hair_back": [
+        2,
+        5
+      ],
+      "hair_front": [
+        3,
+        6
+      ],
+      "collar": [
+        1,
+        2
+      ]
+    },
+    "breath": {
+      "chest": [
+        0,
+        -4
+      ],
+      "collar": [
+        0,
+        -4
+      ],
+      "shoulder_back": [
+        0,
+        -4
+      ],
+      "shoulder_front": [
+        0,
+        -3
+      ],
+      "head": [
+        0,
+        -3
+      ],
+      "crown": [
+        0,
+        -3
+      ],
+      "hair_back": [
+        0,
+        -3
+      ],
+      "hair_front": [
+        0,
+        -3
+      ]
+    }
+  },
+  "poses": {
+    "drowse": {
+      "head": [
+        3,
+        7
+      ],
+      "crown": [
+        3,
+        7
+      ],
+      "hair_back": [
+        2,
+        6
+      ],
+      "hair_front": [
+        3,
+        7
+      ],
+      "collar": [
+        1,
+        3
+      ],
+      "chest": [
+        1,
+        3
+      ],
+      "shoulder_back": [
+        0,
+        3
+      ],
+      "shoulder_front": [
+        1,
+        3
+      ]
+    },
+    "inhale": {
+      "chest": [
+        0,
+        -5
+      ],
+      "collar": [
+        0,
+        -5
+      ],
+      "shoulder_back": [
+        0,
+        -5
+      ],
+      "shoulder_front": [
+        0,
+        -4
+      ],
+      "head": [
+        0,
+        -4
+      ],
+      "crown": [
+        0,
+        -4
+      ],
+      "hair_back": [
+        0,
+        -4
+      ],
+      "hair_front": [
+        0,
+        -4
+      ],
+      "hilt": [
+        0,
+        -2
+      ]
+    }
+  },
+  "sword": {
+    "pivot": "hilt",
+    "points": [
+      "guard",
+      "pommel",
+      "scabbard",
+      "scabbard_back",
+      "scabbard_tip"
+    ],
+    "extra": 6,
+    "rotate": {}
+  },
+  "timeline": [
+    {
+      "key": 0
+    },
+    {
+      "key": 0,
+      "tremble": 1.0
+    },
+    {
+      "key": 0,
+      "tremble": -0.8
+    },
+    {
+      "key": 0,
+      "tremble": 0.6
+    },
+    {
+      "key": 1
+    },
+    {
+      "key": 1,
+      "nod": 1.0
+    },
+    {
+      "key": 2
+    },
+    {
+      "key": 2,
+      "breath": 0.5
+    },
+    {
+      "key": 2,
+      "breath": 1.0
+    },
+    {
+      "key": 2,
+      "breath": 0.3
+    },
+    {
+      "drowse": 1.0
+    },
+    {
+      "drowse": 1.0,
+      "inhale": 0.6
+    },
+    {
+      "drowse": 0.9,
+      "inhale": 1.0
+    },
+    {
+      "drowse": 0.2,
+      "inhale": 0.6
+    },
+    {
+      "drowse": 0.05,
+      "inhale": 0.25
+    },
+    {
+      "inhale": 0.1
+    },
+    {
+      "inhale": 0.03
+    },
+    {}
+  ]
+}
