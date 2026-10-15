@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="DuelMove" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="1"]
+
+[ext_resource type="Resource" path="res://resources/presentation/akaza_body.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+presentation = ExtResource("2")
+display_name = "踏进冲拳"
+kind = "heavy"
+level = "mid"
+startup = 17
+active = 3
+recovery = 13
+damage = 44
+hitstun = 23
+blockstun = 16
+hitstop = 8
+push = 0.9
+startup_travel = 1.6
+stance = "stand"
+animation_id = "air_type"
+effect_id = "body"
+knockdown = false
+box = Rect2(8, -58, 60, 24)
+cancel_targets = PackedStringArray()
+id = "akaza_6C"

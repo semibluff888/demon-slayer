@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="DuelMove" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="1"]
+
+[ext_resource type="Resource" path="res://resources/presentation/akaza_body.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+presentation = ExtResource("2")
+display_name = "破坏杀·脚式 流闪群光"
+kind = "heavy"
+level = "mid"
+startup = 13
+active = 8
+recovery = 20
+damage = 54
+hitstun = 28
+blockstun = 15
+hitstop = 6
+push = 0.8
+startup_travel = 1.0
+travel = 1.0
+stance = "stand"
+animation_id = "body_stand_heavy"
+effect_id = "body"
+knockdown = false
+hit_frames = PackedInt32Array(13, 18)
+box = Rect2(6, -62, 82, 44)
+cancel_targets = PackedStringArray("skill", "super", "max")
+cancel_requires_hit = true
+id = "akaza_6B"

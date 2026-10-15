@@ -12,6 +12,8 @@ var direction: int = 0
 var crouch: bool = false
 var think: int = 0
 var cancelled_move: String = ""
+## Ticks left after our own launching finisher hit; its falling victim is no anti-air target.
+var launched_ticks: int = 0
 
 func _init(seed_value: int = 713) -> void:
 	rng.seed = seed_value
@@ -24,6 +26,22 @@ func reset() -> void:
 	crouch = false
 	think = 0
 	cancelled_move = ""
+	launched_ticks = 0
+
+## A string ending in a launcher that only cancels into a super (Akaza's 万叶闪柳)
+## is worth starting only with the meter for that super.
+## How far in front a grounded poke reliably reaches: its box and forward step, plus a
+## little of the target's body (an opponent drifting back must not make it whiff).
+static func _reach(move: Resource) -> float:
+	return move.box.end.x + move.startup_travel * move.startup + 6.0
+
+static func _string_pays(stage: Resource, meter: int) -> bool:
+	var last: Resource = stage
+	for n in range(4):
+		if last.follow_ups.is_empty():
+			break
+		last = last.follow_ups.values()[0]
+	return meter >= 100 or not (last.knockdown and last.launch < 0)
 
 func _enqueue(notation: String, facing: int) -> void:
 	queue.append(Combat.neutral())
@@ -52,6 +70,7 @@ func command(self_state: Dictionary, opponent: Dictionary) -> Dictionary:
 	var distance: float = absf(observed.x - self_state.x)
 	cooldown -= 1
 	think -= 1
+	launched_ticks -= 1
 	if self_state.state in ["hit", "block", "knockdown", "thrown"]:
 		queue.clear()
 	if not queue.is_empty():
@@ -65,12 +84,14 @@ func command(self_state: Dictionary, opponent: Dictionary) -> Dictionary:
 		var move: Resource = catalog.moves.get(current)
 		if move != null:
 			cancelled_move = current
+			if move.kind == "heavy" and move.knockdown and move.launch < 0 and self_state.get("confirmed", false):
+				launched_ticks = 45
 			# Expansion branches read the move data, so characters without it keep
 			# their exact decisions and random sequence.
 			var string_stage: Resource = move.follow_ups.get("A") if move.kind == "light" and move.stance != "air" else null
 			if move.kind == "heavy" and not move.knockdown and self_state.grounded and self_state.get("confirmed", false) and int(self_state.get("awakening_ticks", 0)) == 0 and not self_state.get("quick_awakening_used", false) and int(self_state.meter) >= 200:
 				_enqueue("BC", facing)
-			elif string_stage != null and self_state.get("confirmed", false) and rng.randf() < 0.45:
+			elif string_stage != null and self_state.get("confirmed", false) and _string_pays(string_stage, int(self_state.meter)) and rng.randf() < 0.45:
 				_enqueue("5A", facing)
 			elif move.kind == "light" and move.stance != "air":
 				_enqueue("5C", facing)
@@ -78,6 +99,9 @@ func command(self_state: Dictionary, opponent: Dictionary) -> Dictionary:
 				_enqueue("5C", facing)
 			elif move.kind == "heavy" and not move.knockdown and move.stance != "air" and (self_state.get("confirmed", false) or not move.cancel_requires_hit):
 				_enqueue("236A" if rng.randf() < 0.7 else "214B", facing)
+			elif move.kind == "heavy" and move.knockdown and move.launch < 0 and "super" in move.cancel_targets and move.stance != "air" and self_state.get("confirmed", false) and int(self_state.meter) >= 100 and rng.randf() < 0.7:
+				# A launching finisher (Akaza's 万叶闪柳) only cancels into a super, which juggles.
+				_enqueue("236236A", facing)
 			elif move.kind == "skill" and move.stance != "air" and self_state.get("confirmed", false) and int(self_state.meter) >= 100 and rng.randf() < 0.7:
 				var awakening_left := int(self_state.get("awakening_ticks", 0))
 				if awakening_left > 0:
@@ -110,7 +134,7 @@ func command(self_state: Dictionary, opponent: Dictionary) -> Dictionary:
 		var air_specials: Dictionary = definition.air_motions if definition != null else {}
 		# A 6C that beats air attacks (Zenitsu's 热界雷) shares the anti-air job with 623.
 		var anti_air: Resource = commands.get("6C")
-		if not observed.grounded and distance < 80:
+		if not observed.grounded and distance < 80 and not (launched_ticks > 0 and observed.state in ["hit", "knockdown"]):
 			if anti_air != null and anti_air.anti_air_until > 0 and self_state.grounded and rng.randf() < 0.4:
 				_enqueue("6C", facing)
 			else:
@@ -128,12 +152,15 @@ func command(self_state: Dictionary, opponent: Dictionary) -> Dictionary:
 		elif commands.has("3C") and distance < 96 and roll < 0.12 and self_state.grounded and not observed.crouching and observed.state != "attack":
 			# The sliding low catches a standing opponent from just outside poke range.
 			_enqueue("3C", facing)
-		elif anti_air != null and anti_air.anti_air_until == 0 and distance < 118 and roll < 0.14 and self_state.grounded and observed.state != "attack":
+		elif anti_air != null and anti_air.anti_air_until == 0 and distance < 118 and distance < _reach(anti_air) and roll < 0.14 and self_state.grounded and observed.state != "attack":
 			_enqueue("6C", facing)
 		elif distance < 210 and roll < 0.72:
 			if not self_state.grounded and not air_specials.is_empty():
-				# Airborne: a close dive or an air normal; far away, wait to land.
-				if distance < 120 and roll < 0.30:
+				# Airborne: a close dive or an air normal; far away, wait to land. An air
+				# projectile (Akaza's 空式·下) is punishable up close, so it is thrown from range.
+				var shot: Resource = air_specials.get("j236A")
+				var ranged: bool = shot != null and shot.projectile_speed != 0
+				if (distance >= 70 if ranged else distance < 120) and roll < 0.30:
 					_enqueue("236A", facing)
 				elif distance < 70:
 					_enqueue("C", facing)

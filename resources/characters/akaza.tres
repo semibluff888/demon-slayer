@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CharacterDefinition" load_steps=24 format=3]
+[gd_resource type="Resource" script_class="CharacterDefinition" load_steps=30 format=3]
 
 [ext_resource type="Script" path="res://scripts/character_definition.gd" id="1"]
 [ext_resource type="Resource" path="res://moves/core/akaza_5A.tres" id="2"]
@@ -22,6 +22,13 @@
 [ext_resource type="Resource" path="res://moves/core/akaza_super.tres" id="20"]
 [ext_resource type="Resource" path="res://moves/core/akaza_max.tres" id="21"]
 [ext_resource type="Resource" path="res://moves/core/akaza_throw.tres" id="22"]
+
+[ext_resource type="Resource" path="res://moves/core/akaza_6B.tres" id="x6B"]
+[ext_resource type="Resource" path="res://moves/core/akaza_6C.tres" id="x6C"]
+[ext_resource type="Resource" path="res://moves/core/akaza_j236A.tres" id="xj236A"]
+[ext_resource type="Resource" path="res://moves/core/akaza_j236C.tres" id="xj236C"]
+[ext_resource type="Resource" path="res://moves/core/akaza_j214B.tres" id="xj214B"]
+[ext_resource type="Resource" path="res://moves/core/akaza_j214D.tres" id="xj214D"]
 
 [ext_resource type="Resource" path="res://resources/awakening/akaza.tres" id="awakening"]
 
@@ -68,5 +75,19 @@ motions = {
 "max": ExtResource("21")
 }
 throw_move = ExtResource("22")
-move_list = Array[Dictionary]([{"input": "236 + A/C", "name": "破坏杀·空式", "description": "远程冲击波；轻快重远"}, {"input": "623 + A/C", "name": "破坏杀·脚式·冠先割", "description": "上挑踢击；迎击空中"}, {"input": "214 + B/D", "name": "破坏杀·乱式", "description": "连续拳击；近身压制"}, {"input": "236236 + A/C", "name": "破坏杀·灭式", "description": "强力冲拳 · 1格"}, {"input": "236236 + A+C", "name": "终式·青银乱残光", "description": "六段冲击 · 3格"}])
+command_normals = {
+"6B": ExtResource("x6B"),
+"6C": ExtResource("x6C")
+}
+air_motions = {
+"j236A": ExtResource("xj236A"),
+"j236C": ExtResource("xj236C"),
+"j214B": ExtResource("xj214B"),
+"j214D": ExtResource("xj214D")
+}
+advanced_list = Array[Dictionary]([{"input": "5A > A > C", "name": "破坏杀·碎式 万叶闪柳", "description": "三段派生；末段砸地击倒，仅命中可取消超杀"},
+{"input": "6 + B", "name": "破坏杀·脚式 流闪群光", "description": "两段前踢；仅命中可取消必杀"},
+{"input": "6 + C", "name": "踏进冲拳", "description": "前踏直拳，被防有利；命中可接轻拳"},
+{"input": "j.A/B > j.C/D", "name": "空中连携", "description": "空中轻技接触后可接重技或空中必杀；每跳同招一次"}])
+move_list = Array[Dictionary]([{"input": "236 + A/C", "name": "破坏杀·空式", "description": "远程冲击波；轻快重远"}, {"input": "623 + A/C", "name": "破坏杀·脚式·冠先割", "description": "上挑踢击；迎击空中"}, {"input": "214 + B/D", "name": "破坏杀·乱式", "description": "连续拳击；近身压制"}, {"input": "j.236 + A/C", "name": "破坏杀·空式·下", "description": "空中斜下气拳弹；须站防，命中击倒"}, {"input": "j.214 + B/D", "name": "破坏杀·脚式 飞游星千轮", "description": "空中前翻旋踢两段；命中击倒"}, {"input": "236236 + A/C", "name": "破坏杀·灭式", "description": "强力冲拳 · 1格"}, {"input": "236236 + A+C", "name": "终式·青银乱残光", "description": "六段冲击 · 3格"}])
 portrait_faces_right = true

@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="DuelMove" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="1"]
+
+[ext_resource type="Resource" path="res://resources/presentation/akaza_body.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+presentation = ExtResource("2")
+display_name = "破坏杀·碎式 万叶闪柳"
+kind = "heavy"
+level = "mid"
+startup = 12
+active = 4
+recovery = 22
+damage = 72
+hitstun = 30
+blockstun = 17
+hitstop = 8
+push = 0.8
+startup_travel = 1.4
+stance = "stand"
+animation_id = "stand_heavy"
+effect_id = "body"
+knockdown = true
+launch = -3.0
+box = Rect2(8, -50, 68, 50)
+cancel_targets = PackedStringArray("super", "max")
+cancel_requires_hit = true
+id = "akaza_5AAC"

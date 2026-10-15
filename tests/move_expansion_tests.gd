@@ -27,6 +27,7 @@ func _initialize() -> void:
 	_frame_targets()
 	_routes()
 	_zenitsu()
+	_akaza()
 	var file := FileAccess.open("res://artifacts/move-expansion.json", FileAccess.WRITE)
 	file.store_string(JSON.stringify(report, "  "))
 	for failure in failures:
@@ -62,9 +63,8 @@ func _registration() -> void:
 		"tanjiro_jA", "tanjiro_jB", "tanjiro_jC", "tanjiro_jD", "tanjiro_236A", "tanjiro_236C", "tanjiro_623A", "tanjiro_623C",
 		"tanjiro_214B", "tanjiro_214D", "tanjiro_super", "tanjiro_max", "tanjiro_throw"], "base moves keep their original order")
 	check(tanjiro.normals.size() == 12 and tanjiro.motions.size() == 8, "base tables stay complete and unchanged in size")
-	for id in ["nezuko", "akaza"]:
-		var other: Resource = model.catalog.characters[id]
-		check(other.all_moves().size() == 21 and other.command_normals.is_empty() and other.air_motions.is_empty(), "untouched roster: " + id)
+	var untouched: Resource = model.catalog.characters["nezuko"]
+	check(untouched.all_moves().size() == 21 and untouched.command_normals.is_empty() and untouched.air_motions.is_empty(), "untouched roster: nezuko")
 	var manifest: Dictionary = JSON.parse_string(Verifier.resource_snapshot())
 	check(str(manifest.tanjiro_5A.follow_ups).contains("tanjiro_5AA") and not str(manifest.tanjiro_5A.follow_ups).contains("Object"), "manifest records follow-ups by id")
 	# A follow-up cycle must still terminate and register each move once.
@@ -375,6 +375,13 @@ func _run_route(facing: int, corner: bool, example: Dictionary) -> void:
 		elif mode == "delay":
 			# 6C then an immediate 236 reads as 623; real players cancel a little later.
 			s.advance(model, 8, {}, guard)
+		elif mode == "buffer":
+			# A tight link: press inside the input buffer just before the recovery ends.
+			for frame in range(80):
+				var current = model.fighters[0].move
+				if current == null or current.total_frames() - model.fighters[0].move_frame <= 4:
+					break
+				s.tick(model, {}, guard)
 		s.input(model, notation, guard)
 		if not s.wait_contact(model, 100, guard):
 			connected = false
@@ -510,6 +517,149 @@ func _zenitsu() -> void:
 		{"character": "zenitsu", "route": [["5A", "zenitsu_5A"], ["5A", "zenitsu_5AA"], ["5C", "zenitsu_5AAC"], ["236A", "zenitsu_236A"]], "damage": 122},
 		{"character": "zenitsu", "route": [["5A", "zenitsu_5A"], ["5A", "zenitsu_5AA"], ["5C", "zenitsu_5AAC"], ["236A", "zenitsu_236A"], ["236236A", "zenitsu_super"]], "damage": 304},
 		{"character": "zenitsu", "route": [["6C", "zenitsu_6C"], ["236A", "zenitsu_236A", "delay"]], "damage": 110}]
+	for example in routes:
+		for facing in [-1, 1]:
+			for corner in [false, true]:
+				_run_route(facing, corner, example)
+
+## Akaza: 碎式 (5A > A > C, the last stage smashes the floor and pops the victim up),
+## 流闪群光 (6B, two kicks), 踏进冲拳 (6C, plus on block), 空式·下 (j.236, a diagonal
+## air shot) and 飞游星千轮 (j.214, a two-hit flip kick).
+func _akaza() -> void:
+	var model := Combat.new()
+	var akaza: Resource = model.catalog.characters.akaza
+	var ids: Array[String] = []
+	for move in akaza.all_moves():
+		ids.append(move.id)
+	for id in ["akaza_5AA", "akaza_5AAC", "akaza_6B", "akaza_6C", "akaza_j236A", "akaza_j236C", "akaza_j214B", "akaza_j214D"]:
+		check(ids.count(id) == 1 and model.catalog.moves.has(id), "Akaza expansion move registered once: " + id)
+	check(ids.size() == 29 and akaza.normals.size() == 12 and akaza.motions.size() == 8, "Akaza has 21 base and 8 expansion moves")
+	check(ids.slice(0, 21) == ["akaza_5A", "akaza_5B", "akaza_5C", "akaza_5D", "akaza_2A", "akaza_2B", "akaza_2C", "akaza_2D",
+		"akaza_jA", "akaza_jB", "akaza_jC", "akaza_jD", "akaza_236A", "akaza_236C", "akaza_623A", "akaza_623C",
+		"akaza_214B", "akaza_214D", "akaza_super", "akaza_max", "akaza_throw"], "Akaza base moves keep their original order")
+	for facing in [-1, 1]:
+		var duel = s.duel("akaza", facing)
+		s.input(duel, "5A")
+		s.wait_contact(duel)
+		s.input(duel, "5A")
+		s.wait_contact(duel)
+		check(duel.fighters[0].last_move == "akaza_5AA", "Akaza 5A then A reaches 碎式 two, facing %d" % facing)
+		s.input(duel, "5C")
+		s.wait_contact(duel)
+		check(duel.fighters[0].last_move == "akaza_5AAC", "碎式 two then C reaches 万叶闪柳, facing %d" % facing)
+		check(not duel.fighters[1].grounded and duel.fighters[1].knockdown_pending, "万叶闪柳 pops the victim up into a knockdown, facing %d" % facing)
+		for pair in [["6B", "akaza_6B"], ["6C", "akaza_6C"], ["2C", "akaza_2C"], ["5C", "akaza_5C"], ["3B", "akaza_2B"], ["5B", "akaza_5B"]]:
+			duel = s.duel("akaza", facing)
+			s.input(duel, pair[0])
+			s.advance(duel, 4)
+			check(duel.fighters[0].last_move == pair[1], "Akaza %s selects %s, facing %d" % [pair[0], pair[1], facing])
+		# The string continues on block too, but a blocked 万叶闪柳 cannot be cancelled:
+		# its super cancel needs a hit.
+		duel = s.duel("akaza", facing)
+		duel.fighters[0].meter = 300
+		var guard := {"x": facing}
+		var blocker = duel.fighters[0]
+		for notation in ["5A", "5A", "5C"]:
+			# Hold back the whole time: releasing and pressing back again is a back dash.
+			s.input(duel, notation, guard)
+			for n in range(60):
+				if blocker.move == null or (blocker.attack_instance != s.before_instance and blocker.connected):
+					break
+				s.tick(duel, {}, guard)
+		check(blocker.last_move == "akaza_5AAC" and blocker.connected and not blocker.confirmed, "blocked 碎式 reaches 万叶闪柳 as a block, facing %d" % facing)
+		s.input(duel, "236236A", guard)
+		s.advance(duel, 10, {}, guard)
+		check(blocker.meter == 300 and blocker.last_move == "akaza_5AAC", "blocked 万叶闪柳 never cancels into the super, facing %d" % facing)
+	# Air shot: a diagonal projectile that vanishes at the floor; one air special per jump.
+	for facing in [-1, 1]:
+		var duel = s.duel("akaza", facing)
+		duel.fighters[1].x = duel.fighters[0].x + facing * 220
+		_jump(duel)
+		s.advance(duel, 8)
+		s.input(duel, "236A")
+		var f = duel.fighters[0]
+		check(f.last_move == "akaza_j236A" and not f.grounded, "airborne 236A selects 空式·下, facing %d" % facing)
+		s.input(duel, "214B")
+		check(f.last_move == "akaza_j236A", "Akaza: one air special per jump, facing %d" % facing)
+		var shot := {}
+		var start_y := 0.0
+		for n in range(40):
+			if not duel.projectiles.is_empty():
+				shot = duel.projectiles[0]
+				start_y = float(shot.y)
+				break
+			s.tick(duel)
+		check(not shot.is_empty() and float(shot.get("vy", 0.0)) > 0.0 and float(shot.get("vx", 0.0)) * facing > 0.0, "空式·下 flies forward and down, facing %d" % facing)
+		var lowest := start_y
+		for n in range(80):
+			if duel.projectiles.is_empty():
+				break
+			lowest = float(duel.projectiles[0].y)
+			s.tick(duel)
+		check(duel.projectiles.is_empty() and lowest > start_y + 30.0 and lowest >= Combat.FLOOR_Y - 8.0, "空式·下 vanishes at the floor, facing %d (from %s to %s)" % [facing, start_y, lowest])
+		for n in range(80):
+			if f.grounded:
+				break
+			s.tick(duel)
+		check(f.grounded, "空式·下 lands, facing %d" % facing)
+		# 飞游星千轮: two kicks, then a landing recovery.
+		duel = s.duel("akaza", facing)
+		duel.fighters[1].x = duel.fighters[0].x + facing * 220
+		_jump(duel)
+		s.advance(duel, 8)
+		s.input(duel, "214B")
+		f = duel.fighters[0]
+		check(f.last_move == "akaza_j214B" and not f.grounded and f.move != null and f.move.hit_count() == 2, "airborne 214B selects 飞游星千轮, facing %d" % facing)
+		for n in range(80):
+			if f.grounded:
+				break
+			s.tick(duel)
+		check(f.state == "landing" and f.stun >= 12, "飞游星千轮 lands into its recovery, facing %d" % facing)
+	# Both are high. Point blank, the shot and the flip kick pass over a crouching
+	# opponent, so the check samples them from mid range.
+	for spec in [["j236A", 12, 70.0], ["j214B", 20, 50.0]]:
+		for crouch in [true, false]:
+			var sample: Dictionary = Probe.air("akaza", _move_of("akaza", spec[0]), spec[1], "crouch" if crouch else "stand", spec[2])
+			check(sample.contact == ("hit" if crouch else "block"), "Akaza %s must be stand-blocked (crouch=%s, got %s)" % [spec[0], crouch, sample.contact])
+	# Frame data on the ground (34 px).
+	var targets := {"5AA": [-3, 10], "5AAC": [-8, null], "6B": [-7, 6], "6C": [1, 8]}
+	for key: String in targets:
+		var move := _move_of("akaza", "akaza_" + key)
+		var blocked: Dictionary = Probe.ground("akaza", move, "stand")
+		var struck: Dictionary = Probe.ground("akaza", move, "")
+		check(blocked.contact == "block" and blocked.advantage == targets[key][0], "Akaza %s block advantage %d (got %s)" % [key, targets[key][0], blocked.advantage])
+		if targets[key][1] != null:
+			check(struck.contact == "hit" and struck.advantage == targets[key][1], "Akaza %s hit advantage %d (got %s)" % [key, targets[key][1], struck.advantage])
+		report.append({"move": "akaza_" + key, "block": blocked.advantage, "hit": struck.advantage})
+	# The flip kick is punishable everywhere; the air shot only up close (a projectile
+	# that reaches a distant opponent late leaves its user free first).
+	for key in ["j214B", "j214D"]:
+		var move := _move_of("akaza", key)
+		var best := -999
+		for tick in [12, 16, 20, 24, 28]:
+			for distance in [24.0, 32.0, 40.0]:
+				var sample: Dictionary = Probe.air("akaza", move, tick, "stand", distance)
+				if sample.contact == "block" and sample.advantage != null:
+					best = maxi(best, int(sample.advantage))
+		check(best != -999 and best <= -5, "Akaza %s is punishable on block (best case %d)" % [key, best])
+		report.append({"move": "akaza_" + key, "best_block": best})
+	for key in ["j236A", "j236C"]:
+		var move := _move_of("akaza", key)
+		var best := -999
+		for tick in [12, 16, 20, 24, 28]:
+			for distance in [24.0, 34.0, 50.0]:
+				var sample: Dictionary = Probe.air("akaza", move, tick, "stand", distance)
+				if sample.contact == "block" and sample.advantage != null:
+					best = maxi(best, int(sample.advantage))
+		check(best != -999 and best <= -8, "Akaza %s is punishable up close (best case %d)" % [key, best])
+		report.append({"move": "akaza_" + key, "best_block_close": best})
+	var routes := [
+		{"character": "akaza", "route": [["5A", "akaza_5A"], ["5A", "akaza_5AA"], ["5C", "akaza_5AAC"]], "damage": 113},
+		{"character": "akaza", "route": [["5A", "akaza_5A"], ["5A", "akaza_5AA"], ["5C", "akaza_5AAC"], ["236236A", "akaza_super"]], "damage": 295},
+		{"character": "akaza", "route": [["5A", "akaza_5A"], ["5A", "akaza_5AA"], ["5C", "akaza_5AAC"], ["236236AC", "akaza_max"]], "damage": 402},
+		{"character": "akaza", "route": [["6C", "akaza_6C"], ["5A", "akaza_5A", "buffer"], ["5A", "akaza_5AA"], ["236A", "akaza_236A"]], "damage": 147},
+		{"character": "akaza", "route": [["6B", "akaza_6B"], ["236A", "akaza_236A", "delay"]], "damage": 118},
+		{"character": "akaza", "route": [["6B", "akaza_6B"], ["214B", "akaza_214B", "delay"]], "damage": 115}]
 	for example in routes:
 		for facing in [-1, 1]:
 			for corner in [false, true]:

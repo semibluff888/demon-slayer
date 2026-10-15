@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="DuelMove" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="1"]
+
+[ext_resource type="Resource" path="res://resources/presentation/crown_splitter.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+presentation = ExtResource("2")
+display_name = "破坏杀·脚式 飞游星千轮·轻"
+kind = "skill"
+level = "high"
+startup = 9
+active = 10
+recovery = 15
+damage = 60
+hitstun = 30
+blockstun = 15
+hitstop = 6
+push = 0.8
+stance = "air"
+animation_id = "body_air_heavy"
+effect_id = "crown_splitter"
+knockdown = true
+launch = -2.4
+hit_frames = PackedInt32Array(9, 14)
+box = Rect2(-6, -64, 66, 76)
+cancel_targets = PackedStringArray()
+landing_recovery = 14
+air_gravity_percent = 80
+air_velocity_frames = PackedInt32Array(0)
+air_velocities = PackedVector2Array(1.8, -2)
+id = "akaza_j214B"
