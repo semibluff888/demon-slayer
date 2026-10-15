@@ -1,7 +1,11 @@
 """Checkpoint 1: prepare the v3 model sheet and idle key-pose candidate jobs.
 
 The character-specific prompt lines (portrait notes, colours, the model-sheet pose and
-the three idle candidates) come from spec/<id>.json "canon".
+the three idle candidates) come from spec/<id>.json "canon". Optional "canon" keys,
+with the defaults used for Tanjiro and Zenitsu: "subject" ("boy"), "model_px" (900)
+and "model_head_px" (138) for the model sheet's figure, "old_model" (the anime-v2
+model sheet), "element" ("water", banned from the idle candidates) and "authorization"
+(the evidence recorded in authorization.json).
 
 Writes output/imagegen/<character>-v3/jobs.json, prompts and reference copies.
 Generation runs through tools/run_roster_art_job.ps1 -Manifest <jobs.json>, one
@@ -16,8 +20,8 @@ MODEL_PROMPT = """Use case: identity-preserve
 Asset type: character turnaround model sheet for a 2D anime fighting game (reference art, not a sprite).
 Input image 1: OLD MODEL SHEET. Costume construction reference only. Its head is too large and its legs too short; do NOT copy those proportions.
 Input image 2: PORTRAIT. {portrait}.
-Primary request: four full-body views of the same boy in one row, left to right: front, three-quarter view facing RIGHT, strict side profile facing RIGHT, back. Same scale, all feet on one common baseline about 60 px above the bottom edge, generous gaps between figures.
-Proportions (critical): exactly {heads} heads tall. Each figure is about 900 px from the top of the hair to the sole; skull crown to chin about 138 px (spiky hair tips may rise above that). Hip joint near mid-height, long legs, normal-size hands and feet. No chibi, no big head, no stocky body.
+Primary request: four full-body views of the same {subject} in one row, left to right: front, three-quarter view facing RIGHT, strict side profile facing RIGHT, back. Same scale, all feet on one common baseline about 60 px above the bottom edge, generous gaps between figures.
+Proportions (critical): exactly {heads} heads tall. Each figure is about {model_px} px from the top of the hair to the sole; skull crown to chin about {model_head} px (spiky hair tips may rise above that). Hip joint near mid-height, long legs, normal-size hands and feet. No chibi, no big head, no stocky body.
 Identity and costume: {identity}
 Colours: {colours}
 Pose: {model_pose}
@@ -34,7 +38,7 @@ Physical ruler (identical in all three): standing upright he would measure {stan
 {candidates}
 Identity: {identity}
 Rendering: {style}
-Constraints: no opponent, no effects, no water, no floor, no shadow, no text, no frame borders, no watermark. Pure solid {background} background everywhere (no gradient). Do not add the reference images as extra figures.
+Constraints: no opponent, no effects, no {element}, no floor, no shadow, no text, no frame borders, no watermark. Pure solid {background} background everywhere (no gradient). Do not add the reference images as extra figures.
 """
 
 
@@ -47,8 +51,9 @@ def main():
     for name in ('references', 'prompts', 'raw', 'records', 'imports', 'review'):
         (out / name).mkdir(parents=True, exist_ok=True)
     (out / '.gdignore').write_text('')
+    canon = data['canon']
     sources = {
-        'old-model.png': ROOT / 'output/imagegen/anime-v2/raw' / (args.character + '-model.png'),
+        'old-model.png': ROOT / canon.get('old_model', 'output/imagegen/anime-v2/raw/%s-model.png' % args.character),
         'portrait.png': ROOT / 'art/characters' / args.character / 'portrait.png',
     }
     references = {}
@@ -58,8 +63,9 @@ def main():
             shutil.copyfile(source, target)
         references[name] = dict(path=rel(target), source=rel(source), sha256=sha256(target))
     ruler = data['ruler']
-    canon = data['canon']
     fields = dict(heads=ruler['heads_tall'], standing=ruler['standing_px'], head=ruler['head_px'],
+                  subject=canon.get('subject', 'boy'), model_px=canon.get('model_px', 900), model_head=canon.get('model_head_px', 138),
+                  element=canon.get('element', 'water'),
                   stance_low=round(ruler['standing_px'] * canon.get('stance', [0.92, 0.96])[0]),
                   stance_high=round(ruler['standing_px'] * canon.get('stance', [0.92, 0.96])[1]),
                   identity=data['identity'], style=data['style'], background=data['background_name'],
@@ -85,7 +91,7 @@ def main():
     save(out / 'references.json', references)
     save(out / 'authorization.json', dict(service='CPA (configured provider)', integration_authorized=True,
                                           scope=args.character + ' v3 redraw: model sheet, idle key pose, all clips',
-                                          evidence='User approved docs/moveset-animation-plan.md on 2026-10-13 (full redraw with CPA).'))
+                                          evidence=canon.get('authorization', 'User approved docs/moveset-animation-plan.md on 2026-10-13 (full redraw with CPA).')))
     print('Prepared', len(jobs), 'jobs in', rel(out / 'jobs.json'))
 
 

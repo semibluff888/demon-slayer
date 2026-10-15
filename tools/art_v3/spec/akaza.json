@@ -1,0 +1,197 @@
+{
+  "character": "akaza",
+  "name": "Akaza",
+  "revision": "akaza-v3",
+  "background": [
+    0,
+    255,
+    0
+  ],
+  "background_name": "GREEN #00ff00",
+  "background_note": "Green, not magenta: Akaza's vest is magenta-pink and his hair pink, so a magenta key would eat them (the roster-v1 art used green too). common.cutout keys it.",
+  "request_size": "1536x1024",
+  "ruler": {
+    "note": "Checkpoint 1 rulers. Akaza is a tall, muscular adult (about 7 heads in the prompts); the game keeps him visibly taller than Tanjiro and Zenitsu (tests/fate_revision_tests.gd), so he stands about 370 px at runtime against their 340.",
+    "scale_note": "Measured 2026-10-15 on the generated sheets: the v3 model sheet's front view is 959 px from hair top to sole with hair top to chin 146 (6.6 heads), and all three idle candidates measure 129 px hair top to chin. Runtime head = 370 x 146 / 959 = 56.3 px (Tanjiro 61, Zenitsu 60), key scale 56.3 / 129 = 0.437: candidate 1 stands 302 px in game, 2 362 px, 3 349 px (old Akaza idle 366). Re-check approved_head_px on the chosen key at checkpoint 2. Checkpoint 1 (2026-10-16): the user chose candidate 3 (brawler stance, about 349 px in game).",
+    "standing_px": 460,
+    "head_px": 66,
+    "heads_tall": 7.0,
+    "runtime_standing_px": 370,
+    "approved_head_px": 129,
+    "model_head_px": 146,
+    "model_height_px": 959
+  },
+  "palette": {
+    "note": "Material targets are measured from the approved v3 idle key at run time (process.canonical); the colour classes are \"anatomy\" and \"materials\" below."
+  },
+  "identity": "Akaza (Upper Rank Three demon): a tall, muscular young man about 7 heads tall, broad shoulders, a narrow waist and long legs; short spiky bright pink hair; golden-yellow eyes with small dark pupils (no writing in the eyes); pale skin covered with dark navy-blue line tattoos: horizontal stripes across the face, the neck, the chest, the abdomen, both arms and both legs, and one vertical line down the middle of the chest and abdomen; both hands entirely navy-blue (the tattoo covers them) with red fingernails; a short open sleeveless magenta-pink vest that ends above the waist, showing the bare chest and abs; a navy-blue sash tied at the waist with two long ends hanging in front; very wide white trousers gathered tightly at the ankles; barefoot with red toenails; a ring of large dark-blue beads round each ankle. He fights bare-handed and never carries a weapon.",
+  "style": "Crisp premium anime ink outlines with consistent line weight, flat cel shading with one shadow tone, modern 2D fighting-game sprite finish.",
+  "canon": {
+    "subject": "man",
+    "model_px": 940,
+    "model_head_px": 134,
+    "old_model": "output/imagegen/roster-v1/raw/akaza-model.png",
+    "element": "shockwaves, energy, snowflake compass sigils",
+    "authorization": "User approved the Akaza moves, VFX and art v3 checkpoint 1 plan on 2026-10-15 (model sheet and idle candidates with CPA).",
+    "portrait": "Face, eyes, pink hair and the navy face tattoos",
+    "colours": "hair bright pink #db568c; vest magenta-pink #b24c78; skin pale #decfc5; tattoo lines, sash and hands navy #284365; trousers white #e0dee0 with light grey shading; ankle beads deep blue #134a93; finger and toe nails red. The tattoo stripes keep the same spacing and thickness on every view.",
+    "model_pose": "relaxed neutral standing, arms slightly away from the body with the hands half open, a calm confident face with a slight smile.",
+    "candidates": [
+      "Column 1, Destructive Death: Compass Needle stance: a very wide, low horse stance, knees deeply bent and turned out, the torso upright and leaning slightly forward; both arms spread out low to his sides, hands open like claws with the fingers spread; a fierce confident grin, eyes wide.",
+      "Column 2, martial arts guard: side-on stance with the left foot forward, knees slightly bent, weight on the rear leg, the heels lightly raised as if bouncing; the lead hand an open vertical palm at chin height, the rear hand a fist in front of the chest; a calm smile, eyes on the opponent.",
+      "Column 3, brawler stance (closest to his old idle): a medium-wide stance, both hands raised in front of the chest as half-closed claws, elbows out, the torso leaning slightly forward; a confident grin.",
+      "All three: bare-handed with no weapon; the navy line tattoos clearly visible on the face, neck, chest, arms and legs; the short magenta vest open; the navy sash with its long hanging ends; the wide white trousers; the blue ankle beads; barefoot."
+    ],
+    "stance": [
+      0.84,
+      0.96
+    ]
+  },
+  "prompt": {
+    "note": "Production rulers are measured on the approved key at checkpoint 2 (stance_px, upright_px and head_px are placeholders). He is unarmed, so the weapon line names his hands and the edit defaults change only his arms and hands.",
+    "stance": "fighting stance",
+    "stance_px": 860,
+    "upright_px": 940,
+    "head_px": 134,
+    "weapon_label": "Hands",
+    "katana": "he is UNARMED in every drawing: no sword, no scabbard and no weapon of any kind; both hands are bare, entirely navy-blue with red fingernails, as in input image 1.",
+    "katana_edit": "he is UNARMED: no sword, no scabbard and no weapon; both hands are bare, navy-blue with red fingernails.",
+    "edit_keep": "the size and the position of the figure in its column, the head, face and hair, the torso and the vest, the sash, both legs, both feet, the ankle beads, the line weight and the colours",
+    "edit_change": "his two arms and his hands",
+    "effects": "shockwaves, energy, snowflake sigils, trails or speed lines"
+  },
+  "anatomy": {
+    "note": "Provisional, measured on the roster-v1 model sheet: re-check on the approved key at checkpoint 2. Inclusive OpenCV HSV boxes. His pink hair shares its hue with the magenta vest, so hair_cut keeps only pink beyond the chin (as Zenitsu's gold). His chest and abs are bare skin, so the face blob may join the neck and chest across gaps in the tattoo lines; the head ruler must be checked on the key. uniform = the white trousers (the largest costume mass, at the hips).",
+    "hair": {
+      "h": [
+        160,
+        176
+      ],
+      "s": [
+        110,
+        255
+      ],
+      "v": [
+        120,
+        255
+      ]
+    },
+    "skin": {
+      "h": [
+        3,
+        20
+      ],
+      "s": [
+        18,
+        70
+      ],
+      "v": [
+        165,
+        250
+      ]
+    },
+    "uniform": {
+      "h": [
+        0,
+        179
+      ],
+      "s": [
+        0,
+        16
+      ],
+      "v": [
+        170,
+        255
+      ]
+    },
+    "hair_cut": {
+      "radius": 2.5,
+      "link": 2
+    }
+  },
+  "materials": {
+    "note": "Provisional. Vest and tattoo navy are locked with the trousers and the skin; hair is QA only.",
+    "classes": {
+      "vest": {
+        "h": [
+          160,
+          176
+        ],
+        "s": [
+          100,
+          255
+        ],
+        "v": [
+          60,
+          230
+        ],
+        "exclude_head": true
+      },
+      "navy": {
+        "h": [
+          100,
+          122
+        ],
+        "s": [
+          90,
+          255
+        ],
+        "v": [
+          35,
+          150
+        ]
+      }
+    },
+    "locked": [
+      "vest",
+      "navy",
+      "uniform",
+      "skin"
+    ]
+  },
+  "awakening": {
+    "mode": "grade",
+    "note": "Approved at checkpoint 1 (Jutsu Development: Compass Needle): the navy tattoo lines, sash and hands brighten toward a luminous blue and the vest a little more vivid; alpha untouched, so every pixel stays where the base drawing put it. Matches the blue-violet awakened effects.",
+    "gold": {
+      "h": [
+        100,
+        122
+      ],
+      "s": [
+        90,
+        255
+      ],
+      "v": [
+        35,
+        150
+      ]
+    },
+    "lightness": 9.0,
+    "chroma": 1.35,
+    "rim_px": 0,
+    "rim_colour": [
+      140,
+      120,
+      255
+    ],
+    "rim_alpha": 0.4
+  },
+  "qa": {
+    "note": "idle_vs_upright follows the chosen key: candidate 3, the brawler stance (about 0.94 of the upright height); re-measure on the approved key at checkpoint 2.",
+    "upright": [
+      0.95,
+      1.15
+    ],
+    "stance": [
+      0.95,
+      1.2
+    ],
+    "sample_clips": [
+      "idle",
+      "walk",
+      "air_type"
+    ],
+    "idle_vs_upright": 0.94
+  },
+  "portrait_note": "Face, eyes, pink hair and the navy face tattoos"
+}

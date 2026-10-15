@@ -19,10 +19,9 @@ import argparse
 import numpy as np
 from PIL import Image
 
-from common import ROOT, production, read, rel, save, sha256, spec
+from common import ROOT, cutout, production, read, rel, save, sha256, spec
 import anatomy
 import awaken
-import process_anime_art as legacy
 
 RESAMPLE = Image.Resampling.LANCZOS
 # The previous busts put the hair top ~30 px down and the head centre at ~46% width.
@@ -99,23 +98,23 @@ def prepare(args):
     print('Added', added, 'portrait jobs')
 
 
-def figure(path):
+def figure(path, data=None):
     """The drawing cut out of its background and cropped to the figure."""
-    image = legacy.cutout(Image.open(path))
+    image = cutout(Image.open(path), data)
     return image.crop(image.getbbox())
 
 
 def build(args):
     out = production(args.character)
     target = ROOT / 'art/characters' / args.character
-    anatomy.configure(args.character)
+    data = anatomy.configure(args.character)
     record = dict(character=args.character, files={})
     bust_source = out / 'raw' / ('%s-v3-portrait-bust-%d.png' % (args.character, args.bust))
     full_source = out / 'raw' / ('%s-v3-portrait-full-%d.png' % (args.character, args.full))
     # HUD bust framed like the previous portraits: the hair top BUST_TOP px below the top
     # edge, the shoulders on the bottom edge (wider shoulders are cropped), the head box
     # centred at BUST_HEAD_X, so the cut-in's FACE_REGION keeps the whole face.
-    bust = figure(bust_source)
+    bust = figure(bust_source, data)
     bust = bust.resize((round(bust.width * (1024 - BUST_TOP) / bust.height), 1024 - BUST_TOP), RESAMPLE)
     head = anatomy.head(np.asarray(bust))
     centre = (head['box'][0] + head['box'][2]) / 2 if head else bust.width / 2
@@ -131,7 +130,7 @@ def build(args):
     awakened, changed = awaken.bake(small.copy())
     Image.fromarray(awakened, 'RGBA').save(target / 'awakening/portrait.png')
     # Select-screen full body with the previous portraits' 12 px margin.
-    full = figure(full_source)
+    full = figure(full_source, data)
     sheet = Image.new('RGBA', (full.width + 24, full.height + 24))
     sheet.alpha_composite(full, (12, 12))
     sheet.save(target / 'portrait.png')

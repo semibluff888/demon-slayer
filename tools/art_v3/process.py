@@ -1,7 +1,7 @@
 """Turn v3 generated sheets into registered 1024x640 canvas frames plus QA records.
 
 Per generated sheet (one "part" of a clip):
-  1. key the background (process_anime_art.cutout keeps native alpha or keys magenta);
+  1. key the background (common.cutout: native alpha, else the spec's magenta or green key);
   2. lock material colours to the approved idle (palette.lock, once per sheet);
   3. separate the drawings (process_anime_art.sprite_components);
   4. measure each drawing's head ruler (anatomy.head) and use the sheet median for
@@ -19,7 +19,7 @@ import cv2
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
-from common import ROOT, production, read, rel, save, sha256
+from common import ROOT, cutout, production, read, rel, save, sha256, spec
 import anatomy
 import palette
 import process_anime_art as legacy
@@ -210,7 +210,7 @@ def process_clip(character, clip, jobs, canon, band=None, pose=None):
     sheets = []
     for job in sorted(jobs, key=lambda j: j['metadata']['part']):
         raw = ROOT / job['out']
-        sheet = np.asarray(legacy.cutout(Image.open(raw)))
+        sheet = np.asarray(cutout(Image.open(raw), spec(character)))
         before = palette.stats(sheet)
         locked, shifts = palette.lock(sheet, canon['palette'], before)
         after = palette.stats(locked)

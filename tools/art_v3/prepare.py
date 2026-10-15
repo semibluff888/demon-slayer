@@ -21,14 +21,10 @@ Usage: python tools/art_v3/prepare.py --clips walk,stand_light --group pilot
 """
 import argparse
 import re
-import sys
 
 from PIL import Image
 
-from common import POSES, ROOT, production, read, rel, save, spec
-
-sys.path.insert(0, str(ROOT / 'tools'))
-import process_anime_art as legacy  # noqa: E402
+from common import POSES, ROOT, cutout, production, read, rel, save, spec
 
 # "full" (one 1536 px column) only for edits: an edit keeps its base drawing's size, so a
 # pose reaching far forward (a blade pointed at the opponent) gets the room without growing.
@@ -41,7 +37,7 @@ Input image 2: APPROVED MODEL SHEET. Costume construction and colours.
 Input image 3: PORTRAIT. {portrait}.
 {previous}Primary request: {count} sequential full-body drawings side by side in {count} equal columns ({cell} px wide, the full 1024 px image height), left to right, one drawing per column, all facing RIGHT.
 Scale (critical): every drawing uses exactly the scale of input image 1. In the {stance} of input image 1 he is {stance_px} px tall from the top of the hair to the soles; upright he would be about {upright_px} px; hair top to chin is {head_px} px. Bent knees or a lunge lower the body, but the head, torso and legs keep exactly these lengths. Never enlarge the head, never shorten the legs; no chibi. Feet touching the ground stand on one shared baseline 40 px above the bottom edge. Blades, sleeves and the haori stay inside their own column.
-Katana (critical): {katana}
+{weapon_label} (critical): {katana}
 Motion: {intro}
 {frames}
 Identity: {identity}
@@ -56,7 +52,7 @@ Input image 1: THE DRAWINGS TO EDIT. {drawings}, one per column ({cell} px wide,
 Input image 2: APPROVED MODEL SHEET. Costume construction and colours.
 Input image 3: PORTRAIT. {portrait}.
 {previous}Primary request: edit every column of input image 1. Keep EXACTLY as in input image 1: {keep}. Change ONLY {change}, as each frame describes. {rule}
-Katana (critical): {katana_edit}
+{weapon_label} (critical): {katana_edit}
 Motion: {intro}
 {frames}
 Identity: {identity}
@@ -90,7 +86,7 @@ def redo_base(data, source, job_id):
     """Input image 1 of a "sheet": "redo" edit: the sheet being replaced, cut out (the
     service sometimes returns real alpha over a glow) and laid on the background."""
     sheet = Image.new('RGBA', (1536, 1024), tuple(data['background']) + (255,))
-    sheet.alpha_composite(legacy.cutout(Image.open(ROOT / source)))
+    sheet.alpha_composite(cutout(Image.open(ROOT / source), data))
     path = production(data['id']) / 'references' / (job_id + '-base.png')
     sheet.convert('RGB').save(path)
     return path
@@ -142,13 +138,16 @@ def make_job(args, data, pose, clip, index, chunk, overlap, previous_out, revisi
     redo = bool(edit) and edit.get('sheet') == 'redo'
     drawings = '%d drawings of this animation' % count if redo else '%d copies of the same drawing' % count
     edit = edit or {}
-    # Rulers, the katana sentence and the banned effects come from spec/<id>.json "prompt".
+    # Rulers, the katana sentence and the banned effects come from spec/<id>.json "prompt";
+    # an unarmed fighter names that line ("weapon_label") and the edit defaults for himself.
+    rules = data['prompt']
     prompt = template.format(name=data['name'], clip=clip, first=chunk[0] + 1, last=chunk[-1] + 1, total=len(frames),
                              previous=previous, count=count, cell=cell, intro=edit.get('intro', pose['intro']), frames='\n'.join(lines),
                              drawings=drawings,
                              identity=data['identity'], style=data['style'], background=data['background_name'],
-                             keep=edit.get('keep', EDIT_KEEP), change=edit.get('change', EDIT_CHANGE), rule=edit.get('rule', EDIT_RULE),
-                             portrait=data['portrait_note'], **{k: v for k, v in data['prompt'].items() if k != 'note'})
+                             keep=edit.get('keep', rules.get('edit_keep', EDIT_KEEP)), change=edit.get('change', rules.get('edit_change', EDIT_CHANGE)),
+                             rule=edit.get('rule', EDIT_RULE), weapon_label=rules.get('weapon_label', 'Katana'), portrait=data['portrait_note'],
+                             **{k: v for k, v in rules.items() if k not in ('note', 'weapon_label', 'edit_keep', 'edit_change')})
     prompt_path = out / 'prompts' / (job_id + '.txt')
     prompt_path.write_text(prompt, encoding='utf-8')
     if redo:

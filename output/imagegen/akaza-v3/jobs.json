@@ -1,0 +1,32 @@
+[
+  {
+    "id": "akaza-v3-model",
+    "group": "canon",
+    "references": [
+      "output/imagegen/akaza-v3/references/old-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-model.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+    "size": "1536x1024",
+    "metadata": {
+      "character": "akaza",
+      "stage": "checkpoint-1"
+    }
+  },
+  {
+    "id": "akaza-v3-idle-candidates",
+    "group": "canon",
+    "references": [
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-idle-candidates.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-idle-candidates.png",
+    "size": "1536x1024",
+    "metadata": {
+      "character": "akaza",
+      "stage": "checkpoint-1"
+    }
+  }
+]
