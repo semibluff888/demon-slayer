@@ -6,8 +6,9 @@ extends SceneTree
 ## (d1:40 is the crouching guard); p2=NOTATION/K makes the opponent press NOTATION while
 ## this fighter holds K (p2=2B/1 is a blocked low, p2=2D a sweep knockdown) and waits
 ## until both have recovered; gap:N puts the opponent N px in front; meter:N refills
-## the gauge, home:N puts this fighter back at x = N (--no-cinematic keeps supers
-## in game); any other token is a move notation (5A, 2C, 236A, 6B,
+## the gauge, hp:N sets the opponent's health (a long script would otherwise knock the
+## dummy out, and later moves pass through it), home:N puts this fighter back at x = N
+## (--no-cinematic keeps supers in game); any other token is a move notation (5A, 2C, 236A, 6B,
 ## j236A…) pressed like a player and followed by its full recovery. A leading "intro"
 ## step first records the real round intro of both fighters from the round start.
 ## Frames go to artifacts/art-v3/<character>/moves/frame-NNNN.png.
@@ -80,6 +81,9 @@ func _run() -> void:
 		if parts[0] == "meter":
 			model.fighters[0].meter = count
 			continue
+		if parts[0] == "hp":
+			model.fighters[1].hp = count
+			continue
 		if parts[0] == "gap":
 			# Puts the opponent `count` px in front (its attacks must reach).
 			model.fighters[1].x = model.fighters[0].x + count * model.fighters[0].facing
@@ -136,8 +140,8 @@ func _versus(notation: String, hold: int) -> void:
 			break
 		await _tick(_direction(hold, mine.facing))
 
-## Presses one notation; with `link` it returns as soon as the move connects, so the
-## next press of a target-combo string lands inside the window.
+## Presses one notation; with `link` it returns as soon as the move it started
+## connects, so the next press of a target-combo string lands inside the window.
 func _move(notation: String, link: bool = false) -> void:
 	var facing: int = game.combat.fighters[0].facing
 	var airborne := notation.begins_with("j")
@@ -151,12 +155,15 @@ func _move(notation: String, link: bool = false) -> void:
 		if token in "123456789": digits += token
 		elif token in "ABCD": mask |= 1 << "ABCD".find(token)
 	if digits.is_empty(): digits = "5"
+	# The previous stage of a string is still connected while this press is read, so
+	# a link waits for the new attack (the press lands a couple of ticks later).
+	var before: int = game.combat.fighters[0].attack_instance
 	for n in range(digits.length()):
 		var direction := int(digits[n])
 		await _tick({"x": ((direction - 1) % 3 - 1) * facing, "y": 1 - int((direction - 1) / 3), "buttons": mask if n == digits.length() - 1 else 0})
 	for n in range(160):
 		var f = game.combat.fighters[0]
-		if link and f.connected:
+		if link and f.connected and f.attack_instance != before:
 			break
 		if n > 6 and f.move == null and f.stun == 0 and f.grounded:
 			break

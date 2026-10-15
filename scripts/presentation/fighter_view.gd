@@ -366,7 +366,6 @@ func _pose_scale() -> Vector2:
 func _draw() -> void:
 	if fighter == null:
 		return
-	_draw_awakening()
 	if texture != null:
 		var factor: float = visual.drawing_scale()
 		for ghost: Dictionary in afterimages:
@@ -431,55 +430,3 @@ func _frames() -> SpriteFrames:
 	if form_active() and visual.awakening_frames != null and visual.awakening_frames.has_animation(clip):
 		return visual.awakening_frames
 	return visual.frames
-
-func _draw_awakening() -> void:
-	# Akaza retains his approved compass and original particle treatment.
-	if fighter.character != "akaza":
-		return
-	if fighter.awakening_ticks <= 0 or visual.awakening == null:
-		return
-	var color: Color = visual.awakening.color
-	var phase := clock_ticks / 60.0
-	var fade := 0.7 + 0.3 * sin(phase * 6.0) if fighter.awakening_ticks <= 120 else 1.0
-	# Local effects share the frozen pose clock and never drive collision.
-	for n in range(7):
-		var progress := fmod(phase * 0.8 + n / 7.0, 1.0)
-		var side := -1.0 if n % 2 == 0 else 1.0
-		var at := Vector2(side * (12 + sin(progress * PI) * 11), -progress * 80)
-		draw_circle(at, 2.0 + 3.0 * (1.0 - progress), Color(color, (1.0 - progress) * 0.12 * fade))
-		draw_line(at + Vector2(0, 7), at - Vector2(1, 3), Color(color, (1.0 - progress) * 0.5 * fade), 1.1, true)
-	if fighter.awakening_startup > 0:
-		var duration := 6 if fighter.awakening_quick else 18
-		var radius: float = 12 + (duration - fighter.awakening_startup) * 2.5
-		draw_arc(Vector2(0, -32), radius, 0, TAU, 48, Color(color, 0.65), 1.3, true)
-	if fighter.character == "akaza":
-		var floor_offset: float = Arena.FLOOR_Y - fighter.y
-		draw_set_transform(Vector2(0, floor_offset), 0, Vector2(1, 0.3))
-		var shine := 0.85 if fighter.state == "block" else 0.4
-		draw_arc(Vector2.ZERO, 33, 0, TAU, 64, Color(color, shine * fade), 1.2, true)
-		for n in range(12):
-			var direction := Vector2.from_angle(n * TAU / 12 + phase * 0.12)
-			draw_line(direction * 6, direction * 33, Color(color, shine * fade), 1.1, true)
-			for side in [-1, 1]:
-				draw_line(direction * 22, direction * 18 + direction.orthogonal() * side * 5, Color(color, shine * fade), 1.1, true)
-		draw_set_transform(Vector2.ZERO)
-	elif fighter.character == "zenitsu":
-		for side in [-1, 1]:
-			var points := PackedVector2Array()
-			for n in range(7):
-				points.append(Vector2(side * (16 + sin(phase * 18 + n * 2) * 5), -8 - n * 10))
-			draw_polyline(points, Color(color, 0.65 * fade), 0.9, true)
-	elif fighter.character == "nezuko":
-		var anchors := [Vector2(-9, -3), Vector2(10, -3), Vector2(fighter.facing * 15, -36)]
-		if fighter.move != null and fighter.move.kind in ["light", "heavy", "skill"]:
-			var strike_at: Vector2 = fighter.move.box.get_center()
-			strike_at.x *= fighter.facing
-			anchors[2] = strike_at
-		for at: Vector2 in anchors:
-			for n in range(3):
-				var progress := fmod(phase * 2.5 + n / 3.0, 1.0)
-				draw_circle(at + Vector2(sin(phase * 12 + n) * 2, -progress * 9), 2.7 * (1 - progress), Color(color, 0.6 * (1 - progress) * fade))
-	elif fighter.character == "tanjiro":
-		for n in range(3):
-			var p := fmod(phase * 0.5 + n / 3.0, 1.0)
-			draw_circle(Vector2(fighter.facing * (8 + p * 12), -62 - p * 6), 1.2 + p * 3, Color(0.95, 0.96, 1, (1 - p) * 0.22))

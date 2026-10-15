@@ -7,8 +7,9 @@ extends Node2D
 const Kit = preload("res://scripts/ui/kit.gd")
 const TanjiroVfx = preload("res://scripts/presentation/vfx/tanjiro_vfx.gd")
 const ZenitsuVfx = preload("res://scripts/presentation/vfx/zenitsu_vfx.gd")
-## Character flavor for blade trails and impact motes.
-const FLAVORS := {"tanjiro": "water", "zenitsu": "thunder", "nezuko": "blood", "akaza": "compass"}
+const AkazaVfx = preload("res://scripts/presentation/vfx/akaza_vfx.gd")
+## Character flavor for blade trails and impact motes (Akaza's moves are all rebuilt).
+const FLAVORS := {"tanjiro": "water", "zenitsu": "thunder", "nezuko": "blood"}
 const CUT_CURVES := {
 	"stand_light": [Vector2(13, -43), Vector2(38, -60), Vector2(61, -40)],
 	"stand_heavy": [Vector2(9, -70), Vector2(96, -65), Vector2(45, -16)],
@@ -40,6 +41,7 @@ var actors: Array = []
 ## Rebuilt character effects draw their own moves; everything else stays here.
 var tanjiro: Node2D
 var zenitsu: Node2D
+var akaza: Node2D
 
 func _ready() -> void:
 	var additive := CanvasItemMaterial.new()
@@ -87,16 +89,23 @@ func _ready() -> void:
 	zenitsu.glow = glow
 	zenitsu.cut_curves = CUT_CURVES
 	add_child(zenitsu)
+	akaza = AkazaVfx.new()
+	akaza.name = "AkazaVfx"
+	akaza.combat = combat
+	akaza.camera = camera
+	akaza.actors = actors
+	akaza.glow = glow
+	add_child(akaza)
 
 func _rebuilt(move: Resource) -> bool:
-	return (tanjiro != null and tanjiro.handles(move)) or (zenitsu != null and zenitsu.handles(move))
+	return (tanjiro != null and tanjiro.handles(move)) or (zenitsu != null and zenitsu.handles(move)) or (akaza != null and akaza.handles(move))
 
 ## Rebuilt supers draw their own charge through the freeze.
 func draws_charge(move: Resource) -> bool:
 	return move != null and move.is_super() and _rebuilt(move)
 
 func consume(events: Array) -> void:
-	for rebuilt in [tanjiro, zenitsu]:
+	for rebuilt in [tanjiro, zenitsu, akaza]:
 		if rebuilt != null:
 			rebuilt.consume(events)
 	# A tech also emits clash for the combat contract; render one clear escape cue.
@@ -181,7 +190,7 @@ func reset_effects() -> void:
 	screen_flash = 0
 	trauma = 0
 	time = 0
-	for rebuilt in [tanjiro, zenitsu]:
+	for rebuilt in [tanjiro, zenitsu, akaza]:
 		if rebuilt != null:
 			rebuilt.reset()
 
@@ -190,7 +199,7 @@ func _process(delta: float) -> void:
 	if freeze:
 		return
 	time += delta
-	for rebuilt in [tanjiro, zenitsu]:
+	for rebuilt in [tanjiro, zenitsu, akaza]:
 		if rebuilt != null:
 			rebuilt.frac = Engine.get_physics_interpolation_fraction() if rebuilt.interpolate else 0.0
 			rebuilt.advance(delta)
@@ -397,8 +406,6 @@ func _draw_attack(fighter: RefCounted) -> void:
 			_element_motes(bounds,progress,color,18 if move.is_super() else 8)
 			if shape == "blood":
 				_embers(bounds,progress,Color(1.0,0.45,0.66),12 if move.is_super() else 6)
-			else:
-				_compass_ring(bounds.get_center(),bounds.size.length()*(0.18+progress*0.22),progress,color)
 			if not move.presentation.sigil_texture_key.is_empty():
 				_effect(move.presentation.sigil_texture_key,Rect2(-45,-9,90,18),Color(color,0.32))
 		"water_slash":
@@ -662,8 +669,6 @@ func _spawn_hit(at: Vector2, color: Color, intensity: float, repeated: bool, hea
 			"blood":
 				motes.append({"kind": "petal", "at": at, "velocity": Vector2(push * 0.6, lift * 0.6), "life": 0.32, "duration": 0.32,
 					"size": 1.4 + _hash(n + 7.0), "color": Color(1.0, 0.5, 0.72)})
-	if flavor == "compass" and not repeated:
-		motes.append({"kind": "ring", "at": at, "velocity": Vector2.ZERO, "life": 0.22, "duration": 0.22, "size": 5.0 * intensity, "color": Color(0.55, 0.88, 1.0)})
 	if super_move and not repeated:
 		screen_flash = 1.0
 
@@ -769,9 +774,7 @@ func _draw_body_strike(attack: Rect2, progress: float, tint: Color, flavor: Stri
 		var y := at.y + (n - 1) * 3.5
 		draw_line(Vector2(attack.position.x - 4, y), Vector2(at.x - 8, y), Color(tint, 0.22 * swing), 0.6, true)
 	_glow_at(at, 10.0, Color(tint.lightened(0.3), 0.35 * swing))
-	if flavor == "compass":
-		_compass_ring(at, 4.0 + progress * 9.0, progress, tint)
-	elif flavor == "blood":
+	if flavor == "blood":
 		for n in range(5):
 			var a := -0.8 + n * 0.4
 			draw_colored_polygon(Kit.diamond_points(at + Vector2(cos(a), sin(a)) * (5.0 + progress * 10.0), 1.0, 1.7), Color(1.0, 0.5, 0.7, 0.7 * fade))
@@ -800,9 +803,3 @@ func _embers(area: Rect2, progress: float, color: Color, count: int) -> void:
 		var at := area.get_center() + Vector2(cos(a), sin(a)) * area.size * (0.3 + 0.3 * _hash(n))
 		at.y -= progress * (6.0 + 10.0 * _hash(n + 4.0))
 		draw_colored_polygon(Kit.diamond_points(at, 0.7 + _hash(n + 2.0), 1.6), Color(color.lightened(0.35), sin(progress * PI) * (0.5 + 0.4 * _hash(n + 1.0))))
-
-func _compass_ring(at: Vector2, radius: float, progress: float, color: Color) -> void:
-	draw_arc(at, radius, 0, TAU, 48, Color(color.lightened(0.4), 0.6 * (1.0 - progress)), 0.8, true)
-	for n in range(8):
-		var direction := Vector2.from_angle(n * TAU / 8 + progress)
-		draw_line(at + direction * radius * (0.35 if n % 2 == 0 else 0.7), at + direction * radius * 1.15, Color(color.lightened(0.5), 0.7 * (1.0 - progress)), 0.6, true)
