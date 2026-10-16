@@ -1,5 +1,7 @@
 extends SceneTree
 ## Real production scene captures. The two complete rounds use ordinary combat inputs.
+## Options: --pairs=winner:loser,... (default tanjiro:zenitsu,zenitsu:tanjiro) picks the
+## full rounds; --rounds-only skips the edge matrix; --matrix-only skips the rounds.
 const Main = preload("res://scenes/main.tscn")
 const Combat = preload("res://scripts/combat.gd")
 const Flow = preload("res://scripts/round_flow.gd")
@@ -25,10 +27,14 @@ func _run() -> void:
 	game=Main.instantiate();root.add_child(game);game.set_physics_process(false);game.mode="local"
 	for node in [game.view,game.view.effects,game.view.super_view,game.view.hud,game.view.stage]:node.set_process(false)
 	game.sound.muted=true
+	var pairs: Array = [["tanjiro","zenitsu"],["zenitsu","tanjiro"]]
+	for argument in OS.get_cmdline_user_args():
+		if argument.begins_with("--pairs="):
+			pairs.clear()
+			for pair in argument.trim_prefix("--pairs=").split(","):pairs.append(pair.split(":"))
 	if not "--matrix-only" in OS.get_cmdline_user_args():
-		await full_round("tanjiro","zenitsu")
-		await full_round("zenitsu","tanjiro")
-	await matrix()
+		for pair in pairs:await full_round(pair[0],pair[1])
+	if not "--rounds-only" in OS.get_cmdline_user_args():await matrix()
 	save_json(output+"capture.json",{"method":"Godot production main scene, OpenGL, fixed 60 Hz, real inputs for full rounds; controlled KO state setup for edge matrix", "movies":movies,"captures":captures,"failures":failures})
 	game.queue_free();await process_frame
 	for failure in failures:printerr("FAIL: ",failure)

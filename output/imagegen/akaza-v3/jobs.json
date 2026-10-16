@@ -435,5 +435,7007 @@
     },
     "superseded_by": "akaza-v3-stand_light-p2-r1",
     "rejected": "Experiment: a size guide (the key at its exact size in each column, references/scale-guide-wide.png) as input image 5 made it worse: the figure came out smaller (868 px) with a larger head (4.4 heads). r1 stays the active sheet; the guide is not used."
+  },
+  {
+    "id": "akaza-v3-walk_back-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-walk_back-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-walk_back-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "walk_back",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-walk_back-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-walk_back-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-walk_back-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-walk_back-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "walk_back",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-walk_back-p2",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-walk_back-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-walk_back-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-walk_back-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "walk_back",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-crouch-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-crouch-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-crouch-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "crouch",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-crouch-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-crouch-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-crouch-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-crouch-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "crouch",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-crouch-p2",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-crouch-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-crouch-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-crouch-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "crouch",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-jump-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-jump-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-jump-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "jump",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-jump-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-jump-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-jump-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-jump-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "jump",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-jump-p2",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-jump-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-jump-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-jump-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "jump",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-dash_forward-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-dash_forward-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-dash_forward-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "dash_forward",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-dash_forward-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-dash_forward-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-dash_forward-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-dash_forward-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "dash_forward",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-dash_forward-p2",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-dash_forward-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-dash_forward-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-dash_forward-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "dash_forward",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-dash_back-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-dash_back-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-dash_back-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "dash_back",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-dash_back-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-dash_back-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-dash_back-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-dash_back-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "dash_back",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-dash_back-p2",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-dash_back-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-dash_back-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-dash_back-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "dash_back",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-jump_forward-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-jump_forward-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-jump_forward-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "jump_forward",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-jump_forward-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-jump_forward-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-jump_forward-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-jump_forward-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "jump_forward",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-jump_forward-p2",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-jump_forward-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-jump_forward-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-jump_forward-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "jump_forward",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-jump_forward-p3",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-jump_forward-p3.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-jump_forward-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-jump_forward-p2.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "jump_forward",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-jump_forward-p4",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-jump_forward-p4.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-jump_forward-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-jump_forward-p3.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "jump_forward",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-jump_forward-p5",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-jump_forward-p5.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-jump_forward-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-jump_forward-p4.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "jump_forward",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-jump_back-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-jump_back-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-jump_back-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "jump_back",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-jump_back-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-jump_back-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-jump_back-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-jump_back-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "jump_back",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-jump_back-p2",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-jump_back-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-jump_back-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-jump_back-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "jump_back",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-jump_back-p3",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-jump_back-p3.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-jump_back-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-jump_back-p2.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "jump_back",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-jump_back-p4",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-jump_back-p4.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-jump_back-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-jump_back-p3.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "jump_back",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-jump_back-p5",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-jump_back-p5.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-jump_back-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-jump_back-p4.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "jump_back",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-roll_forward-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-roll_forward-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-roll_forward-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "roll_forward",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-roll_forward-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-roll_forward-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-roll_forward-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-roll_forward-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "roll_forward",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-roll_forward-p2",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-roll_forward-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-roll_forward-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-roll_forward-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "roll_forward",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-roll_forward-p3",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-roll_forward-p3.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-roll_forward-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-roll_forward-p2.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "roll_forward",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-roll_forward-p4",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-roll_forward-p4.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-roll_forward-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-roll_forward-p3.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "roll_forward",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-roll_forward-p5",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-roll_forward-p5.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-roll_forward-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-roll_forward-p4.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "roll_forward",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-roll_back-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-roll_back-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-roll_back-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "roll_back",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-roll_back-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-roll_back-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-roll_back-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-roll_back-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "roll_back",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-roll_back-p2",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-roll_back-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-roll_back-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-roll_back-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "roll_back",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-roll_back-p3",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-roll_back-p3.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-roll_back-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-roll_back-p2.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "roll_back",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-roll_back-p4",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-roll_back-p4.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-roll_back-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-roll_back-p3.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "roll_back",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-roll_back-p5",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-roll_back-p5.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-roll_back-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-roll_back-p4.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "roll_back",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-guard-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-guard-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-guard-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "guard",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-guard-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-guard-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-guard-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-guard-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "guard",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-guard-p2",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-guard-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-guard-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-guard-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "guard",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-hit-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-hit-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-hit-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "hit",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-hit-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-hit-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-hit-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-hit-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "hit",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-hit-p2",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-hit-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-hit-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-hit-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "hit",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-knockdown-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-knockdown-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-knockdown-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "knockdown",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-knockdown-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-knockdown-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-knockdown-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-knockdown-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "knockdown",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-knockdown-p2",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-knockdown-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-knockdown-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-knockdown-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "knockdown",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-throw_tech-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-throw_tech-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-throw_tech-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "throw_tech",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-throw_tech-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-throw_tech-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-throw_tech-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-throw_tech-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "throw_tech",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-throw_tech-p2",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-throw_tech-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-throw_tech-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-throw_tech-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "throw_tech",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-throw-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-throw-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-throw-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "throw",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-throw-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-throw-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-throw-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-throw-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "throw",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-throw-p2",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-throw-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-throw-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-throw-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "throw",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-throw_forward-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-throw_forward-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-throw_forward-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "throw_forward",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-throw_forward-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-throw_forward-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-throw_forward-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-throw_forward-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "throw_forward",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-throw_forward-p2",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-throw_forward-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-throw_forward-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-throw_forward-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "throw_forward",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-throw_forward-p3",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-throw_forward-p3.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-throw_forward-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-throw_forward-p2.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "throw_forward",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-throw_success-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-throw_success-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-throw_success-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "throw_success",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "akaza-v3-throw_success-p0-r1",
+    "rejected": "Checkpoint-4 review: the twisted back throw showed his back to the viewer with the face still turned right, as if the head had not turned; the revision turns him round (the slam is mirrored to face left)."
+  },
+  {
+    "id": "akaza-v3-throw_success-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-throw_success-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-throw_success-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-throw_success-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "throw_success",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "akaza-v3-throw_success-p1-r1",
+    "rejected": "Checkpoint-4 review: the twisted back throw showed his back to the viewer with the face still turned right, as if the head had not turned; the revision turns him round (the slam is mirrored to face left)."
+  },
+  {
+    "id": "akaza-v3-throw_success-p2",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-throw_success-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-throw_success-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-throw_success-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "throw_success",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "rejected": "Frames 5-6 bend FORWARD and slam in front of him (the same as the forward throw); the revision twists him to slam the victim behind him on the left.",
+    "superseded_by": "akaza-v3-throw_success-p2-r1"
+  },
+  {
+    "id": "akaza-v3-throw_success-p3",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-throw_success-p3.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-throw_success-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-throw_success-p2.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "throw_success",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "akaza-v3-throw_success-p3-r1",
+    "rejected": "Checkpoint-4 review: the twisted back throw showed his back to the viewer with the face still turned right, as if the head had not turned; the revision turns him round (the slam is mirrored to face left)."
+  },
+  {
+    "id": "akaza-v3-thrown_forward-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-thrown_forward-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-thrown_forward-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "thrown_forward",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-thrown_forward-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-thrown_forward-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-thrown_forward-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-thrown_forward-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "thrown_forward",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-thrown_forward-p2",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-thrown_forward-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-thrown_forward-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-thrown_forward-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "thrown_forward",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-thrown_forward-p3",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-thrown_forward-p3.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-thrown_forward-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-thrown_forward-p2.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "thrown_forward",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-thrown_forward-p4",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-thrown_forward-p4.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-thrown_forward-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-thrown_forward-p3.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "thrown_forward",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-thrown_forward-p5",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-thrown_forward-p5.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-thrown_forward-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-thrown_forward-p4.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "thrown_forward",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-thrown-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-thrown-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-thrown-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "thrown",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-thrown-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-thrown-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-thrown-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-thrown-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "thrown",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-thrown-p2",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-thrown-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-thrown-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-thrown-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "thrown",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-thrown-p3",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-thrown-p3.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-thrown-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-thrown-p2.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "thrown",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-thrown-p4",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-thrown-p4.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-thrown-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-thrown-p3.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "thrown",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-thrown-p5",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-thrown-p5.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-thrown-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-thrown-p4.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "thrown",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-victory-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-victory-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-victory-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "victory",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-victory-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-victory-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-victory-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-victory-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "victory",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-victory-p2",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-victory-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-victory-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-victory-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "victory",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-stand_heavy-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-stand_heavy-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-stand_heavy-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "stand_heavy",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "akaza-v3-stand_heavy-p0-r1",
+    "rejected": "Checkpoint-4 review: 5A and 5C punched with the same (left, front) hand; 5C is now a cross with the RIGHT fist."
+  },
+  {
+    "id": "akaza-v3-stand_heavy-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-stand_heavy-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-stand_heavy-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-stand_heavy-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "stand_heavy",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "akaza-v3-stand_heavy-p1-r1",
+    "rejected": "Checkpoint-4 review: 5A and 5C punched with the same (left, front) hand; 5C is now a cross with the RIGHT fist."
+  },
+  {
+    "id": "akaza-v3-stand_heavy-p2",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-stand_heavy-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-stand_heavy-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-stand_heavy-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "stand_heavy",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "akaza-v3-stand_heavy-p2-r1",
+    "rejected": "Checkpoint-4 review: 5A and 5C punched with the same (left, front) hand; 5C is now a cross with the RIGHT fist."
+  },
+  {
+    "id": "akaza-v3-crouch_light-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-crouch_light-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-crouch_light-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "crouch_light",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-crouch_light-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-crouch_light-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-crouch_light-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-crouch_light-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "crouch_light",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-crouch_light-p2",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-crouch_light-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-crouch_light-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-crouch_light-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "crouch_light",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-crouch_heavy-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-crouch_heavy-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-crouch_heavy-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "crouch_heavy",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "akaza-v3-crouch_heavy-p0-r1",
+    "rejected": "Checkpoint-4 review: C punches use the RIGHT fist; this uppercut was thrown with the left (front) arm."
+  },
+  {
+    "id": "akaza-v3-crouch_heavy-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-crouch_heavy-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-crouch_heavy-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-crouch_heavy-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "crouch_heavy",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "akaza-v3-crouch_heavy-p1-r1",
+    "rejected": "Checkpoint-4 review: C punches use the RIGHT fist; this uppercut was thrown with the left (front) arm."
+  },
+  {
+    "id": "akaza-v3-crouch_heavy-p2",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-crouch_heavy-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-crouch_heavy-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-crouch_heavy-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "crouch_heavy",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "akaza-v3-crouch_heavy-p2-r1",
+    "rejected": "Checkpoint-4 review: C punches use the RIGHT fist; this uppercut was thrown with the left (front) arm."
+  },
+  {
+    "id": "akaza-v3-air_light-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-air_light-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-air_light-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "air_light",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-air_light-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-air_light-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-air_light-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-air_light-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "air_light",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-air_light-p2",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-air_light-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-air_light-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-air_light-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "air_light",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-air_heavy-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-air_heavy-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-air_heavy-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "air_heavy",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-air_heavy-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-air_heavy-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-air_heavy-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-air_heavy-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "air_heavy",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-air_heavy-p2",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-air_heavy-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-air_heavy-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-air_heavy-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "air_heavy",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-body_stand_light-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-body_stand_light-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-body_stand_light-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "body_stand_light",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-body_stand_light-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-body_stand_light-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-body_stand_light-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-body_stand_light-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "body_stand_light",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-body_stand_light-p2",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-body_stand_light-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-body_stand_light-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-body_stand_light-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "body_stand_light",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-body_stand_heavy-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-body_stand_heavy-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-body_stand_heavy-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "body_stand_heavy",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "akaza-v3-body_stand_heavy-p0-r1",
+    "rejected": "Checkpoint-4 review: 5B and 5D kicked with the same (left, front) leg; 5D is now a roundhouse with the RIGHT (back) leg."
+  },
+  {
+    "id": "akaza-v3-body_stand_heavy-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-body_stand_heavy-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-body_stand_heavy-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-body_stand_heavy-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "body_stand_heavy",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "akaza-v3-body_stand_heavy-p1-r1",
+    "rejected": "Checkpoint-4 review: 5B and 5D kicked with the same (left, front) leg; 5D is now a roundhouse with the RIGHT (back) leg."
+  },
+  {
+    "id": "akaza-v3-body_stand_heavy-p2",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-body_stand_heavy-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-body_stand_heavy-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-body_stand_heavy-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "body_stand_heavy",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "akaza-v3-body_stand_heavy-p2-r1",
+    "rejected": "Checkpoint-4 review: 5B and 5D kicked with the same (left, front) leg; 5D is now a roundhouse with the RIGHT (back) leg."
+  },
+  {
+    "id": "akaza-v3-body_crouch_light-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-body_crouch_light-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-body_crouch_light-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "body_crouch_light",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-body_crouch_light-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-body_crouch_light-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-body_crouch_light-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-body_crouch_light-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "body_crouch_light",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-body_crouch_light-p2",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-body_crouch_light-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-body_crouch_light-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-body_crouch_light-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "body_crouch_light",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-body_crouch_heavy-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-body_crouch_heavy-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-body_crouch_heavy-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "body_crouch_heavy",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "akaza-v3-body_crouch_heavy-p0-r1",
+    "rejected": "Checkpoint-4 review: D kicks use the RIGHT (back) leg; this sweep used the left (front) leg."
+  },
+  {
+    "id": "akaza-v3-body_crouch_heavy-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-body_crouch_heavy-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-body_crouch_heavy-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-body_crouch_heavy-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "body_crouch_heavy",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "akaza-v3-body_crouch_heavy-p1-r1",
+    "rejected": "Checkpoint-4 review: D kicks use the RIGHT (back) leg; this sweep used the left (front) leg."
+  },
+  {
+    "id": "akaza-v3-body_crouch_heavy-p2",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-body_crouch_heavy-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-body_crouch_heavy-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-body_crouch_heavy-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "body_crouch_heavy",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "akaza-v3-body_crouch_heavy-p2-r1",
+    "rejected": "Checkpoint-4 review: D kicks use the RIGHT (back) leg; this sweep used the left (front) leg."
+  },
+  {
+    "id": "akaza-v3-body_air_light-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-body_air_light-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-body_air_light-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "body_air_light",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-body_air_light-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-body_air_light-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-body_air_light-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-body_air_light-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "body_air_light",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-body_air_light-p2",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-body_air_light-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-body_air_light-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-body_air_light-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "body_air_light",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-body_air_heavy-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-body_air_heavy-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-body_air_heavy-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "body_air_heavy",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "akaza-v3-body_air_heavy-p0-r1",
+    "rejected": "Checkpoint-4 review: D kicks use the RIGHT (back) leg; this flying kick used the left (front) leg."
+  },
+  {
+    "id": "akaza-v3-body_air_heavy-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-body_air_heavy-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-body_air_heavy-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-body_air_heavy-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "body_air_heavy",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "akaza-v3-body_air_heavy-p1-r1",
+    "rejected": "Checkpoint-4 review: D kicks use the RIGHT (back) leg; this flying kick used the left (front) leg."
+  },
+  {
+    "id": "akaza-v3-body_air_heavy-p2",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-body_air_heavy-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-body_air_heavy-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-body_air_heavy-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "body_air_heavy",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "akaza-v3-body_air_heavy-p2-r1",
+    "rejected": "Checkpoint-4 review: D kicks use the RIGHT (back) leg; this flying kick used the left (front) leg."
+  },
+  {
+    "id": "akaza-v3-crown_splitter-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-crown_splitter-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-crown_splitter-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "crown_splitter",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-crown_splitter-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-crown_splitter-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-crown_splitter-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-crown_splitter-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "crown_splitter",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-crown_splitter-p2",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-crown_splitter-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-crown_splitter-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-crown_splitter-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "crown_splitter",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-crown_splitter-p3",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-crown_splitter-p3.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-crown_splitter-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-crown_splitter-p2.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "crown_splitter",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-crown_splitter-p4",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-crown_splitter-p4.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-crown_splitter-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-crown_splitter-p3.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "crown_splitter",
+      "part": 4,
+      "frame_indices": [
+        7,
+        8
+      ],
+      "overlap": [
+        7
+      ],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-disorder-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-disorder-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-disorder-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "disorder",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-disorder-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-disorder-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-disorder-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-disorder-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "disorder",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-disorder-p2",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-disorder-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-disorder-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-disorder-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "disorder",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "akaza-v3-disorder-p2-r1",
+    "rejected": "Checkpoint-4 review: every barrage punch was thrown with the left arm; the edit makes frames 4, 6 and 8 RIGHT punches (the stance and legs unchanged)."
+  },
+  {
+    "id": "akaza-v3-disorder-p3",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-disorder-p3.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-disorder-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-disorder-p2.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "disorder",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "akaza-v3-disorder-p3-r1",
+    "rejected": "Checkpoint-4 review: every barrage punch was thrown with the left arm; the edit makes frames 4, 6 and 8 RIGHT punches (the stance and legs unchanged)."
+  },
+  {
+    "id": "akaza-v3-disorder-p4",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-disorder-p4.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-disorder-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-disorder-p3.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "disorder",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "akaza-v3-disorder-p4-r1",
+    "rejected": "Checkpoint-4 review: every barrage punch was thrown with the left arm; the edit makes frames 4, 6 and 8 RIGHT punches (the stance and legs unchanged)."
+  },
+  {
+    "id": "akaza-v3-disorder-p5",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-disorder-p5.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-disorder-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-disorder-p4.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "disorder",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-annihilation-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-annihilation-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-annihilation-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "annihilation",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-annihilation-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-annihilation-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-annihilation-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-annihilation-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "annihilation",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-annihilation-p2",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-annihilation-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-annihilation-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-annihilation-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "annihilation",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-annihilation-p3",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-annihilation-p3.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-annihilation-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-annihilation-p2.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "annihilation",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-annihilation-p4",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-annihilation-p4.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-annihilation-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-annihilation-p3.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "annihilation",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-annihilation-p5",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-annihilation-p5.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-annihilation-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-annihilation-p4.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "annihilation",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-blue_afterglow-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-blue_afterglow-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-blue_afterglow-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "blue_afterglow",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-blue_afterglow-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-blue_afterglow-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-blue_afterglow-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-blue_afterglow-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "blue_afterglow",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-blue_afterglow-p2",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-blue_afterglow-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-blue_afterglow-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-blue_afterglow-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "blue_afterglow",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-blue_afterglow-p3",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-blue_afterglow-p3.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-blue_afterglow-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-blue_afterglow-p2.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "blue_afterglow",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-blue_afterglow-p4",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-blue_afterglow-p4.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-blue_afterglow-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-blue_afterglow-p3.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "blue_afterglow",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-blue_afterglow-p5",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-blue_afterglow-p5.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-blue_afterglow-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-blue_afterglow-p4.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "blue_afterglow",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-rensho_2-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-rensho_2-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-rensho_2-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "rensho_2",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-rensho_2-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-rensho_2-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-rensho_2-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-rensho_2-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "rensho_2",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-rensho_2-p2",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-rensho_2-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-rensho_2-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-rensho_2-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "rensho_2",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-manyo-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-manyo-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-manyo-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "manyo",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-manyo-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-manyo-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-manyo-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-manyo-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "manyo",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-manyo-p2",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-manyo-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-manyo-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-manyo-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "manyo",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-manyo-p3",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-manyo-p3.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-manyo-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-manyo-p2.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "manyo",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-ryusen-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-ryusen-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-ryusen-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "ryusen",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-ryusen-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-ryusen-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-ryusen-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-ryusen-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "ryusen",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-ryusen-p2",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-ryusen-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-ryusen-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-ryusen-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "ryusen",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-ryusen-p3",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-ryusen-p3.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-ryusen-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-ryusen-p2.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "ryusen",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-ryusen-p4",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-ryusen-p4.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-ryusen-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-ryusen-p3.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "ryusen",
+      "part": 4,
+      "frame_indices": [
+        7,
+        8
+      ],
+      "overlap": [
+        7
+      ],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-step_punch-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-step_punch-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-step_punch-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "step_punch",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "akaza-v3-step_punch-p0-r1",
+    "rejected": "Checkpoint-4 review: 6C now punches with the RIGHT fist; this drawing used the left (front) arm."
+  },
+  {
+    "id": "akaza-v3-step_punch-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-step_punch-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-step_punch-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-step_punch-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "step_punch",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "akaza-v3-step_punch-p1-r1",
+    "rejected": "Checkpoint-4 review: 6C now punches with the RIGHT fist; this drawing used the left (front) arm."
+  },
+  {
+    "id": "akaza-v3-step_punch-p2",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-step_punch-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-step_punch-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-step_punch-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "step_punch",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "akaza-v3-step_punch-p2-r1",
+    "rejected": "Checkpoint-4 review: 6C now punches with the RIGHT fist; this drawing used the left (front) arm."
+  },
+  {
+    "id": "akaza-v3-step_punch-p3",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-step_punch-p3.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-step_punch-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-step_punch-p2.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "step_punch",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "akaza-v3-step_punch-p3-r1",
+    "rejected": "Checkpoint-4 review: 6C now punches with the RIGHT fist; this drawing used the left (front) arm."
+  },
+  {
+    "id": "akaza-v3-air_kushiki-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-air_kushiki-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-air_kushiki-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "air_kushiki",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-air_kushiki-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-air_kushiki-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-air_kushiki-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-air_kushiki-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "air_kushiki",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-air_kushiki-p2",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-air_kushiki-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-air_kushiki-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-air_kushiki-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "air_kushiki",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-air_kushiki-p3",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-air_kushiki-p3.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-air_kushiki-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-air_kushiki-p2.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "air_kushiki",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "rejected": "The whole sheet drifted in colour (vest dE 11, navy 8.7, skin 6 before the lock); the vest stayed at dE 5.5 after it. Regenerated with the same prompt.",
+    "superseded_by": "akaza-v3-air_kushiki-p3-r1"
+  },
+  {
+    "id": "akaza-v3-air_land-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-air_land-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-air_land-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "air_land",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-air_land-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-air_land-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-air_land-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-air_land-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "air_land",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-hiyu_senrin-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-hiyu_senrin-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-hiyu_senrin-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "hiyu_senrin",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-hiyu_senrin-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-hiyu_senrin-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-hiyu_senrin-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-hiyu_senrin-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "hiyu_senrin",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-hiyu_senrin-p2",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-hiyu_senrin-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-hiyu_senrin-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-hiyu_senrin-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "hiyu_senrin",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-hiyu_senrin-p3",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-hiyu_senrin-p3.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-hiyu_senrin-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-hiyu_senrin-p2.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "hiyu_senrin",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-hiyu_senrin-p4",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-hiyu_senrin-p4.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-hiyu_senrin-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-hiyu_senrin-p3.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "hiyu_senrin",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-round_victory-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-round_victory-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-round_victory-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "round_victory",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-round_victory-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-round_victory-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-round_victory-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-round_victory-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "round_victory",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-round_victory-p2",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-round_victory-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-round_victory-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-round_victory-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "round_victory",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-round_victory-p3",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-round_victory-p3.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-round_victory-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-round_victory-p2.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "round_victory",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-round_victory-p4",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-round_victory-p4.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-round_victory-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-round_victory-p3.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "round_victory",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-round_victory-p5",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-round_victory-p5.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-round_victory-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-round_victory-p4.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "round_victory",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-round_victory-p6",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-round_victory-p6.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-round_victory-p6.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-round_victory-p5.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "round_victory",
+      "part": 6,
+      "frame_indices": [
+        12,
+        13
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-round_victory-p7",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-round_victory-p7.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-round_victory-p7.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-round_victory-p6.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "round_victory",
+      "part": 7,
+      "frame_indices": [
+        14,
+        15
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-round_victory-p8",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-round_victory-p8.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-round_victory-p8.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-round_victory-p7.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "round_victory",
+      "part": 8,
+      "frame_indices": [
+        16,
+        17
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-round_defeat-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-round_defeat-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-round_defeat-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "round_defeat",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-round_defeat-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-round_defeat-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-round_defeat-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-round_defeat-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "round_defeat",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "rejected": "Each sheet restarted the fall more upright than the frame before (frames 2 and 4 rise again); the revision gives every frame a lower tilt so the topple only goes one way.",
+    "superseded_by": "akaza-v3-round_defeat-p1-r1"
+  },
+  {
+    "id": "akaza-v3-round_defeat-p2",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-round_defeat-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-round_defeat-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-round_defeat-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "round_defeat",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "rejected": "Each sheet restarted the fall more upright than the frame before (frames 2 and 4 rise again); the revision gives every frame a lower tilt so the topple only goes one way.",
+    "superseded_by": "akaza-v3-round_defeat-p2-r1"
+  },
+  {
+    "id": "akaza-v3-round_defeat-p3",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-round_defeat-p3.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-round_defeat-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-round_defeat-p2.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "round_defeat",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-round_defeat-p4",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-round_defeat-p4.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-round_defeat-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-round_defeat-p3.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "round_defeat",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-round_defeat-p5",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-round_defeat-p5.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-round_defeat-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-round_defeat-p4.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "round_defeat",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-intro_keys-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-intro_keys-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-intro_keys-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/akaza-v3-intro_keys-p0-base.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "intro_keys",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-intro_keys-p1",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-intro_keys-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-intro_keys-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/akaza-v3-intro_keys-p1-base.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-intro_keys-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "intro_keys",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-awaken_keys-p0",
+    "group": "production",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-awaken_keys-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-awaken_keys-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/akaza-v3-awaken_keys-p0-base.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "awaken_keys",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-throw_success-p2-r1",
+    "group": "review-r1",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-throw_success-p2-r1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-throw_success-p2-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-throw_success-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "throw_success",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "akaza-v3-throw_success-p2-r2",
+    "rejected": "Checkpoint-4 review: the twisted back throw showed his back to the viewer with the face still turned right, as if the head had not turned; the revision turns him round (the slam is mirrored to face left)."
+  },
+  {
+    "id": "akaza-v3-guard_low-p0",
+    "group": "review-r2",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-guard_low-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-guard_low-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/akaza-v3-guard_low-p0-base.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "guard_low",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-guard_low-p1",
+    "group": "review-r2",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-guard_low-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-guard_low-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/akaza-v3-guard_low-p1-base.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-guard_low-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "guard_low",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-guard_low-p2",
+    "group": "review-r2",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-guard_low-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-guard_low-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/akaza-v3-guard_low-p2-base.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-guard_low-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "guard_low",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-air_kushiki-p3-r1",
+    "group": "review-r2",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-air_kushiki-p3-r1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-air_kushiki-p3-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-air_kushiki-p2.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "air_kushiki",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-round_defeat-p1-r1",
+    "group": "review-r3",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-round_defeat-p1-r1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-round_defeat-p1-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-round_defeat-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "round_defeat",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-round_defeat-p2-r1",
+    "group": "review-r3b",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-round_defeat-p2-r1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-round_defeat-p2-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-round_defeat-p1-r1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "round_defeat",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "rejected": "Frame 5 tilted back up to about 20 degrees after frame 4 was already nearly flat; the revision ties it to the last drawing of the previous sheet.",
+    "superseded_by": "akaza-v3-round_defeat-p2-r2"
+  },
+  {
+    "id": "akaza-v3-round_defeat-p2-r2",
+    "group": "review-r3c",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-round_defeat-p2-r2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-round_defeat-p2-r2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-round_defeat-p1-r1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "round_defeat",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-stand_heavy-p0-r1",
+    "group": "review-r4",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-stand_heavy-p0-r1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-stand_heavy-p0-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "stand_heavy",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-stand_heavy-p1-r1",
+    "group": "review-r4",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-stand_heavy-p1-r1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-stand_heavy-p1-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-stand_heavy-p0-r1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "stand_heavy",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "akaza-v3-stand_heavy-p1-r2",
+    "rejected": "Generated with the RIGHT-fist prompt, but both drawings still punched with the front (left) arm; r2 edits the arms."
+  },
+  {
+    "id": "akaza-v3-stand_heavy-p2-r1",
+    "group": "review-r4",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-stand_heavy-p2-r1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-stand_heavy-p2-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-stand_heavy-p1-r1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "stand_heavy",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-crouch_heavy-p0-r1",
+    "group": "review-r4",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-crouch_heavy-p0-r1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-crouch_heavy-p0-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "crouch_heavy",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-crouch_heavy-p1-r1",
+    "group": "review-r4",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-crouch_heavy-p1-r1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-crouch_heavy-p1-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-crouch_heavy-p0-r1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "crouch_heavy",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "akaza-v3-crouch_heavy-p1-r2",
+    "rejected": "Generated with the RIGHT-fist prompt, but the uppercut still came from the front (left) arm; r2 edits the arms."
+  },
+  {
+    "id": "akaza-v3-crouch_heavy-p2-r1",
+    "group": "review-r4",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-crouch_heavy-p2-r1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-crouch_heavy-p2-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-crouch_heavy-p1-r1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "crouch_heavy",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-step_punch-p0-r1",
+    "group": "review-r4",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-step_punch-p0-r1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-step_punch-p0-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "step_punch",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-step_punch-p1-r1",
+    "group": "review-r4",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-step_punch-p1-r1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-step_punch-p1-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-step_punch-p0-r1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "step_punch",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-step_punch-p2-r1",
+    "group": "review-r4",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-step_punch-p2-r1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-step_punch-p2-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-step_punch-p1-r1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "step_punch",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "akaza-v3-step_punch-p2-r2",
+    "rejected": "Generated with the RIGHT-fist prompt, but both drawings still punched with the front (left) arm; r2 edits the arms."
+  },
+  {
+    "id": "akaza-v3-step_punch-p3-r1",
+    "group": "review-r4",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-step_punch-p3-r1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-step_punch-p3-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-step_punch-p2-r1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "step_punch",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-body_stand_heavy-p0-r1",
+    "group": "review-r4",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-body_stand_heavy-p0-r1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-body_stand_heavy-p0-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "body_stand_heavy",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-body_stand_heavy-p1-r1",
+    "group": "review-r4",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-body_stand_heavy-p1-r1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-body_stand_heavy-p1-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-body_stand_heavy-p0-r1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "body_stand_heavy",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "akaza-v3-body_stand_heavy-p1-r2",
+    "rejected": "Generated with the RIGHT-leg prompt, but the kick came from the far (left) leg, its thigh behind the sash ends; r2 edits the legs."
+  },
+  {
+    "id": "akaza-v3-body_stand_heavy-p2-r1",
+    "group": "review-r4",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-body_stand_heavy-p2-r1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-body_stand_heavy-p2-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-body_stand_heavy-p1-r1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "body_stand_heavy",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-body_crouch_heavy-p0-r1",
+    "group": "review-r4",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-body_crouch_heavy-p0-r1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-body_crouch_heavy-p0-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "body_crouch_heavy",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-body_crouch_heavy-p1-r1",
+    "group": "review-r4",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-body_crouch_heavy-p1-r1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-body_crouch_heavy-p1-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-body_crouch_heavy-p0-r1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "body_crouch_heavy",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "akaza-v3-body_crouch_heavy-p1-r2",
+    "rejected": "Generated with the RIGHT-leg prompt; r2 edits the legs so the near leg sweeps."
+  },
+  {
+    "id": "akaza-v3-body_crouch_heavy-p2-r1",
+    "group": "review-r4",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-body_crouch_heavy-p2-r1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-body_crouch_heavy-p2-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-body_crouch_heavy-p1-r1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "body_crouch_heavy",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "akaza-v3-body_crouch_heavy-p2-r2",
+    "rejected": "Second review: frame 4 (recovery) stood up between the sweep and the crouch; r2 edits the sweep drawing so he stays low, and frames 0 and 5 repeat crouch frame 5 (copy_frames)."
+  },
+  {
+    "id": "akaza-v3-body_air_heavy-p0-r1",
+    "group": "review-r4",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-body_air_heavy-p0-r1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-body_air_heavy-p0-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "body_air_heavy",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-body_air_heavy-p1-r1",
+    "group": "review-r4",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-body_air_heavy-p1-r1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-body_air_heavy-p1-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-body_air_heavy-p0-r1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "body_air_heavy",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "akaza-v3-body_air_heavy-p1-r2",
+    "rejected": "Generated with the RIGHT-leg prompt; r2 edits the legs so the near leg kicks (in front of the sash ends)."
+  },
+  {
+    "id": "akaza-v3-body_air_heavy-p2-r1",
+    "group": "review-r4",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-body_air_heavy-p2-r1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-body_air_heavy-p2-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-body_air_heavy-p1-r1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "body_air_heavy",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-throw_success-p0-r1",
+    "group": "review-r4",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-throw_success-p0-r1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-throw_success-p0-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "throw_success",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-throw_success-p1-r1",
+    "group": "review-r4",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-throw_success-p1-r1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-throw_success-p1-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-throw_success-p0-r1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "throw_success",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-throw_success-p2-r2",
+    "group": "review-r4",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-throw_success-p2-r2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-throw_success-p2-r2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-throw_success-p1-r1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "throw_success",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-throw_success-p3-r1",
+    "group": "review-r4",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-throw_success-p3-r1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-throw_success-p3-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-throw_success-p2-r2.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "throw_success",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-disorder-p2-r1",
+    "group": "review-r4",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-disorder-p2-r1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-disorder-p2-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/akaza-v3-disorder-p2-r1-base.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-disorder-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "disorder",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-disorder-p3-r1",
+    "group": "review-r4",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-disorder-p3-r1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-disorder-p3-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/akaza-v3-disorder-p3-r1-base.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-disorder-p2-r1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "disorder",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-disorder-p4-r1",
+    "group": "review-r4",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-disorder-p4-r1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-disorder-p4-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/akaza-v3-disorder-p4-r1-base.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-disorder-p3-r1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "disorder",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-stand_heavy-p1-r2",
+    "group": "review-r4b",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-stand_heavy-p1-r2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-stand_heavy-p1-r2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/akaza-v3-stand_heavy-p1-r2-base.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-stand_heavy-p0-r1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "stand_heavy",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-stand_heavy-p1-r3",
+    "group": "review-r4c",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-stand_heavy-p1-r3.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-stand_heavy-p1-r3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/akaza-v3-stand_heavy-p1-r3-base.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-stand_heavy-p0-r1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "stand_heavy",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "akaza-v3-stand_heavy-p1-r2",
+    "rejected": "Arm-swap edit of r2 column 1 (frame 2): the arm stayed the front (left) arm; r2 stays active and frame 2 repeats its correct frame 3 (pose copy_frames)."
+  },
+  {
+    "id": "akaza-v3-step_punch-p2-r2",
+    "group": "review-r4c",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-step_punch-p2-r2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-step_punch-p2-r2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/akaza-v3-step_punch-p2-r2-base.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-step_punch-p1-r1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "step_punch",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "akaza-v3-step_punch-p2-r3",
+    "rejected": "Arm-swap edit: both drawings kept the front (left) arm; r3 adds the cross example (input image 5)."
+  },
+  {
+    "id": "akaza-v3-crouch_heavy-p1-r2",
+    "group": "review-r4c",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-crouch_heavy-p1-r2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-crouch_heavy-p1-r2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/akaza-v3-crouch_heavy-p1-r2-base.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-crouch_heavy-p0-r1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "crouch_heavy",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "akaza-v3-crouch_heavy-p1-r3",
+    "rejected": "Arm-swap edit: the uppercut stayed on the front (left) arm; r3 adds the cross example."
+  },
+  {
+    "id": "akaza-v3-body_stand_heavy-p1-r2",
+    "group": "review-r4c",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-body_stand_heavy-p1-r2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-body_stand_heavy-p1-r2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/akaza-v3-body_stand_heavy-p1-r2-base.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-body_stand_heavy-p0-r1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "body_stand_heavy",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-body_air_heavy-p1-r2",
+    "group": "review-r4c",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-body_air_heavy-p1-r2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-body_air_heavy-p1-r2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/akaza-v3-body_air_heavy-p1-r2-base.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-body_air_heavy-p0-r1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "body_air_heavy",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-body_crouch_heavy-p1-r2",
+    "group": "review-r4c",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-body_crouch_heavy-p1-r2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-body_crouch_heavy-p1-r2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/akaza-v3-body_crouch_heavy-p1-r2-base.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-body_crouch_heavy-p0-r1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "body_crouch_heavy",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-stand_heavy-p1-r4",
+    "group": "review-r4d",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-stand_heavy-p1-r4.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-stand_heavy-p1-r4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/akaza-v3-stand_heavy-p1-r4-base.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-stand_heavy-p0-r1.png",
+      "output/imagegen/akaza-v3/references/cross-example.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "stand_heavy",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "akaza-v3-stand_heavy-p1-r2",
+    "rejected": "Second arm-swap edit with the cross example as input image 5: frame 2 still punched with the front (left) arm; r2 stays active (frame 2 repeats frame 3)."
+  },
+  {
+    "id": "akaza-v3-step_punch-p2-r3",
+    "group": "review-r4d",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-step_punch-p2-r3.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-step_punch-p2-r3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/akaza-v3-step_punch-p2-r3-base.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-step_punch-p1-r1.png",
+      "output/imagegen/akaza-v3/references/cross-example.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "step_punch",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-crouch_heavy-p1-r3",
+    "group": "review-r4d",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-crouch_heavy-p1-r3.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-crouch_heavy-p1-r3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/akaza-v3-crouch_heavy-p1-r3-base.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-crouch_heavy-p0-r1.png",
+      "output/imagegen/akaza-v3/references/cross-example.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "crouch_heavy",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "akaza-v3-crouch_heavy-p1-r4",
+    "rejected": "Arm-swap edit with the cross example: still the front (left) arm in both drawings; r4 draws the rear uppercut with the torso twisted so his back half faces the viewer (as jC)."
+  },
+  {
+    "id": "akaza-v3-crouch_heavy-p1-r4",
+    "group": "review-r4e",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-crouch_heavy-p1-r4.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-crouch_heavy-p1-r4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-crouch_heavy-p0-r1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "crouch_heavy",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-body_crouch_heavy-p2-r2",
+    "group": "review-r5",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-body_crouch_heavy-p2-r2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-body_crouch_heavy-p2-r2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/akaza-v3-body_crouch_heavy-p2-r2-base.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-body_crouch_heavy-p1-r2.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "body_crouch_heavy",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-idle-key-r1",
+    "group": "idle-key-r1",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-idle-key-r1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-idle-key-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/akaza-v3-idle-key-r1-base.png",
+      "output/imagegen/akaza-v3/references/walk-build-reference.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "idle_key",
+      "part": 0,
+      "stage": "checkpoint-4 review 2: idle upper body slightly stronger"
+    }
   }
 ]

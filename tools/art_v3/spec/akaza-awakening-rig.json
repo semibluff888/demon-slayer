@@ -1,0 +1,171 @@
+{
+  "idle_rig": "akaza-idle-rig.json",
+  "keys": [
+    "awaken_keys"
+  ],
+  "pad": [
+    20,
+    20,
+    20,
+    0
+  ],
+  "arm_points": [
+    "hand_back",
+    "hand_front",
+    "elbow_back",
+    "elbow_front"
+  ],
+  "note": "Awakening (Technique Development: Compass Needle), awakened atlas only: from idle frame 0 he throws his arms open (awaken_keys 0) into the Compass Needle stance (awaken_keys 1, a deep breath), closes them again and drops back toward his guard. The compass on the floor is drawn by the game (vfx/akaza/compass.gd). Displacements in key pixels.",
+  "key_motions": {
+    "breath": {
+      "chest": [
+        0,
+        -5
+      ],
+      "collar": [
+        0,
+        -5
+      ],
+      "shoulder_back": [
+        0,
+        -5
+      ],
+      "shoulder_front": [
+        0,
+        -5
+      ],
+      "chin": [
+        0,
+        -5
+      ],
+      "head": [
+        0,
+        -5
+      ],
+      "crown": [
+        0,
+        -5
+      ],
+      "hair_back": [
+        0,
+        -5
+      ],
+      "hair_front": [
+        0,
+        -5
+      ]
+    }
+  },
+  "poses": {
+    "drop": {
+      "waist": [
+        0,
+        10
+      ],
+      "sash_knot": [
+        0,
+        10
+      ],
+      "vest_back": [
+        0,
+        10
+      ],
+      "vest_front": [
+        0,
+        10
+      ],
+      "chest": [
+        0,
+        10
+      ],
+      "collar": [
+        0,
+        10
+      ],
+      "shoulder_back": [
+        0,
+        10
+      ],
+      "shoulder_front": [
+        0,
+        10
+      ],
+      "elbow_back": [
+        0,
+        10
+      ],
+      "elbow_front": [
+        0,
+        10
+      ],
+      "hand_back": [
+        0,
+        10
+      ],
+      "hand_front": [
+        0,
+        10
+      ],
+      "chin": [
+        0,
+        10
+      ],
+      "head": [
+        0,
+        10
+      ],
+      "crown": [
+        0,
+        10
+      ],
+      "hair_back": [
+        0,
+        10
+      ],
+      "hair_front": [
+        0,
+        10
+      ],
+      "pelvis": [
+        0,
+        8
+      ],
+      "sash_end": [
+        0,
+        7
+      ],
+      "sash_tail": [
+        0,
+        6
+      ],
+      "knee_back": [
+        0,
+        4
+      ],
+      "knee_front": [
+        0,
+        4
+      ]
+    }
+  },
+  "timeline": [
+    {},
+    {
+      "key": 0
+    },
+    {
+      "key": 1
+    },
+    {
+      "key": 1,
+      "breath": 1.0
+    },
+    {
+      "key": 0,
+      "breath": 0.5
+    },
+    {
+      "drop": 0.4
+    }
+  ]
+}

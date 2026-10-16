@@ -16,9 +16,9 @@
       "source": "output/imagegen/akaza-v3/raw/akaza-v3-walk-p0.png",
       "sha256": "15e4a28df165901a445f8ff0de19e83da5e147dcf6c436c19d413208639ff38e",
       "ruler": 134.19,
-      "scale": 0.3089,
-      "scale_method": "head-ruler",
-      "resample_vs_idle": 0.78,
+      "scale": 0.3175,
+      "scale_method": "head-ruler, guard frames x1.028",
+      "resample_vs_idle": 0.801,
       "palette_shift": {},
       "palette_delta_e_before": {
         "vest": 1.9,
@@ -40,9 +40,9 @@
       "source": "output/imagegen/akaza-v3/raw/akaza-v3-walk-p1.png",
       "sha256": "9a6cf23bc88b341ca726b215423d85e07d7c19b0017a0fe76ce963854ee4f913",
       "ruler": 133.85,
-      "scale": 0.3097,
-      "scale_method": "head-ruler",
-      "resample_vs_idle": 0.782,
+      "scale": 0.318,
+      "scale_method": "head-ruler, guard frames x1.027",
+      "resample_vs_idle": 0.803,
       "palette_shift": {
         "vest": [
           0.87,
@@ -75,9 +75,9 @@
       "source": "output/imagegen/akaza-v3/raw/akaza-v3-walk-p2.png",
       "sha256": "62e241a421872707f105e2f2cd4cfe1d9045cadae2813aabbf36f3707f2f427d",
       "ruler": 133.29,
-      "scale": 0.311,
-      "scale_method": "head-ruler",
-      "resample_vs_idle": 0.785,
+      "scale": 0.3233,
+      "scale_method": "head-ruler, guard frames x1.039",
+      "resample_vs_idle": 0.816,
       "palette_shift": {
         "vest": [
           2.43,
@@ -124,17 +124,17 @@
         183
       ],
       "ratio_to_sheet": 0.998,
-      "scale": 0.3089,
+      "scale": 0.3175,
       "flags": [],
       "notes": [],
       "root_x": 362.0,
       "anchor_mode": "feet",
       "offset": [
-        336,
-        264
+        333,
+        255
       ],
       "clipped": false,
-      "height_vs_idle": 0.962
+      "height_vs_idle": 0.987
     },
     {
       "frame": 1,
@@ -153,17 +153,17 @@
         182
       ],
       "ratio_to_sheet": 1.0,
-      "scale": 0.3089,
+      "scale": 0.3175,
       "flags": [],
       "notes": [],
       "root_x": 341.0,
       "anchor_mode": "feet",
       "offset": [
-        343,
-        267
+        340,
+        258
       ],
       "clipped": false,
-      "height_vs_idle": 0.955
+      "height_vs_idle": 0.981
     },
     {
       "frame": 2,
@@ -182,17 +182,17 @@
         180
       ],
       "ratio_to_sheet": 0.979,
-      "scale": 0.3097,
+      "scale": 0.318,
       "flags": [],
       "notes": [],
       "root_x": 324.0,
       "anchor_mode": "feet",
       "offset": [
-        348,
-        263
+        345,
+        255
       ],
       "clipped": false,
-      "height_vs_idle": 0.968
+      "height_vs_idle": 0.994
     },
     {
       "frame": 3,
@@ -211,17 +211,17 @@
         182
       ],
       "ratio_to_sheet": 1.0,
-      "scale": 0.3097,
+      "scale": 0.318,
       "flags": [],
       "notes": [],
       "root_x": 358.0,
       "anchor_mode": "feet",
       "offset": [
-        337,
-        267
+        334,
+        259
       ],
       "clipped": false,
-      "height_vs_idle": 0.955
+      "height_vs_idle": 0.981
     },
     {
       "frame": 4,
@@ -240,17 +240,17 @@
         178
       ],
       "ratio_to_sheet": 0.987,
-      "scale": 0.311,
+      "scale": 0.3233,
       "flags": [],
       "notes": [],
       "root_x": 313.0,
       "anchor_mode": "feet",
       "offset": [
-        351,
-        268
+        347,
+        256
       ],
       "clipped": false,
-      "height_vs_idle": 0.952
+      "height_vs_idle": 0.99
     },
     {
       "frame": 5,
@@ -269,17 +269,17 @@
         177
       ],
       "ratio_to_sheet": 1.0,
-      "scale": 0.311,
+      "scale": 0.3233,
       "flags": [],
       "notes": [],
       "root_x": 336.0,
       "anchor_mode": "feet",
       "offset": [
-        344,
-        265
+        339,
+        253
       ],
       "clipped": false,
-      "height_vs_idle": 0.962
+      "height_vs_idle": 1.0
     }
   ]
 }

@@ -20,9 +20,12 @@ Spec (spec/<id>-intro-rig.json):
   "key_motions": {"inhale": {"chest": [dx, dy], ...}},       # on key drawings
   "poses": {"reach": {"hilt": [dx, dy], ...}},                # on the approved key
   "sword": {"pivot": "hilt", "points": ["guard", "blade_mid", "blade_tip"], "extra": 8, "rotate": {"reach": -4}},
+  "arm_points": ["hilt", ...],                                # optional
   "timeline": [{"key": 0}, {"key": 0, "inhale": 0.5}, {"key": "intro_cut:0"}, ..., {"reach": 1.0}, ..., {}]
 }
-A key is drawing N of the first key clip, or "clip:N" of any of them.
+A key is drawing N of the first key clip, or "clip:N" of any of them. "sword" is optional
+(an unarmed fighter such as Akaza has none); "arm_points" (default ARM_POINTS) names the
+idle-rig points of the guard's arms, which the key drawings hold elsewhere.
 
 Usage: python tools/art_v3/intro_warp.py [--character tanjiro] [--preview GIF]
 Writes output/imagegen/<id>-v3/imports/round_intro/frame-NN.png and round_intro.json.
@@ -46,14 +49,16 @@ def warp_poses(spec, rig):
     left, top = spec['pad'][0], spec['pad'][1]
     names = list(rig['points'])
     base, start = idle_warp.displaced(rig, 0.0)  # idle frame 0: the pose the intro ends on
-    sword = spec['sword']
-    pivot = names.index(sword['pivot'])
-    rigid = [names.index(name) for name in sword['points']]
-    guard, tip = base[rigid[0]], base[rigid[-1]]
-    extra = np.array([guard + (tip - guard) * (n + 1) / (sword['extra'] + 1) for n in range(sword['extra'])])
-    base = np.vstack([base, extra])
-    start = np.vstack([start, extra + (start[pivot] - base[pivot])])
-    rigid += list(range(len(names), len(base)))
+    sword = spec.get('sword')
+    rigid = []
+    if sword:
+        pivot = names.index(sword['pivot'])
+        rigid = [names.index(name) for name in sword['points']]
+        guard, tip = base[rigid[0]], base[rigid[-1]]
+        extra = np.array([guard + (tip - guard) * (n + 1) / (sword['extra'] + 1) for n in range(sword['extra'])])
+        base = np.vstack([base, extra])
+        start = np.vstack([start, extra + (start[pivot] - base[pivot])])
+        rigid += list(range(len(names), len(base)))
     shift = np.array([left, top], dtype=np.float64)
     frames = []
     for weights in spec['timeline']:
@@ -64,10 +69,11 @@ def warp_poses(spec, rig):
         for pose, weight in weights.items():
             for name, offset in spec['poses'][pose].items():
                 moved[names.index(name)] += np.array(offset, dtype=np.float64) * weight
-        angle = np.radians(sum(sword['rotate'].get(pose, 0.0) * weight for pose, weight in weights.items()))
-        turn = np.array([[np.cos(angle), -np.sin(angle)], [np.sin(angle), np.cos(angle)]])
-        for index in rigid:
-            moved[index] = moved[pivot] + turn @ (start[index] - start[pivot])
+        if sword:
+            angle = np.radians(sum(sword['rotate'].get(pose, 0.0) * weight for pose, weight in weights.items()))
+            turn = np.array([[np.cos(angle), -np.sin(angle)], [np.sin(angle), np.cos(angle)]])
+            for index in rigid:
+                moved[index] = moved[pivot] + turn @ (start[index] - start[pivot])
         frames.append(None if not weights else moved + shift)
     return base + shift, frames
 
@@ -88,7 +94,8 @@ def key_frame(record, weights, spec, rig, to_canvas, grid, alpha):
     # consecutive frames of one drawing never shift by a rounding pixel.
     motions = {name: weight for name, weight in weights.items() if name != 'key'}
     _, start = idle_warp.displaced(rig, 0.0)
-    names = [name for name in rig['points'] if name not in ARM_POINTS]
+    arms = spec.get('arm_points', ARM_POINTS)
+    names = [name for name in rig['points'] if name not in arms]
     points = np.array([start[list(rig['points']).index(name)] for name in names])
     # idle key -> canvas -> this drawing's own pixels (its registration is a scale and a shift)
     base = (to_canvas(points) - offset) / scale

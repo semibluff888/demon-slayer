@@ -1,0 +1,119 @@
+{
+  "character": "akaza",
+  "clip": "awaken_keys",
+  "canvas_size": [
+    1024,
+    640
+  ],
+  "feet_anchor": [
+    448,
+    568
+  ],
+  "runtime_head_ruler": 41.45,
+  "parts": [
+    {
+      "id": "akaza-v3-awaken_keys-p0",
+      "source": "output/imagegen/akaza-v3/raw/akaza-v3-awaken_keys-p0.png",
+      "sha256": "6ada940932c834eba8d406a7d9ae9a64ba5ffb0adbfb2349dc5a8bd32b0dc54b",
+      "ruler": 107.89,
+      "scale": 0.3842,
+      "scale_method": "registered",
+      "resample_vs_idle": 0.97,
+      "palette_shift": {
+        "vest": [
+          1.76,
+          3.01,
+          -0.17
+        ]
+      },
+      "palette_delta_e_before": {
+        "vest": 3.32,
+        "navy": 1.76,
+        "uniform": 1.44,
+        "skin": 1.34,
+        "hair": 4.07
+      },
+      "palette_delta_e_after": {
+        "vest": 0.93,
+        "navy": 1.76,
+        "uniform": 1.44,
+        "skin": 1.34,
+        "hair": 4.07
+      }
+    }
+  ],
+  "frames": [
+    {
+      "frame": 0,
+      "part": "akaza-v3-awaken_keys-p0",
+      "crop": [
+        150,
+        160,
+        694,
+        958
+      ],
+      "head_ruler": 95.44,
+      "head_box": [
+        196,
+        4,
+        325,
+        121
+      ],
+      "ratio_to_sheet": 0.885,
+      "scale": 0.3842,
+      "flags": [],
+      "notes": [],
+      "root_x": 259.0,
+      "anchor_mode": "registered",
+      "offset": [
+        352,
+        261
+      ],
+      "clipped": false,
+      "registration": {
+        "scale": 0.3842,
+        "score": 0.919,
+        "exact": 0.384217
+      },
+      "height_vs_idle": 0.971,
+      "drawing": "output/imagegen/akaza-v3/imports/awaken_keys/drawing-00.png",
+      "exact_scale": 0.384217
+    },
+    {
+      "frame": 1,
+      "part": "akaza-v3-awaken_keys-p0",
+      "crop": [
+        793,
+        160,
+        1475,
+        958
+      ],
+      "head_ruler": 96.4,
+      "head_box": [
+        261,
+        4,
+        388,
+        118
+      ],
+      "ratio_to_sheet": 0.893,
+      "scale": 0.3842,
+      "flags": [],
+      "notes": [],
+      "root_x": 339.0,
+      "anchor_mode": "registered",
+      "offset": [
+        321,
+        261
+      ],
+      "clipped": false,
+      "registration": {
+        "scale": 0.3842,
+        "score": 0.921,
+        "exact": 0.384217
+      },
+      "height_vs_idle": 0.971,
+      "drawing": "output/imagegen/akaza-v3/imports/awaken_keys/drawing-01.png",
+      "exact_scale": 0.384217
+    }
+  ]
+}

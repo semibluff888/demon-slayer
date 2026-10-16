@@ -1,0 +1,294 @@
+{
+  "character": "akaza",
+  "clip": "body_stand_light",
+  "canvas_size": [
+    1024,
+    640
+  ],
+  "feet_anchor": [
+    448,
+    568
+  ],
+  "runtime_head_ruler": 41.45,
+  "parts": [
+    {
+      "id": "akaza-v3-body_stand_light-p0",
+      "source": "output/imagegen/akaza-v3/raw/akaza-v3-body_stand_light-p0.png",
+      "sha256": "dba7aaa5a178cde32cfa1bea83e7cfeb09f1a33b09c4dc31924db27f64bb417e",
+      "ruler": 111.92,
+      "scale": 0.3247,
+      "scale_method": "head-ruler, guard frames x0.877",
+      "resample_vs_idle": 0.82,
+      "palette_shift": {
+        "vest": [
+          -0.09,
+          -7.24,
+          -2.16
+        ],
+        "navy": [
+          0.97,
+          -1.87,
+          5.54
+        ]
+      },
+      "palette_delta_e_before": {
+        "vest": 7.56,
+        "navy": 5.9,
+        "uniform": 0.34,
+        "skin": 1.98,
+        "hair": 4.3
+      },
+      "palette_delta_e_after": {
+        "vest": 1.43,
+        "navy": 0.54,
+        "uniform": 0.34,
+        "skin": 1.96,
+        "hair": 4.3
+      }
+    },
+    {
+      "id": "akaza-v3-body_stand_light-p1",
+      "source": "output/imagegen/akaza-v3/raw/akaza-v3-body_stand_light-p1.png",
+      "sha256": "2b98ddb43712665caea32c570d665abd6221b3aa054579ae670a970685c1b626",
+      "ruler": 97.97,
+      "scale": 0.355,
+      "scale_method": "head-ruler, clip guard + area 1.11 > 1.02 x0.839",
+      "resample_vs_idle": 0.896,
+      "palette_shift": {
+        "vest": [
+          0.15,
+          -3.9,
+          -1.45
+        ],
+        "navy": [
+          1.69,
+          -0.85,
+          2.18
+        ],
+        "skin": [
+          2.88,
+          -2.03,
+          -1.81
+        ]
+      },
+      "palette_delta_e_before": {
+        "vest": 4.16,
+        "navy": 2.69,
+        "uniform": 0.49,
+        "skin": 3.54,
+        "hair": 1.98
+      },
+      "palette_delta_e_after": {
+        "vest": 0.6,
+        "navy": 0.67,
+        "uniform": 0.47,
+        "skin": 0.92,
+        "hair": 1.77
+      }
+    },
+    {
+      "id": "akaza-v3-body_stand_light-p2",
+      "source": "output/imagegen/akaza-v3/raw/akaza-v3-body_stand_light-p2.png",
+      "sha256": "5b09764d0d24de704cf73f524db514a0a759f18ad3dd00ff55e9dede4d7c7778",
+      "ruler": 119.09,
+      "scale": 0.3291,
+      "scale_method": "head-ruler, guard frames x0.946",
+      "resample_vs_idle": 0.831,
+      "palette_shift": {},
+      "palette_delta_e_before": {
+        "vest": 0.95,
+        "navy": 0.81,
+        "uniform": 0.71,
+        "skin": 1.29,
+        "hair": 3.12
+      },
+      "palette_delta_e_after": {
+        "vest": 0.95,
+        "navy": 0.81,
+        "uniform": 0.71,
+        "skin": 1.29,
+        "hair": 3.12
+      }
+    }
+  ],
+  "frames": [
+    {
+      "frame": 0,
+      "part": "akaza-v3-body_stand_light-p0",
+      "crop": [
+        118,
+        13,
+        713,
+        988
+      ],
+      "head_ruler": 93.82,
+      "head_box": [
+        248,
+        15,
+        389,
+        133
+      ],
+      "ratio_to_sheet": 0.838,
+      "scale": 0.3247,
+      "flags": [],
+      "notes": [
+        "head partly hidden or turned (84%)"
+      ],
+      "root_x": 243.0,
+      "anchor_mode": "feet",
+      "offset": [
+        369,
+        252
+      ],
+      "clipped": false,
+      "height_vs_idle": 1.006
+    },
+    {
+      "frame": 1,
+      "part": "akaza-v3-body_stand_light-p0",
+      "crop": [
+        874,
+        13,
+        1405,
+        984
+      ],
+      "head_ruler": 111.92,
+      "head_box": [
+        105,
+        5,
+        259,
+        159
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3247,
+      "flags": [],
+      "notes": [],
+      "root_x": 232.0,
+      "anchor_mode": "feet",
+      "offset": [
+        373,
+        253
+      ],
+      "clipped": false,
+      "height_vs_idle": 1.0
+    },
+    {
+      "frame": 2,
+      "part": "akaza-v3-body_stand_light-p1",
+      "crop": [
+        34,
+        16,
+        758,
+        986
+      ],
+      "head_ruler": 97.97,
+      "head_box": [
+        133,
+        14,
+        275,
+        153
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.355,
+      "flags": [],
+      "notes": [],
+      "root_x": 230.0,
+      "anchor_mode": "feet",
+      "offset": [
+        366,
+        224
+      ],
+      "clipped": false,
+      "height_vs_idle": 1.089
+    },
+    {
+      "frame": 3,
+      "part": "akaza-v3-body_stand_light-p1",
+      "crop": [
+        794,
+        17,
+        1519,
+        985
+      ],
+      "head_ruler": 82.8,
+      "head_box": [
+        107,
+        32,
+        218,
+        151
+      ],
+      "ratio_to_sheet": 0.845,
+      "scale": 0.355,
+      "flags": [],
+      "notes": [
+        "head partly hidden or turned (85%)"
+      ],
+      "root_x": 224.0,
+      "anchor_mode": "feet",
+      "offset": [
+        368,
+        225
+      ],
+      "clipped": false,
+      "height_vs_idle": 1.093
+    },
+    {
+      "frame": 4,
+      "part": "akaza-v3-body_stand_light-p2",
+      "crop": [
+        162,
+        15,
+        660,
+        986
+      ],
+      "head_ruler": 118.36,
+      "head_box": [
+        113,
+        3,
+        272,
+        156
+      ],
+      "ratio_to_sheet": 0.994,
+      "scale": 0.3291,
+      "flags": [],
+      "notes": [],
+      "root_x": 217.0,
+      "anchor_mode": "feet",
+      "offset": [
+        377,
+        249
+      ],
+      "clipped": false,
+      "height_vs_idle": 1.013
+    },
+    {
+      "frame": 5,
+      "part": "akaza-v3-body_stand_light-p2",
+      "crop": [
+        850,
+        17,
+        1438,
+        988
+      ],
+      "head_ruler": 119.09,
+      "head_box": [
+        215,
+        3,
+        375,
+        161
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3291,
+      "flags": [],
+      "notes": [],
+      "root_x": 249.0,
+      "anchor_mode": "feet",
+      "offset": [
+        366,
+        249
+      ],
+      "clipped": false,
+      "height_vs_idle": 1.013
+    }
+  ]
+}

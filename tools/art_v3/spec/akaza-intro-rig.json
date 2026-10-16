@@ -1,0 +1,274 @@
+{
+  "idle_rig": "akaza-idle-rig.json",
+  "keys": [
+    "intro_keys"
+  ],
+  "pad": [
+    20,
+    20,
+    20,
+    0
+  ],
+  "arm_points": [
+    "hand_back",
+    "hand_front",
+    "elbow_back",
+    "elbow_front"
+  ],
+  "note": "Round intro, one forward action with the stance never moving: at ease (intro_keys 0, a breath and a tilt of the head), cracks the knuckles of one hand and then the other (intro_keys 1 and 2, a press of the shoulders), beckons the opponent (intro_keys 3), then warps of the approved key drop him into the brawler guard and settle onto idle frame 0 (the last frame is idle frame 0 exactly). key_motions move the key drawings, poses the approved key; displacements in key pixels. No sword: the arms are the points the key drawings hold elsewhere. No effects.",
+  "key_motions": {
+    "breath": {
+      "chest": [
+        0,
+        -4
+      ],
+      "collar": [
+        0,
+        -4
+      ],
+      "shoulder_back": [
+        0,
+        -4
+      ],
+      "shoulder_front": [
+        0,
+        -4
+      ],
+      "chin": [
+        0,
+        -4
+      ],
+      "head": [
+        0,
+        -4
+      ],
+      "crown": [
+        0,
+        -4
+      ],
+      "hair_back": [
+        0,
+        -4
+      ],
+      "hair_front": [
+        0,
+        -4
+      ]
+    },
+    "tilt": {
+      "head": [
+        3,
+        1
+      ],
+      "crown": [
+        4,
+        1
+      ],
+      "hair_back": [
+        3,
+        1
+      ],
+      "hair_front": [
+        4,
+        1
+      ],
+      "chin": [
+        2,
+        1
+      ]
+    },
+    "press": {
+      "shoulder_back": [
+        2,
+        4
+      ],
+      "shoulder_front": [
+        2,
+        4
+      ],
+      "collar": [
+        1,
+        3
+      ],
+      "chest": [
+        1,
+        2
+      ],
+      "head": [
+        2,
+        3
+      ],
+      "crown": [
+        2,
+        3
+      ],
+      "hair_back": [
+        2,
+        3
+      ],
+      "hair_front": [
+        2,
+        3
+      ],
+      "chin": [
+        2,
+        3
+      ]
+    }
+  },
+  "poses": {
+    "drop": {
+      "waist": [
+        0,
+        10
+      ],
+      "sash_knot": [
+        0,
+        10
+      ],
+      "vest_back": [
+        0,
+        10
+      ],
+      "vest_front": [
+        0,
+        10
+      ],
+      "chest": [
+        0,
+        10
+      ],
+      "collar": [
+        0,
+        10
+      ],
+      "shoulder_back": [
+        0,
+        10
+      ],
+      "shoulder_front": [
+        0,
+        10
+      ],
+      "elbow_back": [
+        0,
+        10
+      ],
+      "elbow_front": [
+        0,
+        10
+      ],
+      "hand_back": [
+        0,
+        10
+      ],
+      "hand_front": [
+        0,
+        10
+      ],
+      "chin": [
+        0,
+        10
+      ],
+      "head": [
+        0,
+        10
+      ],
+      "crown": [
+        0,
+        10
+      ],
+      "hair_back": [
+        0,
+        10
+      ],
+      "hair_front": [
+        0,
+        10
+      ],
+      "pelvis": [
+        0,
+        8
+      ],
+      "sash_end": [
+        0,
+        7
+      ],
+      "sash_tail": [
+        0,
+        6
+      ],
+      "knee_back": [
+        0,
+        4
+      ],
+      "knee_front": [
+        0,
+        4
+      ]
+    }
+  },
+  "timeline": [
+    {
+      "key": 0
+    },
+    {
+      "key": 0,
+      "breath": 0.6
+    },
+    {
+      "key": 0,
+      "breath": 1.0,
+      "tilt": 1.0
+    },
+    {
+      "key": 1
+    },
+    {
+      "key": 1,
+      "press": 1.0
+    },
+    {
+      "key": 1,
+      "press": 0.4
+    },
+    {
+      "key": 2
+    },
+    {
+      "key": 2,
+      "press": 1.0
+    },
+    {
+      "key": 2,
+      "press": 0.4
+    },
+    {
+      "key": 3
+    },
+    {
+      "key": 3,
+      "breath": 0.6
+    },
+    {
+      "key": 3,
+      "breath": 1.0
+    },
+    {
+      "drop": 1.0
+    },
+    {
+      "drop": 0.8
+    },
+    {
+      "drop": 0.55
+    },
+    {
+      "drop": 0.3
+    },
+    {
+      "drop": 0.12
+    },
+    {}
+  ]
+}

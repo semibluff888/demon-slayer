@@ -1,10 +1,10 @@
 {
-  "key": "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+  "key": "output/imagegen/akaza-v3/references/approved-idle-key-v2.png",
   "frames": 12,
   "fps": 10,
   "grid": 6,
   "alpha": 1.4,
-  "note": "Brawler stance: a boxer's light bounce with the feet planted (the knees give, so the whole upper body dips and rises), a breath in the chest and shoulders a quarter beat later, both clawed hands rising and settling just behind the bounce, the sash ends and the hair trailing. Points are on the padded key (the candidate sits 16 px from the left and 30 px from the top). offsets put the front foot (drawn 22 px higher) on the back foot's ground line.",
+  "note": "Brawler stance: a boxer's light bounce with the feet planted (the knees give, so the whole upper body dips and rises), a breath in the chest and shoulders a quarter beat later, both clawed hands rising and settling just behind the bounce, the sash ends and the hair trailing. Points are on the padded key (the candidate sits 16 px from the left and 30 px from the top). offsets put the front foot (drawn 22 px higher) on the back foot's ground line. Checkpoint 4 review (2026-10-16): the head stays rigid - every head point moves by the same amount in every motion and the hair motion that spread them apart is gone (the head grew and shrank by up to 4 percent); the breath is 0.6 of its first amplitude; the bounce 0.8 of its first. Second review (2026-10-16): the key is approved-idle-key-v2.png, the approved candidate with a slightly stronger upper body (job akaza-v3-idle-key-r1, an edit that keeps the figure box, head, legs and pose; build reference: walk frame 0). approved-idle-candidate.png stays the scale and colour reference of process.canonical: the edit measures a 4.8 percent smaller head ruler (the lit-hair edge), which would have shrunk every generated sheet.",
   "points": {
     "toe_back": [31, 822], "foot_back": [61, 815], "heel_back": [91, 820],
     "toe_front": [466, 802], "foot_front": [421, 795], "heel_front": [376, 790],
@@ -27,17 +27,16 @@
   },
   "motions": [
     {"name": "bounce", "phase": 0.0, "points": {
-      "pelvis": [0, 6], "waist": [0, 8], "sash_knot": [0, 8], "vest_back": [0, 8], "vest_front": [0, 8],
-      "chest": [0, 8], "collar": [0, 8], "shoulder_back": [0, 8], "shoulder_front": [0, 8],
-      "elbow_back": [0, 8], "elbow_front": [0, 8], "hand_back": [0, 8], "hand_front": [0, 8],
-      "chin": [0, 8], "head": [0, 8], "crown": [0, 8], "hair_back": [0, 8], "hair_front": [0, 8],
-      "sash_end": [0, 6], "sash_tail": [0, 5], "knee_back": [0, 3], "knee_front": [0, 3], "hem_back": [0, 1], "hem_front": [0, 1]}},
+      "pelvis": [0, 4.8], "waist": [0, 6.4], "sash_knot": [0, 6.4], "vest_back": [0, 6.4], "vest_front": [0, 6.4],
+      "chest": [0, 6.4], "collar": [0, 6.4], "shoulder_back": [0, 6.4], "shoulder_front": [0, 6.4],
+      "elbow_back": [0, 6.4], "elbow_front": [0, 6.4], "hand_back": [0, 6.4], "hand_front": [0, 6.4],
+      "chin": [0, 6.4], "head": [0, 6.4], "crown": [0, 6.4], "hair_back": [0, 6.4], "hair_front": [0, 6.4],
+      "sash_end": [0, 4.8], "sash_tail": [0, 4], "knee_back": [0, 2.4], "knee_front": [0, 2.4], "hem_back": [0, 0.8], "hem_front": [0, 0.8]}},
     {"name": "breath", "phase": 0.25, "points": {
-      "chest": [0, -3], "collar": [0, -3], "shoulder_back": [0, -3], "shoulder_front": [0, -3],
-      "chin": [0, -2], "head": [0, -2], "crown": [0, -2], "hair_back": [0, -2], "hair_front": [0, -2],
-      "elbow_back": [0, -2], "elbow_front": [0, -2], "hand_back": [0, -2], "hand_front": [0, -2]}},
+      "chest": [0, -1.8], "collar": [0, -1.8], "shoulder_back": [0, -1.8], "shoulder_front": [0, -1.8],
+      "chin": [0, -1.2], "head": [0, -1.2], "crown": [0, -1.2], "hair_back": [0, -1.2], "hair_front": [0, -1.2],
+      "elbow_back": [0, -1.2], "elbow_front": [0, -1.2], "hand_back": [0, -1.2], "hand_front": [0, -1.2]}},
     {"name": "guard", "phase": 0.1, "points": {"hand_front": [1, -4], "hand_back": [1, -3], "elbow_front": [0, -2]}},
-    {"name": "sash", "phase": -0.2, "points": {"sash_end": [3, 1], "sash_tail": [5, 1]}},
-    {"name": "hair", "phase": -0.3, "points": {"crown": [1, -2], "hair_front": [2, -1], "hair_back": [-2, -1]}}
+    {"name": "sash", "phase": -0.2, "points": {"sash_end": [3, 1], "sash_tail": [5, 1]}}
   ]
 }

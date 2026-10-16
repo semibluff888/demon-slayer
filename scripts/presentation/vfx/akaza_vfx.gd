@@ -630,59 +630,69 @@ func rubble(canvas: Node2D, layer: int, at: Vector2, size: float, grow: float, s
 ## The 罗针 compass: a six-fold snowflake laid flat on the floor round `center`
 ## (local units, y = floor), revealed from the middle outward by `reveal` and
 ## turned by `spin`. Glowing lines on the SIGIL layer; a soft pool of light
-## under them.
-func compass_shape(canvas: Node2D, layer: int, center: Vector2, radius: float, reveal: float, spin: float, color: Color, alpha: float) -> void:
-	if layer != Kit.SIGIL or alpha <= 0.01 or reveal <= 0.0 or radius < 2.0:
+## under them. With `ink` (alpha > 0) the same lines are first painted a little
+## wider in that colour on the FLOOR layer (normal blend), so the additive glow
+## sits on a deep-coloured line instead of washing out pale on a dark floor.
+func compass_shape(canvas: Node2D, layer: int, center: Vector2, radius: float, reveal: float, spin: float, color: Color, alpha: float, ink := Color(0, 0, 0, 0)) -> void:
+	if alpha <= 0.01 or reveal <= 0.0 or radius < 2.0:
+		return
+	var inked := layer == Kit.FLOOR and ink.a > 0.0
+	if layer != Kit.SIGIL and not inked:
 		return
 	var floor_at := func(local: Vector2) -> Vector2:
 		var p := local.rotated(spin)
 		return center + Vector2(p.x, p.y * Kit.FLOOR_SQUASH)
 	var stage := func(from: float, to: float) -> float:
 		return clampf((reveal - from) / (to - from), 0.0, 1.0)
-	if glow != null:
-		canvas.draw_texture_rect(glow, Rect2(center - Vector2(radius * 1.15, radius * 1.15 * Kit.FLOOR_SQUASH),
-			Vector2(radius * 2.3, radius * 2.3 * Kit.FLOOR_SQUASH)), false, Color(color, 0.28 * alpha * stage.call(0.0, 0.5)))
 	var line := Color(color, 0.85 * alpha)
 	var thin := Color(color, 0.55 * alpha)
+	var widen := 1.0
+	if inked:
+		line = Color(ink, ink.a * minf(alpha, 1.0))
+		thin = Color(ink, ink.a * 0.7 * minf(alpha, 1.0))
+		widen = 1.7
+	elif glow != null:
+		canvas.draw_texture_rect(glow, Rect2(center - Vector2(radius * 1.15, radius * 1.15 * Kit.FLOOR_SQUASH),
+			Vector2(radius * 2.3, radius * 2.3 * Kit.FLOOR_SQUASH)), false, Color(color, 0.28 * alpha * stage.call(0.0, 0.5)))
 	# Centre hexagon.
 	var hexagon: float = stage.call(0.0, 0.15)
 	if hexagon > 0.0:
 		var points := PackedVector2Array()
 		for n in range(7):
 			points.append(floor_at.call(Vector2.from_angle(TAU * n / 6.0) * radius * 0.16 * hexagon))
-		canvas.draw_polyline(points, line, 1.4, true)
+		canvas.draw_polyline(points, line, 1.4 * widen, true)
 	for n in range(6):
 		var axis := Vector2.from_angle(TAU * n / 6.0 + PI / 6.0)
 		var side := axis.orthogonal()
 		# Main spoke growing outward.
 		var grow: float = stage.call(0.1, 0.6)
 		if grow > 0.0:
-			canvas.draw_line(floor_at.call(axis * radius * 0.16), floor_at.call(axis * radius * lerpf(0.16, 1.0, grow)), line, 1.3, true)
+			canvas.draw_line(floor_at.call(axis * radius * 0.16), floor_at.call(axis * radius * lerpf(0.16, 1.0, grow)), line, 1.3 * widen, true)
 		# A rhombus on the spoke.
 		var rhombus: float = stage.call(0.4, 0.6)
 		if rhombus > 0.0:
 			var mid := axis * radius * 0.41
 			var points := PackedVector2Array([floor_at.call(mid - axis * radius * 0.09), floor_at.call(mid + side * radius * 0.05 * rhombus),
 				floor_at.call(mid + axis * radius * 0.09), floor_at.call(mid - side * radius * 0.05 * rhombus), floor_at.call(mid - axis * radius * 0.09)])
-			canvas.draw_polyline(points, line, 1.1, true)
+			canvas.draw_polyline(points, line, 1.1 * widen, true)
 		# Snowflake branches near the tip.
 		var branch: float = stage.call(0.6, 0.85)
 		if branch > 0.0:
 			for s: float in [-1.0, 1.0]:
 				var root := axis * radius * 0.7
-				canvas.draw_line(floor_at.call(root), floor_at.call(root + (axis + side * s).normalized() * radius * 0.13 * branch), thin, 1.0, true)
+				canvas.draw_line(floor_at.call(root), floor_at.call(root + (axis + side * s).normalized() * radius * 0.13 * branch), thin, 1.0 * widen, true)
 		# A small hexagon at the tip.
 		var tip: float = stage.call(0.7, 0.9)
 		if tip > 0.0:
 			var points := PackedVector2Array()
 			for k in range(7):
 				points.append(floor_at.call(axis * radius * 0.88 + Vector2.from_angle(TAU * k / 6.0) * radius * 0.06 * tip))
-			canvas.draw_polyline(points, thin, 1.0, true)
+			canvas.draw_polyline(points, thin, 1.0 * widen, true)
 		# Secondary spokes between the main ones.
 		var secondary: float = stage.call(0.55, 0.8)
 		if secondary > 0.0:
 			var between := Vector2.from_angle(TAU * n / 6.0)
-			canvas.draw_line(floor_at.call(between * radius * 0.55), floor_at.call(between * radius * lerpf(0.55, 0.8, secondary)), thin, 1.0, true)
+			canvas.draw_line(floor_at.call(between * radius * 0.55), floor_at.call(between * radius * lerpf(0.55, 0.8, secondary)), thin, 1.0 * widen, true)
 	# Inner ring, then the double outer ring, drawn round as they appear.
 	for spec in [[0.55, 0.35, 0.6, 1.1], [1.0, 0.75, 1.0, 1.4], [0.92, 0.8, 1.0, 0.9]]:
 		var k: float = stage.call(spec[1], spec[2])
@@ -692,7 +702,7 @@ func compass_shape(canvas: Node2D, layer: int, center: Vector2, radius: float, r
 		var count := maxi(2, int(48 * k) + 1)
 		for m in range(count):
 			points.append(floor_at.call(Vector2.from_angle(TAU * k * m / (count - 1)) * radius * float(spec[0])))
-		canvas.draw_polyline(points, line if spec[3] > 1.0 else thin, float(spec[3]), true)
+		canvas.draw_polyline(points, line if spec[3] > 1.0 else thin, float(spec[3]) * widen, true)
 
 ## The fighter's own drawing flashed in `color` (additive layers only).
 func body_flash(canvas: Node2D, f: RefCounted, actor: Node2D, color: Color) -> void:

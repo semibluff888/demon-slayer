@@ -9,10 +9,9 @@ extends "res://scripts/presentation/vfx/akaza/technique.gd"
 const ERUPTION := 0.6
 const CRATER := 1.5
 
-## Where the fist meets the floor, fighter-local.
-func impact(move: Resource) -> Vector2:
-	var box: Rect2 = move.box
-	return Vector2(box.position.x + box.size.x * 0.55, 0.0)
+## Where the drawn fist meets the floor (manyo frames 3-4, v3 art), fighter-local.
+func impact(_move: Resource) -> Vector2:
+	return Vector2(32.0, 0.0)
 
 func emit(f: RefCounted, actor: Node2D, tick: int) -> void:
 	var move: Resource = f.move
@@ -44,13 +43,13 @@ func draw(canvas: Node2D, layer: int, f: RefCounted, actor: Node2D) -> void:
 	var floor_at := impact(move)
 	# The fist's glint, travelling down from overhead to the floor.
 	var k := clampf((t - start + 8.0) / 8.0, 0.0, 1.0)
-	var fist := Vector2(lerpf(14.0, floor_at.x, k * k), lerpf(-76.0, -6.0, k * k))
+	var fist := Vector2(lerpf(0.0, floor_at.x, k * k), lerpf(-72.0, -6.0, k * k))
 	if layer == Kit.LIGHT and vfx.glow != null and k > 0.0:
 		canvas.draw_texture_rect(vfx.glow, Rect2(fist - Vector2.ONE * 11.0, Vector2.ONE * 22.0), false, Color(Kit.tone(awake), 0.8 * k))
 	# The streak the blow comes down along.
 	var streak := clampf((t - start + 4.0) / 3.0, 0.0, 1.0) * (1.0 - clampf((t - start) / 2.0, 0.0, 1.0))
 	if streak > 0.0:
-		vfx.needle(canvas, layer, Vector2(floor_at.x - 10.0, -96.0), floor_at + Vector2(0.0, -2.0), 6.0, streak, awake)
+		vfx.needle(canvas, layer, Vector2(floor_at.x - 9.0, -90.0), floor_at + Vector2(0.0, -2.0), 6.0, streak, awake)
 
 func draw_burst(canvas: Node2D, layer: int, burst: Dictionary, k: float) -> void:
 	var awake: bool = burst.get("awake", false)

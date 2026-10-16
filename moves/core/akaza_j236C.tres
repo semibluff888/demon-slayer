@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/move_data.gd" id="1"]
 
-[ext_resource type="Resource" path="res://resources/presentation/air_type.tres" id="2"]
+[ext_resource type="Resource" path="res://resources/presentation/air_kushiki.tres" id="2"]
 
 [resource]
 script = ExtResource("1")
@@ -19,7 +19,7 @@ blockstun = 14
 hitstop = 6
 push = 0.5
 stance = "air"
-animation_id = "air_heavy"
+animation_id = "air_kushiki"
 effect_id = "air_type"
 knockdown = true
 box = Rect2(8, -48, 65, 32)

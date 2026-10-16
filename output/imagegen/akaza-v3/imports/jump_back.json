@@ -1,0 +1,550 @@
+{
+  "character": "akaza",
+  "clip": "jump_back",
+  "canvas_size": [
+    1024,
+    640
+  ],
+  "feet_anchor": [
+    448,
+    568
+  ],
+  "runtime_head_ruler": 41.45,
+  "parts": [
+    {
+      "id": "akaza-v3-jump_back-p0",
+      "source": "output/imagegen/akaza-v3/raw/akaza-v3-jump_back-p0.png",
+      "sha256": "9732de52d8153143f03f9566eaa20489fbfd06bab346a28d9250c62d1b73a17d",
+      "ruler": 94.82,
+      "scale": 0.3311,
+      "scale_method": "length-capped",
+      "resample_vs_idle": 0.836,
+      "palette_shift": {
+        "vest": [
+          2.83,
+          -9.44,
+          -0.39
+        ],
+        "navy": [
+          1.22,
+          -3.3,
+          8.03
+        ]
+      },
+      "palette_delta_e_before": {
+        "vest": 9.7,
+        "navy": 8.74,
+        "uniform": 0.61,
+        "skin": 1.79,
+        "hair": 8.04
+      },
+      "palette_delta_e_after": {
+        "vest": 1.47,
+        "navy": 1.27,
+        "uniform": 0.62,
+        "skin": 1.83,
+        "hair": 8.04
+      }
+    },
+    {
+      "id": "akaza-v3-jump_back-p1",
+      "source": "output/imagegen/akaza-v3/raw/akaza-v3-jump_back-p1.png",
+      "sha256": "e913c9b9dd61efd991a51298684336d214807ed00880fead612793c2d20a12e3",
+      "ruler": 124.56,
+      "scale": 0.3328,
+      "scale_method": "head-ruler",
+      "resample_vs_idle": 0.84,
+      "palette_shift": {
+        "vest": [
+          0.98,
+          -4.92,
+          0.14
+        ],
+        "navy": [
+          0.48,
+          -1.77,
+          3.33
+        ]
+      },
+      "palette_delta_e_before": {
+        "vest": 4.98,
+        "navy": 3.79,
+        "uniform": 1.06,
+        "skin": 1.73,
+        "hair": 5.45
+      },
+      "palette_delta_e_after": {
+        "vest": 0.61,
+        "navy": 0.66,
+        "uniform": 1.06,
+        "skin": 1.74,
+        "hair": 5.46
+      }
+    },
+    {
+      "id": "akaza-v3-jump_back-p2",
+      "source": "output/imagegen/akaza-v3/raw/akaza-v3-jump_back-p2.png",
+      "sha256": "1e0d047d5dac499f3b568c7df2434828ab3cc41ac2e06df9b431956bcefbcb17",
+      "ruler": 131.24,
+      "scale": 0.3159,
+      "scale_method": "head-ruler",
+      "resample_vs_idle": 0.797,
+      "palette_shift": {
+        "vest": [
+          1.93,
+          -1.29,
+          -0.22
+        ],
+        "skin": [
+          2.55,
+          -1.14,
+          -1.43
+        ]
+      },
+      "palette_delta_e_before": {
+        "vest": 2.0,
+        "navy": 1.22,
+        "uniform": 0.65,
+        "skin": 2.71,
+        "hair": 5.73
+      },
+      "palette_delta_e_after": {
+        "vest": 0.83,
+        "navy": 1.21,
+        "uniform": 0.66,
+        "skin": 1.07,
+        "hair": 5.73
+      }
+    },
+    {
+      "id": "akaza-v3-jump_back-p3",
+      "source": "output/imagegen/akaza-v3/raw/akaza-v3-jump_back-p3.png",
+      "sha256": "6d2592d7e488be42b43e8b738381dfb1f04c4a0a0766835634177849b650c3fb",
+      "ruler": 134.56,
+      "scale": 0.3081,
+      "scale_method": "head-ruler",
+      "resample_vs_idle": 0.778,
+      "palette_shift": {},
+      "palette_delta_e_before": {
+        "vest": 1.71,
+        "navy": 0.62,
+        "uniform": 0.46,
+        "skin": 1.59,
+        "hair": 0.92
+      },
+      "palette_delta_e_after": {
+        "vest": 1.71,
+        "navy": 0.62,
+        "uniform": 0.46,
+        "skin": 1.59,
+        "hair": 0.92
+      }
+    },
+    {
+      "id": "akaza-v3-jump_back-p4",
+      "source": "output/imagegen/akaza-v3/raw/akaza-v3-jump_back-p4.png",
+      "sha256": "45284a55e2eb5fb83a482e603406f6cb5bc0f7136cd373da8de6a9712f0edac2",
+      "ruler": 119.29,
+      "scale": 0.3475,
+      "scale_method": "head-ruler",
+      "resample_vs_idle": 0.877,
+      "palette_shift": {
+        "navy": [
+          0.85,
+          -1.42,
+          1.68
+        ]
+      },
+      "palette_delta_e_before": {
+        "vest": 1.68,
+        "navy": 2.3,
+        "uniform": 0.28,
+        "skin": 1.16,
+        "hair": 2.07
+      },
+      "palette_delta_e_after": {
+        "vest": 1.68,
+        "navy": 0.47,
+        "uniform": 0.28,
+        "skin": 1.14,
+        "hair": 2.07
+      }
+    },
+    {
+      "id": "akaza-v3-jump_back-p5",
+      "source": "output/imagegen/akaza-v3/raw/akaza-v3-jump_back-p5.png",
+      "sha256": "8db9a9cc055aba2e7e9b03dcf2adef05e5b8ccd015484f7ab5c2e941d297bc05",
+      "ruler": 132.06,
+      "scale": 0.3139,
+      "scale_method": "head-ruler",
+      "resample_vs_idle": 0.792,
+      "palette_shift": {
+        "vest": [
+          -0.41,
+          -7.82,
+          -0.34
+        ],
+        "navy": [
+          1.72,
+          -1.72,
+          5.36
+        ]
+      },
+      "palette_delta_e_before": {
+        "vest": 7.84,
+        "navy": 5.79,
+        "uniform": 0.92,
+        "skin": 1.59,
+        "hair": 5.76
+      },
+      "palette_delta_e_after": {
+        "vest": 0.85,
+        "navy": 0.98,
+        "uniform": 0.91,
+        "skin": 1.63,
+        "hair": 5.76
+      }
+    }
+  ],
+  "frames": [
+    {
+      "frame": 0,
+      "part": "akaza-v3-jump_back-p0",
+      "crop": [
+        89,
+        311,
+        740,
+        999
+      ],
+      "head_ruler": null,
+      "head_box": null,
+      "ratio_to_sheet": null,
+      "scale": 0.3311,
+      "flags": [],
+      "notes": [
+        "head not measured (back view, flip or occlusion)"
+      ],
+      "root_x": 363.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        328,
+        259
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.728
+    },
+    {
+      "frame": 1,
+      "part": "akaza-v3-jump_back-p0",
+      "crop": [
+        795,
+        12,
+        1522,
+        978
+      ],
+      "head_ruler": 94.82,
+      "head_box": [
+        139,
+        109,
+        290,
+        224
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3311,
+      "flags": [],
+      "notes": [],
+      "root_x": 503.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        281,
+        199
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.904
+    },
+    {
+      "frame": 2,
+      "part": "akaza-v3-jump_back-p1",
+      "crop": [
+        35,
+        31,
+        828,
+        960
+      ],
+      "head_ruler": 108.76,
+      "head_box": [
+        183,
+        114,
+        356,
+        232
+      ],
+      "ratio_to_sheet": 0.873,
+      "scale": 0.3328,
+      "flags": [],
+      "notes": [],
+      "root_x": 610.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        245,
+        212
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.866
+    },
+    {
+      "frame": 3,
+      "part": "akaza-v3-jump_back-p1",
+      "crop": [
+        864,
+        104,
+        1511,
+        672
+      ],
+      "head_ruler": 124.56,
+      "head_box": [
+        3,
+        408,
+        175,
+        563
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3328,
+      "flags": [],
+      "notes": [],
+      "root_x": 372.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        324,
+        345
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.601
+    },
+    {
+      "frame": 4,
+      "part": "akaza-v3-jump_back-p2",
+      "crop": [
+        163,
+        32,
+        621,
+        859
+      ],
+      "head_ruler": 131.24,
+      "head_box": [
+        22,
+        678,
+        222,
+        822
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3159,
+      "flags": [],
+      "notes": [],
+      "root_x": 226.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        377,
+        303
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.169
+    },
+    {
+      "frame": 5,
+      "part": "akaza-v3-jump_back-p2",
+      "crop": [
+        722,
+        162,
+        1508,
+        952
+      ],
+      "head_ruler": null,
+      "head_box": null,
+      "ratio_to_sheet": null,
+      "scale": 0.3159,
+      "flags": [],
+      "notes": [
+        "head not measured (back view, flip or occlusion)"
+      ],
+      "root_x": 288.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        357,
+        250
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.792
+    },
+    {
+      "frame": 6,
+      "part": "akaza-v3-jump_back-p3",
+      "crop": [
+        115,
+        122,
+        814,
+        765
+      ],
+      "head_ruler": null,
+      "head_box": null,
+      "ratio_to_sheet": null,
+      "scale": 0.3081,
+      "flags": [],
+      "notes": [
+        "head not measured (back view, flip or occlusion)"
+      ],
+      "root_x": 395.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        326,
+        305
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.62
+    },
+    {
+      "frame": 7,
+      "part": "akaza-v3-jump_back-p3",
+      "crop": [
+        861,
+        16,
+        1442,
+        921
+      ],
+      "head_ruler": 134.56,
+      "head_box": [
+        185,
+        4,
+        365,
+        180
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3081,
+      "flags": [],
+      "notes": [],
+      "root_x": 301.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        355,
+        234
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.885
+    },
+    {
+      "frame": 8,
+      "part": "akaza-v3-jump_back-p4",
+      "crop": [
+        170,
+        13,
+        737,
+        961
+      ],
+      "head_ruler": 110.12,
+      "head_box": [
+        238,
+        4,
+        387,
+        152
+      ],
+      "ratio_to_sheet": 0.923,
+      "scale": 0.3475,
+      "flags": [],
+      "notes": [],
+      "root_x": 315.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        339,
+        206
+      ],
+      "clipped": false,
+      "height_vs_idle": 1.045
+    },
+    {
+      "frame": 9,
+      "part": "akaza-v3-jump_back-p4",
+      "crop": [
+        819,
+        149,
+        1479,
+        989
+      ],
+      "head_ruler": 119.29,
+      "head_box": [
+        249,
+        4,
+        411,
+        162
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3475,
+      "flags": [],
+      "notes": [],
+      "root_x": 290.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        347,
+        204
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.923
+    },
+    {
+      "frame": 10,
+      "part": "akaza-v3-jump_back-p5",
+      "crop": [
+        61,
+        292,
+        763,
+        971
+      ],
+      "head_ruler": 132.06,
+      "head_box": [
+        439,
+        3,
+        613,
+        179
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3139,
+      "flags": [],
+      "notes": [],
+      "root_x": 268.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        364,
+        270
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.681
+    },
+    {
+      "frame": 11,
+      "part": "akaza-v3-jump_back-p5",
+      "crop": [
+        879,
+        22,
+        1482,
+        988
+      ],
+      "head_ruler": 125.43,
+      "head_box": [
+        244,
+        5,
+        413,
+        168
+      ],
+      "ratio_to_sheet": 0.95,
+      "scale": 0.3139,
+      "flags": [],
+      "notes": [],
+      "root_x": 249.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        370,
+        201
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.958
+    }
+  ]
+}

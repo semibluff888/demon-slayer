@@ -1,0 +1,304 @@
+{
+  "character": "akaza",
+  "clip": "crouch",
+  "canvas_size": [
+    1024,
+    640
+  ],
+  "feet_anchor": [
+    448,
+    568
+  ],
+  "runtime_head_ruler": 41.45,
+  "parts": [
+    {
+      "id": "akaza-v3-crouch-p0",
+      "source": "output/imagegen/akaza-v3/raw/akaza-v3-crouch-p0.png",
+      "sha256": "214688846af5c7b00d1e636a79fff6ef7469a4b7abe59b001ec2d59af70f5cf9",
+      "ruler": 128.68,
+      "scale": 0.3173,
+      "scale_method": "head-ruler, guard frames x0.985",
+      "resample_vs_idle": 0.801,
+      "palette_shift": {},
+      "palette_delta_e_before": {
+        "vest": 1.37,
+        "navy": 0.85,
+        "uniform": 0.62,
+        "skin": 0.51,
+        "hair": 2.45
+      },
+      "palette_delta_e_after": {
+        "vest": 1.37,
+        "navy": 0.85,
+        "uniform": 0.62,
+        "skin": 0.51,
+        "hair": 2.45
+      }
+    },
+    {
+      "id": "akaza-v3-crouch-p1",
+      "source": "output/imagegen/akaza-v3/raw/akaza-v3-crouch-p1.png",
+      "sha256": "43a58ce820db6d88acbf548da4e1dd3c71278eaf7d88196c6a32179b0b256992",
+      "ruler": 134.14,
+      "scale": 0.3043,
+      "scale_method": "head-ruler, clip guard x0.985",
+      "resample_vs_idle": 0.768,
+      "palette_shift": {},
+      "palette_delta_e_before": {
+        "vest": 0.14,
+        "navy": 1.02,
+        "uniform": 0.27,
+        "skin": 1.05,
+        "hair": 2.53
+      },
+      "palette_delta_e_after": {
+        "vest": 0.14,
+        "navy": 1.02,
+        "uniform": 0.27,
+        "skin": 1.05,
+        "hair": 2.53
+      }
+    },
+    {
+      "id": "akaza-v3-crouch-p2",
+      "source": "output/imagegen/akaza-v3/raw/akaza-v3-crouch-p2.png",
+      "sha256": "b8bd9a75b7d5664b2eb89d7d09db9be578a801d69b733d249b673e6ebbb34a33",
+      "ruler": 133.91,
+      "scale": 0.3049,
+      "scale_method": "head-ruler, clip guard x0.985",
+      "resample_vs_idle": 0.77,
+      "palette_shift": {
+        "vest": [
+          1.32,
+          -0.63,
+          -2.03
+        ],
+        "navy": [
+          1.71,
+          0.15,
+          -2.55
+        ]
+      },
+      "palette_delta_e_before": {
+        "vest": 2.37,
+        "navy": 2.89,
+        "uniform": 0.3,
+        "skin": 1.74,
+        "hair": 3.44
+      },
+      "palette_delta_e_after": {
+        "vest": 0.7,
+        "navy": 0.67,
+        "uniform": 0.31,
+        "skin": 1.75,
+        "hair": 3.44
+      }
+    }
+  ],
+  "frames": [
+    {
+      "frame": 0,
+      "part": "akaza-v3-crouch-p0",
+      "crop": [
+        56,
+        16,
+        730,
+        993
+      ],
+      "head_ruler": 128.68,
+      "head_box": [
+        307,
+        4,
+        484,
+        176
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3173,
+      "flags": [],
+      "notes": [],
+      "root_x": 302.0,
+      "anchor_mode": "feet",
+      "offset": [
+        352,
+        258
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.984
+    },
+    {
+      "frame": 1,
+      "part": "akaza-v3-crouch-p0",
+      "crop": [
+        792,
+        160,
+        1514,
+        994
+      ],
+      "head_ruler": 127.66,
+      "head_box": [
+        356,
+        5,
+        531,
+        173
+      ],
+      "ratio_to_sheet": 0.992,
+      "scale": 0.3173,
+      "flags": [],
+      "notes": [],
+      "root_x": 386.0,
+      "anchor_mode": "feet",
+      "offset": [
+        326,
+        304
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.84
+    },
+    {
+      "frame": 2,
+      "part": "akaza-v3-crouch-p1",
+      "crop": [
+        32,
+        57,
+        788,
+        975
+      ],
+      "head_ruler": 132.04,
+      "head_box": [
+        446,
+        5,
+        627,
+        183
+      ],
+      "ratio_to_sheet": 0.984,
+      "scale": 0.3049,
+      "flags": [],
+      "notes": [
+        "settle: frame 5 deformed by tools/art_v3/spec/akaza-crouch-settle.json"
+      ],
+      "root_x": 346.0,
+      "anchor_mode": "feet",
+      "offset": [
+        322,
+        314
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.792,
+      "settle": {
+        "source": 5,
+        "weights": {
+          "rise": 1.0
+        }
+      }
+    },
+    {
+      "frame": 3,
+      "part": "akaza-v3-crouch-p1",
+      "crop": [
+        807,
+        233,
+        1524,
+        971
+      ],
+      "head_ruler": 134.14,
+      "head_box": [
+        386,
+        5,
+        569,
+        181
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3049,
+      "flags": [],
+      "notes": [
+        "settle: frame 5 deformed by tools/art_v3/spec/akaza-crouch-settle.json"
+      ],
+      "root_x": 369.0,
+      "anchor_mode": "feet",
+      "offset": [
+        322,
+        314
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.636,
+      "settle": {
+        "source": 5,
+        "weights": {
+          "rise": -0.15
+        }
+      }
+    },
+    {
+      "frame": 4,
+      "part": "akaza-v3-crouch-p2",
+      "crop": [
+        17,
+        151,
+        753,
+        963
+      ],
+      "head_ruler": 131.63,
+      "head_box": [
+        365,
+        5,
+        548,
+        179
+      ],
+      "ratio_to_sheet": 0.983,
+      "scale": 0.3049,
+      "flags": [],
+      "notes": [
+        "settle: frame 5 deformed by tools/art_v3/spec/akaza-crouch-settle.json"
+      ],
+      "root_x": 417.0,
+      "anchor_mode": "feet",
+      "offset": [
+        322,
+        314
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.754,
+      "settle": {
+        "source": 5,
+        "weights": {
+          "rise": 0.04
+        }
+      }
+    },
+    {
+      "frame": 5,
+      "part": "akaza-v3-crouch-p2",
+      "crop": [
+        796,
+        179,
+        1522,
+        962
+      ],
+      "head_ruler": 133.91,
+      "head_box": [
+        395,
+        5,
+        582,
+        182
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3049,
+      "flags": [],
+      "notes": [
+        "settle: frame 5 deformed by tools/art_v3/spec/akaza-crouch-settle.json"
+      ],
+      "root_x": 364.0,
+      "anchor_mode": "feet",
+      "offset": [
+        322,
+        314
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.754,
+      "settle": {
+        "source": 5,
+        "weights": {}
+      }
+    }
+  ]
+}

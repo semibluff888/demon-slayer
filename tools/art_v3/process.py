@@ -17,10 +17,11 @@ import statistics
 
 import cv2
 import numpy as np
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont, ImageOps
 
 from common import ROOT, cutout, production, read, rel, save, sha256, spec
 import anatomy
+import idle_warp
 import palette
 import process_anime_art as legacy
 
@@ -55,14 +56,19 @@ def canonical(character):
 PELVIS_HEIGHT = round(340 * 34 / 70)  # pelvis above the feet anchor for rotating poses (old pipeline convention)
 
 
-def place(drawing, scale, mode='feet'):
+def place(drawing, scale, mode='feet', centred=False):
     """Scale one drawing onto the shared canvas.
     feet:   body root x to the anchor, lowest pixel (soles) on the floor;
     lying:  body root x to the anchor, lowest row of the body itself on the floor (a dropped
             katana or an outstretched hand reaching lower would otherwise lift the body);
-    pelvis: body centre at PELVIS_HEIGHT above the anchor, for flips and airborne rotations."""
+    pelvis: body centre at PELVIS_HEIGHT above the anchor, for flips and airborne rotations.
+    centred (a lying pose's "lying_centred"): the middle of the body itself, not the uniform
+    centroid, goes to the anchor x (Akaza's long torso put his head past a corner)."""
     array = np.asarray(drawing)
     root = anatomy.root_x(array)
+    if centred:
+        columns = np.nonzero(anatomy.solid_body(array).any(axis=0))[0]
+        root = (columns.min() + columns.max() + 1) / 2.0
     scaled = drawing.resize((max(1, round(drawing.width * scale)), max(1, round(drawing.height * scale))), Image.Resampling.LANCZOS)
     if mode == 'pelvis':
         centre_y = anatomy.root_y(array)
@@ -220,6 +226,13 @@ def process_clip(character, clip, jobs, canon, band=None, pose=None):
         after = palette.stats(locked)
         meta = job['metadata']
         drawings = separate(Image.fromarray(locked, 'RGBA'), meta['count'])
+        mirrored = pose.get('mirror_frames', [])
+        if mirrored:
+            # Drawn facing right and turned round here: Akaza's back throw faces LEFT,
+            # head and all, while he slams (the model draws a turned-away body with the
+            # face still to the right).
+            drawings = [(bounds, ImageOps.mirror(image) if index in mirrored else image)
+                        for (bounds, image), index in zip(drawings, meta['frame_indices'])]
         heads = [anatomy.head(np.asarray(image)) for _, image in drawings]
         overlap = meta.get('overlap') or []
         # "Hair top to sole" of a lying body depends on how its legs happen to be drawn,
@@ -228,7 +241,12 @@ def process_clip(character, clip, jobs, canon, band=None, pose=None):
         if overlap and all(mode_of(i) == 'lying' for i in overlap):
             rulers = [h['ruler'] for h, i in zip(heads, meta['frame_indices']) if h and i not in overlap]
         else:
-            rulers = [h['ruler'] for h in heads if h]
+            # Drawings that copy_frames / settle replace later are never shown, so they do
+            # not measure the sheet (2D's last sheet took its scale from a crouch drawn with
+            # a bigger head than the recovery frame that stays).
+            settling = pose.get('settle', {})
+            replaced = {int(k) for k in pose.get('copy_frames', {})} | {int(k) for k in settling.get('frames', {}) if int(k) != settling.get('from')}
+            rulers = [h['ruler'] for h, i in zip(heads, meta['frame_indices']) if h and i not in replaced] or [h['ruler'] for h in heads if h]
         # Raised arms or a turned head only ever hide part of the head, so with two
         # drawings the clearer (larger) head is the reference; three or more use the median.
         if not rulers:
@@ -327,6 +345,8 @@ def process_clip(character, clip, jobs, canon, band=None, pose=None):
                           resample_vs_idle=round(scale / canon['scale'], 3), palette_shift=shifts,
                           palette_delta_e_before={k: round(palette.delta_e(v, canon['palette'][k]), 2) for k, v in before.items() if k in canon['palette']},
                           palette_delta_e_after={k: round(palette.delta_e(v, canon['palette'][k]), 2) for k, v in after.items() if k in canon['palette']}))
+        data.update(final_scale=scale, part_record=parts[-1], placed=[],
+                    fixed=bool(registered) or method == 'height-match')
         for (bbox, image), head, index in zip(drawings, heads, meta['frame_indices']):
             if index in overlap:
                 continue
@@ -336,7 +356,7 @@ def process_clip(character, clip, jobs, canon, band=None, pose=None):
             if registered:
                 canvas, placement = placed[index]
             else:
-                canvas, placement = place(image, scale, mode)
+                canvas, placement = place(image, scale, mode, mode == 'lying' and pose.get('lying_centred', False))
             ratio = head['ruler'] / part_ruler if head else None
             flags = []
             notes = []
@@ -363,15 +383,177 @@ def process_clip(character, clip, jobs, canon, band=None, pose=None):
                 image.save(drawn_at)
                 placement.update(drawing=rel(drawn_at), exact_scale=float(placement.get('registration', {}).get('exact', scale)))
             frames[index] = canvas
+            data['placed'].append((index, image, mode))
             records.append(dict(frame=index, part=job['id'], crop=list(bbox), head_ruler=round(head['ruler'], 2) if head else None,
                                 head_box=head['box'] if head else None, ratio_to_sheet=round(ratio, 3) if ratio else None,
                                 scale=round(scale, 4), flags=flags, notes=notes, **placement))
+    guard_anchor(sheets, frames, records, pose, canon, reference, band)
+    settle(sheets, frames, records, pose, idle_height)
+    for target, source in pose.get('copy_frames', {}).items():
+        # A held extension shown twice: the model would not draw this frame's arm right
+        # (Akaza's rear-hand straights), so it repeats the frame that it did. "clip:N"
+        # repeats a frame of another, already processed clip (2D starts and ends on the
+        # held crouch, crouch frame 5).
+        record = next(r for r in records if r['frame'] == int(target))
+        if isinstance(source, str):
+            other, number = source.split(':')
+            folder = production(character) / 'imports' / other
+            frames[int(target)] = Image.open(folder / ('frame-%02d.png' % int(number))).convert('RGBA')
+            placed = next(r for r in read(folder.parent / (other + '.json'))['frames'] if r['frame'] == int(number))
+            placed = dict(placed, flags=[], height_vs_idle=placed.get('height_vs_idle'))
+        else:
+            frames[int(target)] = frames[source].copy()
+            placed = next(r for r in records if r['frame'] == source)
+        record.update({k: placed.get(k) for k in ('scale', 'offset', 'root_x', 'height_vs_idle', 'flags')},
+                      copy_of=source, notes=record['notes'] + ['repeats frame %s' % source])
+    for record in records:
+        # Frames checked by eye (pose "reviewed": {"8": reason}): the flags become notes.
+        reason = pose.get('reviewed', {}).get(str(record['frame']))
+        if reason and record['flags']:
+            record['notes'] = record['notes'] + ['reviewed (%s): %s' % (reason, '; '.join(record['flags']))]
+            record['flags'] = []
     ordered = [frames[i] for i in sorted(frames)]
     save_frames(character, clip, ordered)
     record = dict(character=character, clip=clip, canvas_size=list(CANVAS), feet_anchor=list(ANCHOR),
                   runtime_head_ruler=round(canon['runtime_ruler'], 2), parts=parts, frames=sorted(records, key=lambda r: r['frame']))
     save(production(character) / 'imports' / (clip + '.json'), record)
     return ordered, record
+
+
+def guard_anchor(sheets, frames, records, pose, canon, reference, band):
+    """spec "qa" guard_anchor (Akaza): the head ruler follows the model's head, and the
+    model draws the head a different size against the body from sheet to sheet (up to a
+    fifth), so moves started or ended visibly larger or smaller than the idle. Re-scales
+    each placed sheet so its body matches the idle's (height and silhouette area, the
+    square root of its pixel count; the area is what reads as "bigger"):
+      guard   a sheet with a guard frame (pose text naming the approved guard; every frame
+              of a "stance" clip) scales so those frames match the idle in the geometric
+              mean of height and area (a lower, wider guard would match in height alone
+              and still look larger);
+      clip    other sheets take the clip's median guard correction (1 without guards), then
+              their median area is kept under the top of the spec "area" band of the idle
+              (unless the torso, head to sash, clearly says the sheet is small); only an upright
+              sheet whose area AND torso are both short is enlarged (crouches, sweeps, rolls
+              and tucks rightly cover less: enlarging them on area alone blew Akaza's 2D up
+              by half); lying sheets are left alone. The largest drawing of such a
+              sheet is also kept under spec "area_peak".
+    Registered, height-matched and helper sheets are left as they are."""
+    config = canon['qa'].get('guard_anchor')
+    # "size_by_head": a pose whose area and torso both read small for good reasons (2D's
+    # folded legs and hidden sash) keeps the head ruler; its heads are all in view.
+    if not config or pose.get('helper') or pose.get('size_by_head'):
+        return
+    texts = pose.get('frames', [])
+    guard = set(range(len(texts))) if pose.get('stance') else {i for i, text in enumerate(texts) if any(p in text for p in config['phrases'])}
+    belt = anatomy.profile()['materials']['classes'][config.get('belt', 'navy')]
+    idle_height = body_height(reference)
+    idle_area = float(np.sqrt((reference[:, :, 3] > 150).sum()))
+    idle_torso = anatomy.torso(reference, belt)
+
+    def height(index):
+        return body_height(np.asarray(frames[index])) / idle_height
+
+    def area(index):
+        return float(np.sqrt((np.asarray(frames[index])[:, :, 3] > 150).sum())) / idle_area
+
+    def body(index):
+        return float(np.sqrt(height(index) * area(index)))
+
+    def torso(index):
+        length = anatomy.torso(np.asarray(frames[index]), belt)
+        ratio = length / idle_torso if length else None
+        return ratio if ratio and 0.6 < ratio < 1.6 else None
+
+    movable = [d for d in sheets if 'placed' in d and not d['fixed']]
+    guards = [body(i) for d in movable for i, _, mode in d['placed'] if i in guard and mode == 'feet']
+    clip_factor = 1.0 / statistics.median(guards) if guards else 1.0
+    low, high = config['area']
+    torso_low, torso_high = config['torso']
+    for data in movable:
+        placed = data['placed']
+        modes = {mode for _, _, mode in placed}
+        own = [body(i) for i, _, mode in placed if i in guard and mode == 'feet']
+        if own:
+            factor, why = 1.0 / statistics.median(own), 'guard frames'
+        else:
+            factor, why = clip_factor, 'clip guard'
+            if placed and 'lying' not in modes:
+                size = statistics.median(area(i) for i, _, _ in placed) * factor
+                lengths = [t for t in (torso(i) for i, _, _ in placed) if t]
+                trunk = statistics.median(lengths) * factor if lengths else None
+                if size > high and not (trunk and trunk < torso_low):
+                    factor *= high / size
+                    why += ' + area %.2f > %.2f' % (size, high)
+                elif modes == {'feet'} and size < low and trunk and trunk < torso_low:
+                    # A crouch, a sweep or a tuck rightly covers less than the stance, so a
+                    # sheet is only enlarged when its torso is short as well (the milder fix).
+                    factor *= min(low / size, 1.0 / trunk)
+                    why += ' + area %.2f < %.2f, torso %.2f' % (size, low, trunk)
+                # No single drawing of the sheet may stand out either (a stretched take-off, a
+                # fist raised overhead): spec "area_peak" caps the largest one.
+                peak = max(area(i) for i, _, _ in placed) * factor
+                if peak > config.get('area_peak', float('inf')):
+                    factor *= config['area_peak'] / peak
+                    why += ' + peak %.2f' % peak
+        if abs(factor - 1.0) < 0.002:
+            continue
+        scale = data['final_scale'] * factor
+        data['final_scale'] = scale
+        part = data['part_record']
+        part.update(scale=round(scale, 4), resample_vs_idle=round(scale / canon['scale'], 3),
+                    scale_method='%s, %s x%.3f' % (part['scale_method'], why, factor))
+        for index, image, mode in placed:
+            canvas, placement = place(image, scale, mode, mode == 'lying' and pose.get('lying_centred', False))
+            frames[index] = canvas
+            record = next(r for r in records if r['frame'] == index)
+            ratio = body_height(np.asarray(canvas)) / idle_height
+            flags = [f for f in record['flags'] if not f.startswith(('height ', 'clipped'))]
+            if placement['clipped']:
+                flags.append('clipped on canvas')
+            standing = pose.get('upright_frames')
+            if band and mode == 'feet' and (standing is None or index in standing) and not band[0] <= ratio <= band[1]:
+                flags.append('height %.0f%% of the idle' % (ratio * 100))
+            record.update(scale=round(scale, 4), flags=flags, height_vs_idle=round(ratio, 3), **{k: placement[k] for k in ('root_x', 'offset', 'clipped')})
+
+
+def settle(sheets, frames, records, pose, idle_height):
+    """Pose "settle" (Akaza's crouch): frames rebuilt from ONE drawing of the clip, deformed by
+    a rig with the feet pinned (spec/akaza-crouch-settle.json: points in that drawing's pixels,
+    "poses" of point offsets), so a body sinking into a held pose never changes drawing.
+    "frames" maps a frame to its weighted poses ({} is the drawing itself); all of them go
+    through the same warp and placement, so they line up to the pixel."""
+    config = pose.get('settle')
+    if not config:
+        return
+    rig = read(ROOT / config['rig'])
+    source = config['from']
+    data = next(d for d in sheets if any(i == source for i, _, _ in d.get('placed', [])))
+    image = next(drawing for i, drawing, _ in data['placed'] if i == source)
+    if list(image.size) != list(rig['size']):
+        raise SystemExit('settle: frame %d is %s px, the rig was made on %s' % (source, image.size, rig['size']))
+    scale = data['final_scale']
+    _, placement = place(image, scale, 'feet')
+    margin = int(rig.get('margin', 40))
+    padded = Image.new('RGBA', (image.width + 2 * margin, image.height + 2 * margin))
+    padded.alpha_composite(image, (margin, margin))
+    names = list(rig['points'])
+    base = np.array([rig['points'][name] for name in names], dtype=np.float64) + margin
+    at = (placement['offset'][0] - round(margin * scale), placement['offset'][1] - round(margin * scale))
+    for key, weights in config['frames'].items():
+        index = int(key)
+        moved = base.copy()
+        for name_pose, weight in weights.items():
+            for name, offset in rig['poses'][name_pose].items():
+                moved[names.index(name)] += np.array(offset, dtype=np.float64) * weight
+        warped = Image.fromarray(idle_warp.warp_points(np.asarray(padded), base, moved, int(rig.get('grid', 6)), float(rig.get('alpha', 1.4))), 'RGBA')
+        scaled = warped.resize((round(warped.width * scale), round(warped.height * scale)), Image.Resampling.LANCZOS)
+        canvas = Image.new('RGBA', CANVAS)
+        canvas.alpha_composite(scaled, (max(0, at[0]), max(0, at[1])), (max(0, -at[0]), max(0, -at[1])))
+        frames[index] = canvas
+        record = next(r for r in records if r['frame'] == index)
+        record.update(scale=round(scale, 4), offset=list(at), height_vs_idle=round(body_height(np.asarray(canvas)) / idle_height, 3),
+                      settle=dict(source=source, weights=weights), flags=[f for f in record['flags'] if not f.startswith('height ')],
+                      notes=record['notes'] + ['settle: frame %d deformed by %s' % (source, config['rig'])])
 
 
 def save_frames(character, clip, frames):

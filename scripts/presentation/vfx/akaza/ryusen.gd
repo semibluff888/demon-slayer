@@ -5,13 +5,15 @@ extends "res://scripts/presentation/vfx/akaza/technique.gd"
 
 const LEAD := 40.0
 
-## The two kicks, fitted to the borrowed body_stand_heavy frames (roster-v1 art):
-## a high front kick, then a bigger rising one.
+## The two kicks, fitted to the ryusen frames (v3 art): a front snap kick at
+## chest height, then a bigger rising kick to head height.
+const FOOT := Vector2(30.0, -48.0)
+
 func first(_move: Resource) -> Paths.Sweep:
-	return Paths.Sweep.new(Vector2(-4.0, -10.0), Vector2(20.0, -74.0), Vector2(42.0, -58.0), 11.0)
+	return Paths.Sweep.new(Vector2(-2.0, -10.0), Vector2(15.0, -54.0), FOOT, 11.0)
 
 func second(_move: Resource) -> Paths.Arc:
-	var path := Paths.Arc.new(Vector2(14.0, -38.0), 0.95, -1.35, 38.0, 50.0, 16.0)
+	var path := Paths.Arc.new(Vector2(10.0, -29.0), 0.8, -1.0, 37.0, 40.0, 16.0)
 	path.profile = "crescent"
 	return path
 
@@ -21,11 +23,11 @@ func emit(f: RefCounted, actor: Node2D, tick: int) -> void:
 	var seed: int = f.attack_instance * 239 + f.slot * 7919 + tick * 17
 	var cuts := starts(move)
 	if tick == int(cuts[0]):
-		var foot: Vector2 = vfx.world(f, target_local(f, Vector2(48.0, -56.0), 60.0))
+		var foot: Vector2 = vfx.world(f, target_local(f, FOOT, 60.0))
 		vfx.bursts.append({"kind": "shock", "at": foot, "age": 0.0, "life": 0.18, "size": 14.0, "facing": float(f.facing), "seed": seed, "awake": awake})
 		vfx.spark_burst(foot, 8, Vector2(float(f.facing), -0.3), 70.0, 180.0, seed + 1)
 	if cuts.size() > 1 and tick == int(cuts[1]):
-		vfx.flake_burst(vfx.world(f, Vector2(48.0, -56.0)), 6, 70.0, seed + 2, awake, 20.0)
+		vfx.flake_burst(vfx.world(f, FOOT), 6, 70.0, seed + 2, awake, 20.0)
 		if f.grounded:
 			vfx.dust_burst(vfx.world(f, Vector2(10.0, 0.0)), 4, Vector2(0.6, 0.0) * float(f.facing), seed + 4, 1.1)
 
@@ -47,8 +49,8 @@ func draw(canvas: Node2D, layer: int, f: RefCounted, actor: Node2D) -> void:
 		return
 	var box: Rect2 = move.box
 	var out := 1.0 - pow(1.0 - clampf((b + 1.0) / 2.0, 0.0, 1.0), 2.0)
-	var head := Vector2(lerpf(42.0, box.end.x + LEAD, out), -50.0)
+	var head := Vector2(lerpf(40.0, box.end.x + LEAD, out), -48.0)
 	var erosion := clampf((b - 3.0) / 7.0, 0.0, 1.0)
-	vfx.needle(canvas, layer, Vector2(-6.0, -46.0).lerp(head, erosion), head, 6.0, 1.0 - smoothstep(0.7, 1.0, erosion), awake)
+	vfx.needle(canvas, layer, Vector2(-6.0, -44.0).lerp(head, erosion), head, 6.0, 1.0 - smoothstep(0.7, 1.0, erosion), awake)
 	vfx.crescent(canvas, layer, second(move), clampf((b + 1.0) / 3.0, 0.0, 1.0), clampf((b - 2.0) / 7.0, 0.0, 1.25), 1.0, awake, 26)
 

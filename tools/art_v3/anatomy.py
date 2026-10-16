@@ -163,6 +163,28 @@ def _cut_head(rgba, hair, skin, uniform, cut):
                 box=[int(xs.min()), int(ys.min()), int(xs.max()) + 1, int(ys.max()) + 1], region=region, hair=attached)
 
 
+def torso(rgba, belt, kernel=24):
+    """Head centre to the middle of the sash band (spec colour class `belt`): the neck and
+    trunk, which keep their length while the arms and legs move and the head turns. The
+    band is what stays of the class after an opening `kernel` px wide and a quarter of that
+    tall (thin tattoo lines, hanging sash ends and fists drop out). None when there is no
+    head or no band below it."""
+    measured = head(rgba)
+    if not measured:
+        return None
+    band = select(rgba, belt).astype(np.uint8)
+    band = cv2.morphologyEx(band, cv2.MORPH_OPEN, np.ones((max(3, kernel // 4), kernel), np.uint8))
+    count, _, stats, centres = cv2.connectedComponentsWithStats(band, 8)
+    if count < 2:
+        return None
+    largest = 1 + int(np.argmax(stats[1:, cv2.CC_STAT_AREA]))
+    ys, xs = np.nonzero(measured['region'])
+    centre = np.array([xs.mean(), ys.mean()])
+    if centres[largest][1] < centre[1]:
+        return None
+    return float(np.hypot(*(centres[largest] - centre)))
+
+
 def root_x(rgba):
     """Horizontal body root: centroid of the uniform (jacket and trousers)."""
     _, _, uniform = masks(rgba)

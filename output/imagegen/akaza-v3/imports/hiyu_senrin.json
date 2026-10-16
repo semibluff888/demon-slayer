@@ -1,0 +1,439 @@
+{
+  "character": "akaza",
+  "clip": "hiyu_senrin",
+  "canvas_size": [
+    1024,
+    640
+  ],
+  "feet_anchor": [
+    448,
+    568
+  ],
+  "runtime_head_ruler": 41.45,
+  "parts": [
+    {
+      "id": "akaza-v3-hiyu_senrin-p0",
+      "source": "output/imagegen/akaza-v3/raw/akaza-v3-hiyu_senrin-p0.png",
+      "sha256": "c7d852c3e51000bf7f958b91572b1289de3d5487f4f168c9f1c57b825a2e8abc",
+      "ruler": 135.61,
+      "scale": 0.3057,
+      "scale_method": "head-ruler",
+      "resample_vs_idle": 0.772,
+      "palette_shift": {},
+      "palette_delta_e_before": {
+        "vest": 1.5,
+        "navy": 1.56,
+        "uniform": 0.92,
+        "skin": 0.41,
+        "hair": 1.61
+      },
+      "palette_delta_e_after": {
+        "vest": 1.5,
+        "navy": 1.56,
+        "uniform": 0.92,
+        "skin": 0.41,
+        "hair": 1.61
+      }
+    },
+    {
+      "id": "akaza-v3-hiyu_senrin-p1",
+      "source": "output/imagegen/akaza-v3/raw/akaza-v3-hiyu_senrin-p1.png",
+      "sha256": "23a7f2ce6f76363f8288ac467af139f5d36bd222dd6798fd9902319a53e14276",
+      "ruler": 97.8,
+      "scale": 0.3325,
+      "scale_method": "clip-median",
+      "resample_vs_idle": 0.839,
+      "palette_shift": {},
+      "palette_delta_e_before": {
+        "vest": 1.27,
+        "navy": 1.41,
+        "uniform": 0.75,
+        "skin": 0.22
+      },
+      "palette_delta_e_after": {
+        "vest": 1.27,
+        "navy": 1.41,
+        "uniform": 0.75,
+        "skin": 0.22
+      }
+    },
+    {
+      "id": "akaza-v3-hiyu_senrin-p2",
+      "source": "output/imagegen/akaza-v3/raw/akaza-v3-hiyu_senrin-p2.png",
+      "sha256": "996f7d92b31baeed1986b96fcfd7da9669ecca2db1e406149efb9f2946eea2b5",
+      "ruler": 97.8,
+      "scale": 0.3325,
+      "scale_method": "clip-median",
+      "resample_vs_idle": 0.839,
+      "palette_shift": {
+        "vest": [
+          1.37,
+          -0.9,
+          -1.8
+        ]
+      },
+      "palette_delta_e_before": {
+        "vest": 2.29,
+        "navy": 0.47,
+        "uniform": 1.0,
+        "skin": 1.45
+      },
+      "palette_delta_e_after": {
+        "vest": 0.67,
+        "navy": 0.47,
+        "uniform": 1.0,
+        "skin": 1.45
+      }
+    },
+    {
+      "id": "akaza-v3-hiyu_senrin-p3",
+      "source": "output/imagegen/akaza-v3/raw/akaza-v3-hiyu_senrin-p3.png",
+      "sha256": "c7582ba8b2e18649de1b52e3b2922eabffeece2812f5666af9476e032d032a46",
+      "ruler": 122.32,
+      "scale": 0.3348,
+      "scale_method": "head-ruler, clip guard + peak 1.06 x0.988",
+      "resample_vs_idle": 0.845,
+      "palette_shift": {
+        "vest": [
+          1.09,
+          -7.11,
+          -1.84
+        ],
+        "navy": [
+          1.06,
+          -1.8,
+          5.36
+        ]
+      },
+      "palette_delta_e_before": {
+        "vest": 7.39,
+        "navy": 5.72,
+        "uniform": 1.76,
+        "skin": 1.83,
+        "hair": 5.66
+      },
+      "palette_delta_e_after": {
+        "vest": 0.93,
+        "navy": 0.88,
+        "uniform": 1.75,
+        "skin": 1.83,
+        "hair": 5.67
+      }
+    },
+    {
+      "id": "akaza-v3-hiyu_senrin-p4",
+      "source": "output/imagegen/akaza-v3/raw/akaza-v3-hiyu_senrin-p4.png",
+      "sha256": "4673d9768c5ca3ea46ce71852398547bfbc169d0a3b555c6b489c1a5f549a443",
+      "ruler": 124.66,
+      "scale": 0.3325,
+      "scale_method": "head-ruler",
+      "resample_vs_idle": 0.839,
+      "palette_shift": {
+        "vest": [
+          3.0,
+          -3.1,
+          -1.18
+        ],
+        "navy": [
+          1.65,
+          -1.33,
+          2.12
+        ]
+      },
+      "palette_delta_e_before": {
+        "vest": 4.07,
+        "navy": 2.82,
+        "uniform": 1.15,
+        "skin": 1.37,
+        "hair": 3.93
+      },
+      "palette_delta_e_after": {
+        "vest": 1.18,
+        "navy": 0.68,
+        "uniform": 1.14,
+        "skin": 1.37,
+        "hair": 3.93
+      }
+    }
+  ],
+  "frames": [
+    {
+      "frame": 0,
+      "part": "akaza-v3-hiyu_senrin-p0",
+      "crop": [
+        124,
+        14,
+        736,
+        890
+      ],
+      "head_ruler": 128.18,
+      "head_box": [
+        278,
+        3,
+        453,
+        173
+      ],
+      "ratio_to_sheet": 0.945,
+      "scale": 0.3057,
+      "flags": [],
+      "notes": [],
+      "root_x": 319.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        350,
+        233
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.847
+    },
+    {
+      "frame": 1,
+      "part": "akaza-v3-hiyu_senrin-p0",
+      "crop": [
+        852,
+        134,
+        1489,
+        724
+      ],
+      "head_ruler": 135.61,
+      "head_box": [
+        464,
+        80,
+        632,
+        259
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3057,
+      "flags": [],
+      "notes": [],
+      "root_x": 266.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        367,
+        294
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.572
+    },
+    {
+      "frame": 2,
+      "part": "akaza-v3-hiyu_senrin-p1",
+      "crop": [
+        45,
+        17,
+        798,
+        823
+      ],
+      "head_ruler": null,
+      "head_box": null,
+      "ratio_to_sheet": null,
+      "scale": 0.3325,
+      "flags": [],
+      "notes": [
+        "head not measured (back view, flip or occlusion)"
+      ],
+      "root_x": 449.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        299,
+        324
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.85
+    },
+    {
+      "frame": 3,
+      "part": "akaza-v3-hiyu_senrin-p1",
+      "crop": [
+        792,
+        173,
+        1519,
+        945
+      ],
+      "head_ruler": null,
+      "head_box": null,
+      "ratio_to_sheet": null,
+      "scale": 0.3325,
+      "flags": [],
+      "notes": [
+        "head not measured (back view, flip or occlusion)"
+      ],
+      "root_x": 417.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        309,
+        273
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.818
+    },
+    {
+      "frame": 4,
+      "part": "akaza-v3-hiyu_senrin-p2",
+      "crop": [
+        95,
+        26,
+        725,
+        826
+      ],
+      "head_ruler": null,
+      "head_box": null,
+      "ratio_to_sheet": null,
+      "scale": 0.3325,
+      "flags": [],
+      "notes": [
+        "head not measured (back view, flip or occlusion)"
+      ],
+      "root_x": 357.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        329,
+        252
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.843
+    },
+    {
+      "frame": 5,
+      "part": "akaza-v3-hiyu_senrin-p2",
+      "crop": [
+        757,
+        148,
+        1520,
+        921
+      ],
+      "head_ruler": null,
+      "head_box": null,
+      "ratio_to_sheet": null,
+      "scale": 0.3325,
+      "flags": [],
+      "notes": [
+        "head not measured (back view, flip or occlusion)"
+      ],
+      "root_x": 436.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        303,
+        254
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.815
+    },
+    {
+      "frame": 6,
+      "part": "akaza-v3-hiyu_senrin-p3",
+      "crop": [
+        36,
+        26,
+        899,
+        961
+      ],
+      "head_ruler": 116.65,
+      "head_box": [
+        366,
+        4,
+        528,
+        161
+      ],
+      "ratio_to_sheet": 0.954,
+      "scale": 0.3348,
+      "flags": [],
+      "notes": [],
+      "root_x": 465.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        292,
+        204
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.994
+    },
+    {
+      "frame": 7,
+      "part": "akaza-v3-hiyu_senrin-p3",
+      "crop": [
+        850,
+        25,
+        1490,
+        760
+      ],
+      "head_ruler": 122.32,
+      "head_box": [
+        314,
+        5,
+        484,
+        171
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3348,
+      "flags": [],
+      "notes": [],
+      "root_x": 382.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        320,
+        258
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.776
+    },
+    {
+      "frame": 8,
+      "part": "akaza-v3-hiyu_senrin-p4",
+      "crop": [
+        65,
+        16,
+        694,
+        738
+      ],
+      "head_ruler": 124.41,
+      "head_box": [
+        340,
+        4,
+        512,
+        170
+      ],
+      "ratio_to_sheet": 0.998,
+      "scale": 0.3325,
+      "flags": [],
+      "notes": [],
+      "root_x": 435.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        303,
+        266
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.76
+    },
+    {
+      "frame": 9,
+      "part": "akaza-v3-hiyu_senrin-p4",
+      "crop": [
+        780,
+        61,
+        1522,
+        984
+      ],
+      "head_ruler": 124.66,
+      "head_box": [
+        370,
+        5,
+        541,
+        171
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3325,
+      "flags": [],
+      "notes": [],
+      "root_x": 385.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        320,
+        204
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.968
+    }
+  ]
+}

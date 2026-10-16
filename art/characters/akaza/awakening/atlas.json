@@ -9,95 +9,175 @@
   ],
   "source_height": 340,
   "canonical_height": 70,
-  "revision": "awakening-v1",
+  "revision": "akaza-v3",
+  "idle_vs_upright": 0.886,
   "clips": {
     "idle": {
       "loop": true,
-      "fps": 12,
+      "fps": 10,
+      "cycle": true,
       "phase_breaks": [
-        2,
-        4
+        4,
+        8
       ],
       "segment_sync": false,
       "anchor_mode": "feet",
       "timeline": [],
       "frames": [
         {
-          "texture": "atlas-0.png",
+          "texture": "atlas-1.png",
           "region": [
-            1185,
-            2,
-            213,
-            366
+            500,
+            1330,
+            187,
+            318
           ],
           "offset": [
-            345,
-            203
-          ]
-        },
-        {
-          "texture": "atlas-0.png",
-          "region": [
-            1427,
-            382,
-            219,
-            364
-          ],
-          "offset": [
-            339,
-            205
-          ]
-        },
-        {
-          "texture": "atlas-0.png",
-          "region": [
-            353,
-            382,
-            239,
-            365
-          ],
-          "offset": [
-            306,
-            204
-          ]
-        },
-        {
-          "texture": "atlas-3.png",
-          "region": [
-            2,
-            1381,
-            284,
-            337
-          ],
-          "offset": [
-            298,
-            232
-          ]
-        },
-        {
-          "texture": "atlas-2.png",
-          "region": [
-            1435,
-            1407,
-            331,
-            342
-          ],
-          "offset": [
-            283,
-            227
+            371,
+            250
           ]
         },
         {
           "texture": "atlas-1.png",
           "region": [
-            873,
-            725,
-            224,
-            352
+            1599,
+            1653,
+            187,
+            316
           ],
           "offset": [
-            323,
-            217
+            371,
+            252
+          ]
+        },
+        {
+          "texture": "atlas-2.png",
+          "region": [
+            969,
+            2,
+            187,
+            315
+          ],
+          "offset": [
+            371,
+            253
+          ]
+        },
+        {
+          "texture": "atlas-2.png",
+          "region": [
+            1160,
+            2,
+            187,
+            315
+          ],
+          "offset": [
+            371,
+            253
+          ]
+        },
+        {
+          "texture": "atlas-2.png",
+          "region": [
+            1351,
+            2,
+            187,
+            315
+          ],
+          "offset": [
+            371,
+            253
+          ]
+        },
+        {
+          "texture": "atlas-2.png",
+          "region": [
+            1542,
+            2,
+            187,
+            315
+          ],
+          "offset": [
+            371,
+            253
+          ]
+        },
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            384,
+            1653,
+            187,
+            317
+          ],
+          "offset": [
+            371,
+            251
+          ]
+        },
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            691,
+            1330,
+            187,
+            318
+          ],
+          "offset": [
+            371,
+            250
+          ]
+        },
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            1181,
+            1006,
+            187,
+            319
+          ],
+          "offset": [
+            371,
+            249
+          ]
+        },
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            1833,
+            678,
+            187,
+            320
+          ],
+          "offset": [
+            371,
+            248
+          ]
+        },
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            2,
+            1006,
+            187,
+            320
+          ],
+          "offset": [
+            371,
+            248
+          ]
+        },
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            1372,
+            1006,
+            187,
+            319
+          ],
+          "offset": [
+            371,
+            249
           ]
         }
       ]
@@ -114,900 +194,81 @@
       "timeline": [],
       "frames": [
         {
-          "texture": "atlas-0.png",
-          "region": [
-            1021,
-            1487,
-            242,
-            359
-          ],
-          "offset": [
-            341,
-            209
-          ]
-        },
-        {
-          "texture": "atlas-1.png",
-          "region": [
-            733,
-            2,
-            240,
-            358
-          ],
-          "offset": [
-            331,
-            211
-          ]
-        },
-        {
-          "texture": "atlas-1.png",
-          "region": [
-            1546,
-            2,
-            241,
-            356
-          ],
-          "offset": [
-            314,
-            212
-          ]
-        },
-        {
-          "texture": "atlas-1.png",
-          "region": [
-            1101,
-            725,
-            229,
-            352
-          ],
-          "offset": [
-            351,
-            217
-          ]
-        },
-        {
-          "texture": "atlas-1.png",
-          "region": [
-            1334,
-            1082,
-            246,
-            351
-          ],
-          "offset": [
-            323,
-            218
-          ]
-        },
-        {
-          "texture": "atlas-1.png",
-          "region": [
-            1584,
-            1082,
-            266,
-            351
-          ],
-          "offset": [
-            303,
-            218
-          ]
-        }
-      ]
-    },
-    "walk_back": {
-      "loop": true,
-      "fps": 12,
-      "phase_breaks": [
-        2,
-        4
-      ],
-      "segment_sync": false,
-      "anchor_mode": "feet",
-      "timeline": [],
-      "frames": [
-        {
-          "texture": "atlas-1.png",
-          "region": [
-            2,
-            1438,
-            229,
-            351
-          ],
-          "offset": [
-            328,
-            218
-          ]
-        },
-        {
           "texture": "atlas-2.png",
           "region": [
-            2,
-            356,
-            224,
-            348
+            793,
+            641,
+            235,
+            313
           ],
           "offset": [
-            348,
-            220
-          ]
-        },
-        {
-          "texture": "atlas-2.png",
-          "region": [
-            230,
-            356,
-            263,
-            348
-          ],
-          "offset": [
-            303,
-            220
+            333,
+            255
           ]
         },
         {
           "texture": "atlas-3.png",
           "region": [
-            1347,
-            348,
-            280,
-            340
+            1185,
+            2,
+            207,
+            310
           ],
           "offset": [
-            311,
-            229
+            340,
+            258
           ]
         },
         {
           "texture": "atlas-2.png",
           "region": [
-            1770,
-            1407,
-            264,
-            342
+            1032,
+            641,
+            211,
+            313
           ],
           "offset": [
-            302,
-            226
-          ]
-        },
-        {
-          "texture": "atlas-2.png",
-          "region": [
-            1599,
-            356,
-            241,
-            346
-          ],
-          "offset": [
-            316,
-            223
-          ]
-        }
-      ]
-    },
-    "crouch": {
-      "loop": false,
-      "fps": 12,
-      "phase_breaks": [
-        2,
-        4
-      ],
-      "segment_sync": false,
-      "anchor_mode": "feet",
-      "timeline": [],
-      "frames": [
-        {
-          "texture": "atlas-0.png",
-          "region": [
-            1262,
-            1120,
-            219,
-            361
-          ],
-          "offset": [
-            331,
-            208
+            345,
+            255
           ]
         },
         {
           "texture": "atlas-3.png",
           "region": [
-            2,
-            2,
-            245,
-            342
+            917,
+            631,
+            241,
+            309
           ],
           "offset": [
-            327,
-            227
-          ]
-        },
-        {
-          "texture": "atlas-6.png",
-          "region": [
-            1068,
-            632,
-            270,
-            303
-          ],
-          "offset": [
-            326,
-            265
-          ]
-        },
-        {
-          "texture": "atlas-7.png",
-          "region": [
-            1460,
-            582,
-            302,
-            272
-          ],
-          "offset": [
-            314,
-            296
-          ]
-        },
-        {
-          "texture": "atlas-7.png",
-          "region": [
-            671,
-            864,
-            293,
-            268
-          ],
-          "offset": [
-            315,
-            301
-          ]
-        },
-        {
-          "texture": "atlas-7.png",
-          "region": [
-            1566,
-            1138,
-            252,
-            263
-          ],
-          "offset": [
-            320,
-            305
-          ]
-        }
-      ]
-    },
-    "jump": {
-      "loop": false,
-      "fps": 12,
-      "phase_breaks": [
-        2,
-        4
-      ],
-      "segment_sync": false,
-      "anchor_mode": "pelvis",
-      "timeline": [],
-      "frames": [
-        {
-          "texture": "atlas-8.png",
-          "region": [
-            1737,
-            957,
-            296,
-            208
-          ],
-          "offset": [
-            305,
-            361
-          ]
-        },
-        {
-          "texture": "atlas-7.png",
-          "region": [
-            649,
-            2,
-            244,
-            287
-          ],
-          "offset": [
-            305,
-            244
-          ]
-        },
-        {
-          "texture": "atlas-7.png",
-          "region": [
-            1718,
-            294,
-            189,
-            278
-          ],
-          "offset": [
-            338,
-            202
-          ]
-        },
-        {
-          "texture": "atlas-6.png",
-          "region": [
-            1686,
-            319,
-            325,
-            305
-          ],
-          "offset": [
-            289,
-            200
-          ]
-        },
-        {
-          "texture": "atlas-8.png",
-          "region": [
-            2,
-            2,
-            287,
-            246
-          ],
-          "offset": [
-            338,
-            322
-          ]
-        },
-        {
-          "texture": "atlas-0.png",
-          "region": [
-            2,
-            2,
-            258,
-            376
-          ],
-          "offset": [
-            311,
-            193
-          ]
-        }
-      ]
-    },
-    "guard": {
-      "loop": false,
-      "fps": 12,
-      "phase_breaks": [
-        2,
-        4
-      ],
-      "segment_sync": false,
-      "anchor_mode": "feet",
-      "timeline": [],
-      "frames": [
-        {
-          "texture": "atlas-0.png",
-          "region": [
-            1267,
-            1487,
-            227,
-            359
-          ],
-          "offset": [
-            337,
-            209
-          ]
-        },
-        {
-          "texture": "atlas-0.png",
-          "region": [
-            1498,
-            1487,
-            228,
-            359
-          ],
-          "offset": [
-            328,
-            210
-          ]
-        },
-        {
-          "texture": "atlas-0.png",
-          "region": [
-            1730,
-            1487,
-            226,
-            359
-          ],
-          "offset": [
-            320,
-            209
+            334,
+            259
           ]
         },
         {
           "texture": "atlas-2.png",
           "region": [
-            2,
-            1058,
-            244,
-            345
-          ],
-          "offset": [
-            329,
-            223
-          ]
-        },
-        {
-          "texture": "atlas-1.png",
-          "region": [
-            929,
-            1438,
-            243,
-            350
-          ],
-          "offset": [
-            318,
-            218
-          ]
-        },
-        {
-          "texture": "atlas-1.png",
-          "region": [
-            1791,
-            2,
-            241,
-            356
-          ],
-          "offset": [
-            304,
-            213
-          ]
-        }
-      ]
-    },
-    "guard_low": {
-      "loop": false,
-      "fps": 12,
-      "phase_breaks": [
-        2,
-        4
-      ],
-      "segment_sync": false,
-      "anchor_mode": "feet",
-      "timeline": [],
-      "frames": [
-        {
-          "texture": "atlas-8.png",
-          "region": [
-            293,
-            2,
-            240,
-            246
-          ],
-          "offset": [
-            341,
-            323
-          ]
-        },
-        {
-          "texture": "atlas-8.png",
-          "region": [
-            842,
-            498,
-            229,
-            226
-          ],
-          "offset": [
-            342,
-            342
-          ]
-        },
-        {
-          "texture": "atlas-8.png",
-          "region": [
-            368,
-            1388,
-            198,
-            184
+            272,
+            1276,
+            210,
+            312
           ],
           "offset": [
             347,
-            385
-          ]
-        },
-        {
-          "texture": "atlas-8.png",
-          "region": [
-            2,
-            498,
-            226,
-            228
-          ],
-          "offset": [
-            335,
-            340
-          ]
-        },
-        {
-          "texture": "atlas-7.png",
-          "region": [
-            1278,
-            1676,
-            248,
-            247
-          ],
-          "offset": [
-            319,
-            322
-          ]
-        },
-        {
-          "texture": "atlas-8.png",
-          "region": [
-            776,
-            252,
-            242,
-            235
-          ],
-          "offset": [
-            322,
-            333
-          ]
-        }
-      ]
-    },
-    "hit": {
-      "loop": false,
-      "fps": 12,
-      "phase_breaks": [
-        2,
-        4
-      ],
-      "segment_sync": false,
-      "anchor_mode": "feet",
-      "timeline": [],
-      "frames": [
-        {
-          "texture": "atlas-1.png",
-          "region": [
-            1334,
-            725,
-            258,
-            352
-          ],
-          "offset": [
-            311,
-            217
-          ]
-        },
-        {
-          "texture": "atlas-1.png",
-          "region": [
-            1596,
-            725,
-            292,
-            352
-          ],
-          "offset": [
-            328,
-            217
-          ]
-        },
-        {
-          "texture": "atlas-5.png",
-          "region": [
-            2,
-            331,
-            309,
-            322
-          ],
-          "offset": [
-            302,
-            247
-          ]
-        },
-        {
-          "texture": "atlas-4.png",
-          "region": [
-            1161,
-            2,
-            292,
-            333
-          ],
-          "offset": [
-            310,
-            236
-          ]
-        },
-        {
-          "texture": "atlas-3.png",
-          "region": [
-            1631,
-            348,
-            280,
-            340
-          ],
-          "offset": [
-            299,
-            229
+            256
           ]
         },
         {
           "texture": "atlas-2.png",
           "region": [
-            1075,
-            356,
-            261,
-            347
-          ],
-          "offset": [
-            304,
-            222
-          ]
-        }
-      ]
-    },
-    "knockdown": {
-      "loop": false,
-      "fps": 12,
-      "phase_breaks": [
-        2,
-        4
-      ],
-      "segment_sync": false,
-      "anchor_mode": "feet",
-      "timeline": [],
-      "frames": [
-        {
-          "texture": "atlas-1.png",
-          "region": [
-            1259,
+            1733,
             2,
-            283,
-            357
+            218,
+            315
           ],
           "offset": [
-            313,
-            212
-          ]
-        },
-        {
-          "texture": "atlas-3.png",
-          "region": [
-            562,
-            1381,
-            282,
-            336
-          ],
-          "offset": [
-            323,
-            232
-          ]
-        },
-        {
-          "texture": "atlas-7.png",
-          "region": [
-            897,
-            2,
-            328,
-            286
-          ],
-          "offset": [
-            277,
-            283
-          ]
-        },
-        {
-          "texture": "atlas-8.png",
-          "region": [
-            1059,
-            957,
-            334,
-            209
-          ],
-          "offset": [
-            289,
-            360
-          ]
-        },
-        {
-          "texture": "atlas-8.png",
-          "region": [
-            374,
-            1584,
-            345,
-            134
-          ],
-          "offset": [
-            277,
-            434
-          ]
-        },
-        {
-          "texture": "atlas-8.png",
-          "region": [
-            390,
-            1847,
-            368,
-            81
-          ],
-          "offset": [
-            260,
-            488
-          ]
-        }
-      ]
-    },
-    "throw": {
-      "loop": false,
-      "fps": 12,
-      "phase_breaks": [
-        2,
-        4
-      ],
-      "segment_sync": false,
-      "anchor_mode": "feet",
-      "timeline": [],
-      "frames": [
-        {
-          "texture": "atlas-2.png",
-          "region": [
-            440,
-            1407,
-            256,
-            343
-          ],
-          "offset": [
-            312,
-            226
-          ]
-        },
-        {
-          "texture": "atlas-3.png",
-          "region": [
-            2,
-            694,
-            335,
-            340
-          ],
-          "offset": [
-            275,
-            229
-          ]
-        },
-        {
-          "texture": "atlas-3.png",
-          "region": [
-            2,
-            1038,
-            363,
-            339
-          ],
-          "offset": [
-            258,
-            229
-          ]
-        },
-        {
-          "texture": "atlas-3.png",
-          "region": [
-            251,
-            2,
-            338,
-            342
-          ],
-          "offset": [
-            292,
-            226
-          ]
-        },
-        {
-          "texture": "atlas-3.png",
-          "region": [
-            341,
-            694,
-            261,
-            340
-          ],
-          "offset": [
-            292,
-            229
-          ]
-        },
-        {
-          "texture": "atlas-2.png",
-          "region": [
-            700,
-            1407,
-            257,
-            343
-          ],
-          "offset": [
-            294,
-            226
-          ]
-        }
-      ]
-    },
-    "victory": {
-      "loop": false,
-      "fps": 12,
-      "phase_breaks": [
-        2,
-        4
-      ],
-      "segment_sync": false,
-      "anchor_mode": "feet",
-      "timeline": [],
-      "frames": [
-        {
-          "texture": "atlas-0.png",
-          "region": [
-            596,
-            382,
-            193,
-            365
-          ],
-          "offset": [
-            365,
-            204
-          ]
-        },
-        {
-          "texture": "atlas-0.png",
-          "region": [
-            751,
-            2,
-            183,
-            367
-          ],
-          "offset": [
-            358,
-            202
-          ]
-        },
-        {
-          "texture": "atlas-0.png",
-          "region": [
-            569,
-            2,
-            178,
-            368
-          ],
-          "offset": [
-            355,
-            201
-          ]
-        },
-        {
-          "texture": "atlas-0.png",
-          "region": [
-            1059,
-            752,
-            200,
-            363
-          ],
-          "offset": [
-            365,
-            206
-          ]
-        },
-        {
-          "texture": "atlas-0.png",
-          "region": [
-            372,
-            1120,
-            280,
-            362
-          ],
-          "offset": [
-            308,
-            206
-          ]
-        },
-        {
-          "texture": "atlas-0.png",
-          "region": [
-            1263,
-            752,
-            286,
-            363
-          ],
-          "offset": [
-            295,
-            206
+            339,
+            253
           ]
         }
       ]
@@ -1024,268 +285,307 @@
       "timeline": [],
       "frames": [
         {
-          "texture": "atlas-2.png",
-          "region": [
-            497,
-            356,
-            310,
-            348
-          ],
-          "offset": [
-            292,
-            220
-          ]
-        },
-        {
           "texture": "atlas-3.png",
           "region": [
-            593,
+            1396,
             2,
-            287,
-            342
+            248,
+            310
           ],
           "offset": [
-            279,
-            226
-          ]
-        },
-        {
-          "texture": "atlas-3.png",
-          "region": [
-            606,
-            694,
-            381,
-            340
-          ],
-          "offset": [
-            232,
-            229
-          ]
-        },
-        {
-          "texture": "atlas-3.png",
-          "region": [
-            991,
-            694,
-            376,
-            340
-          ],
-          "offset": [
-            281,
-            229
-          ]
-        },
-        {
-          "texture": "atlas-3.png",
-          "region": [
-            778,
-            348,
-            288,
-            341
-          ],
-          "offset": [
-            279,
-            228
+            349,
+            258
           ]
         },
         {
           "texture": "atlas-2.png",
           "region": [
-            551,
-            1058,
-            305,
-            344
+            486,
+            1276,
+            216,
+            312
           ],
           "offset": [
-            264,
-            225
-          ]
-        }
-      ]
-    },
-    "stand_heavy": {
-      "loop": false,
-      "fps": 12,
-      "phase_breaks": [
-        2,
-        4
-      ],
-      "segment_sync": false,
-      "anchor_mode": "feet",
-      "timeline": [],
-      "frames": [
-        {
-          "texture": "atlas-1.png",
-          "region": [
-            1379,
-            365,
-            252,
-            354
-          ],
-          "offset": [
-            320,
-            215
-          ]
-        },
-        {
-          "texture": "atlas-3.png",
-          "region": [
-            884,
-            2,
-            300,
-            342
-          ],
-          "offset": [
-            281,
-            226
+            351,
+            257
           ]
         },
         {
           "texture": "atlas-2.png",
           "region": [
-            860,
-            1058,
-            323,
-            344
+            649,
+            1593,
+            258,
+            311
           ],
           "offset": [
-            255,
-            225
-          ]
-        },
-        {
-          "texture": "atlas-3.png",
-          "region": [
-            1669,
-            1381,
-            376,
-            335
-          ],
-          "offset": [
-            284,
-            234
+            354,
+            257
           ]
         },
         {
           "texture": "atlas-4.png",
           "region": [
-            519,
-            2,
-            358,
-            334
+            1409,
+            309,
+            263,
+            298
           ],
           "offset": [
-            279,
-            234
+            335,
+            270
+          ]
+        },
+        {
+          "texture": "atlas-2.png",
+          "region": [
+            911,
+            1593,
+            215,
+            311
+          ],
+          "offset": [
+            354,
+            257
+          ]
+        },
+        {
+          "texture": "atlas-2.png",
+          "region": [
+            1247,
+            641,
+            208,
+            313
+          ],
+          "offset": [
+            362,
+            255
+          ]
+        }
+      ]
+    },
+    "air_type": {
+      "loop": false,
+      "fps": 12,
+      "phase_breaks": [
+        3,
+        6
+      ],
+      "segment_sync": false,
+      "anchor_mode": "feet",
+      "timeline": [],
+      "frames": [
+        {
+          "texture": "atlas-3.png",
+          "region": [
+            1648,
+            2,
+            212,
+            310
+          ],
+          "offset": [
+            352,
+            258
           ]
         },
         {
           "texture": "atlas-3.png",
           "region": [
-            1188,
-            2,
-            267,
-            342
+            1337,
+            945,
+            244,
+            308
           ],
           "offset": [
-            300,
-            226
-          ]
-        }
-      ]
-    },
-    "crouch_light": {
-      "loop": false,
-      "fps": 12,
-      "phase_breaks": [
-        2,
-        4
-      ],
-      "segment_sync": false,
-      "anchor_mode": "feet",
-      "timeline": [],
-      "frames": [
-        {
-          "texture": "atlas-7.png",
-          "region": [
-            1229,
-            1409,
-            263,
-            255
-          ],
-          "offset": [
-            318,
-            313
+            346,
+            260
           ]
         },
         {
-          "texture": "atlas-8.png",
+          "texture": "atlas-3.png",
           "region": [
-            1022,
-            252,
-            264,
-            235
+            2,
+            1570,
+            194,
+            305
+          ],
+          "offset": [
+            363,
+            263
+          ]
+        },
+        {
+          "texture": "atlas-5.png",
+          "region": [
+            1056,
+            569,
+            311,
+            272
+          ],
+          "offset": [
+            297,
+            297
+          ]
+        },
+        {
+          "texture": "atlas-4.png",
+          "region": [
+            1484,
+            1213,
+            281,
+            284
+          ],
+          "offset": [
+            347,
+            284
+          ]
+        },
+        {
+          "texture": "atlas-4.png",
+          "region": [
+            1769,
+            1213,
+            259,
+            284
+          ],
+          "offset": [
+            342,
+            284
+          ]
+        },
+        {
+          "texture": "atlas-4.png",
+          "region": [
+            1604,
+            614,
+            254,
+            294
           ],
           "offset": [
             328,
-            333
+            275
           ]
         },
         {
-          "texture": "atlas-8.png",
+          "texture": "atlas-4.png",
           "region": [
-            1290,
-            252,
-            268,
-            230
+            582,
+            614,
+            234,
+            295
           ],
           "offset": [
-            322,
-            339
+            348,
+            273
           ]
         },
         {
-          "texture": "atlas-8.png",
+          "texture": "atlas-2.png",
           "region": [
-            1403,
-            2,
-            295,
-            243
+            1130,
+            1593,
+            202,
+            311
           ],
           "offset": [
-            321,
-            325
-          ]
-        },
-        {
-          "texture": "atlas-8.png",
-          "region": [
-            2,
-            252,
-            247,
-            242
-          ],
-          "offset": [
-            339,
-            327
-          ]
-        },
-        {
-          "texture": "atlas-8.png",
-          "region": [
-            537,
-            2,
-            259,
-            246
-          ],
-          "offset": [
-            326,
-            322
+            367,
+            258
           ]
         }
       ]
     },
-    "crouch_heavy": {
+    "walk_back": {
+      "loop": true,
+      "fps": 12,
+      "phase_breaks": [
+        2,
+        4
+      ],
+      "segment_sync": false,
+      "anchor_mode": "feet",
+      "timeline": [],
+      "frames": [
+        {
+          "texture": "atlas-2.png",
+          "region": [
+            1459,
+            641,
+            242,
+            313
+          ],
+          "offset": [
+            323,
+            255
+          ]
+        },
+        {
+          "texture": "atlas-3.png",
+          "region": [
+            1638,
+            1570,
+            216,
+            303
+          ],
+          "offset": [
+            342,
+            266
+          ]
+        },
+        {
+          "texture": "atlas-2.png",
+          "region": [
+            999,
+            322,
+            216,
+            314
+          ],
+          "offset": [
+            337,
+            254
+          ]
+        },
+        {
+          "texture": "atlas-2.png",
+          "region": [
+            1219,
+            322,
+            203,
+            314
+          ],
+          "offset": [
+            342,
+            254
+          ]
+        },
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            1790,
+            1653,
+            200,
+            316
+          ],
+          "offset": [
+            346,
+            252
+          ]
+        },
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            882,
+            1330,
+            200,
+            318
+          ],
+          "offset": [
+            355,
+            250
+          ]
+        }
+      ]
+    },
+    "crouch": {
       "loop": false,
       "fps": 12,
       "phase_breaks": [
@@ -1297,541 +597,86 @@
       "timeline": [],
       "frames": [
         {
-          "texture": "atlas-7.png",
+          "texture": "atlas-3.png",
           "region": [
-            1027,
-            1138,
-            263,
+            2,
+            317,
+            214,
+            310
+          ],
+          "offset": [
+            352,
+            258
+          ]
+        },
+        {
+          "texture": "atlas-5.png",
+          "region": [
+            1748,
+            847,
+            229,
             265
           ],
           "offset": [
-            327,
+            326,
             304
           ]
         },
         {
-          "texture": "atlas-7.png",
+          "texture": "atlas-5.png",
           "region": [
-            1294,
-            1138,
-            268,
-            264
-          ],
-          "offset": [
-            322,
-            305
-          ]
-        },
-        {
-          "texture": "atlas-6.png",
-          "region": [
-            894,
-            941,
-            254,
-            298
-          ],
-          "offset": [
-            315,
-            271
-          ]
-        },
-        {
-          "texture": "atlas-6.png",
-          "region": [
-            1342,
-            632,
             260,
-            303
+            1387,
+            226,
+            256
           ],
           "offset": [
-            330,
-            266
-          ]
-        },
-        {
-          "texture": "atlas-7.png",
-          "region": [
-            764,
-            1138,
-            259,
-            266
-          ],
-          "offset": [
-            321,
-            302
-          ]
-        },
-        {
-          "texture": "atlas-7.png",
-          "region": [
-            2,
-            1409,
-            254,
-            263
-          ],
-          "offset": [
-            313,
-            306
-          ]
-        }
-      ]
-    },
-    "air_light": {
-      "loop": false,
-      "fps": 12,
-      "phase_breaks": [
-        2,
-        4
-      ],
-      "segment_sync": false,
-      "anchor_mode": "pelvis",
-      "timeline": [],
-      "frames": [
-        {
-          "texture": "atlas-5.png",
-          "region": [
-            667,
-            657,
-            254,
-            320
-          ],
-          "offset": [
-            294,
-            230
-          ]
-        },
-        {
-          "texture": "atlas-7.png",
-          "region": [
-            2,
-            2,
-            236,
-            288
-          ],
-          "offset": [
-            316,
-            213
-          ]
-        },
-        {
-          "texture": "atlas-5.png",
-          "region": [
-            315,
-            331,
-            413,
-            322
-          ],
-          "offset": [
-            204,
-            227
-          ]
-        },
-        {
-          "texture": "atlas-4.png",
-          "region": [
-            2,
-            1014,
-            398,
-            330
-          ],
-          "offset": [
-            288,
-            212
-          ]
-        },
-        {
-          "texture": "atlas-5.png",
-          "region": [
-            1697,
-            331,
-            224,
-            321
-          ],
-          "offset": [
-            329,
-            209
-          ]
-        },
-        {
-          "texture": "atlas-5.png",
-          "region": [
-            320,
-            982,
-            245,
-            319
-          ],
-          "offset": [
-            285,
-            216
-          ]
-        }
-      ]
-    },
-    "air_heavy": {
-      "loop": false,
-      "fps": 12,
-      "phase_breaks": [
-        2,
-        4
-      ],
-      "segment_sync": false,
-      "anchor_mode": "pelvis",
-      "timeline": [],
-      "frames": [
-        {
-          "texture": "atlas-4.png",
-          "region": [
-            1064,
-            341,
-            324,
-            332
-          ],
-          "offset": [
-            328,
-            230
-          ]
-        },
-        {
-          "texture": "atlas-4.png",
-          "region": [
-            1225,
-            1014,
-            234,
-            329
-          ],
-          "offset": [
-            343,
-            214
+            335,
+            315
           ]
         },
         {
           "texture": "atlas-6.png",
           "region": [
-            369,
-            941,
-            295,
-            299
-          ],
-          "offset": [
-            279,
-            261
-          ]
-        },
-        {
-          "texture": "atlas-7.png",
-          "region": [
-            968,
-            864,
-            347,
-            268
-          ],
-          "offset": [
-            300,
-            267
-          ]
-        },
-        {
-          "texture": "atlas-5.png",
-          "region": [
-            1302,
-            1629,
-            251,
-            313
-          ],
-          "offset": [
-            342,
-            225
-          ]
-        },
-        {
-          "texture": "atlas-4.png",
-          "region": [
-            1463,
-            1014,
-            214,
-            329
-          ],
-          "offset": [
-            340,
-            216
-          ]
-        }
-      ]
-    },
-    "body_stand_light": {
-      "loop": false,
-      "fps": 12,
-      "phase_breaks": [
-        2,
-        4
-      ],
-      "segment_sync": false,
-      "anchor_mode": "feet",
-      "timeline": [],
-      "frames": [
-        {
-          "texture": "atlas-1.png",
-          "region": [
-            1176,
-            1438,
-            232,
-            350
-          ],
-          "offset": [
-            306,
-            218
-          ]
-        },
-        {
-          "texture": "atlas-2.png",
-          "region": [
-            2,
-            708,
-            232,
-            346
-          ],
-          "offset": [
-            297,
-            223
-          ]
-        },
-        {
-          "texture": "atlas-2.png",
-          "region": [
-            238,
-            708,
-            348,
-            346
-          ],
-          "offset": [
-            249,
-            223
-          ]
-        },
-        {
-          "texture": "atlas-1.png",
-          "region": [
-            1412,
-            1438,
-            328,
-            350
-          ],
-          "offset": [
-            305,
-            218
-          ]
-        },
-        {
-          "texture": "atlas-1.png",
-          "region": [
-            2,
-            1082,
-            212,
-            352
-          ],
-          "offset": [
-            330,
-            217
-          ]
-        },
-        {
-          "texture": "atlas-1.png",
-          "region": [
-            1635,
-            365,
-            238,
-            353
-          ],
-          "offset": [
-            311,
-            216
-          ]
-        }
-      ]
-    },
-    "body_stand_heavy": {
-      "loop": false,
-      "fps": 12,
-      "phase_breaks": [
-        2,
-        4
-      ],
-      "segment_sync": false,
-      "anchor_mode": "feet",
-      "timeline": [],
-      "frames": [
-        {
-          "texture": "atlas-1.png",
-          "region": [
-            2,
-            725,
-            244,
-            353
-          ],
-          "offset": [
-            324,
-            216
-          ]
-        },
-        {
-          "texture": "atlas-1.png",
-          "region": [
-            919,
-            365,
-            240,
-            355
-          ],
-          "offset": [
-            320,
-            214
-          ]
-        },
-        {
-          "texture": "atlas-1.png",
-          "region": [
-            250,
-            725,
-            357,
-            353
-          ],
-          "offset": [
-            257,
-            215
-          ]
-        },
-        {
-          "texture": "atlas-2.png",
-          "region": [
-            2,
-            2,
-            357,
-            350
-          ],
-          "offset": [
-            286,
-            218
-          ]
-        },
-        {
-          "texture": "atlas-1.png",
-          "region": [
-            1163,
-            365,
-            212,
-            355
-          ],
-          "offset": [
-            363,
-            214
-          ]
-        },
-        {
-          "texture": "atlas-2.png",
-          "region": [
-            645,
-            2,
-            240,
-            349
-          ],
-          "offset": [
-            313,
-            220
-          ]
-        }
-      ]
-    },
-    "body_crouch_light": {
-      "loop": false,
-      "fps": 12,
-      "phase_breaks": [
-        2,
-        4
-      ],
-      "segment_sync": false,
-      "anchor_mode": "feet",
-      "timeline": [],
-      "frames": [
-        {
-          "texture": "atlas-7.png",
-          "region": [
-            1496,
-            1409,
-            273,
-            250
-          ],
-          "offset": [
-            317,
-            319
-          ]
-        },
-        {
-          "texture": "atlas-8.png",
-          "region": [
-            1562,
-            252,
-            258,
-            230
-          ],
-          "offset": [
-            330,
-            339
-          ]
-        },
-        {
-          "texture": "atlas-8.png",
-          "region": [
-            1397,
-            957,
-            336,
-            209
-          ],
-          "offset": [
-            271,
-            359
-          ]
-        },
-        {
-          "texture": "atlas-8.png",
-          "region": [
-            232,
-            498,
-            347,
-            228
-          ],
-          "offset": [
-            298,
-            341
-          ]
-        },
-        {
-          "texture": "atlas-8.png",
-          "region": [
-            253,
-            252,
-            211,
+            403,
+            254,
+            226,
             242
           ],
           "offset": [
-            347,
+            335,
+            329
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            1134,
+            2,
+            226,
+            244
+          ],
+          "offset": [
+            335,
             327
           ]
         },
         {
-          "texture": "atlas-7.png",
+          "texture": "atlas-6.png",
           "region": [
-            685,
-            1676,
-            270,
-            248
+            1364,
+            2,
+            226,
+            244
           ],
           "offset": [
-            323,
-            320
+            335,
+            327
           ]
         }
       ]
     },
-    "body_crouch_heavy": {
+    "jump": {
       "loop": false,
       "fps": 12,
       "phase_breaks": [
@@ -1839,267 +684,85 @@
         4
       ],
       "segment_sync": false,
-      "anchor_mode": "feet",
+      "anchor_mode": "pelvis",
       "timeline": [],
       "frames": [
         {
-          "texture": "atlas-4.png",
+          "texture": "atlas-6.png",
           "region": [
-            1174,
-            1348,
-            277,
-            328
-          ],
-          "offset": [
-            294,
+            1143,
+            254,
+            194,
             241
-          ]
-        },
-        {
-          "texture": "atlas-7.png",
-          "region": [
-            1150,
-            582,
-            306,
-            273
           ],
           "offset": [
-            302,
-            296
-          ]
-        },
-        {
-          "texture": "atlas-8.png",
-          "region": [
-            644,
-            1176,
-            341,
-            203
-          ],
-          "offset": [
-            274,
-            366
-          ]
-        },
-        {
-          "texture": "atlas-8.png",
-          "region": [
-            1268,
-            730,
-            394,
-            216
-          ],
-          "offset": [
-            277,
-            353
-          ]
-        },
-        {
-          "texture": "atlas-7.png",
-          "region": [
-            870,
-            582,
-            276,
-            274
-          ],
-          "offset": [
-            330,
-            295
-          ]
-        },
-        {
-          "texture": "atlas-7.png",
-          "region": [
-            276,
-            294,
-            292,
-            282
-          ],
-          "offset": [
-            302,
-            286
-          ]
-        }
-      ]
-    },
-    "body_air_light": {
-      "loop": false,
-      "fps": 12,
-      "phase_breaks": [
-        2,
-        4
-      ],
-      "segment_sync": false,
-      "anchor_mode": "pelvis",
-      "timeline": [],
-      "frames": [
-        {
-          "texture": "atlas-2.png",
-          "region": [
-            590,
-            708,
-            252,
-            346
-          ],
-          "offset": [
-            323,
-            215
-          ]
-        },
-        {
-          "texture": "atlas-2.png",
-          "region": [
-            846,
-            708,
-            181,
-            346
-          ],
-          "offset": [
-            353,
-            213
-          ]
-        },
-        {
-          "texture": "atlas-6.png",
-          "region": [
-            739,
-            319,
-            227,
-            307
-          ],
-          "offset": [
-            321,
-            208
-          ]
-        },
-        {
-          "texture": "atlas-7.png",
-          "region": [
-            2,
-            864,
-            348,
-            270
-          ],
-          "offset": [
-            282,
-            209
-          ]
-        },
-        {
-          "texture": "atlas-4.png",
-          "region": [
-            1455,
-            1348,
-            212,
+            354,
             328
+          ]
+        },
+        {
+          "texture": "atlas-0.png",
+          "region": [
+            2,
+            2,
+            150,
+            439
           ],
           "offset": [
-            355,
-            206
+            386,
+            129
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            698,
+            2,
+            164,
+            245
+          ],
+          "offset": [
+            377,
+            324
+          ]
+        },
+        {
+          "texture": "atlas-0.png",
+          "region": [
+            1713,
+            1530,
+            183,
+            340
+          ],
+          "offset": [
+            368,
+            229
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            1447,
+            1223,
+            226,
+            216
+          ],
+          "offset": [
+            361,
+            352
           ]
         },
         {
           "texture": "atlas-2.png",
           "region": [
-            1340,
-            356,
-            255,
-            347
+            1705,
+            641,
+            192,
+            313
           ],
           "offset": [
-            304,
-            212
-          ]
-        }
-      ]
-    },
-    "body_air_heavy": {
-      "loop": false,
-      "fps": 12,
-      "phase_breaks": [
-        2,
-        4
-      ],
-      "segment_sync": false,
-      "anchor_mode": "pelvis",
-      "timeline": [],
-      "frames": [
-        {
-          "texture": "atlas-5.png",
-          "region": [
-            925,
-            657,
-            286,
-            320
-          ],
-          "offset": [
-            282,
-            230
-          ]
-        },
-        {
-          "texture": "atlas-5.png",
-          "region": [
-            1009,
-            2,
-            255,
-            323
-          ],
-          "offset": [
-            318,
-            220
-          ]
-        },
-        {
-          "texture": "atlas-6.png",
-          "region": [
-            1267,
-            1548,
-            330,
-            289
-          ],
-          "offset": [
-            286,
-            221
-          ]
-        },
-        {
-          "texture": "atlas-6.png",
-          "region": [
-            304,
-            1247,
-            378,
-            296
-          ],
-          "offset": [
-            275,
-            225
-          ]
-        },
-        {
-          "texture": "atlas-5.png",
-          "region": [
-            372,
-            2,
-            258,
-            324
-          ],
-          "offset": [
-            305,
-            216
-          ]
-        },
-        {
-          "texture": "atlas-5.png",
-          "region": [
-            1215,
-            657,
-            281,
-            320
-          ],
-          "offset": [
-            277,
-            217
+            369,
+            255
           ]
         }
       ]
@@ -2116,81 +779,81 @@
       "timeline": [],
       "frames": [
         {
-          "texture": "atlas-6.png",
+          "texture": "atlas-5.png",
           "region": [
-            956,
-            1548,
-            307,
-            290
+            797,
+            1387,
+            286,
+            255
           ],
           "offset": [
-            300,
-            279
-          ]
-        },
-        {
-          "texture": "atlas-7.png",
-          "region": [
-            1474,
-            2,
-            341,
-            284
-          ],
-          "offset": [
-            293,
-            285
-          ]
-        },
-        {
-          "texture": "atlas-6.png",
-          "region": [
-            377,
-            632,
-            321,
-            304
-          ],
-          "offset": [
-            290,
-            264
-          ]
-        },
-        {
-          "texture": "atlas-6.png",
-          "region": [
-            2,
-            1548,
-            346,
-            294
-          ],
-          "offset": [
-            306,
-            275
+            331,
+            314
           ]
         },
         {
           "texture": "atlas-5.png",
           "region": [
-            732,
-            331,
-            256,
-            322
+            2,
+            1648,
+            286,
+            253
           ],
           "offset": [
-            322,
-            247
+            286,
+            315
+          ]
+        },
+        {
+          "texture": "atlas-5.png",
+          "region": [
+            1371,
+            569,
+            276,
+            272
+          ],
+          "offset": [
+            300,
+            297
+          ]
+        },
+        {
+          "texture": "atlas-5.png",
+          "region": [
+            490,
+            1387,
+            303,
+            256
+          ],
+          "offset": [
+            295,
+            313
           ]
         },
         {
           "texture": "atlas-4.png",
           "region": [
-            404,
-            1014,
-            248,
-            330
+            418,
+            1507,
+            285,
+            283
           ],
           "offset": [
-            303,
-            238
+            272,
+            286
+          ]
+        },
+        {
+          "texture": "atlas-3.png",
+          "region": [
+            1162,
+            631,
+            203,
+            309
+          ],
+          "offset": [
+            361,
+            260
           ]
         }
       ]
@@ -2207,81 +870,81 @@
       "timeline": [],
       "frames": [
         {
-          "texture": "atlas-2.png",
+          "texture": "atlas-5.png",
           "region": [
-            889,
-            2,
-            243,
-            349
+            274,
+            287,
+            225,
+            277
           ],
           "offset": [
-            300,
-            220
+            340,
+            291
+          ]
+        },
+        {
+          "texture": "atlas-4.png",
+          "region": [
+            2,
+            614,
+            179,
+            297
+          ],
+          "offset": [
+            354,
+            271
           ]
         },
         {
           "texture": "atlas-5.png",
           "region": [
-            992,
-            331,
-            333,
-            322
+            175,
+            847,
+            173,
+            268
           ],
           "offset": [
-            261,
-            246
-          ]
-        },
-        {
-          "texture": "atlas-6.png",
-          "region": [
-            1133,
-            2,
-            339,
-            310
-          ],
-          "offset": [
-            272,
-            259
-          ]
-        },
-        {
-          "texture": "atlas-7.png",
-          "region": [
-            306,
-            1676,
-            375,
-            249
-          ],
-          "offset": [
-            275,
-            320
+            346,
+            301
           ]
         },
         {
           "texture": "atlas-5.png",
           "region": [
-            1029,
-            1629,
-            269,
-            314
+            692,
+            1120,
+            257,
+            261
+          ],
+          "offset": [
+            317,
+            307
+          ]
+        },
+        {
+          "texture": "atlas-5.png",
+          "region": [
+            1547,
+            287,
+            241,
+            274
           ],
           "offset": [
             327,
-            254
+            294
           ]
         },
         {
           "texture": "atlas-2.png",
           "region": [
-            1136,
-            2,
-            243,
-            349
+            1336,
+            1593,
+            212,
+            311
           ],
           "offset": [
-            310,
-            220
+            353,
+            257
           ]
         }
       ]
@@ -2298,159 +961,159 @@
       "timeline": [],
       "frames": [
         {
-          "texture": "atlas-1.png",
+          "texture": "atlas-6.png",
           "region": [
-            218,
-            1082,
-            268,
-            352
+            728,
+            987,
+            213,
+            229
           ],
           "offset": [
-            306,
+            348,
+            259
+          ]
+        },
+        {
+          "texture": "atlas-4.png",
+          "region": [
+            820,
+            614,
+            309,
+            295
+          ],
+          "offset": [
+            333,
+            220
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            1250,
+            1223,
+            193,
             217
+          ],
+          "offset": [
+            313,
+            280
           ]
         },
         {
           "texture": "atlas-7.png",
           "region": [
-            959,
-            1676,
-            315,
-            248
-          ],
-          "offset": [
-            278,
-            321
-          ]
-        },
-        {
-          "texture": "atlas-8.png",
-          "region": [
-            337,
-            730,
-            351,
-            222
-          ],
-          "offset": [
-            264,
-            348
-          ]
-        },
-        {
-          "texture": "atlas-2.png",
-          "region": [
-            363,
             2,
-            278,
-            350
+            401,
+            196,
+            164
           ],
           "offset": [
-            286,
+            366,
+            310
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            1580,
+            254,
+            169,
+            240
+          ],
+          "offset": [
+            352,
+            307
+          ]
+        },
+        {
+          "texture": "atlas-7.png",
+          "region": [
+            1306,
+            2,
+            201,
+            195
+          ],
+          "offset": [
+            346,
+            298
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            521,
+            1223,
+            213,
             221
-          ]
-        },
-        {
-          "texture": "atlas-8.png",
-          "region": [
-            2,
-            1176,
-            247,
-            208
           ],
           "offset": [
-            356,
-            241
+            298,
+            272
           ]
         },
         {
-          "texture": "atlas-8.png",
+          "texture": "atlas-5.png",
           "region": [
-            692,
-            730,
-            230,
-            220
+            460,
+            2,
+            226,
+            280
+          ],
+          "offset": [
+            282,
+            233
+          ]
+        },
+        {
+          "texture": "atlas-3.png",
+          "region": [
+            1369,
+            631,
+            211,
+            309
+          ],
+          "offset": [
+            329,
+            229
+          ]
+        },
+        {
+          "texture": "atlas-4.png",
+          "region": [
+            939,
+            1507,
+            223,
+            282
+          ],
+          "offset": [
+            339,
+            216
+          ]
+        },
+        {
+          "texture": "atlas-7.png",
+          "region": [
+            1511,
+            2,
+            201,
+            195
+          ],
+          "offset": [
+            357,
+            285
+          ]
+        },
+        {
+          "texture": "atlas-4.png",
+          "region": [
+            737,
+            309,
+            188,
+            299
           ],
           "offset": [
             372,
-            263
-          ]
-        },
-        {
-          "texture": "atlas-8.png",
-          "region": [
-            570,
-            1388,
-            252,
-            172
-          ],
-          "offset": [
-            347,
-            269
-          ]
-        },
-        {
-          "texture": "atlas-7.png",
-          "region": [
-            1530,
-            1676,
-            278,
-            247
-          ],
-          "offset": [
-            315,
-            315
-          ]
-        },
-        {
-          "texture": "atlas-8.png",
-          "region": [
-            1075,
-            498,
-            252,
-            226
-          ],
-          "offset": [
-            334,
-            284
-          ]
-        },
-        {
-          "texture": "atlas-7.png",
-          "region": [
-            1597,
-            864,
-            291,
-            267
-          ],
-          "offset": [
-            306,
-            254
-          ]
-        },
-        {
-          "texture": "atlas-2.png",
-          "region": [
-            1383,
-            2,
-            277,
-            349
-          ],
-          "offset": [
-            278,
-            220
-          ]
-        },
-        {
-          "texture": "atlas-1.png",
-          "region": [
-            490,
-            1082,
-            276,
-            352
-          ],
-          "offset": [
-            278,
-            217
+            202
           ]
         }
       ]
@@ -2467,159 +1130,159 @@
       "timeline": [],
       "frames": [
         {
-          "texture": "atlas-3.png",
-          "region": [
-            369,
-            1038,
-            228,
-            339
-          ],
-          "offset": [
-            331,
-            230
-          ]
-        },
-        {
-          "texture": "atlas-7.png",
-          "region": [
-            1229,
-            2,
-            241,
-            286
-          ],
-          "offset": [
-            351,
-            295
-          ]
-        },
-        {
-          "texture": "atlas-0.png",
-          "region": [
-            264,
-            2,
-            301,
-            372
-          ],
-          "offset": [
-            250,
-            208
-          ]
-        },
-        {
           "texture": "atlas-6.png",
           "region": [
-            970,
-            319,
-            354,
-            307
+            1221,
+            987,
+            216,
+            228
           ],
           "offset": [
-            231,
-            246
+            328,
+            259
           ]
         },
         {
-          "texture": "atlas-8.png",
+          "texture": "atlas-1.png",
           "region": [
-            989,
-            1176,
-            375,
+            193,
+            1006,
+            241,
+            320
+          ],
+          "offset": [
+            281,
             199
+          ]
+        },
+        {
+          "texture": "atlas-3.png",
+          "region": [
+            1584,
+            631,
+            264,
+            309
           ],
           "offset": [
-            282,
-            281
+            245,
+            212
           ]
         },
         {
           "texture": "atlas-7.png",
           "region": [
-            1201,
-            294,
-            242,
-            279
+            570,
+            205,
+            215,
+            189
           ],
           "offset": [
-            333,
-            230
+            324,
+            345
           ]
         },
         {
-          "texture": "atlas-8.png",
+          "texture": "atlas-5.png",
           "region": [
-            1331,
-            498,
-            230,
-            225
+            953,
+            1120,
+            145,
+            261
           ],
           "offset": [
-            307,
-            274
+            377,
+            303
           ]
         },
         {
-          "texture": "atlas-7.png",
+          "texture": "atlas-5.png",
           "region": [
-            2,
-            1676,
-            300,
+            1293,
+            1648,
+            248,
             250
           ],
           "offset": [
-            283,
-            288
+            357,
+            250
           ]
         },
         {
-          "texture": "atlas-8.png",
+          "texture": "atlas-7.png",
           "region": [
-            1565,
-            498,
-            269,
-            225
+            252,
+            2,
+            215,
+            198
           ],
           "offset": [
-            333,
-            285
+            326,
+            305
+          ]
+        },
+        {
+          "texture": "atlas-5.png",
+          "region": [
+            1732,
+            2,
+            179,
+            279
+          ],
+          "offset": [
+            355,
+            234
+          ]
+        },
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            1685,
+            2,
+            197,
+            329
+          ],
+          "offset": [
+            339,
+            206
+          ]
+        },
+        {
+          "texture": "atlas-4.png",
+          "region": [
+            888,
+            915,
+            229,
+            292
+          ],
+          "offset": [
+            347,
+            204
           ]
         },
         {
           "texture": "atlas-6.png",
           "region": [
-            352,
-            1548,
-            217,
-            293
+            659,
+            1452,
+            220,
+            213
           ],
           "offset": [
-            351,
-            218
+            364,
+            270
           ]
         },
         {
-          "texture": "atlas-2.png",
+          "texture": "atlas-4.png",
           "region": [
-            1187,
-            1058,
-            249,
-            344
+            2,
+            2,
+            189,
+            303
           ],
           "offset": [
-            295,
-            225
-          ]
-        },
-        {
-          "texture": "atlas-2.png",
-          "region": [
-            961,
-            1407,
-            235,
-            343
-          ],
-          "offset": [
-            309,
-            226
+            370,
+            201
           ]
         }
       ]
@@ -2649,159 +1312,159 @@
       ],
       "frames": [
         {
-          "texture": "atlas-4.png",
+          "texture": "atlas-2.png",
           "region": [
-            1681,
-            1014,
-            283,
-            329
+            2,
+            322,
+            190,
+            315
           ],
           "offset": [
-            292,
-            240
+            365,
+            254
           ]
         },
         {
           "texture": "atlas-6.png",
           "region": [
-            702,
-            632,
-            362,
-            304
+            884,
+            1672,
+            272,
+            207
           ],
           "offset": [
-            253,
-            265
-          ]
-        },
-        {
-          "texture": "atlas-8.png",
-          "region": [
-            253,
-            1176,
-            387,
-            208
-          ],
-          "offset": [
-            240,
+            338,
             361
           ]
         },
         {
-          "texture": "atlas-8.png",
-          "region": [
-            325,
-            957,
-            377,
-            213
-          ],
-          "offset": [
-            256,
-            356
-          ]
-        },
-        {
           "texture": "atlas-7.png",
           "region": [
-            354,
-            864,
-            313,
-            269
+            259,
+            205,
+            307,
+            190
           ],
           "offset": [
-            295,
-            300
-          ]
-        },
-        {
-          "texture": "atlas-7.png",
-          "region": [
-            260,
-            1409,
-            246,
-            262
-          ],
-          "offset": [
-            342,
-            307
-          ]
-        },
-        {
-          "texture": "atlas-8.png",
-          "region": [
-            583,
-            498,
-            255,
-            228
-          ],
-          "offset": [
-            340,
-            341
-          ]
-        },
-        {
-          "texture": "atlas-8.png",
-          "region": [
-            926,
-            730,
-            338,
-            220
-          ],
-          "offset": [
-            279,
-            350
-          ]
-        },
-        {
-          "texture": "atlas-8.png",
-          "region": [
-            468,
-            252,
-            304,
-            238
-          ],
-          "offset": [
-            287,
-            331
-          ]
-        },
-        {
-          "texture": "atlas-7.png",
-          "region": [
-            1447,
-            294,
-            267,
-            279
-          ],
-          "offset": [
-            308,
-            290
+            324,
+            378
           ]
         },
         {
           "texture": "atlas-6.png",
           "region": [
-            222,
-            2,
-            311,
-            312
+            738,
+            1223,
+            218,
+            220
           ],
           "offset": [
-            254,
-            257
+            323,
+            348
           ]
         },
         {
-          "texture": "atlas-4.png",
+          "texture": "atlas-6.png",
           "region": [
-            2,
-            1348,
-            294,
-            329
+            254,
+            1452,
+            183,
+            215
           ],
           "offset": [
-            282,
-            240
+            336,
+            354
+          ]
+        },
+        {
+          "texture": "atlas-7.png",
+          "region": [
+            329,
+            569,
+            258,
+            134
+          ],
+          "offset": [
+            291,
+            434
+          ]
+        },
+        {
+          "texture": "atlas-7.png",
+          "region": [
+            1223,
+            205,
+            223,
+            175
+          ],
+          "offset": [
+            323,
+            394
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            441,
+            1452,
+            214,
+            214
+          ],
+          "offset": [
+            365,
+            355
+          ]
+        },
+        {
+          "texture": "atlas-7.png",
+          "region": [
+            471,
+            2,
+            243,
+            198
+          ],
+          "offset": [
+            367,
+            370
+          ]
+        },
+        {
+          "texture": "atlas-5.png",
+          "region": [
+            690,
+            2,
+            214,
+            280
+          ],
+          "offset": [
+            348,
+            288
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            480,
+            987,
+            244,
+            230
+          ],
+          "offset": [
+            358,
+            339
+          ]
+        },
+        {
+          "texture": "atlas-3.png",
+          "region": [
+            1509,
+            1258,
+            214,
+            306
+          ],
+          "offset": [
+            355,
+            262
           ]
         }
       ]
@@ -2833,157 +1496,612 @@
         {
           "texture": "atlas-1.png",
           "region": [
-            2,
-            365,
-            271,
-            356
+            575,
+            1653,
+            195,
+            317
           ],
           "offset": [
-            291,
-            213
-          ]
-        },
-        {
-          "texture": "atlas-4.png",
-          "region": [
-            1457,
-            2,
-            315,
-            333
-          ],
-          "offset": [
-            285,
-            236
-          ]
-        },
-        {
-          "texture": "atlas-6.png",
-          "region": [
-            573,
-            1548,
-            379,
-            293
-          ],
-          "offset": [
-            261,
-            276
-          ]
-        },
-        {
-          "texture": "atlas-6.png",
-          "region": [
-            686,
-            1247,
-            389,
-            296
-          ],
-          "offset": [
-            247,
-            273
-          ]
-        },
-        {
-          "texture": "atlas-5.png",
-          "region": [
-            1329,
-            331,
             364,
-            322
+            251
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            1160,
+            1672,
+            261,
+            201
           ],
           "offset": [
-            271,
-            247
+            303,
+            367
           ]
         },
         {
           "texture": "atlas-7.png",
           "region": [
-            1319,
-            864,
-            274,
-            268
-          ],
-          "offset": [
-            341,
-            301
-          ]
-        },
-        {
-          "texture": "atlas-6.png",
-          "region": [
-            668,
-            941,
-            222,
-            299
+            988,
+            205,
+            231,
+            178
           ],
           "offset": [
             325,
-            270
-          ]
-        },
-        {
-          "texture": "atlas-8.png",
-          "region": [
-            2,
-            730,
-            331,
-            223
-          ],
-          "offset": [
-            271,
-            346
-          ]
-        },
-        {
-          "texture": "atlas-8.png",
-          "region": [
-            1090,
-            2,
-            309,
-            244
-          ],
-          "offset": [
-            279,
-            325
+            391
           ]
         },
         {
           "texture": "atlas-6.png",
           "region": [
-            1079,
-            1247,
-            298,
-            295
+            945,
+            987,
+            272,
+            229
           ],
           "offset": [
-            270,
+            314,
+            339
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            1341,
+            254,
+            235,
+            241
+          ],
+          "offset": [
+            326,
+            327
+          ]
+        },
+        {
+          "texture": "atlas-7.png",
+          "region": [
+            533,
+            401,
+            235,
+            163
+          ],
+          "offset": [
+            359,
+            405
+          ]
+        },
+        {
+          "texture": "atlas-7.png",
+          "region": [
+            1538,
+            401,
+            280,
+            150
+          ],
+          "offset": [
+            342,
+            418
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            1102,
+            502,
+            197,
+            238
+          ],
+          "offset": [
+            358,
+            331
+          ]
+        },
+        {
+          "texture": "atlas-7.png",
+          "region": [
+            1716,
+            2,
+            236,
+            192
+          ],
+          "offset": [
+            352,
+            376
+          ]
+        },
+        {
+          "texture": "atlas-5.png",
+          "region": [
+            1792,
+            287,
+            220,
             274
+          ],
+          "offset": [
+            349,
+            294
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            442,
+            502,
+            268,
+            239
+          ],
+          "offset": [
+            328,
+            329
           ]
         },
         {
           "texture": "atlas-3.png",
           "region": [
-            848,
-            1381,
-            298,
-            336
+            947,
+            1570,
+            218,
+            304
           ],
           "offset": [
-            270,
-            233
+            349,
+            265
+          ]
+        }
+      ]
+    },
+    "guard": {
+      "loop": false,
+      "fps": 12,
+      "phase_breaks": [
+        2,
+        4
+      ],
+      "segment_sync": false,
+      "anchor_mode": "feet",
+      "timeline": [],
+      "frames": [
+        {
+          "texture": "atlas-4.png",
+          "region": [
+            929,
+            309,
+            210,
+            299
+          ],
+          "offset": [
+            350,
+            269
+          ]
+        },
+        {
+          "texture": "atlas-4.png",
+          "region": [
+            1585,
+            915,
+            217,
+            290
+          ],
+          "offset": [
+            340,
+            279
+          ]
+        },
+        {
+          "texture": "atlas-4.png",
+          "region": [
+            2,
+            915,
+            224,
+            294
+          ],
+          "offset": [
+            326,
+            274
+          ]
+        },
+        {
+          "texture": "atlas-4.png",
+          "region": [
+            1676,
+            309,
+            221,
+            298
+          ],
+          "offset": [
+            351,
+            271
+          ]
+        },
+        {
+          "texture": "atlas-3.png",
+          "region": [
+            1727,
+            1258,
+            224,
+            306
+          ],
+          "offset": [
+            335,
+            262
+          ]
+        },
+        {
+          "texture": "atlas-3.png",
+          "region": [
+            1585,
+            945,
+            228,
+            308
+          ],
+          "offset": [
+            353,
+            260
+          ]
+        }
+      ]
+    },
+    "hit": {
+      "loop": false,
+      "fps": 12,
+      "phase_breaks": [
+        2,
+        4
+      ],
+      "segment_sync": false,
+      "anchor_mode": "feet",
+      "timeline": [],
+      "frames": [
+        {
+          "texture": "atlas-3.png",
+          "region": [
+            220,
+            317,
+            209,
+            310
+          ],
+          "offset": [
+            356,
+            258
           ]
         },
         {
           "texture": "atlas-2.png",
           "region": [
-            1440,
-            1058,
-            290,
-            344
+            2,
+            959,
+            209,
+            313
           ],
           "offset": [
-            285,
-            225
+            352,
+            256
+          ]
+        },
+        {
+          "texture": "atlas-3.png",
+          "region": [
+            515,
+            1258,
+            224,
+            307
+          ],
+          "offset": [
+            323,
+            261
+          ]
+        },
+        {
+          "texture": "atlas-4.png",
+          "region": [
+            2,
+            1507,
+            203,
+            284
+          ],
+          "offset": [
+            359,
+            285
+          ]
+        },
+        {
+          "texture": "atlas-2.png",
+          "region": [
+            1426,
+            322,
+            229,
+            314
+          ],
+          "offset": [
+            320,
+            254
+          ]
+        },
+        {
+          "texture": "atlas-2.png",
+          "region": [
+            1552,
+            1593,
+            208,
+            311
+          ],
+          "offset": [
+            358,
+            257
+          ]
+        }
+      ]
+    },
+    "knockdown": {
+      "loop": false,
+      "fps": 12,
+      "phase_breaks": [
+        2,
+        4
+      ],
+      "segment_sync": false,
+      "anchor_mode": "feet",
+      "timeline": [],
+      "frames": [
+        {
+          "texture": "atlas-0.png",
+          "region": [
+            2,
+            818,
+            292,
+            357
+          ],
+          "offset": [
+            298,
+            212
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            883,
+            1452,
+            287,
+            212
+          ],
+          "offset": [
+            261,
+            356
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            1425,
+            1672,
+            301,
+            201
+          ],
+          "offset": [
+            246,
+            368
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            960,
+            1223,
+            286,
+            219
+          ],
+          "offset": [
+            255,
+            349
+          ]
+        },
+        {
+          "texture": "atlas-7.png",
+          "region": [
+            911,
+            569,
+            320,
+            133
+          ],
+          "offset": [
+            222,
+            435
+          ]
+        },
+        {
+          "texture": "atlas-7.png",
+          "region": [
+            2,
+            944,
+            322,
+            78
+          ],
+          "offset": [
+            237,
+            490
+          ]
+        }
+      ]
+    },
+    "throw_tech": {
+      "loop": false,
+      "fps": 12,
+      "phase_breaks": [
+        2,
+        4
+      ],
+      "segment_sync": false,
+      "anchor_mode": "feet",
+      "timeline": [],
+      "frames": [
+        {
+          "texture": "atlas-3.png",
+          "region": [
+            200,
+            1570,
+            202,
+            305
+          ],
+          "offset": [
+            355,
+            263
+          ]
+        },
+        {
+          "texture": "atlas-4.png",
+          "region": [
+            1468,
+            2,
+            247,
+            301
+          ],
+          "offset": [
+            346,
+            267
+          ]
+        },
+        {
+          "texture": "atlas-2.png",
+          "region": [
+            706,
+            1276,
+            265,
+            312
+          ],
+          "offset": [
+            346,
+            257
+          ]
+        },
+        {
+          "texture": "atlas-3.png",
+          "region": [
+            433,
+            317,
+            216,
+            310
+          ],
+          "offset": [
+            335,
+            258
+          ]
+        },
+        {
+          "texture": "atlas-3.png",
+          "region": [
+            2,
+            945,
+            226,
+            309
+          ],
+          "offset": [
+            351,
+            260
+          ]
+        },
+        {
+          "texture": "atlas-2.png",
+          "region": [
+            1764,
+            1593,
+            216,
+            311
+          ],
+          "offset": [
+            355,
+            258
+          ]
+        }
+      ]
+    },
+    "throw": {
+      "loop": false,
+      "fps": 12,
+      "phase_breaks": [
+        2,
+        4
+      ],
+      "segment_sync": false,
+      "anchor_mode": "feet",
+      "timeline": [],
+      "frames": [
+        {
+          "texture": "atlas-2.png",
+          "region": [
+            2,
+            2,
+            191,
+            316
+          ],
+          "offset": [
+            364,
+            252
+          ]
+        },
+        {
+          "texture": "atlas-3.png",
+          "region": [
+            2,
+            1258,
+            280,
+            308
+          ],
+          "offset": [
+            339,
+            260
+          ]
+        },
+        {
+          "texture": "atlas-3.png",
+          "region": [
+            232,
+            945,
+            258,
+            309
+          ],
+          "offset": [
+            363,
+            259
+          ]
+        },
+        {
+          "texture": "atlas-4.png",
+          "region": [
+            1121,
+            915,
+            274,
+            292
+          ],
+          "offset": [
+            331,
+            276
+          ]
+        },
+        {
+          "texture": "atlas-3.png",
+          "region": [
+            653,
+            317,
+            218,
+            310
+          ],
+          "offset": [
+            343,
+            258
+          ]
+        },
+        {
+          "texture": "atlas-3.png",
+          "region": [
+            875,
+            317,
+            220,
+            310
+          ],
+          "offset": [
+            354,
+            258
           ]
         }
       ]
@@ -3009,107 +2127,107 @@
       ],
       "frames": [
         {
-          "texture": "motion-fixes-0.png",
+          "texture": "atlas-4.png",
           "region": [
-            2,
-            2,
-            213,
-            366
+            1174,
+            1213,
+            306,
+            287
           ],
           "offset": [
-            345,
-            203
-          ]
-        },
-        {
-          "texture": "motion-fixes-0.png",
-          "region": [
-            219,
-            2,
             330,
-            343
-          ],
-          "offset": [
-            316,
-            226
+            281
           ]
         },
         {
-          "texture": "motion-fixes-0.png",
+          "texture": "atlas-4.png",
           "region": [
-            553,
+            1719,
             2,
-            242,
-            325
+            204,
+            301
           ],
           "offset": [
-            326,
-            244
+            349,
+            268
           ]
         },
         {
-          "texture": "motion-fixes-0.png",
+          "texture": "atlas-0.png",
           "region": [
-            799,
+            1020,
             2,
-            227,
-            323
+            198,
+            378
           ],
           "offset": [
-            335,
-            246
+            342,
+            191
           ]
         },
         {
-          "texture": "motion-fixes-0.png",
+          "texture": "atlas-0.png",
           "region": [
-            1030,
+            1532,
             2,
-            285,
-            273
+            186,
+            371
           ],
           "offset": [
-            318,
-            296
+            338,
+            198
           ]
         },
         {
-          "texture": "motion-fixes-0.png",
+          "texture": "atlas-1.png",
           "region": [
-            1319,
-            2,
-            320,
-            258
+            1086,
+            1330,
+            269,
+            318
           ],
           "offset": [
-            314,
-            311
+            328,
+            250
           ]
         },
         {
-          "texture": "motion-fixes-0.png",
+          "texture": "atlas-6.png",
           "region": [
-            1643,
             2,
-            233,
-            338
+            987,
+            234,
+            232
           ],
           "offset": [
-            324,
+            350,
+            337
+          ]
+        },
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            676,
+            2,
+            196,
+            337
+          ],
+          "offset": [
+            354,
             231
           ]
         },
         {
-          "texture": "motion-fixes-0.png",
+          "texture": "atlas-3.png",
           "region": [
-            2,
-            372,
-            213,
-            366
+            1099,
+            317,
+            218,
+            310
           ],
           "offset": [
-            345,
-            203
+            351,
+            258
           ]
         }
       ]
@@ -3135,1472 +2253,107 @@
       ],
       "frames": [
         {
-          "texture": "motion-fixes-0.png",
+          "texture": "atlas-1.png",
           "region": [
-            219,
-            372,
-            213,
-            366
+            1192,
+            678,
+            253,
+            322
           ],
           "offset": [
-            345,
-            203
-          ]
-        },
-        {
-          "texture": "motion-fixes-0.png",
-          "region": [
-            436,
-            372,
-            330,
-            343
-          ],
-          "offset": [
-            316,
-            226
-          ]
-        },
-        {
-          "texture": "motion-fixes-0.png",
-          "region": [
-            770,
-            372,
-            242,
-            325
-          ],
-          "offset": [
-            326,
-            244
-          ]
-        },
-        {
-          "texture": "motion-fixes-0.png",
-          "region": [
-            1016,
-            372,
-            227,
-            323
-          ],
-          "offset": [
-            334,
+            342,
             246
           ]
         },
         {
-          "texture": "motion-fixes-0.png",
+          "texture": "atlas-1.png",
           "region": [
-            1247,
-            372,
-            285,
-            273
+            1563,
+            1006,
+            227,
+            319
           ],
           "offset": [
-            293,
-            296
+            334,
+            249
           ]
         },
         {
-          "texture": "motion-fixes-0.png",
-          "region": [
-            1536,
-            372,
-            320,
-            258
-          ],
-          "offset": [
-            262,
-            311
-          ]
-        },
-        {
-          "texture": "motion-fixes-0.png",
+          "texture": "atlas-4.png",
           "region": [
             2,
-            742,
+            309,
             233,
-            338
+            301
           ],
           "offset": [
-            339,
-            231
-          ]
-        },
-        {
-          "texture": "motion-fixes-0.png",
-          "region": [
-            239,
-            742,
-            213,
-            366
-          ],
-          "offset": [
-            338,
-            203
-          ]
-        }
-      ]
-    },
-    "throw_tech": {
-      "loop": false,
-      "fps": 12,
-      "phase_breaks": [
-        2,
-        4
-      ],
-      "segment_sync": false,
-      "anchor_mode": "feet",
-      "timeline": [],
-      "frames": [
-        {
-          "texture": "atlas-1.png",
-          "region": [
-            611,
-            725,
-            258,
-            353
-          ],
-          "offset": [
-            303,
-            216
-          ]
-        },
-        {
-          "texture": "atlas-1.png",
-          "region": [
-            235,
-            1438,
             336,
-            351
-          ],
-          "offset": [
-            279,
-            218
+            267
           ]
         },
         {
           "texture": "atlas-1.png",
           "region": [
-            575,
-            1438,
-            350,
-            351
+            2,
+            2,
+            175,
+            340
           ],
           "offset": [
-            266,
-            218
-          ]
-        },
-        {
-          "texture": "atlas-3.png",
-          "region": [
-            1070,
-            348,
-            273,
-            341
-          ],
-          "offset": [
-            295,
+            364,
             228
           ]
         },
         {
-          "texture": "atlas-2.png",
-          "region": [
-            1200,
-            1407,
-            231,
-            343
-          ],
-          "offset": [
-            314,
-            226
-          ]
-        },
-        {
-          "texture": "atlas-3.png",
-          "region": [
-            534,
-            348,
-            240,
-            342
-          ],
-          "offset": [
-            317,
-            226
-          ]
-        }
-      ]
-    },
-    "round_intro": {
-      "loop": false,
-      "fps": 12,
-      "phase_breaks": [
-        4,
-        8
-      ],
-      "segment_sync": false,
-      "anchor_mode": "feet",
-      "timeline": [],
-      "frames": [
-        {
-          "texture": "atlas-0.png",
-          "region": [
-            793,
-            382,
-            173,
-            365
-          ],
-          "offset": [
-            362,
-            204
-          ]
-        },
-        {
-          "texture": "atlas-0.png",
-          "region": [
-            970,
-            382,
-            210,
-            365
-          ],
-          "offset": [
-            347,
-            204
-          ]
-        },
-        {
-          "texture": "atlas-0.png",
-          "region": [
-            1184,
-            382,
-            239,
-            365
-          ],
-          "offset": [
-            309,
-            204
-          ]
-        },
-        {
-          "texture": "atlas-0.png",
-          "region": [
-            938,
-            2,
-            243,
-            367
-          ],
-          "offset": [
-            311,
-            202
-          ]
-        },
-        {
-          "texture": "atlas-0.png",
-          "region": [
-            265,
-            1487,
-            239,
-            360
-          ],
-          "offset": [
-            322,
-            209
-          ]
-        },
-        {
-          "texture": "atlas-1.png",
-          "region": [
-            2,
-            2,
-            242,
-            359
-          ],
-          "offset": [
-            313,
-            211
-          ]
-        },
-        {
-          "texture": "atlas-1.png",
-          "region": [
-            248,
-            2,
-            273,
-            359
-          ],
-          "offset": [
-            286,
-            211
-          ]
-        },
-        {
-          "texture": "atlas-0.png",
-          "region": [
-            508,
-            1487,
-            279,
-            360
-          ],
-          "offset": [
-            285,
-            209
-          ]
-        },
-        {
-          "texture": "atlas-2.png",
-          "region": [
-            1664,
-            2,
-            302,
-            349
-          ],
-          "offset": [
-            280,
-            220
-          ]
-        },
-        {
-          "texture": "atlas-3.png",
-          "region": [
-            601,
-            1038,
-            393,
-            339
-          ],
-          "offset": [
-            237,
-            230
-          ]
-        },
-        {
-          "texture": "atlas-2.png",
-          "region": [
-            2,
-            1407,
-            434,
-            344
-          ],
-          "offset": [
-            212,
-            225
-          ]
-        },
-        {
-          "texture": "atlas-1.png",
-          "region": [
-            770,
-            1082,
-            266,
-            352
-          ],
-          "offset": [
-            296,
-            217
-          ]
-        }
-      ]
-    },
-    "round_victory": {
-      "loop": false,
-      "fps": 12,
-      "phase_breaks": [
-        4,
-        8
-      ],
-      "segment_sync": false,
-      "anchor_mode": "feet",
-      "timeline": [],
-      "frames": [
-        {
-          "texture": "atlas-0.png",
-          "region": [
-            1650,
-            382,
-            204,
-            364
-          ],
-          "offset": [
-            335,
-            205
-          ]
-        },
-        {
-          "texture": "atlas-0.png",
-          "region": [
-            2,
-            752,
-            208,
-            364
-          ],
-          "offset": [
-            340,
-            205
-          ]
-        },
-        {
-          "texture": "atlas-0.png",
-          "region": [
-            656,
-            1120,
-            374,
-            362
-          ],
-          "offset": [
-            263,
-            207
-          ]
-        },
-        {
-          "texture": "atlas-0.png",
-          "region": [
-            214,
-            752,
-            256,
-            364
-          ],
-          "offset": [
-            338,
-            205
-          ]
-        },
-        {
-          "texture": "atlas-0.png",
-          "region": [
-            1402,
-            2,
-            225,
-            366
-          ],
-          "offset": [
-            326,
-            203
-          ]
-        },
-        {
-          "texture": "atlas-0.png",
-          "region": [
-            474,
-            752,
-            248,
-            364
-          ],
-          "offset": [
-            348,
-            205
-          ]
-        },
-        {
-          "texture": "atlas-0.png",
-          "region": [
-            726,
-            752,
-            329,
-            364
-          ],
-          "offset": [
-            301,
-            205
-          ]
-        },
-        {
-          "texture": "atlas-0.png",
-          "region": [
-            1631,
-            2,
-            218,
-            366
-          ],
-          "offset": [
-            351,
-            203
-          ]
-        },
-        {
-          "texture": "atlas-0.png",
-          "region": [
-            791,
-            1487,
-            226,
-            360
-          ],
-          "offset": [
-            333,
-            209
-          ]
-        },
-        {
           "texture": "atlas-4.png",
           "region": [
-            300,
-            1348,
-            255,
-            329
-          ],
-          "offset": [
-            304,
-            240
-          ]
-        },
-        {
-          "texture": "atlas-0.png",
-          "region": [
-            1485,
-            1120,
-            217,
-            361
-          ],
-          "offset": [
-            342,
-            208
-          ]
-        },
-        {
-          "texture": "atlas-1.png",
-          "region": [
-            525,
-            2,
-            204,
-            359
-          ],
-          "offset": [
-            348,
-            211
-          ]
-        }
-      ]
-    },
-    "round_defeat": {
-      "loop": false,
-      "fps": 12,
-      "phase_breaks": [
-        4,
-        8
-      ],
-      "segment_sync": false,
-      "anchor_mode": "feet",
-      "timeline": [],
-      "frames": [
-        {
-          "texture": "atlas-1.png",
-          "region": [
-            277,
-            365,
-            268,
-            356
-          ],
-          "offset": [
-            315,
-            213
-          ]
-        },
-        {
-          "texture": "atlas-4.png",
-          "region": [
-            2,
-            2,
-            291,
-            335
-          ],
-          "offset": [
-            314,
-            234
-          ]
-        },
-        {
-          "texture": "atlas-4.png",
-          "region": [
-            2,
-            678,
-            367,
-            332
-          ],
-          "offset": [
-            294,
-            237
-          ]
-        },
-        {
-          "texture": "atlas-6.png",
-          "region": [
-            1509,
-            941,
-            368,
-            298
-          ],
-          "offset": [
-            264,
-            271
-          ]
-        },
-        {
-          "texture": "atlas-7.png",
-          "region": [
-            510,
-            1409,
-            383,
-            259
-          ],
-          "offset": [
-            277,
-            310
-          ]
-        },
-        {
-          "texture": "atlas-7.png",
-          "region": [
-            897,
-            1409,
-            328,
-            259
-          ],
-          "offset": [
-            293,
-            310
-          ]
-        },
-        {
-          "texture": "atlas-8.png",
-          "region": [
-            2,
-            1388,
-            362,
-            192
-          ],
-          "offset": [
-            269,
-            377
-          ]
-        },
-        {
-          "texture": "atlas-8.png",
-          "region": [
-            1215,
-            1388,
-            368,
-            148
-          ],
-          "offset": [
-            264,
-            421
-          ]
-        },
-        {
-          "texture": "atlas-8.png",
-          "region": [
-            2,
-            1584,
-            368,
-            135
-          ],
-          "offset": [
-            272,
-            434
-          ]
-        },
-        {
-          "texture": "atlas-8.png",
-          "region": [
-            1107,
-            1584,
-            358,
-            127
-          ],
-          "offset": [
-            273,
-            442
-          ]
-        },
-        {
-          "texture": "atlas-8.png",
-          "region": [
-            1469,
-            1584,
-            369,
-            121
-          ],
-          "offset": [
-            267,
-            448
-          ]
-        },
-        {
-          "texture": "atlas-8.png",
-          "region": [
-            391,
-            1723,
-            365,
-            119
-          ],
-          "offset": [
-            267,
-            450
-          ]
-        }
-      ]
-    },
-    "air_type": {
-      "loop": false,
-      "fps": 12,
-      "phase_breaks": [
-        3,
-        6
-      ],
-      "segment_sync": false,
-      "anchor_mode": "feet",
-      "timeline": [],
-      "frames": [
-        {
-          "texture": "atlas-6.png",
-          "region": [
-            2,
-            2,
-            216,
-            313
-          ],
-          "offset": [
-            373,
-            256
-          ]
-        },
-        {
-          "texture": "atlas-6.png",
-          "region": [
-            861,
-            2,
-            268,
-            311
-          ],
-          "offset": [
-            289,
-            258
-          ]
-        },
-        {
-          "texture": "atlas-6.png",
-          "region": [
-            1476,
-            2,
-            271,
-            310
-          ],
-          "offset": [
-            273,
-            259
-          ]
-        },
-        {
-          "texture": "atlas-6.png",
-          "region": [
-            2,
-            941,
-            363,
-            302
-          ],
-          "offset": [
-            295,
-            267
-          ]
-        },
-        {
-          "texture": "atlas-6.png",
-          "region": [
-            2,
-            632,
-            371,
-            305
-          ],
-          "offset": [
-            259,
-            264
-          ]
-        },
-        {
-          "texture": "atlas-6.png",
-          "region": [
-            1328,
-            319,
-            354,
-            307
-          ],
-          "offset": [
-            247,
-            262
-          ]
-        },
-        {
-          "texture": "atlas-5.png",
-          "region": [
-            1268,
-            2,
-            288,
-            323
-          ],
-          "offset": [
-            301,
-            246
-          ]
-        },
-        {
-          "texture": "atlas-4.png",
-          "region": [
-            1499,
-            1681,
-            247,
-            325
-          ],
-          "offset": [
-            310,
-            244
-          ]
-        },
-        {
-          "texture": "atlas-5.png",
-          "region": [
-            1560,
-            2,
-            234,
-            323
+            1166,
+            1507,
+            252,
+            282
           ],
           "offset": [
             305,
-            246
-          ]
-        }
-      ]
-    },
-    "crown_splitter": {
-      "loop": false,
-      "fps": 12,
-      "phase_breaks": [
-        3,
-        6
-      ],
-      "segment_sync": false,
-      "anchor_mode": "feet",
-      "timeline": [],
-      "frames": [
-        {
-          "texture": "atlas-3.png",
-          "region": [
-            1150,
-            1381,
-            243,
-            336
-          ],
-          "offset": [
-            356,
-            233
+            287
           ]
         },
         {
-          "texture": "atlas-4.png",
+          "texture": "atlas-6.png",
           "region": [
-            373,
-            678,
-            222,
-            332
-          ],
-          "offset": [
-            341,
-            238
-          ]
-        },
-        {
-          "texture": "atlas-4.png",
-          "region": [
-            295,
-            341,
-            205,
-            333
-          ],
-          "offset": [
-            324,
-            236
-          ]
-        },
-        {
-          "texture": "atlas-2.png",
-          "region": [
-            811,
-            356,
-            260,
-            348
-          ],
-          "offset": [
-            340,
-            221
-          ]
-        },
-        {
-          "texture": "atlas-0.png",
-          "region": [
-            1706,
-            1120,
-            257,
-            361
-          ],
-          "offset": [
-            320,
-            208
-          ]
-        },
-        {
-          "texture": "atlas-0.png",
-          "region": [
-            2,
-            1487,
-            259,
-            361
-          ],
-          "offset": [
-            308,
-            208
-          ]
-        },
-        {
-          "texture": "atlas-4.png",
-          "region": [
-            1671,
-            1348,
-            260,
-            328
-          ],
-          "offset": [
-            380,
-            241
-          ]
-        },
-        {
-          "texture": "atlas-4.png",
-          "region": [
-            578,
-            1681,
-            200,
-            327
-          ],
-          "offset": [
-            357,
-            242
-          ]
-        },
-        {
-          "texture": "atlas-4.png",
-          "region": [
-            559,
-            1348,
-            246,
-            329
-          ],
-          "offset": [
-            291,
-            240
-          ]
-        }
-      ]
-    },
-    "disorder": {
-      "loop": false,
-      "fps": 12,
-      "phase_breaks": [
-        3,
-        9
-      ],
-      "segment_sync": true,
-      "anchor_mode": "feet",
-      "timeline": [],
-      "frames": [
-        {
-          "texture": "atlas-3.png",
-          "region": [
-            290,
-            1381,
-            268,
-            337
-          ],
-          "offset": [
-            327,
+            240,
+            987,
+            236,
             232
-          ]
-        },
-        {
-          "texture": "atlas-4.png",
-          "region": [
-            932,
-            1014,
-            289,
-            330
           ],
           "offset": [
-            297,
-            239
-          ]
-        },
-        {
-          "texture": "atlas-4.png",
-          "region": [
-            809,
-            1348,
-            361,
-            329
-          ],
-          "offset": [
-            271,
-            240
-          ]
-        },
-        {
-          "texture": "atlas-4.png",
-          "region": [
-            504,
-            341,
-            273,
-            333
-          ],
-          "offset": [
-            304,
-            236
-          ]
-        },
-        {
-          "texture": "atlas-3.png",
-          "region": [
-            1264,
-            1038,
-            274,
-            338
-          ],
-          "offset": [
-            322,
-            231
+            303,
+            336
           ]
         },
         {
           "texture": "atlas-1.png",
           "region": [
-            1040,
-            1082,
-            290,
-            352
-          ],
-          "offset": [
-            294,
-            217
-          ]
-        },
-        {
-          "texture": "atlas-4.png",
-          "region": [
-            599,
-            678,
-            356,
-            332
-          ],
-          "offset": [
-            264,
-            237
-          ]
-        },
-        {
-          "texture": "atlas-4.png",
-          "region": [
-            781,
-            341,
-            279,
-            333
-          ],
-          "offset": [
-            295,
-            236
-          ]
-        },
-        {
-          "texture": "atlas-3.png",
-          "region": [
-            1371,
-            694,
-            268,
-            340
-          ],
-          "offset": [
-            325,
-            229
-          ]
-        },
-        {
-          "texture": "atlas-3.png",
-          "region": [
-            1643,
-            694,
-            273,
-            340
-          ],
-          "offset": [
-            308,
-            229
-          ]
-        },
-        {
-          "texture": "atlas-4.png",
-          "region": [
-            881,
             2,
-            276,
-            334
-          ],
-          "offset": [
-            291,
-            235
-          ]
-        },
-        {
-          "texture": "atlas-3.png",
-          "region": [
-            1397,
-            1381,
-            268,
-            336
-          ],
-          "offset": [
-            310,
-            233
-          ]
-        }
-      ]
-    },
-    "annihilation": {
-      "loop": false,
-      "fps": 12,
-      "phase_breaks": [
-        4,
-        8
-      ],
-      "segment_sync": false,
-      "anchor_mode": "feet",
-      "timeline": [],
-      "frames": [
-        {
-          "texture": "atlas-4.png",
-          "region": [
-            297,
-            2,
-            218,
-            335
-          ],
-          "offset": [
-            316,
-            234
-          ]
-        },
-        {
-          "texture": "atlas-6.png",
-          "region": [
-            1751,
-            2,
-            256,
-            310
-          ],
-          "offset": [
-            299,
-            259
-          ]
-        },
-        {
-          "texture": "atlas-7.png",
-          "region": [
-            2,
-            582,
-            275,
-            278
-          ],
-          "offset": [
-            294,
-            291
-          ]
-        },
-        {
-          "texture": "atlas-6.png",
-          "region": [
-            1381,
-            1247,
-            326,
-            295
-          ],
-          "offset": [
-            276,
-            274
-          ]
-        },
-        {
-          "texture": "atlas-7.png",
-          "region": [
-            428,
-            1138,
-            332,
-            267
-          ],
-          "offset": [
-            277,
-            302
-          ]
-        },
-        {
-          "texture": "atlas-7.png",
-          "region": [
-            572,
-            294,
-            340,
-            281
-          ],
-          "offset": [
-            263,
-            288
-          ]
-        },
-        {
-          "texture": "atlas-7.png",
-          "region": [
-            242,
-            2,
-            403,
-            288
-          ],
-          "offset": [
-            243,
-            281
-          ]
-        },
-        {
-          "texture": "atlas-6.png",
-          "region": [
-            1601,
-            1548,
-            353,
-            289
-          ],
-          "offset": [
-            262,
-            280
-          ]
-        },
-        {
-          "texture": "atlas-4.png",
-          "region": [
-            2,
-            1681,
-            300,
+            346,
+            245,
             328
           ],
           "offset": [
-            282,
-            241
+            327,
+            240
           ]
         },
         {
-          "texture": "atlas-4.png",
+          "texture": "atlas-2.png",
           "region": [
-            306,
-            1681,
-            268,
-            328
+            215,
+            959,
+            198,
+            313
           ],
           "offset": [
-            297,
-            241
-          ]
-        },
-        {
-          "texture": "atlas-3.png",
-          "region": [
-            1542,
-            1038,
-            238,
-            338
-          ],
-          "offset": [
-            309,
-            231
-          ]
-        },
-        {
-          "texture": "atlas-3.png",
-          "region": [
-            1784,
-            1038,
-            223,
-            338
-          ],
-          "offset": [
-            321,
-            231
-          ]
-        }
-      ]
-    },
-    "blue_afterglow": {
-      "loop": false,
-      "fps": 12,
-      "phase_breaks": [
-        2,
-        11
-      ],
-      "segment_sync": true,
-      "anchor_mode": "feet",
-      "timeline": [],
-      "frames": [
-        {
-          "texture": "atlas-5.png",
-          "region": [
-            569,
-            982,
-            299,
-            319
-          ],
-          "offset": [
-            287,
-            250
-          ]
-        },
-        {
-          "texture": "atlas-5.png",
-          "region": [
-            872,
-            982,
-            344,
-            319
-          ],
-          "offset": [
-            281,
-            250
-          ]
-        },
-        {
-          "texture": "atlas-5.png",
-          "region": [
-            2,
-            1629,
-            359,
-            317
-          ],
-          "offset": [
-            267,
-            252
-          ]
-        },
-        {
-          "texture": "atlas-5.png",
-          "region": [
-            1220,
-            982,
-            316,
-            319
-          ],
-          "offset": [
-            274,
-            250
-          ]
-        },
-        {
-          "texture": "atlas-5.png",
-          "region": [
-            310,
-            657,
-            353,
-            321
-          ],
-          "offset": [
-            283,
-            248
-          ]
-        },
-        {
-          "texture": "atlas-5.png",
-          "region": [
-            1500,
-            657,
-            314,
-            320
-          ],
-          "offset": [
-            277,
-            249
-          ]
-        },
-        {
-          "texture": "atlas-5.png",
-          "region": [
-            1540,
-            982,
-            360,
-            319
-          ],
-          "offset": [
-            267,
-            250
-          ]
-        },
-        {
-          "texture": "atlas-5.png",
-          "region": [
-            2,
-            982,
-            314,
-            320
-          ],
-          "offset": [
-            277,
-            249
-          ]
-        },
-        {
-          "texture": "atlas-5.png",
-          "region": [
-            2,
-            1306,
-            358,
-            319
-          ],
-          "offset": [
-            280,
-            250
-          ]
-        },
-        {
-          "texture": "atlas-5.png",
-          "region": [
-            364,
-            1306,
-            316,
-            319
-          ],
-          "offset": [
-            275,
-            250
-          ]
-        },
-        {
-          "texture": "atlas-5.png",
-          "region": [
-            365,
-            1629,
-            356,
-            317
-          ],
-          "offset": [
-            267,
-            252
-          ]
-        },
-        {
-          "texture": "atlas-5.png",
-          "region": [
-            684,
-            1306,
-            312,
-            319
-          ],
-          "offset": [
-            277,
-            250
+            362,
+            255
           ]
         }
       ]
@@ -4630,159 +2383,159 @@
       ],
       "frames": [
         {
-          "texture": "atlas-2.png",
+          "texture": "atlas-0.png",
           "region": [
-            250,
-            1058,
-            297,
-            345
-          ],
-          "offset": [
-            299,
-            230
-          ]
-        },
-        {
-          "texture": "atlas-2.png",
-          "region": [
-            1302,
-            708,
-            270,
-            346
-          ],
-          "offset": [
-            313,
-            230
-          ]
-        },
-        {
-          "texture": "atlas-8.png",
-          "region": [
-            1368,
-            1176,
-            341,
-            196
-          ],
-          "offset": [
-            278,
-            305
-          ]
-        },
-        {
-          "texture": "atlas-5.png",
-          "region": [
-            1000,
-            1306,
-            252,
-            319
-          ],
-          "offset": [
-            322,
-            243
-          ]
-        },
-        {
-          "texture": "atlas-7.png",
-          "region": [
-            916,
-            294,
-            281,
-            281
-          ],
-          "offset": [
-            308,
-            263
-          ]
-        },
-        {
-          "texture": "atlas-7.png",
-          "region": [
-            578,
-            582,
-            288,
-            275
-          ],
-          "offset": [
-            304,
-            265
-          ]
-        },
-        {
-          "texture": "atlas-7.png",
-          "region": [
+            765,
             2,
-            294,
-            270,
-            284
+            251,
+            384
           ],
           "offset": [
-            313,
-            261
+            323,
+            184
           ]
         },
         {
-          "texture": "atlas-8.png",
+          "texture": "atlas-0.png",
           "region": [
-            706,
-            957,
-            349,
+            1222,
+            2,
+            306,
+            373
+          ],
+          "offset": [
+            287,
+            197
+          ]
+        },
+        {
+          "texture": "atlas-0.png",
+          "region": [
+            1376,
+            445,
+            205,
+            361
+          ],
+          "offset": [
+            356,
+            181
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            304,
+            1672,
+            312,
+            209
+          ],
+          "offset": [
+            330,
+            272
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            1174,
+            1452,
+            299,
             212
           ],
           "offset": [
-            274,
-            297
+            349,
+            251
           ]
         },
         {
-          "texture": "atlas-8.png",
+          "texture": "atlas-7.png",
           "region": [
-            723,
-            1584,
-            380,
-            133
+            685,
+            709,
+            341,
+            112
           ],
           "offset": [
-            258,
-            437
+            345,
+            337
           ]
         },
         {
-          "texture": "atlas-8.png",
+          "texture": "atlas-6.png",
           "region": [
-            826,
-            1388,
-            385,
-            156
+            1677,
+            1223,
+            310,
+            216
           ],
           "offset": [
-            255,
-            413
+            343,
+            244
           ]
         },
         {
-          "texture": "atlas-8.png",
-          "region": [
-            2,
-            1723,
-            385,
-            120
-          ],
-          "offset": [
-            256,
-            449
-          ]
-        },
-        {
-          "texture": "atlas-8.png",
+          "texture": "atlas-7.png",
           "region": [
             2,
-            1847,
-            384,
-            89
+            709,
+            354,
+            126
           ],
           "offset": [
-            256,
-            481
+            340,
+            327
+          ]
+        },
+        {
+          "texture": "atlas-7.png",
+          "region": [
+            1369,
+            709,
+            332,
+            102
+          ],
+          "offset": [
+            283,
+            477
+          ]
+        },
+        {
+          "texture": "atlas-7.png",
+          "region": [
+            772,
+            401,
+            308,
+            160
+          ],
+          "offset": [
+            295,
+            411
+          ]
+        },
+        {
+          "texture": "atlas-7.png",
+          "region": [
+            2,
+            569,
+            323,
+            136
+          ],
+          "offset": [
+            287,
+            442
+          ]
+        },
+        {
+          "texture": "atlas-7.png",
+          "region": [
+            1036,
+            839,
+            322,
+            95
+          ],
+          "offset": [
+            288,
+            480
           ]
         }
       ]
@@ -4812,159 +2565,3422 @@
       ],
       "frames": [
         {
-          "texture": "atlas-1.png",
+          "texture": "atlas-0.png",
           "region": [
-            977,
+            499,
             2,
-            278,
-            358
+            262,
+            401
           ],
           "offset": [
-            309,
+            315,
+            167
+          ]
+        },
+        {
+          "texture": "atlas-0.png",
+          "region": [
+            440,
+            445,
+            341,
+            364
+          ],
+          "offset": [
+            271,
+            204
+          ]
+        },
+        {
+          "texture": "atlas-5.png",
+          "region": [
+            2,
+            1120,
+            269,
+            263
+          ],
+          "offset": [
+            275,
+            266
+          ]
+        },
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            876,
+            2,
+            296,
+            337
+          ],
+          "offset": [
+            251,
+            282
+          ]
+        },
+        {
+          "texture": "atlas-0.png",
+          "region": [
+            258,
+            445,
+            178,
+            367
+          ],
+          "offset": [
+            373,
+            273
+          ]
+        },
+        {
+          "texture": "atlas-5.png",
+          "region": [
+            1035,
+            1648,
+            254,
+            251
+          ],
+          "offset": [
+            289,
+            326
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            547,
+            746,
+            287,
+            236
+          ],
+          "offset": [
+            347,
+            285
+          ]
+        },
+        {
+          "texture": "atlas-7.png",
+          "region": [
+            360,
+            709,
+            321,
+            118
+          ],
+          "offset": [
+            339,
+            341
+          ]
+        },
+        {
+          "texture": "atlas-7.png",
+          "region": [
+            348,
+            839,
+            342,
+            98
+          ],
+          "offset": [
+            278,
+            470
+          ]
+        },
+        {
+          "texture": "atlas-7.png",
+          "region": [
+            202,
+            401,
+            327,
+            164
+          ],
+          "offset": [
+            285,
+            404
+          ]
+        },
+        {
+          "texture": "atlas-7.png",
+          "region": [
+            2,
+            839,
+            342,
+            101
+          ],
+          "offset": [
+            277,
+            468
+          ]
+        },
+        {
+          "texture": "atlas-7.png",
+          "region": [
+            694,
+            839,
+            338,
+            98
+          ],
+          "offset": [
+            280,
+            471
+          ]
+        }
+      ]
+    },
+    "victory": {
+      "loop": false,
+      "fps": 12,
+      "phase_breaks": [
+        2,
+        4
+      ],
+      "segment_sync": false,
+      "anchor_mode": "feet",
+      "timeline": [],
+      "frames": [
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            1794,
+            1006,
+            171,
+            319
+          ],
+          "offset": [
+            381,
+            250
+          ]
+        },
+        {
+          "texture": "atlas-0.png",
+          "region": [
+            679,
+            818,
+            152,
+            351
+          ],
+          "offset": [
+            377,
+            218
+          ]
+        },
+        {
+          "texture": "atlas-0.png",
+          "region": [
+            785,
+            445,
+            163,
+            364
+          ],
+          "offset": [
+            379,
+            204
+          ]
+        },
+        {
+          "texture": "atlas-0.png",
+          "region": [
+            952,
+            445,
+            227,
+            364
+          ],
+          "offset": [
+            336,
+            204
+          ]
+        },
+        {
+          "texture": "atlas-0.png",
+          "region": [
+            1280,
+            1179,
+            254,
+            344
+          ],
+          "offset": [
+            315,
+            225
+          ]
+        },
+        {
+          "texture": "atlas-0.png",
+          "region": [
+            1273,
+            1530,
+            253,
+            342
+          ],
+          "offset": [
+            326,
+            226
+          ]
+        }
+      ]
+    },
+    "stand_heavy": {
+      "loop": false,
+      "fps": 12,
+      "phase_breaks": [
+        2,
+        4
+      ],
+      "segment_sync": false,
+      "anchor_mode": "feet",
+      "timeline": [],
+      "frames": [
+        {
+          "texture": "atlas-3.png",
+          "region": [
+            494,
+            945,
+            210,
+            309
+          ],
+          "offset": [
+            354,
+            260
+          ]
+        },
+        {
+          "texture": "atlas-3.png",
+          "region": [
+            406,
+            1570,
+            253,
+            305
+          ],
+          "offset": [
+            324,
+            263
+          ]
+        },
+        {
+          "texture": "atlas-5.png",
+          "region": [
+            908,
+            2,
+            282,
+            280
+          ],
+          "offset": [
+            329,
+            288
+          ]
+        },
+        {
+          "texture": "atlas-5.png",
+          "region": [
+            1194,
+            2,
+            282,
+            280
+          ],
+          "offset": [
+            329,
+            288
+          ]
+        },
+        {
+          "texture": "atlas-3.png",
+          "region": [
+            1321,
+            317,
+            231,
+            310
+          ],
+          "offset": [
+            347,
+            258
+          ]
+        },
+        {
+          "texture": "atlas-3.png",
+          "region": [
+            1556,
+            317,
+            211,
+            310
+          ],
+          "offset": [
+            361,
+            258
+          ]
+        }
+      ]
+    },
+    "crouch_light": {
+      "loop": false,
+      "fps": 12,
+      "phase_breaks": [
+        2,
+        4
+      ],
+      "segment_sync": false,
+      "anchor_mode": "feet",
+      "timeline": [],
+      "frames": [
+        {
+          "texture": "atlas-5.png",
+          "region": [
+            528,
+            1648,
+            233,
+            252
+          ],
+          "offset": [
+            324,
+            316
+          ]
+        },
+        {
+          "texture": "atlas-5.png",
+          "region": [
+            292,
+            1648,
+            232,
+            253
+          ],
+          "offset": [
+            315,
+            315
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            866,
+            2,
+            264,
+            245
+          ],
+          "offset": [
+            316,
+            324
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            633,
+            254,
+            264,
+            242
+          ],
+          "offset": [
+            307,
+            327
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            838,
+            746,
+            232,
+            234
+          ],
+          "offset": [
+            324,
+            334
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            1074,
+            746,
+            221,
+            234
+          ],
+          "offset": [
+            316,
+            334
+          ]
+        }
+      ]
+    },
+    "crouch_heavy": {
+      "loop": false,
+      "fps": 12,
+      "phase_breaks": [
+        2,
+        4
+      ],
+      "segment_sync": false,
+      "anchor_mode": "feet",
+      "timeline": [],
+      "frames": [
+        {
+          "texture": "atlas-5.png",
+          "region": [
+            1480,
+            2,
+            248,
+            280
+          ],
+          "offset": [
+            333,
+            289
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            2,
+            2,
+            247,
+            248
+          ],
+          "offset": [
+            308,
+            320
+          ]
+        },
+        {
+          "texture": "atlas-5.png",
+          "region": [
+            765,
+            287,
+            258,
+            276
+          ],
+          "offset": [
+            321,
+            292
+          ]
+        },
+        {
+          "texture": "atlas-0.png",
+          "region": [
+            478,
+            818,
+            197,
+            356
+          ],
+          "offset": [
+            351,
+            212
+          ]
+        },
+        {
+          "texture": "atlas-4.png",
+          "region": [
+            1422,
+            1507,
+            235,
+            282
+          ],
+          "offset": [
+            347,
+            287
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            1299,
+            746,
+            227,
+            234
+          ],
+          "offset": [
+            319,
+            334
+          ]
+        }
+      ]
+    },
+    "air_light": {
+      "loop": false,
+      "fps": 12,
+      "phase_breaks": [
+        2,
+        4
+      ],
+      "segment_sync": false,
+      "anchor_mode": "pelvis",
+      "timeline": [],
+      "frames": [
+        {
+          "texture": "atlas-4.png",
+          "region": [
+            1133,
+            614,
+            194,
+            295
+          ],
+          "offset": [
+            364,
+            273
+          ]
+        },
+        {
+          "texture": "atlas-4.png",
+          "region": [
+            230,
+            915,
+            180,
+            293
+          ],
+          "offset": [
+            364,
+            275
+          ]
+        },
+        {
+          "texture": "atlas-4.png",
+          "region": [
+            2,
+            1213,
+            256,
+            290
+          ],
+          "offset": [
+            358,
+            279
+          ]
+        },
+        {
+          "texture": "atlas-4.png",
+          "region": [
+            262,
+            1213,
+            243,
+            289
+          ],
+          "offset": [
+            355,
+            279
+          ]
+        },
+        {
+          "texture": "atlas-4.png",
+          "region": [
+            209,
+            1507,
+            205,
+            284
+          ],
+          "offset": [
+            340,
+            284
+          ]
+        },
+        {
+          "texture": "atlas-5.png",
+          "region": [
+            2,
+            2,
+            200,
+            281
+          ],
+          "offset": [
+            356,
+            287
+          ]
+        }
+      ]
+    },
+    "air_heavy": {
+      "loop": false,
+      "fps": 12,
+      "phase_breaks": [
+        2,
+        4
+      ],
+      "segment_sync": false,
+      "anchor_mode": "pelvis",
+      "timeline": [],
+      "frames": [
+        {
+          "texture": "atlas-0.png",
+          "region": [
+            315,
+            2,
+            180,
+            407
+          ],
+          "offset": [
+            375,
+            162
+          ]
+        },
+        {
+          "texture": "atlas-0.png",
+          "region": [
+            1722,
+            2,
+            163,
+            370
+          ],
+          "offset": [
+            365,
+            199
+          ]
+        },
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            1435,
+            2,
+            246,
+            332
+          ],
+          "offset": [
+            349,
+            237
+          ]
+        },
+        {
+          "texture": "atlas-5.png",
+          "region": [
+            1027,
+            287,
+            261,
+            275
+          ],
+          "offset": [
+            340,
+            293
+          ]
+        },
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            774,
+            1653,
+            237,
+            317
+          ],
+          "offset": [
+            339,
+            251
+          ]
+        },
+        {
+          "texture": "atlas-4.png",
+          "region": [
+            509,
+            1213,
+            205,
+            289
+          ],
+          "offset": [
+            342,
+            280
+          ]
+        }
+      ]
+    },
+    "body_stand_light": {
+      "loop": false,
+      "fps": 12,
+      "phase_breaks": [
+        2,
+        4
+      ],
+      "segment_sync": false,
+      "anchor_mode": "feet",
+      "timeline": [],
+      "frames": [
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            1015,
+            1653,
+            193,
+            317
+          ],
+          "offset": [
+            369,
+            252
+          ]
+        },
+        {
+          "texture": "atlas-2.png",
+          "region": [
+            196,
+            322,
+            172,
+            315
+          ],
+          "offset": [
+            373,
+            253
+          ]
+        },
+        {
+          "texture": "atlas-0.png",
+          "region": [
+            1538,
+            1179,
+            257,
+            344
+          ],
+          "offset": [
+            366,
             224
           ]
         },
         {
           "texture": "atlas-0.png",
           "region": [
-            1553,
-            752,
-            244,
-            363
+            2,
+            1530,
+            257,
+            344
           ],
           "offset": [
-            326,
-            221
+            368,
+            225
           ]
         },
         {
-          "texture": "atlas-8.png",
+          "texture": "atlas-1.png",
           "region": [
-            2,
-            957,
-            319,
-            215
+            438,
+            1006,
+            164,
+            320
           ],
           "offset": [
-            288,
-            295
+            377,
+            249
+          ]
+        },
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            606,
+            1006,
+            194,
+            320
+          ],
+          "offset": [
+            366,
+            249
+          ]
+        }
+      ]
+    },
+    "body_stand_heavy": {
+      "loop": false,
+      "fps": 12,
+      "phase_breaks": [
+        2,
+        4
+      ],
+      "segment_sync": false,
+      "anchor_mode": "feet",
+      "timeline": [],
+      "frames": [
+        {
+          "texture": "atlas-3.png",
+          "region": [
+            1771,
+            317,
+            206,
+            310
+          ],
+          "offset": [
+            362,
+            258
+          ]
+        },
+        {
+          "texture": "atlas-3.png",
+          "region": [
+            708,
+            945,
+            182,
+            309
+          ],
+          "offset": [
+            347,
+            260
           ]
         },
         {
           "texture": "atlas-0.png",
           "region": [
-            1034,
+            189,
+            1179,
+            288,
+            346
+          ],
+          "offset": [
+            333,
+            223
+          ]
+        },
+        {
+          "texture": "atlas-0.png",
+          "region": [
+            1388,
+            818,
+            276,
+            347
+          ],
+          "offset": [
+            348,
+            221
+          ]
+        },
+        {
+          "texture": "atlas-2.png",
+          "region": [
+            372,
+            322,
+            194,
+            315
+          ],
+          "offset": [
+            339,
+            253
+          ]
+        },
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            1359,
+            1330,
+            202,
+            318
+          ],
+          "offset": [
+            364,
+            250
+          ]
+        }
+      ]
+    },
+    "body_crouch_light": {
+      "loop": false,
+      "fps": 12,
+      "phase_breaks": [
+        2,
+        4
+      ],
+      "segment_sync": false,
+      "anchor_mode": "feet",
+      "timeline": [],
+      "frames": [
+        {
+          "texture": "atlas-5.png",
+          "region": [
+            1102,
             1120,
-            224,
-            362
+            241,
+            261
           ],
           "offset": [
-            336,
-            222
+            330,
+            307
           ]
         },
         {
-          "texture": "atlas-8.png",
+          "texture": "atlas-5.png",
           "region": [
-            800,
-            2,
-            286,
-            246
+            452,
+            1120,
+            236,
+            262
           ],
           "offset": [
-            305,
-            280
-          ]
-        },
-        {
-          "texture": "atlas-8.png",
-          "region": [
-            1666,
-            730,
-            305,
-            216
-          ],
-          "offset": [
-            295,
-            295
-          ]
-        },
-        {
-          "texture": "atlas-8.png",
-          "region": [
-            1702,
-            2,
-            286,
-            243
-          ],
-          "offset": [
-            305,
-            281
+            359,
+            307
           ]
         },
         {
           "texture": "atlas-7.png",
           "region": [
-            281,
-            582,
-            293,
-            276
+            718,
+            2,
+            269,
+            198
           ],
           "offset": [
-            302,
+            315,
+            370
+          ]
+        },
+        {
+          "texture": "atlas-7.png",
+          "region": [
+            2,
+            205,
+            253,
+            192
+          ],
+          "offset": [
+            322,
+            376
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            1441,
+            987,
+            275,
+            228
+          ],
+          "offset": [
+            329,
+            340
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            620,
+            1672,
+            260,
+            209
+          ],
+          "offset": [
+            331,
+            360
+          ]
+        }
+      ]
+    },
+    "body_crouch_heavy": {
+      "loop": false,
+      "fps": 12,
+      "phase_breaks": [
+        2,
+        4
+      ],
+      "segment_sync": false,
+      "anchor_mode": "feet",
+      "timeline": [],
+      "frames": [
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            1594,
+            2,
+            226,
+            244
+          ],
+          "offset": [
+            335,
+            327
+          ]
+        },
+        {
+          "texture": "atlas-7.png",
+          "region": [
+            1450,
+            205,
+            201,
+            170
+          ],
+          "offset": [
+            363,
+            398
+          ]
+        },
+        {
+          "texture": "atlas-7.png",
+          "region": [
+            1655,
+            205,
+            238,
+            166
+          ],
+          "offset": [
+            342,
+            402
+          ]
+        },
+        {
+          "texture": "atlas-7.png",
+          "region": [
+            1084,
+            401,
+            229,
+            159
+          ],
+          "offset": [
+            347,
+            409
+          ]
+        },
+        {
+          "texture": "atlas-7.png",
+          "region": [
+            1317,
+            401,
+            217,
+            152
+          ],
+          "offset": [
+            349,
+            416
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            2,
+            254,
+            226,
+            244
+          ],
+          "offset": [
+            335,
+            327
+          ]
+        }
+      ]
+    },
+    "body_air_light": {
+      "loop": false,
+      "fps": 12,
+      "phase_breaks": [
+        2,
+        4
+      ],
+      "segment_sync": false,
+      "anchor_mode": "pelvis",
+      "timeline": [],
+      "frames": [
+        {
+          "texture": "atlas-4.png",
+          "region": [
+            185,
+            614,
+            163,
+            296
+          ],
+          "offset": [
+            378,
+            228
+          ]
+        },
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            1212,
+            1653,
+            192,
+            317
+          ],
+          "offset": [
+            346,
+            239
+          ]
+        },
+        {
+          "texture": "atlas-4.png",
+          "region": [
+            1331,
+            614,
+            269,
+            295
+          ],
+          "offset": [
+            345,
+            244
+          ]
+        },
+        {
+          "texture": "atlas-3.png",
+          "region": [
+            663,
+            1570,
+            280,
+            305
+          ],
+          "offset": [
+            336,
+            245
+          ]
+        },
+        {
+          "texture": "atlas-3.png",
+          "region": [
+            2,
+            2,
+            234,
+            311
+          ],
+          "offset": [
+            318,
+            210
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            232,
+            254,
+            167,
+            244
+          ],
+          "offset": [
+            348,
+            258
+          ]
+        }
+      ]
+    },
+    "body_air_heavy": {
+      "loop": false,
+      "fps": 12,
+      "phase_breaks": [
+        2,
+        4
+      ],
+      "segment_sync": false,
+      "anchor_mode": "pelvis",
+      "timeline": [],
+      "frames": [
+        {
+          "texture": "atlas-5.png",
+          "region": [
+            2,
+            569,
+            180,
+            274
+          ],
+          "offset": [
+            349,
+            248
+          ]
+        },
+        {
+          "texture": "atlas-4.png",
+          "region": [
+            707,
+            1507,
+            228,
+            283
+          ],
+          "offset": [
+            292,
+            249
+          ]
+        },
+        {
+          "texture": "atlas-5.png",
+          "region": [
+            475,
+            569,
+            311,
+            273
+          ],
+          "offset": [
+            273,
+            229
+          ]
+        },
+        {
+          "texture": "atlas-5.png",
+          "region": [
+            1269,
+            847,
+            262,
+            267
+          ],
+          "offset": [
+            307,
+            221
+          ]
+        },
+        {
+          "texture": "atlas-4.png",
+          "region": [
+            352,
+            614,
+            226,
+            296
+          ],
+          "offset": [
+            331,
+            217
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            714,
+            502,
+            159,
+            239
+          ],
+          "offset": [
+            355,
+            253
+          ]
+        }
+      ]
+    },
+    "crown_splitter": {
+      "loop": false,
+      "fps": 12,
+      "phase_breaks": [
+        3,
+        6
+      ],
+      "segment_sync": false,
+      "anchor_mode": "feet",
+      "timeline": [],
+      "frames": [
+        {
+          "texture": "atlas-3.png",
+          "region": [
+            2,
+            631,
+            218,
+            310
+          ],
+          "offset": [
+            349,
+            258
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            253,
+            2,
+            223,
+            248
+          ],
+          "offset": [
+            349,
+            321
+          ]
+        },
+        {
+          "texture": "atlas-0.png",
+          "region": [
+            1183,
+            445,
+            189,
+            362
+          ],
+          "offset": [
+            351,
+            207
+          ]
+        },
+        {
+          "texture": "atlas-0.png",
+          "region": [
+            156,
+            2,
+            155,
+            438
+          ],
+          "offset": [
+            352,
+            131
+          ]
+        },
+        {
+          "texture": "atlas-0.png",
+          "region": [
+            2,
+            445,
+            252,
+            369
+          ],
+          "offset": [
+            274,
+            199
+          ]
+        },
+        {
+          "texture": "atlas-4.png",
+          "region": [
+            1143,
+            309,
+            262,
+            299
+          ],
+          "offset": [
+            275,
+            269
+          ]
+        },
+        {
+          "texture": "atlas-2.png",
+          "region": [
+            417,
+            959,
+            239,
+            313
+          ],
+          "offset": [
+            286,
+            255
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            1730,
+            1672,
+            257,
+            200
+          ],
+          "offset": [
+            346,
+            368
+          ]
+        },
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            1565,
+            1330,
+            188,
+            318
+          ],
+          "offset": [
+            370,
+            251
+          ]
+        }
+      ]
+    },
+    "disorder": {
+      "loop": false,
+      "fps": 12,
+      "phase_breaks": [
+        3,
+        9
+      ],
+      "segment_sync": true,
+      "anchor_mode": "feet",
+      "timeline": [],
+      "frames": [
+        {
+          "texture": "atlas-2.png",
+          "region": [
+            197,
+            2,
+            190,
+            316
+          ],
+          "offset": [
+            367,
+            253
+          ]
+        },
+        {
+          "texture": "atlas-5.png",
+          "region": [
+            2,
+            287,
+            268,
+            278
+          ],
+          "offset": [
+            325,
+            290
+          ]
+        },
+        {
+          "texture": "atlas-4.png",
+          "region": [
+            195,
+            2,
+            215,
+            303
+          ],
+          "offset": [
+            354,
+            266
+          ]
+        },
+        {
+          "texture": "atlas-4.png",
+          "region": [
+            414,
+            915,
+            245,
+            293
+          ],
+          "offset": [
+            335,
+            275
+          ]
+        },
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            2,
+            1330,
+            273,
+            319
+          ],
+          "offset": [
+            344,
+            249
+          ]
+        },
+        {
+          "texture": "atlas-2.png",
+          "region": [
+            975,
+            1276,
+            254,
+            312
+          ],
+          "offset": [
+            333,
+            256
+          ]
+        },
+        {
+          "texture": "atlas-2.png",
+          "region": [
+            1233,
+            1276,
+            267,
+            312
+          ],
+          "offset": [
+            342,
+            257
+          ]
+        },
+        {
+          "texture": "atlas-3.png",
+          "region": [
+            224,
+            631,
+            281,
+            310
+          ],
+          "offset": [
+            330,
+            258
+          ]
+        },
+        {
+          "texture": "atlas-3.png",
+          "region": [
+            743,
+            1258,
+            287,
+            307
+          ],
+          "offset": [
+            341,
+            261
+          ]
+        },
+        {
+          "texture": "atlas-3.png",
+          "region": [
+            286,
+            1258,
+            225,
+            308
+          ],
+          "offset": [
+            346,
+            260
+          ]
+        },
+        {
+          "texture": "atlas-2.png",
+          "region": [
+            660,
+            959,
+            221,
+            313
+          ],
+          "offset": [
+            342,
+            255
+          ]
+        },
+        {
+          "texture": "atlas-2.png",
+          "region": [
+            1659,
+            322,
+            204,
+            314
+          ],
+          "offset": [
+            360,
+            255
+          ]
+        }
+      ]
+    },
+    "annihilation": {
+      "loop": false,
+      "fps": 12,
+      "phase_breaks": [
+        4,
+        8
+      ],
+      "segment_sync": false,
+      "anchor_mode": "feet",
+      "timeline": [],
+      "frames": [
+        {
+          "texture": "atlas-3.png",
+          "region": [
+            509,
+            631,
+            202,
+            310
+          ],
+          "offset": [
+            355,
+            258
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            1753,
+            254,
+            268,
+            240
+          ],
+          "offset": [
+            335,
+            328
+          ]
+        },
+        {
+          "texture": "atlas-5.png",
+          "region": [
+            1347,
+            1120,
+            271,
+            257
+          ],
+          "offset": [
+            328,
+            311
+          ]
+        },
+        {
+          "texture": "atlas-7.png",
+          "region": [
+            2,
+            2,
+            246,
+            199
+          ],
+          "offset": [
+            341,
+            369
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            2,
+            1672,
+            298,
+            210
+          ],
+          "offset": [
+            332,
+            358
+          ]
+        },
+        {
+          "texture": "atlas-7.png",
+          "region": [
+            991,
+            2,
+            311,
+            196
+          ],
+          "offset": [
+            315,
+            373
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            2,
+            1223,
+            259,
+            225
+          ],
+          "offset": [
+            342,
+            344
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            1720,
+            987,
+            255,
+            226
+          ],
+          "offset": [
+            339,
+            343
+          ]
+        },
+        {
+          "texture": "atlas-5.png",
+          "region": [
+            765,
+            1648,
+            266,
+            252
+          ],
+          "offset": [
+            329,
+            316
+          ]
+        },
+        {
+          "texture": "atlas-4.png",
+          "region": [
+            718,
+            1213,
+            200,
+            288
+          ],
+          "offset": [
+            365,
+            281
+          ]
+        },
+        {
+          "texture": "atlas-5.png",
+          "region": [
+            503,
+            287,
+            258,
+            277
+          ],
+          "offset": [
+            331,
+            291
+          ]
+        },
+        {
+          "texture": "atlas-2.png",
+          "region": [
+            1504,
+            1276,
+            208,
+            312
+          ],
+          "offset": [
+            362,
+            256
+          ]
+        }
+      ]
+    },
+    "blue_afterglow": {
+      "loop": false,
+      "fps": 12,
+      "phase_breaks": [
+        2,
+        11
+      ],
+      "segment_sync": true,
+      "anchor_mode": "feet",
+      "timeline": [],
+      "frames": [
+        {
+          "texture": "atlas-2.png",
+          "region": [
+            2,
+            641,
+            193,
+            314
+          ],
+          "offset": [
+            367,
+            254
+          ]
+        },
+        {
+          "texture": "atlas-5.png",
+          "region": [
+            1651,
+            569,
+            254,
+            270
+          ],
+          "offset": [
+            333,
+            299
+          ]
+        },
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            1757,
+            1330,
+            260,
+            318
+          ],
+          "offset": [
+            361,
+            251
+          ]
+        },
+        {
+          "texture": "atlas-2.png",
+          "region": [
+            1716,
+            1276,
+            241,
+            312
+          ],
+          "offset": [
+            331,
+            256
+          ]
+        },
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            804,
+            1006,
+            199,
+            320
+          ],
+          "offset": [
+            353,
+            248
+          ]
+        },
+        {
+          "texture": "atlas-5.png",
+          "region": [
+            186,
+            569,
+            285,
+            274
+          ],
+          "offset": [
+            322,
+            295
+          ]
+        },
+        {
+          "texture": "atlas-3.png",
+          "region": [
+            1169,
+            1570,
+            252,
+            304
+          ],
+          "offset": [
+            353,
             265
           ]
         },
         {
-          "texture": "atlas-8.png",
+          "texture": "atlas-4.png",
           "region": [
-            760,
-            1723,
-            381,
-            116
+            922,
+            1213,
+            248,
+            288
           ],
           "offset": [
-            257,
-            453
+            338,
+            281
           ]
         },
         {
-          "texture": "atlas-8.png",
+          "texture": "atlas-5.png",
           "region": [
-            1587,
-            1388,
-            374,
-            143
+            790,
+            569,
+            262,
+            273
           ],
           "offset": [
-            261,
-            426
+            340,
+            295
           ]
         },
         {
-          "texture": "atlas-8.png",
+          "texture": "atlas-5.png",
           "region": [
-            1145,
-            1723,
-            378,
-            106
+            1292,
+            287,
+            251,
+            275
           ],
           "offset": [
+            346,
+            294
+          ]
+        },
+        {
+          "texture": "atlas-2.png",
+          "region": [
+            570,
+            322,
+            234,
+            315
+          ],
+          "offset": [
+            348,
+            253
+          ]
+        },
+        {
+          "texture": "atlas-3.png",
+          "region": [
+            894,
+            945,
+            222,
+            309
+          ],
+          "offset": [
+            352,
+            259
+          ]
+        }
+      ]
+    },
+    "rensho_2": {
+      "loop": false,
+      "fps": 12,
+      "phase_breaks": [
+        2,
+        4
+      ],
+      "segment_sync": false,
+      "anchor_mode": "feet",
+      "timeline": [],
+      "frames": [
+        {
+          "texture": "atlas-4.png",
+          "region": [
+            239,
+            309,
+            240,
+            301
+          ],
+          "offset": [
+            349,
+            268
+          ]
+        },
+        {
+          "texture": "atlas-4.png",
+          "region": [
+            483,
+            309,
+            250,
+            301
+          ],
+          "offset": [
+            352,
+            267
+          ]
+        },
+        {
+          "texture": "atlas-4.png",
+          "region": [
+            414,
+            2,
+            251,
+            302
+          ],
+          "offset": [
+            356,
+            267
+          ]
+        },
+        {
+          "texture": "atlas-4.png",
+          "region": [
+            669,
+            2,
             259,
-            463
+            302
+          ],
+          "offset": [
+            352,
+            267
           ]
         },
         {
-          "texture": "atlas-8.png",
+          "texture": "atlas-2.png",
           "region": [
-            1527,
-            1723,
-            385,
-            93
+            2,
+            1593,
+            217,
+            312
           ],
           "offset": [
+            354,
+            256
+          ]
+        },
+        {
+          "texture": "atlas-2.png",
+          "region": [
+            885,
+            959,
+            207,
+            313
+          ],
+          "offset": [
+            361,
+            255
+          ]
+        }
+      ]
+    },
+    "manyo": {
+      "loop": false,
+      "fps": 12,
+      "phase_breaks": [
+        3,
+        5
+      ],
+      "segment_sync": false,
+      "anchor_mode": "feet",
+      "timeline": [],
+      "frames": [
+        {
+          "texture": "atlas-0.png",
+          "region": [
+            263,
+            1530,
+            273,
+            344
+          ],
+          "offset": [
+            330,
+            225
+          ]
+        },
+        {
+          "texture": "atlas-0.png",
+          "region": [
+            1668,
+            818,
+            219,
+            347
+          ],
+          "offset": [
+            343,
+            221
+          ]
+        },
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            1464,
+            346,
             255,
-            476
+            324
+          ],
+          "offset": [
+            341,
+            245
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            2,
+            1452,
+            248,
+            216
+          ],
+          "offset": [
+            356,
+            352
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            1530,
+            746,
+            257,
+            234
+          ],
+          "offset": [
+            358,
+            334
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            1791,
+            746,
+            246,
+            233
+          ],
+          "offset": [
+            351,
+            335
+          ]
+        },
+        {
+          "texture": "atlas-0.png",
+          "region": [
+            840,
+            1179,
+            268,
+            345
+          ],
+          "offset": [
+            326,
+            224
+          ]
+        },
+        {
+          "texture": "atlas-3.png",
+          "region": [
+            1034,
+            1258,
+            220,
+            307
+          ],
+          "offset": [
+            351,
+            262
+          ]
+        }
+      ]
+    },
+    "ryusen": {
+      "loop": false,
+      "fps": 12,
+      "phase_breaks": [
+        3,
+        7
+      ],
+      "segment_sync": true,
+      "anchor_mode": "feet",
+      "timeline": [],
+      "frames": [
+        {
+          "texture": "atlas-2.png",
+          "region": [
+            1096,
+            959,
+            187,
+            313
+          ],
+          "offset": [
+            370,
+            255
+          ]
+        },
+        {
+          "texture": "atlas-2.png",
+          "region": [
+            391,
+            2,
+            192,
+            316
+          ],
+          "offset": [
+            348,
+            253
+          ]
+        },
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            251,
+            346,
+            224,
+            326
+          ],
+          "offset": [
+            378,
+            242
+          ]
+        },
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            639,
+            346,
+            244,
+            325
+          ],
+          "offset": [
+            350,
+            243
+          ]
+        },
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            279,
+            1330,
+            217,
+            319
+          ],
+          "offset": [
+            375,
+            249
+          ]
+        },
+        {
+          "texture": "atlas-2.png",
+          "region": [
+            1287,
+            959,
+            256,
+            313
+          ],
+          "offset": [
+            331,
+            255
+          ]
+        },
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            1176,
+            2,
+            255,
+            337
+          ],
+          "offset": [
+            345,
+            231
+          ]
+        },
+        {
+          "texture": "atlas-3.png",
+          "region": [
+            1120,
+            945,
+            213,
+            309
+          ],
+          "offset": [
+            362,
+            259
+          ]
+        },
+        {
+          "texture": "atlas-2.png",
+          "region": [
+            199,
+            641,
+            208,
+            314
+          ],
+          "offset": [
+            361,
+            254
+          ]
+        }
+      ]
+    },
+    "step_punch": {
+      "loop": false,
+      "fps": 12,
+      "phase_breaks": [
+        4,
+        6
+      ],
+      "segment_sync": false,
+      "anchor_mode": "feet",
+      "timeline": [],
+      "frames": [
+        {
+          "texture": "atlas-2.png",
+          "region": [
+            223,
+            1593,
+            205,
+            312
+          ],
+          "offset": [
+            354,
+            256
+          ]
+        },
+        {
+          "texture": "atlas-3.png",
+          "region": [
+            715,
+            631,
+            198,
+            310
+          ],
+          "offset": [
+            361,
+            258
+          ]
+        },
+        {
+          "texture": "atlas-4.png",
+          "region": [
+            1661,
+            1507,
+            251,
+            282
+          ],
+          "offset": [
+            327,
+            287
+          ]
+        },
+        {
+          "texture": "atlas-5.png",
+          "region": [
+            206,
+            2,
+            250,
+            281
+          ],
+          "offset": [
+            324,
+            287
+          ]
+        },
+        {
+          "texture": "atlas-4.png",
+          "region": [
+            932,
+            2,
+            264,
+            302
+          ],
+          "offset": [
+            341,
+            267
+          ]
+        },
+        {
+          "texture": "atlas-4.png",
+          "region": [
+            1200,
+            2,
+            264,
+            302
+          ],
+          "offset": [
+            341,
+            267
+          ]
+        },
+        {
+          "texture": "atlas-3.png",
+          "region": [
+            240,
+            2,
+            239,
+            311
+          ],
+          "offset": [
+            338,
+            258
+          ]
+        },
+        {
+          "texture": "atlas-3.png",
+          "region": [
+            483,
+            2,
+            211,
+            311
+          ],
+          "offset": [
+            362,
+            257
+          ]
+        }
+      ]
+    },
+    "air_kushiki": {
+      "loop": false,
+      "fps": 12,
+      "phase_breaks": [
+        3,
+        5
+      ],
+      "segment_sync": false,
+      "anchor_mode": "pelvis",
+      "timeline": [],
+      "frames": [
+        {
+          "texture": "atlas-5.png",
+          "region": [
+            2,
+            847,
+            169,
+            269
+          ],
+          "offset": [
+            364,
+            228
+          ]
+        },
+        {
+          "texture": "atlas-5.png",
+          "region": [
+            352,
+            847,
+            226,
+            268
+          ],
+          "offset": [
+            338,
+            220
+          ]
+        },
+        {
+          "texture": "atlas-5.png",
+          "region": [
+            1361,
+            1387,
+            173,
+            254
+          ],
+          "offset": [
+            365,
+            237
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            901,
+            254,
+            238,
+            242
+          ],
+          "offset": [
+            347,
+            248
+          ]
+        },
+        {
+          "texture": "atlas-5.png",
+          "region": [
+            1545,
+            1648,
+            271,
+            249
+          ],
+          "offset": [
+            343,
+            247
+          ]
+        },
+        {
+          "texture": "atlas-4.png",
+          "region": [
+            1399,
+            915,
+            182,
+            291
+          ],
+          "offset": [
+            356,
+            213
+          ]
+        },
+        {
+          "texture": "atlas-5.png",
+          "region": [
+            275,
+            1120,
+            173,
+            263
+          ],
+          "offset": [
+            368,
+            238
+          ]
+        },
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            479,
+            346,
+            156,
+            326
+          ],
+          "offset": [
+            374,
+            206
+          ]
+        }
+      ]
+    },
+    "air_land": {
+      "loop": false,
+      "fps": 12,
+      "phase_breaks": [
+        1,
+        2
+      ],
+      "segment_sync": false,
+      "anchor_mode": "feet",
+      "timeline": [],
+      "frames": [
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            265,
+            1223,
+            252,
+            222
+          ],
+          "offset": [
+            354,
+            346
+          ]
+        },
+        {
+          "texture": "atlas-5.png",
+          "region": [
+            582,
+            847,
+            238,
+            268
+          ],
+          "offset": [
+            339,
+            301
+          ]
+        },
+        {
+          "texture": "atlas-5.png",
+          "region": [
+            1538,
+            1387,
+            245,
+            254
+          ],
+          "offset": [
+            353,
+            315
+          ]
+        },
+        {
+          "texture": "atlas-3.png",
+          "region": [
+            1425,
+            1570,
+            209,
+            304
+          ],
+          "offset": [
+            359,
+            264
+          ]
+        }
+      ]
+    },
+    "hiyu_senrin": {
+      "loop": false,
+      "fps": 12,
+      "phase_breaks": [
+        3,
+        7
+      ],
+      "segment_sync": true,
+      "anchor_mode": "pelvis",
+      "timeline": [],
+      "frames": [
+        {
+          "texture": "atlas-5.png",
+          "region": [
+            824,
+            847,
+            187,
+            268
+          ],
+          "offset": [
+            350,
+            233
+          ]
+        },
+        {
+          "texture": "atlas-7.png",
+          "region": [
+            789,
+            205,
+            195,
+            180
+          ],
+          "offset": [
+            367,
+            294
+          ]
+        },
+        {
+          "texture": "atlas-5.png",
+          "region": [
+            1015,
+            847,
+            250,
+            268
+          ],
+          "offset": [
+            299,
+            324
+          ]
+        },
+        {
+          "texture": "atlas-5.png",
+          "region": [
+            1622,
+            1120,
+            242,
+            257
+          ],
+          "offset": [
+            309,
+            273
+          ]
+        },
+        {
+          "texture": "atlas-5.png",
+          "region": [
+            1535,
+            847,
+            209,
+            266
+          ],
+          "offset": [
+            329,
+            252
+          ]
+        },
+        {
+          "texture": "atlas-5.png",
+          "region": [
+            2,
+            1387,
+            254,
+            257
+          ],
+          "offset": [
+            303,
+            254
+          ]
+        },
+        {
+          "texture": "atlas-2.png",
+          "region": [
+            1547,
+            959,
+            289,
+            313
+          ],
+          "offset": [
+            292,
+            204
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            480,
+            2,
+            214,
+            246
+          ],
+          "offset": [
+            320,
+            258
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            2,
+            502,
+            209,
+            240
+          ],
+          "offset": [
+            303,
+            266
+          ]
+        },
+        {
+          "texture": "atlas-3.png",
+          "region": [
+            1258,
+            1258,
+            247,
+            307
+          ],
+          "offset": [
+            320,
+            204
+          ]
+        }
+      ]
+    },
+    "guard_low": {
+      "loop": false,
+      "fps": 12,
+      "phase_breaks": [
+        2,
+        4
+      ],
+      "segment_sync": false,
+      "anchor_mode": "feet",
+      "timeline": [],
+      "frames": [
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            877,
+            502,
+            221,
+            239
+          ],
+          "offset": [
+            338,
+            330
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            215,
+            502,
+            223,
+            240
+          ],
+          "offset": [
+            337,
+            329
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            2,
+            746,
+            221,
+            237
+          ],
+          "offset": [
+            338,
+            331
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            1303,
+            502,
+            221,
+            238
+          ],
+          "offset": [
+            338,
+            330
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            1528,
+            502,
+            220,
+            238
+          ],
+          "offset": [
+            338,
+            330
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            1752,
+            502,
+            220,
+            238
+          ],
+          "offset": [
+            338,
+            330
+          ]
+        }
+      ]
+    },
+    "round_intro": {
+      "loop": false,
+      "fps": 12,
+      "phase_breaks": [
+        6,
+        12
+      ],
+      "segment_sync": false,
+      "anchor_mode": "feet",
+      "timeline": [],
+      "frames": [
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            1723,
+            346,
+            188,
+            324
+          ],
+          "offset": [
+            368,
+            247
+          ]
+        },
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            887,
+            346,
+            188,
+            325
+          ],
+          "offset": [
+            368,
+            246
+          ]
+        },
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            1079,
+            346,
+            188,
+            325
+          ],
+          "offset": [
+            368,
+            246
+          ]
+        },
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            1271,
+            346,
+            189,
+            325
+          ],
+          "offset": [
+            368,
+            246
+          ]
+        },
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            2,
+            678,
+            189,
+            324
+          ],
+          "offset": [
+            368,
+            247
+          ]
+        },
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            195,
+            678,
+            189,
+            324
+          ],
+          "offset": [
+            368,
+            247
+          ]
+        },
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            592,
+            678,
+            188,
+            323
+          ],
+          "offset": [
+            371,
+            249
+          ]
+        },
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            1641,
+            678,
+            188,
+            321
+          ],
+          "offset": [
+            371,
+            251
+          ]
+        },
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            1449,
+            678,
+            188,
+            322
+          ],
+          "offset": [
+            371,
+            250
+          ]
+        },
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            784,
+            678,
+            200,
+            323
+          ],
+          "offset": [
+            371,
+            249
+          ]
+        },
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            988,
+            678,
+            200,
+            323
+          ],
+          "offset": [
+            371,
+            249
+          ]
+        },
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            388,
+            678,
+            200,
+            324
+          ],
+          "offset": [
+            371,
+            248
+          ]
+        },
+        {
+          "texture": "atlas-2.png",
+          "region": [
+            411,
+            641,
+            187,
+            314
+          ],
+          "offset": [
+            371,
+            254
+          ]
+        },
+        {
+          "texture": "atlas-2.png",
+          "region": [
+            602,
+            641,
+            187,
+            314
+          ],
+          "offset": [
+            371,
+            254
+          ]
+        },
+        {
+          "texture": "atlas-2.png",
+          "region": [
+            808,
+            322,
+            187,
+            315
+          ],
+          "offset": [
+            371,
+            253
+          ]
+        },
+        {
+          "texture": "atlas-2.png",
+          "region": [
+            587,
+            2,
+            187,
+            316
+          ],
+          "offset": [
+            371,
+            252
+          ]
+        },
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            1408,
+            1653,
+            187,
+            317
+          ],
+          "offset": [
+            371,
+            251
+          ]
+        },
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            2,
+            1653,
+            187,
+            318
+          ],
+          "offset": [
+            371,
+            250
+          ]
+        }
+      ]
+    },
+    "round_victory": {
+      "loop": false,
+      "fps": 12,
+      "phase_breaks": [
+        6,
+        12
+      ],
+      "segment_sync": false,
+      "anchor_mode": "feet",
+      "timeline": [],
+      "frames": [
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            1007,
+            1006,
+            170,
+            320
+          ],
+          "offset": [
+            379,
+            249
+          ]
+        },
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            181,
+            2,
+            130,
+            340
+          ],
+          "offset": [
+            392,
+            229
+          ]
+        },
+        {
+          "texture": "atlas-0.png",
+          "region": [
+            481,
+            1179,
+            171,
+            346
+          ],
+          "offset": [
+            371,
+            222
+          ]
+        },
+        {
+          "texture": "atlas-0.png",
+          "region": [
+            1112,
+            1179,
+            164,
+            345
+          ],
+          "offset": [
+            381,
+            223
+          ]
+        },
+        {
+          "texture": "atlas-0.png",
+          "region": [
+            298,
+            818,
+            176,
+            357
+          ],
+          "offset": [
+            368,
+            211
+          ]
+        },
+        {
+          "texture": "atlas-0.png",
+          "region": [
+            1585,
+            445,
+            170,
+            358
+          ],
+          "offset": [
+            378,
+            211
+          ]
+        },
+        {
+          "texture": "atlas-0.png",
+          "region": [
+            1024,
+            818,
+            182,
+            349
+          ],
+          "offset": [
+            365,
+            219
+          ]
+        },
+        {
+          "texture": "atlas-0.png",
+          "region": [
+            835,
+            818,
+            185,
+            350
+          ],
+          "offset": [
+            366,
+            219
+          ]
+        },
+        {
+          "texture": "atlas-0.png",
+          "region": [
+            656,
+            1179,
+            180,
+            346
+          ],
+          "offset": [
+            367,
+            223
+          ]
+        },
+        {
+          "texture": "atlas-0.png",
+          "region": [
+            540,
+            1530,
+            176,
+            344
+          ],
+          "offset": [
+            372,
+            224
+          ]
+        },
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            315,
+            2,
+            174,
+            340
+          ],
+          "offset": [
+            370,
+            229
+          ]
+        },
+        {
+          "texture": "atlas-0.png",
+          "region": [
+            1530,
+            1530,
+            179,
+            341
+          ],
+          "offset": [
+            360,
+            227
+          ]
+        },
+        {
+          "texture": "atlas-0.png",
+          "region": [
+            720,
+            1530,
+            177,
+            343
+          ],
+          "offset": [
+            368,
+            225
+          ]
+        },
+        {
+          "texture": "atlas-0.png",
+          "region": [
+            901,
+            1530,
+            182,
+            343
+          ],
+          "offset": [
+            363,
+            225
+          ]
+        },
+        {
+          "texture": "atlas-0.png",
+          "region": [
+            1087,
+            1530,
+            182,
+            343
+          ],
+          "offset": [
+            361,
+            226
+          ]
+        },
+        {
+          "texture": "atlas-1.png",
+          "region": [
+            493,
+            2,
+            179,
+            338
+          ],
+          "offset": [
+            363,
+            230
+          ]
+        },
+        {
+          "texture": "atlas-0.png",
+          "region": [
+            1210,
+            818,
+            174,
+            348
+          ],
+          "offset": [
+            367,
+            220
+          ]
+        },
+        {
+          "texture": "atlas-0.png",
+          "region": [
+            2,
+            1179,
+            183,
+            347
+          ],
+          "offset": [
+            362,
+            222
+          ]
+        }
+      ]
+    },
+    "round_defeat": {
+      "loop": false,
+      "fps": 12,
+      "phase_breaks": [
+        4,
+        8
+      ],
+      "segment_sync": false,
+      "anchor_mode": "feet",
+      "timeline": [],
+      "frames": [
+        {
+          "texture": "atlas-4.png",
+          "region": [
+            663,
+            915,
+            221,
+            293
+          ],
+          "offset": [
+            330,
+            276
+          ]
+        },
+        {
+          "texture": "atlas-5.png",
+          "region": [
+            1087,
+            1387,
+            270,
+            255
+          ],
+          "offset": [
+            286,
+            313
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            227,
+            746,
+            316,
+            237
+          ],
+          "offset": [
+            263,
+            331
+          ]
+        },
+        {
+          "texture": "atlas-7.png",
+          "region": [
+            1030,
+            709,
+            335,
+            110
+          ],
+          "offset": [
+            237,
+            459
+          ]
+        },
+        {
+          "texture": "atlas-7.png",
+          "region": [
+            1235,
+            569,
+            326,
+            130
+          ],
+          "offset": [
+            237,
+            438
+          ]
+        },
+        {
+          "texture": "atlas-7.png",
+          "region": [
+            328,
+            944,
+            334,
+            74
+          ],
+          "offset": [
+            236,
+            494
+          ]
+        },
+        {
+          "texture": "atlas-6.png",
+          "region": [
+            1477,
+            1452,
+            299,
+            211
+          ],
+          "offset": [
+            254,
+            361
+          ]
+        },
+        {
+          "texture": "atlas-7.png",
+          "region": [
+            666,
+            944,
+            314,
+            74
+          ],
+          "offset": [
+            243,
+            497
+          ]
+        },
+        {
+          "texture": "atlas-7.png",
+          "region": [
+            591,
+            569,
+            316,
+            134
+          ],
+          "offset": [
+            231,
+            435
+          ]
+        },
+        {
+          "texture": "atlas-7.png",
+          "region": [
+            1362,
+            839,
+            332,
+            83
+          ],
+          "offset": [
+            231,
+            486
+          ]
+        },
+        {
+          "texture": "atlas-7.png",
+          "region": [
+            1565,
+            569,
+            311,
+            127
+          ],
+          "offset": [
+            235,
+            442
+          ]
+        },
+        {
+          "texture": "atlas-7.png",
+          "region": [
+            1698,
+            839,
+            332,
+            80
+          ],
+          "offset": [
+            230,
+            488
           ]
         }
       ]
@@ -4981,85 +5997,84 @@
       "timeline": [],
       "frames": [
         {
-          "texture": "atlas-5.png",
-          "region": [
-            2,
-            2,
-            366,
-            325
-          ],
-          "offset": [
-            268,
-            244
-          ]
-        },
-        {
-          "texture": "atlas-4.png",
-          "region": [
-            1303,
-            678,
-            366,
-            331
-          ],
-          "offset": [
-            268,
-            238
-          ]
-        },
-        {
           "texture": "atlas-1.png",
           "region": [
-            549,
-            365,
-            366,
-            356
+            193,
+            1653,
+            187,
+            318
           ],
           "offset": [
-            268,
-            213
+            371,
+            250
+          ]
+        },
+        {
+          "texture": "atlas-3.png",
+          "region": [
+            698,
+            2,
+            213,
+            311
+          ],
+          "offset": [
+            351,
+            260
+          ]
+        },
+        {
+          "texture": "atlas-3.png",
+          "region": [
+            915,
+            2,
+            266,
+            311
+          ],
+          "offset": [
+            320,
+            260
           ]
         },
         {
           "texture": "atlas-2.png",
           "region": [
-            1576,
-            708,
-            366,
-            346
+            2,
+            1276,
+            266,
+            313
           ],
           "offset": [
-            268,
-            223
+            320,
+            258
           ]
         },
         {
-          "texture": "atlas-0.png",
+          "texture": "atlas-2.png",
           "region": [
-            2,
-            1120,
-            366,
-            363
+            432,
+            1593,
+            213,
+            312
           ],
           "offset": [
-            268,
-            206
+            351,
+            259
           ]
         },
         {
-          "texture": "atlas-0.png",
+          "texture": "atlas-2.png",
           "region": [
+            778,
             2,
-            382,
-            347,
-            366
+            187,
+            316
           ],
           "offset": [
-            278,
-            203
+            371,
+            252
           ]
         }
       ]
     }
-  },
-  "motion_revision": "motion-fixes-v1"
+  }
 }

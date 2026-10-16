@@ -5,16 +5,16 @@ extends "res://scripts/presentation/vfx/akaza/technique.gd"
 ## along the floor.
 
 ## Foot paths by clip (start, control, end in fighter-local units), fitted to the
-## drawn active frames (roster-v1 art; refit after the v3 redraw): the front kick
+## drawn active frames of the v3 art (tools/build_vfx_fit_sheet.py): the front kick
 ## rises to the chest, 5D's high kick to the head, the crouching kick stays low,
 ## the sweep skims the floor and the air kicks slant forward or stamp down.
 const CURVES := {
-	"body_stand_light": [Vector2(-2, -8), Vector2(22, -58), Vector2(40, -43)],
-	"body_stand_heavy": [Vector2(-6, -10), Vector2(18, -78), Vector2(42, -59)],
-	"body_crouch_light": [Vector2(2, -4), Vector2(24, -28), Vector2(42, -21)],
-	"body_crouch_heavy": [Vector2(-26, -3), Vector2(14, -12), Vector2(48, -5)],
-	"body_air_light": [Vector2(-2, -32), Vector2(20, -62), Vector2(39, -52)],
-	"body_air_heavy": [Vector2(-4, -50), Vector2(40, -46), Vector2(44, -12)],
+	"body_stand_light": [Vector2(-2, -7), Vector2(19, -54), Vector2(37, -48)],
+	"body_stand_heavy": [Vector2(-8, -10), Vector2(12, -68), Vector2(36, -57)],
+	"body_crouch_light": [Vector2(2, -4), Vector2(17, -13), Vector2(28, -8)],
+	"body_crouch_heavy": [Vector2(-24, -3), Vector2(8, -9), Vector2(27, -5)],
+	"body_air_light": [Vector2(-2, -28), Vector2(18, -52), Vector2(35, -44)],
+	"body_air_heavy": [Vector2(-2, -44), Vector2(20, -36), Vector2(28, -16)],
 }
 
 func path(move: Resource) -> Paths.Sweep:

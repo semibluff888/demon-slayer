@@ -1,0 +1,577 @@
+{
+  "character": "akaza",
+  "clip": "round_defeat",
+  "canvas_size": [
+    1024,
+    640
+  ],
+  "feet_anchor": [
+    448,
+    568
+  ],
+  "runtime_head_ruler": 41.45,
+  "parts": [
+    {
+      "id": "akaza-v3-round_defeat-p0",
+      "source": "output/imagegen/akaza-v3/raw/akaza-v3-round_defeat-p0.png",
+      "sha256": "89ce997b9169a26a9195d982c80f6b26d6103801f47301eceb46a2a92e32581b",
+      "ruler": 120.89,
+      "scale": 0.3429,
+      "scale_method": "head-ruler",
+      "resample_vs_idle": 0.866,
+      "palette_shift": {
+        "vest": [
+          3.96,
+          2.22,
+          -0.3
+        ]
+      },
+      "palette_delta_e_before": {
+        "vest": 3.83,
+        "navy": 0.52,
+        "uniform": 0.69,
+        "skin": 0.44,
+        "hair": 2.89
+      },
+      "palette_delta_e_after": {
+        "vest": 1.97,
+        "navy": 0.53,
+        "uniform": 0.69,
+        "skin": 0.44,
+        "hair": 2.89
+      }
+    },
+    {
+      "id": "akaza-v3-round_defeat-p1-r1",
+      "source": "output/imagegen/akaza-v3/raw/akaza-v3-round_defeat-p1-r1.png",
+      "sha256": "6e9571dbaa996ec939154159af36a7f0e293ee3425c4d352785e2415c0c158aa",
+      "ruler": 94.24,
+      "scale": 0.4395,
+      "scale_method": "length-capped",
+      "resample_vs_idle": 1.109,
+      "palette_shift": {
+        "vest": [
+          3.37,
+          -1.28,
+          -0.78
+        ],
+        "navy": [
+          2.62,
+          -2.12,
+          2.93
+        ]
+      },
+      "palette_delta_e_before": {
+        "vest": 3.04,
+        "navy": 4.15,
+        "uniform": 0.37,
+        "skin": 0.42,
+        "hair": 1.24
+      },
+      "palette_delta_e_after": {
+        "vest": 1.58,
+        "navy": 1.08,
+        "uniform": 0.37,
+        "skin": 0.38,
+        "hair": 1.24
+      }
+    },
+    {
+      "id": "akaza-v3-round_defeat-p2-r2",
+      "source": "output/imagegen/akaza-v3/raw/akaza-v3-round_defeat-p2-r2.png",
+      "sha256": "2f09761aa5af090b3a722e61c2fbcf468b1dbed0ced8521c1173c59764417a66",
+      "ruler": 89.58,
+      "scale": 0.4463,
+      "scale_method": "length-capped",
+      "resample_vs_idle": 1.127,
+      "palette_shift": {
+        "navy": [
+          1.3,
+          -1.93,
+          1.62
+        ]
+      },
+      "palette_delta_e_before": {
+        "vest": 1.54,
+        "navy": 2.72,
+        "uniform": 0.33,
+        "skin": 0.76,
+        "hair": 1.11
+      },
+      "palette_delta_e_after": {
+        "vest": 1.53,
+        "navy": 0.63,
+        "uniform": 0.32,
+        "skin": 0.74,
+        "hair": 1.11
+      }
+    },
+    {
+      "id": "akaza-v3-round_defeat-p3",
+      "source": "output/imagegen/akaza-v3/raw/akaza-v3-round_defeat-p3.png",
+      "sha256": "030da80df2a59ae8659c13471b72736e1c9784fc87ac8486dbdbe92779c46b0d",
+      "ruler": 101.53,
+      "scale": 0.4083,
+      "scale_method": "head-ruler",
+      "resample_vs_idle": 1.031,
+      "palette_shift": {
+        "vest": [
+          1.44,
+          -3.26,
+          0.64
+        ],
+        "navy": [
+          0.93,
+          -1.75,
+          2.08
+        ]
+      },
+      "palette_delta_e_before": {
+        "vest": 3.51,
+        "navy": 2.82,
+        "uniform": 0.67,
+        "skin": 1.22,
+        "hair": 1.22
+      },
+      "palette_delta_e_after": {
+        "vest": 0.86,
+        "navy": 0.46,
+        "uniform": 0.66,
+        "skin": 1.2,
+        "hair": 1.22
+      }
+    },
+    {
+      "id": "akaza-v3-round_defeat-p4",
+      "source": "output/imagegen/akaza-v3/raw/akaza-v3-round_defeat-p4.png",
+      "sha256": "f9f84ddc3706fb576890e63070b9c20be2273ae7d11d1a63fd4e4a92bd74eeed",
+      "ruler": 92.87,
+      "scale": 0.4377,
+      "scale_method": "length-capped",
+      "resample_vs_idle": 1.105,
+      "palette_shift": {
+        "vest": [
+          1.01,
+          -7.84,
+          -0.25
+        ],
+        "navy": [
+          1.44,
+          -3.42,
+          5.35
+        ],
+        "uniform": [
+          -2.21,
+          -0.97,
+          -0.28
+        ],
+        "skin": [
+          -1.3,
+          -2.04,
+          -0.18
+        ]
+      },
+      "palette_delta_e_before": {
+        "vest": 7.89,
+        "navy": 6.45,
+        "uniform": 2.01,
+        "skin": 2.29,
+        "hair": 4.64
+      },
+      "palette_delta_e_after": {
+        "vest": 1.49,
+        "navy": 1.36,
+        "uniform": 1.01,
+        "skin": 0.85,
+        "hair": 4.63
+      }
+    },
+    {
+      "id": "akaza-v3-round_defeat-p5",
+      "source": "output/imagegen/akaza-v3/raw/akaza-v3-round_defeat-p5.png",
+      "sha256": "c7528bd12b7981ec4c4df3f7a1866d1f95194da99ebb0f451b0d8c1798cd7b56",
+      "ruler": 69.97,
+      "scale": 0.4323,
+      "scale_method": "length-capped",
+      "resample_vs_idle": 1.091,
+      "palette_shift": {
+        "vest": [
+          1.78,
+          -4.61,
+          -0.22
+        ],
+        "navy": [
+          2.44,
+          -2.42,
+          2.13
+        ],
+        "skin": [
+          4.09,
+          -2.87,
+          -0.38
+        ]
+      },
+      "palette_delta_e_before": {
+        "vest": 4.83,
+        "navy": 3.75,
+        "uniform": 1.37,
+        "skin": 4.32,
+        "hair": 3.01
+      },
+      "palette_delta_e_after": {
+        "vest": 0.87,
+        "navy": 1.23,
+        "uniform": 1.37,
+        "skin": 2.42,
+        "hair": 3.15
+      }
+    }
+  ],
+  "frames": [
+    {
+      "frame": 0,
+      "part": "akaza-v3-round_defeat-p0",
+      "crop": [
+        50,
+        115,
+        694,
+        969
+      ],
+      "head_ruler": 120.89,
+      "head_box": [
+        10,
+        5,
+        184,
+        154
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3429,
+      "flags": [],
+      "notes": [],
+      "root_x": 344.0,
+      "anchor_mode": "feet",
+      "offset": [
+        330,
+        276
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.933
+    },
+    {
+      "frame": 1,
+      "part": "akaza-v3-round_defeat-p0",
+      "crop": [
+        748,
+        104,
+        1536,
+        849
+      ],
+      "head_ruler": null,
+      "head_box": null,
+      "ratio_to_sheet": null,
+      "scale": 0.3429,
+      "flags": [],
+      "notes": [
+        "head not measured (back view, flip or occlusion)"
+      ],
+      "root_x": 471.0,
+      "anchor_mode": "feet",
+      "offset": [
+        286,
+        313
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.815
+    },
+    {
+      "frame": 2,
+      "part": "akaza-v3-round_defeat-p1-r1",
+      "crop": [
+        27,
+        316,
+        745,
+        856
+      ],
+      "head_ruler": 94.24,
+      "head_box": [
+        4,
+        32,
+        142,
+        148
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.4395,
+      "flags": [],
+      "notes": [],
+      "root_x": 421.0,
+      "anchor_mode": "lying",
+      "offset": [
+        263,
+        331
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.712
+    },
+    {
+      "frame": 3,
+      "part": "akaza-v3-round_defeat-p1-r1",
+      "crop": [
+        761,
+        614,
+        1523,
+        864
+      ],
+      "head_ruler": 89.15,
+      "head_box": [
+        11,
+        27,
+        136,
+        135
+      ],
+      "ratio_to_sheet": 0.946,
+      "scale": 0.4395,
+      "flags": [],
+      "notes": [],
+      "root_x": 481.0,
+      "anchor_mode": "lying",
+      "offset": [
+        237,
+        459
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.313
+    },
+    {
+      "frame": 4,
+      "part": "akaza-v3-round_defeat-p2-r2",
+      "crop": [
+        25,
+        529,
+        756,
+        821
+      ],
+      "head_ruler": 89.58,
+      "head_box": [
+        5,
+        25,
+        137,
+        131
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.4463,
+      "flags": [],
+      "notes": [],
+      "root_x": 472.0,
+      "anchor_mode": "lying",
+      "offset": [
+        237,
+        438
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.377
+    },
+    {
+      "frame": 5,
+      "part": "akaza-v3-round_defeat-p2-r2",
+      "crop": [
+        780,
+        695,
+        1528,
+        861
+      ],
+      "head_ruler": 88.11,
+      "head_box": [
+        5,
+        4,
+        127,
+        108
+      ],
+      "ratio_to_sheet": 0.984,
+      "scale": 0.4463,
+      "flags": [],
+      "notes": [],
+      "root_x": 474.0,
+      "anchor_mode": "lying",
+      "offset": [
+        236,
+        494
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.23
+    },
+    {
+      "frame": 6,
+      "part": "akaza-v3-round_defeat-p3",
+      "crop": [
+        24,
+        300,
+        756,
+        816
+      ],
+      "head_ruler": 101.53,
+      "head_box": [
+        5,
+        340,
+        142,
+        467
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.4083,
+      "flags": [],
+      "notes": [],
+      "root_x": 476.0,
+      "anchor_mode": "lying",
+      "offset": [
+        254,
+        361
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.227
+    },
+    {
+      "frame": 7,
+      "part": "akaza-v3-round_defeat-p3",
+      "crop": [
+        757,
+        635,
+        1525,
+        816
+      ],
+      "head_ruler": 98.56,
+      "head_box": [
+        4,
+        6,
+        137,
+        128
+      ],
+      "ratio_to_sheet": 0.971,
+      "scale": 0.4083,
+      "flags": [],
+      "notes": [],
+      "root_x": 502.0,
+      "anchor_mode": "lying",
+      "offset": [
+        243,
+        497
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.224
+    },
+    {
+      "frame": 8,
+      "part": "akaza-v3-round_defeat-p4",
+      "crop": [
+        17,
+        465,
+        738,
+        772
+      ],
+      "head_ruler": 92.87,
+      "head_box": [
+        5,
+        114,
+        139,
+        229
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.4377,
+      "flags": [],
+      "notes": [],
+      "root_x": 495.0,
+      "anchor_mode": "lying",
+      "offset": [
+        231,
+        435
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.268
+    },
+    {
+      "frame": 9,
+      "part": "akaza-v3-round_defeat-p4",
+      "crop": [
+        763,
+        578,
+        1522,
+        767
+      ],
+      "head_ruler": 89.35,
+      "head_box": [
+        7,
+        4,
+        131,
+        120
+      ],
+      "ratio_to_sheet": 0.962,
+      "scale": 0.4377,
+      "flags": [],
+      "notes": [],
+      "root_x": 495.0,
+      "anchor_mode": "lying",
+      "offset": [
+        231,
+        486
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.259
+    },
+    {
+      "frame": 10,
+      "part": "akaza-v3-round_defeat-p5",
+      "crop": [
+        13,
+        479,
+        733,
+        773
+      ],
+      "head_ruler": 69.97,
+      "head_box": [
+        27,
+        116,
+        119,
+        221
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.4323,
+      "flags": [],
+      "notes": [],
+      "root_x": 492.0,
+      "anchor_mode": "lying",
+      "offset": [
+        235,
+        442
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.259
+    },
+    {
+      "frame": 11,
+      "part": "akaza-v3-round_defeat-p5",
+      "crop": [
+        752,
+        597,
+        1521,
+        782
+      ],
+      "head_ruler": 64.87,
+      "head_box": [
+        35,
+        20,
+        131,
+        119
+      ],
+      "ratio_to_sheet": 0.927,
+      "scale": 0.4323,
+      "flags": [],
+      "notes": [],
+      "root_x": 504.0,
+      "anchor_mode": "lying",
+      "offset": [
+        230,
+        488
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.249
+    }
+  ]
+}

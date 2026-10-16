@@ -144,7 +144,12 @@ def main():
     base_meta = {n: (clip_metadata(n, len(available[n]), old_base['clips'], poses), len(available[n])) for n in base_names}
     round_meta = {n: (clip_metadata(n, len(available[n]), old_round['clips'], poses), len(available[n])) for n in ROUND}
     awake_names = base_names + list(ROUND) + ['awakening_start']
-    awake_meta = {n: (clip_metadata(n, len(available[n]), {**old_base['clips'], **old_round['clips'], **old_awake['clips']}, poses), len(available[n]))
+    # The awakened atlas shares every clip's timing with the normal atlases (a clip that
+    # moved to the round atlas, such as Akaza's 18-frame round intro, must not keep the
+    # previous awakened atlas's 12-frame timing); only awakening_start is its own.
+    shared = {**base_meta, **round_meta}
+    awake_meta = {n: shared[n] if n in shared else
+                  (clip_metadata(n, len(available[n]), {**old_base['clips'], **old_round['clips'], **old_awake['clips']}, poses), len(available[n]))
                   for n in awake_names}
     for name, (meta, count) in base_meta.items():
         old = old_base['clips'].get(name)

@@ -1,0 +1,226 @@
+{
+  "character": "akaza",
+  "clip": "intro_keys",
+  "canvas_size": [
+    1024,
+    640
+  ],
+  "feet_anchor": [
+    448,
+    568
+  ],
+  "runtime_head_ruler": 41.45,
+  "parts": [
+    {
+      "id": "akaza-v3-intro_keys-p0",
+      "source": "output/imagegen/akaza-v3/raw/akaza-v3-intro_keys-p0.png",
+      "sha256": "c447b05d540dcd10ca68c6b46a88d518ee1d95311a86675cda8d131e2f931916",
+      "ruler": 104.39,
+      "scale": 0.3971,
+      "scale_method": "registered",
+      "resample_vs_idle": 1.002,
+      "palette_shift": {
+        "vest": [
+          1.14,
+          2.89,
+          -0.09
+        ]
+      },
+      "palette_delta_e_before": {
+        "vest": 3.03,
+        "navy": 1.65,
+        "uniform": 1.16,
+        "skin": 1.47,
+        "hair": 3.91
+      },
+      "palette_delta_e_after": {
+        "vest": 0.8,
+        "navy": 1.64,
+        "uniform": 1.16,
+        "skin": 1.46,
+        "hair": 3.91
+      }
+    },
+    {
+      "id": "akaza-v3-intro_keys-p1",
+      "source": "output/imagegen/akaza-v3/raw/akaza-v3-intro_keys-p1.png",
+      "sha256": "994ddd1f49dfd7a106469db1ecc77fdf1366f2d6103069912dc78101a4857a1f",
+      "ruler": 104.13,
+      "scale": 0.3981,
+      "scale_method": "registered",
+      "resample_vs_idle": 1.005,
+      "palette_shift": {
+        "vest": [
+          0.4,
+          3.6,
+          0.2
+        ],
+        "navy": [
+          -1.18,
+          0.73,
+          -2.76
+        ]
+      },
+      "palette_delta_e_before": {
+        "vest": 3.62,
+        "navy": 3.0,
+        "uniform": 0.95,
+        "skin": 0.9,
+        "hair": 4.27
+      },
+      "palette_delta_e_after": {
+        "vest": 0.5,
+        "navy": 0.61,
+        "uniform": 0.94,
+        "skin": 0.91,
+        "hair": 4.27
+      }
+    }
+  ],
+  "frames": [
+    {
+      "frame": 0,
+      "part": "akaza-v3-intro_keys-p0",
+      "crop": [
+        155,
+        180,
+        619,
+        987
+      ],
+      "head_ruler": 94.36,
+      "head_box": [
+        190,
+        3,
+        318,
+        129
+      ],
+      "ratio_to_sheet": 0.904,
+      "scale": 0.3971,
+      "flags": [],
+      "notes": [],
+      "root_x": 211.0,
+      "anchor_mode": "registered",
+      "offset": [
+        370,
+        249
+      ],
+      "clipped": false,
+      "registration": {
+        "scale": 0.3961,
+        "score": 0.915,
+        "exact": 0.3961
+      },
+      "height_vs_idle": 1.016,
+      "drawing": "output/imagegen/akaza-v3/imports/intro_keys/drawing-00.png",
+      "exact_scale": 0.3961
+    },
+    {
+      "frame": 1,
+      "part": "akaza-v3-intro_keys-p0",
+      "crop": [
+        923,
+        180,
+        1387,
+        987
+      ],
+      "head_ruler": 94.39,
+      "head_box": [
+        190,
+        3,
+        318,
+        130
+      ],
+      "ratio_to_sheet": 0.904,
+      "scale": 0.3971,
+      "flags": [],
+      "notes": [],
+      "root_x": 210.0,
+      "anchor_mode": "registered",
+      "offset": [
+        370,
+        248
+      ],
+      "clipped": false,
+      "registration": {
+        "scale": 0.3981,
+        "score": 0.918,
+        "exact": 0.39808049999999995
+      },
+      "height_vs_idle": 1.019,
+      "drawing": "output/imagegen/akaza-v3/imports/intro_keys/drawing-01.png",
+      "exact_scale": 0.39808049999999995
+    },
+    {
+      "frame": 2,
+      "part": "akaza-v3-intro_keys-p1",
+      "crop": [
+        157,
+        186,
+        617,
+        988
+      ],
+      "head_ruler": 92.71,
+      "head_box": [
+        196,
+        4,
+        325,
+        134
+      ],
+      "ratio_to_sheet": 0.89,
+      "scale": 0.3981,
+      "flags": [],
+      "notes": [],
+      "root_x": 195.0,
+      "anchor_mode": "registered",
+      "offset": [
+        373,
+        251
+      ],
+      "clipped": false,
+      "registration": {
+        "scale": 0.3981,
+        "score": 0.992,
+        "exact": 0.39808049999999995
+      },
+      "height_vs_idle": 1.01,
+      "drawing": "output/imagegen/akaza-v3/imports/intro_keys/drawing-02.png",
+      "exact_scale": 0.39808049999999995
+    },
+    {
+      "frame": 3,
+      "part": "akaza-v3-intro_keys-p1",
+      "crop": [
+        924,
+        185,
+        1415,
+        987
+      ],
+      "head_ruler": 96.88,
+      "head_box": [
+        195,
+        4,
+        322,
+        135
+      ],
+      "ratio_to_sheet": 0.93,
+      "scale": 0.3981,
+      "flags": [],
+      "notes": [],
+      "root_x": 196.0,
+      "anchor_mode": "registered",
+      "offset": [
+        373,
+        251
+      ],
+      "clipped": false,
+      "registration": {
+        "scale": 0.3981,
+        "score": 0.992,
+        "exact": 0.39808049999999995
+      },
+      "height_vs_idle": 1.01,
+      "drawing": "output/imagegen/akaza-v3/imports/intro_keys/drawing-03.png",
+      "exact_scale": 0.39808049999999995
+    }
+  ]
+}

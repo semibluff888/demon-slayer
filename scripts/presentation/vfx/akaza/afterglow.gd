@@ -12,7 +12,7 @@ const RADIUS := 64.0
 const FADE := 30.0
 const LINGER := 0.4
 ## Where the blows land on a whiff, fighter-local (otherwise on the target).
-const STRIKE := Vector2(46.0, -46.0)
+const STRIKE := Vector2(36.0, -46.0)
 
 ## Compasses whose move ended, still fading: {"at", "born", "spin", "awake"}.
 var _fading: Array[Dictionary] = []

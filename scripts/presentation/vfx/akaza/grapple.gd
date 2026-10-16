@@ -3,8 +3,8 @@ extends "res://scripts/presentation/vfx/akaza/technique.gd"
 ## is slammed into the floor a shock bursts with a dome of air, dust and a
 ## crater.
 
-## The grabbing hand on the drawn throw frames (roster-v1 art).
-const HAND := Vector2(36.0, -56.0)
+## The grabbing hand on the drawn throw frames (v3 art).
+const HAND := Vector2(36.0, -52.0)
 const CRATER := 1.2
 
 func draw(canvas: Node2D, layer: int, f: RefCounted, actor: Node2D) -> void:

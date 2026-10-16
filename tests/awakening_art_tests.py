@@ -26,7 +26,7 @@ class AwakeningArtTests(unittest.TestCase):
   revisions={'tanjiro':'awakening-v2','zenitsu':'awakening-v2','nezuko':'awakening-v9'}
   # A character redrawn with tools/art_v3 derives its awakened atlas from the new
   # base art; tests/art_v3_tests.py checks it instead of the v2 jobs and hashes.
-  redrawn={cid for cid in revisions if read(ROOT/'art/characters'/cid/'atlas.json').get('revision')==cid+'-v3'}
+  redrawn={cid for cid in list(revisions)+['akaza'] if read(ROOT/'art/characters'/cid/'atlas.json').get('revision')==cid+'-v3'}
   for cid,revision in revisions.items():
    if cid in redrawn:
     self.assertEqual(read(ROOT/'art/characters'/cid/'awakening/atlas.json')['revision'],cid+'-v3')

@@ -7,14 +7,19 @@ extends "res://scripts/presentation/vfx/akaza/technique.gd"
 ## breaks it: a few slabs of stone tip up, rocks fly, dust rings out and a
 ## shallow crater stays.
 
-## The punching fist (drawn air_type frames, roster-v1 art); combat spawns the
-## shot lower and behind it, at (27, -32).
-const RELEASE := Vector2(43.0, -46.0)
+## The punching fist on the drawn active frames (v3 art: air_type for the ground
+## version, air_kushiki for the air one); combat spawns the shot lower and behind
+## it, at (27, -32).
+const RELEASE := Vector2(37.0, -46.0)
+const AIR_RELEASE := Vector2(35.0, -38.0)
 ## The ground comet is drawn this much above the shot's centre (still inside its
 ## box) so it leaves the fist at chest height.
 const LIFT := -12.0
 ## Seconds a floor crater stays.
 const CRATER := 1.2
+
+func release(move: Resource) -> Vector2:
+	return AIR_RELEASE if move.stance == "air" else RELEASE
 
 func size(move: Resource) -> float:
 	return 16.0 if heavy(move) else 13.0
@@ -26,7 +31,7 @@ func emit(f: RefCounted, actor: Node2D, tick: int) -> void:
 	if tick != move.startup:
 		return
 	var seed: int = f.attack_instance * 191 + f.slot * 7919
-	var at: Vector2 = vfx.world(f, RELEASE)
+	var at: Vector2 = vfx.world(f, release(move))
 	vfx.spark_burst(at, 12, Vector2(float(f.facing), 0.0), 80.0, 200.0, seed, Kit.tone(awake).lerp(Kit.WHITE, 0.4))
 	vfx.flake_burst(at, 4, 40.0, seed + 1, awake, 6.0)
 	vfx.bursts.append({"kind": "ring", "at": at, "age": 0.0, "life": 0.2, "size": 14.0, "squash": 1.6, "facing": float(f.facing), "seed": seed + 2, "awake": awake})
@@ -45,7 +50,7 @@ func draw(canvas: Node2D, layer: int, f: RefCounted, actor: Node2D) -> void:
 	var swirl := 1.0 - clampf((since - 1.0) / 6.0, 0.0, 1.0)
 	if since >= -2.0 and swirl > 0.0:
 		var grow := clampf((since + 2.0) / 3.0, 0.0, 1.0)
-		vfx.vortex(canvas, layer, RELEASE, lerpf(6.0, 13.0, grow), since * 0.8, swirl * grow, awake)
+		vfx.vortex(canvas, layer, release(move), lerpf(6.0, 13.0, grow), since * 0.8, swirl * grow, awake)
 
 func contact(event: Dictionary, move: Resource, attacker: RefCounted, awakened: bool) -> void:
 	vfx.strike(event, attacker, 1.15 if heavy(move) else 1.0, awakened)

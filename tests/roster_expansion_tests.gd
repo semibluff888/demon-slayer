@@ -52,7 +52,10 @@ func _test_catalog() -> void:
 		check(catalog.stages[sid].art_ready == (sid == "infinity_castle"),"only chosen stage loads: "+sid)
 	for cid in ["nezuko","akaza"]:
 		var visual = catalog.characters[cid]
-		check(visual.frames.get_animation_names().size() == 42,"42 independent motion clips: "+cid)
+		# Akaza's v3 redraw adds seven new-move clips (rensho_2, manyo, ryusen, step_punch,
+		# air_kushiki, air_land, hiyu_senrin) to the 42 shared ones.
+		var clips := 49 if cid == "akaza" else 42
+		check(visual.frames.get_animation_names().size() == clips,"%d independent motion clips: %s" % [clips, cid])
 		check(visual.missing_clips().is_empty(),"all authored normal, motion and state clips exist: "+cid)
 		for move in catalog.data.characters[cid].all_moves():
 			check(visual.frames.has_animation(move.clip_id()),"resource points to own frame sequence: "+move.id)

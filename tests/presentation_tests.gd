@@ -185,6 +185,11 @@ func _test_assets() -> void:
 			expected.clear()
 			for clip: String in visual.REQUIRED_CLIPS + visual.required_move_clips:
 				expected[clip] = 6
+			# A landing recovery after an air special is only a few drawings (Akaza's air_land).
+			var definition: Resource = load("res://resources/characters/%s.tres" % character)
+			for move in definition.all_moves():
+				if move.presentation != null and not move.presentation.landing_clip.is_empty():
+					expected[move.presentation.landing_clip] = 3
 		for clip: String in expected:
 			var available: bool = visual.frames != null and visual.frames.has_animation(clip)
 			check(available, "animation exists: " + character + "/" + clip)

@@ -6,15 +6,16 @@ extends "res://scripts/presentation/vfx/akaza/technique.gd"
 ## hammer) leave a white crescent along the swing instead of the cone.
 
 ## Shoulder and fist in fighter-local units, by clip, measured on the drawn
-## active frames (roster-v1 art; refit after the v3 redraw). "swing" (start,
+## active frames of the v3 art (tools/build_vfx_fit_sheet.py). "swing" (start,
 ## control, end) marks a swinging punch.
 const POSES := {
-	"stand_light": {"shoulder": Vector2(10, -58), "fist": Vector2(43, -56)},
-	"stand_heavy": {"shoulder": Vector2(8, -57), "fist": Vector2(43, -53)},
-	"crouch_light": {"shoulder": Vector2(6, -42), "fist": Vector2(34, -39)},
-	"crouch_heavy": {"shoulder": Vector2(8, -42), "fist": Vector2(25, -62), "swing": [Vector2(30, -18), Vector2(40, -48), Vector2(22, -68)]},
-	"air_light": {"shoulder": Vector2(12, -62), "fist": Vector2(49, -61)},
-	"air_heavy": {"shoulder": Vector2(8, -46), "fist": Vector2(41, -11), "swing": [Vector2(22, -58), Vector2(48, -42), Vector2(42, -8)]},
+	"stand_light": {"shoulder": Vector2(6, -53), "fist": Vector2(34, -50)},
+	"rensho_2": {"shoulder": Vector2(6, -51), "fist": Vector2(33, -49)},
+	"stand_heavy": {"shoulder": Vector2(2, -49), "fist": Vector2(33, -46)},
+	"crouch_light": {"shoulder": Vector2(2, -40), "fist": Vector2(27, -36)},
+	"crouch_heavy": {"shoulder": Vector2(8, -48), "fist": Vector2(18, -73), "swing": [Vector2(22, -14), Vector2(26, -50), Vector2(18, -75)]},
+	"air_light": {"shoulder": Vector2(8, -49), "fist": Vector2(34, -46)},
+	"air_heavy": {"shoulder": Vector2(7, -47), "fist": Vector2(32, -26), "swing": [Vector2(6, -75), Vector2(34, -58), Vector2(32, -25)]},
 }
 
 func pose(move: Resource) -> Dictionary:

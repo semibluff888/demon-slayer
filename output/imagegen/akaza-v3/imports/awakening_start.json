@@ -1,0 +1,67 @@
+{
+  "character": "akaza",
+  "clip": "awakening_start",
+  "canvas_size": [
+    1024,
+    640
+  ],
+  "feet_anchor": [
+    448,
+    568
+  ],
+  "source": "output/imagegen/akaza-v3/references/approved-idle-key-v2.png",
+  "keys": [
+    "output/imagegen/akaza-v3/imports/awaken_keys.json"
+  ],
+  "spec": "tools/art_v3/spec/akaza-awakening-rig.json",
+  "frames": [
+    {
+      "frame": 0,
+      "source": "output/imagegen/akaza-v3/references/approved-idle-key-v2.png",
+      "weights": {},
+      "flags": []
+    },
+    {
+      "frame": 1,
+      "source": "output/imagegen/akaza-v3/imports/awaken_keys/drawing-00.png",
+      "weights": {
+        "key": 0
+      },
+      "flags": []
+    },
+    {
+      "frame": 2,
+      "source": "output/imagegen/akaza-v3/imports/awaken_keys/drawing-01.png",
+      "weights": {
+        "key": 1
+      },
+      "flags": []
+    },
+    {
+      "frame": 3,
+      "source": "output/imagegen/akaza-v3/imports/awaken_keys/drawing-01.png",
+      "weights": {
+        "key": 1,
+        "breath": 1.0
+      },
+      "flags": []
+    },
+    {
+      "frame": 4,
+      "source": "output/imagegen/akaza-v3/imports/awaken_keys/drawing-00.png",
+      "weights": {
+        "key": 0,
+        "breath": 0.5
+      },
+      "flags": []
+    },
+    {
+      "frame": 5,
+      "source": "output/imagegen/akaza-v3/references/approved-idle-key-v2.png",
+      "weights": {
+        "drop": 0.4
+      },
+      "flags": []
+    }
+  ]
+}

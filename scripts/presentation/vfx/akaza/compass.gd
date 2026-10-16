@@ -17,6 +17,10 @@ const RADIUS := 46.0
 const FADE := 0.35
 ## How long a hit makes the compass flare (seconds).
 const PULSE := 0.25
+## The awakened compass glows a saturated blue-violet over lines painted in a deep
+## violet ink (the additive glow alone read as a pale lilac on the dark floor).
+const GLOW := Color(0.43, 0.33, 0.93)
+const INK := Color(0.2, 0.09, 0.55, 0.8)
 
 ## Awakened Akaza fighters by slot: {"age": frames since the awakening began}.
 var _awake: Dictionary = {}
@@ -89,12 +93,13 @@ func draw_all(canvas: Node2D, layer: int, fighters: Array, actors: Array) -> voi
 		var height: float = Arena.FLOOR_Y - f.y
 		var lift := 1.0 - clampf(height / 160.0, 0.0, 0.6)
 		var casting: bool = age < CAST
-		var color := Kit.RED.lerp(Kit.VIOLET, smoothstep(REVEAL, TURN, age)) if casting else Kit.VIOLET
+		var color := Kit.RED.lerp(GLOW, smoothstep(REVEAL, TURN, age)) if casting else GLOW
 		var radius := lerpf(26.0, 58.0, smoothstep(0.0, REVEAL + 2.0, age)) if age < TURN else lerpf(58.0, RADIUS, smoothstep(TURN, float(CAST), age))
 		var flare := 1.0 - clampf((vfx.time - float(_pulse.get(f.slot, -10.0))) / PULSE, 0.0, 1.0)
 		var alpha := 1.0 if casting else 0.45 + 0.5 * flare
 		vfx.set_base(canvas, vfx.world_transform(Vector2(f.x, Arena.FLOOR_Y)))
-		vfx.compass_shape(canvas, layer, Vector2.ZERO, radius, clampf(age / REVEAL, 0.0, 1.0), spin(), color, alpha * lift)
+		var ink := Color(INK, INK.a * smoothstep(REVEAL, TURN, age))
+		vfx.compass_shape(canvas, layer, Vector2.ZERO, radius, clampf(age / REVEAL, 0.0, 1.0), spin(), color, alpha * lift, ink)
 		if casting and layer == Kit.LIGHT and age > REVEAL:
 			# Shafts of light rising from the rim as the compass turns.
 			var k := smoothstep(REVEAL, TURN, age) * (1.0 - smoothstep(TURN + 4.0, float(CAST), age))
@@ -117,7 +122,7 @@ func draw_all(canvas: Node2D, layer: int, fighters: Array, actors: Array) -> voi
 	for held: Dictionary in _fading:
 		var k := clampf((vfx.time - float(held.born)) / FADE, 0.0, 1.0)
 		vfx.set_base(canvas, vfx.world_transform(Vector2(float(held.x), Arena.FLOOR_Y)))
-		vfx.compass_shape(canvas, layer, Vector2.ZERO, RADIUS, 1.0, float(held.spin), Kit.VIOLET, 0.45 * (1.0 - k))
+		vfx.compass_shape(canvas, layer, Vector2.ZERO, RADIUS, 1.0, float(held.spin), GLOW, 0.45 * (1.0 - k), Color(INK, INK.a * (1.0 - k)))
 
 ## Whether the compass is shown for `slot` (tests).
 func showing(slot: int) -> bool:

@@ -64,7 +64,7 @@
     "proportions": "measured on input image 1: hair top to chin 132 px, chin to the top of the sash 194 px, the sash to the soles 466 px (1 : 1.5 : 3.5 head lengths). He is a tall adult with a SMALL head on broad shoulders, a long torso and long legs; draw every frame with exactly these proportions, the head exactly as small as in input image 1, never a larger head or a shorter torso or legs."
   },
   "anatomy": {
-    "note": "Provisional, measured on the roster-v1 model sheet: re-check on the approved key at checkpoint 2. Inclusive OpenCV HSV boxes. His pink hair shares its hue with the magenta vest, so hair_cut keeps only pink beyond the chin (as Zenitsu's gold). His chest and abs are bare skin, so the face blob may join the neck and chest across gaps in the tattoo lines; the head ruler must be checked on the key. uniform = the white trousers (the largest costume mass, at the hips).",
+    "note": "Provisional, measured on the roster-v1 model sheet: re-check on the approved key at checkpoint 2. Inclusive OpenCV HSV boxes. His pink hair shares its hue with the magenta vest, so hair_cut keeps only pink beyond the chin (as Zenitsu's gold). His chest and abs are bare skin, so the face blob may join the neck and chest across gaps in the tattoo lines; the head ruler must be checked on the key. uniform = the white trousers (the largest costume mass, at the hips). hair_lit: the lit hair reaches V 235+ on about half its pixels (key 50%, production 54-58%); the vest tops out near V 205 on the key but some production sheets light it to V 215-223, so the threshold is 235 (215 took a lit vest for the head).",
     "hair": {
       "h": [
         160,
@@ -112,7 +112,7 @@
       "link": 2
     },
     "hair_lit": {
-      "v": 215,
+      "v": 235,
       "share": 0.25
     }
   },
@@ -184,10 +184,10 @@
     "rim_alpha": 0.4
   },
   "qa": {
-    "note": "idle_vs_upright measured on the approved key (candidate 3, the brawler stance): 796 / 899.",
+    "note": "idle_vs_upright measured on the approved key (candidate 3, the brawler stance): 796 / 899. upright: standing frames (\"upright_frames\") vs the idle, centred on 1 / 0.886 = 1.13. stance: clips that keep the guard (walk), 0.95-1.2 of the idle. head_outlier_limit: an upright sheet whose head scale is this far off the clip median takes the median (round_victory's last sheet turns the face up and away; height-matching it to a bowed-head frame made it 12 percent larger).",
     "upright": [
-      0.95,
-      1.15
+      1.04,
+      1.22
     ],
     "stance": [
       0.95,
@@ -198,7 +198,25 @@
       "walk",
       "air_type"
     ],
-    "idle_vs_upright": 0.886
+    "idle_vs_upright": 0.886,
+    "head_outlier_limit": 0.3,
+    "guard_anchor": {
+      "note": "Checkpoint 4 review: the head ruler follows the head the model drew, and its size against the body changes from sheet to sheet (5B came out 14-22 percent larger, the Crown-Splitter landing 12 percent smaller, the super endings 5 percent larger), so moves popped in and out of the idle. process.guard_anchor scales sheets with a guard frame (frames naming the approved guard; all frames of a stance clip) so those frames match the idle in the geometric mean of height and silhouette area (sqrt of its pixels); other sheets take the clip median and keep their median area inside \"area\" (upright sheets pulled to the nearest edge unless the torso, head centre to the sash band, clearly disagrees; flips and jumps only made smaller; lying sheets untouched). Second review: Manyo, jC, the 236 and the landings still read larger at 1.05-1.2 of the idle area, hence the narrower band.",
+      "phrases": [
+        "approved brawler guard of input image 1",
+        "almost identical to input image 1"
+      ],
+      "belt": "navy",
+      "area": [
+        0.97,
+        1.02
+      ],
+      "torso": [
+        0.96,
+        1.04
+      ],
+      "area_peak": 1.05
+    }
   },
   "portrait_note": "Face, eyes, pink hair and the navy face tattoos"
 }

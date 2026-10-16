@@ -1,0 +1,33 @@
+{
+  "note": "Checkpoint 4 review: the crouch's frames 2-4 were three different squats from two sheets (one leaning further forward, one deeper), so the body swayed left and right by up to 60 px while he went down. Frames 2-5 are now the held crouch drawing (frame 5, the same drawing as references/crouch-key.png) deformed with the feet pinned: frame 2 a little higher (the knees still straightening), frame 3 sinking just below the hold, frame 4 settling, frame 5 the drawing itself. Points are in that drawing's pixels (726 x 783; references/crouch-key.png is the same drawing cropped 1 px tighter).",
+  "size": [726, 783],
+  "grid": 6,
+  "alpha": 1.4,
+  "margin": 48,
+  "points": {
+    "toe_back": [30, 765], "heel_back": [95, 745], "ankle_back": [85, 685],
+    "toe_front": [700, 752], "heel_front": [585, 745], "ankle_front": [610, 685],
+    "shin_back": [80, 600], "shin_front": [625, 610],
+    "knee_back": [60, 470], "knee_front": [655, 520],
+    "thigh_back": [170, 430], "thigh_front": [540, 450],
+    "pelvis": [330, 440], "sash_knot": [355, 425], "sash_end": [385, 630], "sash_tail": [330, 590],
+    "waist": [300, 370], "chest": [380, 250], "collar": [430, 170],
+    "shoulder_back": [260, 180], "shoulder_front": [545, 225],
+    "elbow_back": [225, 320], "elbow_front": [595, 385],
+    "hand_back": [450, 275], "hand_front": [630, 245],
+    "chin": [500, 160], "head": [480, 110], "crown": [490, 30], "hair_back": [420, 60], "hair_front": [560, 55]
+  },
+  "poses": {
+    "rise": {
+      "shin_back": [0, -6], "shin_front": [0, -6],
+      "knee_back": [8, -18], "knee_front": [-8, -18],
+      "thigh_back": [4, -30], "thigh_front": [-4, -30],
+      "pelvis": [0, -36], "sash_knot": [0, -38], "sash_end": [0, -30], "sash_tail": [0, -30],
+      "waist": [0, -40], "chest": [0, -40], "collar": [0, -40],
+      "shoulder_back": [0, -40], "shoulder_front": [0, -40],
+      "elbow_back": [0, -40], "elbow_front": [0, -40],
+      "hand_back": [0, -40], "hand_front": [0, -40],
+      "chin": [0, -40], "head": [0, -40], "crown": [0, -40], "hair_back": [0, -40], "hair_front": [0, -40]
+    }
+  }
+}

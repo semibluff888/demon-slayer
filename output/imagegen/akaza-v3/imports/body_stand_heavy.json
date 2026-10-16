@@ -1,0 +1,291 @@
+{
+  "character": "akaza",
+  "clip": "body_stand_heavy",
+  "canvas_size": [
+    1024,
+    640
+  ],
+  "feet_anchor": [
+    448,
+    568
+  ],
+  "runtime_head_ruler": 41.45,
+  "parts": [
+    {
+      "id": "akaza-v3-body_stand_heavy-p0-r1",
+      "source": "output/imagegen/akaza-v3/raw/akaza-v3-body_stand_heavy-p0-r1.png",
+      "sha256": "46b250450653316d5975ad152fed2964db4b9addc1cc55886d478537f004b838",
+      "ruler": 125.28,
+      "scale": 0.3171,
+      "scale_method": "head-ruler, guard frames x0.958",
+      "resample_vs_idle": 0.801,
+      "palette_shift": {
+        "vest": [
+          1.58,
+          -1.28,
+          -1.74
+        ]
+      },
+      "palette_delta_e_before": {
+        "vest": 2.49,
+        "navy": 0.88,
+        "uniform": 0.91,
+        "skin": 0.28,
+        "hair": 1.69
+      },
+      "palette_delta_e_after": {
+        "vest": 0.6,
+        "navy": 0.88,
+        "uniform": 0.91,
+        "skin": 0.28,
+        "hair": 1.69
+      }
+    },
+    {
+      "id": "akaza-v3-body_stand_heavy-p1-r2",
+      "source": "output/imagegen/akaza-v3/raw/akaza-v3-body_stand_heavy-p1-r2.png",
+      "sha256": "9ce84ce165801c2628f87e1dd5039b5ec3e57e8d27e2cac611c5fad2cad31c10",
+      "ruler": 105.6,
+      "scale": 0.3765,
+      "scale_method": "head-ruler, clip guard + area 1.02 > 1.02 x0.959",
+      "resample_vs_idle": 0.95,
+      "palette_shift": {
+        "vest": [
+          2.95,
+          -5.47,
+          -0.58
+        ],
+        "navy": [
+          2.37,
+          -1.49,
+          2.54
+        ],
+        "skin": [
+          0.17,
+          -2.08,
+          0.01
+        ]
+      },
+      "palette_delta_e_before": {
+        "vest": 5.97,
+        "navy": 3.48,
+        "uniform": 0.37,
+        "skin": 2.08,
+        "hair": 2.93
+      },
+      "palette_delta_e_after": {
+        "vest": 1.4,
+        "navy": 1.15,
+        "uniform": 0.41,
+        "skin": 0.73,
+        "hair": 3.23
+      }
+    },
+    {
+      "id": "akaza-v3-body_stand_heavy-p2-r1",
+      "source": "output/imagegen/akaza-v3/raw/akaza-v3-body_stand_heavy-p2-r1.png",
+      "sha256": "99c4624d04e7400f27c732d17dc9d0f772421ac607e93a7b70066d3c4bd4f6fe",
+      "ruler": 117.1,
+      "scale": 0.3428,
+      "scale_method": "head-ruler, guard frames x0.968",
+      "resample_vs_idle": 0.865,
+      "palette_shift": {
+        "vest": [
+          2.07,
+          -1.1,
+          -1.03
+        ]
+      },
+      "palette_delta_e_before": {
+        "vest": 2.22,
+        "navy": 1.4,
+        "uniform": 0.81,
+        "skin": 1.01,
+        "hair": 2.79
+      },
+      "palette_delta_e_after": {
+        "vest": 0.85,
+        "navy": 1.4,
+        "uniform": 0.81,
+        "skin": 1.01,
+        "hair": 2.79
+      }
+    }
+  ],
+  "frames": [
+    {
+      "frame": 0,
+      "part": "akaza-v3-body_stand_heavy-p0-r1",
+      "crop": [
+        66,
+        25,
+        714,
+        1003
+      ],
+      "head_ruler": 125.28,
+      "head_box": [
+        276,
+        4,
+        447,
+        169
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3171,
+      "flags": [],
+      "notes": [],
+      "root_x": 270.0,
+      "anchor_mode": "feet",
+      "offset": [
+        362,
+        258
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.981
+    },
+    {
+      "frame": 1,
+      "part": "akaza-v3-body_stand_heavy-p0-r1",
+      "crop": [
+        831,
+        15,
+        1405,
+        988
+      ],
+      "head_ruler": 121.54,
+      "head_box": [
+        178,
+        4,
+        345,
+        164
+      ],
+      "ratio_to_sheet": 0.97,
+      "scale": 0.3171,
+      "flags": [],
+      "notes": [],
+      "root_x": 318.0,
+      "anchor_mode": "feet",
+      "offset": [
+        347,
+        260
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.981
+    },
+    {
+      "frame": 2,
+      "part": "akaza-v3-body_stand_heavy-p1-r2",
+      "crop": [
+        24,
+        59,
+        788,
+        977
+      ],
+      "head_ruler": 99.97,
+      "head_box": [
+        161,
+        4,
+        309,
+        138
+      ],
+      "ratio_to_sheet": 0.947,
+      "scale": 0.3765,
+      "flags": [],
+      "notes": [],
+      "root_x": 305.0,
+      "anchor_mode": "feet",
+      "offset": [
+        333,
+        223
+      ],
+      "clipped": false,
+      "height_vs_idle": 1.099
+    },
+    {
+      "frame": 3,
+      "part": "akaza-v3-body_stand_heavy-p1-r2",
+      "crop": [
+        791,
+        55,
+        1523,
+        977
+      ],
+      "head_ruler": 105.6,
+      "head_box": [
+        120,
+        5,
+        269,
+        148
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3765,
+      "flags": [],
+      "notes": [],
+      "root_x": 265.0,
+      "anchor_mode": "feet",
+      "offset": [
+        348,
+        221
+      ],
+      "clipped": false,
+      "height_vs_idle": 1.099
+    },
+    {
+      "frame": 4,
+      "part": "akaza-v3-body_stand_heavy-p2-r1",
+      "crop": [
+        136,
+        38,
+        703,
+        957
+      ],
+      "head_ruler": 116.2,
+      "head_box": [
+        196,
+        5,
+        355,
+        154
+      ],
+      "ratio_to_sheet": 0.992,
+      "scale": 0.3428,
+      "flags": [],
+      "notes": [],
+      "root_x": 318.0,
+      "anchor_mode": "feet",
+      "offset": [
+        339,
+        253
+      ],
+      "clipped": false,
+      "height_vs_idle": 1.0
+    },
+    {
+      "frame": 5,
+      "part": "akaza-v3-body_stand_heavy-p2-r1",
+      "crop": [
+        882,
+        39,
+        1472,
+        967
+      ],
+      "head_ruler": 117.1,
+      "head_box": [
+        247,
+        4,
+        405,
+        155
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3428,
+      "flags": [],
+      "notes": [],
+      "root_x": 245.0,
+      "anchor_mode": "feet",
+      "offset": [
+        364,
+        250
+      ],
+      "clipped": false,
+      "height_vs_idle": 1.01
+    }
+  ]
+}

@@ -7,6 +7,8 @@ from PIL import Image
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'output/imagegen/roster-v1'
 def read(p):return json.loads(p.read_text(encoding='utf-8-sig'))
+# A character redrawn with tools/art_v3 no longer ships these roster-v1 drawings; tests/art_v3_tests.py checks it.
+REDRAWN={cid for cid in ['akaza'] if read(ROOT/'art/characters'/cid/'atlas.json').get('revision')==cid+'-v3'}
 class ExpansionArtTests(unittest.TestCase):
  def test_sources_and_calibration_are_reproducible(self):
   for job in read(OUT/'jobs.json'):
@@ -24,7 +26,7 @@ class ExpansionArtTests(unittest.TestCase):
      self.assertTrue(all(f['scale']>0 and len(f['root'])==2 for f in calibration['frames']))
  def test_each_registered_animation_has_unique_clean_frames(self):
   jobs=[j for j in read(OUT/'jobs.json') if j['group']=='animation']
-  for cid in sorted({j['metadata']['character'] for j in jobs}):
+  for cid in sorted({j['metadata']['character'] for j in jobs}-REDRAWN):
    folder=ROOT/'art/characters'/cid;atlas=read(folder/'atlas.json');pages={}
    authored={j['metadata']['clip']:j for j in jobs if j['metadata']['character']==cid}
    self.assertEqual(set(atlas['clips']),set(authored))
@@ -68,7 +70,7 @@ class ExpansionArtTests(unittest.TestCase):
    selected=max(candidates,key=lambda k:stats[k,4]) if cid=='akaza' else min(candidates,key=lambda k:stats[k,1])
    ys,xs=np.where(labels==selected)
    return max(cv2.minAreaRect(np.column_stack((xs,ys)).astype(np.float32))[1])
-  for cid in ['akaza','nezuko']:
+  for cid in [c for c in ['akaza','nezuko'] if c not in REDRAWN]:
    folder=ROOT/'art/characters'/cid;atlas=read(folder/'atlas.json');pages={}
    def pose(clip,index):
     frame=atlas['clips'][clip]['frames'][index];name=frame['texture']

@@ -1,5 +1,5 @@
 {
-  "note": "Per-frame pose scripts for Akaza's v3 redraw (same conventions as tools/art_v3/poses/tanjiro.json). Frame counts, phase breaks and timing semantics match the shipped atlas. He fights bare-handed in a brawler guard (input image 1: both navy hands raised in front of his chest as half-closed claws, elbows out, torso leaning slightly forward, a confident grin); the edit defaults change only his arms and hands (spec prompt.edit_keep / edit_change). Every clip uses wide 768x1024 columns: the wide guard and his straight punches do not fit a 512 column. The idle is warped from the approved key (spec/akaza-idle-rig.json). \"stance\": clips that keep the guard's height (QA band vs the idle); attacks are not banded, a lunge is meant to be lower.",
+  "note": "Per-frame pose scripts for Akaza's v3 redraw (same conventions as tools/art_v3/poses/tanjiro.json). Frame counts, phase breaks and timing semantics match the shipped atlas; new clips (rensho_2, manyo, ryusen, step_punch, air_kushiki, air_land, hiyu_senrin) carry theirs in \"new\". He fights bare-handed in a brawler guard (input image 1: both navy hands raised in front of his chest as half-closed claws, elbows out, torso leaning slightly forward, a confident grin); the edit defaults change only his arms and hands (spec prompt.edit_keep / edit_change). Every clip uses wide 768x1024 columns: the wide guard and his straight punches do not fit a 512 column. The idle is warped from the approved key (spec/akaza-idle-rig.json); round_intro and awakening_start are assembled by intro_warp.py from helper key edits (intro_keys, awaken_keys). guard_low is an edit of the crouch's last drawing (references/crouch-key.png), registered on crouch frame 5. \"stance\": clips that keep the guard's height (QA band vs the idle); attacks are not banded, a lunge is meant to be lower; \"upright_frames\" stand fully upright.",
   "clips": {
     "walk": {
       "layout": "wide",
@@ -41,6 +41,1036 @@
         "Recovery: both hands coming back up toward the guard, the front foot drawing back to the stance width of input image 1.",
         "Return: back in the approved brawler guard, both hands as claws before his chest, almost identical to input image 1."
       ]
+    },
+    "walk_back": {
+      "layout": "wide",
+      "intro": "In-place BACKWARD walk cycle in his brawler guard: he still faces RIGHT toward the opponent but steps back toward the LEFT, knees slightly bent, both navy hands raised before his chest as claws, a confident grin. Cautious, heavy steps; the head stays within about 5 percent of input image 1 and the guard stays steady; the pelvis stays at the same X in every frame. A seamless loop.",
+      "frames": [
+        "The rear (left) foot reaches back to the LEFT, its toes touching the ground first; the front foot stays planted; guard held.",
+        "Weight moves back onto the rear foot, both knees bend a little more.",
+        "The front foot slides back under the pelvis, close to the ground.",
+        "The front foot has become the rear foot, reaching back to the LEFT on its toes (the legs swapped compared with frame 1).",
+        "Weight moves back onto it, knees bend a little more.",
+        "The other foot slides back under the pelvis; flows directly into frame 1."
+      ],
+      "loop": true,
+      "stance": true
+    },
+    "crouch": {
+      "layout": "wide",
+      "intro": "Crouching from the brawler guard: he squats low on wide, deeply bent knees, both navy hands kept up as claws in front of his chest and chin.",
+      "frames": [
+        "Start: the approved brawler guard of input image 1 (both navy hands raised in front of his chest as half-closed claws, elbows out, torso leaning slightly forward, a confident grin).",
+        "The knees begin to bend, hips lowering, the guard held.",
+        "Halfway down: knees bent wide, torso leaning forward a little more.",
+        "Crouched: a low wide squat, knees spread outward, heels on the ground, torso leaning forward, both claws raised before his chest and chin.",
+        "Crouched and settled, the same low squat, a slight breath out.",
+        "Crouched hold: the same low wide squat as frame 4, guard up, a confident grin (this drawing is held while he stays down)."
+      ],
+      "settle": {
+        "from": 5,
+        "rig": "tools/art_v3/spec/akaza-crouch-settle.json",
+        "frames": {
+          "2": {
+            "rise": 1.0
+          },
+          "3": {
+            "rise": -0.15
+          },
+          "4": {
+            "rise": 0.04
+          },
+          "5": {}
+        }
+      }
+    },
+    "jump": {
+      "layout": "wide",
+      "intro": "Neutral jump pieces (each frame is a separate state used at a different moment of the jump): crouch to spring, rising, apex, falling, landing and recovered. Bare navy hands in his brawler guard; facing RIGHT.",
+      "frames": [
+        "Spring: a deep crouch about to jump, knees fully bent, arms swung down and back, eyes up.",
+        "Rising: body stretched upward in the air, legs extended below him and toes pointed, both arms swinging up, rising fast.",
+        "Apex: airborne, knees tucked up, both hands in his brawler guard before his chest, the body compact at the top of the jump.",
+        "Falling: legs starting to extend down toward the ground, both hands in his brawler guard, ready to strike.",
+        "Landing: touching down in a deep crouch, knees bent to absorb the fall, hands low in front of him.",
+        "Return: back in the approved brawler guard, both hands as claws before his chest, almost identical to input image 1."
+      ]
+    },
+    "dash_forward": {
+      "layout": "wide",
+      "intro": "Forward dash: an explosive low run toward the opponent (to the RIGHT), torso leaning far forward, both navy hands forward as claws, a fierce grin.",
+      "frames": [
+        "Push-off: the rear leg driving off the ground, body leaning far forward, low.",
+        "Running stride: the front leg reaching far forward, body low and leaning hard, arms pumping.",
+        "Running stride: the legs switched, still low and leaning far forward.",
+        "Last stride: the front foot planting far ahead, body still leaning forward.",
+        "Braking: feet planted wide, the body coming upright, hands rising into the guard.",
+        "Return: back in the approved brawler guard, both hands as claws before his chest, almost identical to input image 1."
+      ]
+    },
+    "dash_back": {
+      "layout": "wide",
+      "intro": "Back dash: a quick hop backward away from the opponent (to the LEFT), still facing RIGHT, both hands kept up in the guard.",
+      "frames": [
+        "Push: knees bend, weight on the front foot, about to spring backward.",
+        "Hop: both feet off the ground, the body moving back to the LEFT, torso upright, guard up.",
+        "Airborne backward: knees tucked, feet just above the ground, leaning back a little.",
+        "Landing: the rear foot touching down first behind him, knees bending deep.",
+        "Absorbing: low on bent knees, hands rising.",
+        "Return: back in the approved brawler guard, both hands as claws before his chest, almost identical to input image 1."
+      ]
+    },
+    "jump_forward": {
+      "layout": "wide",
+      "intro": "Forward somersault jump: a full forward flip in the air, moving to the RIGHT, the body rotating CLOCKWISE (head leading forward and down), arms tucked; bare navy hands.",
+      "frames": [
+        "Crouched to spring forward, arms swung back.",
+        "Springing up and forward, body stretched diagonally, arms reaching forward.",
+        "Tucking into the flip, knees pulled up, head dipping forward.",
+        "Tucked ball rotated a quarter turn forward: head pointing forward and down to the RIGHT, back on top.",
+        "Upside down in a tight tuck: head at the bottom, feet at the top.",
+        "Three-quarter turn: head pointing back and down to the LEFT, knees in front.",
+        "Coming round: tucked, nearly upright again, head on top.",
+        "Upright in the air, knees tucked high, hands in guard.",
+        "Legs extending down, falling upright.",
+        "Falling upright, legs reaching for the ground, guard up.",
+        "Landing in a crouch, knees bent.",
+        "Return: back in the approved brawler guard, both hands as claws before his chest, almost identical to input image 1."
+      ],
+      "anchor": "pelvis"
+    },
+    "jump_back": {
+      "layout": "wide",
+      "intro": "Backward somersault jump: a full backward flip in the air, moving to the LEFT while still facing RIGHT, the body rotating COUNTER-CLOCKWISE (head going back and down to the LEFT); bare navy hands.",
+      "frames": [
+        "Crouched to spring backward, arms swung forward.",
+        "Springing up and back, body arching backward, arms thrown up and back.",
+        "Arched back in the air, head tipping back to the LEFT, knees starting to tuck.",
+        "Tucked ball rotated a quarter turn backward: head pointing back and down to the LEFT.",
+        "Upside down in a tight tuck: head at the bottom, feet at the top.",
+        "Three-quarter turn: head pointing forward and down to the RIGHT.",
+        "Coming round: tucked, nearly upright again, head on top.",
+        "Upright in the air, knees tucked high, hands in guard.",
+        "Legs extending down, falling upright.",
+        "Falling upright, legs reaching for the ground, guard up.",
+        "Landing in a crouch, knees bent.",
+        "Return: back in the approved brawler guard, both hands as claws before his chest, almost identical to input image 1."
+      ],
+      "anchor": "pelvis"
+    },
+    "roll_forward": {
+      "layout": "wide",
+      "intro": "Evasive roll forward along the ground (to the RIGHT): he dives low into a shoulder roll and comes back up in his guard; bare navy hands.",
+      "frames": [
+        "Start: the approved brawler guard of input image 1 (both navy hands raised in front of his chest as half-closed claws, elbows out, torso leaning slightly forward, a confident grin).",
+        "Ducking forward, body lowering, one hand reaching toward the floor ahead.",
+        "Diving forward: both hands on the floor ahead, head tucking in, hips up.",
+        "Shoulder roll: rolling over his shoulder, back on the floor, legs coming over the top.",
+        "Rolling: upside down on his upper back, knees over his chest.",
+        "Rolling: on his back, legs coming down forward.",
+        "Rolling up: sitting up, knees tucked, feet reaching for the floor.",
+        "Coming up onto one knee, one hand on the floor.",
+        "Crouched on both feet, rising.",
+        "Rising from the crouch, hands coming up.",
+        "Almost up, knees bent, guard forming.",
+        "Return: back in the approved brawler guard, both hands as claws before his chest, almost identical to input image 1."
+      ]
+    },
+    "roll_back": {
+      "layout": "wide",
+      "intro": "Evasive roll backward along the ground (to the LEFT) while still facing RIGHT: he sits back into a backward shoulder roll and comes back up in his guard; bare navy hands.",
+      "frames": [
+        "Start: the approved brawler guard of input image 1 (both navy hands raised in front of his chest as half-closed claws, elbows out, torso leaning slightly forward, a confident grin).",
+        "Sitting back, body lowering backward, hands forward.",
+        "Rolling back onto his hips and back, knees tucked to his chest.",
+        "Backward shoulder roll: on his upper back, legs going over his head to the LEFT.",
+        "Upside down on his shoulders, legs over the top.",
+        "Legs coming down behind him to the LEFT, hands on the floor by his head.",
+        "Landing on his knees and hands, crouched.",
+        "Pushing up onto one knee.",
+        "Crouched on both feet, rising.",
+        "Rising from the crouch, hands coming up.",
+        "Almost up, knees bent, guard forming.",
+        "Return: back in the approved brawler guard, both hands as claws before his chest, almost identical to input image 1."
+      ]
+    },
+    "guard": {
+      "layout": "wide",
+      "intro": "Standing block: he raises both navy forearms crossed in front of his face and chest to take the blow, the brawler stance braced; no weapon.",
+      "frames": [
+        "Preparation: from the brawler guard both forearms rising toward his face.",
+        "Block impact: both forearms crossed in front of his face and upper chest, elbows tight, knees bent, leaning back slightly, teeth gritted.",
+        "Pushed back: the same crossed-forearm block, his weight rocked onto the rear leg.",
+        "Holding the block firm, forearms crossed, eyes glaring over them.",
+        "Lowering the forearms a little, a confident grin returning.",
+        "Return: back in the approved brawler guard, both hands as claws before his chest, almost identical to input image 1."
+      ]
+    },
+    "hit": {
+      "layout": "wide",
+      "intro": "Taking a hit while standing: the impact snaps his head and torso back, then he recovers into his guard. Each frame is a separate pain drawing.",
+      "frames": [
+        "Lead-in: the approved brawler guard of input image 1 (both navy hands raised in front of his chest as half-closed claws, elbows out, torso leaning slightly forward, a confident grin).",
+        "Light recoil: head and torso snapping back a little, one hand dropping, teeth gritted.",
+        "Heavy recoil: torso bent far back, chin up, both arms flung out to the sides, the rear knee bending, mouth open in pain.",
+        "Stagger: hunched forward, one arm raised to cover, the other hanging, glaring.",
+        "Recovering: straightening up, hands rising.",
+        "Return: back in the approved brawler guard, both hands as claws before his chest, almost identical to input image 1."
+      ]
+    },
+    "knockdown": {
+      "layout": "wide",
+      "intro": "Knocked off his feet onto his back: thrown backward to the LEFT and landing flat. In the lying frames the body is flat on his back on the ground, the body horizontal, seen exactly from the side at ground level (never from above).",
+      "frames": [
+        "Struck: torso thrown back, arms flung up, both feet leaving the ground.",
+        "Airborne falling backward to the LEFT, body tilted about 45 degrees, legs in the air.",
+        "Falling: body nearly horizontal just above the ground, head to the LEFT, legs to the RIGHT.",
+        "Impact: his back hits the ground, legs bouncing up, arms out.",
+        "Lying flat on his back on the ground, the body horizontal, seen exactly from the side at ground level (never from above), head to the LEFT, one knee bent.",
+        "Lying still flat on his back on the ground, the body horizontal, seen exactly from the side at ground level (never from above), head to the LEFT, legs flat."
+      ],
+      "anchor": "feet",
+      "ground_mode": "lying",
+      "ground_frames": [
+        3,
+        4,
+        5
+      ]
+    },
+    "throw_tech": {
+      "layout": "wide",
+      "intro": "Throw escape: he breaks the grab by shoving both palms outward, then steps back into his guard.",
+      "frames": [
+        "Grabbed: leaning back slightly, both hands coming up to his chest.",
+        "Breaking free: both open navy palms shoving forward hard at chest height, elbows bending.",
+        "Push: both arms fully extended forward, palms out, front knee bent.",
+        "Recoil: stepping back a little, arms pulling back.",
+        "Guard forming, hands rising before his chest.",
+        "Return: back in the approved brawler guard, both hands as claws before his chest, almost identical to input image 1."
+      ]
+    },
+    "throw": {
+      "layout": "wide",
+      "intro": "Throw attempt: a quick reach with his open right navy hand to grab the collar in front of him, then back to guard. No opponent drawn.",
+      "frames": [
+        "Start: the approved brawler guard of input image 1 (both navy hands raised in front of his chest as half-closed claws, elbows out, torso leaning slightly forward, a confident grin), leaning in.",
+        "Reaching: the lead hand open and shooting forward at chest height, a small step.",
+        "Grab: the arm fully extended forward to the RIGHT, the navy fingers closing on an empty collar at chest height.",
+        "Holding: the arm still extended, fingers closed, leaning forward.",
+        "Pulling back: the hand returning toward his chest.",
+        "Return: back in the approved brawler guard, both hands as claws before his chest, almost identical to input image 1."
+      ]
+    },
+    "throw_forward": {
+      "layout": "wide",
+      "intro": "Forward throw (6D): he grabs the opponent's collar with his right hand, lifts them and slams them down hard on the floor IN FRONT of him. Draw only Akaza; no opponent. Facing RIGHT the whole time; simple, readable poses.",
+      "frames": [
+        "Grab: lunging in, the right navy hand clamped on an empty collar at chest height in front of him.",
+        "Pull: drawing his right fist (still gripping) back toward his chest, leaning back, the left hand coming to join it.",
+        "Lift: both hands gripping above his head in front, arms raised high as if hoisting someone up, rising on his toes.",
+        "Lifted high: both fists high above his head in front, torso arched back slightly.",
+        "Slamming down: bending forward hard, both arms driving down in front of him.",
+        "Impact: bent deep forward over the front knee, both fists at knee height in front of him, as if slamming someone into the floor.",
+        "Straightening up, letting go, a cruel grin.",
+        "Return: back in the approved brawler guard, both hands as claws before his chest, almost identical to input image 1."
+      ]
+    },
+    "throw_success": {
+      "layout": "wide",
+      "intro": "Back throw (4D): he grabs the opponent's collar with both hands, turns round on the spot and slams the opponent onto the floor, then turns back into his guard. Draw only Akaza; no opponent. Head, face, chest and feet always turn TOGETHER: never a body turned one way with the face looking the other way.",
+      "frames": [
+        "Grab: facing RIGHT in his stance, both navy hands clamped on an empty collar at chest height in front of him.",
+        "Pull: facing RIGHT, hauling both fists back toward his chest, leaning back, starting to pivot on his feet.",
+        "Turning round: halfway through the turn, his chest and face turned toward the viewer, his head turning toward the LEFT of the picture, both fists swinging up beside his head.",
+        "Hoist: facing RIGHT, both fists gripping high above his head in front, arms raised as if hoisting someone up, rising on his toes.",
+        "Slamming down: facing RIGHT, bending forward hard, both arms driving down in front of him.",
+        "Impact: facing RIGHT, bent deep forward over the front knee, both fists at knee height in front of him, as if slamming someone into the floor.",
+        "Turning back: straightening up, his chest and face turned toward the viewer, his head turning toward the RIGHT of the picture, a cruel grin.",
+        "Return: back in the approved brawler guard, both hands as claws before his chest, almost identical to input image 1."
+      ],
+      "mirror_frames": [
+        3,
+        4,
+        5
+      ]
+    },
+    "thrown_forward": {
+      "layout": "wide",
+      "intro": "Forward-throw victim: grabbed by the collar, hoisted and slammed flat on his back. Draw only Akaza (no thrower). He falls backward toward the LEFT. In the lying frames the body is flat on his back on the ground, the body horizontal, seen exactly from the side at ground level (never from above).",
+      "frames": [
+        "Grabbed: standing, startled, leaning forward, both hands rising toward his collar.",
+        "Pulled off balance: on his toes, leaning forward, arms flailing.",
+        "Hoisted: feet leaving the ground, body lifted upright in the air, arms up.",
+        "Tipping backward in the air, legs swinging up to the RIGHT.",
+        "Horizontal in the air, back toward the ground, head to the LEFT.",
+        "Falling flat toward the ground, still horizontal, arms out.",
+        "Just above the ground, body horizontal, head to the LEFT.",
+        "About to hit, back almost on the floor.",
+        "Slammed flat on his back on the ground, flat on his back on the ground, the body horizontal, seen exactly from the side at ground level (never from above), head to the LEFT, arms flung out.",
+        "Impact bounce: lying flat on his back on the ground, the body horizontal, seen exactly from the side at ground level (never from above), legs lifting slightly.",
+        "Lying flat on his back on the ground, the body horizontal, seen exactly from the side at ground level (never from above), one knee bent.",
+        "Lying still flat on his back on the ground, the body horizontal, seen exactly from the side at ground level (never from above)."
+      ],
+      "anchor": "pelvis",
+      "ground_mode": "lying",
+      "ground_frames": [
+        0,
+        1,
+        8,
+        9,
+        10,
+        11
+      ],
+      "mirror": true,
+      "lying_centred": true
+    },
+    "thrown": {
+      "layout": "wide",
+      "intro": "Back-throw victim: grabbed, pulled over the thrower's shoulder, flipped forward head first and slammed flat on his back. Draw only Akaza (no thrower). The flip rotates clockwise: the head leads to the RIGHT and down, the legs swing up and over to the RIGHT. In the lying frames the body is flat on his back on the ground, the body horizontal, seen exactly from the side at ground level (never from above).",
+      "frames": [
+        "Grabbed: standing, startled, leaning forward, hands at his collar.",
+        "Pulled forward off balance, on his toes, leaning far forward.",
+        "Hauled up: feet leaving the ground, body tipping forward head first.",
+        "Diving head first: body diagonal, head down to the RIGHT, legs up behind.",
+        "Upside down in the air, head at the bottom, legs straight up.",
+        "Flipping over: legs swinging over to the RIGHT, back toward the ground.",
+        "Falling flat on his back, horizontal, head to the LEFT.",
+        "Just above the ground, horizontal, arms out.",
+        "Slammed flat on his back on the ground, flat on his back on the ground, the body horizontal, seen exactly from the side at ground level (never from above), head to the LEFT.",
+        "Impact bounce: lying flat on his back on the ground, the body horizontal, seen exactly from the side at ground level (never from above), legs lifting slightly.",
+        "Lying flat on his back on the ground, the body horizontal, seen exactly from the side at ground level (never from above), one arm across his chest.",
+        "Lying still flat on his back on the ground, the body horizontal, seen exactly from the side at ground level (never from above)."
+      ],
+      "anchor": "pelvis",
+      "ground_mode": "lying",
+      "ground_frames": [
+        0,
+        1,
+        8,
+        9,
+        10,
+        11
+      ],
+      "mirror": true,
+      "lying_centred": true
+    },
+    "victory": {
+      "layout": "wide",
+      "intro": "Victory pose: from his guard he straightens up and spreads his arms wide with a delighted, arrogant grin. One calm continuous action.",
+      "frames": [
+        "Start: the approved brawler guard of input image 1 (both navy hands raised in front of his chest as half-closed claws, elbows out, torso leaning slightly forward, a confident grin).",
+        "Straightening up, the hands lowering.",
+        "Standing taller, arms relaxed at his sides, looking at the fallen opponent.",
+        "Standing upright, chest out, arms opening outward.",
+        "Upright, both arms spread wide to the sides, palms up, a delighted grin.",
+        "Upright, arms spread wide, head tilted back slightly, laughing."
+      ],
+      "upright_frames": [
+        3,
+        4,
+        5
+      ],
+      "match_height": {
+        "clip": "victory",
+        "frame": 1,
+        "parts": [
+          1
+        ]
+      }
+    },
+    "stand_heavy": {
+      "layout": "wide",
+      "intro": "Standing heavy punch (5C): a powerful straight with his RIGHT fist (a cross) and a lunging step, starting and ending in the brawler guard. Closed navy fist; no effects. Arms (critical): he faces RIGHT with his chest turned three-quarters toward the viewer, so his LEFT shoulder is the front one (on the RIGHT of the picture) and his RIGHT shoulder the back one (on the LEFT of the picture, nearer the viewer). This punch is thrown by his RIGHT arm, from that back shoulder: the right shoulder swings forward and the right arm drives ACROSS IN FRONT OF his chest; the LEFT (front) hand is pulled back to guard. Never punch with the left arm here.",
+      "frames": [
+        "Wind-up: from the approved brawler guard of input image 1 (both navy hands raised in front of his chest as half-closed claws, elbows out, torso leaning slightly forward, a confident grin) the RIGHT hand (the back arm, on the LEFT of the picture) closes into a fist and draws back beside his right hip, the shoulders turning away from the opponent.",
+        "Coil: torso twisted away, the RIGHT fist cocked at his right hip, the LEFT hand up as a claw before his face, the front foot stepping forward.",
+        "Active: a deep lunge, front knee bent; the RIGHT arm fully extended straight forward to the RIGHT at shoulder height, crossing in front of his chest, fist closed; the right shoulder driven forward, chest square to the viewer; the LEFT fist pulled back beside his chin.",
+        "Snap: the same full extension of the RIGHT arm, the body leaning further into the punch, the left fist at his chin.",
+        "Recovery: the RIGHT fist pulling back toward his chest, weight returning over the centre.",
+        "Return: back in the approved brawler guard, both hands as claws before his chest, almost identical to input image 1."
+      ],
+      "edit": {
+        "sheet": "redo",
+        "parts": [
+          1
+        ],
+        "intro": "Correction of the arms only, in drawings of a standing heavy punch (a cross). He faces RIGHT with his chest turned three-quarters toward the viewer. The punch must be thrown by the arm whose shoulder is on the LEFT side of the picture (his back arm, nearer the viewer), reaching across the front of his body; the arm whose shoulder is on the RIGHT side of the picture is pulled back to his chin.",
+        "keep": "the size and the position of the figure in its column, the head, face and hair, both legs, both feet, the white trousers, the sash, the line weight and the colours",
+        "change": "his two arms, his hands, his shoulders and the vest around them",
+        "rule": "Never move, enlarge, shrink or redraw the head or the legs.",
+        "frames": [
+          "Wind-up: from the approved brawler guard of input image 1 (both navy hands raised in front of his chest as half-closed claws, elbows out, torso leaning slightly forward, a confident grin) the RIGHT hand (the back arm, on the LEFT of the picture) closes into a fist and draws back beside his right hip, the shoulders turning away from the opponent.",
+          "Coil: torso twisted away, the RIGHT fist cocked at his right hip, the LEFT hand up as a claw before his face, the front foot stepping forward.",
+          "In this drawing the arm stretched out to the right is attached to the shoulder on the RIGHT side of the picture: that is the wrong arm. Make two changes. (a) The arm whose shoulder is on the RIGHT side of the picture bends: elbow down by his ribs, its navy fist close beside his chin. (b) The arm whose shoulder is on the LEFT side of the picture (the one now holding its fist at his chest or chin) stretches straight out to the RIGHT at shoulder height, fist closed: it starts at the shoulder on the LEFT of the picture and passes IN FRONT OF his chest and in front of the bent arm, so it covers part of his chest; that shoulder rolls forward and his chest turns square to the right. The legs, the hips, the sash and the head stay exactly as they are. Arrange the arms exactly as in the CORRECT ARMS EXAMPLE image.",
+          "Already correct: keep this drawing exactly as it is in input image 1, unchanged. (the arm from the shoulder on the LEFT of the picture already punches across his chest)"
+        ]
+      },
+      "reference": {
+        "image": "output/imagegen/akaza-v3/references/cross-example.png",
+        "role": "CORRECT ARMS EXAMPLE: the same character with the punching arm right: the arm that reaches out to the RIGHT starts at the shoulder on the LEFT of the picture and crosses in front of his chest, the arm from the shoulder on the RIGHT of the picture is bent with its fist at his chest. Copy this arm arrangement; do not copy its legs or its place in the picture."
+      },
+      "copy_frames": {
+        "2": 3
+      }
+    },
+    "crouch_light": {
+      "layout": "wide",
+      "intro": "Crouching light punch (2A): a quick low jab from the crouch. Closed navy fist.",
+      "frames": [
+        "Start: crouched low on wide bent knees, both hands as claws before his chest.",
+        "Chamber: still crouched, the lead fist drawn back beside his chin.",
+        "Active: still crouched, the lead arm fully extended forward to the RIGHT at stomach height, fist closed.",
+        "Snap: the same extension, leaning a little into it.",
+        "Recovery: the fist pulling back, still crouched.",
+        "Crouched low again, both hands as claws before his chest."
+      ]
+    },
+    "crouch_heavy": {
+      "layout": "wide",
+      "intro": "Crouching heavy punch (2C): a rising uppercut out of the crouch thrown with his RIGHT (back) arm. Closed navy fist. To throw the back arm his torso twists hard: in the punch his BACK half faces the viewer (the back of the magenta vest and his back muscles show), the punching arm is the one on the RIGHT of the picture, and his face, in profile, looks RIGHT and UP at the target.",
+      "frames": [
+        "Start: crouched low on wide bent knees, both hands as claws before his chest.",
+        "Sinking: lower still, the RIGHT fist (the back arm, on the LEFT of the picture) dropped down beside his right knee, the LEFT claw guarding his face.",
+        "Active: exploding upward out of the crouch, the torso twisted so his back half faces the viewer, the RIGHT fist driving UP in front of his face, elbow bent; the LEFT fist tucked at his chest; legs straightening; face in profile looking up to the RIGHT.",
+        "Peak: the same twisted torso, back half toward the viewer, the RIGHT arm extended straight UP, fist high above his head in front, body stretched upward on the balls of his feet; face in profile looking up to the RIGHT.",
+        "Coming down: the right arm lowering, knees bending again.",
+        "Crouched low again, both hands as claws before his chest."
+      ]
+    },
+    "air_light": {
+      "layout": "wide",
+      "intro": "Air light punch (jA): a quick jab in the air. Closed navy fist. He is airborne in every frame.",
+      "frames": [
+        "In the air: airborne, knees tucked up, both hands in his brawler guard before his chest.",
+        "Chamber: the lead fist drawn back beside his chin, knees tucked.",
+        "Active: the lead arm fully extended forward to the RIGHT at shoulder height, fist closed, knees tucked under him.",
+        "Snap: the same extension.",
+        "Recovery: the fist pulling back, knees tucked.",
+        "In the air: airborne, knees tucked up, both hands in his brawler guard before his chest."
+      ]
+    },
+    "air_heavy": {
+      "layout": "wide",
+      "intro": "Air heavy punch (jC): a heavy overhand hammer punch smashed diagonally DOWN and forward in the air. Closed navy fist. He is airborne in every frame.",
+      "frames": [
+        "In the air, the rear fist raised high above his head, body arching back slightly, knees tucked.",
+        "Wind-up: the fist cocked far back over his head, torso arched.",
+        "Active: the arm swinging down and forward, the fist driving diagonally DOWN to the lower RIGHT, torso folding forward.",
+        "Follow-through: the arm fully extended down and forward, fist at hip height in front of him.",
+        "Recovery: the arm pulling back up, knees tucked.",
+        "In the air: airborne, knees tucked up, both hands in his brawler guard before his chest."
+      ]
+    },
+    "body_stand_light": {
+      "layout": "wide",
+      "intro": "Standing light kick (5B): a fast front snap kick at waist height, starting and ending in the guard. Bare foot, red toenails.",
+      "frames": [
+        "Start: the approved brawler guard of input image 1 (both navy hands raised in front of his chest as half-closed claws, elbows out, torso leaning slightly forward, a confident grin), weight shifting onto the rear leg.",
+        "Chamber: the front knee raised high in front of him, foot pulled back.",
+        "Active: the front leg snapping fully straight forward to the RIGHT at waist height, sole forward, standing on the rear leg, guard up.",
+        "Snap: the same full extension.",
+        "Recovery: the knee folding back in front of him.",
+        "Return: back in the approved brawler guard, both hands as claws before his chest, almost identical to input image 1."
+      ]
+    },
+    "body_stand_heavy": {
+      "layout": "wide",
+      "intro": "Standing heavy kick (5D): a high roundhouse kick at head height with his RIGHT (back) leg, starting and ending in the guard. Bare foot. Legs (critical): he faces RIGHT with his chest turned three-quarters toward the viewer; in his stance the LEFT leg is the front leg (on the RIGHT of the picture) and the RIGHT leg the back leg (on the LEFT of the picture, nearer the viewer). This kick is thrown with his RIGHT (back) leg, which swings forward past the LEFT leg; the LEFT leg is the supporting one. Never kick with the left leg here.",
+      "frames": [
+        "Start: the approved brawler guard of input image 1 (both navy hands raised in front of his chest as half-closed claws, elbows out, torso leaning slightly forward, a confident grin), the weight shifting onto the front (LEFT) foot.",
+        "Chamber: standing on the LEFT leg, the RIGHT knee swinging up high and forward past the standing leg, hips turning over.",
+        "Active: the RIGHT leg fully extended at head height to the RIGHT, hips turned over, standing on the LEFT leg alone, arms out for balance.",
+        "Snap: the same high extension of the RIGHT leg.",
+        "Recovery: the RIGHT leg folding back down behind him.",
+        "Return: back in the approved brawler guard, both hands as claws before his chest, almost identical to input image 1."
+      ],
+      "edit": {
+        "sheet": "redo",
+        "parts": [
+          1
+        ],
+        "intro": "Correction of the legs only, in drawings of a high roundhouse kick. He faces RIGHT with his chest turned three-quarters toward the viewer. The kick must be thrown by his NEAR leg (nearer the viewer, drawn in front of the hanging sash ends and the other leg), not by the far leg.",
+        "keep": "the size and the position of the figure in its column, the head, face and hair, the torso, both arms and hands, the vest, the line weight and the colours",
+        "change": "his two legs, his bare feet, the white trousers and the hanging sash ends",
+        "rule": "Never move, enlarge, shrink or redraw the head, the torso or the arms.",
+        "frames": [
+          "Start: the approved brawler guard of input image 1 (both navy hands raised in front of his chest as half-closed claws, elbows out, torso leaning slightly forward, a confident grin), the weight shifting onto the front (LEFT) foot.",
+          "Chamber: standing on the LEFT leg, the RIGHT knee swinging up high and forward past the standing leg, hips turning over.",
+          "In this drawing the kicking leg is the FAR leg: its thigh is drawn BEHIND the hanging navy sash ends. That is the wrong leg. Swap the legs: the kicking leg becomes the NEAR leg (the one nearer the viewer): its thigh is drawn IN FRONT OF the hanging sash ends and in front of his body, fully extended to the RIGHT at head height, the foot where the kicking foot is now; the FAR leg becomes the straight standing leg, partly hidden behind the kicking thigh. Head, torso and arms stay exactly as they are.",
+          "In this drawing the kicking leg is the FAR leg: its thigh is drawn BEHIND the hanging navy sash ends. That is the wrong leg. Swap the legs: the kicking leg becomes the NEAR leg (the one nearer the viewer): its thigh is drawn IN FRONT OF the hanging sash ends and in front of his body, fully extended to the RIGHT at head height, the foot where the kicking foot is now; the FAR leg becomes the straight standing leg, partly hidden behind the kicking thigh. Head, torso and arms stay exactly as they are."
+        ]
+      }
+    },
+    "body_crouch_light": {
+      "layout": "wide",
+      "intro": "Crouching light kick (2B): a quick low kick along the floor from the crouch. Bare foot.",
+      "frames": [
+        "Start: crouched low on wide bent knees, guard up.",
+        "Chamber: the front foot lifting off the floor, still crouched.",
+        "Active: the front leg extended straight forward to the RIGHT just above the floor, ankle height, still crouched, one hand down near the floor for balance.",
+        "Snap: the same low extension.",
+        "Recovery: the leg pulling back under him.",
+        "Crouched low again, guard up."
+      ]
+    },
+    "body_crouch_heavy": {
+      "layout": "wide",
+      "intro": "Crouching heavy kick (2D): a spinning low sweep along the floor with his RIGHT (back) leg. Bare foot. Legs (critical): he faces RIGHT with his chest turned three-quarters toward the viewer; in his stance the LEFT leg is the front leg (on the RIGHT of the picture) and the RIGHT leg the back leg (on the LEFT of the picture, nearer the viewer). This kick is thrown with his RIGHT (back) leg, which swings forward past the LEFT leg; the LEFT leg is the supporting one. Never kick with the left leg here.",
+      "frames": [
+        "Start: crouched low on wide bent knees, guard up.",
+        "Dropping lower onto the bent LEFT leg, one hand going down to the floor, the body starting to spin.",
+        "Active: very low, crouched on the bent LEFT leg with one hand on the floor; the RIGHT leg swept far out to the RIGHT along the floor, fully straight at ankle height, passing in front of the bent left leg.",
+        "Sweep continuing: the RIGHT leg still straight along the floor, the body low over the bent left knee.",
+        "Recovery: still crouched as LOW as in the sweep, the right leg drawn back in along the floor toward him, one hand near the floor; he does not rise.",
+        "Crouched low again, guard up."
+      ],
+      "edit": {
+        "image": "output/imagegen/akaza-v3/references/2d-sweep-key.png",
+        "left": 0,
+        "parts": [
+          2
+        ],
+        "intro": "Recovery of a low spinning sweep: he stays crouched just as low as in input image 1 and pulls the sweeping leg back in. He never stands up or rises between the sweep and the crouch.",
+        "keep": "the size and the position of the figure in its column, the head, face and hair, the height of the head, shoulders and hips (exactly as low as in input image 1), the torso, the vest, the line weight and the colours",
+        "change": "his legs, his bare feet, the trousers, the hanging sash ends and his hands",
+        "rule": "Never raise, enlarge, shrink or redraw the head or the torso; he stays this low.",
+        "frames": [
+          "Start: crouched low on wide bent knees, guard up.",
+          "Dropping lower onto the bent LEFT leg, one hand going down to the floor, the body starting to spin.",
+          "Active: very low, crouched on the bent LEFT leg with one hand on the floor; the RIGHT leg swept far out to the RIGHT along the floor, fully straight at ankle height, passing in front of the bent left leg.",
+          "Sweep continuing: the RIGHT leg still straight along the floor, the body low over the bent left knee.",
+          "The same low crouch as input image 1, head and hips exactly as low, but the right leg is pulled about halfway back in along the floor, the knee starting to bend, the foot still on the floor ahead of him to the RIGHT; one hand still touches the floor.",
+          "The same low height as input image 1: both feet back under him in a wide low crouch, knees deeply bent, both hands raised as claws before his chest; head and hips exactly as low as in input image 1."
+        ]
+      },
+      "copy_frames": {
+        "0": "crouch:5",
+        "5": "crouch:5"
+      },
+      "size_by_head": true
+    },
+    "body_air_light": {
+      "layout": "wide",
+      "intro": "Air light kick (jB): a quick knee-and-foot snap kick forward in the air. Bare foot. Airborne in every frame.",
+      "frames": [
+        "In the air: airborne, knees tucked up, both hands in his brawler guard before his chest.",
+        "Chamber: the front knee pulled up high toward his chest.",
+        "Active: the front leg kicked straight forward to the RIGHT at hip height, the other knee tucked, arms in guard.",
+        "Snap: the same extension.",
+        "Recovery: the leg folding back in.",
+        "In the air: airborne, knees tucked up, both hands in his brawler guard before his chest."
+      ],
+      "anchor": "pelvis"
+    },
+    "body_air_heavy": {
+      "layout": "wide",
+      "intro": "Air heavy kick (jD): a powerful flying side kick with his RIGHT (back) leg, driven diagonally down and forward. Bare foot. Airborne in every frame. Legs (critical): he faces RIGHT with his chest turned three-quarters toward the viewer; in his stance the LEFT leg is the front leg (on the RIGHT of the picture) and the RIGHT leg the back leg (on the LEFT of the picture, nearer the viewer). This kick is thrown with his RIGHT (back) leg, which swings forward past the LEFT leg; the LEFT leg is the supporting one. Never kick with the left leg here.",
+      "frames": [
+        "In the air: airborne, knees tucked up, both hands in his brawler guard before his chest.",
+        "Chamber: the body turning side-on, the RIGHT knee pulled up to his chest in front of the tucked LEFT leg, arms back.",
+        "Active: the RIGHT leg thrust out straight diagonally DOWN and forward to the lower RIGHT, heel leading, the LEFT knee tucked up behind it, the body leaning back, arms back for balance.",
+        "Snap: the same full extension of the RIGHT leg.",
+        "Recovery: the right leg folding back, knees tucked.",
+        "In the air: airborne, knees tucked up, both hands in his brawler guard before his chest."
+      ],
+      "anchor": "pelvis",
+      "edit": {
+        "sheet": "redo",
+        "parts": [
+          1
+        ],
+        "intro": "Correction of the legs only, in drawings of a flying side kick in the air. He faces RIGHT with his chest turned three-quarters toward the viewer. The kick must be thrown by his NEAR leg (nearer the viewer, drawn in front of the hanging sash ends and the other leg), not by the far leg.",
+        "keep": "the size and the position of the figure in its column, the head, face and hair, the torso, both arms and hands, the vest, the line weight and the colours",
+        "change": "his two legs, his bare feet, the white trousers and the hanging sash ends",
+        "rule": "Never move, enlarge, shrink or redraw the head, the torso or the arms.",
+        "frames": [
+          "In the air: airborne, knees tucked up, both hands in his brawler guard before his chest.",
+          "Chamber: the body turning side-on, the RIGHT knee pulled up to his chest in front of the tucked LEFT leg, arms back.",
+          "In this drawing the kicking leg is the FAR leg: its thigh is drawn BEHIND the hanging navy sash ends. That is the wrong leg. Swap the legs: the kicking leg becomes the NEAR leg (the one nearer the viewer): its thigh is drawn IN FRONT OF the hanging sash ends and in front of his body, thrust out straight diagonally DOWN and forward to the lower RIGHT, heel leading, the foot where the kicking foot is now; the FAR leg becomes the tucked leg, knee bent up, partly hidden behind the kicking thigh. Head, torso and arms stay exactly as they are.",
+          "In this drawing the kicking leg is the FAR leg: its thigh is drawn BEHIND the hanging navy sash ends. That is the wrong leg. Swap the legs: the kicking leg becomes the NEAR leg (the one nearer the viewer): its thigh is drawn IN FRONT OF the hanging sash ends and in front of his body, thrust out straight diagonally DOWN and forward to the lower RIGHT, heel leading, the foot where the kicking foot is now; the FAR leg becomes the tucked leg, knee bent up, partly hidden behind the kicking thigh. Head, torso and arms stay exactly as they are."
+        ]
+      }
+    },
+    "crown_splitter": {
+      "layout": "wide",
+      "intro": "Destructive Death: Crown-Splitter (623): an explosive rising vertical kick that carries him up into the air, the leg kicked straight up above his head. Bare foot; no effects.",
+      "frames": [
+        "Startup: the approved brawler guard of input image 1 (both navy hands raised in front of his chest as half-closed claws, elbows out, torso leaning slightly forward, a confident grin), sinking.",
+        "Crouched low, about to explode upward, arms down.",
+        "Launch: springing up, the kicking leg starting to swing up in front of him from low.",
+        "Active: the kicking leg swung straight UP in front of him, foot high above his head, the body rising on the toes of the support leg, arms down at his sides.",
+        "Peak: both feet off the ground, the leg fully vertical above his head, body stretched upward.",
+        "Airborne at the top: the leg still high, beginning to come down.",
+        "The leg sweeping down, knees tucking, descending.",
+        "Landing: touching down on bent knees.",
+        "Return: back in the approved brawler guard, both hands as claws before his chest, almost identical to input image 1."
+      ]
+    },
+    "disorder": {
+      "layout": "wide",
+      "intro": "Destructive Death: Disorder (214B/D): a storm of rapid straight punches from a planted wide stance, ALTERNATING his LEFT and RIGHT fists. Closed navy fists; no effects, no motion blur.",
+      "frames": [
+        "Startup: the approved brawler guard of input image 1 (both navy hands raised in front of his chest as half-closed claws, elbows out, torso leaning slightly forward, a confident grin).",
+        "Settling into a wide, low, planted stance, both fists cocked at his chest, a savage grin.",
+        "Both fists cocked, leaning in, eyes locked on the target.",
+        "Barrage: the LEFT fist (front shoulder, on the RIGHT of the picture) fully extended forward to the RIGHT at chest height, the RIGHT fist at his chest.",
+        "Barrage: the RIGHT fist (back shoulder, on the LEFT of the picture) fully extended forward at face height, crossing in front of his chest, the LEFT fist pulled back.",
+        "Barrage: the LEFT fist extended forward at stomach height, the RIGHT fist pulling back.",
+        "Barrage: the RIGHT fist extended forward at chest height, crossing in front of his chest, shoulders turning hard.",
+        "Barrage: the LEFT fist extended forward at face height, leaning further in.",
+        "Barrage: the RIGHT fist driving forward with the whole body, the strongest punch, fully extended across in front of his chest.",
+        "The last punch pulling back, still in the wide stance.",
+        "Recovery: rising from the wide stance, hands coming up.",
+        "Return: back in the approved brawler guard, both hands as claws before his chest, almost identical to input image 1."
+      ],
+      "edit": {
+        "sheet": "redo",
+        "parts": [
+          2,
+          3,
+          4
+        ],
+        "intro": "Correction of the punching arm only, in drawings of Destructive Death: Disorder, a barrage of ALTERNATING left and right straight punches. In input image 1 every punch is thrown with his LEFT arm (from the front shoulder on the RIGHT of the picture). Orientation: he faces RIGHT with his chest turned three-quarters toward the viewer; his LEFT shoulder is the front one (on the right of the picture), his RIGHT shoulder the back one (on the left of the picture, nearer the viewer). Where a frame says so, the punch becomes a RIGHT punch from that back shoulder; the other drawing stays exactly as it is.",
+        "keep": "the size and the position of the figure in its column, the head, face and hair, both legs, both feet, the white trousers, the sash, the line weight and the colours",
+        "change": "his two arms, his hands, his shoulders and the vest around them",
+        "rule": "Never move, enlarge, shrink or redraw the head or the legs.",
+        "frames": [
+          "Startup: the approved brawler guard of input image 1 (both navy hands raised in front of his chest as half-closed claws, elbows out, torso leaning slightly forward, a confident grin).",
+          "Settling into a wide, low, planted stance, both fists cocked at his chest, a savage grin.",
+          "Both fists cocked, leaning in, eyes locked on the target.",
+          "Barrage: the LEFT fist (front shoulder, on the RIGHT of the picture) fully extended forward to the RIGHT at chest height, the RIGHT fist at his chest.",
+          "Change this drawing: the punch is now thrown by his RIGHT fist, from his back shoulder on the LEFT of the picture: the right shoulder swings forward and the right arm is fully extended straight forward to the RIGHT at face height, crossing IN FRONT OF his chest; the LEFT fist is pulled back beside his chest. The head, the legs and the stance stay exactly as they are.",
+          "Already correct: keep this drawing exactly as it is in input image 1, unchanged (the LEFT fist extended forward at stomach height).",
+          "Change this drawing: the punch is now thrown by his RIGHT fist, from his back shoulder on the LEFT of the picture: the right shoulder swings forward and the right arm is fully extended straight forward to the RIGHT at chest height, shoulders turning hard, crossing IN FRONT OF his chest; the LEFT fist is pulled back beside his chest. The head, the legs and the stance stay exactly as they are.",
+          "Already correct: keep this drawing exactly as it is in input image 1, unchanged (the LEFT fist extended forward at face height).",
+          "Change this drawing: the punch is now thrown by his RIGHT fist, from his back shoulder on the LEFT of the picture: the right shoulder swings forward and the right arm is fully extended straight forward to the RIGHT at chest height, the strongest punch, the whole body driving behind it, crossing IN FRONT OF his chest; the LEFT fist is pulled back beside his chest. The head, the legs and the stance stay exactly as they are.",
+          "Already correct: keep this drawing exactly as it is in input image 1, unchanged (both fists pulling back toward his chest)."
+        ]
+      },
+      "register": {
+        "frames": "output/imagegen/akaza-v3/references/disorder-pre-edit",
+        "parts": [
+          2,
+          3,
+          4
+        ]
+      },
+      "reviewed": {
+        "8": "the edited right cross puts his arm across the neck, so the face skin joins the neck and the head box grows from 171 to 188 px; the drawn head is the size of the original frame and the frame is registered on its own original (scale 0.3268 vs 0.3276)"
+      }
+    },
+    "annihilation": {
+      "layout": "wide",
+      "intro": "Destructive Death: Annihilation Type (236236A/C super): he sinks into a very low, coiled stance, then launches forward in an explosive long lunge with one devastating straight punch. Closed navy fist; no effects.",
+      "frames": [
+        "Startup: the approved brawler guard of input image 1 (both navy hands raised in front of his chest as half-closed claws, elbows out, torso leaning slightly forward, a confident grin).",
+        "Sinking into a very low, wide stance, the rear fist pulled back to his hip, the lead hand open forward.",
+        "Charging: crouched even lower, the rear fist cocked far back behind his hip, eyes blazing, a fierce grin.",
+        "Fully coiled: the lowest point, the body twisted away, the rear knee nearly on the floor.",
+        "Active: exploding forward in a very long, low lunge, the rear arm thrust straight forward to the RIGHT at chest height, fist closed, the body almost horizontal behind it.",
+        "The full extension held, the lunge at its longest, the rear leg stretched far back.",
+        "Still extended, the fist driving through.",
+        "Still extended, shoulders beginning to relax.",
+        "Recovery: the arm pulling back, the lunge narrowing.",
+        "Rising from the lunge, both hands coming up.",
+        "Almost back in the stance, guard forming.",
+        "Return: back in the approved brawler guard, both hands as claws before his chest, almost identical to input image 1."
+      ]
+    },
+    "blue_afterglow": {
+      "layout": "wide",
+      "intro": "Final Type: Blue Silver Chaotic Afterglow (MAX): six lightning-fast blows in a row, each frame a different strike, then back to guard. Closed navy fists and palms; no effects, no motion blur.",
+      "frames": [
+        "Startup: the approved brawler guard of input image 1 (both navy hands raised in front of his chest as half-closed claws, elbows out, torso leaning slightly forward, a confident grin).",
+        "Dropping into a low, ready stance, both fists cocked, eyes wide.",
+        "Blow 1: a right straight fully extended forward to the RIGHT at face height.",
+        "Blow 2: a left hook swinging across at head height, torso turning.",
+        "Blow 3: a right uppercut driving up in front of him, body rising.",
+        "Blow 4: a left straight to the body, extended forward at stomach height, lunging low.",
+        "Blow 5: a right palm strike thrust forward at chest height, fingers up.",
+        "Blow 6 wind-up: the right fist cocked far back, the left hand forward, coiled low.",
+        "Blow 6: the final right straight, the whole body driving into it, fully extended forward at chest height, deep lunge.",
+        "Blow 6 held, the arm locked out.",
+        "Pulling back from the final blow, standing taller.",
+        "Return: back in the approved brawler guard, both hands as claws before his chest, almost identical to input image 1."
+      ]
+    },
+    "rensho_2": {
+      "layout": "wide",
+      "intro": "Destructive Death: Shattering Type, second blow (5A > A): right after the jab, a quick rear-hand straight (the \"two\" of a one-two). Closed navy fist; no effects.",
+      "frames": [
+        "Start: the lead jab pulling back, weight shifting onto the front leg, the rear shoulder turning in.",
+        "The rear fist leaving his chin, hips turning, the lead hand coming back to guard.",
+        "Active: the rear arm fully extended straight forward to the RIGHT at shoulder height, fist closed, torso turned square, the lead claw guarding his chin.",
+        "Snap: the same extension, leaning slightly further.",
+        "Recovery: the fist pulling back toward his chin.",
+        "Return: back in the approved brawler guard, both hands as claws before his chest, almost identical to input image 1."
+      ],
+      "new": {
+        "phase_breaks": [
+          2,
+          4
+        ],
+        "fps": 12
+      }
+    },
+    "manyo": {
+      "layout": "wide",
+      "intro": "Destructive Death: Shattering Type, Myriad Leaves Flash (5A > A > C): he raises his fist high overhead and smashes it straight down into the floor in front of him with a deep bend. Closed navy fist; no effects, no cracks drawn on the floor.",
+      "frames": [
+        "Startup: stepping in, the right fist rising above his head, the left hand forward.",
+        "Raised: on his toes, the right fist high above his head, body arched back, a ferocious grin.",
+        "Coming down: the fist swinging down in front of him, the body folding forward, knees bending.",
+        "Active: bent deep forward over a wide, bent stance, the right arm driven straight DOWN, the fist slammed into the ground about one forearm in front of his front foot.",
+        "Impact held: the same deep bend, the fist on the ground, the other hand back for balance.",
+        "Recovery: pulling the fist up from the ground, still crouched.",
+        "Rising, both hands coming up.",
+        "Return: back in the approved brawler guard, both hands as claws before his chest, almost identical to input image 1."
+      ],
+      "new": {
+        "phase_breaks": [
+          3,
+          5
+        ],
+        "fps": 12
+      }
+    },
+    "ryusen": {
+      "layout": "wide",
+      "intro": "Destructive Death: Leg Type, Flowing Flash Rush (6B): two kicks in a row, a front snap kick at chest height and then a bigger rising high kick. Bare foot; no effects.",
+      "frames": [
+        "Startup: the approved brawler guard of input image 1 (both navy hands raised in front of his chest as half-closed claws, elbows out, torso leaning slightly forward, a confident grin), stepping in.",
+        "Chamber: the front knee raised high, weight on the rear leg.",
+        "Starting the kick: the lower leg beginning to snap out.",
+        "Kick 1: the front leg snapped fully straight forward to the RIGHT at chest height, sole forward, standing on one leg, guard up.",
+        "Retracting: the knee folding back, the body turning for the second kick.",
+        "Kick 2: the other leg swinging UP in a big rising kick in front of him, the foot at head height and climbing.",
+        "Kick 2 peak: the leg fully extended high above his head in front of him, standing tall on the support leg.",
+        "Recovery: the leg coming down, knees bending.",
+        "Return: back in the approved brawler guard, both hands as claws before his chest, almost identical to input image 1."
+      ],
+      "new": {
+        "phase_breaks": [
+          3,
+          7
+        ],
+        "fps": 12,
+        "segment_sync": true
+      }
+    },
+    "step_punch": {
+      "layout": "wide",
+      "intro": "Stepping Straight (6C): a long, deep step forward that drives one tremendous straight punch with his RIGHT fist. Closed navy fist; no effects. Arms (critical): he faces RIGHT with his chest turned three-quarters toward the viewer, so his LEFT shoulder is the front one (on the RIGHT of the picture) and his RIGHT shoulder the back one (on the LEFT of the picture, nearer the viewer). This punch is thrown by his RIGHT arm, from that back shoulder: the right shoulder swings forward and the right arm drives ACROSS IN FRONT OF his chest; the LEFT (front) hand is pulled back to guard. Never punch with the left arm here.",
+      "frames": [
+        "Startup: the approved brawler guard of input image 1 (both navy hands raised in front of his chest as half-closed claws, elbows out, torso leaning slightly forward, a confident grin), weight shifting back.",
+        "Lifting the front foot, the RIGHT fist (the back arm, on the LEFT of the picture) sinking to his right hip.",
+        "A long stride forward, the body low, the RIGHT fist cocked at his hip, the LEFT hand forward as a guard.",
+        "The front foot planting far ahead, hips turning, the RIGHT fist leaving the hip.",
+        "Active: a deep front stance, the RIGHT arm fully extended straight forward to the RIGHT at chest height, crossing in front of his chest, fist closed, the right shoulder driven forward and the whole body behind it; the LEFT fist pulled back beside his chin.",
+        "Snap: the full extension of the RIGHT arm held.",
+        "Recovery: the right arm pulling back, rising.",
+        "Return: back in the approved brawler guard, both hands as claws before his chest, almost identical to input image 1."
+      ],
+      "new": {
+        "phase_breaks": [
+          4,
+          6
+        ],
+        "fps": 12
+      },
+      "edit": {
+        "sheet": "redo",
+        "parts": [
+          2
+        ],
+        "intro": "Correction of the arms only, in drawings of a long stepping straight punch. He faces RIGHT with his chest turned three-quarters toward the viewer. The punch must be thrown by the arm whose shoulder is on the LEFT side of the picture (his back arm, nearer the viewer), reaching across the front of his body; the arm whose shoulder is on the RIGHT side of the picture is pulled back.",
+        "keep": "the size and the position of the figure in its column, the head, face and hair, both legs, both feet, the white trousers, the sash, the line weight and the colours",
+        "change": "his two arms, his hands, his shoulders and the vest around them",
+        "rule": "Never move, enlarge, shrink or redraw the head or the legs.",
+        "frames": [
+          "Startup: the approved brawler guard of input image 1 (both navy hands raised in front of his chest as half-closed claws, elbows out, torso leaning slightly forward, a confident grin), weight shifting back.",
+          "Lifting the front foot, the RIGHT fist (the back arm, on the LEFT of the picture) sinking to his right hip.",
+          "A long stride forward, the body low, the RIGHT fist cocked at his hip, the LEFT hand forward as a guard.",
+          "The front foot planting far ahead, hips turning, the RIGHT fist leaving the hip.",
+          "In this drawing the arm stretched out to the right is attached to the shoulder on the RIGHT side of the picture: that is the wrong arm. Make two changes. (a) The arm whose shoulder is on the RIGHT side of the picture bends: elbow down by his ribs, its navy fist close beside his chin. (b) The arm whose shoulder is on the LEFT side of the picture (the one now holding its fist at his chest or chin) stretches straight out to the RIGHT at chest height, the whole body driving behind it, fist closed: it starts at the shoulder on the LEFT of the picture and passes IN FRONT OF his chest and in front of the bent arm, so it covers part of his chest; that shoulder rolls forward and his chest turns square to the right. The legs, the hips, the sash and the head stay exactly as they are. Arrange the arms exactly as in the CORRECT ARMS EXAMPLE image.",
+          "In this drawing the arm stretched out to the right is attached to the shoulder on the RIGHT side of the picture: that is the wrong arm. Make two changes. (a) The arm whose shoulder is on the RIGHT side of the picture bends: elbow down by his ribs, its navy fist close beside his chin. (b) The arm whose shoulder is on the LEFT side of the picture (the one now holding its fist at his chest or chin) stretches straight out to the RIGHT at chest height, the whole body driving behind it, fist closed: it starts at the shoulder on the LEFT of the picture and passes IN FRONT OF his chest and in front of the bent arm, so it covers part of his chest; that shoulder rolls forward and his chest turns square to the right. The legs, the hips, the sash and the head stay exactly as they are. Arrange the arms exactly as in the CORRECT ARMS EXAMPLE image."
+        ]
+      },
+      "reference": {
+        "image": "output/imagegen/akaza-v3/references/cross-example.png",
+        "role": "CORRECT ARMS EXAMPLE: the same character with the punching arm right: the arm that reaches out to the RIGHT starts at the shoulder on the LEFT of the picture and crosses in front of his chest, the arm from the shoulder on the RIGHT of the picture is bent with its fist at his chest. Copy this arm arrangement; do not copy its legs or its place in the picture."
+      },
+      "copy_frames": {
+        "5": 4
+      }
+    },
+    "air_kushiki": {
+      "layout": "wide",
+      "intro": "Destructive Death: Air Type, downward (j.236A/C): in the air he twists and fires a straight punch diagonally DOWN and forward. Closed navy fist; draw no shockwave or effects. Airborne in every frame.",
+      "frames": [
+        "In the air: airborne, knees tucked up, both hands in his brawler guard before his chest.",
+        "Wind-up: the rear fist cocked back above his shoulder, the body tilting forward, head down toward the target below.",
+        "Coil: torso twisted, the fist cocked far back, knees tucked.",
+        "Active: the rear arm fully extended diagonally DOWN and forward to the lower RIGHT, fist closed, the body leaning down behind the punch, knees tucked.",
+        "Hold: the same diagonal extension.",
+        "Recovery: the arm pulling back, the body tilting upright again.",
+        "Falling: knees tucked, hands in guard.",
+        "Falling: legs extending down to land, guard up."
+      ],
+      "anchor": "pelvis",
+      "new": {
+        "phase_breaks": [
+          3,
+          5
+        ],
+        "fps": 12,
+        "anchor_mode": "pelvis"
+      }
+    },
+    "air_land": {
+      "layout": "wide",
+      "intro": "Landing after an air special: he touches down hard in a deep crouch and rises into his guard.",
+      "frames": [
+        "Touching down: a deep crouch, knees fully bent, one hand near the ground.",
+        "Absorbing: still low, both hands rising.",
+        "Rising from the crouch, guard forming.",
+        "Return: back in the approved brawler guard, both hands as claws before his chest, almost identical to input image 1."
+      ],
+      "new": {
+        "phase_breaks": [
+          1,
+          2
+        ],
+        "fps": 12
+      }
+    },
+    "hiyu_senrin": {
+      "layout": "wide",
+      "intro": "Destructive Death: Leg Type, Flying Meteor Thousand Wheels (j.214B/D): a forward somersault in the air that brings his heels whipping down in two heavy axe kicks. Bare feet; no effects. Airborne in every frame.",
+      "frames": [
+        "In the air: airborne, knees tucked up, both hands in his brawler guard before his chest.",
+        "Starting a forward somersault: the head dipping forward and down, knees tucking.",
+        "Mid-flip: upside down, legs coming over the top.",
+        "Heel 1: coming over, the first leg whipping down over the top in front of him in an axe kick, heel leading down to the RIGHT.",
+        "Continuing the rotation, the first leg pulling in, the other leg rising.",
+        "Heel 2: the second leg whipping down in front of him, heel driving diagonally down to the lower RIGHT.",
+        "Heel 2 extended: the leg straight down and forward, the body upright behind it.",
+        "Recovering upright, knees tucked.",
+        "Falling: knees tucked, guard up.",
+        "Falling: legs extending down to land."
+      ],
+      "anchor": "pelvis",
+      "new": {
+        "phase_breaks": [
+          3,
+          7
+        ],
+        "fps": 12,
+        "segment_sync": true,
+        "anchor_mode": "pelvis"
+      }
+    },
+    "round_victory": {
+      "layout": "wide",
+      "intro": "Round victory: one forward action. From his guard he straightens up, folds his arms across his chest and throws his head back in an arrogant laugh, then looks down at the fallen opponent with a smug grin. Every frame different; no effects.",
+      "frames": [
+        "Start: the approved brawler guard of input image 1 (both navy hands raised in front of his chest as half-closed claws, elbows out, torso leaning slightly forward, a confident grin).",
+        "Relaxing the guard, the hands lowering.",
+        "Straightening the knees, standing taller.",
+        "Standing upright, the arms coming in toward his chest.",
+        "Standing upright, arms folding across his chest.",
+        "Arms folded across his chest, chin up, a confident smirk.",
+        "Arms folded, head tilting back, starting to laugh.",
+        "Arms folded, head thrown back, laughing loudly, mouth wide open.",
+        "Arms folded, laughing, shoulders shaking, eyes closed.",
+        "Arms folded, the laugh fading, head coming forward.",
+        "Arms folded, looking down at the opponent (to the RIGHT and down), smug grin.",
+        "Arms folded, weight shifting onto one leg, smug grin.",
+        "Arms folded, a slight tilt of the head, eyes narrowed.",
+        "Arms folded, one hand lifting from the elbow, grin widening.",
+        "Arms folded again, standing tall, chin up.",
+        "Arms folded, a satisfied breath, shoulders lowering.",
+        "Arms folded, looking off to the side with disinterest.",
+        "Final: standing tall, arms folded across his chest, a superior grin, held."
+      ],
+      "upright_frames": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "new": {
+        "phase_breaks": [
+          6,
+          12
+        ],
+        "fps": 12
+      },
+      "reviewed": {
+        "17": "the face is turned up and away, so the head ruler finds a lit patch of the vest and the height is measured from there; the drawing stands as tall as frame 16 at the same scale"
+      }
+    },
+    "round_defeat": {
+      "layout": "wide",
+      "intro": "Round defeat: struck and knocked backward to the LEFT, collapsing flat on his back, unconscious. In the lying frames the body is flat on his back on the ground, the body horizontal, seen exactly from the side at ground level (never from above). The fall is ONE continuous backward topple: every frame is lower and more horizontal than the one before it, never rising again.",
+      "frames": [
+        "Struck: reeling back, head snapped back, arms flung out.",
+        "Staggering backward, feet leaving the ground.",
+        "Falling backward to the LEFT, LOWER than the previous frame: the body tilted only about 30 degrees above horizontal, head lower than in frame 2 and closer to the ground on the LEFT, feet up to the RIGHT, arms trailing.",
+        "Falling, LOWER again: the body about 15 degrees above horizontal, head close to the ground on the LEFT, legs to the RIGHT, arms out.",
+        "Continuing from the LAST drawing of input image 4 (already almost flat): the body completely HORIZONTAL and a little LOWER than there, only a hand's width above the ground, head to the LEFT, arms out. It must not be tilted up more than the last drawing of input image 4.",
+        "Just touching the ground: the body flat and horizontal, his back meeting the floor, head to the LEFT, arms out to the sides.",
+        "Impact: his back hits the ground, legs bouncing up, flat on his back on the ground, the body horizontal, seen exactly from the side at ground level (never from above).",
+        "Lying flat on his back on the ground, the body horizontal, seen exactly from the side at ground level (never from above), legs coming down.",
+        "Lying flat on his back on the ground, the body horizontal, seen exactly from the side at ground level (never from above), one knee bent, arms out.",
+        "Lying flat on his back on the ground, the body horizontal, seen exactly from the side at ground level (never from above), the knee sliding down.",
+        "Lying flat on his back on the ground, the body horizontal, seen exactly from the side at ground level (never from above), head turned slightly, unconscious.",
+        "Lying still flat on his back on the ground, the body horizontal, seen exactly from the side at ground level (never from above), unconscious."
+      ],
+      "ground_mode": "lying",
+      "ground_frames": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "new": {
+        "phase_breaks": [
+          4,
+          8
+        ],
+        "fps": 12
+      }
+    },
+    "intro_keys": {
+      "layout": "wide",
+      "intro": "Key drawings of the round intro, all edits of the approved brawler guard (input image 1): his legs, feet and stance NEVER move. Before the fight he stands at ease, cracks his knuckles and beckons the opponent, grinning; bare navy hands with red nails.",
+      "frames": [
+        "At ease: the same legs and feet, his upper body straighter and relaxed, both arms hanging loosely at his sides with the hands open, head tilted slightly, a calm, cocky smirk.",
+        "Cracking his knuckles: the same legs and feet, his right fist pressed into his left palm in front of his chest, elbows out, a confident grin.",
+        "Cracking the other hand: the same legs and feet, his left fist pressed into his right palm in front of his chest, head tilted to the other side, grinning.",
+        "Beckoning: the same legs and feet, his lead hand held forward at chest height with the palm up and the fingers curling toward himself (\"come on\"), the other fist at his side, a wide, eager grin."
+      ],
+      "helper": true,
+      "edit": {
+        "image": "output/imagegen/akaza-v3/imports/idle-warp/idle-00.png",
+        "keep": "the size and the position of the figure in its column, both legs and both feet exactly (the stance never moves), the sash, the trousers, the costume design, the line weight and the colours",
+        "change": "his upper body posture, head, face, arms and hands",
+        "rule": "The legs and feet stay exactly where they are in input image 1; never enlarge or shrink the figure."
+      },
+      "register": {
+        "clip": "idle",
+        "frame": 0
+      }
+    },
+    "round_intro": {
+      "layout": "wide",
+      "intro": "Round intro assembled by intro_warp.py from helper keys (edits of idle frame 0, registered by the lower body) and warps of the approved key; no sheets of its own and no effects. One forward action with the stance never moving: at ease, cracks his knuckles (both hands), beckons the opponent, then drops into the brawler guard; the last frame is idle frame 0.",
+      "frames": [
+        "At ease (intro_keys 0).",
+        "At ease, breathing.",
+        "At ease, rolling his shoulders.",
+        "Cracking the knuckles (intro_keys 1).",
+        "Cracking, pressing.",
+        "Cracking, pressing.",
+        "Cracking the other hand (intro_keys 2).",
+        "Cracking, pressing.",
+        "Cracking, pressing.",
+        "Beckoning (intro_keys 3).",
+        "Beckoning, the fingers curling.",
+        "Beckoning, the fingers curling.",
+        "Dropping into the guard (warp of the approved key).",
+        "Settling into the guard.",
+        "Settling into the guard.",
+        "Settling into the guard.",
+        "Settling into the guard.",
+        "Idle frame 0."
+      ],
+      "warp": {
+        "tool": "tools/art_v3/intro_warp.py",
+        "spec": "tools/art_v3/spec/akaza-intro-rig.json",
+        "assembled": true
+      },
+      "new": {
+        "phase_breaks": [
+          6,
+          12
+        ],
+        "fps": 12
+      }
+    },
+    "awaken_keys": {
+      "layout": "wide",
+      "intro": "Key drawings of the awakening (Technique Development: Compass Needle), edits of the approved brawler guard (input image 1): his legs, feet and stance NEVER move. He throws his arms open into the Compass Needle stance; bare navy hands with red nails; no effects.",
+      "frames": [
+        "Opening: the same legs and feet, both arms swinging outward and down from his chest, hands opening into claws, chest pushed out, head lifting, a fierce grin.",
+        "Compass Needle stance: the same legs and feet, both arms spread wide and low out to his sides, hands open as claws with the fingers spread, chest out, head raised, eyes wide, a savage grin."
+      ],
+      "helper": true,
+      "edit": {
+        "image": "output/imagegen/akaza-v3/imports/idle-warp/idle-00.png",
+        "keep": "the size and the position of the figure in its column, both legs and both feet exactly (the stance never moves), the sash, the trousers, the costume design, the line weight and the colours",
+        "change": "his upper body posture, head, face, arms and hands",
+        "rule": "The legs and feet stay exactly where they are in input image 1; never enlarge or shrink the figure."
+      },
+      "register": {
+        "clip": "idle",
+        "frame": 0
+      }
+    },
+    "awakening_start": {
+      "layout": "wide",
+      "intro": "Awakening, Technique Development: Compass Needle (awakened atlas only): assembled by intro_warp.py from awaken_keys and idle frame 0, no sheets of its own and no effects (the compass on the floor is drawn by the game). He throws his arms open into the Compass Needle stance and drops back into his guard.",
+      "frames": [
+        "Idle frame 0.",
+        "Opening the arms (awaken_keys 0).",
+        "Compass Needle stance (awaken_keys 1).",
+        "Compass Needle stance, a deep breath.",
+        "Closing the arms (awaken_keys 0).",
+        "Idle frame 0."
+      ],
+      "warp": {
+        "tool": "tools/art_v3/intro_warp.py",
+        "spec": "tools/art_v3/spec/akaza-awakening-rig.json",
+        "assembled": true
+      }
+    },
+    "guard_low": {
+      "layout": "wide",
+      "intro": "Crouching guard: the crouch of input image 1 stays exactly the same; only his arms and hands move. He covers up with both navy forearms crossed in front of his face and chest, elbows tight, to absorb a blow. The hands are NEVER raised above his head.",
+      "frames": [
+        "Preparation: the same crouch, both forearms rising from his chest toward his face.",
+        "Block impact: the same crouch, both forearms crossed tight in front of his face and chest, chin tucked behind them, teeth gritted.",
+        "Pushed: the same crouch and the same crossed-forearm block, his shoulders hunched a little more.",
+        "Holding the block: forearms crossed in front of his face, eyes glaring over them.",
+        "Lowering the forearms to chest height, a confident grin returning.",
+        "Back to the crouch of input image 1: both hands as claws raised before his chest and chin."
+      ],
+      "edit": {
+        "image": "output/imagegen/akaza-v3/references/crouch-key.png",
+        "change": "his two arms and his hands",
+        "keep": "the size and the position of the figure in its column, the crouch (both legs, both feet, hips and trousers exactly), the torso, the head, face and hair, the sash, the line weight and the colours"
+      },
+      "register": {
+        "clip": "crouch",
+        "frame": 5
+      }
     }
   }
 }

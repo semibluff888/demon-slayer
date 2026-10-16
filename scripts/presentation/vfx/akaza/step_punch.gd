@@ -7,9 +7,9 @@ extends "res://scripts/presentation/vfx/akaza/technique.gd"
 ## How far the needle's head leads the front of the hit box (local units).
 const LEAD := 40.0
 
-## The drawn fist (6C borrows the air_type frames, roster-v1 art).
+## The drawn fist on step_punch's active frames (v3 art).
 func fist(_move: Resource) -> Vector2:
-	return Vector2(43.0, -46.0)
+	return Vector2(32.0, -48.0)
 
 ## The needle at move time `t`: {"from", "head", "alpha"} in fighter-local units.
 func shape(f: RefCounted, t: float) -> Dictionary:

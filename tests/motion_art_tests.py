@@ -7,7 +7,7 @@ OUT=ROOT/'output/imagegen/motion-fixes-v1'
 TARGETS={'nezuko/awakening':{'blood_kick','spinning_kick','blood_burst','throw_forward','throw_success'},'nezuko':{'blood_burst','throw_forward','throw_success'},'akaza':{'throw_forward','throw_success'},'akaza/awakening':{'throw_forward','throw_success'},'zenitsu':{'throw_success'},'zenitsu/awakening':{'throw_success'}}
 def read(p):return json.loads(p.read_text(encoding='utf-8-sig'))
 # A character redrawn with tools/art_v3 replaces these motion fixes; tests/art_v3_tests.py checks it.
-REDRAWN={cid for cid in ['zenitsu'] if read(ROOT/'art/characters'/cid/'atlas.json').get('revision')==cid+'-v3'}
+REDRAWN={cid for cid in ['zenitsu','akaza'] if read(ROOT/'art/characters'/cid/'atlas.json').get('revision')==cid+'-v3'}
 TARGETS={key:clips for key,clips in TARGETS.items() if key.split('/')[0] not in REDRAWN}
 def sprite(folder,e):
  x,y,w,h=e['region']
@@ -33,17 +33,19 @@ class MotionArtTests(unittest.TestCase):
    for field in ['canvas_size','feet_anchor','source_height','canonical_height']:self.assertEqual(old[field],new[field])
  def test_return_to_exact_idle(self):
   for key,clips in {'nezuko/awakening':['blood_kick','spinning_kick','blood_burst','throw_forward'],'nezuko':['blood_burst','throw_forward'],'akaza':['throw_forward'],'akaza/awakening':['throw_forward']}.items():
+   if key.split('/')[0] in REDRAWN:continue
    folder=ROOT/'art/characters'/key;m=read(folder/'atlas.json');idle=m['clips']['idle']['frames'][0]
    for c in clips:
     end=m['clips'][c]['frames'][-1];self.assertEqual(end['offset'],idle['offset']);self.assertEqual(sprite(folder,end).tobytes(),sprite(folder,idle).tobytes())
  def test_back_throw_has_shared_grab_and_mirrored_release(self):
-  for key in ['nezuko','nezuko/awakening','akaza','akaza/awakening']:
+  for key in [k for k in ['nezuko','nezuko/awakening','akaza','akaza/awakening'] if k.split('/')[0] not in REDRAWN]:
    folder=ROOT/'art/characters'/key;m=read(folder/'atlas.json');fw=m['clips']['throw_forward']['frames'];bk=m['clips']['throw_success']['frames'];turn=3 if key.startswith('akaza') else 6
    for i in range(len(fw)):
     if key.startswith('nezuko') and i in [4,5]:continue
     source=sprite(folder,fw[i]);x,y=fw[i]['offset']
     if i>=turn:source=source.transpose(Image.Transpose.FLIP_LEFT_RIGHT);x=2*m['feet_anchor'][0]-x-source.width
     self.assertEqual(source.tobytes(),sprite(folder,bk[i]).tobytes(),key+'/'+str(i));self.assertEqual([x,y],bk[i]['offset'])
+ @unittest.skipIf('akaza' in REDRAWN,'Akaza ships the v3 redraw')
  def test_akaza_timeline_and_anatomy(self):
   for key in ['akaza','akaza/awakening']:
    folder=ROOT/'art/characters'/key;m=read(folder/'atlas.json')

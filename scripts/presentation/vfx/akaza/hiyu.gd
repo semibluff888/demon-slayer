@@ -5,8 +5,8 @@ extends "res://scripts/presentation/vfx/akaza/technique.gd"
 ## and the landing throws up a ring of dust and a small burst.
 
 ## Ring radii round the body centre and its height above the feet.
-const RADII := [30.0, 38.0, 46.0]
-const CENTRE := Vector2(2.0, -34.0)
+const RADII := [24.0, 30.0, 36.0]
+const CENTRE := Vector2(0.0, -38.0)
 
 var _landed: Dictionary = {}
 
@@ -14,7 +14,7 @@ func spin(t: float, move: Resource) -> float:
 	return (t - move.startup) * 0.55
 
 func heel(_move: Resource) -> Paths.Arc:
-	var path := Paths.Arc.new(Vector2(10.0, -30.0), -1.6, 0.9, 44.0, 52.0, 16.0)
+	var path := Paths.Arc.new(Vector2(4.0, -34.0), -1.6, 0.75, 32.0, 36.0, 14.0)
 	path.profile = "crescent"
 	return path
 

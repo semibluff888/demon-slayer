@@ -1,0 +1,1 @@
+akaza-v3-guard_low-p2: the CPA gateway answered 504 Gateway Time-out twice on 2026-10-16 (record status "uncertain", no image written; attempt2 is the second). Each request was archived here before it was run again with the same prompt and references.

@@ -5,7 +5,7 @@ extends "res://scripts/presentation/vfx/akaza/technique.gd"
 ## The kick lifts Akaza off the floor, so the crescent stays where it was cut.
 
 ## The kick rises from low in front to straight overhead round his hip (fitted to
-## the drawn crown_splitter frames, roster-v1 art; the foot peaks near (24, -74)).
+## the drawn crown_splitter frames, v3 art; the foot peaks near (12, -76)).
 func arc(move: Resource) -> Paths.Arc:
 	var big := heavy(move)
 	var path := Paths.Arc.new(Vector2(4.0, -38.0), 0.85, -1.3, 40.0, 44.0 if big else 41.0, 17.0 if big else 14.0)
