@@ -28,5 +28,412 @@
       "character": "akaza",
       "stage": "checkpoint-1"
     }
+  },
+  {
+    "id": "akaza-v3-walk-p0",
+    "group": "pilot",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-walk-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-walk-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "walk",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-walk-p1",
+    "group": "pilot",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-walk-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-walk-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-walk-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "walk",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-walk-p2",
+    "group": "pilot",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-walk-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-walk-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-walk-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "walk",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-stand_light-p0",
+    "group": "pilot",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-stand_light-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-stand_light-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "stand_light",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-stand_light-p1",
+    "group": "pilot",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-stand_light-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-stand_light-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-stand_light-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "stand_light",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-stand_light-p2",
+    "group": "pilot",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-stand_light-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-stand_light-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-stand_light-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "stand_light",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "akaza-v3-stand_light-p2-r1",
+    "rejected": "Drew him about 5.7 heads tall (key 6.0): about 10 percent shorter than the idle at the same head size. The revision adds the key's measured head : torso : leg lengths to the prompt (spec prompt.proportions)."
+  },
+  {
+    "id": "akaza-v3-air_type-p0",
+    "group": "pilot",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-air_type-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-air_type-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "air_type",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-air_type-p1",
+    "group": "pilot",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-air_type-p1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-air_type-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-air_type-p0.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "air_type",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-air_type-p2",
+    "group": "pilot",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-air_type-p2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-air_type-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-air_type-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "air_type",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-air_type-p3",
+    "group": "pilot",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-air_type-p3.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-air_type-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-air_type-p2.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "air_type",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-air_type-p4",
+    "group": "pilot",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-air_type-p4.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-air_type-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-air_type-p3.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "air_type",
+      "part": 4,
+      "frame_indices": [
+        7,
+        8
+      ],
+      "overlap": [
+        7
+      ],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-stand_light-p2-r1",
+    "group": "pilot-r1",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-stand_light-p2-r1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-stand_light-p2-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-stand_light-p1.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "stand_light",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "akaza-v3-stand_light-p2-r2",
+    "group": "pilot-r2",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-stand_light-p2-r2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-stand_light-p2-r2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/approved-idle-candidate.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-stand_light-p1.png",
+      "output/imagegen/akaza-v3/references/scale-guide-wide.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "stand_light",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "akaza-v3-stand_light-p2-r1",
+    "rejected": "Experiment: a size guide (the key at its exact size in each column, references/scale-guide-wide.png) as input image 5 made it worse: the figure came out smaller (868 px) with a larger head (4.4 heads). r1 stays the active sheet; the guide is not used."
   }
 ]

@@ -33,7 +33,11 @@ LENGTH_LIMIT = 1.05             # longest stretched-out body vs the approved idl
 def canonical(character):
     """The approved key and its scale. spec/<id>.json "ruler": the key's hair top to chin
     (approved_head_px) and the model sheet's head and height give the runtime head at the
-    runtime standing height. Also selects the character's colour classes (anatomy.configure)."""
+    runtime standing height. Optional "production_head_scale": the model draws some
+    characters' production sheets with a larger head than their key (Akaza: about 7%), so
+    generated sheets aim at a head this much larger and their bodies match the idle; the
+    idle and other warped clips keep the key's own scale. Also selects the character's
+    colour classes (anatomy.configure)."""
     data = anatomy.configure(character)
     ruler = data['ruler']
     out = production(character)
@@ -43,7 +47,7 @@ def canonical(character):
     scale = runtime_head / ruler['approved_head_px']
     # A wide crouching key's main axis is shorter than the body; the spec then gives it.
     length = data.get('qa', {}).get('length_px') or anatomy.body_axes(key)[0]
-    return dict(ruler=measured['ruler'], runtime_ruler=measured['ruler'] * scale, scale=scale,
+    return dict(ruler=measured['ruler'], runtime_ruler=measured['ruler'] * scale * ruler.get('production_head_scale', 1.0), scale=scale,
                 length=length, palette=palette.stats(key), key=key, qa=data.get('qa', {}),
                 warp_pad=tuple(data.get('warp_pad', WARP_PAD)))
 

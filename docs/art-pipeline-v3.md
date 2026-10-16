@@ -36,9 +36,9 @@
 | 字段 | 作用 |
 |---|---|
 | `background` | 生图底色和抠像键。品红（炭治郎、善逸）沿用 `process_anime_art.cutout`；其他颜色由 `common.cutout` 按主色占比抠像（猗窝座的马甲是品红色，用绿幕）。两者都保留服务直接返回的透明通道 |
-| `ruler` | `approved_head_px`（定稿发顶到下巴）、`model_head_px` / `model_height_px`（设定图头长和全身高）：游戏内头长 = 站高 `runtime_standing_px` × 设定图比例，定稿缩放 = 游戏内头长 ÷ 定稿头长 |
+| `ruler` | `approved_head_px`（定稿发顶到下巴）、`model_head_px` / `model_height_px`（设定图头长和全身高）：游戏内头长 = 站高 `runtime_standing_px` × 设定图比例，定稿缩放 = 游戏内头长 ÷ 定稿头长。可选 `production_head_scale`（默认 1）：模型画量产图时头比定稿大的角色，生成图按这个倍数放大的头部标尺缩放，身体就和待机一样高；待机等形变片段不受影响 |
 | `canon` | 定稿提示词：头像说明、配色、设定图姿势、三个待机候选。可选项（括号内是炭治郎、善逸用的默认值）：`subject`（boy）、设定图人物高 `model_px`（900）和头长 `model_head_px`（138）、旧设定图 `old_model`（anime-v2）、候选图禁止的元素 `element`（water）、`authorization.json` 里记录的授权说明 `authorization` |
-| `prompt` | 提示词标尺（架势名、架势高、站直高、头长）、刀的写法（`katana`、编辑用 `katana_edit`）、禁止的特效。徒手角色用 `weapon_label` 改那一行的标题（默认 Katana），用 `edit_keep` / `edit_change` 改编辑模式默认的“保持不变 / 只改”两句 |
+| `prompt` | 提示词标尺（架势名、架势高、站直高、头长）、刀的写法（`katana`、编辑用 `katana_edit`）、禁止的特效。徒手角色用 `weapon_label` 改那一行的标题（默认 Katana），用 `edit_keep` / `edit_change` 改编辑模式默认的“保持不变 / 只改”两句。可选 `proportions`：在标尺后加一行“Proportions (critical)”，写明定稿的头、上身、下身长度 |
 | `anatomy` | 头发、皮肤、制服的 HSV 范围（含端点，色相可跨 0）。善逸的头发和羽织、绑腿同色，`hair_cut` 只保留下巴线以外（从身体中心看）、离脸中心 `radius` 倍脸宽以内的金色，并先在 `link` 像素宽的细连接处断开。猗窝座的粉发和品红马甲色相、饱和度相同，只有亮度不同：`hair_lit` 只保留至少 `share` 比例的像素亮度达到 `v` 的粉色连通块（头发亮部约 V 240，马甲最亮也不到 V 210） |
 | `materials` | 服装材质类（`exclude_head` 排除头部）和需要锁色的 `locked` 列表 |
 | `awakening` | 觉醒派生方式：`mark` 或 `grade`（调色参数、轮廓光宽度和颜色） |
@@ -193,4 +193,25 @@
   - 定稿里前脚比后脚高 22px，`offsets` 把前脚、脚踝、裤脚和膝盖下移到后脚的地平线。
 - **觉醒版**：`grade` 把藏青纹身、腰带、双手和脚踝念珠调亮成蓝色（Lab 明度 +16、彩度 ×1.5，在 +9 / ×1.35 和 +24 / ×1.6 之间比较后选定）。蓝焰轮廓由特效 `vfx/akaza/compass.gd` 在游戏里画，不烘焙进图。
 - **审阅**：`artifacts/akaza-v3/akaza-idle.mp4`（实机普通版、觉醒版和放大对照）、`idle-v3-lineup.png`（与炭治郎、善逸同比例）。预览用 `preview.py` 临时装入、录完即撤回，图集到检查点 ④ 打包时才替换。
+
+## 试制批（猗窝座，检查点 ③）
+
+- **姿势脚本** `tools/art_v3/poses/akaza.json`：徒手拳斗架势，三个片段都用宽格（768 列，每张 2 帧），帧数和节奏与旧图集相同（walk 6、stand_light 6、air_type 9）。air_type 暂时也给 6C 踏进冲拳用。身高检查只加在 walk 上（`stance`），攻击里的弓步本来就会变矮。
+- **生成**：任务组 `pilot` 共 11 张，CPA 全部一次成功，姿势、徒手、纹身、念珠都正确。
+- **比例**：
+  - 问题：模型把量产图画成头偏大，比定稿多约 7%。定稿发顶到脚底是头部标尺的 8.11 倍，同一架势的量产帧只有 7.51–7.87 倍。按头部标尺缩放后，身体比待机矮 6–8%，行走矮 10%。
+  - 试过两种做法：
+    - 在提示词里写明定稿的头、上身、下身长度（`prompt.proportions`，`pilot-r1` 重画 stand_light 第 3 张）：只有一点改善；
+    - 加一张尺寸引导图，把定稿按目标尺寸放进每列（`pilot-r2`）：反而画成 4.4 头身、人更小，已标记 `rejected`，不再使用。
+  - 最后做法：`ruler.production_head_scale` = 1.07（同一架势各帧比值的中位数）。行走缩放后是待机的 95–97%，回到架势的帧 98–101%，头只比待机大约 3px。
+  - 两个新可选项默认关闭，炭治郎、善逸的 255 + 223 条提示词逐字节不变。
+- **质检**（`artifacts/art-v3/akaza/report-pilot.md`）：
+  - 11 张图的重采样倍率为 0.78–0.85，测试要求 0.62–1.1；
+  - 锁色后 ΔE ≤ 1.9；
+  - 没有阻断级标记。
+  - 绿幕抠像：全部 33 帧的轮廓边上，偏绿像素只占 0.23%，白裤子边缘放大看也没有绿边。
+- **审阅**：
+  - `artifacts/akaza-v3/akaza-pilot.mp4`：旧图、新图、觉醒三栏放大对照，加实机全画面；
+  - `pilot-compare.png`：同帧对照。
+  - 预览录完已撤回，特效的拳脚位置仍是按旧图量的，全量重绘后重新对位。
 

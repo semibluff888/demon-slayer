@@ -19,7 +19,9 @@
     "runtime_standing_px": 356,
     "approved_head_px": 132,
     "model_head_px": 141,
-    "model_height_px": 960
+    "model_height_px": 960,
+    "production_head_scale": 1.07,
+    "production_note": "Checkpoint 3 pilot: the model draws Akaza's production frames with a larger head than the key: hair top to sole over the head ruler is 8.11 on the key but 7.51-7.87 on frames drawn in the same guard (stand_light 1 and 6, air_type 1 and 9), so head-ruler scaling left his body 6-8 percent shorter than the idle (walk 10 percent). Generated sheets therefore aim at a runtime head 1.07 times the key's (median of those guard frames, 1.03-1.08): the body matches the idle and the head is about 3 px larger. A prompt line with the key's proportions (prompt.proportions) helped only slightly; a size-guide reference made it worse."
   },
   "palette": {
     "note": "Material targets are measured from the approved v3 idle key at run time (process.canonical); the colour classes are \"anatomy\" and \"materials\" below."
@@ -48,7 +50,7 @@
     ]
   },
   "prompt": {
-    "note": "Production rulers measured on the approved key at checkpoint 2: brawler stance 800 px, upright 900 px (model sheet proportion at the key's head), hair top to chin 132 px. He is unarmed, so the weapon line names his hands and the edit defaults change only his arms and hands.",
+    "note": "Production rulers measured on the approved key at checkpoint 2: brawler stance 800 px, upright 900 px (model sheet proportion at the key's head), hair top to chin 132 px. He is unarmed, so the weapon line names his hands and the edit defaults change only his arms and hands. proportions (checkpoint 3): the pilot drew him about 10 percent shorter than the key at the same head size (a larger head relative to the body), so the prompt adds the key's own head : torso : leg lengths.",
     "stance": "fighting stance",
     "stance_px": 800,
     "upright_px": 900,
@@ -58,7 +60,8 @@
     "katana_edit": "he is UNARMED: no sword, no scabbard and no weapon; both hands are bare, navy-blue with red fingernails.",
     "edit_keep": "the size and the position of the figure in its column, the head, face and hair, the torso and the vest, the sash, both legs, both feet, the ankle beads, the line weight and the colours",
     "edit_change": "his two arms and his hands",
-    "effects": "shockwaves, energy, snowflake sigils, trails or speed lines"
+    "effects": "shockwaves, energy, snowflake sigils, trails or speed lines",
+    "proportions": "measured on input image 1: hair top to chin 132 px, chin to the top of the sash 194 px, the sash to the soles 466 px (1 : 1.5 : 3.5 head lengths). He is a tall adult with a SMALL head on broad shoulders, a long torso and long legs; draw every frame with exactly these proportions, the head exactly as small as in input image 1, never a larger head or a shorter torso or legs."
   },
   "anatomy": {
     "note": "Provisional, measured on the roster-v1 model sheet: re-check on the approved key at checkpoint 2. Inclusive OpenCV HSV boxes. His pink hair shares its hue with the magenta vest, so hair_cut keeps only pink beyond the chin (as Zenitsu's gold). His chest and abs are bare skin, so the face blob may join the neck and chest across gaps in the tattoo lines; the head ruler must be checked on the key. uniform = the white trousers (the largest costume mass, at the hips).",

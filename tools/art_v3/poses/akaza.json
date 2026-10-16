@@ -1,4 +1,46 @@
 {
-  "note": "Per-frame pose scripts for Akaza's v3 redraw (same conventions as tools/art_v3/poses/tanjiro.json). Frame counts, phase breaks and timing semantics match the shipped atlas. He fights bare-handed: the edit defaults change only his arms and hands (spec prompt.edit_keep / edit_change). The idle is warped from the approved key (spec/akaza-idle-rig.json); the production clips are written at checkpoint 3.",
-  "clips": {}
+  "note": "Per-frame pose scripts for Akaza's v3 redraw (same conventions as tools/art_v3/poses/tanjiro.json). Frame counts, phase breaks and timing semantics match the shipped atlas. He fights bare-handed in a brawler guard (input image 1: both navy hands raised in front of his chest as half-closed claws, elbows out, torso leaning slightly forward, a confident grin); the edit defaults change only his arms and hands (spec prompt.edit_keep / edit_change). Every clip uses wide 768x1024 columns: the wide guard and his straight punches do not fit a 512 column. The idle is warped from the approved key (spec/akaza-idle-rig.json). \"stance\": clips that keep the guard's height (QA band vs the idle); attacks are not banded, a lunge is meant to be lower.",
+  "clips": {
+    "walk": {
+      "layout": "wide",
+      "intro": "In-place forward walk cycle in his brawler guard: knees slightly bent, both navy hands kept raised in front of his chest as half-closed claws, elbows out, torso leaning slightly forward, a confident grin, eyes on the opponent. A heavy, prowling step; the top of his head stays within about 5 percent of input image 1 (he never stands fully upright). The guard and the head stay steady (at most 8 px of bob); the pelvis stays at the same X in every frame. It is a seamless loop, not a story of moving right.",
+      "frames": [
+        "Contact: the near leg reaches forward RIGHT with the heel touching the ground, the far leg behind on the ball of its foot; the wide white trousers billow with the stride; guard held.",
+        "Weight: weight moves onto the near foot, both knees bend a little more, the far heel lifts; the sash ends swing back.",
+        "Passing: the far foot travels forward close to the ground under the pelvis, the near leg supports; body at its highest (still knees bent).",
+        "Opposite contact: the far leg now forward RIGHT with the heel down, the near leg behind on the ball of its foot (the legs swapped compared with frame 1); guard held.",
+        "Opposite weight: weight onto the far foot, knees bend a little more, the near heel lifts.",
+        "Opposite passing: the near foot travels forward under the pelvis, the far leg supports; flows directly into frame 1."
+      ],
+      "loop": true,
+      "stance": true
+    },
+    "stand_light": {
+      "layout": "wide",
+      "intro": "Standing light punch (5A): a fast lead-hand jab that starts and ends in the approved brawler guard. He punches with a closed navy fist; no effects.",
+      "frames": [
+        "Startup: from the approved brawler guard of input image 1 his weight shifts slightly forward, the lead shoulder turns in and the lead (right-side) hand closes into a fist; the rear hand stays as a claw before his chest.",
+        "Chamber: the lead fist drawn a little back beside his chin, elbow tucked, torso coiled, eyes on the target.",
+        "Active: a full straight jab: the lead arm fully extended to the RIGHT at shoulder height, the navy fist closed, knuckles forward; torso turned into the punch; the rear claw guards his chin; front knee bent.",
+        "Snap: the arm still fully extended at shoulder height, the body leaning a little further into the punch, the rear hand guarding.",
+        "Recovery: the fist pulls back toward his chin, elbow bending, weight returning over the centre.",
+        "Return: back in the approved brawler guard, both hands as claws before his chest, almost identical to input image 1."
+      ]
+    },
+    "air_type": {
+      "layout": "wide",
+      "intro": "Destructive Death: Air Type (236A/C): from the brawler guard he winds his rear arm back and fires one tremendous straight punch into the air in front of him with a lunging step, then returns to guard. Closed navy fist; draw no shockwave or effects, the game adds them.",
+      "frames": [
+        "Startup: the approved brawler guard of input image 1, sinking slightly lower, a fierce grin.",
+        "Wind-up: the rear (left-side) arm draws back and up, the fist cocked behind his head at ear height, elbow high; the lead claw pushed forward at chest height; weight on the rear leg.",
+        "Coil: torso twisted away from the opponent, the rear fist cocked as far back as it goes, the front foot lifting to step; eyes on the target.",
+        "Active: he steps forward into a deep lunge, front knee bent over the front foot, rear leg stretched back; the rear arm is fully extended straight forward to the RIGHT at shoulder height, navy fist closed; torso turned square into the punch; the lead hand pulled back to his chest.",
+        "Active hold: the same full extension, the punching arm level and locked, the body leaning a little further forward over the front knee.",
+        "Active end: still fully extended, the fist at the same height, shoulders beginning to relax.",
+        "Recovery: the punching arm pulls back, elbow bending, weight moving back over the centre, the lunge narrowing.",
+        "Recovery: both hands coming back up toward the guard, the front foot drawing back to the stance width of input image 1.",
+        "Return: back in the approved brawler guard, both hands as claws before his chest, almost identical to input image 1."
+      ]
+    }
+  }
 }

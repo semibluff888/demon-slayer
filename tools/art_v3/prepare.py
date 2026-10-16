@@ -37,7 +37,7 @@ Input image 2: APPROVED MODEL SHEET. Costume construction and colours.
 Input image 3: PORTRAIT. {portrait}.
 {previous}Primary request: {count} sequential full-body drawings side by side in {count} equal columns ({cell} px wide, the full 1024 px image height), left to right, one drawing per column, all facing RIGHT.
 Scale (critical): every drawing uses exactly the scale of input image 1. In the {stance} of input image 1 he is {stance_px} px tall from the top of the hair to the soles; upright he would be about {upright_px} px; hair top to chin is {head_px} px. Bent knees or a lunge lower the body, but the head, torso and legs keep exactly these lengths. Never enlarge the head, never shorten the legs; no chibi. Feet touching the ground stand on one shared baseline 40 px above the bottom edge. Blades, sleeves and the haori stay inside their own column.
-{weapon_label} (critical): {katana}
+{proportions}{weapon_label} (critical): {katana}
 Motion: {intro}
 {frames}
 Identity: {identity}
@@ -147,7 +147,8 @@ def make_job(args, data, pose, clip, index, chunk, overlap, previous_out, revisi
                              identity=data['identity'], style=data['style'], background=data['background_name'],
                              keep=edit.get('keep', rules.get('edit_keep', EDIT_KEEP)), change=edit.get('change', rules.get('edit_change', EDIT_CHANGE)),
                              rule=edit.get('rule', EDIT_RULE), weapon_label=rules.get('weapon_label', 'Katana'), portrait=data['portrait_note'],
-                             **{k: v for k, v in rules.items() if k not in ('note', 'weapon_label', 'edit_keep', 'edit_change')})
+                             proportions=('Proportions (critical): %s\n' % rules['proportions']) if rules.get('proportions') else '',
+                             **{k: v for k, v in rules.items() if k not in ('note', 'weapon_label', 'edit_keep', 'edit_change', 'proportions')})
     prompt_path = out / 'prompts' / (job_id + '.txt')
     prompt_path.write_text(prompt, encoding='utf-8')
     if redo:

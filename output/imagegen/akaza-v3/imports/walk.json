@@ -1,0 +1,285 @@
+{
+  "character": "akaza",
+  "clip": "walk",
+  "canvas_size": [
+    1024,
+    640
+  ],
+  "feet_anchor": [
+    448,
+    568
+  ],
+  "runtime_head_ruler": 41.45,
+  "parts": [
+    {
+      "id": "akaza-v3-walk-p0",
+      "source": "output/imagegen/akaza-v3/raw/akaza-v3-walk-p0.png",
+      "sha256": "15e4a28df165901a445f8ff0de19e83da5e147dcf6c436c19d413208639ff38e",
+      "ruler": 134.19,
+      "scale": 0.3089,
+      "scale_method": "head-ruler",
+      "resample_vs_idle": 0.78,
+      "palette_shift": {},
+      "palette_delta_e_before": {
+        "vest": 1.9,
+        "navy": 0.57,
+        "uniform": 0.76,
+        "skin": 1.39,
+        "hair": 2.2
+      },
+      "palette_delta_e_after": {
+        "vest": 1.9,
+        "navy": 0.57,
+        "uniform": 0.76,
+        "skin": 1.39,
+        "hair": 2.2
+      }
+    },
+    {
+      "id": "akaza-v3-walk-p1",
+      "source": "output/imagegen/akaza-v3/raw/akaza-v3-walk-p1.png",
+      "sha256": "9a6cf23bc88b341ca726b215423d85e07d7c19b0017a0fe76ce963854ee4f913",
+      "ruler": 133.85,
+      "scale": 0.3097,
+      "scale_method": "head-ruler",
+      "resample_vs_idle": 0.782,
+      "palette_shift": {
+        "vest": [
+          0.87,
+          -5.59,
+          -1.43
+        ],
+        "navy": [
+          2.02,
+          -2.2,
+          5.31
+        ]
+      },
+      "palette_delta_e_before": {
+        "vest": 5.81,
+        "navy": 5.96,
+        "uniform": 0.46,
+        "skin": 1.54,
+        "hair": 4.2
+      },
+      "palette_delta_e_after": {
+        "vest": 0.5,
+        "navy": 1.14,
+        "uniform": 0.46,
+        "skin": 1.53,
+        "hair": 4.21
+      }
+    },
+    {
+      "id": "akaza-v3-walk-p2",
+      "source": "output/imagegen/akaza-v3/raw/akaza-v3-walk-p2.png",
+      "sha256": "62e241a421872707f105e2f2cd4cfe1d9045cadae2813aabbf36f3707f2f427d",
+      "ruler": 133.29,
+      "scale": 0.311,
+      "scale_method": "head-ruler",
+      "resample_vs_idle": 0.785,
+      "palette_shift": {
+        "vest": [
+          2.43,
+          -3.41,
+          -2.49
+        ],
+        "navy": [
+          2.88,
+          -0.91,
+          0.86
+        ]
+      },
+      "palette_delta_e_before": {
+        "vest": 4.63,
+        "navy": 2.58,
+        "uniform": 0.9,
+        "skin": 1.34,
+        "hair": 3.18
+      },
+      "palette_delta_e_after": {
+        "vest": 1.33,
+        "navy": 1.18,
+        "uniform": 0.9,
+        "skin": 1.34,
+        "hair": 3.18
+      }
+    }
+  ],
+  "frames": [
+    {
+      "frame": 0,
+      "part": "akaza-v3-walk-p0",
+      "crop": [
+        32,
+        16,
+        771,
+        1003
+      ],
+      "head_ruler": 133.89,
+      "head_box": [
+        374,
+        6,
+        557,
+        183
+      ],
+      "ratio_to_sheet": 0.998,
+      "scale": 0.3089,
+      "flags": [],
+      "notes": [],
+      "root_x": 362.0,
+      "anchor_mode": "feet",
+      "offset": [
+        336,
+        264
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.962
+    },
+    {
+      "frame": 1,
+      "part": "akaza-v3-walk-p0",
+      "crop": [
+        848,
+        27,
+        1500,
+        1004
+      ],
+      "head_ruler": 134.19,
+      "head_box": [
+        337,
+        5,
+        520,
+        182
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3089,
+      "flags": [],
+      "notes": [],
+      "root_x": 341.0,
+      "anchor_mode": "feet",
+      "offset": [
+        343,
+        267
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.955
+    },
+    {
+      "frame": 2,
+      "part": "akaza-v3-walk-p1",
+      "crop": [
+        64,
+        15,
+        729,
+        1000
+      ],
+      "head_ruler": 131.0,
+      "head_box": [
+        355,
+        5,
+        538,
+        180
+      ],
+      "ratio_to_sheet": 0.979,
+      "scale": 0.3097,
+      "flags": [],
+      "notes": [],
+      "root_x": 324.0,
+      "anchor_mode": "feet",
+      "offset": [
+        348,
+        263
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.968
+    },
+    {
+      "frame": 3,
+      "part": "akaza-v3-walk-p1",
+      "crop": [
+        743,
+        20,
+        1501,
+        992
+      ],
+      "head_ruler": 133.85,
+      "head_box": [
+        362,
+        6,
+        545,
+        182
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3097,
+      "flags": [],
+      "notes": [],
+      "root_x": 358.0,
+      "anchor_mode": "feet",
+      "offset": [
+        337,
+        267
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.955
+    },
+    {
+      "frame": 4,
+      "part": "akaza-v3-walk-p2",
+      "crop": [
+        81,
+        16,
+        732,
+        982
+      ],
+      "head_ruler": 131.61,
+      "head_box": [
+        339,
+        4,
+        523,
+        178
+      ],
+      "ratio_to_sheet": 0.987,
+      "scale": 0.311,
+      "flags": [],
+      "notes": [],
+      "root_x": 313.0,
+      "anchor_mode": "feet",
+      "offset": [
+        351,
+        268
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.952
+    },
+    {
+      "frame": 5,
+      "part": "akaza-v3-walk-p2",
+      "crop": [
+        785,
+        17,
+        1458,
+        992
+      ],
+      "head_ruler": 133.29,
+      "head_box": [
+        342,
+        4,
+        524,
+        177
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.311,
+      "flags": [],
+      "notes": [],
+      "root_x": 336.0,
+      "anchor_mode": "feet",
+      "offset": [
+        344,
+        265
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.962
+    }
+  ]
+}
