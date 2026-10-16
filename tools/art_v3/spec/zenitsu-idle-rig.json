@@ -4,7 +4,7 @@
   "fps": 10,
   "grid": 6,
   "alpha": 1.4,
-  "note": "Asleep in the Thunder Breathing iai stance: a slow, shallow sleeping breath, the haori flap and hair drifting. The sheathed katana is one straight line (scabbard tip, scabbard, guard, hilt, pommel all carry the same breath offset) so it never bends; feet and knees stay planted.",
+  "note": "Asleep in the Thunder Breathing iai stance: a slow, shallow sleeping breath, the haori flap and hair drifting. The sheathed katana is one straight line (scabbard tip, scabbard, guard, hilt, pommel all carry the same breath offset) so it never bends; feet and knees stay planted. Checkpoint 4 review (2026-10-16): the head stays rigid - every head point moves by the same amount in every motion and the hair motion that spread them apart is gone (the head grew and shrank by up to 4 percent); the breath is 0.6 of its first amplitude.",
   "points": {
     "heel_back": [20, 595], "foot_back": [45, 597], "toe_back": [78, 592],
     "heel_front": [420, 590], "foot_front": [465, 592], "toe_front": [515, 590],
@@ -19,10 +19,9 @@
     "sleeve_back": [110, 310], "lining": [95, 370], "hem_back": [175, 372], "hem_front": [522, 305]
   },
   "motions": [
-    {"name": "breath", "phase": 0.0, "points": {"chest": [0, -5], "collar": [0, -5], "shoulder_back": [0, -5], "shoulder_front": [0, -4], "head": [0, -4], "crown": [0, -4], "hair_back": [0, -4], "hair_front": [0, -4], "waist": [0, -2], "elbow_back": [0, -3],
-      "scabbard_tip": [0, -2], "scabbard_back": [0, -2], "scabbard": [0, -2], "guard": [0, -2], "hilt": [0, -2], "pommel": [0, -2]}},
+    {"name": "breath", "phase": 0.0, "points": {"chest": [0, -3], "collar": [0, -3], "shoulder_back": [0, -3], "shoulder_front": [0, -2.4], "head": [0, -2.4], "crown": [0, -2.4], "hair_back": [0, -2.4], "hair_front": [0, -2.4], "waist": [0, -1.2], "elbow_back": [0, -1.8],
+      "scabbard_tip": [0, -1.2], "scabbard_back": [0, -1.2], "scabbard": [0, -1.2], "guard": [0, -1.2], "hilt": [0, -1.2], "pommel": [0, -1.2]}},
     {"name": "settle", "phase": 0.5, "points": {"pelvis": [0, 2]}},
-    {"name": "cloth", "phase": -0.15, "points": {"sleeve_back": [-6, 2], "lining": [-6, 2], "hem_back": [-4, 2], "hem_front": [3, 1]}},
-    {"name": "hair", "phase": -0.3, "points": {"hair_back": [-2, -1], "crown": [1, -2], "hair_front": [2, -1]}}
+    {"name": "cloth", "phase": -0.15, "points": {"sleeve_back": [-6, 2], "lining": [-6, 2], "hem_back": [-4, 2], "hem_front": [3, 1]}}
   ]
 }
