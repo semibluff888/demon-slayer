@@ -77,7 +77,7 @@ func draw(canvas: Node2D, layer: int, f: RefCounted, actor: Node2D) -> void:
 	var k := charge(f)
 	var spin := age * 0.02
 	var color := compass_color(age, awake)
-	var lift: float = Arena.FLOOR_Y - f.y
+	var lift: float = (Arena.FLOOR_Y - f.y) / vfx.body_scale()
 	vfx.compass_shape(canvas, layer, Vector2(0.0, lift), RADIUS, clampf(age / 14.0, 0.0, 1.0), spin, color, compass_alpha(move, t))
 	if t < start + 1.0:
 		# Shafts of light rising from the rim while the compass is cast.

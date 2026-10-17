@@ -372,13 +372,27 @@ func _draw_burst(canvas: Node2D, layer: int, burst: Dictionary) -> void:
 				owner.draw_burst(canvas, layer, burst, k)
 	canvas.draw_set_transform_matrix(Transform2D.IDENTITY)
 
+## Akaza's drawing scale (CharacterDefinition.model_scale, presentation only). The
+## fighter-local points of the technique scripts were measured on his drawing at
+## 1.0, so fighter-local frames, floor decals and `world` grow with him; points
+## taken from the world (the opponent, a dash origin, the floor under a jump) are
+## divided back (Technique.target_local, origin_local, local_of). Contact bursts
+## and particles stay world-sized.
+func body_scale() -> float:
+	for actor in actors:
+		if actor != null and actor.visual != null and actor.visual.character_id == "akaza":
+			return float(actor.visual.model_scale)
+	return 1.0
+
 ## Canvas transform of a fighter-local frame at world (x, y) facing `facing`.
 func frame_transform(x: float, y: float, facing: float) -> Transform2D:
-	return Transform2D(0.0, Vector2(camera.zoom * facing, camera.zoom), 0.0, camera.point(Vector2(x, y)))
+	var size: float = camera.zoom * body_scale()
+	return Transform2D(0.0, Vector2(size * facing, size), 0.0, camera.point(Vector2(x, y)))
 
 ## A canvas transform at a world point without mirroring, for floor decals.
 func world_transform(at: Vector2, facing: float = 1.0) -> Transform2D:
-	return Transform2D(0.0, Vector2(camera.zoom * facing, camera.zoom), 0.0, camera.point(at))
+	var size: float = camera.zoom * body_scale()
+	return Transform2D(0.0, Vector2(size * facing, size), 0.0, camera.point(at))
 
 func set_base(canvas: Node2D, transform: Transform2D) -> void:
 	base = transform
@@ -740,9 +754,11 @@ static func _tinted(alphas: PackedColorArray, tone: Color) -> PackedColorArray:
 func awakened(slot: int) -> bool:
 	return slot < actors.size() and actors[slot] != null and actors[slot].form_active()
 
-## Fighter-local point or direction to world, for anything with x, y, facing.
-static func world(frame: Variant, local: Vector2) -> Vector2:
-	return Vector2(frame.x + local.x * frame.facing, frame.y + local.y)
+## Fighter-local point or direction to world, for anything with x, y, facing
+## (points scale with his drawing, see `body_scale`).
+func world(frame: Variant, local: Vector2) -> Vector2:
+	var size := body_scale()
+	return Vector2(frame.x + local.x * size * frame.facing, frame.y + local.y * size)
 
 static func world_dir(frame: Variant, local: Vector2) -> Vector2:
 	return Vector2(local.x * frame.facing, local.y)

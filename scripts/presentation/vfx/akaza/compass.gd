@@ -50,7 +50,7 @@ func consume(events: Array, fighters: Array, actors: Array) -> void:
 		if event.type == "awakening_start":
 			_awake[f.slot] = {"age": 0}
 			var seed: int = f.slot * 131 + 7
-			vfx.spark_burst(Vector2(f.x, f.y - 40.0), 16, Vector2(0.0, -0.4), 70.0, 200.0, seed, Kit.RED_HOT)
+			vfx.spark_burst(vfx.world(f, Vector2(0.0, -40.0)), 16, Vector2(0.0, -0.4), 70.0, 200.0, seed, Kit.RED_HOT)
 		elif event.type == "hit" and _awake.has(f.slot):
 			_pulse[f.slot] = vfx.time
 	for f in fighters:
@@ -74,7 +74,7 @@ func consume(events: Array, fighters: Array, actors: Array) -> void:
 			# The compass turns: flakes and dust fly off its rim.
 			for n in range(6):
 				var a := TAU * n / 6.0
-				var rim := Vector2(f.x + cos(a) * RADIUS, Arena.FLOOR_Y + sin(a) * RADIUS * Kit.FLOOR_SQUASH)
+				var rim: Vector2 = Vector2(f.x, Arena.FLOOR_Y) + Vector2(cos(a), sin(a) * Kit.FLOOR_SQUASH) * RADIUS * vfx.body_scale()
 				vfx.flake_burst(rim, 2, 50.0, seed + n, true, 70.0)
 			vfx.dust_burst(Vector2(f.x, Arena.FLOOR_Y), 6, Vector2.ZERO, seed + 9, 1.1)
 		var frozen: bool = int(vfx.combat.hitstop) > 0 or int(vfx.combat.super_freeze) > 0

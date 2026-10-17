@@ -7,10 +7,11 @@ extends "res://scripts/presentation/vfx/akaza/technique.gd"
 ## own charge, so SuperView skips the shared energy sphere.
 
 ## The guarding fist the charge gathers at, and the blast height at the extended
-## fist (drawn annihilation frames, v3 art).
+## fist (drawn annihilation frames, v3 art; the right cross of the 2026-10-17
+## redraw, frames 4-7).
 const FIST := Vector2(28.0, -38.0)
-const PUNCH := Vector2(37.0, -32.0)
-const HEIGHT := -34.0
+const PUNCH := Vector2(38.0, -35.0)
+const HEIGHT := -35.0
 ## How far past the front of the hit box the blast's head reaches (local units).
 const LEAD := 24.0
 const TRENCH := 1.6

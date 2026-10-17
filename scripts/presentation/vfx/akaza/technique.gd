@@ -82,7 +82,7 @@ func origin_local(f: RefCounted, height: float) -> Vector2:
 	var held: Dictionary = _origins.get(f.slot, {})
 	if int(held.get("instance", -1)) != f.attack_instance:
 		return Vector2(0.0, height)
-	return Vector2((float(held.x) - f.x) * f.facing, float(held.y) - f.y + height)
+	return Vector2((float(held.x) - f.x) * f.facing / vfx.body_scale(), (float(held.y) - f.y) / vfx.body_scale() + height)
 
 ## Records the anchor on the last active tick, so the shape stops following.
 func anchor(f: RefCounted, tick: int) -> void:
@@ -103,12 +103,12 @@ func target_local(f: RefCounted, fallback: Vector2, reach: float) -> Vector2:
 	var other = vfx.combat.fighters[1 - f.slot]
 	var dx: float = (other.x - f.x) * f.facing
 	if dx > 0.0 and dx <= reach:
-		return Vector2(dx, other.y - f.y - 38.0)
+		return Vector2(dx, other.y - f.y - 38.0) / vfx.body_scale()
 	return fallback
 
 ## A world point in this fighter's local frame.
-static func local_of(f: RefCounted, world_point: Vector2) -> Vector2:
-	return Vector2((world_point.x - f.x) * f.facing, world_point.y - f.y)
+func local_of(f: RefCounted, world_point: Vector2) -> Vector2:
+	return Vector2((world_point.x - f.x) * f.facing, world_point.y - f.y) / vfx.body_scale()
 
 ## Start indices of the move's hit segments.
 func starts(move: Resource) -> Array:
