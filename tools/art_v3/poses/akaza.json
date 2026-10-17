@@ -547,7 +547,15 @@
         "0": "crouch:5",
         "5": "crouch:5"
       },
-      "size_by_head": true
+      "size_to": {
+        "clip": "crouch",
+        "frame": 5,
+        "parts": [
+          "vest",
+          "skin"
+        ],
+        "ratio": 0.97
+      }
     },
     "body_air_light": {
       "layout": "wide",

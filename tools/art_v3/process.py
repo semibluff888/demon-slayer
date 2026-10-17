@@ -388,6 +388,7 @@ def process_clip(character, clip, jobs, canon, band=None, pose=None):
                                 head_box=head['box'] if head else None, ratio_to_sheet=round(ratio, 3) if ratio else None,
                                 scale=round(scale, 4), flags=flags, notes=notes, **placement))
     guard_anchor(sheets, frames, records, pose, canon, reference, band)
+    size_to(character, sheets, frames, records, pose, canon, idle_height, band)
     settle(sheets, frames, records, pose, idle_height)
     for target, source in pose.get('copy_frames', {}).items():
         # A held extension shown twice: the model would not draw this frame's arm right
@@ -439,9 +440,8 @@ def guard_anchor(sheets, frames, records, pose, canon, reference, band):
               sheet is also kept under spec "area_peak".
     Registered, height-matched and helper sheets are left as they are."""
     config = canon['qa'].get('guard_anchor')
-    # "size_by_head": a pose whose area and torso both read small for good reasons (2D's
-    # folded legs and hidden sash) keeps the head ruler; its heads are all in view.
-    if not config or pose.get('helper') or pose.get('size_by_head'):
+    # A pose sized by its materials ("size_to") skips these rules.
+    if not config or pose.get('helper') or pose.get('size_to'):
         return
     texts = pose.get('frames', [])
     guard = set(range(len(texts))) if pose.get('stance') else {i for i, text in enumerate(texts) if any(p in text for p in config['phrases'])}
@@ -495,25 +495,61 @@ def guard_anchor(sheets, frames, records, pose, canon, reference, band):
                 if peak > config.get('area_peak', float('inf')):
                     factor *= config['area_peak'] / peak
                     why += ' + peak %.2f' % peak
-        if abs(factor - 1.0) < 0.002:
+        rescale(data, factor, why, frames, records, pose, canon, idle_height, band)
+
+
+def rescale(data, factor, why, frames, records, pose, canon, idle_height, band):
+    """Re-places every drawing of one processed sheet at its scale times `factor` and
+    updates the sheet's and the frames' records."""
+    if abs(factor - 1.0) < 0.002:
+        return
+    scale = data['final_scale'] * factor
+    data['final_scale'] = scale
+    part = data['part_record']
+    part.update(scale=round(scale, 4), resample_vs_idle=round(scale / canon['scale'], 3),
+                scale_method='%s, %s x%.3f' % (part['scale_method'], why, factor))
+    for index, image, mode in data['placed']:
+        canvas, placement = place(image, scale, mode, mode == 'lying' and pose.get('lying_centred', False))
+        frames[index] = canvas
+        record = next(r for r in records if r['frame'] == index)
+        ratio = body_height(np.asarray(canvas)) / idle_height
+        flags = [f for f in record['flags'] if not f.startswith(('height ', 'clipped'))]
+        if placement['clipped']:
+            flags.append('clipped on canvas')
+        standing = pose.get('upright_frames')
+        if band and mode == 'feet' and (standing is None or index in standing) and not band[0] <= ratio <= band[1]:
+            flags.append('height %.0f%% of the idle' % (ratio * 100))
+        record.update(scale=round(scale, 4), flags=flags, height_vs_idle=round(ratio, 3), **{k: placement[k] for k in ('root_x', 'offset', 'clipped')})
+
+
+def size_to(character, sheets, frames, records, pose, canon, idle_height, band):
+    """Pose "size_to": {"clip", "frame", "parts", "ratio"}: every sheet scales so its drawings'
+    material areas ("vest", "skin", "uniform" or any spec material class; square roots,
+    averaged over the parts) are `ratio` of that frame's. Akaza's 2D: a low sweep's head,
+    silhouette and torso all mislead (the model drew one sheet's head a fifth too large; the
+    folded legs and hidden sash read small), while the vest and the skin keep their size
+    next to the crouch it starts from and returns to."""
+    config = pose.get('size_to')
+    if not config:
+        return
+    classes = anatomy.profile()['materials']['classes']
+
+    def measure(rgba):
+        _, skin, uniform = anatomy.masks(rgba)
+        named = dict(skin=skin, uniform=uniform)
+        return [float(np.sqrt((named[n] if n in named else anatomy.select(rgba, classes[n])).sum())) for n in config['parts']]
+    folder = production(character) / 'imports' / config['clip']
+    reference = measure(np.asarray(Image.open(folder / ('frame-%02d.png' % config['frame'])).convert('RGBA')))
+    replaced = {int(k) for k in pose.get('copy_frames', {})}
+    for data in sheets:
+        if 'placed' not in data or data['fixed']:
             continue
-        scale = data['final_scale'] * factor
-        data['final_scale'] = scale
-        part = data['part_record']
-        part.update(scale=round(scale, 4), resample_vs_idle=round(scale / canon['scale'], 3),
-                    scale_method='%s, %s x%.3f' % (part['scale_method'], why, factor))
-        for index, image, mode in placed:
-            canvas, placement = place(image, scale, mode, mode == 'lying' and pose.get('lying_centred', False))
-            frames[index] = canvas
-            record = next(r for r in records if r['frame'] == index)
-            ratio = body_height(np.asarray(canvas)) / idle_height
-            flags = [f for f in record['flags'] if not f.startswith(('height ', 'clipped'))]
-            if placement['clipped']:
-                flags.append('clipped on canvas')
-            standing = pose.get('upright_frames')
-            if band and mode == 'feet' and (standing is None or index in standing) and not band[0] <= ratio <= band[1]:
-                flags.append('height %.0f%% of the idle' % (ratio * 100))
-            record.update(scale=round(scale, 4), flags=flags, height_vs_idle=round(ratio, 3), **{k: placement[k] for k in ('root_x', 'offset', 'clipped')})
+        shown = [i for i, _, _ in data['placed'] if i not in replaced]
+        if not shown:
+            continue
+        ratios = [statistics.mean(v / r for v, r in zip(measure(np.asarray(frames[i])), reference)) for i in shown]
+        rescale(data, config.get('ratio', 1.0) / statistics.median(ratios), 'parts like %s %d' % (config['clip'], config['frame']),
+                frames, records, pose, canon, idle_height, band)
 
 
 def settle(sheets, frames, records, pose, idle_height):

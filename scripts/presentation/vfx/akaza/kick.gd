@@ -12,7 +12,7 @@ const CURVES := {
 	"body_stand_light": [Vector2(-2, -7), Vector2(19, -54), Vector2(37, -48)],
 	"body_stand_heavy": [Vector2(-8, -10), Vector2(12, -68), Vector2(36, -57)],
 	"body_crouch_light": [Vector2(2, -4), Vector2(17, -13), Vector2(28, -8)],
-	"body_crouch_heavy": [Vector2(-24, -3), Vector2(8, -9), Vector2(27, -5)],
+	"body_crouch_heavy": [Vector2(-26, -3), Vector2(10, -10), Vector2(32, -6)],
 	"body_air_light": [Vector2(-2, -28), Vector2(18, -52), Vector2(35, -44)],
 	"body_air_heavy": [Vector2(-2, -44), Vector2(20, -36), Vector2(28, -16)],
 }
