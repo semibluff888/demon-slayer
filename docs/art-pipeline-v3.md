@@ -163,6 +163,8 @@
 | `awakening/portrait.png` | 胸像 | 512×512，过一遍 `awaken.py`，与觉醒精灵帧同一种调色 |
 | `portrait.png` | 全身 | 四周留 12px；新立绘朝右，`resources/characters/zenitsu.tres` 设 `portrait_faces_right = true` |
 
+猗窝座（2026-10-17）：照同样的做法重画，任务组 `portraits` 记录在 `output/imagegen/akaza-v3/portraits.json`。旧图是 roster-v1：胸像眼睛里有字，觉醒头像自带深蓝背景和雪花。`portraits.py` 的提示词把“羽织”“刀”改成按角色填写（`garment`、`weapon_label`、`bust_rule`、`inside`），默认值就是原文，善逸的 4 条提示词逐字不变；参考图用加强上半身后的待机图 `approved-idle-key-v2.png`。选定胸像候选 1（金色竖瞳、眼中无字）和全身候选 2（拳斗架势，脸朝四分之三），候选 2 的胸像眼中有字，没有采用。菜单头像沿用旧的深青底 #15374a，觉醒头像背景透明，与善逸一致。
+
 奥义和 MAX 命中后的演出视频（`art/cinematics/`）是原作《火之神血风谭》的实机画面，不属于本管线，四个角色都保留原样；视频后的地图收尾用的是 v3 精灵帧，帧号不变。
 
 ## 定稿（猗窝座，检查点 ①）

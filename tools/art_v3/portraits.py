@@ -33,11 +33,11 @@ Asset type: premium hand-inked anime fighting-game HUD portrait and MAX super cu
 Input image 1: APPROVED MODEL SHEET. Exact identity, costume construction and colours.
 Input image 2: APPROVED IDLE POSE. Exact line weight, rendering and colours of the in-game sprites.
 Input image 3: OLD PORTRAIT. Framing reference only (head and shoulders filling a square); its colours and face are outdated, follow input images 1 and 2.
-Primary request: ONE bust portrait in three-quarter view, head and shoulders turned and looking slightly to the RIGHT toward an off-screen opponent. The head is large in the frame: the face in the upper middle, the chin at about 60 percent of the image height, the shoulders and the top of the haori filling the bottom edge. ALL of the hair stays inside the image with a 6 percent margin at the top and both sides.
+Primary request: ONE bust portrait in three-quarter view, head and shoulders turned and looking slightly to the RIGHT toward an off-screen opponent. The head is large in the frame: the face in the upper middle, the chin at about 60 percent of the image height, the shoulders and the top of the {garment} filling the bottom edge. ALL of the hair stays inside the image with a 6 percent margin at the top and both sides.
 Expression: {expression}
 Identity: {identity}
 Rendering: {style} Detailed hair locks, a clean luminous face, the same colours as input image 1.
-Constraints: no text, no frame, no effects (no {effects}), no sword in front of the face. Pure solid {background} background everywhere.
+Constraints: no text, no frame, no effects (no {effects}), {bust_rule}. Pure solid {background} background everywhere.
 """
 
 FULL_PROMPT = """Use case: identity-preserve
@@ -46,9 +46,9 @@ Input image 1: APPROVED MODEL SHEET. Exact identity, costume construction, colou
 Input image 2: APPROVED IDLE POSE. Exact line weight, rendering and colours of the in-game sprites.
 Input image 3: OLD SELECT PORTRAIT. Composition reference only (one tall full-body figure filling the frame); its colours, eyes and pose are outdated, follow input images 1 and 2.
 Primary request: ONE full-body figure in three-quarter view, body and face turned to the RIGHT toward an off-screen opponent. {pose}
-Framing: the figure fills the image height from the top of the hair to the soles with a 3 percent margin; the whole figure, the haori and the katana stay inside the image. Normal adult proportions, never chibi.
+Framing: the figure fills the image height from the top of the hair to the soles with a 3 percent margin; the whole figure, {inside} stay inside the image. Normal adult proportions, never chibi.
 Expression: {expression}
-Katana: {katana}
+{weapon_label}: {katana}
 Identity: {identity}
 Rendering: {style} Detailed hair locks and fabric folds, the same colours as input image 1.
 Constraints: no text, no frame, no floor, no shadow, no effects (no {effects}). Pure solid {background} background everywhere.
@@ -66,7 +66,23 @@ CHARACTERS = {
                 'his hip), the white-and-gold hilt with its round gold guard points FORWARD (to the RIGHT) in front of his belly.'),
         avatar_background='#403326',
     ),
+    'akaza': dict(
+        expression=('a confident, cruel grin that shows his teeth; golden-yellow eyes with small dark pupils (no writing in the eyes) '
+                    'fixed on the opponent; fearless and eager for the fight.'),
+        pose=('He stands in his brawler guard exactly as in input image 2: feet wide apart, knees bent, torso leaning slightly forward, '
+              'both navy hands raised in front of his chest as half-closed claws, elbows out; the navy sash ends hang in front of the '
+              'white trousers.'),
+        katana=('he is UNARMED: no sword, no scabbard and no weapon of any kind; both hands are bare, entirely navy-blue (the tattoo '
+                'covers them) with red fingernails.'),
+        weapon_label='Hands', garment='magenta vest', bust_rule='no weapon, no hands in front of the face',
+        inside='both hands and the sash ends', heads=7,
+        # The idle key with the slightly stronger upper body (checkpoint 4 review).
+        key='output/imagegen/akaza-v3/references/approved-idle-key-v2.png',
+        avatar_background='#15374a',
+    ),
 }
+# Template words that differ per character; the defaults are Zenitsu's (and Tanjiro's) original text.
+DEFAULTS = dict(weapon_label='Katana', garment='haori', bust_rule='no sword in front of the face', inside='the haori and the katana')
 
 
 def prepare(args):
@@ -76,9 +92,10 @@ def prepare(args):
     jobs = read(out / 'jobs.json', [])
     known = {job['id'] for job in jobs}
     references = ['output/imagegen/%s-v3/raw/%s-v3-model.png' % (args.character, args.character),
-                  'output/imagegen/%s-v3/references/approved-idle-candidate.png' % args.character]
-    fields = dict(name=data['name'], identity=data['identity'], style=data['style'], background=data['background_name'],
-                  effects=data['prompt']['effects'], heads=data['canon'].get('heads', 6.5), **extra)
+                  extra.get('key', 'output/imagegen/%s-v3/references/approved-idle-candidate.png' % args.character)]
+    fields = dict(DEFAULTS, name=data['name'], identity=data['identity'], style=data['style'], background=data['background_name'],
+                  effects=data['prompt']['effects'], heads=data['canon'].get('heads', 6.5))
+    fields.update({k: v for k, v in extra.items() if k not in ('key', 'avatar_background')})
     added = 0
     for kind, template, size, old in [('bust', BUST_PROMPT, '1024x1024', 'battle-portrait.png'),
                                       ('full', FULL_PROMPT, '1024x1536', 'portrait.png')]:

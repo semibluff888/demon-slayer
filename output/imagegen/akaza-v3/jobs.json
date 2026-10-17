@@ -7437,5 +7437,73 @@
       "part": 0,
       "stage": "checkpoint-4 review 2: idle upper body slightly stronger"
     }
+  },
+  {
+    "id": "akaza-v3-portrait-bust-1",
+    "group": "portraits",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-portrait-bust-1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-portrait-bust-1.png",
+    "size": "1024x1024",
+    "references": [
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/approved-idle-key-v2.png",
+      "output/imagegen/akaza-v3/references/old-battle-portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "kind": "bust",
+      "attempt": 1
+    }
+  },
+  {
+    "id": "akaza-v3-portrait-bust-2",
+    "group": "portraits",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-portrait-bust-2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-portrait-bust-2.png",
+    "size": "1024x1024",
+    "references": [
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/approved-idle-key-v2.png",
+      "output/imagegen/akaza-v3/references/old-battle-portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "kind": "bust",
+      "attempt": 2
+    }
+  },
+  {
+    "id": "akaza-v3-portrait-full-1",
+    "group": "portraits",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-portrait-full-1.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-portrait-full-1.png",
+    "size": "1024x1536",
+    "references": [
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/approved-idle-key-v2.png",
+      "output/imagegen/akaza-v3/references/old-portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "kind": "full",
+      "attempt": 1
+    }
+  },
+  {
+    "id": "akaza-v3-portrait-full-2",
+    "group": "portraits",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-portrait-full-2.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-portrait-full-2.png",
+    "size": "1024x1536",
+    "references": [
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/approved-idle-key-v2.png",
+      "output/imagegen/akaza-v3/references/old-portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "kind": "full",
+      "attempt": 2
+    }
   }
 ]
