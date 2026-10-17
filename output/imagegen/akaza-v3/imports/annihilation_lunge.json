@@ -1,0 +1,116 @@
+{
+  "character": "akaza",
+  "clip": "annihilation_lunge",
+  "canvas_size": [
+    1024,
+    640
+  ],
+  "feet_anchor": [
+    448,
+    568
+  ],
+  "runtime_head_ruler": 41.45,
+  "parts": [
+    {
+      "id": "akaza-v3-annihilation_lunge-p0",
+      "source": "output/imagegen/akaza-v3/raw/akaza-v3-annihilation_lunge-p0.png",
+      "sha256": "1e5076d0f45675c582e9fc4e39f5cd0f63f0d2b15ca24788ae6c2bf1cbb2dfbd",
+      "ruler": 85.66,
+      "scale": 0.4685,
+      "scale_method": "head-ruler, parts 1.06 of idle 0, band 0.97-1.03 x0.968",
+      "resample_vs_idle": 1.183,
+      "palette_shift": {
+        "vest": [
+          -0.37,
+          3.5,
+          -0.79
+        ],
+        "navy": [
+          -0.07,
+          0.23,
+          -3.2
+        ],
+        "uniform": [
+          0.24,
+          1.29,
+          -1.68
+        ]
+      },
+      "palette_delta_e_before": {
+        "vest": 3.6,
+        "navy": 3.21,
+        "uniform": 2.13,
+        "skin": 0.84,
+        "hair": 7.58
+      },
+      "palette_delta_e_after": {
+        "vest": 0.81,
+        "navy": 0.6,
+        "uniform": 0.43,
+        "skin": 0.84,
+        "hair": 7.58
+      }
+    }
+  ],
+  "frames": [
+    {
+      "frame": 0,
+      "part": "akaza-v3-annihilation_lunge-p0",
+      "crop": [
+        16,
+        448,
+        737,
+        948
+      ],
+      "head_ruler": 85.66,
+      "head_box": [
+        409,
+        3,
+        524,
+        125
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.4685,
+      "flags": [],
+      "notes": [],
+      "root_x": 338.0,
+      "anchor_mode": "feet",
+      "offset": [
+        290,
+        334
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.744,
+      "drawing": "output/imagegen/akaza-v3/imports/annihilation_lunge/drawing-00.png",
+      "exact_scale": 0.4839393665849622
+    },
+    {
+      "frame": 1,
+      "part": "akaza-v3-annihilation_lunge-p0",
+      "crop": [
+        711,
+        481,
+        1519,
+        950
+      ],
+      "head_ruler": null,
+      "head_box": null,
+      "ratio_to_sheet": null,
+      "scale": 0.4685,
+      "flags": [],
+      "notes": [
+        "head not measured (back view, flip or occlusion)"
+      ],
+      "root_x": 401.0,
+      "anchor_mode": "feet",
+      "offset": [
+        260,
+        349
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.696,
+      "drawing": "output/imagegen/akaza-v3/imports/annihilation_lunge/drawing-01.png",
+      "exact_scale": 0.4839393665849622
+    }
+  ]
+}

@@ -667,6 +667,82 @@
         "8": "the edited right cross puts his arm across the neck, so the face skin joins the neck and the head box grows from 171 to 188 px; the drawn head is the size of the original frame and the frame is registered on its own original (scale 0.3268 vs 0.3276)"
       }
     },
+    "annihilation_swap": {
+      "helper": true,
+      "layout": "wide",
+      "intro": "Key drawings of Destructive Death: Annihilation Type (super, 2026-10-17 review): the long, low lunge punch, now thrown with his RIGHT fist (the back arm). Arms (critical): he faces RIGHT with his chest turned three-quarters toward the viewer, so his LEFT shoulder is the front one (on the RIGHT of the picture) and his RIGHT shoulder the back one (on the LEFT of the picture, nearer the viewer).",
+      "frames": [
+        "Impact: the explosive lunge, the RIGHT arm (from the back shoulder on the LEFT of the picture) thrust straight forward to the RIGHT at chest height, crossing in front of his chest, fist closed, the LEFT fist pulled back beside his chin.",
+        "The full extension at the lunge's longest, the body driving behind the RIGHT fist, the LEFT fist beside his chin."
+      ],
+      "edit": {
+        "images": [
+          "output/imagegen/akaza-v3/references/annihilation-bases/annihilation-4.png",
+          "output/imagegen/akaza-v3/references/annihilation-bases/annihilation-5.png"
+        ],
+        "intro": "Correction of the arms only, in drawings of a long, low lunge punch (Destructive Death: Annihilation Type). He faces RIGHT with his chest turned three-quarters toward the viewer. The punch must be thrown by the arm whose shoulder is on the LEFT side of the picture (his back arm, nearer the viewer), reaching across the front of his body; the arm whose shoulder is on the RIGHT side of the picture is pulled back to his chin.",
+        "keep": "the size and the position of the figure in its column, the head, face and hair, both legs, both feet, the white trousers, the sash, the line weight and the colours",
+        "change": "his two arms, his hands, his shoulders and the vest around them",
+        "rule": "Never move, enlarge, shrink or redraw the head or the legs.",
+        "frames": {
+          "0": "In this drawing the arm stretched out to the right is attached to the shoulder on the RIGHT side of the picture: that is the wrong arm. Make two changes. (a) The arm whose shoulder is on the RIGHT side of the picture bends: elbow down by his ribs, its navy fist close beside his chin. (b) The arm whose shoulder is on the LEFT side of the picture (the one now pulled back with its fist at his hip) stretches straight out to the RIGHT at chest height, the whole body driving behind it, fist closed: it starts at the shoulder on the LEFT of the picture and passes IN FRONT OF his chest and in front of the bent arm, so it covers part of his chest; that shoulder rolls forward and his chest turns square to the right. The legs, the hips, the sash and the head stay exactly as they are. Arrange the arms exactly as in the CORRECT ARMS EXAMPLE image.",
+          "1": "In this drawing the arm stretched out to the right is attached to the shoulder on the RIGHT side of the picture: that is the wrong arm. Make two changes. (a) The arm whose shoulder is on the RIGHT side of the picture bends: elbow down by his ribs, its navy fist close beside his chin. (b) The arm whose shoulder is on the LEFT side of the picture (the one now pulled back with its fist at his hip) stretches straight out to the RIGHT at chest height, as far as it reaches, the whole body driving behind it, fist closed: it starts at the shoulder on the LEFT of the picture and passes IN FRONT OF his chest and in front of the bent arm, so it covers part of his chest; that shoulder rolls forward and his chest turns square to the right. The legs, the hips, the sash and the head stay exactly as they are. Arrange the arms exactly as in the CORRECT ARMS EXAMPLE image."
+        }
+      },
+      "reference": {
+        "image": "output/imagegen/akaza-v3/references/cross-example.png",
+        "role": "CORRECT ARMS EXAMPLE: the same character with the punching arm right: the arm that reaches out to the RIGHT starts at the shoulder on the LEFT of the picture and crosses in front of his chest, the arm from the shoulder on the RIGHT of the picture is bent with its fist at his chest. Copy this arm arrangement; do not copy its legs or its place in the picture."
+      },
+      "size_to": {
+        "note": "Helpers skip the guard anchor: the costume (trousers, vest, sash) and the skin keep the idle's area within this band.",
+        "clip": "idle",
+        "frame": 0,
+        "parts": [
+          "costume",
+          "skin"
+        ],
+        "band": [
+          0.97,
+          1.03
+        ]
+      }
+    },
+    "annihilation_lunge": {
+      "helper": true,
+      "layout": "wide",
+      "intro": "Key drawings of Destructive Death: Annihilation Type (super, 2026-10-17 review), edited from the RIGHT straight of the Stepping Straight (input image 1, the arms already right): he drops into a very long, low lunge behind the same punch.",
+      "frames": [
+        "Impact: the explosive lunge, the RIGHT arm straight forward to the RIGHT at chest height, crossing in front of his chest, the LEFT fist beside his chin.",
+        "The full extension at the lunge's longest, the body driving behind the RIGHT fist."
+      ],
+      "edit": {
+        "images": [
+          "output/imagegen/akaza-v3/references/annihilation-bases/step_punch-4.png",
+          "output/imagegen/akaza-v3/references/annihilation-bases/step_punch-4.png"
+        ],
+        "intro": "Edit of a straight punch thrown with his RIGHT fist (the arm from the shoulder on the LEFT of the picture, crossing in front of his chest; the left fist beside his chin). Keep those arms; lower his body into the very long, low lunge of a super move, Destructive Death: Annihilation Type.",
+        "keep": "the size of the figure, the head, face and hair, both arms and both hands exactly as they are (the straight arm comes from the shoulder on the LEFT of the picture and crosses in front of his chest; the other fist stays beside his chin), the vest, the sash, the line weight and the colours",
+        "change": "his legs, his feet and his stance, and the height and the forward lean of his body, which carries the arms and the head with it",
+        "rule": "Never change which arm punches and never redraw the arms or the head; the head stays exactly as small as in input image 1; the feet stand on the baseline at the bottom of the column.",
+        "frames": {
+          "0": "A very long, low lunge: the front foot planted far ahead to the RIGHT with the knee deeply bent, the rear leg stretched far back almost straight with the heel lifted, the hips dropped well below where they are in input image 1; the torso leans forward over the front knee so the straight RIGHT arm and the whole body drive in one line toward the RIGHT. The arms keep exactly the shape of input image 1.",
+          "1": "The same lunge even longer and lower: the rear leg stretched further back, the torso leaning further forward, almost in one line with the straight RIGHT arm, which keeps exactly the shape of input image 1."
+        }
+      },
+      "size_to": {
+        "note": "Helpers skip the guard anchor: the costume (trousers, vest, sash) and the skin keep the idle's area within this band.",
+        "clip": "idle",
+        "frame": 0,
+        "parts": [
+          "costume",
+          "skin"
+        ],
+        "band": [
+          0.97,
+          1.03
+        ]
+      }
+    },
     "annihilation": {
       "layout": "wide",
       "intro": "Destructive Death: Annihilation Type (236236A/C super): he sinks into a very low, coiled stance, then launches forward in an explosive long lunge with one devastating straight punch. Closed navy fist; no effects.",
@@ -675,15 +751,25 @@
         "Sinking into a very low, wide stance, the rear fist pulled back to his hip, the lead hand open forward.",
         "Charging: crouched even lower, the rear fist cocked far back behind his hip, eyes blazing, a fierce grin.",
         "Fully coiled: the lowest point, the body twisted away, the rear knee nearly on the floor.",
-        "Active: exploding forward in a very long, low lunge, the rear arm thrust straight forward to the RIGHT at chest height, fist closed, the body almost horizontal behind it.",
-        "The full extension held, the lunge at its longest, the rear leg stretched far back.",
-        "Still extended, the fist driving through.",
-        "Still extended, shoulders beginning to relax.",
+        "Active: the explosive lunge, the RIGHT arm (from the back shoulder on the LEFT of the picture) thrust straight forward to the RIGHT at chest height, crossing in front of his chest, fist closed, the LEFT fist beside his chin. Shown: annihilation_lunge 0.",
+        "The full extension held, the lunge at its longest, the rear leg stretched far back. Shown: annihilation_lunge 1.",
+        "Still extended, the fist driving through. Shown: annihilation_lunge 1.",
+        "Still extended, shoulders beginning to relax, the lunge a little shorter. Shown: annihilation_lunge 0.",
         "Recovery: the arm pulling back, the lunge narrowing.",
-        "Rising from the lunge, both hands coming up.",
-        "Almost back in the stance, guard forming.",
-        "Return: back in the approved brawler guard, both hands as claws before his chest, almost identical to input image 1."
-      ]
+        "Almost back in the stance, guard forming. (Drawn as frame 10; shown as frame 10, see copy_frames.)",
+        "Rising from the lunge, both hands coming up. (Drawn as frame 9; shown as frame 9, see copy_frames.)",
+        "Return: back in the approved brawler guard, both hands as claws before his chest, almost identical to input image 1. Shown: idle frame 0."
+      ],
+      "copy_frames_note": "2026-10-17 review: the punch was thrown with the front arm and the lunge frames were about 10 percent small; frames 4-7 now show the two drawings of annihilation_lunge (the Stepping Straight's right cross edited into a long, low lunge). The recovery went guard -> wide stance -> guard: frames 9 and 10 swap, so he rises steadily (height 0.80 -> 0.88 -> 0.91 of the idle), and frame 11 is idle frame 0.",
+      "copy_frames": {
+        "4": "annihilation_lunge:0",
+        "5": "annihilation_lunge:1",
+        "6": "annihilation_lunge:1",
+        "7": "annihilation_lunge:0",
+        "9": 10,
+        "10": 9,
+        "11": "idle:0"
+      }
     },
     "blue_afterglow": {
       "layout": "wide",

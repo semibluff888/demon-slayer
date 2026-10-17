@@ -50,10 +50,10 @@
       "id": "zenitsu-v3-hit-p1",
       "source": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-hit-p1.png",
       "sha256": "4a9ab783cd675e130a2c0d52726946788c2cfa741ab207c1e270b549058ada36",
-      "ruler": 173.48,
-      "scale": 0.278,
+      "ruler": 164.56,
+      "scale": 0.2931,
       "scale_method": "head-ruler",
-      "resample_vs_idle": 0.695,
+      "resample_vs_idle": 0.733,
       "palette_shift": {
         "haori_orange": [
           -1.62,
@@ -105,7 +105,7 @@
         287
       ],
       "clipped": false,
-      "height_vs_idle": 1.163
+      "height_vs_idle": 1.158
     },
     {
       "frame": 1,
@@ -134,7 +134,7 @@
         308
       ],
       "clipped": false,
-      "height_vs_idle": 1.079
+      "height_vs_idle": 1.075
     },
     {
       "frame": 2,
@@ -152,18 +152,18 @@
         631,
         198
       ],
-      "ratio_to_sheet": 0.949,
-      "scale": 0.278,
+      "ratio_to_sheet": 1.0,
+      "scale": 0.2931,
       "flags": [],
       "notes": [],
       "root_x": 423.0,
       "anchor_mode": "feet",
       "offset": [
-        330,
-        306
+        324,
+        292
       ],
       "clipped": false,
-      "height_vs_idle": 1.092
+      "height_vs_idle": 1.146
     },
     {
       "frame": 3,
@@ -181,18 +181,21 @@
         752,
         212
       ],
-      "ratio_to_sheet": 1.0,
-      "scale": 0.278,
+      "ratio_to_sheet": 1.054,
+      "scale": 0.398,
       "flags": [],
-      "notes": [],
-      "root_x": 496.0,
+      "notes": [
+        "repeats frame hit_guard:0"
+      ],
+      "root_x": 352.0,
       "anchor_mode": "feet",
       "offset": [
-        310,
-        348
+        306,
+        328
       ],
       "clipped": false,
-      "height_vs_idle": 0.921
+      "height_vs_idle": 0.996,
+      "copy_of": "hit_guard:0"
     }
   ]
 }

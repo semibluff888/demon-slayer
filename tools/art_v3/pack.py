@@ -97,7 +97,12 @@ def clip_metadata(name, count, old, poses):
     if name == 'idle':
         return dict(loop=True, fps=10, cycle=True, phase_breaks=[4, 8], segment_sync=False, anchor_mode='feet', timeline=[])
     if name in old:
-        return {key: value for key, value in old[name].items() if key != 'frames'}
+        meta = {key: value for key, value in old[name].items() if key != 'frames'}
+        # A redrawn clip whose drawings now split the move differently (Zenitsu's 2D:
+        # the wind-up moved into the startup, one held sweep frame) sets its own breaks.
+        if 'phase_breaks' in poses.get(name, {}):
+            meta['phase_breaks'] = poses[name]['phase_breaks']
+        return meta
     new = poses.get(name, {}).get('new', {})
     return dict(loop=False, fps=new.get('fps', 12), phase_breaks=new.get('phase_breaks', [count // 3, count * 2 // 3]),
                 segment_sync=new.get('segment_sync', False), anchor_mode=new.get('anchor_mode', 'feet'), timeline=[])

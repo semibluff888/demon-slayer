@@ -53,7 +53,7 @@
       "id": "tanjiro-v3-hit-p1",
       "source": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-hit-p1.png",
       "sha256": "a70a73bfea67c17a3c2abc17fd7ba6e0f1c833f8be5e4b041499209b0d786f88",
-      "ruler": 110.37,
+      "ruler": 110.83,
       "scale": 0.3485,
       "scale_method": "overlap",
       "resample_vs_idle": 0.902,
@@ -106,7 +106,7 @@
         259
       ],
       "clipped": false,
-      "height_vs_idle": 0.954
+      "height_vs_idle": 0.951
     },
     {
       "frame": 1,
@@ -135,7 +135,7 @@
         274
       ],
       "clipped": false,
-      "height_vs_idle": 0.907
+      "height_vs_idle": 0.904
     },
     {
       "frame": 2,
@@ -164,7 +164,7 @@
         273
       ],
       "clipped": false,
-      "height_vs_idle": 0.913
+      "height_vs_idle": 0.91
     },
     {
       "frame": 3,
@@ -182,18 +182,21 @@
         371,
         171
       ],
-      "ratio_to_sheet": 0.984,
-      "scale": 0.3485,
+      "ratio_to_sheet": 0.98,
+      "scale": 0.3785,
       "flags": [],
-      "notes": [],
-      "root_x": 277.0,
+      "notes": [
+        "repeats frame hit_guard:0"
+      ],
+      "root_x": 203.0,
       "anchor_mode": "feet",
       "offset": [
-        351,
-        277
+        372,
+        259
       ],
       "clipped": false,
-      "height_vs_idle": 0.898
+      "height_vs_idle": 0.951,
+      "copy_of": "hit_guard:0"
     }
   ]
 }

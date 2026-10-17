@@ -2870,7 +2870,8 @@
         1024
       ],
       "layout": "wide"
-    }
+    },
+    "superseded_by": "zenitsu-v3-body_crouch_heavy-p2-r1"
   },
   {
     "id": "zenitsu-v3-body_crouch_heavy-p3",
@@ -7267,6 +7268,99 @@
       "character": "zenitsu",
       "kind": "full",
       "attempt": 2
+    }
+  },
+  {
+    "id": "zenitsu-v3-body_crouch_heavy-p2-r1",
+    "group": "fix-2d-inbetween",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-body_crouch_heavy-p2-r1.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_crouch_heavy-p2-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/zenitsu-v3-body_crouch_heavy-p2-r1-base.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_crouch_heavy-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "body_crouch_heavy",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "zenitsu-v3-body_crouch_heavy-p2-r2",
+    "group": "fix-2d-inbetween-r2",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-body_crouch_heavy-p2-r2.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_crouch_heavy-p2-r2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/zenitsu-v3-body_crouch_heavy-p2-r2-base.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_crouch_heavy-p1.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "body_crouch_heavy",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "zenitsu-v3-body_crouch_heavy-p2-r1",
+    "rejected": "Column 2 came back as a second copy of column 1 (the knee-bent frame 4) instead of the kneel with the foot further forward; round 1 stays (its frame 5 is the planted kneel)."
+  },
+  {
+    "id": "zenitsu-v3-hit_guard-p0",
+    "group": "fix-hit-guard",
+    "prompt": "output/imagegen/zenitsu-v3/prompts/zenitsu-v3-hit_guard-p0.txt",
+    "out": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-hit_guard-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/zenitsu-v3/references/zenitsu-v3-hit_guard-p0-base.png",
+      "output/imagegen/zenitsu-v3/raw/zenitsu-v3-model.png",
+      "output/imagegen/zenitsu-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "zenitsu",
+      "clip": "hit_guard",
+      "part": 0,
+      "frame_indices": [
+        0
+      ],
+      "overlap": [],
+      "columns": 1,
+      "rows": 1,
+      "count": 1,
+      "cell": [
+        1536,
+        1024
+      ],
+      "layout": "full"
     }
   }
 ]

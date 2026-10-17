@@ -93,6 +93,24 @@
         "frame": 2
       }
     },
+    "hit_guard": {
+      "helper": true,
+      "layout": "full",
+      "intro": "The last drawing of his hit reaction, held while he is stunned, an edit of the approved guard (input image 1): he is back in his guard but still hurting. The stance, legs, feet and body size never move, so the hit reaction ends exactly at the size and stance of the idle.",
+      "frames": [
+        "Hurt, back in the guard: the guard of input image 1 with the same legs, feet and stance; his shoulders hunched a little forward and up, head lowered slightly, a pained grimace (teeth clenched, one eye squeezed almost shut, brows knitted); both hands still on the hilt in front of the navel, the blade dipped about 15 degrees lower than in input image 1, full length (about 350 px)."
+      ],
+      "edit": {
+        "image": "output/imagegen/tanjiro-v3/imports/idle-warp/idle-00.png",
+        "keep": "the size and the position of the figure, both legs, both feet, the stance, the trousers, the scabbard on his left hip, the costume design, the line weight and the colours",
+        "change": "his face expression, the tilt of his head, his shoulders, his arms and hands, the angle of the katana, and the haori only where the shoulders move it",
+        "rule": "Never move, enlarge or shrink the body; the legs and feet stay exactly as in input image 1."
+      },
+      "register": {
+        "clip": "idle",
+        "frame": 0
+      }
+    },
     "hit": {
       "layout": "tall",
       "intro": "Taking a hit while standing; keep the katana in hand.",
@@ -100,8 +118,11 @@
         "Impact: head snaps back, torso bends backward, eyes squeezed, mouth open in pain, blade hand low.",
         "Recoil: stumble back on the rear foot, shoulders hunched, grimace.",
         "Recover: regain balance, knees bent, blade coming back up.",
-        "Back to guard: nearly the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up) with a pained look."
-      ]
+        "Back to guard: nearly the approved middle guard (both hands on the hilt in front of the navel, blade pointing forward and up) with a pained look. Replaced by hit_guard (an edit of idle frame 0): the generated drawing stood 10 percent lower than the idle, so he grew when the idle returned."
+      ],
+      "copy_frames": {
+        "3": "hit_guard:0"
+      }
     },
     "knockdown": {
       "layout": "wide",

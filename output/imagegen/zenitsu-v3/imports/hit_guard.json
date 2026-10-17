@@ -1,0 +1,83 @@
+{
+  "character": "zenitsu",
+  "clip": "hit_guard",
+  "canvas_size": [
+    1024,
+    640
+  ],
+  "feet_anchor": [
+    448,
+    568
+  ],
+  "runtime_head_ruler": 48.24,
+  "parts": [
+    {
+      "id": "zenitsu-v3-hit_guard-p0",
+      "source": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-hit_guard-p0.png",
+      "sha256": "0ff289df7861064341b6382fa3f9512e397f12d632765f44f144684062681bba",
+      "ruler": 121.2,
+      "scale": 0.398,
+      "scale_method": "registered",
+      "resample_vs_idle": 0.995,
+      "palette_shift": {
+        "uniform": [
+          -0.53,
+          1.16,
+          -2.62
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori_yellow": 0.78,
+        "haori_orange": 1.93,
+        "uniform": 2.9,
+        "skin": 1.09,
+        "hair": 2.64
+      },
+      "palette_delta_e_after": {
+        "haori_yellow": 0.77,
+        "haori_orange": 1.93,
+        "uniform": 0.34,
+        "skin": 1.08,
+        "hair": 2.62
+      }
+    }
+  ],
+  "frames": [
+    {
+      "frame": 0,
+      "part": "zenitsu-v3-hit_guard-p0",
+      "crop": [
+        496,
+        382,
+        1040,
+        984
+      ],
+      "head_ruler": 127.98,
+      "head_box": [
+        334,
+        2,
+        537,
+        147
+      ],
+      "ratio_to_sheet": 1.056,
+      "scale": 0.398,
+      "flags": [],
+      "notes": [],
+      "root_x": 352.0,
+      "anchor_mode": "registered",
+      "offset": [
+        306,
+        328
+      ],
+      "clipped": false,
+      "registration": {
+        "scale": 0.398,
+        "score": 0.974,
+        "exact": 0.398
+      },
+      "height_vs_idle": 0.996,
+      "drawing": "output/imagegen/zenitsu-v3/imports/hit_guard/drawing-00.png",
+      "exact_scale": 0.398
+    }
+  ]
+}

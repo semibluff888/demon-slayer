@@ -1,0 +1,33 @@
+{
+  "character": "zenitsu",
+  "clip": "body_crouch_heavy",
+  "note": "Zenitsu 2D in-betweens (2026-10-17): frames 4 and 5 are edits of frame 3 (sweep extended) and frame 6 (kneeling), registered by the upper body on these frozen copies of frames 3 and 6. The drawings are cut from their sheets as process.py does and resized to one drawing scale (0.39), so both bases show the same physical size.",
+  "frames": [
+    {
+      "frame": 4,
+      "scale": 0.39,
+      "base_of": 3,
+      "source": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_crouch_heavy-p1.png",
+      "source_sha256": "cb32c1df3e64fff7f42f85ca426b1ab526f70839071f5c0832d4e6eaa58674e2",
+      "sheet_scale": 0.3204,
+      "resized_by": 0.8215,
+      "drawing_size": [
+        734,
+        479
+      ]
+    },
+    {
+      "frame": 5,
+      "scale": 0.39,
+      "base_of": 6,
+      "source": "output/imagegen/zenitsu-v3/raw/zenitsu-v3-body_crouch_heavy-p3.png",
+      "source_sha256": "d1adf96d174f16c3b2c19f13fe73c4bdbb35232533371abe6b74a1f8d69951fb",
+      "sheet_scale": 0.2832,
+      "resized_by": 0.7262,
+      "drawing_size": [
+        616,
+        545
+      ]
+    }
+  ]
+}

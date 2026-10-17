@@ -1,0 +1,81 @@
+{
+  "character": "tanjiro",
+  "clip": "hit_guard",
+  "canvas_size": [
+    1024,
+    640
+  ],
+  "feet_anchor": [
+    448,
+    568
+  ],
+  "runtime_head_ruler": 39.08,
+  "parts": [
+    {
+      "id": "tanjiro-v3-hit_guard-p0",
+      "source": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-hit_guard-p0.png",
+      "sha256": "00cc25f8264262b3b9a4c7e88851ac85b800138a375bf47136a22629d845478b",
+      "ruler": 103.24,
+      "scale": 0.3785,
+      "scale_method": "registered",
+      "resample_vs_idle": 0.98,
+      "palette_shift": {
+        "uniform": [
+          -1.43,
+          -0.9,
+          -1.53
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori_green": 1.47,
+        "uniform": 2.1,
+        "skin": 1.85,
+        "hair": 1.11
+      },
+      "palette_delta_e_after": {
+        "haori_green": 1.47,
+        "uniform": 0.51,
+        "skin": 1.85,
+        "hair": 1.1
+      }
+    }
+  ],
+  "frames": [
+    {
+      "frame": 0,
+      "part": "tanjiro-v3-hit_guard-p0",
+      "crop": [
+        514,
+        154,
+        1102,
+        973
+      ],
+      "head_ruler": 100.58,
+      "head_box": [
+        154,
+        1,
+        321,
+        158
+      ],
+      "ratio_to_sheet": 0.974,
+      "scale": 0.3785,
+      "flags": [],
+      "notes": [],
+      "root_x": 203.0,
+      "anchor_mode": "registered",
+      "offset": [
+        372,
+        259
+      ],
+      "clipped": false,
+      "registration": {
+        "scale": 0.3785,
+        "score": 0.902,
+        "exact": 0.378476
+      },
+      "height_vs_idle": 0.951,
+      "drawing": "output/imagegen/tanjiro-v3/imports/hit_guard/drawing-00.png",
+      "exact_scale": 0.378476
+    }
+  ]
+}

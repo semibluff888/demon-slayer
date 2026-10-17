@@ -14,7 +14,8 @@ crouching guard is the crouch with the arms and katana moved). An edit with
 "sheet": "redo" instead edits the sheet it replaces (each column keeps its own
 drawing, e.g. only a misdrawn scabbard is corrected); "parts" limits the edit to
 those parts of the clip, and "frames" / "intro" replace the pose's frame lines and
-motion in the edit prompt.
+motion in the edit prompt ("frames" may also be {"5": text} to replace single lines).
+"images" (one drawing per column) replaces "image": each column edits its own drawing.
 
 Usage: python tools/art_v3/prepare.py --clips walk,stand_light --group pilot
        python tools/art_v3/prepare.py --redo walk:2,water_slash:1 --group pilot-r1
@@ -69,12 +70,17 @@ EDIT_RULE = 'Never move, enlarge, shrink or redraw the body.'
 
 def edit_base(data, pose, job_id, count):
     """Input image 1 of an edit job: the drawing once per column, feet on the baseline,
-    centred or `left` px from the column's left edge (room for a blade reaching forward)."""
-    drawing = Image.open(ROOT / pose['edit']['image']).convert('RGBA')
+    centred or `left` px from the column's left edge (room for a blade reaching forward).
+    "images" gives each column its own drawing instead (in-betweens edited from the two
+    frames they sit between, drawn at one scale)."""
+    images = pose['edit'].get('images') or [pose['edit']['image']] * count
+    if len(images) != count:
+        raise SystemExit('%s: edit "images" lists %d drawings for %d columns' % (job_id, len(images), count))
     cell = 1536 // count
     left = pose['edit'].get('left')
     sheet = Image.new('RGBA', (1536, 1024), tuple(data['background']) + (255,))
-    for column in range(count):
+    for column, image in enumerate(images):
+        drawing = Image.open(ROOT / image).convert('RGBA')
         at = (column * cell + ((cell - drawing.width) // 2 if left is None else left), 1024 - 40 - drawing.height)
         sheet.alpha_composite(drawing, at)
     path = production(data['id']) / 'references' / (job_id + '-base.png')
@@ -121,7 +127,13 @@ def make_job(args, data, pose, clip, index, chunk, overlap, previous_out, revisi
     out = production(args.character)
     frames = list(pose['frames'])
     if edit:
-        frames[:len(edit.get('frames', []))] = edit.get('frames', [])
+        replacement = edit.get('frames', [])
+        if isinstance(replacement, dict):
+            # {"5": text}: only these frames get new lines (a later part's columns).
+            for number, text in replacement.items():
+                frames[int(number)] = text
+        else:
+            frames[:len(replacement)] = replacement
     job_id = '%s-v3-%s-p%d%s' % (args.character, clip, index, revision)
     count = len(chunk)
     cell = 1536 // count
@@ -136,7 +148,7 @@ def make_job(args, data, pose, clip, index, chunk, overlap, previous_out, revisi
         previous += 'Input image %d: %s\n' % (5 if previous_out else 4, extra['role'])
     template = EDIT_PROMPT if edit else PROMPT
     redo = bool(edit) and edit.get('sheet') == 'redo'
-    drawings = '%d drawings of this animation' % count if redo else '%d copies of the same drawing' % count
+    drawings = '%d drawings of this animation' % count if redo or (edit and edit.get('images')) else '%d copies of the same drawing' % count
     edit = edit or {}
     # Rulers, the katana sentence and the banned effects come from spec/<id>.json "prompt";
     # an unarmed fighter names that line ("weapon_label") and the edit defaults for himself.

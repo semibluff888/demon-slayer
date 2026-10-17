@@ -106,6 +106,24 @@
         "frame": 2
       }
     },
+    "hit_guard": {
+      "helper": true,
+      "layout": "full",
+      "intro": "The last drawing of his hit reaction, held while he is stunned, an edit of the approved iai stance (input image 1): he is back in the stance but still hurting, still asleep. The legs, feet, stance and body size never move, so the hit reaction ends exactly at the size and stance of the idle.",
+      "frames": [
+        "Hurt, back in the iai stance: the stance of input image 1 with the same legs, feet and sheathed katana; his shoulders hunched up and a little forward, head lowered slightly and tilted, a pained sleeping face: eyes still CLOSED but squeezed tight, brows knitted, teeth clenched in a grimace, a drop of sweat; both hands stay on the sheathed katana exactly as in input image 1."
+      ],
+      "edit": {
+        "image": "output/imagegen/zenitsu-v3/imports/idle-warp/idle-00.png",
+        "keep": "the size and the position of the figure, both legs and both feet exactly (the stance never moves), the trousers, the sheathed katana and its scabbard on his left hip, both hands on the katana, the costume design, the line weight and the colours",
+        "change": "his face expression, the tilt of his head and his shoulders (the haori follows the shoulders)",
+        "rule": "The legs and feet stay exactly where they are in input image 1; never enlarge or shrink the figure; the eyes stay closed."
+      },
+      "register": {
+        "clip": "idle",
+        "frame": 0
+      }
+    },
     "hit": {
       "layout": "wide",
       "intro": "Taking a hit while standing, still asleep; the katana stays SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt.",
@@ -113,8 +131,11 @@
         "Impact: head snaps back, torso bends backward, eyes squeezed shut, mouth open in pain, hands still on the sheathed katana.",
         "Recoil: stumbling back onto the rear foot, shoulders hunched, grimace.",
         "Recover: knees bending, sinking back down toward the stance.",
-        "Nearly back in the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed), a pained face."
-      ]
+        "Nearly back in the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed), a pained face. Replaced by hit_guard (an edit of idle frame 0): the generated drawing crouched about 8 percent lower than the idle, so he grew when the idle returned."
+      ],
+      "copy_frames": {
+        "3": "hit_guard:0"
+      }
     },
     "knockdown": {
       "layout": "wide",
@@ -379,10 +400,38 @@
         "Drop lower, the right hand on the ground for support.",
         "Sweep wind-up: front leg drawn back along the ground.",
         "Active: sweeping kick across the ground, leg fully extended RIGHT at ankle height.",
-        "Sweep extended.",
-        "Leg returning along the ground.",
+        "Leg returning, a third of the way: from the full extension of column 1 the front leg starts to come back, the knee bending a little and lifting slightly, the sandal still low and sliding back along the ground toward his body, about a third of the way from the full extension to the kneel of column 2. Torso, head, arms and the sheathed katana stay exactly as in column 1.",
+        "Leg returning, two thirds of the way: from the kneel of column 2 the front foot is still a little further forward, planted flat on the ground about a quarter of a stride ahead of where it is in column 2, the front knee lower and more open, the leg just finishing its slide back. Torso, head, arms and the sheathed katana stay exactly as in column 2.",
         "Rising to the crouch, the right hand back on the hilt.",
-        "Crouch ready: the crouch: kneeling on the rear knee, the front knee bent, torso low and forward over the front knee, the katana stays SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed."
+        "Back to the approved iai stance: the idle (copied from idle frame 0)."
+      ],
+      "edit": {
+        "note": "Job p2-r1 (kept): each column edits its own base drawing. Column 1 (frame 3, the sweep) came back with the knee bent and the foot drawn in; column 2 (frame 6, the kneel) kept the planted kneel, so frames 5 and 6 hold the kneel before he stands to the idle. A second round (p2-r2: \"sheet\": \"redo\", only column 2's foot further forward) returned two copies of column 1 and was rejected.",
+        "images": [
+          "output/imagegen/zenitsu-v3/references/2d-inbetween/drawing-3.png",
+          "output/imagegen/zenitsu-v3/references/2d-inbetween/drawing-6.png"
+        ],
+        "parts": [
+          2
+        ],
+        "intro": "In-betweens of Zenitsu's crouching sweep kick (2D). Column 1 of input image 1 is the sweep fully extended (the front leg stretched far to the RIGHT at ankle height, crouching low on the rear leg); column 2 is the end of the return (kneeling on the rear knee, the front foot planted flat in front of him). Between them the front leg comes back along the ground in one smooth motion; these two drawings are that return at one third and two thirds. Eyes closed.",
+        "keep": "the size and the position of the figure in its column, the head, closed eyes, face and hair, the torso, the haori, both arms and hands, the SHEATHED katana and its scabbard at his left hip, the rear leg (the one on the LEFT of the picture) and its sandal, the line weight and the colours",
+        "change": "his front leg (the one reaching to the RIGHT of the picture): its trouser leg, leg wrap and sandal",
+        "rule": "Never move, enlarge, shrink or redraw the head, the torso, the haori or the arms; the katana stays SHEATHED, exactly ONE katana; the front sandal stays on the ground."
+      },
+      "register": {
+        "frames": "output/imagegen/zenitsu-v3/references/2d-inbetween",
+        "parts": [
+          2
+        ],
+        "band": "upper"
+      },
+      "copy_frames": {
+        "7": "idle:0"
+      },
+      "phase_breaks": [
+        3,
+        4
       ]
     },
     "body_air_heavy": {
@@ -559,7 +608,19 @@
         "Recovery: the lunge holds, the blade lowering.",
         "The blade sliding back into the scabbard at his left hip.",
         "Sheathed again with a click: back in the approved iai stance of input image 1 (low wide stance, front knee deeply bent, rear leg stretched back, torso leaning forward, the katana SHEATHED on his left hip, left hand on the scabbard, right hand on the hilt, eyes closed), almost identical to input image 1."
-      ]
+      ],
+      "size_to": {
+        "note": "2026-10-17 review: the cuts shrank in the middle of the move (frames 8-9 about 14 percent, 4-5 about 8 percent: those sheets drew the head larger, so the head ruler made the body small). Every frame keeps the iai stance, so each sheet's costume area stays within the band of idle frame 0.",
+        "clip": "idle",
+        "frame": 0,
+        "parts": [
+          "costume"
+        ],
+        "band": [
+          0.96,
+          1.04
+        ]
+      }
     },
     "sixfold": {
       "layout": "wide",

@@ -91,14 +91,16 @@ def _ink(rgba):
     return (rgb @ np.array([0.299, 0.587, 0.114], np.float32)) * (rgba[:, :, 3:4].astype(np.float32)[:, :, 0] / 255.0)
 
 
-def register(drawing, target, guess):
+def register(drawing, target, guess, band=(0.55, 1.0)):
     """Lays a drawing onto a registered canvas frame of the same body by the lower
     body only (legs, feet, scabbard), which the edited arms and blade never cover.
+    `band` is the matched share of the target's height from the hair top (an edit that
+    moves a leg registers by the upper body instead, e.g. (0.0, 0.55)).
     Searches scale around `guess` and a small offset; returns (canvas, placement)."""
     goal = np.asarray(target)
     rows = np.nonzero(goal[:, :, 3] > 150)[0]
     top, sole = int(rows.min()), int(rows.max()) + 1
-    band = slice(top + int((sole - top) * 0.55), sole)
+    band = slice(top + int((sole - top) * band[0]), top + int((sole - top) * band[1]))
     cols = np.nonzero((goal[band, :, 3] > 150).any(axis=0))[0]
     x0, x1 = int(cols.min()) - 4, int(cols.max()) + 5
     template = _ink(goal[band, x0:x1])
@@ -196,6 +198,14 @@ def split_columns(sheet, count):
     return result
 
 
+def unshown(pose):
+    """Frames whose own drawing is never shown: replaced by copy_frames and not copied
+    anywhere else in the clip (a frame swapped with another still shows, elsewhere)."""
+    copies = pose.get('copy_frames', {})
+    sources = {source for source in copies.values() if not isinstance(source, str)}
+    return {int(target) for target in copies} - sources
+
+
 def body_height(rgba):
     """Hair top to sole, independent of where the blade points."""
     measured = anatomy.head(rgba)
@@ -245,7 +255,7 @@ def process_clip(character, clip, jobs, canon, band=None, pose=None):
             # not measure the sheet (2D's last sheet took its scale from a crouch drawn with
             # a bigger head than the recovery frame that stays).
             settling = pose.get('settle', {})
-            replaced = {int(k) for k in pose.get('copy_frames', {})} | {int(k) for k in settling.get('frames', {}) if int(k) != settling.get('from')}
+            replaced = unshown(pose) | {int(k) for k in settling.get('frames', {}) if int(k) != settling.get('from')}
             rulers = [h['ruler'] for h, i in zip(heads, meta['frame_indices']) if h and i not in replaced] or [h['ruler'] for h in heads if h]
         # Raised arms or a turned head only ever hide part of the head, so with two
         # drawings the clearer (larger) head is the reference; three or more use the median.
@@ -307,7 +317,8 @@ def process_clip(character, clip, jobs, canon, band=None, pose=None):
                 frame = index if registered.get('frames') else registered['frame']
                 reference_frame = Image.open(folder / ('frame-%02d.png' % frame)).convert('RGBA')
                 guess = next(f['scale'] for f in reference_record['frames'] if f['frame'] == frame)
-                return register(image, reference_frame, guess)
+                # "band": "upper" matches the head, torso and arms (an edit that moved a leg).
+                return register(image, reference_frame, guess, (0.0, 0.55) if registered.get('band') == 'upper' else (0.55, 1.0))
             placed = {index: placed_on(image, index) for (_, image), index in zip(drawings, meta['frame_indices']) if index not in overlap}
             scale = statistics.median(p['registration']['scale'] for _, p in placed.values())
             method = 'registered'
@@ -390,11 +401,14 @@ def process_clip(character, clip, jobs, canon, band=None, pose=None):
     guard_anchor(sheets, frames, records, pose, canon, reference, band)
     size_to(character, sheets, frames, records, pose, canon, idle_height, band)
     settle(sheets, frames, records, pose, idle_height)
+    drawn = dict(frames)
+    drawn_records = {r['frame']: dict(r) for r in records}
     for target, source in pose.get('copy_frames', {}).items():
         # A held extension shown twice: the model would not draw this frame's arm right
         # (Akaza's rear-hand straights), so it repeats the frame that it did. "clip:N"
         # repeats a frame of another, already processed clip (2D starts and ends on the
-        # held crouch, crouch frame 5).
+        # held crouch, crouch frame 5). Copies read the frames as drawn, so two frames
+        # can swap places (Akaza's super rises 8 -> 10 -> 9).
         record = next(r for r in records if r['frame'] == int(target))
         if isinstance(source, str):
             other, number = source.split(':')
@@ -403,8 +417,8 @@ def process_clip(character, clip, jobs, canon, band=None, pose=None):
             placed = next(r for r in read(folder.parent / (other + '.json'))['frames'] if r['frame'] == int(number))
             placed = dict(placed, flags=[], height_vs_idle=placed.get('height_vs_idle'))
         else:
-            frames[int(target)] = frames[source].copy()
-            placed = next(r for r in records if r['frame'] == source)
+            frames[int(target)] = drawn[source].copy()
+            placed = drawn_records[source]
         record.update({k: placed.get(k) for k in ('scale', 'offset', 'root_x', 'height_vs_idle', 'flags')},
                       copy_of=source, notes=record['notes'] + ['repeats frame %s' % source])
     for record in records:
@@ -528,19 +542,34 @@ def size_to(character, sheets, frames, records, pose, canon, idle_height, band):
     averaged over the parts) are `ratio` of that frame's. Akaza's 2D: a low sweep's head,
     silhouette and torso all mislead (the model drew one sheet's head a fifth too large; the
     folded legs and hidden sash read small), while the vest and the skin keep their size
-    next to the crouch it starts from and returns to."""
+    next to the crouch it starts from and returns to.
+    "costume" is one part: the uniform and every spec material class together (Zenitsu's
+    haori is two hue bands that trade pixels as it turns). With "band": [low, high] instead
+    of "ratio", only sheets outside the band move, to its nearest edge (Zenitsu's turn slash:
+    the sheets whose heads were drawn large came out 8-15 percent small)."""
     config = pose.get('size_to')
     if not config:
         return
     classes = anatomy.profile()['materials']['classes']
 
+    def part(rgba, name, skin, uniform):
+        if name == 'skin':
+            return skin
+        if name == 'uniform':
+            return uniform
+        if name == 'costume':
+            total = uniform.copy()
+            for rule in classes.values():
+                total |= anatomy.select(rgba, rule)
+            return total
+        return anatomy.select(rgba, classes[name])
+
     def measure(rgba):
         _, skin, uniform = anatomy.masks(rgba)
-        named = dict(skin=skin, uniform=uniform)
-        return [float(np.sqrt((named[n] if n in named else anatomy.select(rgba, classes[n])).sum())) for n in config['parts']]
+        return [float(np.sqrt(part(rgba, n, skin, uniform).sum())) for n in config['parts']]
     folder = production(character) / 'imports' / config['clip']
     reference = measure(np.asarray(Image.open(folder / ('frame-%02d.png' % config['frame'])).convert('RGBA')))
-    replaced = {int(k) for k in pose.get('copy_frames', {})}
+    replaced = unshown(pose)
     for data in sheets:
         if 'placed' not in data or data['fixed']:
             continue
@@ -548,8 +577,15 @@ def size_to(character, sheets, frames, records, pose, canon, idle_height, band):
         if not shown:
             continue
         ratios = [statistics.mean(v / r for v, r in zip(measure(np.asarray(frames[i])), reference)) for i in shown]
-        rescale(data, config.get('ratio', 1.0) / statistics.median(ratios), 'parts like %s %d' % (config['clip'], config['frame']),
-                frames, records, pose, canon, idle_height, band)
+        size = statistics.median(ratios)
+        if 'band' in config:
+            low, high = config['band']
+            target = min(max(size, low), high)
+            why = 'parts %.2f of %s %d, band %.2f-%.2f' % (size, config['clip'], config['frame'], low, high)
+        else:
+            target = config.get('ratio', 1.0)
+            why = 'parts like %s %d' % (config['clip'], config['frame'])
+        rescale(data, target / size, why, frames, records, pose, canon, idle_height, band)
 
 
 def settle(sheets, frames, records, pose, idle_height):

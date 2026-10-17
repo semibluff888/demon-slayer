@@ -7505,5 +7505,67 @@
       "kind": "full",
       "attempt": 2
     }
+  },
+  {
+    "id": "akaza-v3-annihilation_swap-p0",
+    "group": "annihilation-rear-fist",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-annihilation_swap-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-annihilation_swap-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/akaza-v3-annihilation_swap-p0-base.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png",
+      "output/imagegen/akaza-v3/references/cross-example.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "annihilation_swap",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "rejected": "Both columns still punch with the arm from the front shoulder (on the RIGHT of the picture); the lunge edit of the Stepping Straight (annihilation_lunge) has the right arms and is used instead."
+  },
+  {
+    "id": "akaza-v3-annihilation_lunge-p0",
+    "group": "annihilation-rear-fist",
+    "prompt": "output/imagegen/akaza-v3/prompts/akaza-v3-annihilation_lunge-p0.txt",
+    "out": "output/imagegen/akaza-v3/raw/akaza-v3-annihilation_lunge-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/akaza-v3/references/akaza-v3-annihilation_lunge-p0-base.png",
+      "output/imagegen/akaza-v3/raw/akaza-v3-model.png",
+      "output/imagegen/akaza-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "akaza",
+      "clip": "annihilation_lunge",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
   }
 ]

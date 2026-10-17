@@ -8365,5 +8365,34 @@
       ],
       "layout": "full"
     }
+  },
+  {
+    "id": "tanjiro-v3-hit_guard-p0",
+    "group": "fix-hit-guard",
+    "prompt": "output/imagegen/tanjiro-v3/prompts/tanjiro-v3-hit_guard-p0.txt",
+    "out": "output/imagegen/tanjiro-v3/raw/tanjiro-v3-hit_guard-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/tanjiro-v3/references/tanjiro-v3-hit_guard-p0-base.png",
+      "output/imagegen/tanjiro-v3/raw/tanjiro-v3-model.png",
+      "output/imagegen/tanjiro-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "tanjiro",
+      "clip": "hit_guard",
+      "part": 0,
+      "frame_indices": [
+        0
+      ],
+      "overlap": [],
+      "columns": 1,
+      "rows": 1,
+      "count": 1,
+      "cell": [
+        1536,
+        1024
+      ],
+      "layout": "full"
+    }
   }
 ]
