@@ -2,7 +2,7 @@ extends "res://scripts/presentation/vfx/akaza/technique.gd"
 ## 破坏杀·空式 (236A/C) and 空式·下 (j.236A/C): after the red start-up the punch
 ## twists the air in front of the fist into a swirl and a white ring, and the
 ## blow flies on as a comet of compressed air: a white-hot head in a cyan body
-## (blue-violet when awakened), swirling rings and a tapering tail shedding
+## (royal blue when awakened), swirling rings and a tapering tail shedding
 ## glints. The air version flies down at a slant; where it meets the floor it
 ## breaks it: a few slabs of stone tip up, rocks fly, dust rings out and a
 ## shallow crater stays.

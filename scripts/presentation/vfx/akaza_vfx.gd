@@ -4,7 +4,7 @@ extends Node2D
 ## out, white air-pressure arcs and rings round his fists and feet, comet-like air
 ## fists, floors breaking into rubble, dark dust and black rock, the red start-up
 ## of every special, and while awakened
-## (术式展开·罗针) a snowflake compass under his feet, blue-violet shocks and a
+## (术式展开·罗针) a snowflake compass under his feet, royal-blue shocks and a
 ## flickering flame outline. Each technique lives in vfx/akaza/; this node owns
 ## the layers, particle pools, contact bursts and the shared drawing helpers.
 ## Shapes follow the move clock; particles are emitted from `consume`, which runs
@@ -62,7 +62,7 @@ var time: float = 0.0
 var dot: Texture2D
 ## Rock chunks, 4 x 4 cells (grey, tinted per particle).
 var rocks: Texture2D
-## Shock bursts: cyan (normal) and violet (awakened), 4 variants x 2 stages.
+## Shock bursts: cyan (normal) and royal blue (awakened), 4 variants x 2 stages.
 var shock_art: Array[Texture2D] = []
 var blob: Texture2D
 var flake: Texture2D
@@ -89,7 +89,7 @@ var base := Transform2D.IDENTITY
 func _ready() -> void:
 	dot = _spark_texture()
 	rocks = load(ART + "rocks.png")
-	for palette in ["cyan", "violet"]:
+	for palette in ["cyan", "azure"]:
 		shock_art.append(load(ART + "shock-%s.png" % palette))
 	blob = _blob_texture()
 	flake = _flake_texture()
@@ -396,7 +396,7 @@ func shock(canvas: Node2D, layer: int, at: Vector2, radius: float, seed: int, al
 		return
 	var tone := Kit.ICE if pale else Kit.tone(awakened_form)
 	var edge := Kit.CYAN_DEEP if pale else Kit.deep(awakened_form)
-	var violet := awakened_form and not pale
+	var deep := awakened_form and not pale
 	var size := radius * (1.0 + 0.18 * age)
 	var spin := rand(seed, 70) * TAU + age * 0.5
 	var broken := smoothstep(0.15, 0.65, age)
@@ -405,7 +405,7 @@ func shock(canvas: Node2D, layer: int, at: Vector2, radius: float, seed: int, al
 			if glow != null:
 				canvas.draw_texture_rect(glow, Rect2(at - Vector2.ONE * size * 2.0, Vector2.ONE * size * 4.0), false, Color(edge, 0.3 * alpha))
 		Kit.FRONT:
-			burst_sprite(canvas, at, size, seed, broken, alpha * (0.8 if pale else 1.0), violet, spin, Color(0.85, 0.95, 1.0) if pale else Color.WHITE)
+			burst_sprite(canvas, at, size, seed, broken, alpha * (0.8 if pale else 1.0), deep, spin, Color(0.85, 0.95, 1.0) if pale else Color.WHITE)
 			var ink := alpha * (1.0 - smoothstep(0.25, 0.75, age)) * (0.5 if pale else 0.85)
 			var lines := 5 if pale else 9
 			for n in range(lines):
@@ -424,7 +424,7 @@ func shock(canvas: Node2D, layer: int, at: Vector2, radius: float, seed: int, al
 				canvas.draw_texture_rect(glow, Rect2(at - Vector2.ONE * size * 0.55, Vector2.ONE * size * 1.1), false, Color(Kit.WHITE, 0.35 * flash))
 				canvas.draw_texture_rect(glow, Rect2(at - Vector2.ONE * size * 1.3, Vector2.ONE * size * 2.6), false, Color(tone, 0.2 * flash))
 			# The spikes again, faint, so they glow on the night stage.
-			burst_sprite(canvas, at, size, seed, broken, alpha * 0.12, violet, spin)
+			burst_sprite(canvas, at, size, seed, broken, alpha * 0.12, deep, spin)
 			# A few short white streaks just past the rim (kept faint: the burst
 			# should read as a full ball, not a spiky star).
 			for n in range(4):

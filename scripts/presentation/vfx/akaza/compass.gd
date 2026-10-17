@@ -1,10 +1,10 @@
 extends "res://scripts/presentation/vfx/akaza/technique.gd"
 ## 术式展开·罗针 (Akaza's awakening). On activation the compass is cast round his
 ## feet through the awakening freeze and start-up: drawn outward in red with the
-## red start-up on his body, then it turns blue-violet, shafts of light rise
+## red start-up on his body, then it turns blue, shafts of light rise
 ## from its rim and flakes fly. While he stays awakened a fainter compass turns
 ## under him (it brightens for a moment whenever he lands a hit) and a
-## flickering blue-violet flame outline clings to his body, shedding wisps; when
+## flickering royal-blue flame outline clings to his body, shedding wisps; when
 ## the awakening ends the compass fades. Driven by the fighters' awakening state
 ## and events, not by a move.
 
@@ -17,10 +17,12 @@ const RADIUS := 46.0
 const FADE := 0.35
 ## How long a hit makes the compass flare (seconds).
 const PULSE := 0.25
-## The awakened compass glows a saturated blue-violet over lines painted in a deep
-## violet ink (the additive glow alone read as a pale lilac on the dark floor).
-const GLOW := Color(0.43, 0.33, 0.93)
-const INK := Color(0.2, 0.09, 0.55, 0.8)
+## The awakened compass glows a clear cyan-blue over lines painted in a deep navy
+## ink (an additive glow alone reads pale on the dark floor). Second review: the
+## violet of the first version read as a washed-out lilac; the reference's compass
+## is cyan-blue and its Infinity Castle flames royal blue (Kit.AZURE).
+const GLOW := Color(0.37, 0.63, 1.0)
+const INK := Color(0.04, 0.15, 0.5, 0.8)
 
 ## Awakened Akaza fighters by slot: {"age": frames since the awakening began}.
 var _awake: Dictionary = {}
@@ -77,11 +79,11 @@ func consume(events: Array, fighters: Array, actors: Array) -> void:
 			vfx.dust_burst(Vector2(f.x, Arena.FLOOR_Y), 6, Vector2.ZERO, seed + 9, 1.1)
 		var frozen: bool = int(vfx.combat.hitstop) > 0 or int(vfx.combat.super_freeze) > 0
 		if age % 2 == 0 and not frozen and awake_now and actors[f.slot].texture != null:
-			# Wisps of blue-violet flame drifting off his body (none pile up through a freeze).
+			# Wisps of blue flame drifting off his body (none pile up through a freeze).
 			var bounds: Rect2 = actors[f.slot].visual_bounds()
 			var at := Vector2(f.x, f.y) + bounds.position + Vector2(vfx.rand(seed, 1) * bounds.size.x, vfx.rand(seed, 2) * bounds.size.y * 0.8)
 			vfx.flakes.spawn(at, Vector2((vfx.rand(seed, 3) - 0.5) * 14.0, -lerpf(26.0, 48.0, vfx.rand(seed, 4))), lerpf(0.35, 0.6, vfx.rand(seed, 5)),
-				lerpf(2.0, 3.4, vfx.rand(seed, 6)), 0, Kit.VIOLET.lerp(Kit.ICE, 0.3 * vfx.rand(seed, 7)), -20.0, 1.0, 0.0, 0.0, 0.6)
+				lerpf(2.0, 3.4, vfx.rand(seed, 6)), 0, Kit.AZURE.lerp(Kit.ICE, 0.3 * vfx.rand(seed, 7)), -20.0, 1.0, 0.0, 0.0, 0.6)
 	_fading = _fading.filter(func(c: Dictionary) -> bool: return vfx.time - float(c.born) < FADE)
 
 func draw_all(canvas: Node2D, layer: int, fighters: Array, actors: Array) -> void:
@@ -108,17 +110,17 @@ func draw_all(canvas: Node2D, layer: int, fighters: Array, actors: Array) -> voi
 				var foot := Vector2(cos(a) * radius * 0.92, sin(a) * radius * 0.92 * Kit.FLOOR_SQUASH)
 				var tall := lerpf(50.0, 100.0, vfx.rand(f.slot, n))
 				Ribbon.draw(canvas, PackedVector2Array([foot, foot + Vector2(0.0, -tall * k)]), PackedFloat32Array([5.0, 0.0]),
-					PackedColorArray([Color(Kit.ICE, 0.8 * k), Color(Kit.VIOLET, 0.0)]), vfx.band)
+					PackedColorArray([Color(Kit.ICE, 0.8 * k), Color(Kit.AZURE, 0.0)]), vfx.band)
 		# The red start-up on his body, then the flame outline.
 		vfx.set_base(canvas, vfx.frame_transform(f.x, f.y, f.facing))
 		if casting:
 			var red := 1.0 - smoothstep(4.0, REVEAL, age)
 			vfx.activation(canvas, layer, f, actor, red, f.slot * 29 + 3)
 			if layer == Kit.LIGHT:
-				vfx.body_flash(canvas, f, actor, Color(Kit.VIOLET, 0.4 * smoothstep(REVEAL, TURN, age) * (1.0 - smoothstep(TURN, float(CAST), age))))
+				vfx.body_flash(canvas, f, actor, Color(Kit.AZURE, 0.4 * smoothstep(REVEAL, TURN, age) * (1.0 - smoothstep(TURN, float(CAST), age))))
 		if layer == Kit.SIGIL:
 			var flicker: int = floori(float(_awake[f.slot].age) / 3.0)
-			vfx.aura(canvas, f, actor, Color(Kit.VIOLET, 0.26 * smoothstep(REVEAL, TURN + 6.0, age)), f.slot * 101 + flicker)
+			vfx.aura(canvas, f, actor, Color(Kit.AZURE, 0.26 * smoothstep(REVEAL, TURN + 6.0, age)), f.slot * 101 + flicker)
 	for held: Dictionary in _fading:
 		var k := clampf((vfx.time - float(held.born)) / FADE, 0.0, 1.0)
 		vfx.set_base(canvas, vfx.world_transform(Vector2(float(held.x), Arena.FLOOR_Y)))

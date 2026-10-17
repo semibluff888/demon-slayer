@@ -1,6 +1,6 @@
 """Builds Akaza's procedural effect textures into art/effects/akaza/ (deterministic).
 
-  shock-cyan.png, shock-violet.png
+  shock-cyan.png, shock-azure.png
       the contact burst after the Hinokami Chronicles look: a full, fluffy ball
       round a white-hot core whose rim frays into short, blunt, soft-edged
       tongues (not a sharp sea urchin), light at the centre with a faint deep
@@ -33,7 +33,9 @@ SS = 2
 # Ramps from the reference (docs/vfx/akaza-reference.md): edge, deep, body, light, core.
 PALETTES = {
     'cyan': ['#0d2473', '#225ddc', '#59c8f5', '#bff2ff', '#ffffff'],
-    'violet': ['#1e1060', '#4b33e0', '#8d7be7', '#ddd5ff', '#ffffff'],
+    # Awakened: the royal blue of the Infinity Castle flames (the first blue-violet
+    # ramp '#1e1060', '#4b33e0', '#8d7be7', '#ddd5ff' read as a washed-out lilac).
+    'azure': ['#0a1a66', '#1f40d9', '#5c8cff', '#cfe0ff', '#ffffff'],
 }
 
 
@@ -223,7 +225,7 @@ def main():
         target = Path(sys.argv[sys.argv.index('--preview') + 1])
         backdrop = Image.new('RGBA', (1024, 512 * 2 + 256), (34, 40, 66, 255))
         backdrop.alpha_composite(built['shock-cyan'], (0, 0))
-        backdrop.alpha_composite(built['shock-violet'], (0, 512))
+        backdrop.alpha_composite(built['shock-azure'], (0, 512))
         backdrop.alpha_composite(built['rocks'].resize((512, 512), LANCZOS).crop((0, 0, 512, 256)), (0, 1024))
         backdrop.convert('RGB').save(target)
         print(target)

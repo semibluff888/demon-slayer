@@ -217,7 +217,7 @@ func _check_lead() -> void:
 		check(ahead >= float(spec[1]) and ahead < INF, "%s flash leads the blow by %s (got %s)" % [spec[0], spec[1], ahead])
 
 ## 术式展开·罗针: the compass is cast through the awakening freeze and start-up,
-## stays while he is awake (in blue-violet), and fades when it ends.
+## stays while he is awake (in royal blue), and fades when it ends.
 func _check_compass() -> void:
 	game.characters.assign(["akaza", "tanjiro"])
 	game.start_match()
