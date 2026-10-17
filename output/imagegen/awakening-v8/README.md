@@ -22,7 +22,7 @@
 - `selected.json`：步态采用 v2 修订。
 - `motion-calibration.json`：绑定源图 SHA-256 的逐帧标尺与位置。
 - `imports/`：最终缩放、偏移及来源；`baseline/`：本轮开始时的完整 v7 图集。
-- `review/fixed-ruler.html`：同尺度全动作对照，禁止逐格适配轮廓。
+- `review/fixed-ruler.html`：同尺度全动作对照，禁止逐格适配轮廓；不入库，用下方 `review_awakening_motion.py` 重新生成。
 - `acceptance.json`：最终验收、实机预览、图集和发布包哈希。
 
 头骨量测有约 3 个源像素的人工作业误差；以全身同尺度图及实机画面共同判断，不把标尺数字当作美术一致性的唯一证据。

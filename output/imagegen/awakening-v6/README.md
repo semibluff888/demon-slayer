@@ -13,7 +13,7 @@
 - preserved-runtime.json：普通形态、其他角色和现有特效的接入前哈希。
 - records/：已授权 CPA 服务的生图记录；调用安装的 imagegen CLI，gpt-image-2，high 质量。
 - imports/：离线抠图、缩放、锚点和来源记录。
-- review/：源图与逐帧对照。
+- review/：源图与逐帧对照（不入库，用下方 build_awakening_art.py 与 review_awakening_v2.py 重新生成）。
 
 离线重建：
 

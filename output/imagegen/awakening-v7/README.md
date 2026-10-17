@@ -23,7 +23,7 @@
 - `records/`：请求记录与长动作拼接来源。多张动作表只补空白并拼接，保持原始像素；受投首帧采用另一张已校验的等效受力姿势，记录于 `frame_overrides`。
 - `imports/`：实际采用的源文件、缩放、位置和标定方式。
 - `preserved-runtime.json`：应保持不变的其他运行资产哈希。
-- `review/fixed-ruler.html`：按同一像素尺度对比所有动作；`motion-ruler.gif` 为素材动作序列预览。
+- `review/fixed-ruler.html`：按同一像素尺度对比所有动作；`motion-ruler.gif` 为素材动作序列预览。两者不入库，用下方 `review_awakening_motion.py` 重新生成。
 - `acceptance.json`：最终选择、运行资产哈希与验证结果。
 
 从已经保存的素材离线重建，无需再次付费生图：

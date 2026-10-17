@@ -10,4 +10,4 @@
 
 本图仅供造型确认，尚未制作完整动作，也未替换祢豆子的游戏资源。用户确认后再继续。
 
-猗窝座头像已按用户确认接入；导入记录及实际游戏截图位于 ../awakening-v3-preview/imports/akaza-portrait.json 与 ../awakening-v3-preview/review/runtime/。
+猗窝座头像已按用户确认接入；导入记录位于 ../awakening-v3-preview/imports/akaza-portrait.json。该头像后由 v3 重画取代，当时的实机截图已移出仓库。

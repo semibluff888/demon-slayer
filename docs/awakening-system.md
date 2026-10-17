@@ -40,7 +40,7 @@ CharacterDefinition.awakening 引用 AwakeningDefinition。运行中的时间、
     .venv/Scripts/python.exe tools/subset_fonts.py
     ./tests/run_tests.ps1
 
-生成需要明确授权使用 CPA；构建、字体和测试完全离线。队列不自动重试不确定请求。所有生图来源、提示词、参考图、请求记录及逐帧比例注册保存在 output/imagegen/awakening-v1/。逐帧对照在其 review/index.html。selected.json 固定最终采用的修正版，原始版本和修订提示词均保留。原生RGBA透明度直接保留；不透明青底图做色键分离，整个人物连通区域先提取后按序排列，避免空中/投技动作跨格裁切。动作画帧继承原招式时间轴，不通过加速动画改变战斗帧数。
+生成需要明确授权使用 CPA；构建、字体和测试完全离线。队列不自动重试不确定请求。所有生图来源、提示词、参考图、请求记录及逐帧比例注册保存在 output/imagegen/awakening-v1/。逐帧对照 review/index.html 不入库，由 build_awakening_art.py 重建时生成。selected.json 固定最终采用的修正版，原始版本和修订提示词均保留。原生RGBA透明度直接保留；不透明青底图做色键分离，整个人物连通区域先提取后按序排列，避免空中/投技动作跨格裁切。动作画帧继承原招式时间轴，不通过加速动画改变战斗帧数。
 
 专项测试使用真实方向与BC输入覆盖四人全部对阵、左右朝向、中场/版边及2格/3格路线，共128组，伤害结果记录在 artifacts/awakening-balance.json。帧率回归显式覆盖双方同时觉醒、受击、强化攻击与到期过程。
 
@@ -99,7 +99,7 @@ Windows试玩包：`dist/DemonSlayer-0.2.1-awakening-art-windows-x86_64.zip`。�
 
 生产目录为 `output/imagegen/awakening-v6/`，`master.json`记录模型，`jobs.json`记录原动作时间轴与参考姿势，`selected.json`固定倒地第三帧多余手部的修正版。图集43组、348帧中，39组/306帧为新生成动作，另外4组/42帧为原有回合演出；游戏在回合结束时沿用既有解除形态规则。普通形态、其他角色与特效的保留哈希见 `preserved-runtime.json`。
 
-新头像同时用于HUD觉醒状态和MAX发动特写，`awakened_combo.tres`以及对应资源生成器使用同一路径。猗窝座已确认的觉醒头像另行接入，来源与实机核对在 `output/imagegen/awakening-v3-preview/imports/akaza-portrait.json`。
+新头像同时用于HUD觉醒状态和MAX发动特写，`awakened_combo.tres`以及对应资源生成器使用同一路径。猗窝座觉醒头像当时另行接入，来源见 `output/imagegen/awakening-v3-preview/imports/akaza-portrait.json`；该头像已由 v3 重画取代，现行来源见 `output/imagegen/akaza-v3/portraits.json`。
 
 离线重建：
 
@@ -121,7 +121,7 @@ Windows试玩包：`dist/DemonSlayer-0.2.1-awakening-art-windows-x86_64.zip`。�
 
 发力阶段增加张嘴、露牙和咬牙表情，移动、准备与收招按动作保持克制。画帧数、阶段和战斗时序不变；原1.15倍鬼化规则仍只应用一次。脚底锚点、普通形态以及其他角色资产由自动化检查验证。
 
-生产目录 `output/imagegen/awakening-v7/` 保存实际参考附件、提示词、请求记录、最终选择和逐帧标定。`selected.json`固定12组地面修订，`anatomy-calibration.json`绑定源图SHA-256，防止替换源图后误用旧缩放。长动作由六帧以内的图表无缩放拼接；全部来源及受投等效帧替换见 `records/`。`review/fixed-ruler.html`提供同一尺度的完整动作对照。
+生产目录 `output/imagegen/awakening-v7/` 保存实际参考附件、提示词、请求记录、最终选择和逐帧标定。`selected.json`固定12组地面修订，`anatomy-calibration.json`绑定源图SHA-256，防止替换源图后误用旧缩放。长动作由六帧以内的图表无缩放拼接；全部来源及受投等效帧替换见 `records/`。同一尺度的完整动作对照 `review/fixed-ruler.html` 不入库，可用下方 `review_awakening_motion.py` 重新生成。
 
 离线重建：
 
