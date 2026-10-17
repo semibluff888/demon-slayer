@@ -12,11 +12,14 @@ extends SceneTree
 ## (--no-cinematic keeps supers in game); any other token is a move notation (5A, 2C, 236A, 6B,
 ## j236A…) pressed like a player and followed by its full recovery. A leading "intro"
 ## step first records the real round intro of both fighters from the round start.
-## Frames go to artifacts/art-v3/<character>/moves/frame-NNNN.png.
+## Video goes to artifacts/art-v3/<character>/moves/capture.mp4.
+## --keep-frames retains frame-NNNN.png for lossless review (bounded to 512 MiB).
 const Main = preload("res://scenes/main.tscn")
+const CaptureOutput = preload("res://tools/capture_output.gd")
 const Combat = preload("res://scripts/combat.gd")
 var game: Node2D
 var saved := 0
+var capture := CaptureOutput.new()
 var folder := ""
 ## The opponent holds down-back (crouching guard) while this is set (guard:1 / guard:0).
 var guarding := false
@@ -40,9 +43,8 @@ func _run() -> void:
 			cinematic = false
 	root.size = Vector2i(1280, 720)
 	folder = "res://artifacts/art-v3/%s/moves/" % character
-	DirAccess.make_dir_recursive_absolute(folder)
-	for stale in DirAccess.get_files_at(folder):
-		DirAccess.remove_absolute(folder + stale)
+	if not capture.begin(folder):
+		return
 	game = Main.instantiate()
 	game.settings.path = "res://artifacts/capture_moves-settings.cfg"
 	root.add_child(game)
@@ -105,10 +107,11 @@ func _run() -> void:
 				var chain := parts[0].split(">")
 				for index in range(chain.size()):
 					await _move(chain[index], index < chain.size() - 1)
+	var capture_ok := capture.finish()
 	game.queue_free()
 	await process_frame
 	print("MOVE CAPTURE: %d frames" % saved)
-	quit()
+	quit(0 if capture_ok else 1)
 
 func _tick(command: Dictionary, other: Dictionary = {}) -> void:
 	var model = game.combat
@@ -118,7 +121,7 @@ func _tick(command: Dictionary, other: Dictionary = {}) -> void:
 	game.view.consume(model.events)
 	await process_frame
 	await RenderingServer.frame_post_draw
-	root.get_texture().get_image().save_png(folder + "frame-%04d.png" % saved)
+	capture.save(root.get_texture().get_image(), "frame-%04d.png" % saved)
 	saved += 1
 
 func _hold(command: Dictionary, count: int) -> void:

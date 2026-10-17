@@ -8,6 +8,8 @@ $Godot = & (Join-Path $projectRoot 'tools/find-godot.ps1') -Godot $Godot
 if (-not (Test-Path -LiteralPath $Godot)) {
     throw "Godot not found. Use -Godot 'path\to\Godot_console.exe'."
 }
+# Bound old visual evidence before starting any engine process.
+& (Join-Path $projectRoot 'tools/clean-local.ps1') -Apply -RetainRecent | Out-Null
 $artifactRoot = Join-Path $projectRoot 'artifacts'
 New-Item -ItemType Directory -Path $artifactRoot -Force | Out-Null
 
@@ -99,6 +101,8 @@ if ($Capture) {
 }
 $artPython = Join-Path $projectRoot '.venv/Scripts/python.exe'
 if (Test-Path -LiteralPath $artPython) {
+    & $artPython -X utf8 (Join-Path $projectRoot 'tests/capture_storage_tests.py')
+    if ($LASTEXITCODE -ne 0) { throw 'Capture storage safeguards failed.' }
     & $artPython (Join-Path $projectRoot 'tests/art_pipeline_tests.py')
     if ($LASTEXITCODE -ne 0) { throw 'Artwork validation failed.' }
     & $artPython (Join-Path $projectRoot 'tests/roster_art_tests.py')

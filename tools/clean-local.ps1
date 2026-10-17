@@ -1,4 +1,12 @@
-param([switch]$Apply, [ValidateRange(1, 100)][int]$KeepReleaseArchives = 1)
+param(
+    [switch]$Apply,
+    [ValidateRange(1, 100)][int]$KeepReleaseArchives = 1,
+    [switch]$RetainRecent,
+    [ValidateRange(0.001, 100)][double]$MaxArtifactGiB = 2,
+    [ValidateRange(1, 365)][int]$ArtifactMaxAgeDays = 7,
+    [ValidateRange(0, 168)][int]$RecentGraceHours = 24,
+    [switch]$IncludeReferenceDownloads
+)
 $ErrorActionPreference = 'Stop'
 $root = [IO.Path]::GetFullPath((Split-Path -Parent $PSScriptRoot))
 function Assert-LocalPath([string]$path) {
@@ -17,6 +25,7 @@ function Assert-LocalPath([string]$path) {
 $targets = @('artifacts', 'tmp', 'output/pip-cache',
     'output/imagegen/anime-v2/review', 'output/imagegen/roster-v1/review',
     'output/imagegen/round-selected/review', 'output/imagegen/round-selected/packed',
+    'output/vfx-reference/frames',
     'demo/round-presentation/previews/frames', 'demo/round-presentation/previews/audio')
 # Comparison sheets are derived from retained raw sources and registrations.
 $imagegen = Join-Path $root 'output/imagegen'
@@ -28,6 +37,10 @@ if (Test-Path -LiteralPath $imagegen) {
 # The selected, licensed offline upscaler lives in runtime/. These are duplicate
 # extracted distributions and downloads, not the runtime used by build tools.
 $targets += @('output/super-resolution/models', 'output/super-resolution/realesrgan-ncnn-vulkan-v0.2.0-windows')
+if ($IncludeReferenceDownloads) { $targets += 'output/downloads' }
+# Automatic maintenance touches captures only. Source art and download caches
+# are handled only by the explicit full-clean command.
+if ($RetainRecent) { $targets = @('artifacts') }
 $files = [Collections.Generic.List[IO.FileInfo]]::new()
 foreach ($relative in $targets) {
     $path = Join-Path $root $relative
@@ -37,7 +50,7 @@ foreach ($relative in $targets) {
     }
 }
 $downloadRoot = Join-Path $root 'output/super-resolution'
-if (Test-Path -LiteralPath $downloadRoot) {
+if (-not $RetainRecent -and (Test-Path -LiteralPath $downloadRoot)) {
     Get-ChildItem -LiteralPath $downloadRoot -File | Where-Object {
         $_.Name -like 'realesrgan-ncnn-vulkan-*-windows.zip' -or
         $_.Name -in @('input.jpg', 'input2.jpg', 'onepiece_demo.mp4', 'README_windows.md',
@@ -47,7 +60,7 @@ if (Test-Path -LiteralPath $downloadRoot) {
 # Keep the newest release archive(s) by version, plus all release notes and hashes.
 $releaseRoot = Join-Path $root 'dist'
 $releases = @()
-if (Test-Path -LiteralPath $releaseRoot) {
+if (-not $RetainRecent -and (Test-Path -LiteralPath $releaseRoot)) {
     $releases = @(Get-ChildItem -LiteralPath $releaseRoot -Filter 'DemonSlayer-*.zip' -File |
         Where-Object { $_.Name -match '^DemonSlayer-(\d+\.\d+\.\d+)(?:-|\.)' } |
         Sort-Object @{ Expression = { [version]([regex]::Match($_.Name, '^DemonSlayer-(\d+\.\d+\.\d+)').Groups[1].Value) }; Descending = $true }, @{ Expression = 'LastWriteTimeUtc'; Descending = $true })
@@ -60,7 +73,7 @@ if (Test-Path -LiteralPath $releaseRoot) {
 }
 # Keep every imported resource still referenced by the game or historical demo.
 $keep = [Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
-foreach ($relative in @('art', 'demo')) {
+foreach ($relative in $(if ($RetainRecent) { @() } else { @('art', 'demo') })) {
     Get-ChildItem -LiteralPath (Join-Path $root $relative) -Filter '*.import' -Recurse -File | ForEach-Object {
         foreach ($match in [regex]::Matches((Get-Content -LiteralPath $_.FullName -Raw), 'res://\.godot/imported/([^"\r\n]+)')) {
             $name = $match.Groups[1].Value
@@ -70,16 +83,67 @@ foreach ($relative in @('art', 'demo')) {
     }
 }
 $imported = Join-Path $root '.godot/imported'
-if (Test-Path -LiteralPath $imported) {
+if (-not $RetainRecent -and (Test-Path -LiteralPath $imported)) {
     Get-ChildItem -LiteralPath $imported -File | Where-Object { -not $keep.Contains($_.Name) } | ForEach-Object { $files.Add($_) }
 }
 # Never delete version-controlled files, even if a generated folder changes later.
 $tracked = [Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
 & git -C $root -c core.quotepath=false ls-files | ForEach-Object { $null = $tracked.Add([IO.Path]::GetFullPath((Join-Path $root $_))) }
 if ($LASTEXITCODE -ne 0) { throw 'Cannot inspect tracked files; aborting cleanup.' }
+# A running capture owns its directory until encoding has completed. The owner
+# must match both PID and start time, so markers from exited processes, recycled
+# PIDs and unreadable markers neither pin garbage nor abort maintenance.
+$active = @()
+$artifactPath = Join-Path $root 'artifacts'
+if (Test-Path -LiteralPath $artifactPath) {
+    Get-ChildItem -LiteralPath $artifactPath -Filter '.capture-active.json' -File -Recurse -Force | ForEach-Object {
+        $markerPath = Assert-LocalPath $_.FullName
+        try {
+            $marker = Get-Content -LiteralPath $markerPath -Raw | ConvertFrom-Json
+            $owner = [int]$marker.pid
+            if ($owner -gt 0 -and (Get-Process -Id $owner -ErrorAction Stop).StartTime -eq [DateTime]::FromFileTime([long]$marker.started)) {
+                $active += $_.DirectoryName + [IO.Path]::DirectorySeparatorChar
+            }
+        } catch { }
+    }
+}
+$candidates = @($files | Sort-Object FullName -Unique | Where-Object {
+    $candidate = $_
+    -not $tracked.Contains($candidate.FullName) -and -not ($active | Where-Object {
+        $candidate.FullName.StartsWith($_, [StringComparison]::OrdinalIgnoreCase)
+    })
+})
+$evicted = [Collections.Generic.List[string]]::new()
+if ($RetainRecent) {
+    # Evict complete leaf directories, oldest first, so a frame sequence is not
+    # silently truncated. Last-write time of the newest member defines its age.
+    # Captures inside the grace window are never evicted for size, so a fresh
+    # --keep-frames review set survives until its contact sheets are built.
+    $cutoff = [DateTime]::UtcNow.AddDays(-$ArtifactMaxAgeDays)
+    $graceCutoff = [DateTime]::UtcNow.AddHours(-$RecentGraceHours)
+    $remaining = [long](($candidates | Measure-Object Length -Sum).Sum)
+    $budget = [long]($MaxArtifactGiB * 1GB)
+    $remove = [Collections.Generic.List[IO.FileInfo]]::new()
+    $batches = @($candidates | Group-Object DirectoryName | ForEach-Object {
+        [pscustomobject]@{ Directory = $_.Name; Files = $_.Group; Bytes = [long](($_.Group | Measure-Object Length -Sum).Sum)
+            Newest = ($_.Group | Sort-Object LastWriteTimeUtc -Descending | Select-Object -First 1).LastWriteTimeUtc }
+    } | Sort-Object Newest)
+    foreach ($batch in $batches) {
+        if ($batch.Newest -lt $cutoff -or ($remaining -gt $budget -and $batch.Newest -lt $graceCutoff)) {
+            foreach ($file in $batch.Files) { $remove.Add($file) }
+            $remaining -= $batch.Bytes
+            $evicted.Add($batch.Directory.Substring($root.Length + 1).Replace('\', '/'))
+        }
+    }
+    $candidates = @($remove.ToArray())
+    if ($remaining -gt $budget) {
+        Write-Warning ('artifacts holds {0:N2} GiB, over the {1} GiB budget; captures from the last {2} h are kept. Run clean-local.ps1 -Apply to clear them.' -f ($remaining / 1GB), $MaxArtifactGiB, $RecentGraceHours)
+    }
+}
+# Validate the complete deletion plan before the first mutation.
+foreach ($file in $candidates) { $null = Assert-LocalPath $file.FullName }
 $total = 0L; $count = 0; $groups = @{}
-foreach ($file in ($files | Sort-Object FullName -Unique)) {
-    if ($tracked.Contains($file.FullName)) { continue }
+foreach ($file in $candidates) {
     $path = Assert-LocalPath $file.FullName
     $total += $file.Length; $count++
     $relative = $path.Substring($root.Length + 1).Replace('\', '/')
@@ -99,8 +163,15 @@ if ($Apply) {
             }
     }
 }
+if ($Apply -and $evicted.Count) {
+    # Automatic maintenance is otherwise silent; say what was reclaimed.
+    $shown = @($evicted | Select-Object -First 5) -join ', '
+    if ($evicted.Count -gt 5) { $shown += ", +$($evicted.Count - 5) more" }
+    Write-Host ('Artifact retention removed {0} files ({1:N3} GiB): {2}' -f $count, ($total / 1GB), $shown)
+}
 [pscustomobject]@{
-    Applied = [bool]$Apply; Files = $count; Bytes = $total; FreedGiB = [math]::Round($total / 1GB, 3)
+    Applied = [bool]$Apply; RetainRecent = [bool]$RetainRecent; Files = $count; Bytes = $total; FreedGiB = [math]::Round($total / 1GB, 3)
+    EvictedDirectories = @($evicted)
     KeptReleaseArchives = @($releases | Select-Object -First $KeepReleaseArchives -ExpandProperty Name)
     Categories = $groups
 }

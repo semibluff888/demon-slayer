@@ -2,9 +2,10 @@ extends SceneTree
 ## Renders Tanjiro's rebuilt effects tick by tick for review against the
 ## reference video. Run with a window and a fixed clock:
 ##   godot --path . --fixed-fps 60 --script res://tools/capture_tanjiro_vfx.gd -- [--moves=236A,236C] [--forms=normal,awakened] [--facings=1,-1] [--every=2] [--hd]
-## Frames land in artifacts/tanjiro-vfx/<move>-<form>-<right|left>/t###.png;
-## tools/build_tanjiro_vfx_review.py turns them into contact sheets and videos.
+## Videos land in artifacts/tanjiro-vfx/<move>-<form>-<right|left>/capture.mp4.
+## Add --keep-frames for t###.png and build_tanjiro_vfx_review.py contact sheets.
 const Main = preload("res://scenes/main.tscn")
+const CaptureOutput = preload("res://tools/capture_output.gd")
 const Combat = preload("res://scripts/combat.gd")
 const OUT := "res://artifacts/tanjiro-vfx/"
 var game: Node2D
@@ -23,6 +24,10 @@ func _run() -> void:
 	var forms := _option("forms", "normal,awakened").split(",")
 	var facings := _option("facings", "1,-1").split(",")
 	var every := int(_option("every", "2"))
+	if every < 1 or every > 60:
+		printerr("CAPTURE ERROR: --every must be 1..60")
+		quit(1)
+		return
 	root.size = Vector2i(1920, 1080) if "--hd" in OS.get_cmdline_user_args() else Vector2i(1280, 720)
 	game = Main.instantiate()
 	game.settings.path = "res://artifacts/capture_tanjiro_vfx-settings.cfg"
@@ -35,15 +40,20 @@ func _run() -> void:
 	for move_id in moves:
 		for form in forms:
 			for facing_text in facings:
-				await _capture(move_id, form, int(facing_text), every)
+				if not await _capture(move_id, form, int(facing_text), every):
+					game.queue_free()
+					quit(1)
+					return
 	game.queue_free()
 	await process_frame
 	print("TANJIRO VFX CAPTURE COMPLETE")
 	quit()
 
-func _capture(move_id: String, form: String, facing: int, every: int) -> void:
+func _capture(move_id: String, form: String, facing: int, every: int) -> bool:
 	var folder := "%s%s-%s-%s/" % [OUT, move_id, form, "right" if facing > 0 else "left"]
-	DirAccess.make_dir_recursive_absolute(folder)
+	var capture := CaptureOutput.new()
+	if not capture.begin(folder, 60.0 / every):
+		return false
 	game.characters.assign(["tanjiro", "zenitsu"])
 	game.start_match()
 	var model = game.combat
@@ -74,4 +84,6 @@ func _capture(move_id: String, form: String, facing: int, every: int) -> void:
 		await process_frame
 		if tick % every == 0:
 			await RenderingServer.frame_post_draw
-			root.get_texture().get_image().save_png(folder + "t%03d.png" % tick)
+			if not capture.save(root.get_texture().get_image(), "t%03d.png" % tick):
+				return false
+	return capture.finish()

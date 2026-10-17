@@ -27,7 +27,7 @@
 | build/、dist/ | 导出工具、暂存文件、最终发行包 | Git 忽略，Godot 忽略 |
 | .git/ | 版本历史 | 保留，不改写历史 |
 
-clean-local.ps1 默认只报告；-Apply 才删除。它验证路径在本项目内、拒绝链接路径，并跳过所有 Git 跟踪文件。不要在录制或导入过程中运行清理。有效的 art/ 和 demo/ 导入缓存仍会保留。 清理同时覆盖各版素材 review 目录与重复超分下载；发行 ZIP 默认按版本保留最新 1 份，可用 -KeepReleaseArchives 2 改为保留最近 2 份。发布说明、SHA256 记录、所选离线运行时及全部制作源图保留。
+clean-local.ps1 默认只报告；-Apply 才删除。它验证路径在本项目内、拒绝链接路径，并跳过所有 Git 跟踪文件。不要在录制或导入过程中运行清理。有效的 art/ 和 demo/ 导入缓存仍会保留。 清理同时覆盖各版素材 review 目录、参考视频抽帧缓存与重复超分下载；发行 ZIP 默认按版本保留最新 1 份，可用 -KeepReleaseArchives 2 改为保留最近 2 份。发布说明、SHA256 记录、所选离线运行时及全部制作源图保留。
 
 历史说明中提及的 artifacts 截图/录像已清理，可通过 tools/capture_*.gd 和 tools/build_*_review.py 重新生成。制作源图及其 provenance 仍保留在 output/，避免丢失离线复现能力。
 
@@ -88,3 +88,9 @@ git push origin v0.1.3
 ```powershell
 gh release create v0.1.3 --verify-tag --title "宿命对决 v0.1.3" --notes-file dist/DemonSlayer-0.1.3-windows-x86_64-notes.md dist/DemonSlayer-0.1.3-windows-x86_64.zip dist/DemonSlayer-0.1.3-windows-x86_64.sha256
 ```
+
+## 测试产物的保留上限
+
+`clean-local.ps1 -Apply -RetainRecent` 只维护 `artifacts/`，默认回收超过 7 天的非活动产物，再按最旧目录回收至 2 GiB；最近 24 小时内的目录不因容量被回收。可用 `-ArtifactMaxAgeDays`、`-MaxArtifactGiB` 和 `-RecentGraceHours` 调整。测试入口和主要动作录制器自动调用此模式；完整手动清理仍使用 `-Apply`。`-IncludeReferenceDownloads` 额外回收 `output/downloads/`，不会删除 `output/ultimate-video-review/source/original.mp4` 制作母片。
+
+录制中间帧的自动编码、故障保护与无损质检方式见[录制与空间管理](capture-storage.md)；本次统计见[2026-10-17 清理报告](cleanup-2026-10-17.md)。

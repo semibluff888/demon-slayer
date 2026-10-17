@@ -2,8 +2,10 @@ extends SceneTree
 ## Records a fighter idling in a real match (normal and awakened form) for review.
 ## Run with a window and a fixed clock:
 ##   godot --path . --fixed-fps 60 --script res://tools/capture_idle_loop.gd -- --character=tanjiro [--seconds=4]
-## Frames go to artifacts/art-v3/<character>/idle-loop/<form>/frame-NNNN.png.
+## Video goes to artifacts/art-v3/<character>/idle-loop/<form>/capture.mp4.
+## Add --keep-frames for bounded lossless PNG output.
 const Main = preload("res://scenes/main.tscn")
+const CaptureOutput = preload("res://tools/capture_output.gd")
 const Combat = preload("res://scripts/combat.gd")
 var game: Node2D
 
@@ -18,6 +20,10 @@ func _run() -> void:
 			character = argument.trim_prefix("--character=")
 		elif argument.begins_with("--seconds="):
 			seconds = float(argument.trim_prefix("--seconds="))
+	if seconds <= 0.0 or seconds > 300.0:
+		printerr("CAPTURE ERROR: --seconds must be in (0, 300]")
+		quit(1)
+		return
 	root.size = Vector2i(1280, 720)
 	game = Main.instantiate()
 	root.add_child(game)
@@ -26,7 +32,9 @@ func _run() -> void:
 	var saved := 0
 	for form: String in ["normal", "awakened"]:
 		var folder := "res://artifacts/art-v3/%s/idle-loop/%s/" % [character, form]
-		DirAccess.make_dir_recursive_absolute(folder)
+		var capture := CaptureOutput.new()
+		if not capture.begin(folder):
+			return
 		game.characters.assign([character, "zenitsu" if character != "zenitsu" else "tanjiro"])
 		game.start_match()
 		var model = game.combat
@@ -45,8 +53,10 @@ func _run() -> void:
 			game.view.consume(model.events)
 			await process_frame
 			await RenderingServer.frame_post_draw
-			root.get_texture().get_image().save_png(folder + "frame-%04d.png" % tick)
+			capture.save(root.get_texture().get_image(), "frame-%04d.png" % tick)
 			saved += 1
+		if not capture.finish():
+			return
 	game.queue_free()
 	await process_frame
 	print("IDLE LOOP CAPTURE: %d frames" % saved)

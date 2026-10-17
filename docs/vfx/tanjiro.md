@@ -95,7 +95,7 @@
 python tools/build_vfx_reference.py overview|burst|palette|board ...   # 参考视频抽帧、调色板、参考板
 python tools/build_blade_tracks.py tanjiro                              # 刀身轨迹与 QA 接触表
 python tools/build_tanjiro_vfx_art.py                                   # 生图素材 -> art/effects/tanjiro/
-godot --path . --fixed-fps 60 --script res://tools/capture_tanjiro_vfx.gd -- --moves=236A,623C,214D,super,max,5C --every=1 [--hd]
+godot --path . --fixed-fps 60 --script res://tools/capture_tanjiro_vfx.gd -- --moves=236A,623C,214D,super,max,5C --every=1 --keep-frames [--hd]
 python tools/build_tanjiro_vfx_review.py sheet|compare|video|montage <截图目录名> ...
 ```
 

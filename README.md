@@ -48,6 +48,10 @@ powershell -ExecutionPolicy Bypass -File tests/run_tests.ps1 -Godot '你的 Godo
 powershell -ExecutionPolicy Bypass -File tools/clean-local.ps1
 # 删除测试录像、截图、临时文件及不再引用的导入缓存
 powershell -ExecutionPolicy Bypass -File tools/clean-local.ps1 -Apply
+# 同时删除参考视频缓存（特效分析仍在使用，非必要不加；保留必杀动画制作母片）
+powershell -ExecutionPolicy Bypass -File tools/clean-local.ps1 -Apply -IncludeReferenceDownloads
 ```
 
 清理脚本跳过 Git 跟踪文件，并保留正式素材、制作源文件和仍有效的导入缓存。`artifacts/` 中的历史实机证据属于可重新生成的本地产物，不包含在源码下载或发行包中。
+
+测试入口和主要动作录制工具会自动维护 `artifacts/`：过期 7 天或超过 2 GiB 的非活动产物按最旧批次回收，最近 24 小时内的录制不因容量被回收。`capture_moves.gd`、`capture_idle_loop.gd`、`capture_tanjiro_vfx.gd` 默认输出 `capture.mp4`，分批编码并校验帧数后回收 PNG；逐帧质检加 `--keep-frames`。详细规则见[录制与空间管理](docs/capture-storage.md)。

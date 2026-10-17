@@ -8,6 +8,7 @@ Sheets go to artifacts/tanjiro-vfx/review/. The default crop follows the
 action: the bounding box of pixels that differ from the first capture.
 """
 import argparse
+import json
 import subprocess
 from pathlib import Path
 
@@ -31,7 +32,10 @@ def font(size):
 
 
 def frames(name):
-    return sorted((CAPTURES / name).glob('t*.png'))
+    paths = sorted((CAPTURES / name).glob('t*.png'))
+    if not paths:
+        raise RuntimeError(f'{name}: rerun capture_tanjiro_vfx.gd with --keep-frames for lossless sheets; default output is capture.mp4')
+    return paths
 
 
 def auto_crop(paths, margin=40, aspect=16 / 9):
@@ -82,6 +86,10 @@ def sheet(name, ticks, crop, columns, tile_width=480, out=None):
 def compare(name, ticks, reference, crop, out=None):
     clip, numbers = reference.split(':')
     refs = [REFERENCE / clip / f'f_{int(n):04d}.jpg' for n in numbers.split(',')]
+    missing = [ref for ref in refs if not ref.is_file()]
+    if missing:
+        raise RuntimeError(f'{missing[0].relative_to(ROOT)}: reference frames are a local cache; '
+                           're-extract them with tools/build_vfx_reference.py burst (see docs/vfx/tanjiro-reference.md)')
     paths = {int(p.stem[1:]): p for p in frames(name)}
     crop = crop or auto_crop([paths[t] for t in sorted(paths)])
     x, y, w, h = crop
@@ -134,11 +142,24 @@ def montage(names, labels, fps, out_name):
     return out
 
 
-def video(name, fps=60):
+def video(name):
+    paths = frames(name)
     REVIEW.mkdir(parents=True, exist_ok=True)
     out = REVIEW / f'{name}.mp4'
-    subprocess.run(['ffmpeg', '-v', 'error', '-y', '-framerate', str(fps), '-pattern_type', 'glob', '-i', str(CAPTURES / name / 't*.png'),
-                    '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '16', str(out)], check=True)
+    # --every=2 captures play at 30 FPS; capture.json records the real rate.
+    report = CAPTURES / name / 'capture.json'
+    fps = json.loads(report.read_text(encoding='utf-8'))['fps'] if report.is_file() else 60
+    # Windows ffmpeg builds have no glob input, so pipe the frames in order.
+    command = ['ffmpeg', '-v', 'error', '-y', '-f', 'image2pipe', '-framerate', str(fps), '-i', 'pipe:0',
+               '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '16', str(out)]
+    with subprocess.Popen(command, stdin=subprocess.PIPE) as process:
+        try:
+            for path in paths:
+                process.stdin.write(path.read_bytes())
+        finally:
+            process.stdin.close()
+        if process.wait() != 0:
+            raise subprocess.CalledProcessError(process.returncode, command)
     return out
 
 
