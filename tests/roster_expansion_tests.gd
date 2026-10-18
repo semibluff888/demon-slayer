@@ -184,12 +184,15 @@ func _test_selection() -> void:
 		_key(KEY_U)
 		check(game.screen == "setup" and game.selection.ready == [true,false],"P1 locks before stage: "+mode)
 		_key(KEY_KP_5 if mode == "local" else KEY_U)
+		check(game.screen == "setup" and game.selection.holding(),"both locked hold on the matchup: "+mode)
+		game.selection.tick(10.0)  # play out the matchup lock-in
 		check(game.screen == "stage","both locked opens stage: "+mode)
 		var selected: Array = game.characters.duplicate()
 		game.gui.actions.back.pressed.emit()
 		check(game.screen == "setup" and game.characters == selected and game.selection.ready == [false,false],"stage back preserves picks and unlocks: "+mode)
 		game.gui.actions.start.pressed.emit()
 		game.gui.actions.start.pressed.emit()
+		game.selection.tick(10.0)  # play out the matchup lock-in
 		game.gui.actions.stage_infinity_castle.pressed.emit()
 		check(game.screen == "stage" and game.stage_id == "infinity_castle","mouse selects stage without starting")
 		if mode == "local":
@@ -237,6 +240,7 @@ func _test_selection() -> void:
 	check(not game.selection.modal and not game.gui.actions.has("devices"),"selection has no device popup or shortcut")
 	_pad(98,JOY_BUTTON_A)
 	_pad(99,JOY_BUTTON_A)
+	game.selection.tick(10.0)  # play out the matchup lock-in
 	check(game.screen == "stage","two pads confirm setup")
 	_pad(99,JOY_BUTTON_DPAD_RIGHT)
 	check(game.stage_id == "infinity_castle","P2 cannot change stage")
@@ -249,6 +253,7 @@ func _test_selection() -> void:
 	game.show_setup()
 	_pad(98,JOY_BUTTON_A)
 	_pad(99,JOY_BUTTON_A)
+	game.selection.tick(10.0)  # play out the matchup lock-in
 	_pad(98,JOY_BUTTON_A)
 	check(game.screen == "battle","reconnected controllers complete menu")
 	# Resource-only registrations exercise the same roster generation used by real fighters.

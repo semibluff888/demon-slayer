@@ -123,6 +123,7 @@ func _test_menu_and_stage() -> void:
 	for mode: String in ["cpu", "local", "practice"]:
 		game.choose_mode(mode)
 		game.selection.confirm(0); game.selection.confirm(1)
+		game.selection.tick(10.0)  # play out the matchup lock-in
 		check(game.screen == "stage" and game.gui.stage_cards.size() == 4, "four maps available in " + mode)
 		var bounds: Array[Rect2] = []
 		for card in game.gui.stage_cards.values():

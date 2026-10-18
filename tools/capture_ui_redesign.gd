@@ -55,6 +55,8 @@ func _menus() -> void:
 	game.selection.confirm(0)
 	await shot("menu-03-select-ready")
 	game.selection.confirm(1)
+	await shot("menu-03b-select-lockin", 0.6)
+	game.selection.tick(10.0)  # finish the lock-in
 	await shot("menu-04-stage")
 	game.mode = "local"
 	game.show_setup()

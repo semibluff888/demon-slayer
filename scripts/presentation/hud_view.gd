@@ -461,14 +461,13 @@ func _draw_portrait(slot: int, f: RefCounted, visual: Resource) -> void:
 		accent = combat.definition(f).awakening.color
 	Kit.frame(overlay, shape, Kit.GOLD, 1.0, 4.0, 1.6)
 	overlay.draw_polyline(Kit.closed(Kit.chamfer(rect.grow(-5), 16, 5 if slot == 0 else 10)), Color(accent, 0.35), 1.0, true)
-	# Player tag and element crest sit on the frame.
+	# Player tag sits on the frame (the element crest lives with the meter below).
 	var tag := "P1" if slot == 0 else ("木桩" if combat.practice else ("CPU" if cpu else "P2"))
 	var font: Font = catalog.numeric_font
 	var tag_width := Kit.width(font, tag, 13) + 14
 	var chip := Rect2(rect.position.x + (4 if slot == 0 else rect.size.x - tag_width - 4), rect.end.y - 9, tag_width, 18)
 	overlay.draw_colored_polygon(Kit.slant(chip, 4), Kit.player_color(slot))
 	Kit.text_aligned(overlay, font, tag, Vector2(chip.get_center().x, chip.end.y - 4), 13, Kit.INK_900, 1)
-	Kit.crest(overlay, catalog.display_font, Kit.crest_glyph(visual.element_name), Vector2(_mx(slot, PORTRAIT.end.x - 10), PORTRAIT.position.y + 12), 13, visual.accent)
 
 func _portrait_shadow(shape: PackedVector2Array) -> void:
 	var offset := PackedVector2Array()
@@ -478,11 +477,7 @@ func _portrait_shadow(shape: PackedVector2Array) -> void:
 
 func _draw_nameplate(slot: int, f: RefCounted, visual: Resource) -> void:
 	var font: Font = catalog.title_font
-	var name_width := Kit.text_aligned(overlay, font, visual.display_name, Vector2(_mx(slot, BAR.position.x + 2), 33), 21, PAPER, 0 if slot == 0 else 2, 4)
-	var element_at := Vector2(_mx(slot, BAR.position.x + name_width + 14), 32)
-	Kit.diamond(overlay, element_at + Vector2(0, -5), 3, visual.accent)
-	Kit.text_aligned(overlay, catalog.body_font, visual.element_name, element_at + Vector2(9 if slot == 0 else -9, 0), 12,
-		Color(visual.accent.lightened(0.25), 0.95), 0 if slot == 0 else 2, 3)
+	Kit.text_aligned(overlay, font, visual.display_name, Vector2(_mx(slot, BAR.position.x + 2), 33), 21, PAPER, 0 if slot == 0 else 2, 4)
 	if f.awakening_ticks > 0:
 		var data: Resource = combat.definition(f).awakening
 		Kit.text_aligned(overlay, catalog.numeric_font, "AWAKENED", Vector2(_mx(slot, BAR.end.x - 4), 32), 12, data.color.lightened(0.2), 2 if slot == 0 else 0, 3)

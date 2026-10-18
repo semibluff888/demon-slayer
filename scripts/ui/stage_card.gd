@@ -1,10 +1,9 @@
 extends Button
-## Stage list entry: slanted thumbnail, calligraphic name and subtitle.
+## Stage list entry: slanted thumbnail and calligraphic name.
 const Kit = preload("res://scripts/ui/kit.gd")
 const Brush = preload("res://scripts/ui/brush_stroke.gd")
 var preview: Texture2D
 var caption: String = ""
-var subtitle: String = ""
 var selected: bool = false
 var title_font: Font
 var body_font: Font
@@ -35,12 +34,9 @@ func _draw() -> void:
 	var line := Kit.GOLD_HI if selected else (Kit.GOLD if hot else Color(Kit.GOLD, 0.3))
 	draw_polyline(Kit.closed(plate), line, 2.0 if selected or hot else 1.0, true)
 	var font: Font = title_font if title_font != null else get_theme_font("font")
-	var small: Font = body_font if body_font != null else get_theme_font("font")
 	var x := thumb_rect.end.x + 18
 	var size_title := Kit.fitted(font, caption, 26, size.x - x - 36)
-	Kit.text(self, font, caption, Vector2(x, size.y * 0.5 + 4), size_title, Kit.PAPER if selected or hot else Kit.PAPER_DIM, 4)
-	if not subtitle.is_empty():
-		Kit.text(self, small, subtitle, Vector2(x + 1, size.y * 0.5 + 26), 13, Color(Kit.GOLD_HI if selected else Kit.MUTED, 0.95), 3)
+	Kit.text(self, font, caption, Vector2(x, size.y * 0.5 + size_title * 0.36), size_title, Kit.PAPER if selected or hot else Kit.PAPER_DIM, 4)
 	if selected:
 		Kit.diamond(self, Vector2(size.x - 22, size.y * 0.5), 7, Kit.INK_900)
 		Kit.diamond(self, Vector2(size.x - 22, size.y * 0.5), 5.5, Kit.GOLD_HI)

@@ -13,13 +13,17 @@ var special: Array[int] = [-1, -1]
 ## Slots locked through the random cell; the showcase plays its roulette for them.
 var rolled: Array[bool] = [false, false]
 var rng := RandomNumberGenerator.new()
-## After a random pick completes both locks, the stage screen waits this long so the
-## roulette and seal are seen. Selection input is held meanwhile.
-var reveal_delay: float = 0.0
+## Once both slots lock, the screen holds on the matchup (seals, the VS slam over the grid)
+## so both players see the result before the stage screen. A random final lock first lets
+## its roulette land (`hold_lead`). Confirm cannot skip the hold; cancel unlocks and ends it.
+var hold: float = 0.0
+var hold_elapsed: float = 0.0
+var hold_lead: float = 0.0
 const COLS := 4
 const MIN_CELLS := 16
 const RANDOM := "@random"
-const REVEAL_SECONDS := 0.75
+const ROULETTE := 0.7
+const LOCK_HOLD := 1.3
 
 func _init() -> void:
 	rng.randomize()
@@ -32,7 +36,7 @@ func reset() -> void:
 	repeat_time.clear()
 	special.assign([-1, -1])
 	rolled.assign([false, false])
-	reveal_delay = 0.0
+	_end_hold()
 
 ## Grid cells in display order: character ids, "" placeholders, RANDOM last.
 func cells() -> Array[String]:
@@ -54,19 +58,27 @@ func cursor_cell(slot: int) -> int:
 func cell_id(slot: int) -> String:
 	return cells()[cursor_cell(slot)]
 
-func revealing() -> bool:
-	return reveal_delay > 0.0
+func holding() -> bool:
+	return hold > 0.0
+
+## Seconds since the VS lock-in appeared, or -1 when it is not showing.
+func lockin_time() -> float:
+	return hold_elapsed - hold_lead if holding() and hold_elapsed >= hold_lead else -1.0
+
+func _end_hold() -> void:
+	hold = 0.0
+	hold_elapsed = 0.0
+	hold_lead = 0.0
 
 func activate(slot: int) -> void:
-	if revealing():
-		return
+	_end_hold()
 	active_slot = slot
 	ready[slot] = false
 	rolled[slot] = false
 	app.gui.refresh_setup()
 
 func choose(slot: int, id: String) -> void:
-	if ready[slot] or revealing() or not app.catalog.characters.has(id):
+	if ready[slot] or not app.catalog.characters.has(id):
 		return
 	active_slot = slot
 	special[slot] = -1
@@ -77,7 +89,7 @@ func choose(slot: int, id: String) -> void:
 ## Puts `slot`'s cursor on any grid cell (mouse clicks, and every keyboard/pad move).
 func point(slot: int, index: int) -> void:
 	var grid := cells()
-	if ready[slot] or revealing() or index < 0 or index >= grid.size():
+	if ready[slot] or index < 0 or index >= grid.size():
 		return
 	if app.catalog.characters.has(grid[index]):
 		choose(slot, grid[index])
@@ -94,7 +106,7 @@ func move_cursor(slot: int, direction: Vector2i) -> void:
 		app.stage_id = ids[posmod(index + (direction.x if direction.x != 0 else direction.y), ids.size())]
 		app.gui.refresh_stages()
 		return
-	if ready[slot] or revealing():
+	if ready[slot]:
 		return
 	var rows := int(cells().size() / float(COLS))
 	var current := cursor_cell(slot)
@@ -107,7 +119,7 @@ func move_cursor(slot: int, direction: Vector2i) -> void:
 	point(slot, row * COLS + column)
 
 func confirm(slot: int) -> void:
-	if revealing():
+	if holding():
 		return
 	if not app._devices_ready() or (app.mode == "local" and app.devices[0] == app.devices[1]):
 		app._validate_setup()
@@ -129,18 +141,17 @@ func confirm(slot: int) -> void:
 		special[slot] = -1
 	ready[slot] = true
 	app.sound.play("select")
-	if ready[0] and ready[1] and rolled[slot]:
-		reveal_delay = REVEAL_SECONDS
+	if ready[0] and ready[1]:
+		hold_lead = ROULETTE if rolled[slot] else 0.0
+		hold = hold_lead + LOCK_HOLD
+		hold_elapsed = 0.0
 		app.gui.refresh_setup()
-	elif ready[0] and ready[1]:
-		app.show_stages()
 	else:
 		active_slot = 1 if ready[0] else 0
 		app.gui.refresh_setup()
 
 func cancel(slot: int) -> void:
-	if revealing():
-		return
+	_end_hold()
 	if app.screen == "stage":
 		app.show_setup()
 		return
@@ -167,8 +178,6 @@ func _owner(device: String) -> int:
 func handle(event: InputEvent) -> bool:
 	if modal or app.screen not in ["setup", "stage"]:
 		return false
-	if revealing() and (event is InputEventKey or event is InputEventJoypadButton or event is InputEventJoypadMotion):
-		return true
 	if event is InputEventKey:
 		var key: int = event.physical_keycode if event.physical_keycode != 0 else event.keycode
 		var slot := -1
@@ -235,11 +244,14 @@ func handle(event: InputEvent) -> bool:
 	return false
 
 func tick(delta: float) -> void:
-	if revealing():
-		reveal_delay = maxf(reveal_delay - delta, 0.0)
+	if holding():
+		hold = maxf(hold - delta, 0.0)
+		hold_elapsed += delta
 		held.clear()
-		if not revealing() and app.screen == "setup" and ready[0] and ready[1]:
-			app.show_stages()
+		if not holding():
+			_end_hold()
+			if app.screen == "setup" and ready[0] and ready[1]:
+				app.show_stages()
 		return
 	if modal or app.screen not in ["setup", "stage"]:
 		held.clear()

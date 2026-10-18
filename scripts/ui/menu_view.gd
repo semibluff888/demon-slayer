@@ -38,6 +38,12 @@ var roster_scroll: ScrollContainer
 var roster_cards: Dictionary = {}
 var roster_cells: Array[Button] = []
 var random_card: Button
+## Matchup lock-in over the grid once both players are ready: ink veil, crimson brush band
+## and a gilt VS; the footer buttons are dimmed and disabled meanwhile.
+var lockin: Control
+var lockin_band: Node2D
+var lockin_vs: Node2D
+var _lockin_cued: bool = false
 var stage_cards: Dictionary = {}
 var fighter_portraits: Array = []
 var fighter_names: Array[Label] = []
@@ -97,6 +103,7 @@ func _process(delta: float) -> void:
 	if app.paused:
 		return
 	motion_time += delta
+	_animate_lockin()
 	if is_instance_valid(embers):
 		embers.queue_redraw()
 	if is_instance_valid(result_sparks) and result_spark_time < 2.4:
@@ -111,6 +118,10 @@ func clear() -> void:
 	roster_cards.clear()
 	roster_cells.clear()
 	random_card = null
+	lockin = null
+	lockin_band = null
+	lockin_vs = null
+	_lockin_cued = false
 	stage_cards.clear()
 	fighter_portraits.clear()
 	fighter_names.clear()
@@ -302,6 +313,7 @@ func setup() -> void:
 		showcase.title_font = catalog.title_font
 		showcase.body_font = catalog.body_font
 		showcase.avatars = avatars
+		showcase.roulette_landed.connect(_sync_cells)
 		add_child(showcase)
 		fighter_portraits.append(showcase)
 	for slot in range(2):
@@ -363,9 +375,61 @@ func setup() -> void:
 	button("back", "返回", Rect2(426, 612, 150, 44), app.show_title, false, false, 18)
 	app.device_notice = prompt_label(Rect2(160, 678, 960, 30))
 	app.start_button = button("start", "确认", Rect2(634, 608, 220, 50), func(): app.selection.confirm(app.selection.active_slot), true, true, 22)
+	lockin = paint(Rect2(412, 112, 456, 488), _draw_lockin)
+	lockin.name = "LockIn"
+	lockin_band = Brush.new(4.2)
+	lockin_band.configure(Rect2(398, 318, 484, 90), Color(Kit.CRIMSON, 0.95), 26.0, 0.0)
+	add_child(lockin_band)
+	lockin_vs = GradientText.new()
+	lockin_vs.setup(catalog.numeric_font, "VS", 104)
+	lockin_vs.skew = -0.2
+	lockin_vs.outline = 10
+	lockin_vs.position = Vector2(640, 400)
+	add_child(lockin_vs)
+	_animate_lockin()
 	refresh_setup()
 	reveal()
 	_link_grid()
+
+func _animate_lockin() -> void:
+	if not is_instance_valid(lockin):
+		return
+	var t: float = app.selection.lockin_time()
+	var shown := t >= 0.0
+	lockin.visible = shown
+	lockin_band.visible = shown
+	lockin_vs.visible = shown
+	if not shown:
+		if _lockin_cued:
+			_lockin_cued = false
+			_dim_footer(false)
+		return
+	if not _lockin_cued:
+		_lockin_cued = true
+		_dim_footer(true)
+		app.sound.play("clash", 0.7)
+	lockin.queue_redraw()
+	lockin_band.set_reveal(Kit.ease_out_expo(clampf(t / 0.22, 0, 1)))
+	var pop := Kit.ease_out_back(clampf((t - 0.08) / 0.3, 0, 1), 2.0)
+	lockin_vs.scale = Vector2.ONE * lerpf(1.9, 1.0, pop)
+	lockin_vs.modulate.a = clampf((t - 0.08) / 0.12, 0, 1)
+
+func _draw_lockin(canvas: Control) -> void:
+	var t: float = maxf(app.selection.lockin_time(), 0.0)
+	var veil := Kit.ease_out(clampf(t / 0.2, 0, 1))
+	canvas.draw_colored_polygon(Kit.chamfer(Rect2(Vector2.ZERO, canvas.size), 16, 5), Color(Kit.INK_900, 0.62 * veil))
+
+## Back, confirm and the prompt line step back while the matchup is locked in.
+func _dim_footer(dimmed: bool) -> void:
+	for id: String in ["back", "start"]:
+		var node: BaseButton = actions.get(id)
+		if node != null:
+			node.disabled = dimmed
+			node.modulate.a = 0.35 if dimmed else 1.0
+	if is_instance_valid(app.device_notice):
+		app.device_notice.modulate.a = 0.35 if dimmed else 1.0
+	if not dimmed:
+		app._validate_setup()
 
 ## Arrow-key focus inside the grid wraps on both axes like the selection cursors;
 ## reveal() keeps Tab cycling through the grid, back and start.
@@ -397,10 +461,32 @@ func _cell_kind(slot: int) -> String:
 	var id: String = app.selection.cell_id(slot)
 	return "random" if id == Selection.RANDOM else ("empty" if id.is_empty() else "character")
 
+## Grid cursor of `slot` as presented: while its random roulette spins it stays on the
+## random cell, so the rolled character is revealed only when the roulette lands.
+func _shown_cell(slot: int) -> int:
+	return roster_cells.size() - 1 if fighter_portraits[slot].rolling() else app.selection.cursor_cell(slot)
+
+## Grid cursors, lock seals and backdrop tints; refreshed on every change and again when
+## a roulette lands.
+func _sync_cells() -> void:
+	if app.screen != "setup" or fighter_portraits.size() != 2: return
+	var tints: Array[Color] = []
+	for slot in range(2):
+		var visual = catalog.characters[app.characters[slot]]
+		tints.append(visual.accent.darkened(0.45) if fighter_portraits[slot]._shown_kind() == "character" else Kit.INK_600)
+	if backdrop != null:
+		backdrop.set_tints(tints[0], tints[1], 0.6)
+	for i in range(roster_cells.size()):
+		var card := roster_cells[i]
+		card.cursors.clear()
+		card.locked.assign(app.selection.ready)
+		for slot in range(2):
+			if _shown_cell(slot) == i: card.cursors.append(slot)
+		card.queue_redraw()
+
 func refresh_setup() -> void:
 	if app.screen != "setup" or fighter_portraits.size() != 2: return
 	var selection: RefCounted = app.selection
-	var tints: Array[Color] = []
 	for slot in range(2):
 		var kind := _cell_kind(slot)
 		var visual = catalog.characters[app.characters[slot]]
@@ -412,17 +498,8 @@ func refresh_setup() -> void:
 		fighter_states[slot].modulate = Kit.player_color(slot)
 		slot_buttons[slot].text = "P1" if slot == 0 else ("木桩" if app.mode == "practice" else "CPU" if app.mode == "cpu" else "P2")
 		slot_buttons[slot].selected = selection.active_slot == slot
-		tints.append(visual.accent.darkened(0.45) if kind == "character" else Kit.INK_600)
-	if backdrop != null:
-		backdrop.set_tints(tints[0], tints[1], 0.6)
-	for i in range(roster_cells.size()):
-		var card := roster_cells[i]
-		card.cursors.clear()
-		card.locked.assign(selection.ready)
-		for slot in range(2):
-			if selection.cursor_cell(slot) == i: card.cursors.append(slot)
-		card.queue_redraw()
-	var current := roster_cells[selection.cursor_cell(selection.active_slot)]
+	_sync_cells()
+	var current := roster_cells[_shown_cell(selection.active_slot)]
 	current.grab_focus()
 	roster_scroll.ensure_control_visible.call_deferred(current)
 	app.start_button.text = "确认 P%d" % [selection.active_slot + 1] if app.mode == "local" else "确认"
@@ -452,7 +529,6 @@ func stages() -> void:
 		card.name = "stage_" + id
 		card.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
 		card.caption = visual.display_name
-		card.subtitle = visual.subtitle
 		card.preview = visual.thumbnail
 		card.title_font = catalog.title_font
 		card.body_font = catalog.body_font

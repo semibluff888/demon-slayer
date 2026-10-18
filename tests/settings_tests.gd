@@ -109,6 +109,7 @@ func _run() -> void:
 	await _key(KEY_R)
 	check(game.screen=="setup","rebound confirmation works outside settings")
 	await _key(KEY_R);await _key(KEY_R)
+	game.selection.tick(10.0)  # play out the matchup lock-in
 	check(game.screen=="stage" and not game.gui.actions.has("devices"),"both picks lock and stage has no device action")
 	await _key(KEY_R)
 	check(game.screen=="battle","rebound keyboard completes entire menu flow")

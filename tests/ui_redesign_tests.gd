@@ -157,6 +157,7 @@ func _check_screens() -> void:
 	check(game.gui.fighter_names.size() == 2 and game.gui.fighter_names[1].text == game.catalog.characters[game.characters[1]].display_name, "select names follow the picks")
 	game.selection.confirm(0)
 	game.selection.confirm(1)
+	game.selection.tick(10.0)  # play out the matchup lock-in
 	await process_frame
 	check(game.screen == "stage" and game.gui.preview != null and game.gui.preview.stage == game.catalog.stages[game.stage_id], "stage preview follows the selection")
 	_decorations_ignore_mouse("stage")

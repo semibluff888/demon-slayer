@@ -2,13 +2,16 @@ extends Control
 ## Character-select side panel. Behind: accent ink, haori pattern and the element crest.
 ## Middle: the looping cut-out showcase clip (SelectVideo), flush with the screen edge and
 ## mirrored for P2; characters without a clip fall back to portrait.png. In front: the
-## legibility wash, epithet / element / role / awakening lines and the 就绪 seal. The random
+## legibility wash, element / role / awakening lines and the 就绪 seal. The random
 ## cell and 「敬请期待」 placeholders get their own emblems; a random lock spins a short
 ## avatar roulette first. The name itself stays a Label owned by the menu.
 const Kit = preload("res://scripts/ui/kit.gd")
 const SelectVideo = preload("res://scripts/ui/select_video.gd")
+const Selection = preload("res://scripts/ui/selection_controller.gd")
 const VIDEO := Rect2(0, 144, 384, 576)
-const ROULETTE := 0.7
+const ROULETTE := Selection.ROULETTE
+## The random roulette has stopped on the rolled character (the menu reveals it on the grid).
+signal roulette_landed
 var slot: int = 0
 var kind: String = "character"
 var visual: Resource
@@ -81,6 +84,7 @@ func _process(delta: float) -> void:
 	if was_rolling and not rolling():
 		change_time = 0.0
 		_sync_video()
+		roulette_landed.emit()
 	var enter := Kit.ease_out(change_time / 0.28)
 	video.position = _video_rect().position + Vector2((1.0 - enter) * (-40.0 if slot == 0 else 40.0), 0)
 	video.modulate = Color.WHITE if active or ready_state else Color(0.86, 0.87, 0.92)
@@ -200,25 +204,21 @@ func _draw_empty_emblem() -> void:
 func _draw_info(accent: Color) -> void:
 	var align := 0 if slot == 0 else 2
 	var x := _x(28)
-	var epithet := ""
 	var glyph := ""
 	var element := ""
 	var lines: Array = []
 	var shown := _shown_kind()
 	match shown:
 		"random":
-			epithet = "命运由天而定"
 			glyph = "随"
 			element = "随机角色"
 			lines = [["定位  确认后随机决定一名角色", Kit.MUTED]]
 		"empty":
-			epithet = "新的角色即将登场"
 			glyph = "待"
 			element = "尚未开放"
 		_:
 			if visual == null:
 				return
-			epithet = visual.epithet
 			element = visual.element_name
 			glyph = Kit.crest_glyph(element)
 			if definition != null:
@@ -228,7 +228,6 @@ func _draw_info(accent: Color) -> void:
 				var awakening: Resource = definition.get("awakening")
 				if awakening != null:
 					lines.append(["觉醒  " + str(awakening.display_name), awakening.color.lightened(0.2)])
-	Kit.text_aligned(front, body_font, epithet, Vector2(x, 478), 16, Kit.PAPER_DIM, align, 3)
 	var seal := Rect2(x if slot == 0 else x - 26, 556, 26, 26)
 	Kit.seal(front, seal, display_font, glyph, Kit.CRIMSON if shown == "character" else Kit.CRIMSON_DEEP)
 	Kit.text_aligned(front, title_font, element, Vector2(x + (36 if slot == 0 else -36), 576), 16,

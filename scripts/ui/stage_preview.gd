@@ -51,9 +51,8 @@ func _draw() -> void:
 		return
 	var enter := Kit.ease_out(change_time / 0.3)
 	var x := frame.position.x + 32 - (1.0 - enter) * 20
-	Kit.tracked(self, numeric_font, "STAGE", Vector2(x + 2, frame.end.y - 112), 12, Color(Kit.GOLD, enter), 4.0)
-	Kit.text(self, display_font, stage.display_name, Vector2(x, frame.end.y - 58), 54, Color(Kit.PAPER, enter), 6)
-	Kit.text(self, body_font, stage.subtitle, Vector2(x + 2, frame.end.y - 24), 17, Color(Kit.GOLD_HI, enter), 3)
+	Kit.tracked(self, numeric_font, "STAGE", Vector2(x + 2, frame.end.y - 92), 12, Color(Kit.GOLD, enter), 4.0)
+	Kit.text(self, display_font, stage.display_name, Vector2(x, frame.end.y - 36), 54, Color(Kit.PAPER, enter), 6)
 	if avatars.size() == 2:
 		var right := frame.end.x - 58
 		for slot in [1, 0]:

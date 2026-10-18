@@ -362,3 +362,5 @@ func _begin_selected_match() -> void:
 	for n in range(3):
 		if game.screen in ["setup", "stage"]:
 			_click("start")
+			if game.selection.holding():
+				game.selection.tick(10.0)  # play out the matchup lock-in

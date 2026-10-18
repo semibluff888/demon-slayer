@@ -51,6 +51,7 @@ func _menus() -> void:
 		await _save("%dx%d-select" % [resolution.x,resolution.y])
 		game.selection.confirm(0)
 		game.selection.confirm(1)
+		game.selection.tick(10.0)  # play out the matchup lock-in
 		await _save("%dx%d-stages" % [resolution.x,resolution.y])
 	root.size = Vector2i(1280,720)
 

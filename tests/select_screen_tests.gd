@@ -1,6 +1,6 @@
 extends SceneTree
 ## Character select: 4-column grid with placeholders and the random cell, cursor wrap,
-## random locks and reveal hold, mouse cells, and the showcase clip wiring.
+## random locks, the matchup lock-in, mouse cells, and the showcase clip wiring.
 const Main = preload("res://scenes/main.tscn")
 const RosterCard = preload("res://scripts/ui/roster_card.gd")
 const Selection = preload("res://scripts/ui/selection_controller.gd")
@@ -75,7 +75,8 @@ func _test_grid() -> void:
 		check(card.size == RosterCard.CELL and view.grow(0.5).encloses(card.get_global_rect()), "cell %s sized and visible" % card.name)
 		check(card.has_meta("select_cell"), "cell %s marked for Enter confirm" % card.name)
 	check(gui.roster_cells[15].kind == "random" and gui.roster_cells[4].kind == "empty", "cell kinds")
-	check(not gui.get_children().any(func(child: Node) -> bool: return child.get_script() == GradientText), "VS emblem removed")
+	check(not gui.lockin.visible and not gui.lockin_vs.visible and gui.lockin_vs.get_script() == GradientText,
+		"VS lock-in stays hidden while players choose")
 	for slot in range(2):
 		var showcase: Control = gui.fighter_portraits[slot]
 		await _wait(0.35)
@@ -123,7 +124,9 @@ func _test_random() -> void:
 	selection.point(0, 15)
 	_key(KEY_U)
 	check(selection.ready[0] and selection.rolled[0] and game.characters[0] == first, "random lock picks with the seeded rng")
-	check(selection.cursor_cell(0) == ids.find(first), "cursor jumps to the rolled character")
+	check(selection.cursor_cell(0) == ids.find(first), "cursor state moves to the rolled character")
+	check(gui.roster_cells[15].cursors.has(0) and not gui.roster_cells[ids.find(first)].cursors.has(0),
+		"grid keeps the cursor on random until the roulette lands")
 	check(gui.fighter_portraits[0].rolling() and gui.fighter_portraits[0]._shown_kind() == "random", "showcase spins the roulette")
 	await process_frame
 	check(gui.fighter_names[0].modulate.a == 0.0, "name hidden while rolling")
@@ -131,23 +134,30 @@ func _test_random() -> void:
 	selection.point(1, 15)
 	_key(KEY_U)
 	check(game.characters[1] == second and selection.ready == [true, true], "CPU random lock")
-	check(game.screen == "setup" and selection.revealing(), "final random lock holds before the stage screen")
-	_key(KEY_I)
-	game._back_or_pause()
+	check(game.screen == "setup" and selection.holding() and selection.lockin_time() < 0.0, "final random lock spins before the lock-in")
+	_key(KEY_U)
 	gui.actions.start.pressed.emit()
-	check(selection.ready == [true, true] and game.screen == "setup", "input held during the reveal")
-	await _wait(Selection.REVEAL_SECONDS + 0.1)
-	check(game.screen == "stage", "stage screen follows the reveal")
+	check(selection.ready == [true, true] and selection.holding() and game.screen == "setup", "confirm cannot skip the lock-in")
+	selection.tick(Selection.ROULETTE + 0.05)
+	await process_frame
+	check(selection.lockin_time() >= 0.0 and gui.lockin.visible and gui.lockin_vs.visible and gui.lockin_band.visible, "VS lock-in follows the roulette")
+	selection.tick(Selection.LOCK_HOLD)
+	check(game.screen == "stage", "stage screen follows the lock-in")
 	game.gui.actions.back.pressed.emit()
 	check(game.screen == "setup" and selection.rolled == [false, false] and selection.cursor_cell(0) == ids.find(first),
 		"back to select keeps rolled picks unlocked")
+	check(not game.gui.lockin.visible, "lock-in hidden after returning")
 	await process_frame
 	check(game.gui.fighter_names[0].modulate.a == 1.0, "name visible again")
-	# A random lock that is not the last one, then an ordinary final lock: no hold.
-	selection.point(0, 15)
+	# Ordinary locks hold on the matchup too; cancel during the hold takes the last lock back.
 	_key(KEY_U)
 	_key(KEY_U)
-	check(game.screen == "stage", "ordinary final lock opens the stage immediately")
+	check(game.screen == "setup" and selection.holding() and selection.lockin_time() >= 0.0, "ordinary final lock shows the lock-in at once")
+	_key(KEY_I)
+	check(not selection.holding() and selection.ready == [true, false] and game.screen == "setup", "cancel during the lock-in unlocks the last pick")
+	_key(KEY_U)
+	await _wait(Selection.LOCK_HOLD + 0.1)
+	check(game.screen == "stage", "lock-in times out into the stage screen")
 
 func _test_mouse_and_local() -> void:
 	await _setup("local")
