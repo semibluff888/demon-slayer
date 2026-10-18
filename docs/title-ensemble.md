@@ -1,5 +1,7 @@
 # 九柱与上弦群像海报
 
+> 2026-10-19 起主菜单改用[晨曦群像海报](title-sunrise.md)。本文记录前一版来源，源图与审核记录仍保留。
+
 本次主菜单背景保留炭治郎领衔鬼杀队、与猗窝座正面对峙的构图，扩充至 21 位角色。
 
 - 主角组：炭治郎、祢豆子、善逸、伊之助。
@@ -27,4 +29,4 @@
 
 `build_menu_art.py` 优先选择本次已采用的海报，源文件哈希须与审核记录一致；旧版源图仍保留。历史美术构建入口也调用该选择逻辑，避免降回旧背景。
 
-本次进行生成图目视审查、资源导入和主菜单实机截图，未运行游戏测试。截图位于 [720p](../artifacts/title-ensemble-v3/title-1280x720.png) 与 [1080p](../artifacts/title-ensemble-v3/title-1920x1080.png)，可使用 `tools/capture_title_ensemble.gd` 重建。
+本次进行生成图目视审查、资源导入和主菜单实机截图，未运行游戏测试。截图当时位于 `artifacts/title-ensemble-v3/`；该工具现已更名为 `tools/capture_title.gd`，截取当前海报到 `artifacts/title/`。

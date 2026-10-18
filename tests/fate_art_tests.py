@@ -8,13 +8,16 @@ from fontTools.ttLib import TTFont
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'output/imagegen/fate-v1'
 sys.path.insert(0,str(ROOT/'tools'))
-from build_menu_art import selected
+from build_menu_art import selected,upscale,compose
 def read(path):return json.loads(path.read_text(encoding='utf-8-sig'))
 class FateArtTests(unittest.TestCase):
  def test_generated_assets_have_exact_source_records(self):
-  poster_folder,poster_source,_,_=selected()
+  poster_folder,poster_source,_,poster=selected()
   jobs=read(OUT/'jobs.json')+read(ROOT/'output/imagegen/menu-settings-v1/jobs.json')
-  if poster_folder.name!='menu-settings-v1':jobs+=read(poster_folder/'jobs.json')
+  if poster['status']=='supplied':
+   self.assertEqual(poster['sha256'],hashlib.sha256(poster_source.read_bytes()).hexdigest())
+   with Image.open(poster_source) as source:self.assertEqual(list(source.size),poster['actual_size'])
+  elif poster_folder.name!='menu-settings-v1':jobs+=read(poster_folder/'jobs.json')
   for job in jobs:
    path=ROOT/job['out'];record=read((ROOT/job['prompt']).parents[1]/'records'/(job['id']+'.json'))
    with Image.open(path) as source:self.assertEqual(list(source.size),record['actual_size'])
@@ -22,8 +25,16 @@ class FateArtTests(unittest.TestCase):
    self.assertIsInstance(record['accepted'],bool);self.assertEqual(record['status'],'generated')
    if path==poster_source:self.assertTrue(record['accepted'])
    self.assertTrue((ROOT/job['prompt']).is_file())
-  with Image.open(poster_source) as source,Image.open(ROOT/'art/ui/title-poster.png') as runtime:
-   np.testing.assert_array_equal(np.array(source.convert('RGB')),np.array(runtime.convert('RGB')))
+  hd=upscale(poster_folder,poster_source.stem)
+  if hd:
+   self.assertEqual(hd['source_sha256'],hashlib.sha256(poster_source.read_bytes()).hexdigest())
+   self.assertEqual(hd['sha256'],hashlib.sha256((ROOT/hd['output']).read_bytes()).hexdigest())
+   with Image.open(poster_source) as source,Image.open(ROOT/hd['output']) as detailed:
+    self.assertEqual([value*hd['scale'] for value in source.size],list(detailed.size))
+    self.assertEqual(list(detailed.size),hd['actual_size'])
+  expected=compose(poster_source,hd) if hd else Image.open(poster_source).convert('RGB')
+  with Image.open(ROOT/'art/ui/title-poster.png') as runtime:
+   np.testing.assert_array_equal(np.array(expected),np.array(runtime.convert('RGB')))
    self.assertAlmostEqual(runtime.width/runtime.height,16/9,places=2)
  def test_courtyard_tiles_exactly_reconstruct_the_reviewed_pixels(self):
   folder=ROOT/'art/stages/corps_courtyard';meta=read(folder/'stage.json')

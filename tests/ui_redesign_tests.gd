@@ -134,7 +134,7 @@ func _decorations_ignore_mouse(screen: String) -> void:
 func _check_screens() -> void:
 	game.show_title()
 	await process_frame
-	check(game.gui.actions.mode_cpu.get_global_rect().has_point(Vector2(210, 380)), "title hit area is live during entry motion")
+	check(game.gui.actions.mode_cpu.get_global_rect().has_point(Vector2(210, 400)), "title hit area is live during entry motion")
 	_decorations_ignore_mouse("title")
 	var confirm := "%s 确认" % game.router.key_name(game.router.current_keys(0)[4])
 	check(game.gui.footer.text.begins_with(confirm), "title prompts start on the keyboard")

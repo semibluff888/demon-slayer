@@ -1,0 +1,51 @@
+{
+  "status": "processed",
+  "accepted": true,
+  "method": "neural-super-resolution",
+  "model": "realesrgan-x4plus-anime",
+  "scale": 4,
+  "tool_version": "Real-ESRGAN ncnn Vulkan v0.2.0",
+  "distribution": "output/super-resolution/distribution.json",
+  "command": [
+    "-n",
+    "realesrgan-x4plus-anime",
+    "-s",
+    "4",
+    "-t",
+    "256",
+    "-j",
+    "1:1:1"
+  ],
+  "source": "output/user-assets/title-poster/raw/nine-friends-sunrise.png",
+  "source_sha256": "548ed8638ceb431334162b3ae09ca60e693549bcf5a7a2f14ea9d76376d06970",
+  "source_size": [
+    1672,
+    941
+  ],
+  "output": "output/user-assets/title-poster/hd/nine-friends-sunrise-realesrgan-x4plus-anime.png",
+  "sha256": "3842b4d11175213c71ceeea47373210d80d3a3c17eed032a08ec59e2e35d7f55",
+  "actual_size": [
+    6688,
+    3764
+  ],
+  "keep_original": [
+    [
+      [-20, 740],
+      [472, 740],
+      [472, 850],
+      [-20, 878]
+    ]
+  ],
+  "feather": 8,
+  "crop": [
+    0,
+    1,
+    6688,
+    3763
+  ],
+  "runtime_size": [
+    3840,
+    2160
+  ],
+  "review_scope": "4K comparisons of characters, lettering, vertical text, mountains, mirrored floor and the distant town. The model posterizes the hazy town and tree line and adds bright specks, so that zone (source pixels, left of Inosuke, between the skyline and the floor rim) keeps the Lanczos-upscaled original under an 8 px feather. Crop trims one row top and bottom to exact 16:9 before the Lanczos resize."
+}

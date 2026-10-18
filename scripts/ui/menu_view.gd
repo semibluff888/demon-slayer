@@ -62,7 +62,7 @@ var battle_style: bool = false
 var backdrop: Control
 var preview: Control
 var footer: Control
-var embers: Node2D
+var motes: Node2D
 # The back label and extra hints the footer is rebuilt from when the device changes.
 var _footer_prompt: Array[String] = ["", ""]
 var _footer_device: String = ""
@@ -104,8 +104,8 @@ func _process(delta: float) -> void:
 		return
 	motion_time += delta
 	_animate_lockin()
-	if is_instance_valid(embers):
-		embers.queue_redraw()
+	if is_instance_valid(motes):
+		motes.queue_redraw()
 	if is_instance_valid(result_sparks) and result_spark_time < 2.4:
 		result_spark_time += delta
 		result_sparks.queue_redraw()
@@ -137,7 +137,7 @@ func clear() -> void:
 	backdrop = null
 	preview = null
 	footer = null
-	embers = null
+	motes = null
 	_quiet = true
 	for child in get_children():
 		remove_child(child)
@@ -255,43 +255,50 @@ func title() -> void:
 	var poster := texture(load("res://art/ui/title-poster.png"), Rect2(0,0,1280,720))
 	poster.name="TitlePoster"
 	poster.texture_filter=CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
-	# Soft ink wash under the menu keeps it legible over the crowded poster.
+	# The dawn poster is pale and letters its own title top-left (down to y = 362), so
+	# the ink settles only over the scenery under the menu and along the footer.
 	paint(Rect2(0, 0, 1280, 720), func(canvas: Control):
-		Kit.shade(canvas, Rect2(0, 180, 760, 540), Kit.INK_900, func(u: float, v: float) -> float:
-			return 0.9 * (1.0 - smoothstep(0.35, 1.0, u)) * smoothstep(0.0, 0.42, v))
-		Kit.shade(canvas, Rect2(0, 560, 1280, 160), Kit.INK_900, func(_u: float, v: float) -> float:
-			return 0.85 * smoothstep(0.0, 1.0, v)))
-	embers = Node2D.new()
+		Kit.shade(canvas, Rect2(0, 368, 620, 352), Kit.INK_900, func(u: float, v: float) -> float:
+			return 0.72 * (1.0 - smoothstep(0.4, 1.0, u)) * smoothstep(0.0, 0.3, v))
+		# Footer band: full strength under the note and the key prompts, lighter over
+		# the mirrored floor in between.
+		Kit.shade(canvas, Rect2(0, 600, 1280, 120), Kit.INK_900, func(u: float, v: float) -> float:
+			var behind_text := maxf(1.0 - smoothstep(0.3, 0.6, u), smoothstep(0.76, 0.94, u))
+			return 0.8 * smoothstep(0.0, 1.0, v) * lerpf(0.35, 1.0, behind_text), 24))
+	motes = Node2D.new()
 	var additive := CanvasItemMaterial.new()
 	additive.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
-	embers.material = additive
-	embers.draw.connect(_draw_embers)
-	add_child(embers)
+	motes.material = additive
+	motes.draw.connect(_draw_motes)
+	add_child(motes)
 	var captions := {}
 	var callbacks := {"mode_cpu": func(): app.choose_mode("cpu"), "mode_local": func(): app.choose_mode("local"),
 		"mode_practice": func(): app.choose_mode("practice"), "help": app.show_help, "settings": app.show_settings}
 	for i in range(TITLE_ITEMS.size()):
 		var item: Array = TITLE_ITEMS[i]
-		var node := button(item[0], item[1], Rect2(56, 350 + i * 60, 336, 54), callbacks[item[0]], false, true, 24)
+		# Same left margin as the poster's lettering; clear of Inosuke, who starts near x = 400.
+		var node := button(item[0], item[1], Rect2(56, 382 + i * 56, 320, 50), callbacks[item[0]], false, true, 24)
 		node.kicker = Kit.numeral(i + 1)
 		node.subtitle = item[2]
 		captions[node] = item[3]
-	var bar := _footer(Rect2(56, 666, 1168, 36), "", "F2 静音", TITLE_ITEMS[0][3])
+	var bar := _footer(Rect2(56, 670, 1168, 32), "", "F2 静音", TITLE_ITEMS[0][3])
 	for node: Control in captions:
 		node.focus_entered.connect(func(): bar.note = captions[node])
 	actions.mode_cpu.grab_focus()
 	reveal()
 
-func _draw_embers() -> void:
-	for i in range(26):
+## Dust catching the dawn light: slow, warm motes rising off the mirrored floor.
+## They fade out above the mountain line, where the pale sky would turn them to specks.
+func _draw_motes() -> void:
+	for i in range(24):
 		var phase := i * 2.399
-		var y := fposmod(700.0 - motion_time * (14.0 + (i % 5) * 6.0) - i * 61.0, 760.0) - 20.0
-		var x := fposmod(80.0 + i * 197.3 + sin(motion_time * 0.5 + phase) * 26.0, 1280.0)
-		var life := clampf(y / 720.0, 0, 1)
-		var flicker := 0.55 + 0.45 * sin(motion_time * 3.0 + phase * 2.0)
-		var color := Color(1.0, 0.62 + (i % 3) * 0.08, 0.32, 0.5 * flicker * life)
-		embers.draw_circle(Vector2(x, y), 4.0 + (i % 3), Color(color, color.a * 0.25), true, -1, true)
-		embers.draw_circle(Vector2(x, y), 1.4 + (i % 3) * 0.5, color, true, -1, true)
+		var y := 740.0 - fposmod(motion_time * (6.0 + (i % 5) * 2.5) + i * 53.0, 440.0)
+		var x := fposmod(40.0 + i * 197.3 + motion_time * 5.0 + sin(motion_time * 0.4 + phase) * 22.0, 1320.0) - 20.0
+		var life := sin(clampf((y - 320.0) / 400.0, 0, 1) * PI)
+		var twinkle := 0.6 + 0.4 * sin(motion_time * 1.7 + phase * 2.0)
+		var color := Color(1.0, 0.9, 0.7, 0.42 * twinkle * life)
+		motes.draw_circle(Vector2(x, y), 4.5 + (i % 3) * 1.2, Color(color, color.a * 0.22), true, -1, true)
+		motes.draw_circle(Vector2(x, y), 1.2 + (i % 3) * 0.45, color, true, -1, true)
 
 func settings() -> void:
 	settings_panel=SettingsPanel.new()

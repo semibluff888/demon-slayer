@@ -195,7 +195,7 @@ func _test_native_menu_input() -> void:
 	game.show_title()
 	await process_frame
 	var motion := InputEventMouseMotion.new()
-	motion.position = Vector2(210, 380)
+	motion.position = Vector2(210, 400)
 	motion.global_position = motion.position
 	root.push_input(motion, true)
 	await process_frame

@@ -1,0 +1,20 @@
+{
+  "origin": "user-supplied",
+  "processing": "Real-ESRGAN x4 anime upscale, distant town kept from the original, resized to 3840x2160 by tools/build_menu_art.py; see hd/nine-friends-sunrise.json",
+  "records": [
+    {
+      "key": "nine-friends-sunrise",
+      "original_filename": "Nine friends beneath a pale sunrise-1.png",
+      "supplied": "2026-10-19",
+      "source": "output/user-assets/title-poster/raw/nine-friends-sunrise.png",
+      "source_sha256": "548ed8638ceb431334162b3ae09ca60e693549bcf5a7a2f14ea9d76376d06970",
+      "source_size": [
+        1672,
+        941
+      ],
+      "accepted": true,
+      "review_scope": "Dawn ensemble: Tanjiro, Nezuko, Zenitsu, Inosuke, Giyu, Shinobu, Rengoku, Tengen, Mitsuri, Muichiro on a mirrored veranda. Carries its own lettering (鬼滅の刃 / KIMETSU NO YAIBA / tagline) in the top-left; the native menu sits below it on the same left margin.",
+      "output": "art/ui/title-poster.png"
+    }
+  ]
+}

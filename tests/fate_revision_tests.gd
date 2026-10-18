@@ -115,7 +115,7 @@ func _test_menu_and_stage() -> void:
 	game.sound.muted = true
 	await process_frame
 	check(ProjectSettings.get_setting("application/config/name") == "\u9b3c\u706d\u4e4b\u5203\uff1a\u5bbf\u547d\u5bf9\u51b3", "new application title")
-	check(game.gui.get_node_or_null("TitlePoster") is TextureRect, "generated poster is the title background")
+	check(game.gui.get_node_or_null("TitlePoster") is TextureRect, "poster is the title background")
 	var labels: Array[String] = []
 	for node in game.gui.get_children():
 		if node is Label: labels.append(node.text)

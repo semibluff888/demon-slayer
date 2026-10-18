@@ -49,3 +49,7 @@ retained in the repository's output/ directory.
 ## 选人展示视频
 
 `art/characters/*/select.ogv` 及其 `select-poster.png` 由用户提供的 AI 生成角色视频经抠像、去音轨后制作。原始片段、文件名与哈希保存在 `output/user-assets/select-videos/`，处理方式见 `docs/select-videos.md`。片段中的角色形象与名称同样受上文「Game content」一节约束，项目自身的许可不覆盖这些角色权利。
+
+## 主菜单海报
+
+`art/ui/title-poster.png` 由用户提供的晨曦群像图经 4 倍超分放大后制作，图内「鬼滅の刃」题字与标语为原图自带。原图、文件名、哈希与超分处理记录保存在 `output/user-assets/title-poster/`，处理方式见 `docs/title-sunrise.md`。图中的角色形象与名称同样受上文「Game content」一节约束，项目自身的许可不覆盖这些角色权利。
