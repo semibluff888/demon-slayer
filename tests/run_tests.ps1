@@ -73,6 +73,7 @@ Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script',
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://demo/round-presentation/verify.gd') -Expected 'ROUND DEMO TESTS: \d+ passed, 0 failed' | Out-Null
 
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/roster_expansion_tests.gd') -Expected 'ROSTER EXPANSION: \d+ passed, 0 failed' | Out-Null
+Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/select_screen_tests.gd') -Expected 'SELECT SCREEN TESTS: \d+ passed, 0 failed' | Out-Null
 
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/fate_revision_tests.gd') -Expected 'FATE REVISIONS: \d+ passed, 0 failed' | Out-Null
 
@@ -96,6 +97,7 @@ if (($hashes | Select-Object -Unique).Count -ne 1 -or $hashes[0].Length -ne 64) 
 }
 if ($Capture) {
     Invoke-DuelCheck -EngineArgs @('--path', $projectRoot, '--audio-driver', 'Dummy', '--script', 'res://tools/capture_awakening.gd') -Expected 'AWAKENING CAPTURE: \d+ checks, 0 failed' | Out-Null
+    Invoke-DuelCheck -EngineArgs @('--path', $projectRoot, '--audio-driver', 'Dummy', '--fixed-fps', '60', '--script', 'res://tools/capture_select_screen.gd') -Expected 'SELECT SCREEN CAPTURE: \d+ checks, 0 failed' | Out-Null
     Invoke-DuelCheck -EngineArgs @('--path', $projectRoot, '--audio-driver', 'Dummy', '--script', 'res://tests/ui_tests.gd', '--', '--capture') -Expected 'UI TESTS: \d+ passed, 0 failed' | Out-Null
     Invoke-DuelCheck -EngineArgs @('--path', $projectRoot, '--audio-driver', 'Dummy', '--script', 'res://tests/presentation_tests.gd', '--', '--capture') -Expected 'PRESENTATION TESTS: \d+ passed, 0 failed' | Out-Null
     Invoke-DuelCheck -EngineArgs @('--path', $projectRoot, '--audio-driver', 'Dummy', '--script', 'res://tools/capture_phase2_matrix.gd') -Expected 'PHASE TWO MATRIX: \d+ screenshots, 0 failed' | Out-Null
@@ -120,5 +122,7 @@ if (Test-Path -LiteralPath $artPython) {
     if ($LASTEXITCODE -ne 0) { throw 'Fate artwork validation failed.' }
     & $artPython (Join-Path $projectRoot 'tests/art_v3_tests.py')
     if ($LASTEXITCODE -ne 0) { throw 'Art v3 validation failed.' }
+    & $artPython -X utf8 (Join-Path $projectRoot 'tests/select_video_tests.py')
+    if ($LASTEXITCODE -ne 0) { throw 'Select video validation failed.' }
 }
 Write-Host 'All checks passed. Combat state is identical at 30 / 60 / 144 FPS.'

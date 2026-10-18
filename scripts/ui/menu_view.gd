@@ -4,6 +4,7 @@ extends Control
 ## Entry motion only offsets drawing, so controls are clickable immediately.
 const SettingsPanel = preload("res://scripts/ui/settings_panel.gd")
 const RosterCard = preload("res://scripts/ui/roster_card.gd")
+const Selection = preload("res://scripts/ui/selection_controller.gd")
 const StageCard = preload("res://scripts/ui/stage_card.gd")
 const DuelButton = preload("res://scripts/ui/duel_button.gd")
 const BattleStyle = preload("res://scripts/presentation/battle_style.gd")
@@ -33,7 +34,10 @@ const TITLE_ITEMS := [
 	["settings", "游戏设置", "OPTIONS", "音量、按键、手柄与必杀动画演出。"]]
 var settings_panel: RefCounted
 var roster_scroll: ScrollContainer
+## Character cells by id; `roster_cells` holds every grid cell in display order.
 var roster_cards: Dictionary = {}
+var roster_cells: Array[Button] = []
+var random_card: Button
 var stage_cards: Dictionary = {}
 var fighter_portraits: Array = []
 var fighter_names: Array[Label] = []
@@ -105,6 +109,8 @@ func _process(delta: float) -> void:
 func clear() -> void:
 	settings_panel = null
 	roster_cards.clear()
+	roster_cells.clear()
+	random_card = null
 	stage_cards.clear()
 	fighter_portraits.clear()
 	fighter_names.clear()
@@ -285,103 +291,141 @@ func settings() -> void:
 func setup() -> void:
 	_backdrop(Color("1d4f5c"), Color("5c1d2a"))
 	_header("选择角色", "CHARACTER SELECT", MODE_NAMES.get(app.mode, ""), 0)
+	var avatars: Array[Texture2D] = []
+	for id: String in catalog.characters:
+		if catalog.characters[id].avatar != null:
+			avatars.append(catalog.characters[id].avatar)
 	for slot in range(2):
 		var showcase := Showcase.new()
 		showcase.slot = slot
 		showcase.display_font = catalog.display_font
 		showcase.title_font = catalog.title_font
 		showcase.body_font = catalog.body_font
+		showcase.avatars = avatars
 		add_child(showcase)
 		fighter_portraits.append(showcase)
-	var vs_band := Brush.new(6.1)
-	vs_band.configure(Rect2(548, 252, 184, 74), Color(Kit.CRIMSON, 0.92), 24.0)
-	add_child(vs_band)
-	var vs := GradientText.new()
-	vs.setup(catalog.numeric_font, "VS", 92)
-	vs.skew = -0.2
-	vs.outline = 10
-	vs.position = Vector2(640, 322)
-	add_child(vs)
-	paint(Rect2(520, 330, 240, 40), func(canvas: Control):
-		Kit.tracked(canvas, catalog.display_font, "宿命对决", Vector2(120, 26), 22, Kit.GOLD_HI, 6.0, 1, 4))
 	for slot in range(2):
 		var left := slot == 0
 		var align := HORIZONTAL_ALIGNMENT_LEFT if left else HORIZONTAL_ALIGNMENT_RIGHT
-		slot_buttons.append(button("slot_%d" % [slot+1], "P%d" % [slot+1], Rect2(40 if left else 1130, 102, 110, 34), func(): app.selection.activate(slot), false, false, 17))
-		fighter_states.append(label("", Rect2(162 if left else 918, 106, 200, 26), 15, MUTED, false, align))
-		fighter_names.append(label("", Rect2(36 if left else 904, 438, 340, 70), 56, PAPER, false, align, "display"))
-	paint(Rect2(298, 534, 684, 124), _draw_roster_plate)
+		slot_buttons.append(button("slot_%d" % [slot+1], "P%d" % [slot+1], Rect2(24 if left else 1152, 104, 104, 32), func(): app.selection.activate(slot), false, false, 17))
+		fighter_states.append(label("", Rect2(24 if left else 1056, 140, 200, 22), 15, MUTED, false, align))
+		fighter_names.append(label("", Rect2(24 if left else 876, 486, 380, 66), 56, PAPER, false, align, "display"))
+		fighter_portraits[slot].name_label = fighter_names[slot]
+	paint(Rect2(412, 112, 456, 488), _draw_roster_plate)
 	roster_scroll = ScrollContainer.new()
 	roster_scroll.name = "RosterScroll"
-	roster_scroll.position = Vector2(319, 556)
-	roster_scroll.size = Vector2(642, 96)
+	roster_scroll.position = Vector2(425, 150)
+	roster_scroll.size = Vector2(430, 430)
 	roster_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-	roster_scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
+	roster_scroll.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_SHOW_NEVER
 	add_child(roster_scroll)
-	var center := CenterContainer.new()
-	center.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	center.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	roster_scroll.add_child(center)
 	var grid := GridContainer.new()
-	grid.columns = mini(6, catalog.characters.size())
-	grid.add_theme_constant_override("h_separation", 8)
-	grid.add_theme_constant_override("v_separation", 8)
-	center.add_child(grid)
-	for id: String in catalog.characters:
+	grid.columns = Selection.COLS
+	grid.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	grid.add_theme_constant_override("h_separation", 10)
+	grid.add_theme_constant_override("v_separation", 10)
+	roster_scroll.add_child(grid)
+	var cells: Array[String] = app.selection.cells()
+	for index in range(cells.size()):
+		var id := cells[index]
 		var card := RosterCard.new()
-		card.name = "character_" + id
-		card.custom_minimum_size = Vector2(96, 88)
-		card.portrait = catalog.characters[id].avatar
-		card.accent = catalog.characters[id].accent
 		card.tag_font = catalog.numeric_font
-		card.tooltip_text = catalog.characters[id].display_name
-		card.pressed.connect(func(): app.select_character(app.selection.active_slot, id))
-		card.mouse_entered.connect(card.queue_redraw)
-		card.mouse_exited.connect(card.queue_redraw)
-		card.focus_entered.connect(card.queue_redraw)
-		card.focus_exited.connect(card.queue_redraw)
+		card.glyph_font = catalog.display_font
+		card.label_font = catalog.body_font
+		var key := "character_" + id
+		if catalog.characters.has(id):
+			card.portrait = catalog.characters[id].avatar
+			card.accent = catalog.characters[id].accent
+			card.tooltip_text = catalog.characters[id].display_name
+			card.pressed.connect(func(): app.select_character(app.selection.active_slot, id))
+			roster_cards[id] = card
+		elif id == Selection.RANDOM:
+			key = "random"
+			card.kind = "random"
+			card.tooltip_text = "随机角色"
+			card.pressed.connect(func(): app.selection.point(app.selection.active_slot, index))
+			random_card = card
+		else:
+			key = "empty_%d" % index
+			card.kind = "empty"
+			card.tooltip_text = "敬请期待"
+			card.pressed.connect(func(): app.selection.point(app.selection.active_slot, index))
+		card.name = key
+		# Unowned arrow keys move GUI focus; keep the active cursor on the focused cell.
+		card.focus_entered.connect(func():
+			if app.screen == "setup" and app.selection.cursor_cell(app.selection.active_slot) != index:
+				app.selection.point(app.selection.active_slot, index))
+		for signal_name: String in ["mouse_entered", "mouse_exited", "focus_entered", "focus_exited"]:
+			card.connect(signal_name, card.queue_redraw)
 		grid.add_child(card)
-		roster_cards[id] = card
-		actions["character_" + id] = card
-	button("back", "返回", Rect2(40, 664, 150, 44), app.show_title, false, false, 18)
-	app.device_notice = prompt_label(Rect2(210, 668, 810, 36))
-	app.start_button = button("start", "确认", Rect2(1040, 658, 200, 50), func(): app.selection.confirm(app.selection.active_slot), true, true, 22)
+		roster_cells.append(card)
+		actions[key] = card
+	button("back", "返回", Rect2(426, 612, 150, 44), app.show_title, false, false, 18)
+	app.device_notice = prompt_label(Rect2(160, 678, 960, 30))
+	app.start_button = button("start", "确认", Rect2(634, 608, 220, 50), func(): app.selection.confirm(app.selection.active_slot), true, true, 22)
 	refresh_setup()
 	reveal()
+	_link_grid()
+
+## Arrow-key focus inside the grid wraps on both axes like the selection cursors;
+## reveal() keeps Tab cycling through the grid, back and start.
+func _link_grid() -> void:
+	var columns := Selection.COLS
+	var rows := int(roster_cells.size() / float(columns))
+	for i in range(roster_cells.size()):
+		var card := roster_cells[i]
+		var row := int(i / float(columns))
+		var column := i % columns
+		card.focus_neighbor_left = card.get_path_to(roster_cells[row * columns + posmod(column - 1, columns)])
+		card.focus_neighbor_right = card.get_path_to(roster_cells[row * columns + posmod(column + 1, columns)])
+		card.focus_neighbor_top = card.get_path_to(roster_cells[posmod(row - 1, rows) * columns + column])
+		card.focus_neighbor_bottom = card.get_path_to(roster_cells[posmod(row + 1, rows) * columns + column])
 
 func _draw_roster_plate(canvas: Control) -> void:
 	var rect := Rect2(Vector2.ZERO, canvas.size)
-	var shape := Kit.chamfer(rect, 14, 6)
-	Kit.gradient_fill(canvas, shape, Color(Kit.INK_700, 0.9), Color(Kit.INK_900, 0.94))
+	var shape := Kit.chamfer(rect, 16, 5)
+	Kit.gradient_fill(canvas, shape, Color(Kit.INK_700, 0.88), Color(Kit.INK_900, 0.94))
 	Kit.frame(canvas, shape, Kit.GOLD, 0.8, 2.0, 1.0)
-	Kit.tracked(canvas, catalog.numeric_font, "ROSTER", Vector2(18, 16), 10, Color(Kit.GOLD, 0.7), 3.0)
-	Kit.brackets(canvas, rect.grow(-5), 10, Color(Kit.GOLD_HI, 0.5), 1.2)
+	Kit.brackets(canvas, rect.grow(-6), 12, Color(Kit.GOLD_HI, 0.45), 1.2)
+	Kit.tracked(canvas, catalog.numeric_font, "ROSTER", Vector2(20, 26), 11, Color(Kit.GOLD, 0.75), 3.0)
+	var slots: int = app.selection.cells().size() - 1
+	Kit.tracked(canvas, catalog.numeric_font, "%d / %d" % [catalog.characters.size(), slots], Vector2(rect.size.x - 20, 26), 11,
+		Color(Kit.GOLD, 0.6), 2.0, 2)
+	Kit.rule(canvas, Vector2(20, 32), Vector2(rect.size.x - 20, 32), Color(Kit.GOLD, 0.4))
+
+func _cell_kind(slot: int) -> String:
+	var id: String = app.selection.cell_id(slot)
+	return "random" if id == Selection.RANDOM else ("empty" if id.is_empty() else "character")
 
 func refresh_setup() -> void:
 	if app.screen != "setup" or fighter_portraits.size() != 2: return
+	var selection: RefCounted = app.selection
+	var tints: Array[Color] = []
 	for slot in range(2):
+		var kind := _cell_kind(slot)
 		var visual = catalog.characters[app.characters[slot]]
 		var definition: Resource = app.combat.catalog.characters.get(app.characters[slot])
-		var active: bool = app.mode == "local" or app.selection.active_slot == slot
-		fighter_portraits[slot].configure(visual, definition, app.selection.ready[slot], active)
-		fighter_names[slot].text = visual.display_name
-		fighter_states[slot].text = "已就绪" if app.selection.ready[slot] else ("选择中…" if app.mode == "local" or app.selection.active_slot == slot else "")
+		var active: bool = app.mode == "local" or selection.active_slot == slot
+		fighter_portraits[slot].configure(kind, visual, definition, selection.ready[slot], active, selection.rolled[slot])
+		fighter_names[slot].text = visual.display_name if kind == "character" else ("随机角色" if kind == "random" else "敬请期待")
+		fighter_states[slot].text = "已就绪" if selection.ready[slot] else ("选择中…" if app.mode == "local" or selection.active_slot == slot else "")
 		fighter_states[slot].modulate = Kit.player_color(slot)
 		slot_buttons[slot].text = "P1" if slot == 0 else ("木桩" if app.mode == "practice" else "CPU" if app.mode == "cpu" else "P2")
-		slot_buttons[slot].selected = app.selection.active_slot == slot
+		slot_buttons[slot].selected = selection.active_slot == slot
+		tints.append(visual.accent.darkened(0.45) if kind == "character" else Kit.INK_600)
 	if backdrop != null:
-		backdrop.set_tints(catalog.characters[app.characters[0]].accent.darkened(0.45), catalog.characters[app.characters[1]].accent.darkened(0.45), 0.6)
-	for id: String in roster_cards:
-		var card: Button = roster_cards[id]
+		backdrop.set_tints(tints[0], tints[1], 0.6)
+	for i in range(roster_cells.size()):
+		var card := roster_cells[i]
 		card.cursors.clear()
-		card.locked.assign(app.selection.ready)
+		card.locked.assign(selection.ready)
 		for slot in range(2):
-			if app.characters[slot] == id: card.cursors.append(slot)
+			if selection.cursor_cell(slot) == i: card.cursors.append(slot)
 		card.queue_redraw()
-	var current: Button = roster_cards[app.characters[app.selection.active_slot]]
+	var current := roster_cells[selection.cursor_cell(selection.active_slot)]
 	current.grab_focus()
 	roster_scroll.ensure_control_visible.call_deferred(current)
-	app.start_button.text = "确认 P%d" % [app.selection.active_slot + 1] if app.mode == "local" else "确认"
+	app.start_button.text = "确认 P%d" % [selection.active_slot + 1] if app.mode == "local" else "确认"
 	app._validate_setup()
 
 # --- Stage select -------------------------------------------------------------------

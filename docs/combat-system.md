@@ -11,7 +11,7 @@
 1. 新建 `CharacterDefinition`资源，填写唯一ID、名称、定位、移动速度、颜色、元素名和本地动画目录。
 2. `normals`提供 `5A…5D`、`2A…2D`、`jA…jD`；`motions`提供 `236A/C`、`623A/C`、`214B/D`、`super`、`max`；另提供 `throw_move`。
 3. 每招指定现有或新增的 `animation_id`，特效用 `effect_id`。动画图集沿用脚底锚点和 `phase_breaks`，不必与招式ID同名。`state_animations` 映射翻滚、前后投、受投和拆投，`MoveData.presentation` 引用独立表现资源。
-4. 填写 `move_list`和 `combos`。选人、招式表、表现目录和通用AI自动读取资源。选人卡片可横向滚动。
+4. 填写 `move_list`和 `combos`。选人、招式表、表现目录和通用AI自动读取资源；选人宫格自动收录新角色。
 5. 为新角色加入输入、命中、连段与图集覆盖验收。新类别的招式机制需要扩展通用逻辑；仅新增当前机制内的角色无需修改角色分支。
 
 `tools/build_combat_data.py`是最初42份招式资源的离线作者工具，不是运行依赖。平衡调整直接编辑tres。招式扩展（派生、方向特殊技、空中必杀）落地后，`.tres` 是唯一数据源；只要检测到扩展字段，`build_combat_data.py` 和 `build_roster_data.py` 就会拒绝运行。

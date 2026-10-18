@@ -5,6 +5,7 @@ const Catalog = preload("res://scripts/presentation/visual_catalog.gd")
 const Support = preload("res://tests/combat_test_support.gd")
 const Actor = preload("res://scripts/presentation/fighter_view.gd")
 const AI = preload("res://scripts/ai_controller.gd")
+const RosterCard = preload("res://scripts/ui/roster_card.gd")
 var helper := Support.new()
 var passed := 0
 var failures: Array[String] = []
@@ -265,7 +266,9 @@ func _test_selection() -> void:
 		await process_frame
 		check(game.gui.roster_cards.size()==count,"directory-only extension to %d" % count)
 		for card: Button in game.gui.roster_cards.values():
-			check(card.size == Vector2(96,88),"fixed avatar dimensions at %d" % count)
+			check(card.size == RosterCard.CELL,"fixed avatar dimensions at %d" % count)
+		check(game.gui.roster_cells.size() == maxi(16,ceili((count+1)/4.0)*4) and game.gui.roster_cells[-1] == game.gui.random_card,
+			"grid pads to whole rows with random last at %d" % count)
 		var ids: Array = game.catalog.characters.keys()
 		game.select_character(0,ids[-1])
 		await process_frame

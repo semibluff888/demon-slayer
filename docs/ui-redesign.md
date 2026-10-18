@@ -17,13 +17,13 @@
 
 - `scripts/ui/kit.gd`：色板、缓动和无状态绘制原语（斜切、刀形条、金框、印章、键帽、手柄键、方向箭头、鍔形徽章、纹样、二维柔和渐变）。
 - `scripts/ui/ui_assets.gd`：由视觉目录懒加载；内联 SVG 以 3 倍栅格化（拨动开关、菱形滑块、下拉箭头等），生成原生控件 Theme。
-- `scripts/ui/shaders/`：`brush_band`（干笔墨带）、`gradient_text`（金属渐变字）、`gauge_fill`（血条流光）、`meter_flow`（气槽能量）、`ink_wash`（菜单墨烟）、`speed_lines`（集中线）、`pause_backdrop`（暂停去饱和模糊）。时间均由脚本传入，暂停即冻结。
-- 组件：`brush_stroke.gd`、`gradient_text.gd`、`prompt_bar.gd`／`prompt_label.gd`（按键提示渲染为键帽与手柄字形）、`screen_backdrop.gd`、`screen_header.gd`、`screen_wipe.gd`、`fighter_showcase.gd`、`stage_preview.gd`、`command_glyphs.gd`（`236 + A/C` 渲染为 ↓↘→ 与按键字形）。
+- `scripts/ui/shaders/`：`brush_band`（干笔墨带）、`gradient_text`（金属渐变字）、`gauge_fill`（血条流光）、`meter_flow`（气槽能量）、`ink_wash`（菜单墨烟）、`speed_lines`（集中线）、`pause_backdrop`（暂停去饱和模糊）、`stacked_alpha`（选人展示视频的叠层 alpha 合成）。时间均由脚本传入，暂停即冻结。
+- 组件：`brush_stroke.gd`、`gradient_text.gd`、`prompt_bar.gd`／`prompt_label.gd`（按键提示渲染为键帽与手柄字形）、`screen_backdrop.gd`、`screen_header.gd`、`screen_wipe.gd`、`fighter_showcase.gd`／`select_video.gd`（选人侧栏与展示视频）、`roster_card.gd`（选人宫格）、`stage_preview.gd`、`command_glyphs.gd`（`236 + A/C` 渲染为 ↓↘→ 与按键字形）。
 
 ## 界面
 
 - **标题**：海报全屏，左下二维墨晕保证可读性，余烬微粒上浮；五项菜单带印章序号与英文副标，焦点项说明显示在底部提示条。提示条的键帽／手柄按键随标题页最近使用的设备即时切换。
-- **选人**：双方立绘斜切大图，背景墨烟随角色色调变化；书法角色名、称号、元素印章、定位与觉醒名；就绪时盖「就绪」朱印；中央金色 VS 与「宿命对决」；顶部步骤「角色 → 场景 → 开战」。
+- **选人**：中央金框格板内为 4 列宫格（暂定 4×4＝16 格）：现有角色依次排列，其余为「敬请期待」空位，最后一格固定为「随机」；超过 15 名角色时自动加行并滚动。左右两侧为 P1／P2 的抠像展示视频（P2 镜像，贴屏幕外缘，内侧与底部柔化，见 `docs/select-videos.md`），背景墨烟随角色色调变化；书法角色名、称号、元素印章、定位与觉醒名；就绪时盖「就绪」朱印。光标横纵循环，空位可停留但不能确认；随机格确认后先播约 0.7 秒头像轮盘再落定，若这是最后一次确认则稍候再进入选图。没有展示视频的角色回退为立绘。顶部步骤「角色 → 场景 → 开战」。
 - **选图**：左侧大预览（缓推、交叉淡入、对阵头像），右侧竖排地图卡。
 - **暂停**：战斗画面去饱和模糊，左侧墨色侧栏，右侧 P1「招式速查」。
 - **结算**：胜者色墨烟与斜劈墨带，金渐变书法「胜」与金箔粒子。

@@ -24,6 +24,9 @@ static func run(game: Node) -> void:
 				if not ResourceLoader.exists("res://art/characters/%s/awakening/%s.png" % [id,asset]):
 					failures.append("Packaged awakening artwork missing: " + id + "/" + asset)
 		visual.release_combat_assets()
+		# Select-screen showcase: stacked-alpha clip, poster and band layout from the PCK.
+		if not visual.select_video is VideoStream or visual.select_poster == null or int(visual.select_layout.get("frames", 0)) <= 0:
+			failures.append("Packaged select video missing: " + id)
 		var model = game.Combat.new()
 		model.new_match(id,id)
 		model.phase = "fight"

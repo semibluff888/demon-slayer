@@ -24,6 +24,11 @@ var awakening_frames: SpriteFrames
 ## drawings beside the redrawn normal atlas) has its own frame counts.
 var awakening_metadata: Dictionary = {}
 var awakened_portrait: Texture2D
+## Character-select showcase (tools/build_select_videos.py): a stacked-alpha clip, its
+## decoded first frame and the band layout. Menu art, so loaded without frames and kept.
+var select_video: VideoStream
+var select_poster: Texture2D
+var select_layout: Dictionary = {}
 var hit_reaction_frames: PackedInt32Array = []
 @export var phases: Dictionary = {}
 var clip_metadata: Dictionary = {}
@@ -49,6 +54,7 @@ func load_local_assets(load_frames: bool = true) -> void:
 		awakened_portrait = load(directory + "awakened-portrait.png")
 	if ResourceLoader.exists(directory + "awakening/portrait.png"):
 		awakened_portrait = load(directory + "awakening/portrait.png")
+	_load_select_assets(directory)
 	if not load_frames:
 		return
 	var manifest_path := directory + "atlas.json"
@@ -68,6 +74,18 @@ func load_local_assets(load_frames: bool = true) -> void:
 			_load_atlas(directory, selected)
 	_load_awakening_assets()
 	art_ready = missing_clips().is_empty() and portrait != null
+
+func _load_select_assets(directory: String) -> void:
+	var layout_path := directory + "select.json"
+	if not (ResourceLoader.exists(directory + "select.ogv") and ResourceLoader.exists(directory + "select-poster.png")
+			and FileAccess.file_exists(layout_path)):
+		return
+	var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(layout_path))
+	if not parsed is Dictionary:
+		return
+	select_video = load(directory + "select.ogv") as VideoStream
+	select_poster = load(directory + "select-poster.png")
+	select_layout = parsed
 
 func _load_atlas(directory: String, parsed: Dictionary) -> void:
 	feet_anchor = Vector2(parsed.get("feet_anchor", [384, 704])[0], parsed.get("feet_anchor", [384, 704])[1])
