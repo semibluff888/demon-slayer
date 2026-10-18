@@ -72,8 +72,9 @@ func _check_routing() -> void:
 	var cues = game.view.super_view
 	check(cues._owns_charge(game.combat.moves["tanjiro_super"]) and cues._owns_charge(game.combat.moves["tanjiro_max"]),
 		"rebuilt supers draw their own charge instead of the shared energy sphere")
-	check(not cues._owns_charge(game.combat.moves["nezuko_super"]) and not cues._owns_charge(game.combat.moves["tanjiro_236A"]),
-		"other supers keep the shared energy sphere")
+	# Every fighter's supers are rebuilt now (Nezuko's last, 2026-10-17); a special never owns a charge.
+	check(not cues._owns_charge(game.combat.moves["tanjiro_236A"]) and not cues._owns_charge(game.combat.moves["nezuko_236A"]),
+		"specials draw no super charge")
 
 func _start(move_id: String, awakened: bool, height: float = 0.0) -> Resource:
 	game.characters.assign(["tanjiro", "zenitsu"])

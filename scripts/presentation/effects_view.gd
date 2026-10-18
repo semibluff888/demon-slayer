@@ -8,8 +8,9 @@ const Kit = preload("res://scripts/ui/kit.gd")
 const TanjiroVfx = preload("res://scripts/presentation/vfx/tanjiro_vfx.gd")
 const ZenitsuVfx = preload("res://scripts/presentation/vfx/zenitsu_vfx.gd")
 const AkazaVfx = preload("res://scripts/presentation/vfx/akaza_vfx.gd")
-## Character flavor for blade trails and impact motes (Akaza's moves are all rebuilt).
-const FLAVORS := {"tanjiro": "water", "zenitsu": "thunder", "nezuko": "blood"}
+const NezukoVfx = preload("res://scripts/presentation/vfx/nezuko_vfx.gd")
+## Character flavor for blade trails and impact motes (Akaza's and Nezuko's moves are all rebuilt).
+const FLAVORS := {"tanjiro": "water", "zenitsu": "thunder"}
 const CUT_CURVES := {
 	"stand_light": [Vector2(13, -43), Vector2(38, -60), Vector2(61, -40)],
 	"stand_heavy": [Vector2(9, -70), Vector2(96, -65), Vector2(45, -16)],
@@ -42,6 +43,7 @@ var actors: Array = []
 var tanjiro: Node2D
 var zenitsu: Node2D
 var akaza: Node2D
+var nezuko: Node2D
 
 func _ready() -> void:
 	var additive := CanvasItemMaterial.new()
@@ -96,16 +98,23 @@ func _ready() -> void:
 	akaza.actors = actors
 	akaza.glow = glow
 	add_child(akaza)
+	nezuko = NezukoVfx.new()
+	nezuko.name = "NezukoVfx"
+	nezuko.combat = combat
+	nezuko.camera = camera
+	nezuko.actors = actors
+	nezuko.glow = glow
+	add_child(nezuko)
 
 func _rebuilt(move: Resource) -> bool:
-	return (tanjiro != null and tanjiro.handles(move)) or (zenitsu != null and zenitsu.handles(move)) or (akaza != null and akaza.handles(move))
+	return (tanjiro != null and tanjiro.handles(move)) or (zenitsu != null and zenitsu.handles(move)) or (akaza != null and akaza.handles(move)) or (nezuko != null and nezuko.handles(move))
 
 ## Rebuilt supers draw their own charge through the freeze.
 func draws_charge(move: Resource) -> bool:
 	return move != null and move.is_super() and _rebuilt(move)
 
 func consume(events: Array) -> void:
-	for rebuilt in [tanjiro, zenitsu, akaza]:
+	for rebuilt in [tanjiro, zenitsu, akaza, nezuko]:
 		if rebuilt != null:
 			rebuilt.consume(events)
 	# A tech also emits clash for the combat contract; render one clear escape cue.
@@ -190,7 +199,7 @@ func reset_effects() -> void:
 	screen_flash = 0
 	trauma = 0
 	time = 0
-	for rebuilt in [tanjiro, zenitsu, akaza]:
+	for rebuilt in [tanjiro, zenitsu, akaza, nezuko]:
 		if rebuilt != null:
 			rebuilt.reset()
 
@@ -199,7 +208,7 @@ func _process(delta: float) -> void:
 	if freeze:
 		return
 	time += delta
-	for rebuilt in [tanjiro, zenitsu, akaza]:
+	for rebuilt in [tanjiro, zenitsu, akaza, nezuko]:
 		if rebuilt != null:
 			rebuilt.frac = Engine.get_physics_interpolation_fraction() if rebuilt.interpolate else 0.0
 			rebuilt.advance(delta)
@@ -224,7 +233,7 @@ func _process(delta: float) -> void:
 	for mote: Dictionary in motes:
 		mote.life -= delta
 		mote.at += mote.velocity * delta
-		mote.velocity.y += float({"drop": 260.0, "petal": -40.0, "dust": -10.0}.get(mote.kind, 0.0)) * delta
+		mote.velocity.y += float({"drop": 260.0, "dust": -10.0}.get(mote.kind, 0.0)) * delta
 		mote.velocity *= 1.0 - minf(0.9, delta * (3.0 if mote.kind == "dust" else 0.8))
 	motes = motes.filter(func(p: Dictionary) -> bool: return p.life > 0)
 	screen_flash = maxf(0, screen_flash - delta / 0.09)
@@ -404,8 +413,6 @@ func _draw_attack(fighter: RefCounted) -> void:
 			if move.projectile_speed > 0: bounds = Rect2(16,-47,29,28)
 			_effect(key,bounds,Color(color,0.30),element_angle(move,progress,segment),move.presentation.texture_flip_h)
 			_element_motes(bounds,progress,color,18 if move.is_super() else 8)
-			if shape == "blood":
-				_embers(bounds,progress,Color(1.0,0.45,0.66),12 if move.is_super() else 6)
 			if not move.presentation.sigil_texture_key.is_empty():
 				_effect(move.presentation.sigil_texture_key,Rect2(-45,-9,90,18),Color(color,0.32))
 		"water_slash":
@@ -666,9 +673,6 @@ func _spawn_hit(at: Vector2, color: Color, intensity: float, repeated: bool, hea
 			"thunder":
 				motes.append({"kind": "bolt", "at": at, "velocity": Vector2(push, lift * 0.5).normalized() * 14.0, "life": 0.12, "duration": 0.12,
 					"size": 8.0 + _hash(n + 2.0) * 8.0, "color": Color(1.0, 0.94, 0.6)})
-			"blood":
-				motes.append({"kind": "petal", "at": at, "velocity": Vector2(push * 0.6, lift * 0.6), "life": 0.32, "duration": 0.32,
-					"size": 1.4 + _hash(n + 7.0), "color": Color(1.0, 0.5, 0.72)})
 	if super_move and not repeated:
 		screen_flash = 1.0
 
@@ -715,8 +719,6 @@ func _draw_impacts() -> void:
 		match mote.kind:
 			"drop":
 				draw_circle(at, float(mote.size) * camera.zoom * 0.5, Color(color, alpha * 0.85), true, -1, true)
-			"petal":
-				draw_colored_polygon(Kit.diamond_points(at, float(mote.size) * camera.zoom * 0.5, 1.7), Color(color, alpha))
 			"bolt":
 				var velocity: Vector2 = mote.velocity
 				var direction: Vector2 = velocity.normalized() if velocity.length() > 0 else Vector2.RIGHT
@@ -756,15 +758,9 @@ func _cut_flavor(flavor: String, points: PackedVector2Array, normals: PackedVect
 				for k in range(1, 5):
 					bolt.append(start + across * k * 2.6 + across.orthogonal() * (_hash(frame + i * 7.0 + k) - 0.5) * 4.0)
 				draw_polyline(bolt, Color(1.0, 0.95, 0.65, 0.8 * (1.0 - progress * 0.5)), 0.6, true)
-		"blood":
-			for i in range(count):
-				var index := clampi(int((0.2 + i * 0.11) * CUT_SEGMENTS), 1, CUT_SEGMENTS - 1)
-				var at: Vector2 = points[index] + Vector2((_hash(i + 2.0) - 0.5) * 4.0, -progress * (6.0 + _hash(i) * 8.0))
-				draw_colored_polygon(Kit.diamond_points(at, 0.9 + _hash(i + 5.0) * 0.8, 1.6), Color(1.0, 0.45, 0.65, 0.75 * (1.0 - progress)))
 
-func _draw_body_strike(attack: Rect2, progress: float, tint: Color, flavor: String) -> void:
+func _draw_body_strike(attack: Rect2, progress: float, tint: Color, _flavor_id: String) -> void:
 	var at := Vector2(minf(attack.end.x - 5, attack.get_center().x + 5), attack.get_center().y)
-	var fade := 1.0 - progress
 	var swing := sin(progress * PI)
 	for n in range(3):
 		var radius := 7.0 + n * 2.6 + progress * 3.0
@@ -774,10 +770,6 @@ func _draw_body_strike(attack: Rect2, progress: float, tint: Color, flavor: Stri
 		var y := at.y + (n - 1) * 3.5
 		draw_line(Vector2(attack.position.x - 4, y), Vector2(at.x - 8, y), Color(tint, 0.22 * swing), 0.6, true)
 	_glow_at(at, 10.0, Color(tint.lightened(0.3), 0.35 * swing))
-	if flavor == "blood":
-		for n in range(5):
-			var a := -0.8 + n * 0.4
-			draw_colored_polygon(Kit.diamond_points(at + Vector2(cos(a), sin(a)) * (5.0 + progress * 10.0), 1.0, 1.7), Color(1.0, 0.5, 0.7, 0.7 * fade))
 
 func _droplets(area: Rect2, progress: float, color: Color, count: int) -> void:
 	var center := area.get_center()

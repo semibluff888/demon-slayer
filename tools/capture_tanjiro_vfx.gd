@@ -3,12 +3,14 @@ extends SceneTree
 ## reference video. Run with a window and a fixed clock:
 ##   godot --path . --fixed-fps 60 --script res://tools/capture_tanjiro_vfx.gd -- [--moves=236A,236C] [--forms=normal,awakened] [--facings=1,-1] [--every=2] [--hd]
 ## Videos land in artifacts/tanjiro-vfx/<move>-<form>-<right|left>/capture.mp4.
+## --character=nezuko (or zenitsu, akaza) records another rebuilt fighter the same way,
+## into artifacts/<character>-vfx/.
 ## Add --keep-frames for t###.png and build_tanjiro_vfx_review.py contact sheets.
 const Main = preload("res://scenes/main.tscn")
 const CaptureOutput = preload("res://tools/capture_output.gd")
 const Combat = preload("res://scripts/combat.gd")
-const OUT := "res://artifacts/tanjiro-vfx/"
 var game: Node2D
+var character := "tanjiro"
 
 func _initialize() -> void:
 	_run.call_deferred()
@@ -20,6 +22,7 @@ func _option(name: String, fallback: String) -> String:
 	return fallback
 
 func _run() -> void:
+	character = _option("character", "tanjiro")
 	var moves := _option("moves", "236A,236C").split(",")
 	var forms := _option("forms", "normal,awakened").split(",")
 	var facings := _option("facings", "1,-1").split(",")
@@ -50,11 +53,11 @@ func _run() -> void:
 	quit()
 
 func _capture(move_id: String, form: String, facing: int, every: int) -> bool:
-	var folder := "%s%s-%s-%s/" % [OUT, move_id, form, "right" if facing > 0 else "left"]
+	var folder := "res://artifacts/%s-vfx/%s-%s-%s/" % [character, move_id, form, "right" if facing > 0 else "left"]
 	var capture := CaptureOutput.new()
 	if not capture.begin(folder, 60.0 / every):
 		return false
-	game.characters.assign(["tanjiro", "zenitsu"])
+	game.characters.assign([character, "zenitsu" if character != "zenitsu" else "tanjiro"])
 	game.start_match()
 	var model = game.combat
 	model.phase = "fight"
@@ -71,10 +74,10 @@ func _capture(move_id: String, form: String, facing: int, every: int) -> bool:
 		attacker.awakening_duration = 900
 	game.view.camera.reset(model.fighters)
 	game.view.reset_effects()
-	game.view.effects.tanjiro.interpolate = false
+	game.view.effects.get(character).interpolate = false
 	for n in range(4):
 		await process_frame
-	var move: Resource = model.moves["tanjiro_" + move_id]
+	var move: Resource = model.moves[character + "_" + move_id]
 	model._begin_move(attacker, move)
 	game.view.consume(model.events)
 	var total: int = move.total_frames() + 30

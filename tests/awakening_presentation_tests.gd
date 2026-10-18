@@ -28,8 +28,12 @@ func _run() -> void:
 		actor.fighter.awakening_ticks = 600
 		actor.fighter.awakening_duration = 600
 		actor.sync(0.1,false)
-		check(fx.visible == (cid != "akaza"),cid+" new VFX only on redesigned fighters")
-		if cid != "akaza":
+		# Akaza's and Nezuko's awakenings are drawn by their rebuilt effects (AkazaVfx, NezukoVfx).
+		var rebuilt: bool = cid in ["akaza", "nezuko"]
+		check(fx.visible == (not rebuilt),cid+" aura layers only where the rebuilt effects do not draw the awakening")
+		if cid == "nezuko":
+			check(art.characters[cid].awakened_portrait.resource_path.ends_with("awakening/portrait.png"),cid+" new portrait selected")
+		if not rebuilt:
 			check(fx.textures.size()==4 and fx.textures.all(func(t): return t != null),cid+" four VFX textures imported")
 			check(art.characters[cid].awakened_portrait.resource_path.ends_with("awakening/portrait.png"),cid+" new portrait selected")
 			var phase: float = fx.phase

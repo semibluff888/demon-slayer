@@ -22,7 +22,8 @@ func sync(delta: float, frozen: bool) -> void:
 	if actor == null or actor.fighter == null:
 		return
 	var cid: String = actor.fighter.character
-	visible = actor.form_active() and cid != "akaza"
+	# Akaza's and Nezuko's awakenings are drawn by their rebuilt effects (AkazaVfx, NezukoVfx).
+	visible = actor.form_active() and cid not in ["akaza", "nezuko"]
 	if selected != cid:
 		selected = cid
 		textures.clear()
@@ -63,15 +64,6 @@ func _draw() -> void:
 			_layer(2,Vector2(0,-2),Vector2(61,16),0.62*fade,0,facing<0)
 		if f.state in ["walk","dash"]:
 			_layer(1,Vector2(-facing*18,-height*0.38),Vector2(36,24),0.40*fade,0,facing<0)
-	elif selected == "nezuko":
-		_layer(0,center+Vector2(0,5),Vector2(53,height+8)*breath,0.40*fade,0,facing<0)
-		if f.grounded:
-			_layer(2,Vector2(0,-2),Vector2(49,13),0.50*fade,0,facing<0)
-		var hand := Vector2(facing*12,-height*0.57)
-		if f.move != null and f.move.kind in ["light","heavy","skill"] and f.hitbox().has_area():
-			hand = f.move.box.get_center()
-			hand.x *= facing
-		_layer(1,hand,Vector2(13,21)*breath,0.70*fade,0,facing<0)
 	elif selected == "tanjiro":
 		var cycle := fmod(phase*0.60,1.0)
 		var mouth := Vector2(facing*6,bounds.position.y+height*0.21)
