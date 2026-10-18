@@ -88,13 +88,15 @@ func command(self_state: Dictionary, opponent: Dictionary) -> Dictionary:
 				launched_ticks = 45
 			# Expansion branches read the move data, so characters without it keep
 			# their exact decisions and random sequence.
-			var string_stage: Resource = move.follow_ups.get("A") if move.kind == "light" and move.stance != "air" else null
+			var string_button := "A" if move.follow_ups.has("A") else "B"
+			var string_stage: Resource = move.follow_ups.get(string_button) if move.kind == "light" and move.stance != "air" else null
 			if move.kind == "heavy" and not move.knockdown and self_state.grounded and self_state.get("confirmed", false) and int(self_state.get("awakening_ticks", 0)) == 0 and not self_state.get("quick_awakening_used", false) and int(self_state.meter) >= 200:
 				_enqueue("BC", facing)
 			elif string_stage != null and self_state.get("confirmed", false) and _string_pays(string_stage, int(self_state.meter)) and rng.randf() < 0.45:
-				_enqueue("5A", facing)
+				_enqueue("5" + string_button, facing)
 			elif move.kind == "light" and move.stance != "air":
-				_enqueue("5C", facing)
+				# A string's light stage asks for its finisher button (Nezuko's 连续踢 ends on D).
+				_enqueue("5D" if move.follow_ups.has("D") else "5C", facing)
 			elif move.kind == "light" and "heavy" in move.cancel_targets:
 				_enqueue("5C", facing)
 			elif move.kind == "heavy" and not move.knockdown and move.stance != "air" and (self_state.get("confirmed", false) or not move.cancel_requires_hit):
@@ -148,10 +150,13 @@ func command(self_state: Dictionary, opponent: Dictionary) -> Dictionary:
 			if commands.has("6B") and observed.crouching and observed.state != "attack" and roll >= 0.35 and roll < 0.60:
 				_enqueue("6B", facing)
 			else:
-				_enqueue("2B" if roll < 0.35 else ("5A" if roll < 0.78 else "5C"), facing)
-		elif commands.has("3C") and distance < 96 and roll < 0.12 and self_state.grounded and not observed.crouching and observed.state != "attack":
+				# A fighter whose kick starts a string (Nezuko's 连续踢) opens with it.
+				var kick: Resource = definition.normals.get("5B") if definition != null else null
+				var jab := "5B" if kick != null and not kick.follow_ups.is_empty() and roll < 0.6 else "5A"
+				_enqueue("2B" if roll < 0.35 else (jab if roll < 0.78 else "5C"), facing)
+		elif (commands.has("3C") or commands.has("3D")) and distance < 96 and roll < 0.12 and self_state.grounded and not observed.crouching and observed.state != "attack":
 			# The sliding low catches a standing opponent from just outside poke range.
-			_enqueue("3C", facing)
+			_enqueue("3C" if commands.has("3C") else "3D", facing)
 		elif anti_air != null and anti_air.anti_air_until == 0 and distance < 118 and distance < _reach(anti_air) and roll < 0.14 and self_state.grounded and observed.state != "attack":
 			_enqueue("6C", facing)
 		elif distance < 210 and roll < 0.72:

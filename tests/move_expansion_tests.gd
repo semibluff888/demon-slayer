@@ -28,6 +28,7 @@ func _initialize() -> void:
 	_routes()
 	_zenitsu()
 	_akaza()
+	_nezuko()
 	var file := FileAccess.open("res://artifacts/move-expansion.json", FileAccess.WRITE)
 	file.store_string(JSON.stringify(report, "  "))
 	for failure in failures:
@@ -63,8 +64,9 @@ func _registration() -> void:
 		"tanjiro_jA", "tanjiro_jB", "tanjiro_jC", "tanjiro_jD", "tanjiro_236A", "tanjiro_236C", "tanjiro_623A", "tanjiro_623C",
 		"tanjiro_214B", "tanjiro_214D", "tanjiro_super", "tanjiro_max", "tanjiro_throw"], "base moves keep their original order")
 	check(tanjiro.normals.size() == 12 and tanjiro.motions.size() == 8, "base tables stay complete and unchanged in size")
-	var untouched: Resource = model.catalog.characters["nezuko"]
-	check(untouched.all_moves().size() == 21 and untouched.command_normals.is_empty() and untouched.air_motions.is_empty(), "untouched roster: nezuko")
+	for id: String in model.catalog.characters:
+		var expanded: Resource = model.catalog.characters[id]
+		check(expanded.all_moves().size() == 29 and not expanded.command_normals.is_empty() and not expanded.air_motions.is_empty(), "every fighter has its expansion moves: " + id)
 	var manifest: Dictionary = JSON.parse_string(Verifier.resource_snapshot())
 	check(str(manifest.tanjiro_5A.follow_ups).contains("tanjiro_5AA") and not str(manifest.tanjiro_5A.follow_ups).contains("Object"), "manifest records follow-ups by id")
 	# A follow-up cycle must still terminate and register each move once.
@@ -252,13 +254,18 @@ func _air_specials() -> void:
 		s.input(model, "236A")
 		s.advance(model, 4)
 		check(f.last_move == "tanjiro_236A", "low air input buffers the ground 水面斩, facing %d" % facing)
-	# Characters without air specials keep the original airborne behaviour.
+	# Characters without air specials keep the original airborne behaviour (every
+	# fighter has them now, so one is borrowed with its table emptied).
 	var model = s.duel("nezuko")
+	var borrowed: Resource = model.catalog.characters.nezuko
+	var saved: Dictionary = borrowed.air_motions
+	borrowed.air_motions = {}
 	model.fighters[1].x = model.fighters[0].x + 150
 	_jump(model)
 	s.advance(model, 10)
 	s.input(model, "236A")
-	check(model.fighters[0].move == null and not model.fighters[0].grounded, "Nezuko has no air special")
+	check(model.fighters[0].move == null and not model.fighters[0].grounded, "a fighter without air specials keeps the ground buffer")
+	borrowed.air_motions = saved
 	# Juggled fighters cannot use an air special before landing.
 	model = Probe.duel("tanjiro")
 	var victim = model.fighters[0]
@@ -660,6 +667,193 @@ func _akaza() -> void:
 		{"character": "akaza", "route": [["6C", "akaza_6C"], ["5A", "akaza_5A", "buffer"], ["5A", "akaza_5AA"], ["236A", "akaza_236A"]], "damage": 147},
 		{"character": "akaza", "route": [["6B", "akaza_6B"], ["236A", "akaza_236A", "delay"]], "damage": 118},
 		{"character": "akaza", "route": [["6B", "akaza_6B"], ["214B", "akaza_214B", "delay"]], "damage": 115}]
+	for example in routes:
+		for facing in [-1, 1]:
+			for corner in [false, true]:
+				_run_route(facing, corner, example)
+
+## Nezuko: 连续踢 (5B > B > D), 踵落 (6B, overhead), 滑踢 (3D, low), 爆血飞踢·落 (j.236,
+## a dive kick that a light links after) and 回旋踢·空 (j.214, two spinning kicks that
+## also hit behind her).
+func _nezuko() -> void:
+	var model := Combat.new()
+	var nezuko: Resource = model.catalog.characters.nezuko
+	var ids: Array[String] = []
+	for move in nezuko.all_moves():
+		ids.append(move.id)
+	for id in ["nezuko_5BB", "nezuko_5BBD", "nezuko_6B", "nezuko_3D", "nezuko_j236A", "nezuko_j236C", "nezuko_j214B", "nezuko_j214D"]:
+		check(ids.count(id) == 1 and model.catalog.moves.has(id), "Nezuko expansion move registered once: " + id)
+	check(ids.size() == 29 and nezuko.normals.size() == 12 and nezuko.motions.size() == 8, "Nezuko has 21 base and 8 expansion moves")
+	check(ids.slice(0, 21) == ["nezuko_5A", "nezuko_5B", "nezuko_5C", "nezuko_5D", "nezuko_2A", "nezuko_2B", "nezuko_2C", "nezuko_2D",
+		"nezuko_jA", "nezuko_jB", "nezuko_jC", "nezuko_jD", "nezuko_236A", "nezuko_236C", "nezuko_623A", "nezuko_623C",
+		"nezuko_214B", "nezuko_214D", "nezuko_super", "nezuko_max", "nezuko_throw"], "Nezuko base moves keep their original order")
+	for facing in [-1, 1]:
+		var duel = s.duel("nezuko", facing)
+		s.input(duel, "5B")
+		s.wait_contact(duel)
+		s.input(duel, "5B")
+		s.wait_contact(duel)
+		check(duel.fighters[0].last_move == "nezuko_5BB", "Nezuko 5B then B reaches 连续踢 two, facing %d" % facing)
+		s.input(duel, "5D")
+		s.wait_contact(duel)
+		check(duel.fighters[0].last_move == "nezuko_5BBD" and duel.fighters[0].move.hit_count() == 2, "连续踢 two then D reaches the two-kick finisher, facing %d" % facing)
+		s.advance(duel, 30)
+		check(duel.fighters[1].state != "knockdown", "连续踢's finisher leaves the victim standing, facing %d" % facing)
+		for pair in [["6B", "nezuko_6B"], ["3D", "nezuko_3D"], ["3B", "nezuko_2B"], ["6C", "nezuko_5C"], ["2D", "nezuko_2D"], ["5B", "nezuko_5B"], ["5A", "nezuko_5A"]]:
+			duel = s.duel("nezuko", facing)
+			s.input(duel, pair[0])
+			s.advance(duel, 4)
+			check(duel.fighters[0].last_move == pair[1], "Nezuko %s selects %s, facing %d" % [pair[0], pair[1], facing])
+		# 5A has no follow-up: B after 5A is the plain 5B.
+		duel = s.duel("nezuko", facing)
+		s.input(duel, "5A")
+		s.wait_contact(duel)
+		s.input(duel, "5B")
+		s.advance(duel, 4)
+		check(duel.fighters[0].last_move == "nezuko_5B", "Nezuko 5A then B keeps the plain 5B, facing %d" % facing)
+		# 踵落 is an overhead, 滑踢 a low.
+		for crouch in [true, false]:
+			duel = s.duel("nezuko", facing)
+			var guard := {"x": facing, "y": 1 if crouch else 0}
+			s.input(duel, "6B", {"y": 1 if crouch else 0})
+			_guard_until_contact(duel, guard)
+			s.advance(duel, 40, {}, guard)
+			check((duel.fighters[1].hp < 1000) == crouch, "踵落 is an overhead (crouch=%s), facing %d" % [crouch, facing])
+			duel = s.duel("nezuko", facing)
+			duel.fighters[0].x = duel.fighters[1].x - facing * 70
+			s.input(duel, "3D")
+			_guard_until_contact(duel, guard)
+			s.advance(duel, 40, {}, guard)
+			check(duel.fighters[0].last_move == "nezuko_3D" and (duel.fighters[1].hp < 1000) == (not crouch), "滑踢 is a low (crouch=%s), facing %d" % [crouch, facing])
+		# The finisher cancels into a special on hit only.
+		duel = s.duel("nezuko", facing)
+		duel.fighters[0].meter = 300
+		var stand := {"x": facing}
+		var blocker = duel.fighters[0]
+		for notation in ["5B", "5B", "5D"]:
+			# Hold back the whole time: releasing and pressing back again is a back dash.
+			s.input(duel, notation, stand)
+			for n in range(60):
+				if blocker.move == null or (blocker.attack_instance != s.before_instance and blocker.connected):
+					break
+				s.tick(duel, {}, stand)
+		check(blocker.last_move == "nezuko_5BBD" and blocker.connected and not blocker.confirmed, "blocked 连续踢 reaches the finisher as a block, facing %d" % facing)
+		s.input(duel, "236A", stand)
+		s.advance(duel, 12, {}, stand)
+		check(blocker.last_move == "nezuko_5BBD", "a blocked finisher cannot cancel into 爆血飞踢, facing %d" % facing)
+	# Air specials: one per jump; the dive lands into a short recovery, the spin kicks twice.
+	for facing in [-1, 1]:
+		var duel = s.duel("nezuko", facing)
+		duel.fighters[1].x = duel.fighters[0].x + facing * 220
+		_jump(duel)
+		s.advance(duel, 8)
+		s.input(duel, "236A")
+		var f = duel.fighters[0]
+		check(f.last_move == "nezuko_j236A" and not f.grounded, "airborne 236A selects 爆血飞踢·落, facing %d" % facing)
+		s.input(duel, "214B")
+		check(f.last_move == "nezuko_j236A", "Nezuko: one air special per jump, facing %d" % facing)
+		var start_x: float = f.x
+		for n in range(80):
+			if f.grounded:
+				break
+			s.tick(duel)
+		check(f.state == "landing" and f.stun >= 8 and (f.x - start_x) * facing > 20.0, "爆血飞踢·落 dives forward and lands into its recovery, facing %d" % facing)
+		duel = s.duel("nezuko", facing)
+		duel.fighters[1].x = duel.fighters[0].x + facing * 220
+		_jump(duel)
+		s.advance(duel, 8)
+		s.input(duel, "214B")
+		f = duel.fighters[0]
+		check(f.last_move == "nezuko_j214B" and not f.grounded and f.move != null and f.move.hit_count() == 2, "airborne 214B selects 回旋踢·空, facing %d" % facing)
+		for n in range(80):
+			if f.grounded:
+				break
+			s.tick(duel)
+		check(f.state == "landing" and f.stun >= 11, "回旋踢·空 lands into its recovery, facing %d" % facing)
+	# Both are high: a crouching guard is hit, a standing guard blocks.
+	for spec in [["j236A", 18, 40.0], ["j214B", 28, 30.0]]:
+		for crouch in [true, false]:
+			var sample: Dictionary = Probe.air("nezuko", _move_of("nezuko", spec[0]), spec[1], "crouch" if crouch else "stand", spec[2])
+			check(sample.contact == ("hit" if crouch else "block"), "Nezuko %s must be stand-blocked (crouch=%s, got %s)" % [spec[0], crouch, sample.contact])
+	# 回旋踢·空 also hits behind her, and the guard follows her side (a cross-up).
+	for spec in [[-1, "block"], [1, "hit"]]:
+		var probe := Probe.duel("nezuko")
+		var a = probe.fighters[0]
+		var d = probe.fighters[1]
+		a.x = 492.0
+		d.x = 480.0
+		a.facing = 1
+		a.grounded = false
+		a.state = "air"
+		a.y = Combat.FLOOR_Y - 40
+		a.vy = 0.0
+		probe._begin_move(a, _move_of("nezuko", "j214B"))
+		var contact := ""
+		for n in range(30):
+			# Holding back walks away, so the guard starts the tick before the kick is active.
+			var guarding: bool = a.move == null or a.move_frame + 1 >= a.move.startup
+			probe.step([Combat.neutral(), {"x": spec[0], "y": 0, "buttons": 0} if guarding else Combat.neutral()])
+			for event in probe.events:
+				if int(event.get("attacker", -1)) == 0 and event.type in ["hit", "block"] and contact.is_empty():
+					contact = event.type
+		check(contact == spec[1], "回旋踢·空 behind her: holding %d gives %s (got %s)" % [spec[0], spec[1], contact])
+	# Frame data on the ground (34 px).
+	var targets := {"5BB": [-2, 11], "5BBD": [-7, 9], "6B": [-5, 6], "3D": [-8, null]}
+	for key: String in targets:
+		var move := _move_of("nezuko", "nezuko_" + key)
+		var blocked: Dictionary = Probe.ground("nezuko", move, "crouch" if move.level == "low" else "stand")
+		var struck: Dictionary = Probe.ground("nezuko", move, "")
+		check(blocked.contact == "block" and blocked.advantage == targets[key][0], "Nezuko %s block advantage %d (got %s)" % [key, targets[key][0], blocked.advantage])
+		if targets[key][1] != null:
+			check(struck.contact == "hit" and struck.advantage == targets[key][1], "Nezuko %s hit advantage %d (got %s)" % [key, targets[key][1], struck.advantage])
+		report.append({"move": "nezuko_" + key, "block": blocked.advantage, "hit": struck.advantage})
+	# Air specials are punishable on block at every sampled height; the dive always
+	# leaves her free early enough on hit for a four-frame 2B to link.
+	for key in ["j236A", "j236C", "j214B", "j214D"]:
+		var move := _move_of("nezuko", key)
+		var best := -999
+		var worst_hit := 999
+		for tick in [12, 16, 20, 24, 28]:
+			for distance in [24.0, 32.0, 40.0]:
+				var sample: Dictionary = Probe.air("nezuko", move, tick, "stand", distance)
+				if sample.contact == "block" and sample.advantage != null:
+					best = maxi(best, int(sample.advantage))
+				var struck: Dictionary = Probe.air("nezuko", move, tick, "", distance)
+				if struck.contact == "hit" and struck.advantage != null:
+					worst_hit = mini(worst_hit, int(struck.advantage))
+		check(best != -999 and best <= -5, "Nezuko %s is punishable on block (best case %d)" % [key, best])
+		if key.begins_with("j236"):
+			check(worst_hit != 999 and worst_hit >= 5, "Nezuko %s leaves room for a light on hit (worst case %d)" % [key, worst_hit])
+		report.append({"move": "nezuko_" + key, "best_block": best, "worst_hit": worst_hit})
+	# The dive's link: j.236A, land, 2B while the victim is still reeling.
+	var probe := Probe.duel("nezuko")
+	var a = probe.fighters[0]
+	var d = probe.fighters[1]
+	a.x = 480.0
+	d.x = 520.0
+	a.grounded = false
+	a.state = "air"
+	a.air_ticks = 20
+	a.vy = Probe.JUMP_VY + Probe.GRAVITY * 20
+	a.y = Combat.FLOOR_Y - 90
+	probe._begin_move(a, _move_of("nezuko", "j236A"))
+	for n in range(80):
+		probe.step([Combat.neutral(), Combat.neutral()])
+		if a.grounded and a.move == null and a.stun == 0 and a.state != "landing":
+			break
+	probe._begin_move(a, _move_of("nezuko", "2B"))
+	for n in range(20):
+		probe.step([Combat.neutral(), Combat.neutral()])
+		if a.connected:
+			break
+	check(a.confirmed and a.combo == 2, "爆血飞踢·落 links into 2B (combo %d)" % a.combo)
+	var routes := [
+		{"character": "nezuko", "route": [["5B", "nezuko_5B"], ["5B", "nezuko_5BB"], ["5D", "nezuko_5BBD"]], "damage": 78},
+		{"character": "nezuko", "route": [["5B", "nezuko_5B"], ["5B", "nezuko_5BB"], ["5D", "nezuko_5BBD"], ["236A", "nezuko_236A", "delay"]], "damage": 135},
+		{"character": "nezuko", "route": [["5B", "nezuko_5B"], ["5B", "nezuko_5BB"], ["5D", "nezuko_5BBD"], ["236236A", "nezuko_super", "delay"]], "damage": 260},
+		{"character": "nezuko", "route": [["5B", "nezuko_5B"], ["5B", "nezuko_5BB"], ["5D", "nezuko_5BBD"], ["236236AC", "nezuko_max", "delay"]], "damage": 367},
+		{"character": "nezuko", "route": [["6B", "nezuko_6B"], ["5B", "nezuko_5B", "buffer"], ["5B", "nezuko_5BB"], ["236A", "nezuko_236A"]], "damage": 144},
+		{"character": "nezuko", "route": [["6B", "nezuko_6B"], ["214B", "nezuko_214B", "delay"]], "damage": 107}]
 	for example in routes:
 		for facing in [-1, 1]:
 			for corner in [false, true]:

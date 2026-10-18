@@ -23,5 +23,5 @@ animation_id = "body_air_light"
 effect_id = "body"
 knockdown = false
 box = Rect2(7, -46, 35, 54)
-cancel_targets = PackedStringArray()
+cancel_targets = PackedStringArray("heavy", "skill")
 id = "nezuko_jB"

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CharacterDefinition" load_steps=24 format=3]
+[gd_resource type="Resource" script_class="CharacterDefinition" load_steps=30 format=3]
 
 [ext_resource type="Script" path="res://scripts/character_definition.gd" id="1"]
 [ext_resource type="Resource" path="res://moves/core/nezuko_5A.tres" id="2"]
@@ -22,6 +22,13 @@
 [ext_resource type="Resource" path="res://moves/core/nezuko_super.tres" id="20"]
 [ext_resource type="Resource" path="res://moves/core/nezuko_max.tres" id="21"]
 [ext_resource type="Resource" path="res://moves/core/nezuko_throw.tres" id="22"]
+
+[ext_resource type="Resource" path="res://moves/core/nezuko_6B.tres" id="x6B"]
+[ext_resource type="Resource" path="res://moves/core/nezuko_3D.tres" id="x3D"]
+[ext_resource type="Resource" path="res://moves/core/nezuko_j236A.tres" id="xj236A"]
+[ext_resource type="Resource" path="res://moves/core/nezuko_j236C.tres" id="xj236C"]
+[ext_resource type="Resource" path="res://moves/core/nezuko_j214B.tres" id="xj214B"]
+[ext_resource type="Resource" path="res://moves/core/nezuko_j214D.tres" id="xj214D"]
 
 [ext_resource type="Resource" path="res://resources/awakening/nezuko.tres" id="awakening"]
 
@@ -68,6 +75,20 @@ motions = {
 "max": ExtResource("21")
 }
 throw_move = ExtResource("22")
-move_list = Array[Dictionary]([{"input": "236 + A/C", "name": "爆血飞踢", "description": "突进踢击 · 游戏演绎"}, {"input": "623 + A/C", "name": "升空踢", "description": "上升对空 · 游戏演绎"}, {"input": "214 + B/D", "name": "回旋踢", "description": "回旋连踢 · 游戏演绎"}, {"input": "236236 + A/C", "name": "血鬼术·爆血", "description": "多段爆血 · 1格"}, {"input": "236236 + A+C", "name": "爆血·觉醒连击", "description": "短暂觉醒连击 · 3格"}])
+command_normals = {
+"6B": ExtResource("x6B"),
+"3D": ExtResource("x3D")
+}
+air_motions = {
+"j236A": ExtResource("xj236A"),
+"j236C": ExtResource("xj236C"),
+"j214B": ExtResource("xj214B"),
+"j214D": ExtResource("xj214D")
+}
+advanced_list = Array[Dictionary]([{"input": "5B > B > D", "name": "连续踢", "description": "三段连踢派生；末段仅命中可取消必杀"},
+{"input": "6 + B", "name": "踵落", "description": "跃起下劈的中段踵落；命中可接轻踢"},
+{"input": "3 + D", "name": "滑踢", "description": "贴地滑行的下段踢，命中击倒"},
+{"input": "j.A/B > j.C/D", "name": "空中连携", "description": "空中轻技接触后可接重技或空中必杀；每跳同招一次"}])
+move_list = Array[Dictionary]([{"input": "236 + A/C", "name": "爆血飞踢", "description": "突进踢击 · 游戏演绎"}, {"input": "623 + A/C", "name": "升空踢", "description": "上升对空 · 游戏演绎"}, {"input": "214 + B/D", "name": "回旋踢", "description": "回旋连踢 · 游戏演绎"}, {"input": "j.236 + A/C", "name": "爆血飞踢·落", "description": "空中斜下俯冲踢；须站防，打得深可接轻踢"}, {"input": "j.214 + B/D", "name": "回旋踢·空", "description": "空中回旋两段，越过对手也能打背；命中击倒"}, {"input": "236236 + A/C", "name": "血鬼术·爆血", "description": "多段爆血 · 1格"}, {"input": "236236 + A+C", "name": "爆血·觉醒连击", "description": "短暂觉醒连击 · 3格"}])
 portrait_faces_right = true
 menu_focus_x = 0.64

@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="DuelMove" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="1"]
+
+[ext_resource type="Resource" path="res://resources/presentation/nezuko_body.tres" id="2"]
+
+[ext_resource type="Resource" path="res://moves/core/nezuko_5BBD.tres" id="3"]
+
+[resource]
+script = ExtResource("1")
+presentation = ExtResource("2")
+display_name = "连续踢·贰"
+kind = "light"
+level = "mid"
+startup = 5
+active = 3
+recovery = 12
+damage = 20
+hitstun = 25
+blockstun = 12
+hitstop = 4
+push = 0.6
+startup_travel = 0.8
+stance = "stand"
+animation_id = "body_stand_light"
+effect_id = "body"
+box = Rect2(7, -56, 46, 40)
+cancel_targets = PackedStringArray("skill", "super", "max")
+cancel_window = 16
+follow_ups = {
+"D": ExtResource("3")
+}
+id = "nezuko_5BB"

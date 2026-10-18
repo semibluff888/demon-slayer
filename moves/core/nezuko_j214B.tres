@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="DuelMove" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="1"]
+
+[ext_resource type="Resource" path="res://resources/presentation/nezuko_body.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+presentation = ExtResource("2")
+display_name = "回旋踢·空·轻"
+kind = "skill"
+level = "high"
+startup = 8
+active = 12
+recovery = 14
+damage = 58
+hitstun = 30
+blockstun = 14
+hitstop = 6
+push = 0.8
+stance = "air"
+animation_id = "spinning_kick"
+effect_id = "body"
+knockdown = true
+launch = -2.0
+hit_frames = PackedInt32Array(8, 14)
+box = Rect2(-34, -66, 80, 70)
+cancel_targets = PackedStringArray()
+landing_recovery = 12
+air_gravity_percent = 60
+air_velocity_frames = PackedInt32Array(0)
+air_velocities = PackedVector2Array(1.6, -1.6)
+id = "nezuko_j214B"

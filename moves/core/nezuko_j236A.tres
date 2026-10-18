@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="DuelMove" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/move_data.gd" id="1"]
+
+[ext_resource type="Resource" path="res://resources/presentation/nezuko_body.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+presentation = ExtResource("2")
+display_name = "爆血飞踢·落·轻"
+kind = "skill"
+level = "high"
+startup = 9
+active = 30
+recovery = 10
+damage = 56
+hitstun = 26
+blockstun = 10
+hitstop = 6
+push = 0.6
+stance = "air"
+animation_id = "body_air_heavy"
+effect_id = "body"
+box = Rect2(2, -30, 40, 40)
+cancel_targets = PackedStringArray()
+landing_recovery = 9
+air_gravity_percent = 40
+air_velocity_frames = PackedInt32Array(0, 9)
+air_velocities = PackedVector2Array(0.6, -1.2, 3.6, 5)
+id = "nezuko_j236A"
