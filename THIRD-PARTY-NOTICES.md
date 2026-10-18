@@ -45,3 +45,7 @@ retained in the repository's output/ directory.
 ## 必杀演出视频
 
 `art/cinematics/*.ogv` 为用户指定的《Demon Slayer: The Hinokami Chronicles》无 HUD 游戏录像剪辑。来源：https://www.youtube.com/watch?v=-cnMjZ1v4fU 。视频中的游戏画面、角色、配音及声音的权利仍归各自权利方；项目自身的许可不覆盖这些视频。剪辑来源及映射见 `docs/cinematic-ultimates.md`。
+
+## 选人展示视频
+
+`art/characters/*/select.ogv` 及其 `select-poster.png` 由用户提供的 AI 生成角色视频经抠像、去音轨后制作。原始片段、文件名与哈希保存在 `output/user-assets/select-videos/`，处理方式见 `docs/select-videos.md`。片段中的角色形象与名称同样受上文「Game content」一节约束，项目自身的许可不覆盖这些角色权利。

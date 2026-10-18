@@ -1,0 +1,258 @@
+{
+  "origin": "user-supplied",
+  "processing": "per-frame magenta key with edge unmixing; premultiplied colour over a grey matte, stacked in one Theora stream; audio removed",
+  "records": [
+    {
+      "key": "akaza",
+      "original_filename": "media-generation-akaza-v3-crossed-arms-0-51f26ccc-460f-4438-b4ab-6162a8600d75.mp4",
+      "source": "output/user-assets/select-videos/raw/akaza.mp4",
+      "source_sha256": "86dd9f5cb3ddb97c8fe00f70c4b5080aa48d255de78720594b55c733cc1ed244",
+      "source_size": [
+        768,
+        1152
+      ],
+      "source_fps": 24.0,
+      "source_frames": 240,
+      "color_matrix": "bt709",
+      "params": {
+        "frame": [
+          576,
+          864
+        ],
+        "gutter": 16,
+        "theora_quality": 8,
+        "gop": 24,
+        "fade": 10,
+        "seed_key": 64.0,
+        "bg_tolerance": 24.0,
+        "bg_key_margin": 18.0,
+        "edge_radius": 4.0,
+        "interior_key": 100.0,
+        "mist_dead_zone": 14.0,
+        "spill_keep": 20.0,
+        "length_weight": 0.3
+      },
+      "loop": {
+        "source_start": 0,
+        "source_end": 239,
+        "fade": 10,
+        "score": 1.4572
+      },
+      "outputs": {
+        "video": {
+          "path": "art/characters/akaza/select.ogv",
+          "sha256": "fb0eb82758c79e6562fcc819c0c09a534c231019a906198bb934886cb8ccb007",
+          "bytes": 5076499
+        },
+        "poster": {
+          "path": "art/characters/akaza/select-poster.png",
+          "sha256": "913ad4dbbb996c5d26bbb50fc8b0f7d5eaea5bb26edb3031daf520896016ced9",
+          "bytes": 483301
+        },
+        "layout": {
+          "path": "art/characters/akaza/select.json",
+          "sha256": "4f348f3769084b763a7ee87e8a95a4ef91545956f7ce14b667f0cf9be81d9437",
+          "bytes": 314
+        }
+      },
+      "metrics": {
+        "corner_alpha_max": 0.0,
+        "magenta_residue_max": 0.00051,
+        "background_alpha_p99_max": 0.0118,
+        "codec_error_mean": 1.507,
+        "seam_step": 0.804,
+        "motion_step_p90": 14.77,
+        "step_max": 37.641
+      }
+    },
+    {
+      "key": "nezuko",
+      "original_filename": "media-generation-nezuko-battle-ready-eyes-0-a2ae29a0-6905-4843-ad24-3b852465da87.mp4",
+      "source": "output/user-assets/select-videos/raw/nezuko.mp4",
+      "source_sha256": "8f636bd2432039a43ace10ea2804a5cb5acc2bc34978b3598ad662023bef52bd",
+      "source_size": [
+        768,
+        1152
+      ],
+      "source_fps": 24.0,
+      "source_frames": 240,
+      "color_matrix": "bt709",
+      "params": {
+        "frame": [
+          576,
+          864
+        ],
+        "gutter": 16,
+        "theora_quality": 8,
+        "gop": 24,
+        "fade": 10,
+        "seed_key": 64.0,
+        "bg_tolerance": 24.0,
+        "bg_key_margin": 18.0,
+        "edge_radius": 4.0,
+        "interior_key": 100.0,
+        "mist_dead_zone": 14.0,
+        "spill_keep": 20.0,
+        "length_weight": 0.3
+      },
+      "loop": {
+        "source_start": 0,
+        "source_end": 239,
+        "fade": 10,
+        "score": 1.5894
+      },
+      "outputs": {
+        "video": {
+          "path": "art/characters/nezuko/select.ogv",
+          "sha256": "b4adda6f71f4b6a4f0d5cb38d56141e0239f2fa29a99a39c61bac718790addd6",
+          "bytes": 2957271
+        },
+        "poster": {
+          "path": "art/characters/nezuko/select-poster.png",
+          "sha256": "9543cf70f1fcab56906f845eeee071af3fc1859a058ef9b9dec3ffda30f1cdc6",
+          "bytes": 429404
+        },
+        "layout": {
+          "path": "art/characters/nezuko/select.json",
+          "sha256": "75fab5de7ec00cbb7cddea56623bda5f093291bc04872cc1d6d145e9f595dd80",
+          "bytes": 315
+        }
+      },
+      "metrics": {
+        "corner_alpha_max": 0.0,
+        "magenta_residue_max": 0.00016,
+        "background_alpha_p99_max": 0.0157,
+        "codec_error_mean": 1.511,
+        "seam_step": 26.561,
+        "motion_step_p90": 27.688,
+        "step_max": 43.893
+      }
+    },
+    {
+      "key": "tanjiro",
+      "original_filename": "media-generation-tanjiro-new-3-turn-0-1857ef30-c000-41ee-b8ef-ffc971d9ff34.mp4",
+      "source": "output/user-assets/select-videos/raw/tanjiro.mp4",
+      "source_sha256": "1ce8ec9f58ae0dbe1241cbaf6c95ade8d559e95878ac42d6046475c368b50965",
+      "source_size": [
+        768,
+        1152
+      ],
+      "source_fps": 24.0,
+      "source_frames": 240,
+      "color_matrix": "bt709",
+      "params": {
+        "frame": [
+          576,
+          864
+        ],
+        "gutter": 16,
+        "theora_quality": 8,
+        "gop": 24,
+        "fade": 10,
+        "seed_key": 64.0,
+        "bg_tolerance": 24.0,
+        "bg_key_margin": 18.0,
+        "edge_radius": 4.0,
+        "interior_key": 100.0,
+        "mist_dead_zone": 14.0,
+        "spill_keep": 20.0,
+        "length_weight": 0.3
+      },
+      "loop": {
+        "source_start": 0,
+        "source_end": 239,
+        "fade": 10,
+        "score": 1.6852
+      },
+      "outputs": {
+        "video": {
+          "path": "art/characters/tanjiro/select.ogv",
+          "sha256": "f0bf1a311ed496d09f22c3835de682dc17da595559b4e1f199d58e52b0df1ca1",
+          "bytes": 3725136
+        },
+        "poster": {
+          "path": "art/characters/tanjiro/select-poster.png",
+          "sha256": "432f021637251e79b94578dbf8475963e71dacd842d2cd1cc189553f6fde6687",
+          "bytes": 366961
+        },
+        "layout": {
+          "path": "art/characters/tanjiro/select.json",
+          "sha256": "250bf77cde99be80a63e086acbc1f963051f55cf21cb4f8861721fe46c3e327b",
+          "bytes": 315
+        }
+      },
+      "metrics": {
+        "corner_alpha_max": 0.0,
+        "magenta_residue_max": 0.00014,
+        "background_alpha_p99_max": 0.0118,
+        "codec_error_mean": 1.254,
+        "seam_step": 0.775,
+        "motion_step_p90": 17.568,
+        "step_max": 23.275
+      }
+    },
+    {
+      "key": "zenitsu",
+      "original_filename": "media-generation-zenitsu-doze-0-8d24c954-39f4-40fe-b1a3-69f72cce490c.mp4",
+      "source": "output/user-assets/select-videos/raw/zenitsu.mp4",
+      "source_sha256": "369ef263e467381157f585b8a390f57732bcee8448d56d46b5d7a8440f5c63ab",
+      "source_size": [
+        768,
+        1152
+      ],
+      "source_fps": 24.0,
+      "source_frames": 240,
+      "color_matrix": "bt709",
+      "params": {
+        "frame": [
+          576,
+          864
+        ],
+        "gutter": 16,
+        "theora_quality": 8,
+        "gop": 24,
+        "fade": 10,
+        "seed_key": 64.0,
+        "bg_tolerance": 24.0,
+        "bg_key_margin": 18.0,
+        "edge_radius": 4.0,
+        "interior_key": 100.0,
+        "mist_dead_zone": 14.0,
+        "spill_keep": 20.0,
+        "length_weight": 0.3
+      },
+      "loop": {
+        "source_start": 0,
+        "source_end": 239,
+        "fade": 10,
+        "score": 1.6067
+      },
+      "outputs": {
+        "video": {
+          "path": "art/characters/zenitsu/select.ogv",
+          "sha256": "b089de6960ddb1b68d2a74a637402649bd9b58771cec472aa3427319a2ee3cfe",
+          "bytes": 3229892
+        },
+        "poster": {
+          "path": "art/characters/zenitsu/select-poster.png",
+          "sha256": "84d0d17264b1e5785f83e8b54646c49e6962e6a8ec63525842d45b785b94e7f6",
+          "bytes": 420813
+        },
+        "layout": {
+          "path": "art/characters/zenitsu/select.json",
+          "sha256": "0462d1240b7ed5e726ce8105666ae86a13330ec400bae408b60cfe02ba70fcdb",
+          "bytes": 316
+        }
+      },
+      "metrics": {
+        "corner_alpha_max": 0.0,
+        "magenta_residue_max": 0.00012,
+        "background_alpha_p99_max": 0.0118,
+        "codec_error_mean": 1.548,
+        "seam_step": 1.49,
+        "motion_step_p90": 14.45,
+        "step_max": 58.639
+      }
+    }
+  ]
+}
