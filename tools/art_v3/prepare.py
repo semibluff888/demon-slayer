@@ -33,11 +33,11 @@ LAYOUTS = {'tall': 3, 'wide': 2, 'full': 1}
 
 PROMPT = """Use case: identity-preserve
 Asset type: final polished 2D anime fighting-game sprite animation frames, {name} "{clip}" (frames {first}-{last} of {total}).
-Input image 1: APPROVED IDLE POSE. Exact character design, proportions, scale, line weight and rendering; it is his neutral fighting stance.
+Input image 1: APPROVED IDLE POSE. Exact character design, proportions, scale, line weight and rendering; it is {possessive} neutral fighting stance.
 Input image 2: APPROVED MODEL SHEET. Costume construction and colours.
 Input image 3: PORTRAIT. {portrait}.
 {previous}Primary request: {count} sequential full-body drawings side by side in {count} equal columns ({cell} px wide, the full 1024 px image height), left to right, one drawing per column, all facing RIGHT.
-Scale (critical): every drawing uses exactly the scale of input image 1. In the {stance} of input image 1 he is {stance_px} px tall from the top of the hair to the soles; upright he would be about {upright_px} px; hair top to chin is {head_px} px. Bent knees or a lunge lower the body, but the head, torso and legs keep exactly these lengths. Never enlarge the head, never shorten the legs; no chibi. Feet touching the ground stand on one shared baseline 40 px above the bottom edge. Blades, sleeves and the haori stay inside their own column.
+Scale (critical): every drawing uses exactly the scale of input image 1. In the {stance} of input image 1 {pronoun} is {stance_px} px tall from the top of the hair to the soles; upright {pronoun} would be about {upright_px} px; hair top to chin is {head_px} px. Bent knees or a lunge lower the body, but the head, torso and legs keep exactly these lengths. Never enlarge the head, never shorten the legs; no chibi. Feet touching the ground stand on one shared baseline 40 px above the bottom edge. Blades, sleeves and the haori stay inside their own column.
 {proportions}{weapon_label} (critical): {katana}
 Motion: {intro}
 {frames}
@@ -153,9 +153,11 @@ def make_job(args, data, pose, clip, index, chunk, overlap, previous_out, revisi
     # Rulers, the katana sentence and the banned effects come from spec/<id>.json "prompt";
     # an unarmed fighter names that line ("weapon_label") and the edit defaults for himself.
     rules = data['prompt']
+    # spec "canon.pronoun" (default he) for the pronouns in the template.
+    pronoun = data.get('canon', {}).get('pronoun', 'he')
     prompt = template.format(name=data['name'], clip=clip, first=chunk[0] + 1, last=chunk[-1] + 1, total=len(frames),
                              previous=previous, count=count, cell=cell, intro=edit.get('intro', pose['intro']), frames='\n'.join(lines),
-                             drawings=drawings,
+                             drawings=drawings, pronoun=pronoun, possessive={'he': 'his', 'she': 'her'}.get(pronoun, 'their'),
                              identity=data['identity'], style=data['style'], background=data['background_name'],
                              keep=edit.get('keep', rules.get('edit_keep', EDIT_KEEP)), change=edit.get('change', rules.get('edit_change', EDIT_CHANGE)),
                              rule=edit.get('rule', EDIT_RULE), weapon_label=rules.get('weapon_label', 'Katana'), portrait=data['portrait_note'],

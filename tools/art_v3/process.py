@@ -400,6 +400,7 @@ def process_clip(character, clip, jobs, canon, band=None, pose=None):
                                 scale=round(scale, 4), flags=flags, notes=notes, **placement))
     guard_anchor(sheets, frames, records, pose, canon, reference, band)
     size_to(character, sheets, frames, records, pose, canon, idle_height, band)
+    lying_size(sheets, frames, records, pose, canon, reference, idle_height, band)
     settle(sheets, frames, records, pose, idle_height)
     drawn = dict(frames)
     drawn_records = {r['frame']: dict(r) for r in records}
@@ -408,12 +409,18 @@ def process_clip(character, clip, jobs, canon, band=None, pose=None):
         # (Akaza's rear-hand straights), so it repeats the frame that it did. "clip:N"
         # repeats a frame of another, already processed clip (2D starts and ends on the
         # held crouch, crouch frame 5). Copies read the frames as drawn, so two frames
-        # can swap places (Akaza's super rises 8 -> 10 -> 9).
+        # can swap places (Akaza's super rises 8 -> 10 -> 9). "clip:N:mirror" flips the copy
+        # round the feet anchor (Nezuko's back throw ends facing the victim behind her, on
+        # idle frame 0 turned round, so the game's turn to face her changes nothing).
         record = next(r for r in records if r['frame'] == int(target))
         if isinstance(source, str):
-            other, number = source.split(':')
+            other, number = source.split(':')[:2]
             folder = production(character) / 'imports' / other
             frames[int(target)] = Image.open(folder / ('frame-%02d.png' % int(number))).convert('RGBA')
+            if source.endswith(':mirror'):
+                flipped = Image.new('RGBA', frames[int(target)].size)
+                flipped.paste(ImageOps.mirror(frames[int(target)]), (2 * ANCHOR[0] - frames[int(target)].width, 0))
+                frames[int(target)] = flipped
             placed = next(r for r in read(folder.parent / (other + '.json'))['frames'] if r['frame'] == int(number))
             placed = dict(placed, flags=[], height_vs_idle=placed.get('height_vs_idle'))
         else:
@@ -459,10 +466,17 @@ def guard_anchor(sheets, frames, records, pose, canon, reference, band):
         return
     texts = pose.get('frames', [])
     guard = set(range(len(texts))) if pose.get('stance') else {i for i, text in enumerate(texts) if any(p in text for p in config['phrases'])}
-    belt = anatomy.profile()['materials']['classes'][config.get('belt', 'navy')]
+    # Pose "guard_frames" names them instead (Nezuko's 236: its return drawing, replaced by
+    # idle frame 0, sat on an overlap-calibrated sheet that came out small and pulled the
+    # clip's flying kick up by a seventh).
+    guard = set(pose.get('guard_frames', guard))
+    # "belt": null when no colour band marks the waist (Nezuko's checkered obi breaks up
+    # under the band opening): the torso then never vetoes or allows a correction.
+    name = config.get('belt', 'navy')
+    belt = anatomy.profile()['materials']['classes'][name] if name else None
     idle_height = body_height(reference)
     idle_area = float(np.sqrt((reference[:, :, 3] > 150).sum()))
-    idle_torso = anatomy.torso(reference, belt)
+    idle_torso = anatomy.torso(reference, belt) if belt else None
 
     def height(index):
         return body_height(np.asarray(frames[index])) / idle_height
@@ -474,6 +488,8 @@ def guard_anchor(sheets, frames, records, pose, canon, reference, band):
         return float(np.sqrt(height(index) * area(index)))
 
     def torso(index):
+        if not idle_torso:
+            return None
         length = anatomy.torso(np.asarray(frames[index]), belt)
         ratio = length / idle_torso if length else None
         return ratio if ratio and 0.6 < ratio < 1.6 else None
@@ -534,6 +550,42 @@ def rescale(data, factor, why, frames, records, pose, canon, idle_height, band):
         if band and mode == 'feet' and (standing is None or index in standing) and not band[0] <= ratio <= band[1]:
             flags.append('height %.0f%% of the idle' % (ratio * 100))
         record.update(scale=round(scale, 4), flags=flags, height_vs_idle=round(ratio, 3), **{k: placement[k] for k in ('root_x', 'offset', 'clipped')})
+
+
+def lying_size(sheets, frames, records, pose, canon, reference, idle_height, band):
+    """Pose "lying_size": {"length": L, "area": A} (Nezuko's knockdown, throws and round
+    defeat): a body on the floor reads against the idle the player sees, and hers is a low
+    stance (0.80 of standing), so lying at her full standing length she looked a fifth too
+    big beside it (her old art lay at 0.90-0.98 of the idle's height, the other fighters at
+    0.95-0.98). A sheet with a flat drawing (main axis at least 1.8 times the cross axis)
+    shrinks until those drawings' body length is at most L times the idle's height, and every
+    sheet (struck, falling: their flung limbs and hair read large) until its median silhouette
+    area is at most A times the idle's. Only ever shrinks; drawings replaced later do not count,
+    nor the ones in "keep" (a throw victim still standing when grabbed, the KO hit's first
+    reel: shrinking them would pop her smaller the moment she is caught)."""
+    config = pose.get('lying_size')
+    if not config:
+        return
+    idle_area = float(np.sqrt((reference[:, :, 3] > 150).sum()))
+    skipped = unshown(pose) | set(config.get('keep', []))
+    for data in sheets:
+        if 'placed' not in data or data['fixed']:
+            continue
+        shown = [i for i, _, _ in data['placed'] if i not in skipped]
+        if not shown:
+            continue
+        axes = {i: anatomy.body_axes(np.asarray(frames[i])) for i in shown}
+        flat = [axes[i][0] / idle_height for i in shown if axes[i][0] >= 1.8 * max(1.0, axes[i][1])]
+        area = statistics.median(float(np.sqrt((np.asarray(frames[i])[:, :, 3] > 150).sum())) / idle_area for i in shown)
+        factor, why = 1.0, []
+        if flat and statistics.median(flat) > config['length']:
+            factor = config['length'] / statistics.median(flat)
+            why.append('lying length %.2f > %.2f' % (statistics.median(flat), config['length']))
+        if area * factor > config['area']:
+            factor = config['area'] / area
+            why.append('area %.2f > %.2f' % (area, config['area']))
+        if factor < 1.0:
+            rescale(data, factor, ', '.join(why), frames, records, pose, canon, idle_height, band)
 
 
 def size_to(character, sheets, frames, records, pose, canon, idle_height, band):

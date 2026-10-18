@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/move_data.gd" id="1"]
 
-[ext_resource type="Resource" path="res://resources/presentation/nezuko_body.tres" id="2"]
+[ext_resource type="Resource" path="res://resources/presentation/nezuko_air_kick.tres" id="2"]
 
 [resource]
 script = ExtResource("1")
@@ -19,7 +19,7 @@ blockstun = 10
 hitstop = 6
 push = 0.6
 stance = "air"
-animation_id = "body_air_heavy"
+animation_id = "air_dive"
 effect_id = "body"
 box = Rect2(2, -30, 40, 40)
 cancel_targets = PackedStringArray()

@@ -19,6 +19,10 @@ extends Resource
 var model_scale: float = 1.0
 var awakening: Resource
 var awakening_frames: SpriteFrames
+## Timing of the form atlas's own clips (fps, breaks, timelines, idle loop). Usually the
+## same as the normal atlas; a kept form atlas (Nezuko's demon form keeps its shipped
+## drawings beside the redrawn normal atlas) has its own frame counts.
+var awakening_metadata: Dictionary = {}
 var awakened_portrait: Texture2D
 var hit_reaction_frames: PackedInt32Array = []
 @export var phases: Dictionary = {}
@@ -110,12 +114,14 @@ func missing_clips() -> Array[String]:
 func release_combat_assets() -> void:
 	frames = null
 	awakening_frames = null
+	awakening_metadata.clear()
 	phases.clear()
 	clip_metadata.clear()
 	art_ready = false
 
 func _load_awakening_assets() -> void:
 	awakening_frames = null
+	awakening_metadata.clear()
 	if awakening == null or not FileAccess.file_exists(awakening.form_atlas):
 		return
 	var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(awakening.form_atlas))
@@ -126,6 +132,7 @@ func _load_awakening_assets() -> void:
 	var directory: String = str(awakening.form_atlas).get_base_dir() + "/"
 	for clip: String in parsed.get("clips", {}):
 		var info: Dictionary = parsed.clips[clip]
+		awakening_metadata[clip] = info
 		awakening_frames.add_animation(clip)
 		awakening_frames.set_animation_loop(clip, info.get("loop", false))
 		awakening_frames.set_animation_speed(clip, float(info.get("fps", 12)))

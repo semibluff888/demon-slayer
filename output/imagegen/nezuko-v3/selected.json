@@ -1,0 +1,22 @@
+{
+  "checkpoint-1": {
+    "date": "2026-10-17",
+    "idle_candidate": 3,
+    "idle_candidate_name": "爪势中架 (claw stance), narrowed at the user's request: feet closer together, smaller claw gestures",
+    "model_sheet": "raw/nezuko-v3-model.png",
+    "model_sheet_approved": true,
+    "source": "raw/nezuko-v3-idle-candidates.png, column 3, edited by job nezuko-v3-idle-key-r1 (raw/nezuko-v3-idle-key-r1.png)",
+    "correction": {
+      "note": "The user asked for a narrower stance and smaller claws; the edit kept the head, costume and scale. The demon form is not redrawn (user decision 2026-10-18): the shipped awakened atlas (awakening-v9) stays; the demon-form sheets and keys in raw/ are kept only as a record."
+    },
+    "isolated": "references/approved-idle-candidate.png",
+    "padding": {
+      "note": "Transparent margin (left 20, top 30, right 20, bottom 0) so the idle warp can lift the hair.",
+      "left": 20,
+      "top": 30,
+      "right": 20,
+      "bottom": 0
+    },
+    "isolated_sha256": "c77589cf9952de132099251ac9bc673c3e658ded31d10d24a63fcc0b152a7867"
+  }
+}

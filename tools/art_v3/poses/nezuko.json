@@ -1,0 +1,1056 @@
+{
+  "note": "Per-frame pose scripts for Nezuko's v3 redraw (same conventions as tools/art_v3/poses/tanjiro.json and akaza.json). Frame counts, phase breaks and timing semantics match the shipped atlas; new clips (renzoku_2, renzoku_3, kakato, slide_kick, air_dive, air_land, air_spin) carry theirs in \"new\". She fights bare-handed with kicks and her fingernails as claws in the approved claw stance (input image 1: the feet a little wider than her shoulders, the knees bent, the lead hand an open claw at chest height, the rear hand a loose claw before her stomach, the bamboo muzzle on); the edit defaults change only her arms and hands (spec prompt.edit_keep / edit_change). Every clip uses wide 768x1024 columns: the haori, the long hair and her kicks do not fit a 512 column. The idle is warped from the approved key (spec/nezuko-idle-rig.json); round_intro is generated like any clip (redesigned 2026-10-18). guard_low is an edit of the crouch's last drawing (references/crouch-key.png, cut from the processed crouch), registered on crouch frame 5. The demon form is not redrawn (user decision 2026-10-18): awakened_combo (the MAX, always shown in the demon form) is marked keep_shipped and awakening_start stays in the kept awakened atlas. The last drawing of every move that returns to the stance is idle frame 0 (copy_frames \"idle:0\"; crouching moves end on crouch frame 5). \"stance\": clips that keep the stance's height (QA band vs the idle); \"upright_frames\" stand fully upright.",
+  "clips": {
+    "walk": {
+      "layout": "wide",
+      "intro": "In-place forward walk cycle in her claw stance: knees slightly bent, the lead claw held in front at chest height and the rear claw before her stomach, a fierce glare above the muzzle. A light, stalking step; the top of her head stays within about 5 percent of input image 1. The arms and the head stay steady (at most 8 px of bob); the pelvis stays at the same X in every frame; the long hair and the haori sway with the step. A seamless loop, not a story of moving right.",
+      "frames": [
+        "Contact: the near leg reaches forward RIGHT with the heel touching the ground, the far leg behind on the ball of its foot; claws held.",
+        "Weight: weight moves onto the near foot, both knees bend a little more, the far heel lifts; the haori swings back.",
+        "Passing: the far foot travels forward close to the ground under the pelvis, the near leg supports; body at its highest (still knees bent).",
+        "Opposite contact: the far leg now forward RIGHT with the heel down, the near leg behind on the ball of its foot (the legs swapped compared with frame 1); claws held.",
+        "Opposite weight: weight onto the far foot, knees bend a little more, the near heel lifts.",
+        "Opposite passing: the near foot travels forward under the pelvis, the far leg supports; flows directly into frame 1."
+      ],
+      "loop": true,
+      "stance": true
+    },
+    "walk_back": {
+      "layout": "wide",
+      "intro": "In-place BACKWARD walk cycle in her claw stance: she still faces RIGHT toward the opponent but steps back toward the LEFT, knees slightly bent, claws held before her, eyes on the opponent. Wary, light steps; the head stays within about 5 percent of input image 1; the pelvis stays at the same X in every frame. A seamless loop.",
+      "frames": [
+        "The rear foot reaches back to the LEFT, its toes touching the ground first; the front foot stays planted; claws held.",
+        "Weight moves back onto the rear foot, both knees bend a little more.",
+        "The front foot slides back under the pelvis, close to the ground.",
+        "The front foot has become the rear foot, reaching back to the LEFT on its toes (the legs swapped compared with frame 1).",
+        "Weight moves back onto it, knees bend a little more.",
+        "The other foot slides back under the pelvis; flows directly into frame 1."
+      ],
+      "loop": true,
+      "stance": true
+    },
+    "crouch": {
+      "layout": "wide",
+      "intro": "Crouching from the claw stance: she squats low on bent knees, ready to pounce, both claws held before her chest.",
+      "frames": [
+        "Start: the approved claw stance of input image 1 (the feet a little wider than her shoulders, the knees bent, the back upright, the lead hand an open claw held in front at chest height, the rear hand a loose claw in front of her stomach, the bamboo muzzle on, a fierce glare).",
+        "The knees begin to bend, hips lowering, the claws held.",
+        "Halfway down: knees bent, the torso leaning forward a little.",
+        "Crouched: a low squat on the balls of her feet, knees apart, torso leaning forward, both claws held before her chest, the haori and the hair spilling onto the floor behind her.",
+        "Crouched and settled, the same low squat, a slight breath out.",
+        "Crouched hold: the same low squat as frame 4, claws up, eyes fierce (this drawing is held while she stays down)."
+      ]
+    },
+    "jump": {
+      "layout": "wide",
+      "intro": "Neutral jump pieces (each frame is a separate state used at a different moment of the jump): crouch to spring, rising, apex, falling, landing and recovered. Facing RIGHT.",
+      "frames": [
+        "Spring: a deep crouch about to jump, knees fully bent, arms swung down and back, eyes up.",
+        "Rising: body stretched upward in the air, legs extended below her and toes pointed, both arms swinging up, the hair trailing below.",
+        "Apex: airborne, knees tucked up, both hands as claws before her chest, the body compact at the top of the jump, the hair floating.",
+        "Falling: legs starting to extend down toward the ground, claws ready, the hair streaming up.",
+        "Landing: touching down in a deep crouch, knees bent to absorb the fall, one hand low in front of her.",
+        "Return: back in the approved claw stance, almost identical to input image 1."
+      ],
+      "copy_frames": {
+        "5": "idle:0"
+      }
+    },
+    "guard": {
+      "layout": "wide",
+      "intro": "Standing block: she raises both forearms crossed in front of her face to take the blow, the stance braced; open hands.",
+      "frames": [
+        "Preparation: from the claw stance both forearms rising toward her face.",
+        "Block impact: both forearms crossed in front of her face, elbows tight, knees bent, leaning back slightly, eyes squeezed above the muzzle.",
+        "Pushed back: the same crossed-forearm block, her weight rocked onto the rear leg, the hair swinging forward.",
+        "Holding the block firm, forearms crossed, eyes glaring over them.",
+        "Lowering the forearms a little, the claws opening again.",
+        "Return: back in the approved claw stance, almost identical to input image 1."
+      ],
+      "copy_frames": {
+        "5": "idle:0"
+      }
+    },
+    "hit": {
+      "layout": "wide",
+      "intro": "Taking a hit while standing: the impact snaps her head and torso back, then she recovers into her claw stance. Each frame is a separate pain drawing.",
+      "frames": [
+        "Lead-in: the approved claw stance of input image 1 (the feet a little wider than her shoulders, the knees bent, the back upright, the lead hand an open claw held in front at chest height, the rear hand a loose claw in front of her stomach, the bamboo muzzle on, a fierce glare).",
+        "Light recoil: head and torso snapping back a little, one hand dropping, eyes squeezed shut above the muzzle.",
+        "Heavy recoil: torso bent back, chin up, both arms flung out to the sides, the rear knee bending, the hair flying forward.",
+        "Stagger: hunched forward, one arm raised to cover, the other hanging, glaring.",
+        "Recovering: straightening up, the claws rising.",
+        "Return: back in the approved claw stance, almost identical to input image 1."
+      ],
+      "copy_frames": {
+        "5": "idle:0",
+        "3": "hit_guard:0"
+      }
+    },
+    "hit_guard": {
+      "layout": "full",
+      "intro": "The last drawing of her hit reaction, held while she is stunned, an edit of the approved claw stance (input image 1): she is back in her stance but still hurting. The stance, legs, feet and body size never move, so the hit reaction ends exactly at the size and stance of the idle.",
+      "frames": [
+        "Hurt, back in the claw stance: the stance of input image 1 with the same legs, feet and stance; her shoulders hunched up and a little forward, head lowered slightly, a pained face above the muzzle (eyes squeezed, one eye almost shut, brows knitted); the lead claw drawn in a little lower before her chest, the rear hand pressed to her stomach."
+      ],
+      "helper": true,
+      "edit": {
+        "image": "output/imagegen/nezuko-v3/imports/idle-warp/idle-00.png",
+        "keep": "the size and the position of the figure, both legs, both feet, the stance, the kimono below the obi, the leg wraps and sandals, the costume design, the line weight and the colours",
+        "change": "her face expression, the tilt of her head, her shoulders, her arms and hands, and the haori and hair only where the shoulders move them",
+        "rule": "Never move, enlarge or shrink the body; the legs and feet stay exactly as in input image 1."
+      },
+      "register": {
+        "clip": "idle",
+        "frame": 0
+      },
+      "reviewed": {
+        "0": "hunched, head lowered: hair and shoulders merge into the head ruler; registered on idle frame 0"
+      }
+    },
+    "knockdown": {
+      "layout": "wide",
+      "intro": "Knocked off her feet onto her back: thrown backward to the LEFT and landing flat. In the lying frames the body is flat on her back on the ground, the body horizontal, seen exactly from the side at ground level (never from above).",
+      "frames": [
+        "Struck: torso thrown back, arms flung up, both feet leaving the ground.",
+        "Airborne falling backward to the LEFT, body tilted about 45 degrees, legs in the air, the hair streaming.",
+        "Falling: body nearly horizontal just above the ground, head to the LEFT, legs to the RIGHT.",
+        "Impact: her back hits the ground, legs bouncing up, arms out.",
+        "Lying flat on her back on the ground, the body horizontal, seen exactly from the side at ground level (never from above), head to the LEFT, one knee bent.",
+        "Lying still flat on her back on the ground, the body horizontal, seen exactly from the side at ground level (never from above), head to the LEFT, legs flat."
+      ],
+      "anchor": "feet",
+      "ground_mode": "lying",
+      "ground_frames": [
+        3,
+        4,
+        5
+      ],
+      "lying_size": {
+        "length": 1.0,
+        "area": 0.9,
+        "keep": []
+      }
+    },
+    "throw": {
+      "layout": "wide",
+      "intro": "Throw attempt: a quick reach with her open lead hand to grab the collar in front of her, then back to her stance. No opponent drawn.",
+      "frames": [
+        "Start: the approved claw stance of input image 1 (the feet a little wider than her shoulders, the knees bent, the back upright, the lead hand an open claw held in front at chest height, the rear hand a loose claw in front of her stomach, the bamboo muzzle on, a fierce glare), leaning in.",
+        "Reaching: the lead hand open and shooting forward at chest height, a small step.",
+        "Grab: the arm fully extended forward to the RIGHT, the clawed fingers closing on an empty collar at chest height.",
+        "Holding: the arm still extended, fingers closed, leaning forward.",
+        "Pulling back: the hand returning toward her chest.",
+        "Return: back in the approved claw stance, almost identical to input image 1."
+      ],
+      "copy_frames": {
+        "5": "idle:0"
+      }
+    },
+    "throw_tech": {
+      "layout": "wide",
+      "intro": "Throw escape: she breaks the grab by shoving both palms outward, then hops back into her claw stance.",
+      "frames": [
+        "Grabbed: leaning back slightly, both hands coming up to her chest.",
+        "Breaking free: both open palms shoving forward hard at chest height, elbows bending.",
+        "Push: both arms fully extended forward, palms out, front knee bent.",
+        "Recoil: stepping back a little, arms pulling back.",
+        "Claws forming, hands rising before her chest.",
+        "Return: back in the approved claw stance, almost identical to input image 1."
+      ],
+      "copy_frames": {
+        "5": "idle:0"
+      }
+    },
+    "victory": {
+      "layout": "wide",
+      "intro": "Victory pose: from her claw stance she straightens up, lowers her hands and gives a small, proud nod with her eyes softening above the muzzle. One calm continuous action. Once she stands upright her legs are straight and she is about 890 px from the hair top to the soles (hair top to chin 124 px, about 7 heads tall), clearly TALLER than her crouched claw stance in input image 1 (720 px); the head stays exactly the size of input image 1 and the legs keep their full length.",
+      "frames": [
+        "Start: the approved claw stance of input image 1 (the feet a little wider than her shoulders, the knees bent, the back upright, the lead hand an open claw held in front at chest height, the rear hand a loose claw in front of her stomach, the bamboo muzzle on, a fierce glare).",
+        "Straightening up, the claws relaxing into open hands.",
+        "Standing taller, hands lowering to her sides, looking at the fallen opponent.",
+        "Standing upright, hands at her sides, chest out, the hair settling.",
+        "Upright, hands folded loosely in front of her, a small proud nod.",
+        "Upright, hands folded in front of her, eyes soft and smiling above the muzzle."
+      ],
+      "upright_frames": [
+        3,
+        4,
+        5
+      ]
+    },
+    "stand_light": {
+      "layout": "wide",
+      "intro": "Standing light claw (5A): a fast swipe with the lead claw raking down across the space in front of her, starting and ending in the claw stance. Open hands with long fingernails curled into claws; no effects, no claw marks drawn.",
+      "frames": [
+        "Startup: from the approved claw stance of input image 1 (the feet a little wider than her shoulders, the knees bent, the back upright, the lead hand an open claw held in front at chest height, the rear hand a loose claw in front of her stomach, the bamboo muzzle on, a fierce glare) her weight shifts slightly forward, the lead claw drawn up beside her head.",
+        "Chamber: the lead claw raised high beside her head, fingers spread, elbow up, eyes on the target.",
+        "Active: the lead arm swept down and forward to the RIGHT, the claw raking through the air at chest height, fingers spread, torso turned into the swipe.",
+        "Follow-through: the claw swept on down in front of her stomach, the body leaning into it.",
+        "Recovery: the arm coming back up, weight returning over the centre.",
+        "Return: back in the approved claw stance, almost identical to input image 1."
+      ],
+      "copy_frames": {
+        "5": "idle:0"
+      }
+    },
+    "stand_heavy": {
+      "layout": "wide",
+      "intro": "Standing heavy claw (5C): a big diagonal swipe with the rear claw and a lunging step, raking from high on her rear side down across the front, starting and ending in the claw stance. Open hands with long fingernails curled into claws; no effects, no claw marks drawn.",
+      "frames": [
+        "Wind-up: from the approved claw stance of input image 1 (the feet a little wider than her shoulders, the knees bent, the back upright, the lead hand an open claw held in front at chest height, the rear hand a loose claw in front of her stomach, the bamboo muzzle on, a fierce glare) the rear claw raised high above her rear shoulder, the body coiling back.",
+        "Step: the front foot stepping forward, the rear claw still high, fingers spread wide.",
+        "Active: a lunge, the rear arm sweeping diagonally DOWN and forward across her front, the claw tearing through the air at head-to-chest height to the RIGHT, the torso turned square, the haori flaring.",
+        "Follow-through: the arm swept across in front of her hips, the body leaning forward over the bent front knee.",
+        "Recovery: pulling back from the lunge, the arm rising.",
+        "Return: back in the approved claw stance, almost identical to input image 1."
+      ],
+      "copy_frames": {
+        "5": "idle:0"
+      }
+    },
+    "crouch_light": {
+      "layout": "wide",
+      "intro": "Crouching light claw (2A): from the crouch, a quick low swipe of the lead claw at knee height. Open hands with long fingernails curled into claws; no effects, no claw marks drawn.",
+      "frames": [
+        "Start: crouched low on the balls of her feet, claws before her chest.",
+        "Chamber: still crouched, the lead claw drawn back beside her shoulder.",
+        "Active: the lead arm sweeping forward low to the RIGHT, the claw raking at knee height, still crouched.",
+        "Follow-through: the claw past the front, the body leaning forward low.",
+        "Recovery: the arm coming back, still crouched.",
+        "Back in the crouch: low squat, claws before her chest."
+      ],
+      "copy_frames": {
+        "5": "crouch:5"
+      }
+    },
+    "crouch_heavy": {
+      "layout": "wide",
+      "intro": "Crouching heavy claw (2C): from the crouch she springs up into a rising claw that rakes UP in front of her to above her head. Open hands with long fingernails curled into claws; no effects, no claw marks drawn.",
+      "frames": [
+        "Start: crouched low, claws before her chest.",
+        "Sinking: lower still, the rear claw dropped down beside her knee.",
+        "Active: rising out of the crouch, the rear claw raking UP in front of her face, fingers spread, the legs straightening.",
+        "Peak: standing on her toes, the claw high above her head, the body stretched upward, the hair flying up.",
+        "Recovery: the arm coming down, knees bending back into the crouch.",
+        "Back in the crouch: low squat, claws before her chest."
+      ],
+      "copy_frames": {
+        "5": "crouch:5"
+      }
+    },
+    "air_light": {
+      "layout": "wide",
+      "intro": "Air light claw (jA): in the air, a quick forward swipe of the lead claw. Airborne in every frame. Open hands with long fingernails curled into claws; no effects, no claw marks drawn.",
+      "frames": [
+        "In the air: airborne, knees tucked up, both hands as claws before her chest, the hair and the haori streaming.",
+        "Chamber: the lead claw drawn back beside her head, the body turning.",
+        "Active: the lead arm swept forward to the RIGHT at chest height, fingers spread.",
+        "Follow-through: the claw past the front, the body leaning into it.",
+        "Recovery: the arm returning, knees tucked.",
+        "In the air: airborne, knees tucked up, both hands as claws before her chest, the hair and the haori streaming."
+      ]
+    },
+    "air_heavy": {
+      "layout": "wide",
+      "intro": "Air heavy claw (jC): a heavy swipe raking diagonally DOWN and forward in the air. Airborne in every frame. Open hands with long fingernails curled into claws; no effects, no claw marks drawn.",
+      "frames": [
+        "In the air, the rear claw raised high above her head, body arching back slightly, knees tucked.",
+        "Wind-up: the claw cocked far back over her head, torso arched, the hair streaming back.",
+        "Active: the arm sweeping down and forward, the claw raking diagonally DOWN to the lower RIGHT, torso folding forward.",
+        "Follow-through: the arm fully extended down and forward, the claw at hip height in front of her.",
+        "Recovery: the arm pulling back up, knees tucked.",
+        "In the air: airborne, knees tucked up, both hands as claws before her chest, the hair and the haori streaming."
+      ]
+    },
+    "body_stand_light": {
+      "layout": "wide",
+      "intro": "Standing light kick (5B): a fast front snap kick at waist height, starting and ending in the claw stance. Sandal on the foot (white tabi, red-strapped zori); no effects. The supporting knee stays bent as in the claw stance, so her head stays at the height of input image 1 (she never straightens up taller on the support leg).",
+      "frames": [
+        "Start: the approved claw stance of input image 1 (the feet a little wider than her shoulders, the knees bent, the back upright, the lead hand an open claw held in front at chest height, the rear hand a loose claw in front of her stomach, the bamboo muzzle on, a fierce glare), weight shifting onto the rear leg, the rear knee still bent.",
+        "Chamber: the front knee raised high in front of her, foot pulled back, the support knee bent, the head no higher than in input image 1.",
+        "Active: the front leg snapping fully straight forward to the RIGHT at waist height, sole forward, standing on the rear leg, claws up.",
+        "Snap: the same full extension.",
+        "Recovery: the knee folding back in front of her.",
+        "Return: back in the approved claw stance, almost identical to input image 1."
+      ],
+      "copy_frames": {
+        "5": "idle:0"
+      }
+    },
+    "body_stand_heavy": {
+      "layout": "wide",
+      "intro": "Standing heavy kick (5D): a high roundhouse kick at head height, starting and ending in the claw stance. Sandal on the foot (white tabi, red-strapped zori); no effects. The supporting knee stays bent as in the claw stance, so her head stays at the height of input image 1 (she never straightens up taller on the support leg).",
+      "frames": [
+        "Start: the approved claw stance of input image 1 (the feet a little wider than her shoulders, the knees bent, the back upright, the lead hand an open claw held in front at chest height, the rear hand a loose claw in front of her stomach, the bamboo muzzle on, a fierce glare), weight shifting onto the front foot.",
+        "Chamber: the kicking knee swinging up high, the hips turning, arms out for balance.",
+        "Active: the leg whipping round fully extended forward to the RIGHT at head height, the instep leading, standing on one leg, the haori swirling.",
+        "Snap: the same high extension, the body leaning back to balance.",
+        "Recovery: the leg folding back down.",
+        "Return: back in the approved claw stance, almost identical to input image 1."
+      ],
+      "copy_frames": {
+        "5": "idle:0"
+      }
+    },
+    "body_crouch_light": {
+      "layout": "wide",
+      "intro": "Crouching light kick (2B): from the crouch, a quick low poke kick at shin height. Sandal on the foot (white tabi, red-strapped zori); no effects.",
+      "frames": [
+        "Start: crouched low, claws before her chest.",
+        "Chamber: still crouched, the front knee drawn in.",
+        "Active: the front leg shooting straight out forward to the RIGHT at shin height, low to the ground, still crouched on the other leg.",
+        "Snap: the same low extension.",
+        "Recovery: the leg pulling back in.",
+        "Back in the crouch: low squat, claws before her chest."
+      ],
+      "copy_frames": {
+        "5": "crouch:5"
+      }
+    },
+    "body_crouch_heavy": {
+      "layout": "wide",
+      "intro": "Crouching heavy kick (2D): a spinning low sweep along the floor. Sandal on the foot (white tabi, red-strapped zori); no effects.",
+      "frames": [
+        "Start: crouched low, claws before her chest.",
+        "Dropping lower onto one bent leg, one hand going down to the floor, the body starting to spin.",
+        "Active: very low, crouched on one bent leg with one hand on the floor; the other leg swept far out to the RIGHT along the floor, fully straight at ankle height, the haori and the hair fanning out.",
+        "Follow-through: the sweep continuing, the leg still low and straight.",
+        "Recovery: drawing the leg back in, still low.",
+        "Back in the crouch: low squat, claws before her chest."
+      ],
+      "copy_frames": {
+        "5": "crouch:5",
+        "0": "crouch:5",
+        "3": 2
+      }
+    },
+    "body_air_light": {
+      "layout": "wide",
+      "intro": "Air light kick (jB): a quick forward kick in the air. Sandal on the foot (white tabi, red-strapped zori); no effects. Airborne in every frame.",
+      "frames": [
+        "In the air: airborne, knees tucked up, both hands as claws before her chest, the hair and the haori streaming.",
+        "Chamber: the front knee drawn up to her chest.",
+        "Active: the front leg kicked straight forward to the RIGHT at chest height.",
+        "Snap: the same extension.",
+        "Recovery: the knee folding back.",
+        "In the air: airborne, knees tucked up, both hands as claws before her chest, the hair and the haori streaming."
+      ]
+    },
+    "body_air_heavy": {
+      "layout": "wide",
+      "intro": "Air heavy kick (jD): a powerful flying stamp kick driven diagonally DOWN and forward. Sandal on the foot (white tabi, red-strapped zori); no effects. Airborne in every frame.",
+      "frames": [
+        "In the air: airborne, knees tucked up, both hands as claws before her chest, the hair and the haori streaming.",
+        "Chamber: the body turning side-on, the kicking knee pulled up to her chest, arms back.",
+        "Active: the leg thrust out straight diagonally DOWN and forward to the lower RIGHT, heel leading, the body leaning back behind it.",
+        "Hold: the same diagonal extension.",
+        "Recovery: the leg folding back, knees tucked.",
+        "In the air: airborne, knees tucked up, both hands as claws before her chest, the hair and the haori streaming."
+      ],
+      "anchor": "pelvis"
+    },
+    "dash_forward": {
+      "layout": "wide",
+      "intro": "Forward dash: a fast, low, feral run toward the opponent (to the RIGHT), torso leaning far forward, both claws forward, the hair and the haori streaming behind her.",
+      "frames": [
+        "Push-off: the rear leg driving off the ground, body leaning far forward, low.",
+        "Running stride: the front leg reaching far forward, body low and leaning hard, claws forward.",
+        "Running stride: the legs switched, still low and leaning far forward.",
+        "Last stride: the front foot planting far ahead, body still leaning forward.",
+        "Braking: feet planted, the body coming upright, claws rising.",
+        "Return: back in the approved claw stance, almost identical to input image 1."
+      ],
+      "copy_frames": {
+        "5": "idle:0"
+      }
+    },
+    "dash_back": {
+      "layout": "wide",
+      "intro": "Back dash: a quick hop backward away from the opponent (to the LEFT), still facing RIGHT, both claws kept up.",
+      "frames": [
+        "Push: knees bend, weight on the front foot, about to spring backward.",
+        "Hop: both feet off the ground, the body moving back to the LEFT, torso upright, claws up.",
+        "Airborne backward: knees tucked, feet just above the ground, leaning back a little, the hair swinging forward.",
+        "Landing: the rear foot touching down first behind her, knees bending deep.",
+        "Absorbing: low on bent knees, hands rising.",
+        "Return: back in the approved claw stance, almost identical to input image 1."
+      ],
+      "copy_frames": {
+        "5": "idle:0"
+      }
+    },
+    "jump_forward": {
+      "layout": "wide",
+      "intro": "Forward somersault jump: a full forward flip in the air, moving to the RIGHT, the body rotating CLOCKWISE (head leading forward and down), arms tucked, the long hair whipping round.",
+      "frames": [
+        "Crouched to spring forward, arms swung back.",
+        "Springing up and forward, body stretched diagonally, arms reaching forward.",
+        "Tucking into the flip, knees pulled up, head dipping forward.",
+        "Tucked ball rotated a quarter turn forward: head pointing forward and down to the RIGHT, back on top.",
+        "Upside down in a tight tuck: head at the bottom, feet at the top.",
+        "Three-quarter turn: head pointing back and down to the LEFT, knees in front.",
+        "Coming round: tucked, nearly upright again, head on top.",
+        "Upright in the air, knees tucked high, claws before her chest.",
+        "Legs extending down, falling upright.",
+        "Falling upright, legs reaching for the ground, claws ready.",
+        "Landing in a crouch, knees bent.",
+        "Return: back in the approved claw stance, almost identical to input image 1."
+      ],
+      "anchor": "pelvis",
+      "copy_frames": {
+        "11": "idle:0"
+      }
+    },
+    "jump_back": {
+      "layout": "wide",
+      "intro": "Backward somersault jump: a full backward flip in the air, moving to the LEFT while still facing RIGHT, the body rotating COUNTER-CLOCKWISE (head going back and down to the LEFT).",
+      "frames": [
+        "Crouched to spring backward, arms swung forward.",
+        "Springing up and back, body arching backward, arms thrown up and back.",
+        "Arched back in the air, head tipping back to the LEFT, knees starting to tuck.",
+        "Tucked ball rotated a quarter turn backward: head pointing back and down to the LEFT.",
+        "Upside down in a tight tuck: head at the bottom, feet at the top.",
+        "Three-quarter turn: head pointing forward and down to the RIGHT.",
+        "Coming round: tucked, nearly upright again, head on top.",
+        "Upright in the air, knees tucked high, claws before her chest.",
+        "Legs extending down, falling upright.",
+        "Falling upright, legs reaching for the ground, claws ready.",
+        "Landing in a crouch, knees bent.",
+        "Return: back in the approved claw stance, almost identical to input image 1."
+      ],
+      "anchor": "pelvis",
+      "copy_frames": {
+        "11": "idle:0"
+      }
+    },
+    "roll_forward": {
+      "layout": "wide",
+      "intro": "Evasive roll forward along the ground (to the RIGHT): she dives low into a shoulder roll and comes back up in her claw stance.",
+      "frames": [
+        "Start: the approved claw stance of input image 1 (the feet a little wider than her shoulders, the knees bent, the back upright, the lead hand an open claw held in front at chest height, the rear hand a loose claw in front of her stomach, the bamboo muzzle on, a fierce glare).",
+        "Ducking forward, body lowering, one hand reaching toward the floor ahead.",
+        "Diving forward: both hands on the floor ahead, head tucking in, hips up.",
+        "Shoulder roll: rolling over her shoulder, back on the floor, legs coming over the top, the haori wrapping round her.",
+        "Rolling: upside down on her upper back, knees over her chest.",
+        "Rolling: on her back, legs coming down forward.",
+        "Rolling up: sitting up, knees tucked, feet reaching for the floor.",
+        "Coming up onto one knee, one hand on the floor.",
+        "Crouched on both feet, rising.",
+        "Rising from the crouch, hands coming up.",
+        "Almost up, knees bent, claws forming.",
+        "Return: back in the approved claw stance, almost identical to input image 1."
+      ],
+      "copy_frames": {
+        "11": "idle:0",
+        "9": 10,
+        "10": 9
+      }
+    },
+    "roll_back": {
+      "layout": "wide",
+      "intro": "Evasive roll backward along the ground (to the LEFT) while still facing RIGHT: she sits back into a backward shoulder roll and comes back up in her claw stance.",
+      "frames": [
+        "Start: the approved claw stance of input image 1 (the feet a little wider than her shoulders, the knees bent, the back upright, the lead hand an open claw held in front at chest height, the rear hand a loose claw in front of her stomach, the bamboo muzzle on, a fierce glare).",
+        "Sitting back, body lowering backward, hands forward.",
+        "Rolling back onto her hips and back, knees tucked to her chest.",
+        "Backward shoulder roll: on her upper back, legs going over her head to the LEFT.",
+        "Upside down on her shoulders, legs over the top.",
+        "Legs coming down behind her to the LEFT, hands on the floor by her head.",
+        "Landing on her knees and hands, crouched.",
+        "Pushing up onto one knee.",
+        "Crouched on both feet, rising.",
+        "Rising from the crouch, hands coming up.",
+        "Almost up, knees bent, claws forming.",
+        "Return: back in the approved claw stance, almost identical to input image 1."
+      ],
+      "copy_frames": {
+        "11": "idle:0",
+        "9": 10,
+        "10": 9
+      }
+    },
+    "throw_forward": {
+      "layout": "wide",
+      "intro": "Forward throw (6D): she grabs the opponent's collar with both hands, springs up and kicks off them, flipping them down onto the floor IN FRONT of her. Draw only Nezuko; no opponent. Facing RIGHT the whole time; simple, readable poses.",
+      "frames": [
+        "Grab: lunging in, both clawed hands clamped on an empty collar at chest height in front of her.",
+        "Pull: drawing both hands (still gripping) toward her chest, leaning back, knees bending to spring.",
+        "Spring: jumping up while gripping, both knees drawn up to her chest in front of her.",
+        "Kick off: both feet thrust forward at chest height as if planting them on someone, still gripping, the body almost horizontal in the air.",
+        "Flip: pushing off with both legs, releasing the grip, her body rising backward in the air.",
+        "Airborne backward: knees tucked, arms out, the hair and the haori flying.",
+        "Coming down: legs extending, looking down in front of her (to the RIGHT and down).",
+        "Landing: touching down in a crouch, one hand on the floor.",
+        "Crouched, glaring at the opponent on the floor in front of her.",
+        "Rising from the crouch, hands coming up.",
+        "Almost up, claws forming.",
+        "Return: back in the approved claw stance, almost identical to input image 1."
+      ],
+      "copy_frames": {
+        "11": "idle:0"
+      }
+    },
+    "throw_success": {
+      "layout": "wide",
+      "intro": "Back throw (4D): she grabs the opponent's collar with both hands, spins round on the spot and hurls the opponent over her shoulder onto the floor behind her, then turns back into her claw stance. Draw only Nezuko; no opponent. Head, face, chest and feet always turn TOGETHER: never a body turned one way with the face looking the other way.",
+      "frames": [
+        "Grab: facing RIGHT in her stance, both clawed hands clamped on an empty collar at chest height in front of her.",
+        "Pull: facing RIGHT, hauling both hands back toward her chest, leaning back, starting to pivot on her feet.",
+        "Turning round: halfway through the turn, her chest and face turned toward the viewer, both hands swinging up beside her shoulder.",
+        "Swing: facing LEFT now, both hands high over her right shoulder as if hauling someone over it, the body bent forward.",
+        "Hurl: facing LEFT, both arms driving down in front of her to the LEFT, bent deep forward.",
+        "Release: facing LEFT, bent forward, hands open low in front of her, as if the opponent was slammed down there.",
+        "Straightening up, still facing LEFT, looking down at the floor in front of her.",
+        "Turning back: chest and face toward the viewer, halfway round.",
+        "Facing RIGHT again, stepping back into her stance.",
+        "Facing RIGHT, claws rising.",
+        "Almost back in the claw stance.",
+        "Return: back in the approved claw stance, almost identical to input image 1."
+      ],
+      "copy_frames": {
+        "11": "idle:0:mirror"
+      },
+      "mirror_frames": [
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    "thrown": {
+      "layout": "wide",
+      "intro": "Back-throw victim: grabbed, pulled over the thrower's shoulder, flipped forward head first and slammed flat on her back. Draw only Nezuko (no thrower). The flip rotates clockwise: the head leads to the RIGHT and down, the legs swing up and over to the RIGHT. In the lying frames the body is flat on her back on the ground, the body horizontal, seen exactly from the side at ground level (never from above).",
+      "frames": [
+        "Grabbed: standing, startled, leaning forward, hands at her collar.",
+        "Pulled forward off balance, on her toes, leaning far forward.",
+        "Hauled up: feet leaving the ground, body tipping forward head first.",
+        "Diving head first: body diagonal, head down to the RIGHT, legs up behind.",
+        "Upside down in the air, head at the bottom, legs straight up.",
+        "Flipping over: legs swinging over to the RIGHT, back toward the ground.",
+        "Falling flat on her back, horizontal, head to the LEFT.",
+        "Just above the ground, horizontal, arms out.",
+        "Slammed flat on her back on the ground, the body horizontal, seen exactly from the side at ground level (never from above), head to the LEFT.",
+        "Impact bounce: lying flat on her back on the ground, the body horizontal, seen exactly from the side at ground level (never from above), legs lifting slightly.",
+        "Lying flat on her back on the ground, the body horizontal, seen exactly from the side at ground level (never from above), one arm across her chest.",
+        "Lying still flat on her back on the ground, the body horizontal, seen exactly from the side at ground level (never from above)."
+      ],
+      "anchor": "pelvis",
+      "ground_mode": "lying",
+      "ground_frames": [
+        0,
+        1,
+        8,
+        9,
+        10,
+        11
+      ],
+      "mirror": true,
+      "lying_centred": true,
+      "size_to": {
+        "clip": "idle",
+        "frame": 0,
+        "parts": [
+          "costume",
+          "skin"
+        ],
+        "band": [
+          0.92,
+          1.08
+        ]
+      },
+      "lying_size": {
+        "length": 1.0,
+        "area": 0.9,
+        "keep": [
+          0,
+          1
+        ]
+      }
+    },
+    "thrown_forward": {
+      "layout": "wide",
+      "intro": "Forward-throw victim: grabbed by the collar, hoisted and slammed flat on her back. Draw only Nezuko (no thrower). She falls backward toward the LEFT. In the lying frames the body is flat on her back on the ground, the body horizontal, seen exactly from the side at ground level (never from above).",
+      "frames": [
+        "Grabbed: standing, startled, leaning forward, both hands rising toward her collar.",
+        "Pulled off balance: on her toes, leaning forward, arms flailing.",
+        "Hoisted: feet leaving the ground, body lifted upright in the air, arms up.",
+        "Tipping backward in the air, legs swinging up to the RIGHT.",
+        "Horizontal in the air, back toward the ground, head to the LEFT.",
+        "Falling flat toward the ground, still horizontal, arms out.",
+        "Just above the ground, body horizontal, head to the LEFT.",
+        "About to hit, back almost on the floor.",
+        "Slammed flat on her back on the ground, the body horizontal, seen exactly from the side at ground level (never from above), head to the LEFT, arms flung out.",
+        "Impact bounce: lying flat on her back on the ground, the body horizontal, seen exactly from the side at ground level (never from above), legs lifting slightly.",
+        "Lying flat on her back on the ground, the body horizontal, seen exactly from the side at ground level (never from above), one knee bent.",
+        "Lying still flat on her back on the ground, the body horizontal, seen exactly from the side at ground level (never from above)."
+      ],
+      "anchor": "pelvis",
+      "ground_mode": "lying",
+      "ground_frames": [
+        0,
+        1,
+        8,
+        9,
+        10,
+        11
+      ],
+      "mirror": true,
+      "lying_centred": true,
+      "size_to": {
+        "clip": "idle",
+        "frame": 0,
+        "parts": [
+          "costume",
+          "skin"
+        ],
+        "band": [
+          0.92,
+          1.08
+        ]
+      },
+      "lying_size": {
+        "length": 1.0,
+        "area": 0.9,
+        "keep": [
+          0,
+          1
+        ]
+      }
+    },
+    "blood_kick": {
+      "layout": "wide",
+      "intro": "Blood Burst Flying Kick (236A/C): from her stance she crouches, springs and flies forward feet first in a long, flat flying kick, then lands and rises. Sandal on the foot (white tabi, red-strapped zori); no effects.",
+      "frames": [
+        "Start: the approved claw stance of input image 1 (the feet a little wider than her shoulders, the knees bent, the back upright, the lead hand an open claw held in front at chest height, the rear hand a loose claw in front of her stomach, the bamboo muzzle on, a fierce glare).",
+        "Crouching low, coiled to spring, both claws down by her knees, eyes on the target.",
+        "Launch: springing forward off the rear foot, the body stretching out low, the front knee drawn up.",
+        "Active: flying forward almost horizontal, the front leg fully extended forward to the RIGHT at chest height, sole leading, the other leg tucked, arms swept back, the hair and the haori streaming behind.",
+        "Flying kick held: the same extension, the body a little lower.",
+        "Flying kick end: the leg still extended, the body starting to drop.",
+        "Landing: touching down in a crouch, one hand on the floor.",
+        "Rising from the crouch, claws coming up.",
+        "Return: back in the approved claw stance, almost identical to input image 1."
+      ],
+      "copy_frames": {
+        "8": "idle:0"
+      },
+      "guard_frames": [
+        0
+      ]
+    },
+    "rising_kick": {
+      "layout": "wide",
+      "intro": "Rising Kick (623A/C): an explosive rising vertical kick that carries her up into the air, the leg kicked straight up above her head, then falling back down. Sandal on the foot (white tabi, red-strapped zori); no effects.",
+      "frames": [
+        "Startup: the approved claw stance of input image 1 (the feet a little wider than her shoulders, the knees bent, the back upright, the lead hand an open claw held in front at chest height, the rear hand a loose claw in front of her stomach, the bamboo muzzle on, a fierce glare), sinking.",
+        "Crouched low, about to explode upward, arms down.",
+        "Launch: springing up, the kicking leg starting to swing up in front of her from low.",
+        "Active: the kicking leg swung straight UP in front of her, foot high above her head, the body rising on the toes of the support leg, arms down at her sides, the hair flying up.",
+        "Peak: both feet off the ground, the leg fully vertical above her head, body stretched upward.",
+        "Airborne at the top: the leg still high, beginning to come down.",
+        "Falling: legs coming down under her, claws ready.",
+        "Landing: touching down in a crouch.",
+        "Return: back in the approved claw stance, almost identical to input image 1."
+      ],
+      "copy_frames": {
+        "8": "idle:0"
+      }
+    },
+    "spinning_kick": {
+      "layout": "wide",
+      "intro": "Spinning Kick (214B/D): two spinning kicks in a row, a waist-high roundhouse and then a higher spinning back kick, turning on the spot. Sandal on the foot (white tabi, red-strapped zori); no effects.",
+      "frames": [
+        "Start: the approved claw stance of input image 1 (the feet a little wider than her shoulders, the knees bent, the back upright, the lead hand an open claw held in front at chest height, the rear hand a loose claw in front of her stomach, the bamboo muzzle on, a fierce glare).",
+        "Pivoting: the hips turning, the kicking leg lifting.",
+        "Spinning: the body turning, the knee swinging round in front of her, arms out.",
+        "Kick 1: the leg whipping round fully extended forward to the RIGHT at waist height, the haori swirling round her.",
+        "Kick 1 extended: the same extension, the hair fanning out.",
+        "Spinning on: the leg coming down, her back turning toward the viewer.",
+        "Mid-spin: her back to the viewer, the other leg lifting, the hair swinging round.",
+        "Kick 2: a spinning back kick, the other leg thrust out straight forward to the RIGHT at chest-to-head height, heel leading.",
+        "Kick 2 extended: the same extension, the body leaning back to balance.",
+        "Recovering: the leg folding back down.",
+        "Settling: feet planted, claws rising.",
+        "Return: back in the approved claw stance, almost identical to input image 1."
+      ],
+      "segment_sync": true,
+      "copy_frames": {
+        "11": "idle:0"
+      }
+    },
+    "blood_burst": {
+      "layout": "wide",
+      "intro": "Blood Demon Art: Exploding Blood (super, 236236A/C): a fierce four-kick flurry: a front snap kick, a roundhouse, a high kick and a huge rising finishing kick. Sandal on the foot (white tabi, red-strapped zori); no effects. The game draws the blood fire.",
+      "frames": [
+        "Start: the approved claw stance of input image 1 (the feet a little wider than her shoulders, the knees bent, the back upright, the lead hand an open claw held in front at chest height, the rear hand a loose claw in front of her stomach, the bamboo muzzle on, a fierce glare).",
+        "Crouching low, claws spread, the hair lifting, eyes blazing above the muzzle.",
+        "Coiled: the body twisted, ready to spring.",
+        "Kick 1: the front leg snapped straight forward to the RIGHT at waist height.",
+        "Kick 2: a roundhouse whipping round at chest height, the hips turned.",
+        "Turning: her back toward the viewer, the hair and the haori swirling.",
+        "Kick 3: a high kick at head height, the leg fully extended forward.",
+        "Gathering for the finisher: crouched on one leg, the other knee drawn up.",
+        "Kick 4: a huge rising kick, the leg swung straight UP in front of her above her head, on the toes of the support leg.",
+        "Finisher held: the leg fully vertical, the body stretched upward.",
+        "Landing back: the leg coming down, crouching.",
+        "Return: back in the approved claw stance, almost identical to input image 1."
+      ],
+      "segment_sync": true,
+      "copy_frames": {
+        "11": "idle:0"
+      }
+    },
+    "awakened_combo": {
+      "layout": "wide",
+      "intro": "Exploding Blood: Awakened Combo (MAX). The game always shows this move in her demon form, drawn by the awakened atlas (kept as shipped, user decision 2026-10-18), so the normal atlas never displays it: it is not generated; pack.py keeps the shipped frames of this clip.",
+      "frames": [
+        "(kept: shipped frame 0)",
+        "(kept: shipped frame 1)",
+        "(kept: shipped frame 2)",
+        "(kept: shipped frame 3)",
+        "(kept: shipped frame 4)",
+        "(kept: shipped frame 5)",
+        "(kept: shipped frame 6)",
+        "(kept: shipped frame 7)",
+        "(kept: shipped frame 8)",
+        "(kept: shipped frame 9)",
+        "(kept: shipped frame 10)",
+        "(kept: shipped frame 11)"
+      ],
+      "keep_shipped": true,
+      "segment_sync": true
+    },
+    "guard_low": {
+      "layout": "wide",
+      "intro": "Crouching guard: the crouch of input image 1 stays exactly the same; only her arms and hands move. She covers up with both forearms crossed in front of her face, elbows tight, to absorb a blow.",
+      "frames": [
+        "Preparation: the same crouch, both forearms rising toward her face.",
+        "Block impact: the same crouch, both forearms crossed tight in front of her face, eyes squeezed above the muzzle.",
+        "Pushed: the same crouch and the same crossed-forearm block, her shoulders hunched a little more.",
+        "Holding the block: forearms crossed in front of her face, eyes glaring over them.",
+        "Lowering the forearms to chest height, the claws opening.",
+        "Back to the crouch of input image 1: both claws held before her chest."
+      ],
+      "edit": {
+        "image": "output/imagegen/nezuko-v3/references/crouch-key.png",
+        "change": "her two arms and her hands",
+        "keep": "the size and the position of the figure in its column, the crouch (both legs, both feet, hips, the kimono and the haori exactly), the torso, the head, face, muzzle and hair, the obi, the line weight and the colours"
+      },
+      "register": {
+        "clip": "crouch",
+        "frame": 5
+      },
+      "reviewed": {
+        "0": "forearms crossed over the face, head ruler reads large; body registered on crouch frame 5",
+        "1": "forearms crossed over the face, head ruler reads large; body registered on crouch frame 5",
+        "2": "forearms crossed over the face, head ruler reads large; body registered on crouch frame 5",
+        "3": "forearms crossed over the face, head ruler reads large; body registered on crouch frame 5",
+        "4": "forearms crossed over the face, head ruler reads large; body registered on crouch frame 5",
+        "5": "forearms crossed over the face, head ruler reads large; body registered on crouch frame 5"
+      }
+    },
+    "renzoku_2": {
+      "layout": "wide",
+      "intro": "Continuous Kicks, second kick (5B > B): right after the first snap kick, a quick snap kick with the OTHER leg (the rear leg, nearer the viewer) at chest height: her hips turn square to the RIGHT and the kicking thigh crosses IN FRONT of her body and the kimono skirt. Sandal on the foot (white tabi, red-strapped zori); no effects. The supporting knee stays bent as in the claw stance, so her head stays at the height of input image 1 (she never straightens up taller on the support leg).",
+      "frames": [
+        "Start: the first kick's leg coming down and planting in front, weight shifting onto it.",
+        "Chamber: the rear leg swinging through, its knee rising high in front of her body, the thigh crossing in front of the kimono skirt and the planted leg behind it, the hips turned square.",
+        "Active: that same near leg snapped fully straight forward to the RIGHT at chest height, sole forward, its thigh in front of the body, standing on the other leg, claws up.",
+        "Snap: the same extension.",
+        "Recovery: the knee folding back.",
+        "Return: back in the approved claw stance, almost identical to input image 1."
+      ],
+      "new": {
+        "phase_breaks": [
+          2,
+          4
+        ],
+        "fps": 12
+      },
+      "copy_frames": {
+        "5": "idle:0"
+      }
+    },
+    "renzoku_3": {
+      "layout": "wide",
+      "intro": "Continuous Kicks, finisher (5B > B > D): two heavy kicks in a row, a high roundhouse and then a spinning back kick that drives the opponent away. Sandal on the foot (white tabi, red-strapped zori); no effects. The supporting knee stays bent as in the claw stance, so her head stays at the height of input image 1 (she never straightens up taller on the support leg). The game draws the blood spray.",
+      "frames": [
+        "Start: the second kick's leg coming down, the hips turning.",
+        "Chamber: the kicking knee swinging up high, arms out for balance.",
+        "Kick 1: a high roundhouse, the leg fully extended forward to the RIGHT at head height, the instep leading.",
+        "Spinning: the leg coming down, her back turning toward the viewer, the hair swinging round.",
+        "Kick 2: a spinning back kick, the other leg thrust out straight forward to the RIGHT at chest height, heel leading, the haori flaring.",
+        "Kick 2 extended: the same extension, leaning back to balance.",
+        "Recovery: the leg folding back down, feet planting.",
+        "Return: back in the approved claw stance, almost identical to input image 1."
+      ],
+      "new": {
+        "phase_breaks": [
+          2,
+          6
+        ],
+        "fps": 12,
+        "segment_sync": true
+      },
+      "copy_frames": {
+        "7": "idle:0"
+      }
+    },
+    "kakato": {
+      "layout": "wide",
+      "intro": "Heel Drop (6B): a short hop forward with the leg swung straight up above her head, then the heel chopped down hard in front of her at the opponent's head (an overhead). Sandal on the foot (white tabi, red-strapped zori); no effects.",
+      "frames": [
+        "Startup: the approved claw stance of input image 1 (the feet a little wider than her shoulders, the knees bent, the back upright, the lead hand an open claw held in front at chest height, the rear hand a loose claw in front of her stomach, the bamboo muzzle on, a fierce glare), weight shifting forward.",
+        "A short hop forward, the kicking leg starting to swing up in front of her.",
+        "Rising: the leg swung up past her chest, the body leaning back slightly.",
+        "Leg overhead: the kicking leg fully vertical above her head, the heel at the top, standing on the toes of the support leg.",
+        "Peak: the heel high above her head, the hair flying, eyes on the target.",
+        "Active: the heel chopping DOWN hard in front of her at head height to the RIGHT, the leg straight, the body leaning forward over it.",
+        "Impact held: the leg driven down to chest height in front of her, the heel leading.",
+        "Landing: the foot planting in front, knees bending.",
+        "Return: back in the approved claw stance, almost identical to input image 1."
+      ],
+      "new": {
+        "phase_breaks": [
+          5,
+          7
+        ],
+        "fps": 12
+      },
+      "copy_frames": {
+        "8": "idle:0",
+        "5": 6,
+        "6": 5
+      }
+    },
+    "slide_kick": {
+      "layout": "wide",
+      "intro": "Sliding Kick (3D): she drops low and slides feet first along the floor, the front leg straight out at ankle height, then pops back up. Sandal on the foot (white tabi, red-strapped zori); no effects.",
+      "frames": [
+        "Start: crouched low, claws before her chest.",
+        "Dropping: leaning back, one hand reaching down to the floor behind her, the front leg starting to extend.",
+        "Active: sliding along the floor on her hip and one hand, the front leg fully straight forward to the RIGHT at ankle height, the other leg bent under her, the haori and the hair trailing behind on the floor.",
+        "Sliding: the same low slide, a little further.",
+        "Slide ending: the leg still out, the body starting to sit up.",
+        "Getting up: tucking the legs under her, one hand on the floor.",
+        "Crouched, rising.",
+        "Return: back in the approved claw stance, almost identical to input image 1."
+      ],
+      "new": {
+        "phase_breaks": [
+          2,
+          5
+        ],
+        "fps": 12
+      },
+      "copy_frames": {
+        "7": "idle:0"
+      }
+    },
+    "air_dive": {
+      "layout": "wide",
+      "intro": "Blood Burst Flying Kick, diving (j.236A/C): in the air she gathers, then dives feet first diagonally DOWN and forward with one leg straight out like a spear. Sandal on the foot (white tabi, red-strapped zori); no effects. Airborne in every frame.",
+      "frames": [
+        "In the air: airborne, knees tucked up, both hands as claws before her chest, the hair and the haori streaming.",
+        "Gathering: the body coiling in the air, the kicking knee drawn up to her chest, eyes on the target below.",
+        "Active: diving, the kicking leg thrust straight out diagonally DOWN and forward to the lower RIGHT, sole leading, the other leg bent, arms swept back, the hair and the haori streaming up behind her.",
+        "Diving: the same dive, the body a little lower.",
+        "Diving: the same dive, the hair streaming.",
+        "Diving: the same dive, about to hit the ground."
+      ],
+      "anchor": "pelvis",
+      "new": {
+        "phase_breaks": [
+          2,
+          6
+        ],
+        "fps": 12,
+        "anchor_mode": "pelvis"
+      }
+    },
+    "air_land": {
+      "layout": "wide",
+      "intro": "Landing after an air special: she touches down in a low crouch and rises into her claw stance.",
+      "frames": [
+        "Touching down: a deep crouch, knees fully bent, one hand on the floor, the hair spilling forward.",
+        "Absorbing: still low, both hands rising.",
+        "Rising from the crouch, claws forming.",
+        "Return: back in the approved claw stance, almost identical to input image 1."
+      ],
+      "new": {
+        "phase_breaks": [
+          1,
+          2
+        ],
+        "fps": 12
+      },
+      "copy_frames": {
+        "3": "idle:0"
+      }
+    },
+    "air_spin": {
+      "layout": "wide",
+      "intro": "Spinning Kick, aerial (j.214B/D): in the air she spins round twice, each turn whipping one leg round in a wide kick. Sandal on the foot (white tabi, red-strapped zori); no effects. Airborne in every frame.",
+      "frames": [
+        "In the air: airborne, knees tucked up, both hands as claws before her chest, the hair and the haori streaming.",
+        "Starting the spin: the hips turning, the kicking knee swinging round, arms out.",
+        "Kick 1: the leg whipping round fully extended forward to the RIGHT at chest height, the body horizontal-ish, the haori swirling round her.",
+        "Kick 1 extended: the same extension.",
+        "Spinning on: her back turning toward the viewer, the leg coming round, the hair fanning out.",
+        "Mid-spin: her back to the viewer, the other leg rising.",
+        "Kick 2: the other leg whipping round fully extended forward to the RIGHT at chest height.",
+        "Kick 2 extended: the same extension.",
+        "Recovering: knees tucking, the body upright again.",
+        "Falling: legs extending down to land, claws ready."
+      ],
+      "anchor": "pelvis",
+      "new": {
+        "phase_breaks": [
+          2,
+          8
+        ],
+        "fps": 12,
+        "segment_sync": true,
+        "anchor_mode": "pelvis"
+      }
+    },
+    "round_victory": {
+      "layout": "wide",
+      "intro": "Round victory: one calm forward action. From her claw stance she relaxes, straightens up, lets her hands fall, turns her head toward the viewer with soft smiling eyes above the muzzle and gives a small happy nod, the long hair settling. Every frame different; no effects. Once she stands upright her legs are straight and she is about 890 px from the hair top to the soles (hair top to chin 124 px, about 7 heads tall), clearly TALLER than her crouched claw stance in input image 1 (720 px); the head stays exactly the size of input image 1 and the legs keep their full length.",
+      "frames": [
+        "Start: the approved claw stance of input image 1 (the feet a little wider than her shoulders, the knees bent, the back upright, the lead hand an open claw held in front at chest height, the rear hand a loose claw in front of her stomach, the bamboo muzzle on, a fierce glare).",
+        "Relaxing the claws, the hands lowering.",
+        "Straightening the knees, standing taller.",
+        "Standing upright, hands at her sides, looking at the fallen opponent.",
+        "Standing upright, the head turning toward the viewer.",
+        "Upright, facing three-quarters to the viewer, eyes softening above the muzzle.",
+        "Upright, hands folding loosely in front of her.",
+        "Upright, hands folded, a small happy nod, eyes closed in a smile.",
+        "Upright, hands folded, eyes open again, smiling eyes.",
+        "Upright, the head tilting to one side, the hair swaying.",
+        "Upright, one hand lifting to tuck the hair over her shoulder.",
+        "Upright, the hand smoothing the hair, eyes soft.",
+        "Upright, hands folding again in front of her.",
+        "Upright, a gentle breath, shoulders lowering.",
+        "Upright, the head tilting the other way, smiling eyes.",
+        "Upright, looking toward the opponent (to the RIGHT), calm.",
+        "Upright, a small proud nod.",
+        "Final: standing tall, hands folded in front of her, smiling eyes above the muzzle."
+      ],
+      "upright_frames": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "new": {
+        "phase_breaks": [
+          6,
+          12
+        ],
+        "fps": 12
+      }
+    },
+    "round_defeat": {
+      "layout": "wide",
+      "intro": "Round defeat: struck and knocked backward to the LEFT, collapsing flat on her back, unconscious. In the lying frames the body is flat on her back on the ground, the body horizontal, seen exactly from the side at ground level (never from above). The fall is ONE continuous backward topple: every frame is lower and more horizontal than the one before it, never rising again.",
+      "frames": [
+        "Struck: reeling back, head snapped back, arms flung out.",
+        "Staggering backward, feet leaving the ground.",
+        "Falling backward to the LEFT, LOWER than the previous frame: the body tilted only about 30 degrees above horizontal, head lower than in frame 2 and closer to the ground on the LEFT, feet up to the RIGHT, arms trailing.",
+        "Falling, LOWER again: the body about 15 degrees above horizontal, head close to the ground on the LEFT, legs to the RIGHT, arms out.",
+        "Continuing from the LAST drawing of input image 4 (already almost flat): the body completely HORIZONTAL and a little LOWER than there, only a hand's width above the ground, head to the LEFT, arms out. It must not be tilted up more than the last drawing of input image 4.",
+        "Just touching the ground: the body flat and horizontal, her back meeting the floor, head to the LEFT, arms out to the sides.",
+        "Impact: her back hits the ground, legs bouncing up, flat on her back on the ground, the body horizontal, seen exactly from the side at ground level (never from above).",
+        "Lying flat on her back on the ground, the body horizontal, seen exactly from the side at ground level (never from above), legs coming down.",
+        "Lying flat on her back on the ground, the body horizontal, seen exactly from the side at ground level (never from above), one knee bent, arms out.",
+        "Lying flat on her back on the ground, the body horizontal, seen exactly from the side at ground level (never from above), the knee sliding down.",
+        "Lying flat on her back on the ground, the body horizontal, seen exactly from the side at ground level (never from above), head turned slightly, unconscious.",
+        "Lying still flat on her back on the ground, the body horizontal, seen exactly from the side at ground level (never from above), unconscious."
+      ],
+      "ground_mode": "lying",
+      "ground_frames": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "new": {
+        "phase_breaks": [
+          4,
+          8
+        ],
+        "fps": 12
+      },
+      "lying_size": {
+        "length": 1.0,
+        "area": 0.9,
+        "keep": [
+          0,
+          1
+        ]
+      }
+    },
+    "round_intro": {
+      "layout": "wide",
+      "intro": "Round intro, ONE continuous forward action, every drawing following on from the one before: before the fight she stands calm and gentle with her eyes closed, then her eyes snap open in anger, her fingernails grow into claws and her hair flares; she drops into a deep, feral, cat-like crouch with one claw touching the floor, glaring up at the opponent; then she springs up into her claw stance. Once she stands upright her legs are straight and she is about 890 px from the hair top to the soles (hair top to chin 124 px, about 7 heads tall), clearly TALLER than her crouched claw stance in input image 1 (720 px); the head stays exactly the size of input image 1 and the legs keep their full length. No effects.",
+      "frames": [
+        "Calm: standing fully upright with straight legs, about 890 px tall, taller than the claw stance of input image 1, both hands folded loosely in front of the obi, eyes closed above the muzzle, the long hair hanging still, a gentle face.",
+        "Calm, the same upright pose with the hands folded and the eyes closed, a breeze lifting the hair ends and the haori hem a little.",
+        "Still upright with the eyes closed, she draws a slow breath, the shoulders rising slightly, the hands parting from the obi.",
+        "Her eyes snap OPEN, pink eyes glaring forward to the RIGHT with narrowed pupils, a frown above the muzzle; still upright, the hands dropping to her sides.",
+        "Upright and glaring, both hands rising before her chest, the fingers starting to curl, the long hair beginning to lift and flare out behind her.",
+        "Upright, the fingernails grown long into claws held at chest height, the hair flaring out behind her, a fierce glare.",
+        "She leans forward and bends her knees, dropping her weight, both claws spreading wide to the sides, the haori swinging back.",
+        "Dropping lower toward a crouch, knees bent deep, the lead claw reaching down toward the floor in front, the hair spilling forward over her shoulders.",
+        "Deep feral crouch: knees fully bent on the balls of her feet, the fingertips of the lead claw touching the floor in front of her, the rear claw raised behind her, head low, glaring up to the RIGHT.",
+        "The same deep crouch, shoulders hunched, a low growl behind the muzzle, the hair rippling.",
+        "Holding the deep crouch, both claws flexing, eyes blazing, the haori spread on the floor behind her.",
+        "Springing up out of the crouch: knees straightening, both claws sweeping up in front of her, the hair whipping back.",
+        "Rising, the lead claw coming up to chest height and the rear claw before her stomach, the knees still bent.",
+        "Landing her weight in the claw stance: feet a little wider than her shoulders, knees bent, the lead claw in front at chest height, the hair and the haori still swinging.",
+        "The claw stance, the hair and the haori settling.",
+        "The claw stance, almost identical to input image 1, the hair settling.",
+        "The approved claw stance of input image 1, settled and glaring at the opponent.",
+        "Return: back in the approved claw stance, almost identical to input image 1."
+      ],
+      "upright_frames": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "copy_frames": {
+        "17": "idle:0"
+      },
+      "new": {
+        "phase_breaks": [
+          6,
+          12
+        ],
+        "fps": 12
+      },
+      "guard_frames": []
+    }
+  }
+}

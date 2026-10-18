@@ -7,10 +7,17 @@ var failures: Array[String] = []
 func check(value: bool, label: String) -> void:
 	if value: passed += 1
 	else: failures.append(label); printerr("FAIL: ",label)
+func _revision(path: String) -> String:
+	var parsed: Variant = JSON.parse_string(FileAccess.get_file_as_string(path))
+	return str(parsed.get("revision", "")) if parsed is Dictionary else ""
+
 func _initialize() -> void:
 	var art := Art.new()
 	for cid in art.characters:
 		var visual = art.characters[cid]
+		# Nezuko's demon form keeps its shipped atlas beside her v3 redraw: its own frame
+		# counts and breaks (FighterView reads the timing of the atlas it draws from).
+		var kept: bool = _revision("res://art/characters/%s/atlas.json" % cid) == cid + "-v3" and _revision("res://art/characters/%s/awakening/atlas.json" % cid) != cid + "-v3"
 		check(visual.art_ready and visual.missing_clips().is_empty(),cid+" both forms are complete")
 		var c := Combat.new()
 		c.new_match(cid,cid); c.phase = "fight"
@@ -30,10 +37,27 @@ func _initialize() -> void:
 		for clip: String in visual.frames.get_animation_names():
 			check(visual.awakening_frames.has_animation(clip),cid+" alternate clip "+clip)
 			if not visual.awakening_frames.has_animation(clip):continue
-			check(visual.frames.get_frame_count(clip) == visual.awakening_frames.get_frame_count(clip),cid+" matching frame count "+clip)
+			if kept:
+				var breaks: Array = visual.awakening_metadata.get(clip, {}).get("phase_breaks", [1, 1])
+				check(int(breaks[1]) <= visual.awakening_frames.get_frame_count(clip),cid+" kept breaks fit "+clip)
+			else:
+				check(visual.frames.get_frame_count(clip) == visual.awakening_frames.get_frame_count(clip),cid+" matching frame count "+clip)
 			for index in range(visual.awakening_frames.get_frame_count(clip)):
 				var texture: Texture2D = visual.awakening_frames.get_frame_texture(clip,index)
 				check(texture != null and texture is AtlasTexture and texture.atlas != null,cid+" loaded "+clip+"/"+str(index))
+		if kept:
+			# Every move starts its active frames on the kept clip's own first active drawing
+			# (the second fighter, so the first one's pose timing stays for the checks below).
+			var other = c.fighters[1]; var view = actors[1]
+			other.awakening_ticks = 600; other.awakening_duration = 600
+			for move in c.definition(other).all_moves():
+				other.move = move; other.move_frame = move.startup; other.state = "attack"
+				view.sync(0,false)
+				var drawn: int = visual.awakening_frames.get_frame_count(move.clip_id())
+				var first: int = clampi(int(visual.awakening_metadata[move.clip_id()].get("phase_breaks", [1, 1])[0]), 1, drawn)
+				check(view._frames() == visual.awakening_frames and view.frame_index == first, cid+" kept form maps "+move.id+" onto its own breaks")
+			other.move = null; other.state = "idle"; other.move_frame = 0
+			view.sync(0,false)
 		var snapshot: Dictionary = c.snapshot()
 		actor.sync(0.5,true)
 		check(actor.clock_ticks == 39 and snapshot == c.snapshot(),cid+" pause freezes pose and cannot mutate combat")

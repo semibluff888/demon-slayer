@@ -6,9 +6,11 @@ ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'output/imagegen/motion-fixes-v1'
 TARGETS={'nezuko/awakening':{'blood_kick','spinning_kick','blood_burst','throw_forward','throw_success'},'nezuko':{'blood_burst','throw_forward','throw_success'},'akaza':{'throw_forward','throw_success'},'akaza/awakening':{'throw_forward','throw_success'},'zenitsu':{'throw_success'},'zenitsu/awakening':{'throw_success'}}
 def read(p):return json.loads(p.read_text(encoding='utf-8-sig'))
-# A character redrawn with tools/art_v3 replaces these motion fixes; tests/art_v3_tests.py checks it.
-REDRAWN={cid for cid in ['zenitsu','akaza'] if read(ROOT/'art/characters'/cid/'atlas.json').get('revision')==cid+'-v3'}
-TARGETS={key:clips for key,clips in TARGETS.items() if key.split('/')[0] not in REDRAWN}
+# An atlas redrawn with tools/art_v3 replaces these motion fixes; tests/art_v3_tests.py checks it.
+# Nezuko's demon form keeps its shipped atlas beside her redrawn normal one, so each atlas is judged on its own.
+def redrawn(key):return read(ROOT/'art/characters'/key/'atlas.json').get('revision')==key.split('/')[0]+'-v3'
+REDRAWN={cid for cid in ['zenitsu','nezuko','akaza'] if redrawn(cid)}
+TARGETS={key:clips for key,clips in TARGETS.items() if not redrawn(key)}
 def sprite(folder,e):
  x,y,w,h=e['region']
  with Image.open(folder/e['texture']) as im:return im.convert('RGBA').crop((x,y,x+w,y+h))
@@ -16,7 +18,10 @@ class MotionArtTests(unittest.TestCase):
  def test_only_requested_clips_change(self):
   for key,targets in TARGETS.items():
    folder=ROOT/'art/characters'/key;old=read(OUT/'baseline'/key/'atlas.json');new=read(folder/'atlas.json')
-   self.assertEqual(set(old['clips']),set(new['clips']))
+   # A kept atlas may only add clips that reuse its own drawings (new moves of the redrawn form).
+   self.assertLessEqual(set(old['clips']),set(new['clips']))
+   drawings=[f for c in old['clips'] for f in new['clips'][c]['frames']]
+   for c in set(new['clips'])-set(old['clips']):self.assertTrue(all(f in drawings for f in new['clips'][c]['frames']),key+'/'+c)
    for c in old['clips']: 
     if c=='guard_low' and key.startswith('nezuko'):
      self.assertEqual({k:v for k,v in old['clips'][c].items() if k!='frames'},{k:v for k,v in new['clips'][c].items() if k!='frames'})
@@ -33,12 +38,12 @@ class MotionArtTests(unittest.TestCase):
    for field in ['canvas_size','feet_anchor','source_height','canonical_height']:self.assertEqual(old[field],new[field])
  def test_return_to_exact_idle(self):
   for key,clips in {'nezuko/awakening':['blood_kick','spinning_kick','blood_burst','throw_forward'],'nezuko':['blood_burst','throw_forward'],'akaza':['throw_forward'],'akaza/awakening':['throw_forward']}.items():
-   if key.split('/')[0] in REDRAWN:continue
+   if redrawn(key):continue
    folder=ROOT/'art/characters'/key;m=read(folder/'atlas.json');idle=m['clips']['idle']['frames'][0]
    for c in clips:
     end=m['clips'][c]['frames'][-1];self.assertEqual(end['offset'],idle['offset']);self.assertEqual(sprite(folder,end).tobytes(),sprite(folder,idle).tobytes())
  def test_back_throw_has_shared_grab_and_mirrored_release(self):
-  for key in [k for k in ['nezuko','nezuko/awakening','akaza','akaza/awakening'] if k.split('/')[0] not in REDRAWN]:
+  for key in [k for k in ['nezuko','nezuko/awakening','akaza','akaza/awakening'] if not redrawn(k)]:
    folder=ROOT/'art/characters'/key;m=read(folder/'atlas.json');fw=m['clips']['throw_forward']['frames'];bk=m['clips']['throw_success']['frames'];turn=3 if key.startswith('akaza') else 6
    for i in range(len(fw)):
     if key.startswith('nezuko') and i in [4,5]:continue

@@ -1,0 +1,309 @@
+{
+  "character": "nezuko",
+  "clip": "body_air_heavy",
+  "canvas_size": [
+    1024,
+    640
+  ],
+  "feet_anchor": [
+    448,
+    568
+  ],
+  "runtime_head_ruler": 39.53,
+  "parts": [
+    {
+      "id": "nezuko-v3-body_air_heavy-p0",
+      "source": "output/imagegen/nezuko-v3/raw/nezuko-v3-body_air_heavy-p0.png",
+      "sha256": "5a83458ee3e62983ac7b1172b1ecedbb79f08ad5773ec53b4952da1d7d1e488b",
+      "ruler": 131.95,
+      "scale": 0.3502,
+      "scale_method": "clip-median",
+      "resample_vs_idle": 0.841,
+      "palette_shift": {
+        "haori": [
+          1.0,
+          1.87,
+          2.79
+        ],
+        "uniform": [
+          -2.33,
+          1.98,
+          3.72
+        ],
+        "skin": [
+          -2.31,
+          0.92,
+          4.28
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori": 3.45,
+        "uniform": 4.59,
+        "skin": 4.73,
+        "hair": 1.55
+      },
+      "palette_delta_e_after": {
+        "haori": 0.7,
+        "uniform": 1.43,
+        "skin": 1.31,
+        "hair": 1.49
+      }
+    },
+    {
+      "id": "nezuko-v3-body_air_heavy-p1",
+      "source": "output/imagegen/nezuko-v3/raw/nezuko-v3-body_air_heavy-p1.png",
+      "sha256": "2aa926789d003e5a06f63210c54f8e9299bdf505f42277d4c7c3ceaae466776d",
+      "ruler": 112.88,
+      "scale": 0.3474,
+      "scale_method": "head-ruler, clip guard + area 1.09 > 1.08 x0.992",
+      "resample_vs_idle": 0.835,
+      "palette_shift": {
+        "haori": [
+          0.12,
+          2.07,
+          2.46
+        ],
+        "uniform": [
+          -3.1,
+          1.69,
+          4.52
+        ],
+        "skin": [
+          -2.38,
+          0.82,
+          4.32
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori": 3.22,
+        "uniform": 5.41,
+        "skin": 4.78,
+        "hair": 6.81
+      },
+      "palette_delta_e_after": {
+        "haori": 0.67,
+        "uniform": 1.69,
+        "skin": 1.44,
+        "hair": 6.81
+      }
+    },
+    {
+      "id": "nezuko-v3-body_air_heavy-p2",
+      "source": "output/imagegen/nezuko-v3/raw/nezuko-v3-body_air_heavy-p2.png",
+      "sha256": "6568f2ccb1955d579f1884d7e856ca2dd5b9681628f304201a46d216024b7b93",
+      "ruler": 111.96,
+      "scale": 0.347,
+      "scale_method": "head-ruler, clip guard + area 1.10 > 1.08 x0.983",
+      "resample_vs_idle": 0.834,
+      "palette_shift": {
+        "haori": [
+          0.84,
+          1.62,
+          2.36
+        ],
+        "uniform": [
+          -3.23,
+          2.94,
+          4.87
+        ],
+        "skin": [
+          -3.35,
+          1.49,
+          5.46
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori": 2.94,
+        "uniform": 6.23,
+        "skin": 6.24,
+        "hair": 3.08
+      },
+      "palette_delta_e_after": {
+        "haori": 0.62,
+        "uniform": 1.97,
+        "skin": 2.54,
+        "hair": 2.14
+      }
+    }
+  ],
+  "frames": [
+    {
+      "frame": 0,
+      "part": "nezuko-v3-body_air_heavy-p0",
+      "crop": [
+        22,
+        89,
+        782,
+        817
+      ],
+      "head_ruler": 131.95,
+      "head_box": [
+        448,
+        1,
+        620,
+        159
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3502,
+      "flags": [],
+      "notes": [],
+      "root_x": 500.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        273,
+        244
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.856
+    },
+    {
+      "frame": 1,
+      "part": "nezuko-v3-body_air_heavy-p0",
+      "crop": [
+        816,
+        84,
+        1496,
+        950
+      ],
+      "head_ruler": 100.05,
+      "head_box": [
+        441,
+        16,
+        562,
+        140
+      ],
+      "ratio_to_sheet": 0.758,
+      "scale": 0.3502,
+      "flags": [],
+      "notes": [
+        "head partly hidden or turned (76%)"
+      ],
+      "root_x": 469.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        284,
+        251
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.993
+    },
+    {
+      "frame": 2,
+      "part": "nezuko-v3-body_air_heavy-p1",
+      "crop": [
+        20,
+        117,
+        831,
+        869
+      ],
+      "head_ruler": 111.26,
+      "head_box": [
+        383,
+        3,
+        521,
+        128
+      ],
+      "ratio_to_sheet": 0.986,
+      "scale": 0.3474,
+      "flags": [],
+      "notes": [],
+      "root_x": 456.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        290,
+        258
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.872
+    },
+    {
+      "frame": 3,
+      "part": "nezuko-v3-body_air_heavy-p1",
+      "crop": [
+        760,
+        114,
+        1525,
+        925
+      ],
+      "head_ruler": 112.88,
+      "head_box": [
+        397,
+        2,
+        536,
+        133
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3474,
+      "flags": [],
+      "notes": [],
+      "root_x": 466.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        286,
+        249
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.94
+    },
+    {
+      "frame": 4,
+      "part": "nezuko-v3-body_air_heavy-p2",
+      "crop": [
+        22,
+        114,
+        778,
+        893
+      ],
+      "head_ruler": 111.96,
+      "head_box": [
+        465,
+        4,
+        621,
+        150
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.347,
+      "flags": [],
+      "notes": [],
+      "root_x": 482.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        281,
+        255
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.899
+    },
+    {
+      "frame": 5,
+      "part": "nezuko-v3-body_air_heavy-p2",
+      "crop": [
+        797,
+        115,
+        1516,
+        752
+      ],
+      "head_ruler": 87.33,
+      "head_box": [
+        474,
+        7,
+        588,
+        120
+      ],
+      "ratio_to_sheet": 0.78,
+      "scale": 0.347,
+      "flags": [],
+      "notes": [
+        "head partly hidden or turned (78%)"
+      ],
+      "root_x": 441.0,
+      "anchor_mode": "pelvis",
+      "offset": [
+        295,
+        253
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.735
+    }
+  ]
+}

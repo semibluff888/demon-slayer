@@ -1,0 +1,323 @@
+{
+  "character": "nezuko",
+  "clip": "guard_low",
+  "canvas_size": [
+    1024,
+    640
+  ],
+  "feet_anchor": [
+    448,
+    568
+  ],
+  "runtime_head_ruler": 39.53,
+  "parts": [
+    {
+      "id": "nezuko-v3-guard_low-p0",
+      "source": "output/imagegen/nezuko-v3/raw/nezuko-v3-guard_low-p0.png",
+      "sha256": "ca2b178ea11c1cc84deb01782c040f85e7538f79fe10c7affaadd182dc06f185",
+      "ruler": 130.18,
+      "scale": 0.3037,
+      "scale_method": "registered",
+      "resample_vs_idle": 0.73,
+      "palette_shift": {
+        "uniform": [
+          -1.04,
+          1.81,
+          -0.69
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori": 0.45,
+        "uniform": 2.1,
+        "skin": 0.87,
+        "hair": 2.81
+      },
+      "palette_delta_e_after": {
+        "haori": 0.45,
+        "uniform": 0.73,
+        "skin": 0.87,
+        "hair": 2.83
+      }
+    },
+    {
+      "id": "nezuko-v3-guard_low-p1",
+      "source": "output/imagegen/nezuko-v3/raw/nezuko-v3-guard_low-p1.png",
+      "sha256": "4d341c15afea395f33a790e4660387848b8678b80df386b42d98db48a770dd47",
+      "ruler": 128.9,
+      "scale": 0.3067,
+      "scale_method": "registered",
+      "resample_vs_idle": 0.737,
+      "palette_shift": {
+        "uniform": [
+          -3.13,
+          1.66,
+          0.17
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori": 1.81,
+        "uniform": 2.97,
+        "skin": 1.31,
+        "hair": 3.2
+      },
+      "palette_delta_e_after": {
+        "haori": 1.81,
+        "uniform": 2.12,
+        "skin": 1.32,
+        "hair": 3.19
+      }
+    },
+    {
+      "id": "nezuko-v3-guard_low-p2",
+      "source": "output/imagegen/nezuko-v3/raw/nezuko-v3-guard_low-p2.png",
+      "sha256": "0bccc56073ef07a41642fa02d9b6f288cf301799ab2350d33e4e4c4d3a47f2ed",
+      "ruler": 128.9,
+      "scale": 0.3067,
+      "scale_method": "registered",
+      "resample_vs_idle": 0.737,
+      "palette_shift": {
+        "haori": [
+          0.43,
+          -1.41,
+          -1.4
+        ],
+        "uniform": [
+          -2.42,
+          1.26,
+          0.8
+        ],
+        "skin": [
+          -1.68,
+          0.88,
+          1.9
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori": 2.01,
+        "uniform": 2.41,
+        "skin": 2.48,
+        "hair": 3.58
+      },
+      "palette_delta_e_after": {
+        "haori": 0.66,
+        "uniform": 1.41,
+        "skin": 0.76,
+        "hair": 3.61
+      }
+    }
+  ],
+  "frames": [
+    {
+      "frame": 0,
+      "part": "nezuko-v3-guard_low-p0",
+      "crop": [
+        29,
+        370,
+        740,
+        982
+      ],
+      "head_ruler": 133.24,
+      "head_box": [
+        405,
+        0,
+        568,
+        154
+      ],
+      "ratio_to_sheet": 1.024,
+      "scale": 0.3037,
+      "flags": [],
+      "notes": [],
+      "root_x": 453.0,
+      "anchor_mode": "registered",
+      "offset": [
+        308,
+        382
+      ],
+      "clipped": false,
+      "registration": {
+        "scale": 0.3037,
+        "score": 0.974,
+        "exact": 0.303674
+      },
+      "height_vs_idle": 0.624
+    },
+    {
+      "frame": 1,
+      "part": "nezuko-v3-guard_low-p0",
+      "crop": [
+        799,
+        372,
+        1508,
+        982
+      ],
+      "head_ruler": 181.19,
+      "head_box": [
+        356,
+        1,
+        610,
+        250
+      ],
+      "ratio_to_sheet": 1.392,
+      "scale": 0.3037,
+      "flags": [],
+      "notes": [
+        "reviewed (forearms crossed over the face, head ruler reads large; body registered on crouch frame 5): head 39% larger than the sheet reference"
+      ],
+      "root_x": 453.0,
+      "anchor_mode": "registered",
+      "offset": [
+        309,
+        383
+      ],
+      "clipped": false,
+      "registration": {
+        "scale": 0.3037,
+        "score": 0.967,
+        "exact": 0.303674
+      },
+      "height_vs_idle": 0.621
+    },
+    {
+      "frame": 2,
+      "part": "nezuko-v3-guard_low-p1",
+      "crop": [
+        29,
+        370,
+        740,
+        983
+      ],
+      "head_ruler": 177.12,
+      "head_box": [
+        360,
+        1,
+        613,
+        239
+      ],
+      "ratio_to_sheet": 1.374,
+      "scale": 0.3067,
+      "flags": [],
+      "notes": [
+        "reviewed (forearms crossed over the face, head ruler reads large; body registered on crouch frame 5): head 37% larger than the sheet reference"
+      ],
+      "root_x": 461.0,
+      "anchor_mode": "registered",
+      "offset": [
+        307,
+        381
+      ],
+      "clipped": false,
+      "registration": {
+        "scale": 0.3067,
+        "score": 0.974,
+        "exact": 0.306726
+      },
+      "height_vs_idle": 0.631
+    },
+    {
+      "frame": 3,
+      "part": "nezuko-v3-guard_low-p1",
+      "crop": [
+        800,
+        370,
+        1508,
+        983
+      ],
+      "head_ruler": 173.35,
+      "head_box": [
+        362,
+        1,
+        607,
+        235
+      ],
+      "ratio_to_sheet": 1.345,
+      "scale": 0.3067,
+      "flags": [],
+      "notes": [
+        "reviewed (forearms crossed over the face, head ruler reads large; body registered on crouch frame 5): head 34% larger than the sheet reference"
+      ],
+      "root_x": 458.0,
+      "anchor_mode": "registered",
+      "offset": [
+        308,
+        381
+      ],
+      "clipped": false,
+      "registration": {
+        "scale": 0.3067,
+        "score": 0.976,
+        "exact": 0.306726
+      },
+      "height_vs_idle": 0.631
+    },
+    {
+      "frame": 4,
+      "part": "nezuko-v3-guard_low-p2",
+      "crop": [
+        29,
+        370,
+        742,
+        983
+      ],
+      "head_ruler": 132.59,
+      "head_box": [
+        407,
+        0,
+        576,
+        163
+      ],
+      "ratio_to_sheet": 1.029,
+      "scale": 0.3067,
+      "flags": [],
+      "notes": [],
+      "root_x": 461.0,
+      "anchor_mode": "registered",
+      "offset": [
+        307,
+        381
+      ],
+      "clipped": false,
+      "registration": {
+        "scale": 0.3067,
+        "score": 0.987,
+        "exact": 0.306726
+      },
+      "height_vs_idle": 0.631
+    },
+    {
+      "frame": 5,
+      "part": "nezuko-v3-guard_low-p2",
+      "crop": [
+        797,
+        370,
+        1510,
+        983
+      ],
+      "head_ruler": 171.71,
+      "head_box": [
+        365,
+        0,
+        612,
+        234
+      ],
+      "ratio_to_sheet": 1.332,
+      "scale": 0.3067,
+      "flags": [],
+      "notes": [
+        "reviewed (forearms crossed over the face, head ruler reads large; body registered on crouch frame 5): head 33% larger than the sheet reference"
+      ],
+      "root_x": 457.0,
+      "anchor_mode": "registered",
+      "offset": [
+        307,
+        381
+      ],
+      "clipped": false,
+      "registration": {
+        "scale": 0.3067,
+        "score": 0.971,
+        "exact": 0.306726
+      },
+      "height_vs_idle": 0.631
+    }
+  ]
+}

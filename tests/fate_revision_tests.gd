@@ -55,7 +55,7 @@ func _test_proportions(catalog: RefCounted) -> void:
 	actor.fighter = actor.combat.fighters[0]
 	actor.visual = catalog.characters.nezuko
 	actor.sync(0, true)
-	check(is_equal_approx(actor.visual_bounds().size.y, heights.nezuko), "reloading atlases never compounds character scale")
+	check(is_equal_approx(actor.visual_bounds().size.y / _idle_vs_upright("nezuko"), heights.nezuko), "reloading atlases never compounds character scale")
 	actor.free()
 
 func _idle_vs_upright(cid: String) -> float:

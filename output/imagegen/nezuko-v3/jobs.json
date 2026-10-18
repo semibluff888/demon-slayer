@@ -1,0 +1,6872 @@
+[
+  {
+    "id": "nezuko-v3-model",
+    "group": "canon",
+    "references": [
+      "output/imagegen/nezuko-v3/references/old-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-model.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+    "size": "1536x1024",
+    "metadata": {
+      "character": "nezuko",
+      "stage": "checkpoint-1"
+    }
+  },
+  {
+    "id": "nezuko-v3-idle-candidates",
+    "group": "canon",
+    "references": [
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-idle-candidates.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-idle-candidates.png",
+    "size": "1536x1024",
+    "metadata": {
+      "character": "nezuko",
+      "stage": "checkpoint-1"
+    }
+  },
+  {
+    "id": "nezuko-v3-demon-model",
+    "group": "canon",
+    "references": [
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/demon-reference-1.png",
+      "output/imagegen/nezuko-v3/references/demon-reference-2.png"
+    ],
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-demon-model.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-demon-model.png",
+    "size": "1536x1024",
+    "metadata": {
+      "character": "nezuko",
+      "stage": "checkpoint-1"
+    }
+  },
+  {
+    "id": "nezuko-v3-demon-candidates",
+    "group": "canon",
+    "references": [
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-idle-candidates.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-demon-model.png"
+    ],
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-demon-candidates.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-demon-candidates.png",
+    "size": "1536x1024",
+    "metadata": {
+      "character": "nezuko",
+      "stage": "checkpoint-1"
+    }
+  },
+  {
+    "id": "nezuko-v3-idle-key-r1",
+    "group": "checkpoint-1b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-idle-key-r1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-idle-key-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/nezuko-v3-idle-key-r1-base.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "nezuko-v3-idle-key-r1",
+      "part": 0,
+      "stage": "checkpoint-1 answers: candidate 3, narrower stance, smaller claws"
+    }
+  },
+  {
+    "id": "nezuko-v3-demon-model-r1",
+    "group": "checkpoint-1b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-demon-model-r1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-demon-model-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-demon-model.png",
+      "output/imagegen/nezuko-v3/references/demon-reference-2.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "nezuko-v3-demon-model-r1",
+      "part": 0,
+      "stage": "checkpoint-1 answers: burst collar (modest), blue key"
+    },
+    "superseded_by": "nezuko-v3-demon-model-r2",
+    "rejected_reason": "the torn collar opened into a deep V with a cleavage line (and the idle came back on a dark backdrop)"
+  },
+  {
+    "id": "nezuko-v3-demon-idle-key-r1",
+    "group": "checkpoint-1b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-demon-idle-key-r1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-demon-idle-key-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-idle-key-r1.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-demon-model-r1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "nezuko-v3-demon-idle-key-r1",
+      "part": 0,
+      "stage": "checkpoint-1 answers: demon idle, arms at her sides like the old demon idle"
+    },
+    "superseded_by": "nezuko-v3-demon-idle-key-r2",
+    "rejected_reason": "the torn collar opened into a deep V with a cleavage line (and the idle came back on a dark backdrop)"
+  },
+  {
+    "id": "nezuko-v3-demon-model-r2",
+    "group": "checkpoint-1c",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-demon-model-r2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-demon-model-r2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-demon-model-r1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "nezuko-v3-demon-model-r2",
+      "part": 0,
+      "stage": "checkpoint-1 answers, round 2: collar no deeper than the collarbones"
+    },
+    "superseded_by": "nezuko-v3-demon-model-r4",
+    "rejected_reason": "user: the collar must burst open (round 4 tore it wider, round 5 closed the white juban underneath)"
+  },
+  {
+    "id": "nezuko-v3-demon-idle-key-r2",
+    "group": "checkpoint-1c",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-demon-idle-key-r2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-demon-idle-key-r2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-demon-idle-key-r1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "nezuko-v3-demon-idle-key-r2",
+      "part": 0,
+      "stage": "checkpoint-1 answers, round 2: collar no deeper than the collarbones"
+    },
+    "superseded_by": "nezuko-v3-demon-idle-key-r3",
+    "rejected_reason": "a shadow line still showed at the bottom of the collar V"
+  },
+  {
+    "id": "nezuko-v3-demon-idle-key-r3",
+    "group": "checkpoint-1d",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-demon-idle-key-r3.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-demon-idle-key-r3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-demon-idle-key-r2.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-demon-model-r2.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "nezuko-v3-demon-idle-key-r3",
+      "part": 0,
+      "stage": "checkpoint-1 answers, round 3: collar as the r2 model sheet"
+    },
+    "superseded_by": "nezuko-v3-demon-idle-key-r5",
+    "rejected_reason": "user: the collar must burst open (round 4 tore it wider, round 5 closed the white juban underneath)"
+  },
+  {
+    "id": "nezuko-v3-demon-model-r3",
+    "group": "checkpoint-1e",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-demon-model-r3.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-demon-model-r3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-demon-model-r2.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "nezuko-v3-demon-model-r3",
+      "part": 0,
+      "stage": "checkpoint-1 answers, round 4: a more violent burst collar, chest covered"
+    },
+    "rejected_reason": "the burst collar is right, but a cleavage line was drawn in the opening; kept as the base of the next edit",
+    "superseded_by": "nezuko-v3-demon-model-r4"
+  },
+  {
+    "id": "nezuko-v3-demon-idle-key-r4",
+    "group": "checkpoint-1e",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-demon-idle-key-r4.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-demon-idle-key-r4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/nezuko-v3-demon-idle-key-r3-retouch.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-demon-model-r3.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "nezuko-v3-demon-idle-key-r4",
+      "part": 0,
+      "stage": "checkpoint-1 answers, round 4: a more violent burst collar, chest covered"
+    },
+    "rejected_reason": "the burst collar is right, but a cleavage line was drawn in the opening; kept as the base of the next edit",
+    "superseded_by": "nezuko-v3-demon-idle-key-r5"
+  },
+  {
+    "id": "nezuko-v3-demon-model-r4",
+    "group": "checkpoint-1f",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-demon-model-r4.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-demon-model-r4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-demon-model-r3.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "nezuko-v3-demon-model-r4",
+      "part": 0,
+      "stage": "checkpoint-1 answers, round 5: white juban closed under the burst collar"
+    }
+  },
+  {
+    "id": "nezuko-v3-demon-idle-key-r5",
+    "group": "checkpoint-1f",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-demon-idle-key-r5.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-demon-idle-key-r5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-demon-idle-key-r4.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-demon-model-r4.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "nezuko-v3-demon-idle-key-r5",
+      "part": 0,
+      "stage": "checkpoint-1 answers, round 5: white juban closed under the burst collar"
+    }
+  },
+  {
+    "id": "nezuko-v3-idle-key-r2",
+    "group": "checkpoint-2b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-idle-key-r2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-idle-key-r2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-idle-key-r1.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "nezuko-v3-idle-key-r2",
+      "part": 0,
+      "stage": "checkpoint-2 answers: a taller stance (idle about 280 px in game)"
+    },
+    "rejected_reason": "user, 2026-10-18: the taller stance did not look right in the game; back to idle-key-r1"
+  },
+  {
+    "id": "nezuko-v3-walk-p0",
+    "group": "pilot",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-walk-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-walk-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "walk",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-walk-p1",
+    "group": "pilot",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-walk-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-walk-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-walk-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "walk",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-walk-p2",
+    "group": "pilot",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-walk-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-walk-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-walk-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "walk",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-stand_light-p0",
+    "group": "pilot",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-stand_light-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-stand_light-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "stand_light",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-stand_light-p1",
+    "group": "pilot",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-stand_light-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-stand_light-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-stand_light-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "stand_light",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-stand_light-p2",
+    "group": "pilot",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-stand_light-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-stand_light-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-stand_light-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "stand_light",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-body_stand_light-p0",
+    "group": "pilot",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-body_stand_light-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-body_stand_light-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "body_stand_light",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "nezuko-v3-body_stand_light-p0-r2"
+  },
+  {
+    "id": "nezuko-v3-body_stand_light-p1",
+    "group": "pilot",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-body_stand_light-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-body_stand_light-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-body_stand_light-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "body_stand_light",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-body_stand_light-p2",
+    "group": "pilot",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-body_stand_light-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-body_stand_light-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-body_stand_light-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "body_stand_light",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-walk-p0-r1",
+    "group": "pilot-r1",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-walk-p0-r1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-walk-p0-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "walk",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "nezuko-v3-walk-p0",
+    "rejected_reason": "drawn for the taller key (idle-key-r2), which the user rejected; the first pilot drawing matches idle-key-r1"
+  },
+  {
+    "id": "nezuko-v3-walk-p1-r1",
+    "group": "pilot-r1",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-walk-p1-r1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-walk-p1-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-walk-p0-r1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "walk",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "nezuko-v3-walk-p1",
+    "rejected_reason": "drawn for the taller key (idle-key-r2), which the user rejected; the first pilot drawing matches idle-key-r1"
+  },
+  {
+    "id": "nezuko-v3-walk-p2-r1",
+    "group": "pilot-r1",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-walk-p2-r1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-walk-p2-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-walk-p1-r1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "walk",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "nezuko-v3-walk-p2",
+    "rejected_reason": "drawn for the taller key (idle-key-r2), which the user rejected; the first pilot drawing matches idle-key-r1"
+  },
+  {
+    "id": "nezuko-v3-stand_light-p0-r1",
+    "group": "pilot-r1",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-stand_light-p0-r1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-stand_light-p0-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "stand_light",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "nezuko-v3-stand_light-p0",
+    "rejected_reason": "drawn for the taller key (idle-key-r2), which the user rejected; the first pilot drawing matches idle-key-r1"
+  },
+  {
+    "id": "nezuko-v3-stand_light-p2-r1",
+    "group": "pilot-r1",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-stand_light-p2-r1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-stand_light-p2-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-stand_light-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "stand_light",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "nezuko-v3-stand_light-p2",
+    "rejected_reason": "drawn for the taller key (idle-key-r2), which the user rejected; the first pilot drawing matches idle-key-r1"
+  },
+  {
+    "id": "nezuko-v3-body_stand_light-p0-r1",
+    "group": "pilot-r1",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-body_stand_light-p0-r1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-body_stand_light-p0-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "body_stand_light",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "nezuko-v3-body_stand_light-p0",
+    "rejected_reason": "drawn for the taller key (idle-key-r2), which the user rejected; the first pilot drawing matches idle-key-r1"
+  },
+  {
+    "id": "nezuko-v3-body_stand_light-p2-r1",
+    "group": "pilot-r1",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-body_stand_light-p2-r1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-body_stand_light-p2-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-body_stand_light-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "body_stand_light",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "nezuko-v3-body_stand_light-p2",
+    "rejected_reason": "drawn for the taller key (idle-key-r2), which the user rejected; the first pilot drawing matches idle-key-r1"
+  },
+  {
+    "id": "nezuko-v3-body_stand_light-p0-r2",
+    "group": "pilot-r2",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-body_stand_light-p0-r2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-body_stand_light-p0-r2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "body_stand_light",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-walk_back-p0",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-walk_back-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-walk_back-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "walk_back",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-walk_back-p1",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-walk_back-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-walk_back-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-walk_back-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "walk_back",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-walk_back-p2",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-walk_back-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-walk_back-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-walk_back-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "walk_back",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-crouch-p0",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-crouch-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-crouch-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "crouch",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-crouch-p1",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-crouch-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-crouch-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-crouch-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "crouch",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-crouch-p2",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-crouch-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-crouch-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-crouch-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "crouch",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-jump-p0",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-jump-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-jump-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "jump",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-jump-p1",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-jump-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-jump-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-jump-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "jump",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-jump-p2",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-jump-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-jump-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-jump-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "jump",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-guard-p0",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-guard-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-guard-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "guard",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-guard-p1",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-guard-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-guard-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-guard-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "guard",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-guard-p2",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-guard-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-guard-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-guard-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "guard",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-hit-p0",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-hit-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-hit-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "hit",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-hit-p1",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-hit-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-hit-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-hit-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "hit",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-hit-p2",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-hit-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-hit-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-hit-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "hit",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-knockdown-p0",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-knockdown-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-knockdown-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "knockdown",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-knockdown-p1",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-knockdown-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-knockdown-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-knockdown-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "knockdown",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-knockdown-p2",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-knockdown-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-knockdown-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-knockdown-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "knockdown",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-throw-p0",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-throw-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-throw-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "throw",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-throw-p1",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-throw-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-throw-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-throw-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "throw",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-throw-p2",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-throw-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-throw-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-throw-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "throw",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-throw_tech-p0",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-throw_tech-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-throw_tech-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "throw_tech",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-throw_tech-p1",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-throw_tech-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-throw_tech-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-throw_tech-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "throw_tech",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-throw_tech-p2",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-throw_tech-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-throw_tech-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-throw_tech-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "throw_tech",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-victory-p0",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-victory-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-victory-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "victory",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-victory-p1",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-victory-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-victory-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-victory-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "victory",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-victory-p2",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-victory-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-victory-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-victory-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "victory",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "nezuko-v3-victory-p2-r1"
+  },
+  {
+    "id": "nezuko-v3-stand_heavy-p0",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-stand_heavy-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-stand_heavy-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "stand_heavy",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-stand_heavy-p1",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-stand_heavy-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-stand_heavy-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-stand_heavy-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "stand_heavy",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-stand_heavy-p2",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-stand_heavy-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-stand_heavy-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-stand_heavy-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "stand_heavy",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-crouch_light-p0",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-crouch_light-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-crouch_light-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "crouch_light",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-crouch_light-p1",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-crouch_light-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-crouch_light-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-crouch_light-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "crouch_light",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-crouch_light-p2",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-crouch_light-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-crouch_light-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-crouch_light-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "crouch_light",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-crouch_heavy-p0",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-crouch_heavy-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-crouch_heavy-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "crouch_heavy",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-crouch_heavy-p1",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-crouch_heavy-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-crouch_heavy-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-crouch_heavy-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "crouch_heavy",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-crouch_heavy-p2",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-crouch_heavy-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-crouch_heavy-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-crouch_heavy-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "crouch_heavy",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-air_light-p0",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-air_light-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-air_light-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "air_light",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-air_light-p1",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-air_light-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-air_light-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-air_light-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "air_light",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-air_light-p2",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-air_light-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-air_light-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-air_light-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "air_light",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-air_heavy-p0",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-air_heavy-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-air_heavy-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "air_heavy",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-air_heavy-p1",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-air_heavy-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-air_heavy-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-air_heavy-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "air_heavy",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-air_heavy-p2",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-air_heavy-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-air_heavy-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-air_heavy-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "air_heavy",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-body_stand_heavy-p0",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-body_stand_heavy-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-body_stand_heavy-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "body_stand_heavy",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-body_stand_heavy-p1",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-body_stand_heavy-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-body_stand_heavy-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-body_stand_heavy-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "body_stand_heavy",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-body_stand_heavy-p2",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-body_stand_heavy-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-body_stand_heavy-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-body_stand_heavy-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "body_stand_heavy",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-body_crouch_light-p0",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-body_crouch_light-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-body_crouch_light-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "body_crouch_light",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-body_crouch_light-p1",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-body_crouch_light-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-body_crouch_light-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-body_crouch_light-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "body_crouch_light",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-body_crouch_light-p2",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-body_crouch_light-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-body_crouch_light-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-body_crouch_light-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "body_crouch_light",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-body_crouch_heavy-p0",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-body_crouch_heavy-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-body_crouch_heavy-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "body_crouch_heavy",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-body_crouch_heavy-p1",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-body_crouch_heavy-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-body_crouch_heavy-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-body_crouch_heavy-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "body_crouch_heavy",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-body_crouch_heavy-p2",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-body_crouch_heavy-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-body_crouch_heavy-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-body_crouch_heavy-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "body_crouch_heavy",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-body_air_light-p0",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-body_air_light-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-body_air_light-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "body_air_light",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-body_air_light-p1",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-body_air_light-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-body_air_light-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-body_air_light-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "body_air_light",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-body_air_light-p2",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-body_air_light-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-body_air_light-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-body_air_light-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "body_air_light",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-body_air_heavy-p0",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-body_air_heavy-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-body_air_heavy-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "body_air_heavy",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-body_air_heavy-p1",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-body_air_heavy-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-body_air_heavy-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-body_air_heavy-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "body_air_heavy",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-body_air_heavy-p2",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-body_air_heavy-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-body_air_heavy-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-body_air_heavy-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "body_air_heavy",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-dash_forward-p0",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-dash_forward-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-dash_forward-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "dash_forward",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-dash_forward-p1",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-dash_forward-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-dash_forward-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-dash_forward-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "dash_forward",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-dash_forward-p2",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-dash_forward-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-dash_forward-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-dash_forward-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "dash_forward",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-dash_back-p0",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-dash_back-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-dash_back-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "dash_back",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-dash_back-p1",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-dash_back-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-dash_back-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-dash_back-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "dash_back",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-dash_back-p2",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-dash_back-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-dash_back-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-dash_back-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "dash_back",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-jump_forward-p0",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-jump_forward-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-jump_forward-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "jump_forward",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-jump_forward-p1",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-jump_forward-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-jump_forward-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-jump_forward-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "jump_forward",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-jump_forward-p2",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-jump_forward-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-jump_forward-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-jump_forward-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "jump_forward",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-jump_forward-p3",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-jump_forward-p3.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-jump_forward-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-jump_forward-p2.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "jump_forward",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-jump_forward-p4",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-jump_forward-p4.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-jump_forward-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-jump_forward-p3.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "jump_forward",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-jump_forward-p5",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-jump_forward-p5.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-jump_forward-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-jump_forward-p4.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "jump_forward",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-jump_back-p0",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-jump_back-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-jump_back-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "jump_back",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-jump_back-p1",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-jump_back-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-jump_back-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-jump_back-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "jump_back",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-jump_back-p2",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-jump_back-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-jump_back-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-jump_back-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "jump_back",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-jump_back-p3",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-jump_back-p3.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-jump_back-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-jump_back-p2.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "jump_back",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-jump_back-p4",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-jump_back-p4.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-jump_back-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-jump_back-p3.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "jump_back",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-jump_back-p5",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-jump_back-p5.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-jump_back-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-jump_back-p4.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "jump_back",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-roll_forward-p0",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-roll_forward-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-roll_forward-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "roll_forward",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-roll_forward-p1",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-roll_forward-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-roll_forward-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-roll_forward-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "roll_forward",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-roll_forward-p2",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-roll_forward-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-roll_forward-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-roll_forward-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "roll_forward",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-roll_forward-p3",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-roll_forward-p3.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-roll_forward-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-roll_forward-p2.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "roll_forward",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-roll_forward-p4",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-roll_forward-p4.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-roll_forward-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-roll_forward-p3.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "roll_forward",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-roll_forward-p5",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-roll_forward-p5.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-roll_forward-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-roll_forward-p4.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "roll_forward",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-roll_back-p0",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-roll_back-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-roll_back-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "roll_back",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-roll_back-p1",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-roll_back-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-roll_back-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-roll_back-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "roll_back",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-roll_back-p2",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-roll_back-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-roll_back-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-roll_back-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "roll_back",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-roll_back-p3",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-roll_back-p3.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-roll_back-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-roll_back-p2.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "roll_back",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-roll_back-p4",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-roll_back-p4.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-roll_back-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-roll_back-p3.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "roll_back",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-roll_back-p5",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-roll_back-p5.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-roll_back-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-roll_back-p4.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "roll_back",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-throw_forward-p0",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-throw_forward-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-throw_forward-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "throw_forward",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-throw_forward-p1",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-throw_forward-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-throw_forward-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-throw_forward-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "throw_forward",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-throw_forward-p2",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-throw_forward-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-throw_forward-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-throw_forward-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "throw_forward",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-throw_forward-p3",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-throw_forward-p3.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-throw_forward-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-throw_forward-p2.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "throw_forward",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-throw_forward-p4",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-throw_forward-p4.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-throw_forward-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-throw_forward-p3.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "throw_forward",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-throw_forward-p5",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-throw_forward-p5.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-throw_forward-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-throw_forward-p4.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "throw_forward",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-throw_success-p0",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-throw_success-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-throw_success-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "throw_success",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-throw_success-p1",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-throw_success-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-throw_success-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-throw_success-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "throw_success",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-throw_success-p2",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-throw_success-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-throw_success-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-throw_success-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "throw_success",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-throw_success-p3",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-throw_success-p3.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-throw_success-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-throw_success-p2.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "throw_success",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-throw_success-p4",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-throw_success-p4.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-throw_success-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-throw_success-p3.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "throw_success",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-throw_success-p5",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-throw_success-p5.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-throw_success-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-throw_success-p4.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "throw_success",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-thrown-p0",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-thrown-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-thrown-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "thrown",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-thrown-p1",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-thrown-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-thrown-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-thrown-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "thrown",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-thrown-p2",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-thrown-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-thrown-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-thrown-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "thrown",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-thrown-p3",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-thrown-p3.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-thrown-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-thrown-p2.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "thrown",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-thrown-p4",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-thrown-p4.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-thrown-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-thrown-p3.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "thrown",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-thrown-p5",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-thrown-p5.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-thrown-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-thrown-p4.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "thrown",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-thrown_forward-p0",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-thrown_forward-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-thrown_forward-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "thrown_forward",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-thrown_forward-p1",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-thrown_forward-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-thrown_forward-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-thrown_forward-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "thrown_forward",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-thrown_forward-p2",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-thrown_forward-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-thrown_forward-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-thrown_forward-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "thrown_forward",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-thrown_forward-p3",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-thrown_forward-p3.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-thrown_forward-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-thrown_forward-p2.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "thrown_forward",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-thrown_forward-p4",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-thrown_forward-p4.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-thrown_forward-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-thrown_forward-p3.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "thrown_forward",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-thrown_forward-p5",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-thrown_forward-p5.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-thrown_forward-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-thrown_forward-p4.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "thrown_forward",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-blood_kick-p0",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-blood_kick-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-blood_kick-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "blood_kick",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-blood_kick-p1",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-blood_kick-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-blood_kick-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-blood_kick-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "blood_kick",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-blood_kick-p2",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-blood_kick-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-blood_kick-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-blood_kick-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "blood_kick",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-blood_kick-p3",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-blood_kick-p3.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-blood_kick-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-blood_kick-p2.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "blood_kick",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-blood_kick-p4",
+    "group": "production",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-blood_kick-p4.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-blood_kick-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-blood_kick-p3.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "blood_kick",
+      "part": 4,
+      "frame_indices": [
+        7,
+        8
+      ],
+      "overlap": [
+        7
+      ],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-rising_kick-p0",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-rising_kick-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-rising_kick-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "rising_kick",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-rising_kick-p1",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-rising_kick-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-rising_kick-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-rising_kick-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "rising_kick",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-rising_kick-p2",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-rising_kick-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-rising_kick-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-rising_kick-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "rising_kick",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-rising_kick-p3",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-rising_kick-p3.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-rising_kick-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-rising_kick-p2.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "rising_kick",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-rising_kick-p4",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-rising_kick-p4.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-rising_kick-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-rising_kick-p3.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "rising_kick",
+      "part": 4,
+      "frame_indices": [
+        7,
+        8
+      ],
+      "overlap": [
+        7
+      ],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-spinning_kick-p0",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-spinning_kick-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-spinning_kick-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "spinning_kick",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-spinning_kick-p1",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-spinning_kick-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-spinning_kick-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-spinning_kick-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "spinning_kick",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-spinning_kick-p2",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-spinning_kick-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-spinning_kick-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-spinning_kick-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "spinning_kick",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-spinning_kick-p3",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-spinning_kick-p3.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-spinning_kick-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-spinning_kick-p2.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "spinning_kick",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-spinning_kick-p4",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-spinning_kick-p4.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-spinning_kick-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-spinning_kick-p3.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "spinning_kick",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-spinning_kick-p5",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-spinning_kick-p5.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-spinning_kick-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-spinning_kick-p4.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "spinning_kick",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-blood_burst-p0",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-blood_burst-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-blood_burst-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "blood_burst",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-blood_burst-p1",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-blood_burst-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-blood_burst-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-blood_burst-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "blood_burst",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-blood_burst-p2",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-blood_burst-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-blood_burst-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-blood_burst-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "blood_burst",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-blood_burst-p3",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-blood_burst-p3.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-blood_burst-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-blood_burst-p2.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "blood_burst",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-blood_burst-p4",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-blood_burst-p4.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-blood_burst-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-blood_burst-p3.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "blood_burst",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-blood_burst-p5",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-blood_burst-p5.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-blood_burst-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-blood_burst-p4.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "blood_burst",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-renzoku_2-p0",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-renzoku_2-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-renzoku_2-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "renzoku_2",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-renzoku_2-p1",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-renzoku_2-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-renzoku_2-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-renzoku_2-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "renzoku_2",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-renzoku_2-p2",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-renzoku_2-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-renzoku_2-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-renzoku_2-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "renzoku_2",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-renzoku_3-p0",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-renzoku_3-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-renzoku_3-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "renzoku_3",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-renzoku_3-p1",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-renzoku_3-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-renzoku_3-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-renzoku_3-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "renzoku_3",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-renzoku_3-p2",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-renzoku_3-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-renzoku_3-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-renzoku_3-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "renzoku_3",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-renzoku_3-p3",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-renzoku_3-p3.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-renzoku_3-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-renzoku_3-p2.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "renzoku_3",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-kakato-p0",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-kakato-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-kakato-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "kakato",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-kakato-p1",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-kakato-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-kakato-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-kakato-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "kakato",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-kakato-p2",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-kakato-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-kakato-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-kakato-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "kakato",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-kakato-p3",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-kakato-p3.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-kakato-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-kakato-p2.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "kakato",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-kakato-p4",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-kakato-p4.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-kakato-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-kakato-p3.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "kakato",
+      "part": 4,
+      "frame_indices": [
+        7,
+        8
+      ],
+      "overlap": [
+        7
+      ],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-slide_kick-p0",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-slide_kick-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-slide_kick-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "slide_kick",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-slide_kick-p1",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-slide_kick-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-slide_kick-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-slide_kick-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "slide_kick",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-slide_kick-p2",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-slide_kick-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-slide_kick-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-slide_kick-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "slide_kick",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-slide_kick-p3",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-slide_kick-p3.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-slide_kick-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-slide_kick-p2.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "slide_kick",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-air_dive-p0",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-air_dive-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-air_dive-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "air_dive",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-air_dive-p1",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-air_dive-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-air_dive-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-air_dive-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "air_dive",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-air_dive-p2",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-air_dive-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-air_dive-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-air_dive-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "air_dive",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-air_land-p0",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-air_land-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-air_land-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "air_land",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-air_land-p1",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-air_land-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-air_land-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-air_land-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "air_land",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-air_spin-p0",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-air_spin-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-air_spin-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "air_spin",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-air_spin-p1",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-air_spin-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-air_spin-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-air_spin-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "air_spin",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-air_spin-p2",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-air_spin-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-air_spin-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-air_spin-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "air_spin",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-air_spin-p3",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-air_spin-p3.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-air_spin-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-air_spin-p2.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "air_spin",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-air_spin-p4",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-air_spin-p4.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-air_spin-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-air_spin-p3.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "air_spin",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-round_victory-p0",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-round_victory-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-round_victory-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "round_victory",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-round_victory-p1",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-round_victory-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-round_victory-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-round_victory-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "round_victory",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "nezuko-v3-round_victory-p1-r1"
+  },
+  {
+    "id": "nezuko-v3-round_victory-p2",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-round_victory-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-round_victory-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-round_victory-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "round_victory",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "nezuko-v3-round_victory-p2-r1"
+  },
+  {
+    "id": "nezuko-v3-round_victory-p3",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-round_victory-p3.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-round_victory-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-round_victory-p2.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "round_victory",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "nezuko-v3-round_victory-p3-r1"
+  },
+  {
+    "id": "nezuko-v3-round_victory-p4",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-round_victory-p4.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-round_victory-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-round_victory-p3.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "round_victory",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "nezuko-v3-round_victory-p4-r1"
+  },
+  {
+    "id": "nezuko-v3-round_victory-p5",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-round_victory-p5.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-round_victory-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-round_victory-p4.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "round_victory",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "nezuko-v3-round_victory-p5-r1"
+  },
+  {
+    "id": "nezuko-v3-round_victory-p6",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-round_victory-p6.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-round_victory-p6.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-round_victory-p5.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "round_victory",
+      "part": 6,
+      "frame_indices": [
+        12,
+        13
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "nezuko-v3-round_victory-p6-r1"
+  },
+  {
+    "id": "nezuko-v3-round_victory-p7",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-round_victory-p7.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-round_victory-p7.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-round_victory-p6.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "round_victory",
+      "part": 7,
+      "frame_indices": [
+        14,
+        15
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "nezuko-v3-round_victory-p7-r1"
+  },
+  {
+    "id": "nezuko-v3-round_victory-p8",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-round_victory-p8.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-round_victory-p8.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-round_victory-p7.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "round_victory",
+      "part": 8,
+      "frame_indices": [
+        16,
+        17
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "superseded_by": "nezuko-v3-round_victory-p8-r1"
+  },
+  {
+    "id": "nezuko-v3-round_defeat-p0",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-round_defeat-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-round_defeat-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "round_defeat",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-round_defeat-p1",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-round_defeat-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-round_defeat-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-round_defeat-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "round_defeat",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-round_defeat-p2",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-round_defeat-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-round_defeat-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-round_defeat-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "round_defeat",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-round_defeat-p3",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-round_defeat-p3.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-round_defeat-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-round_defeat-p2.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "round_defeat",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-round_defeat-p4",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-round_defeat-p4.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-round_defeat-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-round_defeat-p3.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "round_defeat",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-round_defeat-p5",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-round_defeat-p5.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-round_defeat-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-round_defeat-p4.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "round_defeat",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-intro_keys-p0",
+    "group": "production-b",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-intro_keys-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-intro_keys-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/nezuko-v3-intro_keys-p0-base.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "intro_keys",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    },
+    "rejected": "replaced by the generated round_intro (user review 2026-10-18: redesign the intro)"
+  },
+  {
+    "id": "nezuko-v3-guard_low-p0",
+    "group": "production-guard",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-guard_low-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-guard_low-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/nezuko-v3-guard_low-p0-base.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "guard_low",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-guard_low-p1",
+    "group": "production-guard",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-guard_low-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-guard_low-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/nezuko-v3-guard_low-p1-base.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-guard_low-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "guard_low",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-guard_low-p2",
+    "group": "production-guard",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-guard_low-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-guard_low-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/nezuko-v3-guard_low-p2-base.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-guard_low-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "guard_low",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-hit_guard-p0",
+    "group": "production-hit",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-hit_guard-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-hit_guard-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/nezuko-v3-hit_guard-p0-base.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "hit_guard",
+      "part": 0,
+      "frame_indices": [
+        0
+      ],
+      "overlap": [],
+      "columns": 1,
+      "rows": 1,
+      "count": 1,
+      "cell": [
+        1536,
+        1024
+      ],
+      "layout": "full"
+    }
+  },
+  {
+    "id": "nezuko-v3-round_victory-p1-r1",
+    "group": "review-r1",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-round_victory-p1-r1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-round_victory-p1-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-round_victory-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "round_victory",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-round_victory-p2-r1",
+    "group": "review-r1",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-round_victory-p2-r1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-round_victory-p2-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-round_victory-p1-r1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "round_victory",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-round_victory-p3-r1",
+    "group": "review-r1",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-round_victory-p3-r1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-round_victory-p3-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-round_victory-p2-r1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "round_victory",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-round_victory-p4-r1",
+    "group": "review-r1",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-round_victory-p4-r1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-round_victory-p4-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-round_victory-p3-r1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "round_victory",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-round_victory-p5-r1",
+    "group": "review-r1",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-round_victory-p5-r1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-round_victory-p5-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-round_victory-p4-r1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "round_victory",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-round_victory-p6-r1",
+    "group": "review-r1",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-round_victory-p6-r1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-round_victory-p6-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-round_victory-p5-r1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "round_victory",
+      "part": 6,
+      "frame_indices": [
+        12,
+        13
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-round_victory-p7-r1",
+    "group": "review-r1",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-round_victory-p7-r1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-round_victory-p7-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-round_victory-p6-r1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "round_victory",
+      "part": 7,
+      "frame_indices": [
+        14,
+        15
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-round_victory-p8-r1",
+    "group": "review-r1",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-round_victory-p8-r1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-round_victory-p8-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-round_victory-p7-r1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "round_victory",
+      "part": 8,
+      "frame_indices": [
+        16,
+        17
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-victory-p2-r1",
+    "group": "review-r1",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-victory-p2-r1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-victory-p2-r1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-victory-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "victory",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-round_intro-p0",
+    "group": "review2-intro",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-round_intro-p0.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-round_intro-p0.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "round_intro",
+      "part": 0,
+      "frame_indices": [
+        0,
+        1
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-round_intro-p1",
+    "group": "review2-intro",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-round_intro-p1.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-round_intro-p1.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-round_intro-p0.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "round_intro",
+      "part": 1,
+      "frame_indices": [
+        2,
+        3
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-round_intro-p2",
+    "group": "review2-intro",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-round_intro-p2.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-round_intro-p2.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-round_intro-p1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "round_intro",
+      "part": 2,
+      "frame_indices": [
+        4,
+        5
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-round_intro-p3",
+    "group": "review2-intro",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-round_intro-p3.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-round_intro-p3.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-round_intro-p2.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "round_intro",
+      "part": 3,
+      "frame_indices": [
+        6,
+        7
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-round_intro-p4",
+    "group": "review2-intro",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-round_intro-p4.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-round_intro-p4.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-round_intro-p3.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "round_intro",
+      "part": 4,
+      "frame_indices": [
+        8,
+        9
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-round_intro-p5",
+    "group": "review2-intro",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-round_intro-p5.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-round_intro-p5.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-round_intro-p4.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "round_intro",
+      "part": 5,
+      "frame_indices": [
+        10,
+        11
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-round_intro-p6",
+    "group": "review2-intro",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-round_intro-p6.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-round_intro-p6.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-round_intro-p5.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "round_intro",
+      "part": 6,
+      "frame_indices": [
+        12,
+        13
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-round_intro-p7",
+    "group": "review2-intro",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-round_intro-p7.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-round_intro-p7.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-round_intro-p6.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "round_intro",
+      "part": 7,
+      "frame_indices": [
+        14,
+        15
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  },
+  {
+    "id": "nezuko-v3-round_intro-p8",
+    "group": "review2-intro",
+    "prompt": "output/imagegen/nezuko-v3/prompts/nezuko-v3-round_intro-p8.txt",
+    "out": "output/imagegen/nezuko-v3/raw/nezuko-v3-round_intro-p8.png",
+    "size": "1536x1024",
+    "references": [
+      "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+      "output/imagegen/nezuko-v3/references/portrait.png",
+      "output/imagegen/nezuko-v3/raw/nezuko-v3-round_intro-p7.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "clip": "round_intro",
+      "part": 8,
+      "frame_indices": [
+        16,
+        17
+      ],
+      "overlap": [],
+      "columns": 2,
+      "rows": 1,
+      "count": 2,
+      "cell": [
+        768,
+        1024
+      ],
+      "layout": "wide"
+    }
+  }
+]

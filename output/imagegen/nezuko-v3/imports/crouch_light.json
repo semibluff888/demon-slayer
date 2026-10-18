@@ -1,0 +1,310 @@
+{
+  "character": "nezuko",
+  "clip": "crouch_light",
+  "canvas_size": [
+    1024,
+    640
+  ],
+  "feet_anchor": [
+    448,
+    568
+  ],
+  "runtime_head_ruler": 39.53,
+  "parts": [
+    {
+      "id": "nezuko-v3-crouch_light-p0",
+      "source": "output/imagegen/nezuko-v3/raw/nezuko-v3-crouch_light-p0.png",
+      "sha256": "cae27736bb81761222877727c1a1ec48b57977eb1b544e5fb6fbd10ad3fd1759",
+      "ruler": 131.98,
+      "scale": 0.2996,
+      "scale_method": "head-ruler",
+      "resample_vs_idle": 0.72,
+      "palette_shift": {
+        "haori": [
+          1.3,
+          3.01,
+          2.82
+        ],
+        "uniform": [
+          -0.53,
+          1.46,
+          3.2
+        ],
+        "skin": [
+          -2.57,
+          0.79,
+          4.77
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori": 4.25,
+        "uniform": 3.54,
+        "skin": 5.24,
+        "hair": 2.98
+      },
+      "palette_delta_e_after": {
+        "haori": 0.79,
+        "uniform": 0.82,
+        "skin": 1.31,
+        "hair": 3.04
+      }
+    },
+    {
+      "id": "nezuko-v3-crouch_light-p1",
+      "source": "output/imagegen/nezuko-v3/raw/nezuko-v3-crouch_light-p1.png",
+      "sha256": "ec4636a27440c84b1c6d4ffe210dd4b4fe3810bfcb377418c8c9392dc1b20a00",
+      "ruler": 131.77,
+      "scale": 0.3,
+      "scale_method": "head-ruler",
+      "resample_vs_idle": 0.721,
+      "palette_shift": {
+        "haori": [
+          1.15,
+          2.97,
+          2.08
+        ],
+        "uniform": [
+          -1.13,
+          1.91,
+          3.47
+        ],
+        "skin": [
+          -2.87,
+          1.18,
+          4.85
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori": 3.74,
+        "uniform": 4.06,
+        "skin": 5.48,
+        "hair": 3.12
+      },
+      "palette_delta_e_after": {
+        "haori": 0.76,
+        "uniform": 1.18,
+        "skin": 1.45,
+        "hair": 3.03
+      }
+    },
+    {
+      "id": "nezuko-v3-crouch_light-p2",
+      "source": "output/imagegen/nezuko-v3/raw/nezuko-v3-crouch_light-p2.png",
+      "sha256": "560c8f353c74462d614ab3cd4439c18456d2e6c141a2b30c3940e8b42022dfda",
+      "ruler": 135.06,
+      "scale": 0.2927,
+      "scale_method": "head-ruler",
+      "resample_vs_idle": 0.703,
+      "palette_shift": {
+        "haori": [
+          1.21,
+          3.18,
+          2.02
+        ],
+        "uniform": [
+          -0.65,
+          1.15,
+          2.0
+        ],
+        "skin": [
+          -2.95,
+          1.33,
+          4.47
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori": 3.88,
+        "uniform": 2.36,
+        "skin": 5.2,
+        "hair": 3.46
+      },
+      "palette_delta_e_after": {
+        "haori": 0.87,
+        "uniform": 0.66,
+        "skin": 1.83,
+        "hair": 3.3
+      }
+    }
+  ],
+  "frames": [
+    {
+      "frame": 0,
+      "part": "nezuko-v3-crouch_light-p0",
+      "crop": [
+        36,
+        237,
+        768,
+        928
+      ],
+      "head_ruler": 127.4,
+      "head_box": [
+        426,
+        1,
+        585,
+        162
+      ],
+      "ratio_to_sheet": 0.965,
+      "scale": 0.2996,
+      "flags": [],
+      "notes": [],
+      "root_x": 442.0,
+      "anchor_mode": "feet",
+      "offset": [
+        316,
+        361
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.695
+    },
+    {
+      "frame": 1,
+      "part": "nezuko-v3-crouch_light-p0",
+      "crop": [
+        772,
+        248,
+        1515,
+        928
+      ],
+      "head_ruler": 131.98,
+      "head_box": [
+        433,
+        1,
+        608,
+        188
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.2996,
+      "flags": [],
+      "notes": [],
+      "root_x": 390.0,
+      "anchor_mode": "feet",
+      "offset": [
+        331,
+        365
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.685
+    },
+    {
+      "frame": 2,
+      "part": "nezuko-v3-crouch_light-p1",
+      "crop": [
+        30,
+        265,
+        824,
+        899
+      ],
+      "head_ruler": 131.77,
+      "head_box": [
+        446,
+        7,
+        626,
+        193
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3,
+      "flags": [],
+      "notes": [],
+      "root_x": 397.0,
+      "anchor_mode": "feet",
+      "offset": [
+        329,
+        378
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.631
+    },
+    {
+      "frame": 3,
+      "part": "nezuko-v3-crouch_light-p1",
+      "crop": [
+        743,
+        304,
+        1531,
+        899
+      ],
+      "head_ruler": 90.16,
+      "head_box": [
+        338,
+        130,
+        486,
+        255
+      ],
+      "ratio_to_sheet": 0.684,
+      "scale": 0.3,
+      "flags": [],
+      "notes": [
+        "head partly hidden or turned (68%)"
+      ],
+      "root_x": 357.0,
+      "anchor_mode": "feet",
+      "offset": [
+        341,
+        390
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.597
+    },
+    {
+      "frame": 4,
+      "part": "nezuko-v3-crouch_light-p2",
+      "crop": [
+        32,
+        237,
+        855,
+        914
+      ],
+      "head_ruler": 135.06,
+      "head_box": [
+        459,
+        1,
+        646,
+        193
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.2927,
+      "flags": [],
+      "notes": [],
+      "root_x": 409.0,
+      "anchor_mode": "feet",
+      "offset": [
+        328,
+        370
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.664
+    },
+    {
+      "frame": 5,
+      "part": "nezuko-v3-crouch_light-p2",
+      "crop": [
+        855,
+        247,
+        1499,
+        919
+      ],
+      "head_ruler": 129.29,
+      "head_box": [
+        373,
+        1,
+        534,
+        164
+      ],
+      "ratio_to_sheet": 0.957,
+      "scale": 0.3052,
+      "flags": [],
+      "notes": [
+        "repeats frame crouch:5"
+      ],
+      "root_x": 461.0,
+      "anchor_mode": "feet",
+      "offset": [
+        307,
+        381
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.631,
+      "copy_of": "crouch:5"
+    }
+  ]
+}

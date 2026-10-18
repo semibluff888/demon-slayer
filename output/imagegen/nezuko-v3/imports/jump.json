@@ -1,0 +1,303 @@
+{
+  "character": "nezuko",
+  "clip": "jump",
+  "canvas_size": [
+    1024,
+    640
+  ],
+  "feet_anchor": [
+    448,
+    568
+  ],
+  "runtime_head_ruler": 39.53,
+  "parts": [
+    {
+      "id": "nezuko-v3-jump-p0",
+      "source": "output/imagegen/nezuko-v3/raw/nezuko-v3-jump-p0.png",
+      "sha256": "16378b9d4473d9f31295c58e5b422ef6f7e8044d98b6fb09b1b97bec2aeaccb8",
+      "ruler": 97.48,
+      "scale": 0.3883,
+      "scale_method": "head-ruler, clip guard + area 1.20 > 1.08 x0.958",
+      "resample_vs_idle": 0.933,
+      "palette_shift": {
+        "haori": [
+          0.82,
+          2.45,
+          2.64
+        ],
+        "uniform": [
+          -3.23,
+          2.53,
+          2.96
+        ],
+        "skin": [
+          -1.69,
+          0.66,
+          3.52
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori": 3.66,
+        "uniform": 4.64,
+        "skin": 3.82,
+        "hair": 2.5
+      },
+      "palette_delta_e_after": {
+        "haori": 0.85,
+        "uniform": 1.79,
+        "skin": 0.66,
+        "hair": 8.57
+      }
+    },
+    {
+      "id": "nezuko-v3-jump-p1",
+      "source": "output/imagegen/nezuko-v3/raw/nezuko-v3-jump-p1.png",
+      "sha256": "18e2f9ec8e58356cad6a934f7cd1b90da3d060831eb4521eefb752be255a415d",
+      "ruler": 106.55,
+      "scale": 0.3639,
+      "scale_method": "head-ruler, clip guard + area 1.17 > 1.08 x0.981",
+      "resample_vs_idle": 0.874,
+      "palette_shift": {
+        "uniform": [
+          -2.36,
+          1.25,
+          1.43
+        ],
+        "skin": [
+          -2.14,
+          1.31,
+          2.86
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori": 1.52,
+        "uniform": 2.65,
+        "skin": 3.57,
+        "hair": 2.77
+      },
+      "palette_delta_e_after": {
+        "haori": 1.51,
+        "uniform": 1.53,
+        "skin": 1.37,
+        "hair": 2.69
+      }
+    },
+    {
+      "id": "nezuko-v3-jump-p2",
+      "source": "output/imagegen/nezuko-v3/raw/nezuko-v3-jump-p2.png",
+      "sha256": "d37befec0b5a756f18d199efdc0ef5905cad58347ec52088e320bd46a22d43e0",
+      "ruler": 127.35,
+      "scale": 0.3303,
+      "scale_method": "head-ruler, guard frames x1.064",
+      "resample_vs_idle": 0.794,
+      "palette_shift": {
+        "haori": [
+          1.66,
+          2.18,
+          2.41
+        ],
+        "uniform": [
+          -1.33,
+          1.3,
+          2.45
+        ],
+        "skin": [
+          -2.53,
+          0.91,
+          4.32
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori": 3.51,
+        "uniform": 2.96,
+        "skin": 4.84,
+        "hair": 3.24
+      },
+      "palette_delta_e_after": {
+        "haori": 0.99,
+        "uniform": 1.18,
+        "skin": 1.4,
+        "hair": 3.16
+      }
+    }
+  ],
+  "frames": [
+    {
+      "frame": 0,
+      "part": "nezuko-v3-jump-p0",
+      "crop": [
+        67,
+        374,
+        663,
+        979
+      ],
+      "head_ruler": 97.48,
+      "head_box": [
+        52,
+        249,
+        182,
+        403
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3883,
+      "flags": [],
+      "notes": [],
+      "root_x": 428.0,
+      "anchor_mode": "feet",
+      "offset": [
+        282,
+        334
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.782
+    },
+    {
+      "frame": 1,
+      "part": "nezuko-v3-jump-p0",
+      "crop": [
+        777,
+        12,
+        1470,
+        945
+      ],
+      "head_ruler": 92.36,
+      "head_box": [
+        306,
+        65,
+        426,
+        169
+      ],
+      "ratio_to_sheet": 0.947,
+      "scale": 0.3883,
+      "flags": [],
+      "notes": [],
+      "root_x": 376.0,
+      "anchor_mode": "feet",
+      "offset": [
+        302,
+        206
+      ],
+      "clipped": false,
+      "height_vs_idle": 1.131
+    },
+    {
+      "frame": 2,
+      "part": "nezuko-v3-jump-p1",
+      "crop": [
+        66,
+        121,
+        791,
+        723
+      ],
+      "head_ruler": 106.55,
+      "head_box": [
+        491,
+        5,
+        626,
+        130
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3639,
+      "flags": [],
+      "notes": [],
+      "root_x": 491.0,
+      "anchor_mode": "feet",
+      "offset": [
+        269,
+        349
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.732
+    },
+    {
+      "frame": 3,
+      "part": "nezuko-v3-jump-p1",
+      "crop": [
+        804,
+        16,
+        1490,
+        977
+      ],
+      "head_ruler": 105.52,
+      "head_box": [
+        366,
+        140,
+        498,
+        259
+      ],
+      "ratio_to_sheet": 0.99,
+      "scale": 0.3639,
+      "flags": [],
+      "notes": [],
+      "root_x": 366.0,
+      "anchor_mode": "feet",
+      "offset": [
+        315,
+        218
+      ],
+      "clipped": false,
+      "height_vs_idle": 1.003
+    },
+    {
+      "frame": 4,
+      "part": "nezuko-v3-jump-p2",
+      "crop": [
+        42,
+        330,
+        835,
+        948
+      ],
+      "head_ruler": 127.35,
+      "head_box": [
+        485,
+        3,
+        660,
+        166
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3303,
+      "flags": [],
+      "notes": [],
+      "root_x": 519.0,
+      "anchor_mode": "feet",
+      "offset": [
+        277,
+        364
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.681
+    },
+    {
+      "frame": 5,
+      "part": "nezuko-v3-jump-p2",
+      "crop": [
+        835,
+        90,
+        1499,
+        957
+      ],
+      "head_ruler": 118.04,
+      "head_box": [
+        360,
+        2,
+        506,
+        142
+      ],
+      "ratio_to_sheet": 0.927,
+      "scale": 0.4162,
+      "flags": [],
+      "notes": [
+        "repeats frame idle:0"
+      ],
+      "root_x": null,
+      "anchor_mode": "feet",
+      "offset": [
+        312,
+        257
+      ],
+      "clipped": false,
+      "height_vs_idle": null,
+      "copy_of": "idle:0"
+    }
+  ]
+}

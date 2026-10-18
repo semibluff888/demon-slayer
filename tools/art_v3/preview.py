@@ -3,7 +3,9 @@
 Reads output/imagegen/<id>-v3/imports/<clip>/frame-NN.png (1024x640 canvases written
 by process.py), packs them into art/characters/<id>/v3-preview.png and points those
 clips at it. The awakening atlas gets its own page, derived per frame exactly as
-pack.py will (awaken.py: Tanjiro's forehead mark, Zenitsu's Godspeed grade). The idle
+pack.py will (awaken.py: Tanjiro's forehead mark, Zenitsu's Godspeed grade); a character
+whose spec "awakening" mode is "keep" (Nezuko: the shipped demon form stays) leaves the
+awakening atlas alone. The idle
 clip gets "cycle": true; a clip the atlas does not have yet takes its timing from the
 pose script ("new"); clips marked "mirror" are flipped like pack.py does. Other clips,
 timing data and phase breaks are untouched. Undo with --restore (git checkout of the
@@ -47,12 +49,13 @@ def main():
         return
     anatomy.configure(args.character)
     poses = read(POSES / (args.character + '.json'))['clips']
+    keep = awaken.settings().get('mode') == 'keep'
     sprites = []
     for clip in args.clips.split(','):
         flip = poses.get(clip, {}).get('mirror')
         for path in sorted((production(args.character) / 'imports' / clip).glob('frame-*.png')):
             image = Image.open(path).convert('RGBA')
-            awake = Image.fromarray(awaken.bake(np.asarray(image))[0], 'RGBA')
+            awake = image if keep else Image.fromarray(awaken.bake(np.asarray(image))[0], 'RGBA')
             if flip:
                 image, awake = pack.mirrored(image), pack.mirrored(awake)
             box = image.getbbox()
@@ -74,7 +77,7 @@ def main():
         pages[1].alpha_composite(awake, at)
         clips.setdefault(clip, []).append(dict(texture=PAGE, region=[at[0], at[1], image.width, image.height], offset=list(offset)))
     folder = ROOT / 'art/characters' / args.character
-    for target, page in ((folder, pages[0]), (folder / 'awakening', pages[1])):
+    for target, page in ((folder, pages[0]),) + (() if keep else ((folder / 'awakening', pages[1]),)):
         page.save(target / PAGE)
         atlas_path = target / 'atlas.json'
         atlas = json.loads(atlas_path.read_text(encoding='utf-8'))

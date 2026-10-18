@@ -1,0 +1,414 @@
+{
+  "key": "output/imagegen/nezuko-v3/references/approved-idle-candidate.png",
+  "frames": 12,
+  "fps": 10,
+  "grid": 6,
+  "alpha": 1.4,
+  "note": "Claw stance (candidate 3 narrowed, checkpoint 1 answers 2026-10-17; a taller version tried at checkpoint 3 was rejected by the user, 2026-10-18): a quick, light bounce with the feet planted (the knees give, so the whole upper body dips and rises), a breath in the chest and shoulders a quarter beat later, both clawed hands flexing just behind the bounce, the long hair and the haori hem trailing. Points are on the padded key (the drawing sits 20 px from the left and 30 px from the top; the key is idle-key-r1). Lessons from the other idles: every head point (crown, head, chin, ribbon, the hair round the face) moves by the same amount in every motion, so the head never grows or shrinks; only the long hair below the shoulders and the hair tips sway.",
+  "points": {
+    "heel_back": [
+      92,
+      738
+    ],
+    "foot_back": [
+      113,
+      736
+    ],
+    "toe_back": [
+      135,
+      728
+    ],
+    "heel_front": [
+      395,
+      731
+    ],
+    "foot_front": [
+      430,
+      730
+    ],
+    "toe_front": [
+      468,
+      724
+    ],
+    "ankle_back": [
+      130,
+      667
+    ],
+    "ankle_front": [
+      410,
+      667
+    ],
+    "knee_back": [
+      153,
+      590
+    ],
+    "knee_front": [
+      390,
+      590
+    ],
+    "hem_back": [
+      160,
+      560
+    ],
+    "hem_front": [
+      373,
+      560
+    ],
+    "kimono_low": [
+      287,
+      470
+    ],
+    "pelvis": [
+      287,
+      367
+    ],
+    "obi": [
+      310,
+      215
+    ],
+    "chest": [
+      310,
+      177
+    ],
+    "collar": [
+      313,
+      153
+    ],
+    "shoulder_back": [
+      267,
+      173
+    ],
+    "shoulder_front": [
+      360,
+      173
+    ],
+    "elbow_back": [
+      227,
+      273
+    ],
+    "elbow_front": [
+      400,
+      230
+    ],
+    "hand_back": [
+      287,
+      253
+    ],
+    "hand_front": [
+      427,
+      193
+    ],
+    "chin": [
+      330,
+      155
+    ],
+    "head": [
+      333,
+      100
+    ],
+    "crown": [
+      327,
+      40
+    ],
+    "ribbon": [
+      387,
+      60
+    ],
+    "hair_face_back": [
+      290,
+      90
+    ],
+    "hair_face_front": [
+      360,
+      140
+    ],
+    "hair_mid": [
+      187,
+      173
+    ],
+    "hair_low": [
+      140,
+      240
+    ],
+    "hair_tip_back": [
+      40,
+      333
+    ],
+    "hair_tip_low": [
+      100,
+      413
+    ],
+    "hair_tip_front": [
+      413,
+      373
+    ],
+    "haori_back_mid": [
+      100,
+      467
+    ],
+    "haori_back_hem": [
+      87,
+      587
+    ],
+    "haori_front_hem": [
+      493,
+      527
+    ],
+    "haori_sleeve": [
+      473,
+      400
+    ]
+  },
+  "motions": [
+    {
+      "name": "bounce",
+      "phase": 0.0,
+      "points": {
+        "pelvis": [
+          0,
+          5
+        ],
+        "kimono_low": [
+          0,
+          3.5
+        ],
+        "obi": [
+          0,
+          6
+        ],
+        "chest": [
+          0,
+          6
+        ],
+        "collar": [
+          0,
+          6
+        ],
+        "shoulder_back": [
+          0,
+          6
+        ],
+        "shoulder_front": [
+          0,
+          6
+        ],
+        "elbow_back": [
+          0,
+          6
+        ],
+        "elbow_front": [
+          0,
+          6
+        ],
+        "hand_back": [
+          0,
+          6
+        ],
+        "hand_front": [
+          0,
+          6
+        ],
+        "chin": [
+          0,
+          6
+        ],
+        "head": [
+          0,
+          6
+        ],
+        "crown": [
+          0,
+          6
+        ],
+        "ribbon": [
+          0,
+          6
+        ],
+        "hair_face_back": [
+          0,
+          6
+        ],
+        "hair_face_front": [
+          0,
+          6
+        ],
+        "hair_mid": [
+          0,
+          5
+        ],
+        "hair_low": [
+          0,
+          4
+        ],
+        "hair_tip_back": [
+          0,
+          3
+        ],
+        "hair_tip_low": [
+          0,
+          2.5
+        ],
+        "hair_tip_front": [
+          0,
+          3
+        ],
+        "haori_back_mid": [
+          0,
+          3
+        ],
+        "haori_front_hem": [
+          0,
+          2
+        ],
+        "haori_sleeve": [
+          0,
+          4
+        ],
+        "knee_back": [
+          0,
+          2
+        ],
+        "knee_front": [
+          0,
+          2
+        ],
+        "hem_back": [
+          0,
+          1.2
+        ],
+        "hem_front": [
+          0,
+          1.2
+        ]
+      }
+    },
+    {
+      "name": "breath",
+      "phase": 0.25,
+      "points": {
+        "chest": [
+          0,
+          -1.6
+        ],
+        "collar": [
+          0,
+          -1.6
+        ],
+        "shoulder_back": [
+          0,
+          -1.6
+        ],
+        "shoulder_front": [
+          0,
+          -1.6
+        ],
+        "chin": [
+          0,
+          -1.0
+        ],
+        "head": [
+          0,
+          -1.0
+        ],
+        "crown": [
+          0,
+          -1.0
+        ],
+        "ribbon": [
+          0,
+          -1.0
+        ],
+        "hair_face_back": [
+          0,
+          -1.0
+        ],
+        "hair_face_front": [
+          0,
+          -1.0
+        ],
+        "elbow_back": [
+          0,
+          -1.0
+        ],
+        "elbow_front": [
+          0,
+          -1.0
+        ],
+        "hand_back": [
+          0,
+          -1.0
+        ],
+        "hand_front": [
+          0,
+          -1.0
+        ]
+      }
+    },
+    {
+      "name": "claws",
+      "phase": 0.1,
+      "points": {
+        "hand_front": [
+          1.5,
+          -3
+        ],
+        "hand_back": [
+          1,
+          -2
+        ],
+        "elbow_front": [
+          0.5,
+          -1.5
+        ]
+      }
+    },
+    {
+      "name": "hair",
+      "phase": -0.25,
+      "points": {
+        "hair_mid": [
+          -1.5,
+          0
+        ],
+        "hair_low": [
+          -3,
+          0.5
+        ],
+        "hair_tip_back": [
+          -5,
+          1
+        ],
+        "hair_tip_low": [
+          -4,
+          1
+        ],
+        "hair_tip_front": [
+          2.5,
+          1
+        ]
+      }
+    },
+    {
+      "name": "haori",
+      "phase": -0.2,
+      "points": {
+        "haori_back_mid": [
+          -2,
+          0
+        ],
+        "haori_back_hem": [
+          -3,
+          0.5
+        ],
+        "haori_front_hem": [
+          2.5,
+          0.5
+        ],
+        "haori_sleeve": [
+          2,
+          0
+        ]
+      }
+    }
+  ]
+}

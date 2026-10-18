@@ -40,17 +40,29 @@ class ArtV3Tests(unittest.TestCase):
     def test_every_clip_has_registered_sources(self):
         for cid, out in self.characters.items():
             pack = read(out / 'pack.json')
-            for clip, count in {**pack['clips'], **pack['round_clips'], **pack['awakened_clips']}.items():
+            # A kept form atlas (spec awakening "keep") and clips shipped as they were
+            # ("keep_shipped", Nezuko's MAX, only shown in that form) have no new sources.
+            awakened = {} if SPECS[cid]['awakening']['mode'] == 'keep' else pack['awakened_clips']
+            for clip, count in {**pack['clips'], **pack['round_clips'], **awakened}.items():
+                if clip in pack.get('shipped_clips', []):
+                    continue
                 with self.subTest(clip=clip):
                     record = read(out / 'imports' / (clip + '.json'))
                     self.assertEqual(len(record['frames']), count)
+                    # A sheet whose drawings are all replaced (an overlap repeat and a return
+                    # copied from the idle, Nezuko's 236) ships nothing, so its scale is moot.
+                    shown = {f.get('part') for f in record['frames'] if f.get('copy_of') is None}
                     for part in record.get('parts', []):
                         self.assertEqual(sha(ROOT / part['source']), part['sha256'], part['id'])
+                        if part['id'] not in shown:
+                            continue
                         # Every sheet stays near the approved line weight; upright sheets come out larger (0.66).
                         # A body lying or flying flat does not fit its column at full size, so
                         # the model draws it smaller and it is enlarged a little more.
                         modes = {f.get('anchor_mode') for f in record['frames'] if f.get('part') == part['id']}
-                        limit = 1.2 if modes and modes <= {'lying', 'pelvis'} else 1.1
+                        # Nezuko stands 890 key px: lying flat she cannot fit a 768 column, so
+                        # her lying sheets are drawn smaller still (spec qa "lying_resample_limit").
+                        limit = SPECS[cid]['qa'].get('lying_resample_limit', 1.2) if modes and modes <= {'lying', 'pelvis'} else 1.1
                         self.assertTrue(0.62 <= part['resample_vs_idle'] <= limit, '%s resampled %.3f' % (part['id'], part['resample_vs_idle']))
                         for name in SPECS[cid]['materials']['locked']:
                             if name in part['palette_delta_e_after']:
@@ -75,6 +87,13 @@ class ArtV3Tests(unittest.TestCase):
             folder = ROOT / 'art/characters' / cid
             base = read(folder / 'atlas.json')
             awake = read(folder / 'awakening/atlas.json')
+            if derivation['mode'] == 'keep':
+                # The shipped form atlas stays (Nezuko's demon form): it keeps its revision and
+                # covers every clip, new moves through their fallback clips.
+                self.assertNotEqual(awake.get('revision'), cid + '-v3')
+                for clip in base['clips']:
+                    self.assertIn(clip, awake['clips'])
+                continue
             for clip, info in base['clips'].items():
                 with self.subTest(clip=clip):
                     self.assertIn(clip, awake['clips'])

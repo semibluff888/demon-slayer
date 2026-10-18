@@ -1,0 +1,20 @@
+﻿{
+    "id":  "nezuko-v3-model",
+    "status":  "generated",
+    "model":  "gpt-image-2",
+    "quality":  "high",
+    "requested_size":  "1536x1024",
+    "route":  "CPA via installed image_gen.py",
+    "prompt":  "output/imagegen/nezuko-v3/prompts/nezuko-v3-model.txt",
+    "output":  "output/imagegen/nezuko-v3/raw/nezuko-v3-model.png",
+    "references":  [
+                       "output/imagegen/nezuko-v3/references/old-model.png",
+                       "output/imagegen/nezuko-v3/references/portrait.png"
+                   ],
+    "started_utc":  "2026-10-17T09:49:41.3368202Z",
+    "cost":  null,
+    "accepted":  false,
+    "python_runtime":  "J:\\Project\\demon-slayer\\.venv\\Scripts\\python.exe",
+    "prefer_ipv6":  false,
+    "completed_utc":  "2026-10-17T09:50:23.0686914Z"
+}

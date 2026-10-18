@@ -156,7 +156,7 @@
     "note": "The forehead scar grows into the flame-shaped mark (awaken.py)."
   },
   "qa": {
-    "note": "upright: hair-top-to-sole height of \"upright\" pose clips vs the idle (standing is about 5% taller than the bent-knee guard). sample_clips: awakened-vs-base pixel check in tests/art_v3_tests.py.",
+    "note": "upright: hair-top-to-sole height of \"upright\" pose clips vs the idle (standing is about 5% taller than the bent-knee guard). sample_clips: awakened-vs-base pixel check in tests/art_v3_tests.py. idle_vs_upright: his idle (bent-knee guard, 327 atlas px) as a share of standing (340): tests/fate_revision_tests.gd divides every idle by it to compare standing heights (added with Nezuko's checkpoint 4; read as 1.0 before).",
     "upright": [
       0.95,
       1.07
@@ -165,6 +165,7 @@
       "idle",
       "walk",
       "water_slash"
-    ]
+    ],
+    "idle_vs_upright": 0.96
   }
 }

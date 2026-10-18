@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/move_data.gd" id="1"]
 
-[ext_resource type="Resource" path="res://resources/presentation/nezuko_body.tres" id="2"]
+[ext_resource type="Resource" path="res://resources/presentation/nezuko_air_kick.tres" id="2"]
 
 [resource]
 script = ExtResource("1")
@@ -19,7 +19,7 @@ blockstun = 14
 hitstop = 6
 push = 0.8
 stance = "air"
-animation_id = "spinning_kick"
+animation_id = "air_spin"
 effect_id = "body"
 knockdown = true
 launch = -2.0

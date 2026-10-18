@@ -1,0 +1,83 @@
+{
+  "character": "nezuko",
+  "clip": "hit_guard",
+  "canvas_size": [
+    1024,
+    640
+  ],
+  "feet_anchor": [
+    448,
+    568
+  ],
+  "runtime_head_ruler": 39.53,
+  "parts": [
+    {
+      "id": "nezuko-v3-hit_guard-p0",
+      "source": "output/imagegen/nezuko-v3/raw/nezuko-v3-hit_guard-p0.png",
+      "sha256": "d3d7a705a9413491dcbfe79879baa1bf9d2121378f05cc80a5d44e7dcac82bdd",
+      "ruler": 95.47,
+      "scale": 0.4141,
+      "scale_method": "registered",
+      "resample_vs_idle": 0.995,
+      "palette_shift": {
+        "haori": [
+          -0.23,
+          -1.03,
+          -2.13
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori": 2.38,
+        "uniform": 1.65,
+        "skin": 1.56,
+        "hair": 1.98
+      },
+      "palette_delta_e_after": {
+        "haori": 0.66,
+        "uniform": 1.64,
+        "skin": 1.56,
+        "hair": 1.98
+      }
+    }
+  ],
+  "frames": [
+    {
+      "frame": 0,
+      "part": "nezuko-v3-hit_guard-p0",
+      "crop": [
+        531,
+        258,
+        1008,
+        976
+      ],
+      "head_ruler": 111.19,
+      "head_box": [
+        244,
+        0,
+        381,
+        127
+      ],
+      "ratio_to_sheet": 1.165,
+      "scale": 0.4141,
+      "flags": [],
+      "notes": [
+        "reviewed (hunched, head lowered: hair and shoulders merge into the head ruler; registered on idle frame 0): head 16% larger than the sheet reference"
+      ],
+      "root_x": 285.0,
+      "anchor_mode": "registered",
+      "offset": [
+        330,
+        272
+      ],
+      "clipped": false,
+      "registration": {
+        "scale": 0.4141,
+        "score": 0.983,
+        "exact": 0.414119
+      },
+      "height_vs_idle": 0.997,
+      "drawing": "output/imagegen/nezuko-v3/imports/hit_guard/drawing-00.png",
+      "exact_scale": 0.414119
+    }
+  ]
+}

@@ -1,0 +1,218 @@
+{
+  "character": "nezuko",
+  "name": "Nezuko",
+  "revision": "nezuko-v3",
+  "background": [
+    0,
+    0,
+    255
+  ],
+  "background_name": "BLUE #0000ff",
+  "background_note": "Blue, not magenta or green: her kimono and ribbon are pink (a magenta key bleeds into them), the bamboo muzzle and the obi band are green (a green key eats them), and nothing she wears is blue. common.cutout keys it by blue dominance (key_matte); the roster-v1 sheets used cyan, which key_matte cannot key.",
+  "request_size": "1536x1024",
+  "ruler": {
+    "note": "Runtime heights follow the official data used for Akaza (Tanjiro 165 cm, Nezuko 153 cm): she stands 340 x 153 / 165 = 315 px in game, 0.93 of Tanjiro (tests/fate_revision_tests.gd wants 0.90-0.95 and shorter than Zenitsu). Her CharacterDefinition keeps model_scale 0.85 (the shipped awakened atlas, the demon form's form_scale 1.15 and NezukoVfx.body_scale were all made for it, and the demon form is not redrawn), so the v3 atlas is drawn at 315 / 0.85 = 371 px standing.",
+    "scale_note": "Measured 2026-10-18 on the approved key (references/approved-idle-candidate.png, 520 x 748 with its padding: idle-key-r1, candidate 3 narrowed): hair top to chin 124 px (the chin sits below the muzzle at y 155; anatomy.head's box stops at the muzzle, so the chin was read off a zoomed crop), stance 716 px; on the v3 model sheet's front view hair top to chin 133 px (chin y 164), hair top to sole 956 px (7.2 heads). Runtime head = 371 x 133 / 956 = 51.6 atlas px (43.9 in game after model_scale), key scale 51.6 / 124 = 0.416: the idle stands about 298 atlas px, about 255 in game (Tanjiro 327, Zenitsu 243, Akaza 343, her old idle 303); upright 315 in game. idle_vs_upright = 716 / (956 x 124 / 133) = 0.80. History: at checkpoint 2 the user asked for about 280 px, so the stance was stood taller (idle-key-r2, 289 px in game); after seeing it in the game at checkpoint 3 the user went back to this key (2026-10-18).",
+    "standing_px": 430,
+    "head_px": 66,
+    "heads_tall": 6.5,
+    "runtime_standing_px": 371,
+    "approved_head_px": 124,
+    "model_head_px": 133,
+    "model_height_px": 956
+  },
+  "palette": {
+    "note": "Material targets are measured from the approved v3 idle key at run time (process.canonical); the colour classes are \"anatomy\" and \"materials\" below."
+  },
+  "identity": "Kamado Nezuko (a demon girl who protects her brother): a slender teenage girl about 7 heads tall, a small face with large pink eyes with small dark pupils (no writing in the eyes); very long black hair, straight to softly wavy, down to her thighs, whose ends turn flame-orange; a pink ribbon tied on the left side of her head (her own left); a green bamboo muzzle held across her mouth by a red cord; a pink kimono with a fine pale asanoha (hemp-leaf star) pattern, its collar closed at the neck over a white under-collar, the skirt wrapped with a white inner layer showing at the hem; a red-and-white checkered (ichimatsu) obi with a green band along its top and an orange cord tied at the front; an open dark-brown haori with wide sleeves over the kimono, reaching below her knees; dark-brown leg wraps with white bands from the knee to the ankle; white tabi socks and zori sandals with red straps. She fights bare-handed with kicks and her fingernails as claws and never carries a weapon.",
+  "style": "Crisp premium anime ink outlines with consistent line weight, flat cel shading with one shadow tone, modern 2D fighting-game sprite finish.",
+  "canon": {
+    "subject": "girl",
+    "pronoun": "she",
+    "model_px": 860,
+    "model_head_px": 132,
+    "old_model": "output/imagegen/roster-v1/raw/nezuko-model.png",
+    "element": "fire, blood flames, sparks",
+    "authorization": "User approved the Nezuko moves, VFX and art v3 checkpoint 1 plan on 2026-10-17 (normal and demon-form model sheets and idle candidates with CPA; the two demon-form design references were supplied by the user).",
+    "portrait": "Face, pink eyes, the bamboo muzzle, the pink ribbon and the long black hair with flame-orange ends",
+    "colours": "hair black #1e1517 turning flame-orange #e8621c at the ends; eyes pink #ef8aa8; skin pale #f7ddd0; kimono pink #f2a9b6 with deeper pink pattern lines #c96f88 and white #f5efee under-collar and inner layer; obi checks crimson #a51f3a and white, the band above it green #8fa35a, the cord orange #e8972f; haori dark brown #4a2b25; leg wraps dark brown #3b2723 with white bands; bamboo muzzle green #8db24c with a red cord #c4303c; ribbon pink #f5b3c9; zori straps red #c7344a. The asanoha pattern keeps the same small scale on every view.",
+    "model_pose": "relaxed neutral standing, arms slightly away from the body with the hands half open, a calm, watchful face above the muzzle.",
+    "candidates": [
+      "Column 1, feral crouch (her Hinokami Chronicles idle): a low crouch leaning well forward, knees deeply bent and apart, the weight on the balls of the feet as if about to pounce; both arms hanging forward and low with the hands open as claws, the fingers curled; eyes fixed on the opponent above the muzzle; the hair and the haori hanging forward.",
+      "Column 2, kicking guard (closest to her old idle): side-on with the left foot forward, knees slightly bent, the front knee lifted a little as if about to kick; both hands in loose fists raised in front of the chest; alert eyes.",
+      "Column 3, claw stance (as in her old portrait): a wide stance, the lead arm reaching forward with the hand open as a claw at shoulder height, the rear hand clawed in front of the chest; the haori and the hair flaring behind her.",
+      "All three: bare-handed with no weapon; the bamboo muzzle across her mouth; the pink ribbon; the closed pink kimono; the checkered obi with the green band and the orange cord; the open dark-brown haori; the leg wraps; tabi and zori; the long black hair with flame-orange ends."
+    ],
+    "stance": [
+      0.78,
+      0.94
+    ],
+    "approved": {
+      "note": "Checkpoint 1 answers (2026-10-17): normal idle = candidate 3 with a narrower stance and smaller claw gestures (job nezuko-v3-idle-key-r1), isolated as references/approved-idle-candidate.png. A taller stance (nezuko-v3-idle-key-r2, about 289 px in game) was tried at the user's request on 2026-10-18 and rejected by the user after seeing it in the game the same day. The demon form was dropped on 2026-10-18.",
+      "idle_key": "output/imagegen/nezuko-v3/raw/nezuko-v3-idle-key-r1.png"
+    },
+    "demon_shelved": {
+      "note": "Shelved 2026-10-18 (user: keep the current in-game demon form). canon.py only plans the demon jobs from \"canon.demon\", so they are not prepared again. The awakened form (鬼化·爆血) is drawn, not derived by awaken.py: the user's design references show a different silhouette (horn, vine markings, torn clothes, longer hair) and asked for it about 8 percent taller, following the references strictly. Checkpoint 1 answers (2026-10-17): the user wants the collar burst open as in the original (her body grows in the demon form). Nezuko is a minor in canon, so no cleavage: negative instructions (\"no cleavage\") failed three times (r1-r4 opened a cleavage V), a concrete garment works: the burst pink collar flaps over the shoulders with the white juban closed high underneath (demon model r4, demon idle key r5).",
+      "references": [
+        "C:/Users/Bo/Downloads/646eb84d7f5b4682b2a66d66126125cb.png",
+        "C:/Users/Bo/Downloads/Demon Form Warrior with Flowing Crimson Hair.png"
+      ],
+      "reference_note": "Design reference for the demon form: the horn, the cracked skin, the eyes, the vine markings, the torn haori and kimono, the hair, the leg wraps and the claws. Follow its details closely, but not its open neckline, its camera angle or its background.",
+      "proportions": "the same girl about 8 percent taller than in input image 1: each figure about 930 px from the top of the hair to the sole, the head exactly as large as in input image 1 (so about 7 heads tall), longer legs and a slightly longer torso, slender and long-limbed, never muscular. Hip joint near mid-height, normal-size hands and feet. No chibi, no big head.",
+      "model_pose": "relaxed neutral standing, arms slightly away from the body with the hands half open as claws, a fierce, watchful face showing small fangs (no muzzle).",
+      "identity": "Kamado Nezuko in her advanced demon form: the same girl grown a little taller and more mature, slender and long-legged; a single white horn with fine dark cracks curving up and back from the RIGHT side of her forehead (her own right), the skin round its base cracked; fine dark crack lines on her forehead and one cheek; fierce pink eyes with thin vertical slit pupils under sharp, angry brows, small fangs, NO bamboo muzzle; the pink ribbon on the left side of her head; much longer, wilder black hair flowing out to her sides and down her back, its ends a long gradient of flame-orange to red; dark-red leaf-and-vine markings (rows of small pointed red leaves on thin dark stems) climbing her face, her neck and upper chest, both forearms, both thighs and both shins; the dark-brown haori torn into ragged, flame-like shreds at the hem and the sleeves, the torn edges dark red; the pink asanoha kimono burst open at the collar by the transformation: the pink collar ripped wide across both collarbones to the tops of her shoulders in ragged, frayed flaps, while her white inner kimono (juban) underneath stays whole, its own collar closed high round the base of her neck, so the opening shows only plain white juban down to the obi; its skirt torn into jagged shreds above the knees with white inner strips hanging loose, showing her legs; the red-and-white checkered obi with the green band above it and the orange cord; dark leg wraps tied with white ribbon bows from the knee to the ankle; white tabi and zori with red straps; long sharp fingernails, the hands curled into claws.",
+      "colours": "as the normal form (hair black turning flame-orange #e8621c to red #c8341c at the long ends, kimono pink #f2a9b6, obi crimson #a51f3a and white with the green #8fa35a band and orange #e8972f cord, haori dark brown #4a2b25 with dark-red #7a1f22 torn edges), plus: horn ivory #ece4d6 with dark cracks; vine leaves dark red #9a1f2c on dark stems #4a2a22; skin pale #f6dccf with dark crack lines; eyes pink #f07aa0 with dark slit pupils.",
+      "modesty": "Modest, non-sexualised character art: under the burst pink collar the white juban stays closed up to the base of the neck, so no skin shows below the neck (no cleavage line, no breast shape), even where a reference shows a low neckline; the torn skirt shows the legs only.",
+      "growth": "Keep each figure's stance, limbs, facing (RIGHT), placement in its column and both feet on the same baseline; she stands about 8 percent taller (longer legs and torso, the head no larger), so the top of her head sits a little higher while her feet stay on the baseline."
+    }
+  },
+  "prompt": {
+    "note": "Production rulers measured on the approved key at checkpoint 2 (2026-10-18): claw stance 716 px, upright 890 px (model sheet proportion at the key's head), hair top to chin 124 px. proportions: every stance frame and every walk step must stand as tall as the key (the user asked for one consistent height across the idle, the walk and the attacks' starts and returns). Checkpoint 4: the first round victory drew her upright at the stance height (the line listed only lunges, kicks, jumps and crouches as changing it), so standing upright is named too.",
+    "stance": "fighting stance",
+    "stance_px": 720,
+    "upright_px": 890,
+    "head_px": 124,
+    "weapon_label": "Hands",
+    "katana": "she is UNARMED in every drawing: no sword, no scabbard and no weapon of any kind; both hands are bare with long fingernails, as in input image 1.",
+    "katana_edit": "she is UNARMED: no sword, no scabbard and no weapon; both hands are bare with long fingernails.",
+    "edit_keep": "the size and the position of the figure in its column, the head, face, muzzle and hair, the torso and the kimono, the obi, the haori, both legs, both feet, the leg wraps, the line weight and the colours",
+    "edit_change": "her two arms and her hands",
+    "effects": "fire, blood flames, sparks, trails or speed lines",
+    "proportions": "in input image 1 her claw stance is 720 px from the hair top to the soles: the feet a little wider than her shoulders, the knees bent, the back upright. Every frame that shows the claw stance (starts, returns, holds) and every step of the walk stand exactly as tall as input image 1, never taller and never lower; only standing fully upright (taller, about 890 px, legs straight), lunges, kicks, jumps and crouches change the height."
+  },
+  "anatomy": {
+    "note": "Measured on the approved key at checkpoint 2 (inclusive OpenCV HSV boxes). Skin (H ~15, S ~62, V ~253) and the pink kimono (H 165-8 through red, S 16-117) are told apart by hue. Her hair is dark brown on the key (H 7-12, S 96-114, V 51-72) and near black on the model sheet (hue through red to violet), so the hair box wraps H 165-18 with V up to 85; it is darker and less saturated than the haori (S 136+); the hair reaches her thighs and swings, so hair_cut keeps only the hair beyond the chin within `radius` face sizes of the face centre (as for Zenitsu). Checkpoint 2 follow-up (2026-10-18): the taller key (idle-key-r2) draws the hair redder and more saturated (S ~140), so the hair box reaches S 160 (the haori, S 136+, lies below the chin and stays out); link 0, because her many hair highlights split the hair into fragments that the link erosion cut off from the face (the ruler then read 22 percent low). With these classes the head ruler agrees within 2 percent across both keys and the model sheet's front, three-quarter and side views.",
+    "hair": {
+      "h": [
+        165,
+        18
+      ],
+      "s": [
+        25,
+        160
+      ],
+      "v": [
+        8,
+        85
+      ]
+    },
+    "skin": {
+      "h": [
+        12,
+        22
+      ],
+      "s": [
+        35,
+        95
+      ],
+      "v": [
+        200,
+        255
+      ]
+    },
+    "uniform": {
+      "h": [
+        160,
+        8
+      ],
+      "s": [
+        30,
+        130
+      ],
+      "v": [
+        190,
+        255
+      ]
+    },
+    "hair_cut": {
+      "radius": 1.6,
+      "link": 0
+    }
+  },
+  "materials": {
+    "note": "Provisional (checkpoint 2): kimono pink, haori brown and skin locked; hair is QA only.",
+    "classes": {
+      "haori": {
+        "h": [
+          0,
+          15
+        ],
+        "s": [
+          60,
+          200
+        ],
+        "v": [
+          40,
+          110
+        ],
+        "exclude_head": true
+      }
+    },
+    "locked": [
+      "uniform",
+      "haori",
+      "skin"
+    ]
+  },
+  "awakening": {
+    "mode": "keep",
+    "note": "User decision 2026-10-18: the demon form is not redrawn; the shipped awakened atlas (art/characters/nezuko/awakening/, revision awakening-v9) stays as it is. pack.py \"keep\" mode leaves its pages untouched and adds the clips it lacks (the new moves) as copies of \"fallback\": the old clip each new move played before its own clip was drawn (air_land: the jump's landing drawings, as an air move landed before).",
+    "fallback": {
+      "renzoku_2": "body_stand_light",
+      "renzoku_3": "body_stand_heavy",
+      "kakato": "body_air_heavy",
+      "slide_kick": "body_crouch_heavy",
+      "air_dive": "body_air_heavy",
+      "air_spin": "spinning_kick",
+      "air_land": {
+        "clip": "jump",
+        "frames": [
+          4,
+          4,
+          5,
+          5
+        ],
+        "phase_breaks": [
+          1,
+          2
+        ]
+      }
+    }
+  },
+  "qa": {
+    "note": "idle_vs_upright measured on the approved key at checkpoint 2: 716 / 891 = 0.80. tests/fate_revision_tests.gd divides each idle by this; Tanjiro's atlas has no idle_vs_upright (read as 1.0, but his idle is 327 of 340 standing, 0.96), so at checkpoint 4 his spec and atlas header need theirs, or Nezuko (canon 0.93 of him) reads 0.98 and fails the 0.90-0.95 band. stance band 0.90-1.15, upright band provisional until the production review. length_px: her upright body in key pixels (prompt upright_px 890), the longest a stretched-out drawing may be: the low claw stance's main axis is shorter than her body, so lying frames were capped about a quarter too small (knockdown, checkpoint 4). upright (checkpoint 4): standing up from the low claw stance she ends 1.03-1.11 of the idle in the victory clips (the model draws her upright a little short even when the prompt names 890 px), so the band is 0.96-1.2. lying_resample_limit: lying flat her 890 px body cannot fit a 768 column, so the model draws those sheets small and they are enlarged up to about 1.32 of the idle's resample (knockdown, round_defeat); tests/art_v3_tests.py allows 1.35.",
+    "upright": [
+      0.96,
+      1.2
+    ],
+    "stance": [
+      0.9,
+      1.15
+    ],
+    "sample_clips": [
+      "idle",
+      "walk"
+    ],
+    "idle_vs_upright": 0.8,
+    "guard_anchor": {
+      "note": "As for Akaza (process.guard_anchor): sheets with a stance frame (the pose text names the approved claw stance; every frame of a \"stance\" clip) scale so those frames match the idle in the geometric mean of height and silhouette area; other sheets take the clip median, their median area kept inside \"area\". The user asked for one height across the idle, the walk and the moves' starts and returns (2026-10-18). belt null: her red-and-white checkered obi breaks up under the band opening, so there is no torso ruler; the band is wider than Akaza's because her long hair and haori change the silhouette area from pose to pose.",
+      "phrases": [
+        "approved claw stance of input image 1",
+        "almost identical to input image 1"
+      ],
+      "belt": null,
+      "area": [
+        0.92,
+        1.08
+      ],
+      "torso": [
+        0.96,
+        1.04
+      ],
+      "area_peak": 1.15
+    },
+    "length_px": 890,
+    "lying_resample_limit": 1.35
+  },
+  "portrait_note": "Face, pink eyes, the bamboo muzzle, the pink ribbon and the long dark hair"
+}

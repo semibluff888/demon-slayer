@@ -1,0 +1,679 @@
+{
+  "canvas_size": [
+    1024,
+    640
+  ],
+  "feet_anchor": [
+    448,
+    568
+  ],
+  "source_height": 340,
+  "canonical_height": 70,
+  "revision": "nezuko-v3",
+  "idle_vs_upright": 0.8,
+  "clips": {
+    "round_intro": {
+      "loop": false,
+      "fps": 12,
+      "phase_breaks": [
+        6,
+        12
+      ],
+      "segment_sync": false,
+      "anchor_mode": "feet",
+      "timeline": [],
+      "frames": [
+        {
+          "texture": "round-0.png",
+          "region": [
+            936,
+            2,
+            134,
+            324
+          ],
+          "offset": [
+            363,
+            245
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            1074,
+            2,
+            188,
+            323
+          ],
+          "offset": [
+            325,
+            245
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            447,
+            2,
+            152,
+            336
+          ],
+          "offset": [
+            350,
+            232
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            603,
+            2,
+            169,
+            335
+          ],
+          "offset": [
+            332,
+            233
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            2,
+            2,
+            203,
+            344
+          ],
+          "offset": [
+            312,
+            224
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            209,
+            2,
+            234,
+            343
+          ],
+          "offset": [
+            307,
+            225
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            226,
+            977,
+            221,
+            233
+          ],
+          "offset": [
+            322,
+            335
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            1722,
+            977,
+            203,
+            159
+          ],
+          "offset": [
+            319,
+            409
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            1065,
+            977,
+            209,
+            181
+          ],
+          "offset": [
+            310,
+            387
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            1526,
+            977,
+            192,
+            161
+          ],
+          "offset": [
+            320,
+            408
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            1278,
+            977,
+            244,
+            176
+          ],
+          "offset": [
+            294,
+            392
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            2,
+            977,
+            220,
+            260
+          ],
+          "offset": [
+            321,
+            309
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            1592,
+            672,
+            236,
+            281
+          ],
+          "offset": [
+            298,
+            287
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            887,
+            672,
+            231,
+            284
+          ],
+          "offset": [
+            315,
+            284
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            1122,
+            672,
+            237,
+            283
+          ],
+          "offset": [
+            299,
+            285
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            1363,
+            672,
+            225,
+            283
+          ],
+          "offset": [
+            320,
+            285
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            653,
+            672,
+            230,
+            290
+          ],
+          "offset": [
+            313,
+            278
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            1566,
+            350,
+            201,
+            301
+          ],
+          "offset": [
+            330,
+            267
+          ]
+        }
+      ]
+    },
+    "round_victory": {
+      "loop": false,
+      "fps": 12,
+      "phase_breaks": [
+        6,
+        12
+      ],
+      "segment_sync": false,
+      "anchor_mode": "feet",
+      "timeline": [],
+      "frames": [
+        {
+          "texture": "round-0.png",
+          "region": [
+            448,
+            672,
+            201,
+            295
+          ],
+          "offset": [
+            329,
+            273
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            293,
+            672,
+            151,
+            296
+          ],
+          "offset": [
+            354,
+            272
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            464,
+            350,
+            202,
+            313
+          ],
+          "offset": [
+            321,
+            256
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            157,
+            350,
+            155,
+            317
+          ],
+          "offset": [
+            348,
+            251
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            1266,
+            2,
+            138,
+            321
+          ],
+          "offset": [
+            354,
+            248
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            316,
+            350,
+            144,
+            317
+          ],
+          "offset": [
+            355,
+            251
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            1283,
+            350,
+            137,
+            308
+          ],
+          "offset": [
+            360,
+            260
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            1424,
+            350,
+            138,
+            308
+          ],
+          "offset": [
+            358,
+            261
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            1408,
+            2,
+            143,
+            321
+          ],
+          "offset": [
+            357,
+            247
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            1699,
+            2,
+            179,
+            318
+          ],
+          "offset": [
+            354,
+            250
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            1882,
+            2,
+            152,
+            318
+          ],
+          "offset": [
+            351,
+            250
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            2,
+            350,
+            151,
+            318
+          ],
+          "offset": [
+            356,
+            250
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            670,
+            350,
+            141,
+            311
+          ],
+          "offset": [
+            357,
+            258
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            815,
+            350,
+            148,
+            311
+          ],
+          "offset": [
+            351,
+            257
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            1124,
+            350,
+            155,
+            310
+          ],
+          "offset": [
+            345,
+            258
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            967,
+            350,
+            153,
+            311
+          ],
+          "offset": [
+            345,
+            257
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            776,
+            2,
+            156,
+            326
+          ],
+          "offset": [
+            342,
+            242
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            1555,
+            2,
+            140,
+            321
+          ],
+          "offset": [
+            354,
+            247
+          ]
+        }
+      ]
+    },
+    "round_defeat": {
+      "loop": false,
+      "fps": 12,
+      "phase_breaks": [
+        4,
+        8
+      ],
+      "segment_sync": false,
+      "anchor_mode": "feet",
+      "timeline": [],
+      "frames": [
+        {
+          "texture": "round-0.png",
+          "region": [
+            2,
+            672,
+            287,
+            301
+          ],
+          "offset": [
+            281,
+            267
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            451,
+            977,
+            315,
+            207
+          ],
+          "offset": [
+            255,
+            362
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            770,
+            977,
+            291,
+            182
+          ],
+          "offset": [
+            279,
+            387
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            643,
+            1241,
+            302,
+            115
+          ],
+          "offset": [
+            282,
+            457
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            949,
+            1241,
+            318,
+            115
+          ],
+          "offset": [
+            264,
+            455
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            646,
+            1391,
+            322,
+            80
+          ],
+          "offset": [
+            272,
+            490
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            2,
+            1241,
+            314,
+            146
+          ],
+          "offset": [
+            246,
+            424
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            1603,
+            1241,
+            329,
+            85
+          ],
+          "offset": [
+            263,
+            483
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            320,
+            1241,
+            319,
+            122
+          ],
+          "offset": [
+            252,
+            449
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            1271,
+            1241,
+            328,
+            88
+          ],
+          "offset": [
+            260,
+            481
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            2,
+            1391,
+            318,
+            83
+          ],
+          "offset": [
+            262,
+            486
+          ]
+        },
+        {
+          "texture": "round-0.png",
+          "region": [
+            324,
+            1391,
+            318,
+            82
+          ],
+          "offset": [
+            265,
+            486
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -8,7 +8,7 @@ ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'output/imagegen/roster-v1'
 def read(p):return json.loads(p.read_text(encoding='utf-8-sig'))
 # A character redrawn with tools/art_v3 no longer ships these roster-v1 drawings; tests/art_v3_tests.py checks it.
-REDRAWN={cid for cid in ['akaza'] if read(ROOT/'art/characters'/cid/'atlas.json').get('revision')==cid+'-v3'}
+REDRAWN={cid for cid in ['akaza','nezuko'] if read(ROOT/'art/characters'/cid/'atlas.json').get('revision')==cid+'-v3'}
 class ExpansionArtTests(unittest.TestCase):
  def test_sources_and_calibration_are_reproducible(self):
   for job in read(OUT/'jobs.json'):

@@ -1,0 +1,212 @@
+{
+  "character": "nezuko",
+  "clip": "air_land",
+  "canvas_size": [
+    1024,
+    640
+  ],
+  "feet_anchor": [
+    448,
+    568
+  ],
+  "runtime_head_ruler": 39.53,
+  "parts": [
+    {
+      "id": "nezuko-v3-air_land-p0",
+      "source": "output/imagegen/nezuko-v3/raw/nezuko-v3-air_land-p0.png",
+      "sha256": "4478ee320ab1a8a5bbd3856f2a928e13ee2d4959d98fbed2690046f4f7d785d2",
+      "ruler": 136.29,
+      "scale": 0.3133,
+      "scale_method": "head-ruler, clip guard x1.080",
+      "resample_vs_idle": 0.753,
+      "palette_shift": {
+        "haori": [
+          0.58,
+          3.47,
+          3.06
+        ],
+        "uniform": [
+          -2.39,
+          3.6,
+          4.05
+        ],
+        "skin": [
+          -1.96,
+          -0.16,
+          5.42
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori": 4.64,
+        "uniform": 5.74,
+        "skin": 5.64,
+        "hair": 3.55
+      },
+      "palette_delta_e_after": {
+        "haori": 0.72,
+        "uniform": 1.72,
+        "skin": 1.37,
+        "hair": 3.49
+      }
+    },
+    {
+      "id": "nezuko-v3-air_land-p1",
+      "source": "output/imagegen/nezuko-v3/raw/nezuko-v3-air_land-p1.png",
+      "sha256": "381af2c7cd9ef2598682f1052869610cfbbff89618e524abc51a0f7f534d1dc4",
+      "ruler": 138.91,
+      "scale": 0.3074,
+      "scale_method": "head-ruler, guard frames x1.080",
+      "resample_vs_idle": 0.738,
+      "palette_shift": {
+        "haori": [
+          -0.34,
+          1.88,
+          1.41
+        ],
+        "uniform": [
+          -1.12,
+          0.62,
+          3.25
+        ],
+        "skin": [
+          -1.64,
+          -0.31,
+          4.51
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori": 2.37,
+        "uniform": 3.43,
+        "skin": 4.69,
+        "hair": 1.29
+      },
+      "palette_delta_e_after": {
+        "haori": 0.76,
+        "uniform": 0.75,
+        "skin": 0.91,
+        "hair": 1.23
+      }
+    }
+  ],
+  "frames": [
+    {
+      "frame": 0,
+      "part": "nezuko-v3-air_land-p0",
+      "crop": [
+        34,
+        313,
+        780,
+        961
+      ],
+      "head_ruler": 136.29,
+      "head_box": [
+        467,
+        6,
+        640,
+        210
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3133,
+      "flags": [],
+      "notes": [],
+      "root_x": 358.0,
+      "anchor_mode": "feet",
+      "offset": [
+        336,
+        365
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.674
+    },
+    {
+      "frame": 1,
+      "part": "nezuko-v3-air_land-p0",
+      "crop": [
+        786,
+        195,
+        1505,
+        963
+      ],
+      "head_ruler": 128.14,
+      "head_box": [
+        384,
+        1,
+        543,
+        158
+      ],
+      "ratio_to_sheet": 0.94,
+      "scale": 0.3133,
+      "flags": [],
+      "notes": [],
+      "root_x": 423.0,
+      "anchor_mode": "feet",
+      "offset": [
+        315,
+        328
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.809
+    },
+    {
+      "frame": 2,
+      "part": "nezuko-v3-air_land-p1",
+      "crop": [
+        33,
+        157,
+        826,
+        977
+      ],
+      "head_ruler": 138.91,
+      "head_box": [
+        485,
+        1,
+        662,
+        179
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3074,
+      "flags": [],
+      "notes": [],
+      "root_x": 477.0,
+      "anchor_mode": "feet",
+      "offset": [
+        301,
+        316
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.846
+    },
+    {
+      "frame": 3,
+      "part": "nezuko-v3-air_land-p1",
+      "crop": [
+        820,
+        36,
+        1491,
+        989
+      ],
+      "head_ruler": 133.79,
+      "head_box": [
+        339,
+        3,
+        506,
+        157
+      ],
+      "ratio_to_sheet": 0.963,
+      "scale": 0.4162,
+      "flags": [],
+      "notes": [
+        "repeats frame idle:0"
+      ],
+      "root_x": null,
+      "anchor_mode": "feet",
+      "offset": [
+        312,
+        257
+      ],
+      "clipped": false,
+      "height_vs_idle": null,
+      "copy_of": "idle:0"
+    }
+  ]
+}

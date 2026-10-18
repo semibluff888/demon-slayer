@@ -27,8 +27,10 @@ class AwakeningArtTests(unittest.TestCase):
   # A character redrawn with tools/art_v3 derives its awakened atlas from the new
   # base art; tests/art_v3_tests.py checks it instead of the v2 jobs and hashes.
   redrawn={cid for cid in list(revisions)+['akaza'] if read(ROOT/'art/characters'/cid/'atlas.json').get('revision')==cid+'-v3'}
+  # Nezuko's demon form was not redrawn: her shipped awakened atlas stays beside the v3 normal one.
+  kept={cid for cid in redrawn if read(ROOT/'art/characters'/cid/'awakening/atlas.json')['revision']!=cid+'-v3'}
   for cid,revision in revisions.items():
-   if cid in redrawn:
+   if cid in redrawn and cid not in kept:
     self.assertEqual(read(ROOT/'art/characters'/cid/'awakening/atlas.json')['revision'],cid+'-v3')
     continue
    production=ROOT/'output/imagegen'/('awakening-v8' if cid=='nezuko' else revision)
@@ -39,7 +41,7 @@ class AwakeningArtTests(unittest.TestCase):
    if cid=='nezuko':
     previous=ROOT/'output/imagegen/awakening-v7';replaced={j['metadata']['clip'] for _,j in jobs}
     jobs += [(previous,j) for j in read(previous/'jobs.json') if j['metadata']['clip'] not in replaced]
-   normal=read(ROOT/'art/characters'/cid/'atlas.json')
+   normal=read(ROOT/'art/characters'/cid/'atlas.json') if cid not in kept else atlas
    expected=(set(normal['clips'])-{'victory','round_intro','round_victory','round_defeat'})|{'awakening_start'}
    self.assertEqual({job['metadata']['clip'] for _,job in jobs},expected)
    for source_dir,base in jobs:
@@ -64,7 +66,7 @@ class AwakeningArtTests(unittest.TestCase):
       self.assertEqual(frame['region'][2:],calibration['size'])
   for baseline in [V2/'preserved-akaza.json']+[ROOT/('output/imagegen/awakening-v%d/preserved-runtime.json'%v) for v in [6,7,8]]:
    for path,digest in read(baseline).items():
-    if any(path.startswith('art/characters/'+cid+'/') for cid in redrawn):
+    if any(path.startswith('art/characters/'+cid+'/') and not (cid in kept and path.startswith('art/characters/'+cid+'/awakening/')) for cid in redrawn):
      continue
     if path in {'scripts/combat.gd','scripts/presentation/fighter_view.gd'} or path in {'art/characters/'+key+'/atlas.json' for key in ['nezuko','nezuko/awakening','zenitsu','zenitsu/awakening','akaza','akaza/awakening']}:
      continue # Current motion regression tests verify these explicitly revised files.
@@ -204,6 +206,15 @@ class AwakeningArtTests(unittest.TestCase):
    self.assertEqual(normal['feet_anchor'],awakened['feet_anchor'])
    self.assertEqual(normal['source_height'],awakened['source_height'])
    self.assertEqual(normal['canvas_size'],awakened['canvas_size'])
+   # A kept form atlas (Nezuko's demon form beside her v3 redraw) keeps its own drawings and
+   # timing; FighterView reads each atlas's own breaks, so it only has to cover every clip.
+   if normal.get('revision')==cid+'-v3' and awakened.get('revision')!=cid+'-v3':
+    for clip,meta in normal['clips'].items():
+     with self.subTest(character=cid,clip=clip):
+      alt=awakened['clips'][clip];self.assertGreater(len(alt['frames']),0)
+      self.assertLessEqual(max(alt.get('phase_breaks',[0])),len(alt['frames']))
+    self.assertEqual(len(awakened['clips']['awakening_start']['frames']),6)
+    continue
    for clip,meta in normal['clips'].items():
     with self.subTest(character=cid,clip=clip):
      alt=awakened['clips'][clip]

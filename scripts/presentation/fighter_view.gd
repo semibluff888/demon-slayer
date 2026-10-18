@@ -229,13 +229,21 @@ func _landing_clip() -> String:
 
 ## True when the atlas authors the idle as a breathing loop instead of one held drawing.
 func idle_cycles() -> bool:
-	return visual != null and bool(visual.clip_metadata.get("idle", {}).get("cycle", false))
+	return visual != null and bool(_drawn_info("idle").get("cycle", false))
+
+## Timing data of `name` in the atlas it is drawn from. A kept form atlas (Nezuko's demon
+## form keeps its shipped drawings beside the redrawn normal atlas) has its own frame
+## counts, breaks and a held idle; the other form atlases share the normal timing.
+func _drawn_info(name: String) -> Dictionary:
+	if form_active() and visual.awakening_frames != null and visual.awakening_frames.has_animation(name):
+		return visual.awakening_metadata.get(name, visual.clip_metadata.get(name, {}))
+	return visual.clip_metadata.get(name, {})
 
 func _state_clip(key: String, fallback: String) -> String:
 	return visual.state_animations.get(key, fallback)
 
 func _timeline_frame(tick: int, count: int) -> int:
-	var timeline: Array = visual.clip_metadata.get(clip, {}).get("timeline", [])
+	var timeline: Array = _drawn_info(clip).get("timeline", [])
 	for n in range(mini(count, timeline.size()) - 1, -1, -1):
 		if tick >= int(timeline[n]):
 			return n
@@ -269,13 +277,13 @@ func _frame_index() -> int:
 	if fighter.reaction == "throw_tech" and fighter.stun > 0:
 		return mini(count - 1, int((16 - fighter.stun) * float(count) / 16))
 	if not fighter.throw_role.is_empty() or (fighter.state == "knockdown" and fighter.throw_frame >= Arena.THROW_IMPACT_TICK):
-		if not visual.clip_metadata.get(clip, {}).get("timeline", []).is_empty():
+		if not _drawn_info(clip).get("timeline", []).is_empty():
 			return _timeline_frame(fighter.throw_frame, count)
 		if fighter.throw_frame >= Arena.THROW_IMPACT_TICK:
 			return mini(count - 1, 8 + int((fighter.throw_frame - Arena.THROW_IMPACT_TICK) / 3))
 		return mini(7, int(fighter.throw_frame / 20.0 * 8))
 	if fighter.roll_frame >= 0:
-		if visual.clip_metadata.get(clip, {}).get("timeline", []).is_empty():
+		if _drawn_info(clip).get("timeline", []).is_empty():
 			return mini(count - 1, int(fighter.roll_frame * float(count) / 28))
 		return _timeline_frame(fighter.roll_frame, count)
 	if clip in ["dash_forward", "dash_back"]:
@@ -311,13 +319,15 @@ func _frame_index() -> int:
 func move_clip_frame(tick: int) -> int:
 	var count: int = _frames().get_frame_count(clip)
 	var cuts: Array = visual.phases.get(clip, [maxi(1, count / 3), maxi(2, count * 2 / 3)])
+	if uses_awakened_frames():
+		cuts = _drawn_info(clip).get("phase_breaks", cuts)
 	var first := clampi(int(cuts[0]), 1, count)
 	var second := clampi(int(cuts[1]), first, count)
 	var move: Resource = fighter.move
 	if tick < move.startup:
 		return mini(first - 1, int(float(tick) / move.startup * first))
 	if tick < move.startup + move.active:
-		if visual.clip_metadata.get(clip, {}).get("segment_sync", false):
+		if _drawn_info(clip).get("segment_sync", false):
 			var segment: int = move.segment(tick)
 			var group_start := first + int(segment * float(second - first) / move.hit_count())
 			var group_end := first + int((segment + 1) * float(second - first) / move.hit_count())

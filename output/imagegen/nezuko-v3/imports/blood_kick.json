@@ -1,0 +1,473 @@
+{
+  "character": "nezuko",
+  "clip": "blood_kick",
+  "canvas_size": [
+    1024,
+    640
+  ],
+  "feet_anchor": [
+    448,
+    568
+  ],
+  "runtime_head_ruler": 39.53,
+  "parts": [
+    {
+      "id": "nezuko-v3-blood_kick-p0",
+      "source": "output/imagegen/nezuko-v3/raw/nezuko-v3-blood_kick-p0.png",
+      "sha256": "7af2cf0f8e94e55a9597570d9008038c12928230b93ee19fd2c5408299490ecb",
+      "ruler": 130.79,
+      "scale": 0.3078,
+      "scale_method": "head-ruler, guard frames x1.018",
+      "resample_vs_idle": 0.74,
+      "palette_shift": {
+        "haori": [
+          0.69,
+          1.89,
+          2.35
+        ],
+        "uniform": [
+          -0.91,
+          0.84,
+          1.72
+        ],
+        "skin": [
+          -2.33,
+          1.12,
+          3.07
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori": 3.06,
+        "uniform": 2.05,
+        "skin": 3.74,
+        "hair": 2.56
+      },
+      "palette_delta_e_after": {
+        "haori": 0.64,
+        "uniform": 0.56,
+        "skin": 1.14,
+        "hair": 2.44
+      }
+    },
+    {
+      "id": "nezuko-v3-blood_kick-p1",
+      "source": "output/imagegen/nezuko-v3/raw/nezuko-v3-blood_kick-p1.png",
+      "sha256": "bd85030b51a4be30d48785317ad5dc8c77881c95623851ecbc7c3b181a6c1626",
+      "ruler": 110.73,
+      "scale": 0.3636,
+      "scale_method": "head-ruler, clip guard x1.018",
+      "resample_vs_idle": 0.874,
+      "palette_shift": {
+        "haori": [
+          0.43,
+          2.98,
+          1.86
+        ],
+        "uniform": [
+          -3.59,
+          4.97,
+          4.01
+        ],
+        "skin": [
+          -1.51,
+          0.74,
+          2.54
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori": 3.53,
+        "uniform": 6.97,
+        "skin": 2.89,
+        "hair": 2.18
+      },
+      "palette_delta_e_after": {
+        "haori": 0.56,
+        "uniform": 2.42,
+        "skin": 0.59,
+        "hair": 2.1
+      }
+    },
+    {
+      "id": "nezuko-v3-blood_kick-p2",
+      "source": "output/imagegen/nezuko-v3/raw/nezuko-v3-blood_kick-p2.png",
+      "sha256": "c118709ab5807219ef0fcb53cf2cc28bec86a9fbbfe28d1b59e93e6c1ce77878",
+      "ruler": 103.51,
+      "scale": 0.389,
+      "scale_method": "head-ruler, clip guard x1.018",
+      "resample_vs_idle": 0.935,
+      "palette_shift": {
+        "haori": [
+          1.03,
+          0.66,
+          1.88
+        ],
+        "uniform": [
+          -2.82,
+          1.78,
+          4.93
+        ],
+        "skin": [
+          -1.2,
+          0.56,
+          2.28
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori": 2.15,
+        "uniform": 5.69,
+        "skin": 2.53,
+        "hair": 3.61
+      },
+      "palette_delta_e_after": {
+        "haori": 0.6,
+        "uniform": 2.32,
+        "skin": 0.68,
+        "hair": 3.57
+      }
+    },
+    {
+      "id": "nezuko-v3-blood_kick-p3",
+      "source": "output/imagegen/nezuko-v3/raw/nezuko-v3-blood_kick-p3.png",
+      "sha256": "2f3aef60ab2f1641bfee204cb8e5dbffda6fe31c5358c75ba42dd0fdbd61c728",
+      "ruler": 129.84,
+      "scale": 0.3101,
+      "scale_method": "head-ruler, clip guard x1.018",
+      "resample_vs_idle": 0.745,
+      "palette_shift": {
+        "haori": [
+          0.17,
+          3.19,
+          3.17
+        ],
+        "uniform": [
+          -1.61,
+          2.77,
+          3.45
+        ],
+        "skin": [
+          -2.27,
+          0.9,
+          3.8
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori": 4.5,
+        "uniform": 4.6,
+        "skin": 4.3,
+        "hair": 5.21
+      },
+      "palette_delta_e_after": {
+        "haori": 0.66,
+        "uniform": 1.32,
+        "skin": 1.06,
+        "hair": 5.29
+      }
+    },
+    {
+      "id": "nezuko-v3-blood_kick-p4",
+      "source": "output/imagegen/nezuko-v3/raw/nezuko-v3-blood_kick-p4.png",
+      "sha256": "aa4905b201279a5a5c8c09454cf06e5d6b853c518cd8f6c87c2c05d9f8e2538f",
+      "ruler": 121.53,
+      "scale": 0.2321,
+      "scale_method": "overlap, clip guard x1.018",
+      "resample_vs_idle": 0.558,
+      "palette_shift": {
+        "haori": [
+          0.51,
+          1.6,
+          2.17
+        ],
+        "uniform": [
+          -1.18,
+          0.83,
+          2.46
+        ],
+        "skin": [
+          -2.58,
+          0.75,
+          4.83
+        ]
+      },
+      "palette_delta_e_before": {
+        "haori": 2.72,
+        "uniform": 2.75,
+        "skin": 5.29,
+        "hair": 2.44
+      },
+      "palette_delta_e_after": {
+        "haori": 0.46,
+        "uniform": 0.94,
+        "skin": 1.32,
+        "hair": 2.34
+      }
+    }
+  ],
+  "frames": [
+    {
+      "frame": 0,
+      "part": "nezuko-v3-blood_kick-p0",
+      "crop": [
+        60,
+        41,
+        720,
+        1005
+      ],
+      "head_ruler": 130.34,
+      "head_box": [
+        336,
+        2,
+        498,
+        154
+      ],
+      "ratio_to_sheet": 0.997,
+      "scale": 0.3078,
+      "flags": [],
+      "notes": [],
+      "root_x": 393.0,
+      "anchor_mode": "feet",
+      "offset": [
+        327,
+        272
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.99
+    },
+    {
+      "frame": 1,
+      "part": "nezuko-v3-blood_kick-p0",
+      "crop": [
+        771,
+        345,
+        1509,
+        1000
+      ],
+      "head_ruler": 130.79,
+      "head_box": [
+        430,
+        2,
+        593,
+        179
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3078,
+      "flags": [],
+      "notes": [],
+      "root_x": 445.0,
+      "anchor_mode": "feet",
+      "offset": [
+        311,
+        367
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.678
+    },
+    {
+      "frame": 2,
+      "part": "nezuko-v3-blood_kick-p1",
+      "crop": [
+        31,
+        208,
+        672,
+        882
+      ],
+      "head_ruler": 110.73,
+      "head_box": [
+        485,
+        1,
+        626,
+        130
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3636,
+      "flags": [],
+      "notes": [],
+      "root_x": 415.0,
+      "anchor_mode": "feet",
+      "offset": [
+        297,
+        323
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.819
+    },
+    {
+      "frame": 3,
+      "part": "nezuko-v3-blood_kick-p1",
+      "crop": [
+        706,
+        214,
+        1521,
+        711
+      ],
+      "head_ruler": 106.83,
+      "head_box": [
+        426,
+        26,
+        560,
+        152
+      ],
+      "ratio_to_sheet": 0.965,
+      "scale": 0.3636,
+      "flags": [],
+      "notes": [],
+      "root_x": 424.0,
+      "anchor_mode": "feet",
+      "offset": [
+        294,
+        388
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.57
+    },
+    {
+      "frame": 4,
+      "part": "nezuko-v3-blood_kick-p2",
+      "crop": [
+        23,
+        200,
+        795,
+        805
+      ],
+      "head_ruler": 103.51,
+      "head_box": [
+        456,
+        2,
+        587,
+        126
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.389,
+      "flags": [],
+      "notes": [],
+      "root_x": 374.0,
+      "anchor_mode": "feet",
+      "offset": [
+        303,
+        334
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.782
+    },
+    {
+      "frame": 5,
+      "part": "nezuko-v3-blood_kick-p2",
+      "crop": [
+        781,
+        282,
+        1512,
+        798
+      ],
+      "head_ruler": 99.93,
+      "head_box": [
+        443,
+        7,
+        570,
+        125
+      ],
+      "ratio_to_sheet": 0.965,
+      "scale": 0.389,
+      "flags": [],
+      "notes": [],
+      "root_x": 354.0,
+      "anchor_mode": "feet",
+      "offset": [
+        310,
+        368
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.664
+    },
+    {
+      "frame": 6,
+      "part": "nezuko-v3-blood_kick-p3",
+      "crop": [
+        25,
+        338,
+        797,
+        937
+      ],
+      "head_ruler": 129.84,
+      "head_box": [
+        498,
+        4,
+        683,
+        173
+      ],
+      "ratio_to_sheet": 1.0,
+      "scale": 0.3101,
+      "flags": [],
+      "notes": [],
+      "root_x": 518.0,
+      "anchor_mode": "feet",
+      "offset": [
+        287,
+        383
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.617
+    },
+    {
+      "frame": 7,
+      "part": "nezuko-v3-blood_kick-p3",
+      "crop": [
+        827,
+        151,
+        1512,
+        929
+      ],
+      "head_ruler": 92.05,
+      "head_box": [
+        289,
+        188,
+        439,
+        310
+      ],
+      "ratio_to_sheet": 0.709,
+      "scale": 0.3101,
+      "flags": [],
+      "notes": [
+        "head partly hidden or turned (71%)"
+      ],
+      "root_x": 391.0,
+      "anchor_mode": "feet",
+      "offset": [
+        327,
+        327
+      ],
+      "clipped": false,
+      "height_vs_idle": 0.611
+    },
+    {
+      "frame": 8,
+      "part": "nezuko-v3-blood_kick-p4",
+      "crop": [
+        854,
+        89,
+        1496,
+        961
+      ],
+      "head_ruler": 117.11,
+      "head_box": [
+        337,
+        2,
+        482,
+        144
+      ],
+      "ratio_to_sheet": 0.964,
+      "scale": 0.4162,
+      "flags": [],
+      "notes": [
+        "repeats frame idle:0"
+      ],
+      "root_x": null,
+      "anchor_mode": "feet",
+      "offset": [
+        312,
+        257
+      ],
+      "clipped": false,
+      "height_vs_idle": null,
+      "copy_of": "idle:0"
+    }
+  ]
+}

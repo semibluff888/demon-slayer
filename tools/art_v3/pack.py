@@ -9,10 +9,17 @@ becomes the authored 12-frame loop ("cycle": true). Stale pages are removed.
 Clips marked "mirror" in the pose script are drawn facing right like every sheet but
 ship flipped around the feet anchor: a throw victim is drawn with its thrower's
 facing, so its art faces left (toward the thrower), as in every other atlas.
+A spec "awakening" mode "keep" (Nezuko: her demon form is not redrawn) leaves the
+committed awakened atlas and its pages as they are; a clip it lacks (a new move's)
+borrows the frames and timing of the old clip named in the spec's "fallback". Clips
+marked "keep_shipped" in the pose script (Nezuko's MAX, only ever shown in that kept
+form) ship their committed drawings in the normal atlas instead of processed frames.
 
 Usage: python tools/art_v3/pack.py [--character tanjiro]
 """
 import argparse
+import copy
+import io
 import json
 import subprocess
 from pathlib import Path
@@ -49,6 +56,46 @@ def mirrored(image):
 def frames_of(character, clip):
     folder = production(character) / 'imports' / clip
     return [Image.open(path).convert('RGBA') for path in sorted(folder.glob('frame-*.png'))]
+
+
+def shipped_frames(character, clip):
+    """A clip's canvas frames cut from the committed atlas and its committed pages."""
+    atlas = previous(character, 'atlas.json')
+    pages = {}
+    frames = []
+    for entry in atlas['clips'][clip]['frames']:
+        if entry['texture'] not in pages:
+            data = subprocess.run(['git', 'show', 'HEAD:art/characters/%s/%s' % (character, entry['texture'])], cwd=ROOT,
+                                  capture_output=True, check=True).stdout
+            pages[entry['texture']] = Image.open(io.BytesIO(data)).convert('RGBA')
+        x, y, width, height = entry['region']
+        image = Image.new('RGBA', tuple(atlas['canvas_size']))
+        image.paste(pages[entry['texture']].crop((x, y, x + width, y + height)), tuple(entry['offset']))
+        frames.append(image)
+    return frames
+
+
+def kept_awakening(old_awake, names, fallback):
+    """The committed awakened atlas, plus the clips it lacks as copies of their fallbacks.
+    A fallback is a clip name, or {"clip": name, "frames": [indices]} for a part of one
+    (a landing taken from the jump's landing drawings); other keys override its timing."""
+    atlas = copy.deepcopy(old_awake)
+    added = {}
+    for name in names:
+        if name in atlas['clips']:
+            continue
+        source = fallback.get(name)
+        settings = dict(source) if isinstance(source, dict) else {'clip': source}
+        if settings['clip'] not in old_awake['clips']:
+            raise SystemExit('kept awakened atlas has no %s and no fallback clip for it' % name)
+        entry = copy.deepcopy(old_awake['clips'][settings.pop('clip')])
+        picked = settings.pop('frames', None)
+        if picked is not None:
+            entry['frames'] = [entry['frames'][index] for index in picked]
+        entry.update(settings)
+        atlas['clips'][name] = entry
+        added[name] = source
+    return atlas, added
 
 
 def pack(images, folder, prefix):
@@ -138,7 +185,8 @@ def main():
         header['idle_vs_upright'] = stance
     # Helper clips (key drawings another clip is assembled from) never ship.
     names = ['idle'] + [name for name in poses if not poses[name].get('helper')]
-    available = {name: frames_of(character, name) for name in names}
+    kept_clips = [name for name in names if poses.get(name, {}).get('keep_shipped')]
+    available = {name: shipped_frames(character, name) if name in kept_clips else frames_of(character, name) for name in names}
     missing = [name for name, frames in available.items() if not frames]
     if missing:
         raise SystemExit('Missing processed clips: ' + ', '.join(missing))
@@ -149,13 +197,6 @@ def main():
     base_meta = {n: (clip_metadata(n, len(available[n]), old_base['clips'], poses), len(available[n])) for n in base_names}
     round_meta = {n: (clip_metadata(n, len(available[n]), old_round['clips'], poses), len(available[n])) for n in ROUND}
     awake_names = base_names + list(ROUND) + ['awakening_start']
-    # The awakened atlas shares every clip's timing with the normal atlases (a clip that
-    # moved to the round atlas, such as Akaza's 18-frame round intro, must not keep the
-    # previous awakened atlas's 12-frame timing); only awakening_start is its own.
-    shared = {**base_meta, **round_meta}
-    awake_meta = {n: shared[n] if n in shared else
-                  (clip_metadata(n, len(available[n]), {**old_base['clips'], **old_round['clips'], **old_awake['clips']}, poses), len(available[n]))
-                  for n in awake_names}
     for name, (meta, count) in base_meta.items():
         old = old_base['clips'].get(name)
         if old and name != 'idle' and len(old['frames']) != count:
@@ -165,23 +206,41 @@ def main():
     round_entries, round_pages = pack({(n, i): img for n in ROUND for i, img in enumerate(available[n])}, folder, 'round')
     write_atlas(folder / 'round-atlas.json', header, round_meta, round_entries)
     marks = {}
-    baked = {}
-    for name in awake_names:
-        # The mark or grade is found on the drawing as generated (facing right), then flipped with it.
-        for index, image in enumerate(drawn[name]):
-            array, count = awaken.bake(np.asarray(image))
-            baked[(name, index)] = mirrored(Image.fromarray(array, 'RGBA')) if name in flipped else Image.fromarray(array, 'RGBA')
-            marks.setdefault(name, []).append(count)
-    awake_entries, awake_pages = pack(baked, folder / 'awakening', 'atlas')
-    write_atlas(folder / 'awakening/atlas.json', header, awake_meta, awake_entries)
+    fallbacks = {}
+    settings = awaken.settings()
+    if settings.get('mode') == 'keep':
+        kept, fallbacks = kept_awakening(old_awake, awake_names, settings.get('fallback', {}))
+        (folder / 'awakening/atlas.json').write_text(json.dumps(kept, ensure_ascii=False, indent=2), encoding='utf-8')
+        awake_counts = {n: len(clip['frames']) for n, clip in kept['clips'].items()}
+        awake_pages = len(list((folder / 'awakening').glob('atlas-*.png')))
+    else:
+        # The awakened atlas shares every clip's timing with the normal atlases (a clip that
+        # moved to the round atlas, such as Akaza's 18-frame round intro, must not keep the
+        # previous awakened atlas's 12-frame timing); only awakening_start is its own.
+        shared = {**base_meta, **round_meta}
+        awake_meta = {n: shared[n] if n in shared else
+                      (clip_metadata(n, len(available[n]), {**old_base['clips'], **old_round['clips'], **old_awake['clips']}, poses), len(available[n]))
+                      for n in awake_names}
+        baked = {}
+        for name in awake_names:
+            # The mark or grade is found on the drawing as generated (facing right), then flipped with it.
+            for index, image in enumerate(drawn[name]):
+                array, count = awaken.bake(np.asarray(image))
+                baked[(name, index)] = mirrored(Image.fromarray(array, 'RGBA')) if name in flipped else Image.fromarray(array, 'RGBA')
+                marks.setdefault(name, []).append(count)
+        awake_entries, awake_pages = pack(baked, folder / 'awakening', 'atlas')
+        write_atlas(folder / 'awakening/atlas.json', header, awake_meta, awake_entries)
+        awake_counts = {n: c for n, (_, c) in awake_meta.items()}
     record = dict(revision=revision, clips={n: c for n, (_, c) in base_meta.items()}, round_clips={n: c for n, (_, c) in round_meta.items()},
-                  awakened_clips={n: c for n, (_, c) in awake_meta.items()}, pages=dict(base=pages, round=round_pages, awakening=awake_pages),
+                  awakened_clips=awake_counts, pages=dict(base=pages, round=round_pages, awakening=awake_pages),
                   awakening_marks=marks, mirrored_clips=flipped,
                   outputs={rel(path): sha256(path) for path in [folder / 'atlas.json', folder / 'round-atlas.json'] + sorted(folder.glob('atlas-*.png')) + sorted(folder.glob('round-*.png'))
                            + [folder / 'awakening/atlas.json'] + sorted((folder / 'awakening').glob('atlas-*.png'))})
+    if settings.get('mode') == 'keep':
+        record.update(awakening_kept=old_awake.get('revision'), awakening_fallbacks=fallbacks, shipped_clips=kept_clips)
     save(production(character) / 'pack.json', record)
     print('packed %s: %d base clips (%d pages), %d round clips, %d awakened clips (%d pages)' % (
-        character, len(base_meta), pages, len(round_meta), len(awake_meta), awake_pages))
+        character, len(base_meta), pages, len(round_meta), len(awake_counts), awake_pages))
 
 
 if __name__ == '__main__':
