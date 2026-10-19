@@ -33,10 +33,23 @@ const TITLE_ITEMS := [
 	["help", "帮助", "GUIDE · MOVE LIST"],
 	["settings", "游戏设置", "OPTIONS"],
 	["quit", "退出游戏", "EXIT"]]
+## Guide tabs, weakest to strongest: basics, normals, command normals and target combos,
+## then specials (ground and air), supers and MAX.
+const HELP_TABS := [["guide_basics", "基础攻防", "basics", Rect2(56, 104, 170, 40)], ["guide_normals", "普通技", "normals", Rect2(236, 104, 150, 40)],
+	["guide_specials", "特殊技·派生", "specials", Rect2(396, 104, 200, 40)], ["guide_moves", "必杀与奥义", "moves", Rect2(606, 104, 190, 40)]]
 var settings_panel: RefCounted
 ## Exit confirmation over the title or pause menu; null while closed.
 var quit_dialog: Control
 var settings_page: String = "sound"
+## The open guide tab and the character its move pages show.
+var help_tab: String = "basics"
+var help_character: String = ""
+## Holds the open tab's own controls (settings, guide). Switching tabs rebuilds only this
+## layer; the header, tabs and footer stay. Null on screens without tabs.
+var tab_layer: Control
+var _tab_fade: Tween
+## Builders add their nodes here: the menu itself, or the tab layer while a tab is built.
+var _host: Control
 var roster_scroll: ScrollContainer
 ## Character cells by id; `roster_cells` holds every grid cell in display order.
 var roster_cards: Dictionary = {}
@@ -72,6 +85,9 @@ var _footer_prompt: Array[String] = ["", ""]
 var _footer_device: String = ""
 var _last_screen: String = ""
 var _quiet: bool = true
+
+func _init() -> void:
+	_host = self
 
 func _ready() -> void:
 	# Godot's defaults may only bind keyboard accept/cancel; native menus also
@@ -120,6 +136,11 @@ func _process(delta: float) -> void:
 func clear() -> void:
 	settings_panel = null
 	quit_dialog = null
+	tab_layer = null
+	_host = self
+	if _tab_fade != null:
+		_tab_fade.kill()
+		_tab_fade = null
 	roster_cards.clear()
 	roster_cells.clear()
 	random_card = null
@@ -158,15 +179,25 @@ func reveal() -> void:
 	modulate = Color.WHITE
 	if fresh and app.screen != "battle":
 		add_child(Wipe.new())
-	var focusable: Array[Control] = []
+	_stagger(actions.values(), 0.04 if fresh else 0.0)
+	_link_focus()
+	_unquiet.call_deferred()
+
+## Replays the entry slide of menu buttons. Short, capped stagger: everything settles
+## within ~0.35 s.
+func _stagger(nodes: Array, delay: float) -> void:
 	var order := 0
-	for child in actions.values():
+	for child in nodes:
 		if child is DuelButton and not child.battle_style and not child.keycap and not child.tab:
-			# Short, capped stagger: everything settles within ~0.35 s.
-			child.intro_delay = (0.04 if fresh else 0.0) + mini(order, 5) * 0.025
+			child.intro_delay = delay + mini(order, 5) * 0.025
 			child.intro_time = 0.0
 			order += 1
-		if child is BaseButton and child.focus_mode != Control.FOCUS_NONE and not child.disabled:
+
+## Up / down and Tab cycle through the visible, enabled buttons in build order.
+func _link_focus() -> void:
+	var focusable: Array[Control] = []
+	for child in actions.values():
+		if child is BaseButton and child.visible and child.focus_mode != Control.FOCUS_NONE and not child.disabled:
 			focusable.append(child)
 	for i in range(focusable.size()):
 		var previous := focusable[(i - 1 + focusable.size()) % focusable.size()]
@@ -175,10 +206,40 @@ func reveal() -> void:
 		focusable[i].focus_neighbor_bottom = focusable[i].get_path_to(next)
 		focusable[i].focus_previous = focusable[i].get_path_to(previous)
 		focusable[i].focus_next = focusable[i].get_path_to(next)
-	_unquiet.call_deferred()
 
 func _unquiet() -> void:
 	_quiet = false
+
+## Builds a tab's page with `build` inside the tab layer and returns what `build` returns.
+## On a switch only the previous page is dropped and the new one fades in; the rest of
+## the screen keeps its nodes and does not replay its entry motion.
+func show_tab(build: Callable) -> Variant:
+	var switching := tab_layer != null
+	if switching:
+		for id: String in actions.keys():
+			if tab_layer.is_ancestor_of(actions[id]):
+				actions.erase(id)
+		for child in tab_layer.get_children():
+			tab_layer.remove_child(child)
+			child.queue_free()
+	else:
+		tab_layer = Control.new()
+		tab_layer.name = "TabLayer"
+		tab_layer.size = Vector2(1280, 720)
+		tab_layer.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		tab_layer.focus_mode = Control.FOCUS_NONE
+		add_child(tab_layer)
+	_host = tab_layer
+	var built: Variant = build.call()
+	_host = self
+	if switching:
+		_stagger(actions.values().filter(func(node: Control) -> bool: return tab_layer.is_ancestor_of(node)), 0.0)
+		if _tab_fade != null:
+			_tab_fade.kill()
+		tab_layer.modulate.a = 0.0
+		_tab_fade = tab_layer.create_tween()
+		_tab_fade.tween_property(tab_layer, "modulate:a", 1.0, 0.16).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	return built
 
 func _focus_cue() -> void:
 	if not _quiet and app.sound != null:
@@ -308,11 +369,6 @@ func settings(page: String = "") -> void:
 		settings_page = page
 	settings_panel=SettingsPanel.new()
 	settings_panel.build(self, settings_page)
-
-func _settings_page(page: String) -> void:
-	clear()
-	settings(page)
-	actions["settings_tab_" + page].grab_focus()
 
 # --- Character select ------------------------------------------------------------------
 
@@ -770,40 +826,53 @@ func help(page: String = "basics", character_id: String = "") -> void:
 	_backdrop(Color("1d3e52"), Color("3d1d2c"), 0.45)
 	_header("操作指南", "HOW TO PLAY")
 	var home := button("home", "返回对战" if app.help_return == "battle" else "返回主菜单", Rect2(40, 664, 230, 44), app.close_help, true, true, 18)
-	# Weakest to strongest: basics, normals, command normals and target combos, then
-	# specials (ground and air), supers and MAX.
-	var tabs := [["guide_basics", "基础攻防", "basics", Rect2(56, 104, 170, 40)], ["guide_normals", "普通技", "normals", Rect2(236, 104, 150, 40)],
-		["guide_specials", "特殊技·派生", "specials", Rect2(396, 104, 200, 40)], ["guide_moves", "必杀与奥义", "moves", Rect2(606, 104, 190, 40)]]
-	if character_id.is_empty():
-		character_id = app.characters[0]
-	for entry in tabs:
+	help_character = character_id if not character_id.is_empty() else app.characters[0]
+	for entry in HELP_TABS:
 		var target: String = entry[2]
-		var node := button(entry[0], entry[1], entry[3], func(): _help_page(target, character_id if target != "basics" else ""), false, false, 18)
-		node.tab = true
-		node.selected = page == target
-	if page == "basics":
-		paint(Rect2(40, 160, 1200, 490), _draw_basics)
-	else:
-		var definition = app.combat.catalog.characters[character_id]
-		var selector := device_option("guide_character", Rect2(880, 102, 352, 42))
-		var ids: Array = app.combat.catalog.characters.keys()
-		for id in ids:
-			selector.add_item(app.combat.catalog.characters[id].display_name)
-		selector.select(ids.find(character_id))
-		selector.item_selected.connect(func(index: int): _help_page(page, ids[index]))
-		if page == "moves":
-			paint(Rect2(40, 160, 1200, 490), func(canvas: Control): _draw_moves(canvas, definition))
-		elif page == "specials":
-			paint(Rect2(40, 160, 1200, 490), func(canvas: Control): _draw_specials(canvas, definition))
-		else:
-			paint(Rect2(40, 160, 1200, 490), func(canvas: Control): _draw_normals(canvas, definition))
+		button(entry[0], entry[1], entry[3], func(): _help_page(target), false, false, 18).tab = true
+	# The character choice stays across the move tabs; the basics tab hides it.
+	var selector := device_option("guide_character", Rect2(880, 102, 352, 42))
+	var ids: Array = app.combat.catalog.characters.keys()
+	for id in ids:
+		selector.add_item(app.combat.catalog.characters[id].display_name)
+	selector.item_selected.connect(func(index: int): _help_page(help_tab, ids[index]))
 	_footer(Rect2(300, 668, 932, 36), "返回", "F1 判定框 · F2 静音")
+	_show_help(page)
 	home.grab_focus()
 	reveal()
 
+## Switches the guide to `page` (and character `id`, if given) in place: only the page
+## panel is rebuilt, and focus stays on the tab or selector that asked for it.
 func _help_page(page: String, id: String = "") -> void:
-	clear()
-	help(page, id)
+	if page == help_tab and (id.is_empty() or id == help_character):
+		return
+	if not id.is_empty():
+		help_character = id
+	_show_help(page)
+	_link_focus()
+
+func _show_help(page: String) -> void:
+	help_tab = page
+	for entry in HELP_TABS:
+		var tab: Button = actions[entry[0]]
+		tab.selected = entry[2] == page
+		tab.queue_redraw()
+	var selector: OptionButton = actions.guide_character
+	selector.visible = page != "basics"
+	selector.select(app.combat.catalog.characters.keys().find(help_character))
+	show_tab(func(): paint(Rect2(40, 160, 1200, 490), _draw_help))
+
+func _draw_help(canvas: Control) -> void:
+	if help_tab == "basics":
+		_draw_basics(canvas)
+		return
+	var definition = app.combat.catalog.characters[help_character]
+	if help_tab == "moves":
+		_draw_moves(canvas, definition)
+	elif help_tab == "specials":
+		_draw_specials(canvas, definition)
+	else:
+		_draw_normals(canvas, definition)
 
 func _section(canvas: Control, rect: Rect2, numeral: String, heading: String, accent: Color = Kit.GOLD_HI) -> void:
 	var shape := Kit.chamfer(rect, 16, 5)
@@ -985,14 +1054,14 @@ func paint(bounds: Rect2, painter: Callable) -> Control:
 	node.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	node.focus_mode = Control.FOCUS_NONE
 	node.draw.connect(func(): painter.call(node))
-	add_child(node)
+	_host.add_child(node)
 	return node
 
 func prompt_label(bounds: Rect2) -> Label:
 	var node := PromptLabel.new()
 	node.position = bounds.position
 	node.add_theme_font_override("font", catalog.body_font)
-	add_child(node)
+	_host.add_child(node)
 	node.size = bounds.size
 	return node
 
@@ -1015,7 +1084,7 @@ func label(value: String, bounds: Rect2, font_size: int = 18, color: Color = PAP
 	node.horizontal_alignment = align
 	node.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	node.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	add_child(node)
+	_host.add_child(node)
 	node.size = bounds.size
 	return node
 
@@ -1037,7 +1106,7 @@ func button(id: String, value: String, bounds: Rect2, callback: Callable, primar
 		node.focus_entered.connect(_focus_cue)
 		if id in ["back", "home", "settings_back"]:
 			node.pressed.connect(func(): app.sound.play("ui_back", 0.4))
-	add_child(node)
+	_host.add_child(node)
 	node.size = bounds.size
 	actions[id] = node
 	return node
@@ -1049,7 +1118,7 @@ func texture(value: Texture2D, bounds: Rect2) -> TextureRect:
 	node.position = bounds.position
 	node.size = bounds.size
 	node.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	add_child(node)
+	_host.add_child(node)
 	return node
 
 func rect(bounds: Rect2, color: Color) -> void:
@@ -1058,7 +1127,7 @@ func rect(bounds: Rect2, color: Color) -> void:
 	node.size = bounds.size
 	node.color = color
 	node.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	add_child(node)
+	_host.add_child(node)
 
 func rule(at: Vector2, length: float, color: Color) -> void:
 	paint(Rect2(at - Vector2(0, 2), Vector2(length, 4)), func(canvas: Control):
@@ -1067,7 +1136,7 @@ func rule(at: Vector2, length: float, color: Color) -> void:
 func slash(bounds: Rect2, color: Color, cut: float = 40) -> void:
 	var stroke := Brush.new(bounds.position.x * 0.013)
 	stroke.configure(bounds, color, cut * 0.5)
-	add_child(stroke)
+	_host.add_child(stroke)
 
 func panel(bounds: Rect2) -> void:
 	paint(bounds, func(canvas: Control):
@@ -1084,7 +1153,7 @@ func device_option(id: String, bounds: Rect2) -> OptionButton:
 	node.clip_text = true
 	node.add_theme_font_size_override("font_size", 18)
 	node.focus_entered.connect(_focus_cue)
-	add_child(node)
+	_host.add_child(node)
 	node.size = bounds.size
 	actions[id] = node
 	return node

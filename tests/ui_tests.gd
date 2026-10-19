@@ -258,7 +258,10 @@ func _capture(name: String) -> void:
 		await create_timer(0.32).timeout
 	await process_frame
 	# Detect Controls whose font minimum size has expanded beyond the viewport.
-	for child in game.gui.get_children():
+	var nodes: Array[Node] = game.gui.get_children()
+	if game.gui.tab_layer != null:
+		nodes.append_array(game.gui.tab_layer.get_children())
+	for child in nodes:
 		if child is Control:
 			var bounds: Rect2 = child.get_rect()
 			check(bounds.end.x <= 1281 and bounds.end.y <= 721, "control fits viewport in %s: %s bounds=%s" % [name, child.get("text"), bounds])

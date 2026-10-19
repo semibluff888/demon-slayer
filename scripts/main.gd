@@ -124,8 +124,6 @@ func _unhandled_input(event: InputEvent) -> void:
 			get_viewport().set_input_as_handled()
 		elif event.keycode == KEY_F2:
 			toggle_audio()
-			if screen == "title":
-				show_title()
 			get_viewport().set_input_as_handled()
 		elif event.keycode == KEY_F3 and screen == "battle" and mode == "practice":
 			show_practice_options()

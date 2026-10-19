@@ -21,36 +21,55 @@ var key_buttons: Dictionary = {}
 var control_options: Array[OptionButton] = []
 var level_labels: Dictionary = {}
 var notice: Label
+var tabs: Array[Button] = []
+var back: Button
 
+## Header, tabs, notice and back are built once; switching tabs swaps only the page.
 func build(owner: Control, shown: String = "sound") -> void:
 	menu = owner
 	app = menu.app
-	page = shown
 	menu._backdrop(Color("223a55"), Color("3a1f33"), 0.45)
 	menu._header("游戏设置", "OPTIONS", "即时生效 · 自动保存")
-	var order: Array[Control] = []
 	for i in range(PAGES.size()):
 		var target: String = PAGES[i][2]
-		var tab: Button = menu.button(PAGES[i][0], PAGES[i][1], Rect2(56 + i * 200, 104, 190, 40), func(): menu._settings_page(target), false, false, 18)
+		var tab: Button = menu.button(PAGES[i][0], PAGES[i][1], Rect2(56 + i * 200, 104, 190, 40), func(): _switch(target), false, false, 18)
 		tab.tab = true
-		tab.selected = page == target
-		order.append(tab)
-	var back: Button = menu.button("settings_back","返回",Rect2(40,662,220,46),app.close_settings,true,true,20)
+		tabs.append(tab)
+	back = menu.button("settings_back","返回",Rect2(40,662,220,46),app.close_settings,true,true,20)
 	back.subtitle = "BACK"
 	notice=menu.label("",Rect2(280,668,640,34),15,menu.MUTED,false,HORIZONTAL_ALIGNMENT_CENTER)
-	var first: Control
-	if page == "keys":
-		order.append_array(_build_keys())
-		notice.text = KEYS_HINT
-		first = control_options[0]
-	else:
-		order.append_array(_build_sound())
-		notice.text = "F2 可随时静音"
-		first = menu.actions.audio_mute
-	order.append(back)
+	var controls := _show(shown)
 	menu.reveal()
-	first.grab_focus()
-	# Tabs, then the page's controls top to bottom, then back: one ring for keys and pads.
+	controls[0].grab_focus()
+	_link(controls)
+
+func _switch(target: String) -> void:
+	if target != page:
+		_link(_show(target))
+	menu.actions["settings_tab_" + target].grab_focus()
+
+## Rebuilds the tab layer for `shown` and returns its controls top to bottom.
+func _show(shown: String) -> Array[Control]:
+	_cancel_listen()
+	page = shown
+	menu.settings_page = shown
+	key_buttons.clear()
+	control_options.clear()
+	level_labels.clear()
+	for i in range(tabs.size()):
+		tabs[i].selected = PAGES[i][2] == page
+		tabs[i].queue_redraw()
+	notice.text = KEYS_HINT if page == "keys" else "F2 可随时静音"
+	notice.modulate = Color.WHITE
+	var controls: Array[Control] = menu.show_tab(_build_keys if page == "keys" else _build_sound)
+	return controls
+
+## Tabs, then the page's controls top to bottom, then back: one ring for keys and pads.
+func _link(controls: Array[Control]) -> void:
+	var order: Array[Control] = []
+	order.append_array(tabs)
+	order.append_array(controls)
+	order.append(back)
 	for i in range(order.size()):
 		var previous: Control=order[posmod(i-1,order.size())]
 		var next: Control=order[(i+1)%order.size()]
@@ -69,7 +88,7 @@ func _build_sound() -> Array[Control]:
 	mute.size = Vector2(170, 44)
 	mute.button_pressed = app.settings.muted
 	mute.toggled.connect(func(value: bool): app.settings.muted=value; _audio_changed())
-	menu.add_child(mute)
+	menu.tab_layer.add_child(mute)
 	menu.actions.audio_mute = mute
 	order.append(mute)
 	for row in range(LEVELS.size()):
@@ -83,7 +102,7 @@ func _build_sound() -> Array[Control]:
 		slider.size = Vector2(330,36)
 		slider.min_value=0;slider.max_value=100;slider.step=1
 		slider.value=roundi(float(app.settings.get(field))*100)
-		menu.add_child(slider)
+		menu.tab_layer.add_child(slider)
 		menu.actions[id]=slider
 		level_labels[id]=menu.label("%d%%" % slider.value,Rect2(500,y,100,36),22,Kit.GOLD_HI)
 		slider.value_changed.connect(func(value: float): app.settings.set(field, value/100.0); level_labels[id].text="%d%%" % value; _audio_changed())
@@ -112,7 +131,7 @@ func _build_sound() -> Array[Control]:
 	cinematic.button_pressed = app.settings.cinematic_enabled
 	cinematic.tooltip_text = "奥义 / MAX 命中后播放；关闭后沿用简化演出。"
 	cinematic.toggled.connect(func(value: bool): app.settings.cinematic_enabled = value; _save())
-	menu.add_child(cinematic)
+	menu.tab_layer.add_child(cinematic)
 	menu.actions.cinematic_enabled = cinematic
 	menu.label("命中后播放 · 奥义 / MAX，关闭则使用简化演出",Rect2(470,506,600,24),13,menu.MUTED)
 	order.append(cinematic)

@@ -7,6 +7,7 @@ const Banner = preload("res://scripts/presentation/round_banner.gd")
 const Effects = preload("res://scripts/presentation/effects_view.gd")
 const PromptBar = preload("res://scripts/ui/prompt_bar.gd")
 const Glyphs = preload("res://scripts/ui/command_glyphs.gd")
+const Wipe = preload("res://scripts/ui/screen_wipe.gd")
 const Support = preload("res://tests/combat_test_support.gd")
 const BUNDLED := ["res://art/fonts/NotoSansSC-ui.ttf", "res://art/fonts/NotoSerifSC-title.ttf", "res://art/fonts/MaShanZheng-display.ttf"]
 var passed := 0
@@ -127,9 +128,16 @@ func _check_effects() -> void:
 	effects.free()
 
 func _decorations_ignore_mouse(screen: String) -> void:
-	for child in game.gui.get_children():
+	var nodes: Array[Node] = game.gui.get_children()
+	if game.gui.tab_layer != null:
+		nodes.append_array(game.gui.tab_layer.get_children())
+	for child in nodes:
 		if child is Control and not (child is BaseButton or child is Range or child is ScrollContainer):
 			check(child.mouse_filter == Control.MOUSE_FILTER_IGNORE, "decoration ignores the mouse on %s: %s" % [screen, child.name])
+
+## Nodes outside the tab layer, which a tab switch must keep; the entry wipe frees itself.
+func _chrome() -> Array:
+	return game.gui.get_children().filter(func(node: Node) -> bool: return node != game.gui.tab_layer and node.get_script() != Wipe)
 
 func _check_screens() -> void:
 	game.show_title()
@@ -188,14 +196,40 @@ func _check_screens() -> void:
 	await process_frame
 	_decorations_ignore_mouse("settings")
 	check(game.gui.actions.settings_tab_sound.tab and game.gui.actions.music_battle is OptionButton, "settings open on the sound tab")
+	var chrome := _chrome()
+	var back_intro: float = game.gui.actions.settings_back.intro_time
+	var old_mute: Control = game.gui.actions.audio_mute
 	game.gui.actions.settings_tab_keys.pressed.emit()
+	check(game.gui.tab_layer.modulate.a < 1.0 and game.gui.modulate == Color.WHITE, "only the settings page fades in on a tab switch")
 	await process_frame
 	_decorations_ignore_mouse("settings")
 	check(game.gui.actions.key_0_4.keycap and not game.gui.actions.settings_back.keycap, "key bindings render as keycaps")
+	check(_chrome() == chrome and not is_instance_valid(old_mute), "settings tabs swap only the tab layer")
+	check(game.gui.actions.settings_back.intro_time >= back_intro, "back button does not replay its entry on a tab switch")
+	check(game.gui.actions.settings_tab_keys.selected and not game.gui.actions.settings_tab_sound.selected, "tab highlight follows the switch")
 	game.close_settings()
 	game.show_help()
 	await process_frame
 	check(game.gui.actions.guide_basics.tab and game.gui.actions.guide_basics.selected, "help pages use tabs")
+	var selector: OptionButton = game.gui.actions.guide_character
+	check(not selector.visible, "basics tab hides the character selector")
+	chrome = _chrome()
+	var home_intro: float = game.gui.actions.home.intro_time
+	game.gui.actions.guide_moves.pressed.emit()
+	await process_frame
+	check(_chrome() == chrome and selector.visible and game.gui.actions.guide_moves.selected and not game.gui.actions.guide_basics.selected,
+		"guide tabs swap only the page panel")
+	var ids: Array = game.combat.catalog.characters.keys()
+	var other := (ids.find(game.gui.help_character) + 1) % ids.size()
+	selector.select(other)
+	selector.item_selected.emit(other)
+	await process_frame
+	check(_chrome() == chrome and game.gui.help_tab == "moves" and game.gui.help_character == ids[other], "changing the guide character keeps the tab")
+	game.gui.actions.guide_normals.pressed.emit()
+	check(game.gui.help_character == ids[other] and selector.selected == other, "guide character carries across tabs")
+	game.gui.actions.guide_basics.pressed.emit()
+	await process_frame
+	check(not selector.visible and _chrome() == chrome and game.gui.actions.home.intro_time >= home_intro, "guide header, tabs and footer stay put")
 	game.close_help()
 	game.set_paused(false)
 	game.mode = "cpu"

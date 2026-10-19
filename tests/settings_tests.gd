@@ -196,7 +196,9 @@ func _run() -> void:
 		elif screen_name=="setup":game.choose_mode("local")
 		else:game.start_match();game.set_paused(true)
 		await process_frame
-		for node in game.gui.get_children():
+		var nodes: Array[Node]=game.gui.get_children()
+		if game.gui.tab_layer!=null:nodes.append_array(game.gui.tab_layer.get_children())
+		for node in nodes:
 			if node is Control:
 				var rect: Rect2=node.get_rect()
 				check(rect.end.x<=1281 and rect.end.y<=721,"control fits screen: "+screen_name+"/"+str(node.name))
