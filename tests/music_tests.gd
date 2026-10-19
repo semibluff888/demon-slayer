@@ -299,6 +299,29 @@ func _battle_flow() -> void:
 	game.set_paused(false)
 	step(0.5)
 	game.mode = "cpu"
+	# A match fought on the select piece still sends select back to 2:52 afterwards.
+	game.settings.music.battle = "hashira_infinity_castle"
+	game.show_setup()
+	game.show_stages()
+	step(1.5)
+	game.start_match()
+	step(30.0)
+	game.combat.wins.assign([2, 0])
+	game.combat.phase = "round_end"
+	step(1.6)
+	game.show_result()
+	step(0.2)
+	var fought: RefCounted = music.lead
+	game.show_setup()
+	step(0.1)
+	check(music.lead != fought and music.lead.scene == "select" and near(music.lead.position, 172.1, 0.1), "back to select restarts at 2:52 after a match on the select piece")
+	step(1.5)
+	var reentered: RefCounted = music.lead
+	check(active() == 1, "the select re-entry settles on one deck")
+	game.show_stages()
+	game.start_match()
+	step(0.1)
+	check(music.lead == reentered and reentered.scene == "battle", "the next match on the select piece still carries on")
 
 func _settings_preview() -> void:
 	game.show_title()
@@ -336,6 +359,25 @@ func _settings_preview() -> void:
 	game.close_settings()
 	step(0.05)
 	check(music.playing() == "hekireki_issen" and music.lead.position >= position, "closing settings resumes the match track")
+	# Ending on the match track itself drops the old resume point, so a later preview records afresh.
+	game.show_settings()
+	music.preview("battle", "rengoku_kyojuro")
+	step(0.7)
+	music.preview("battle", "hekireki_issen")
+	step(0.7)
+	game.close_settings()
+	step(0.1)
+	check(music.playing() == "hekireki_issen" and music.held.is_empty(), "closing settings on the match track forgets the interrupted position")
+	game.set_paused(false)
+	step(20.0)
+	game.set_paused(true)
+	position = music.lead.position
+	game.show_settings()
+	music.preview("battle", "rengoku_kyojuro")
+	step(0.7)
+	game.close_settings()
+	step(0.05)
+	check(music.playing() == "hekireki_issen" and music.lead.position >= position, "a later preview resumes the match track from where it was then")
 	game.set_paused(false)
 
 func _follow_and_random() -> void:

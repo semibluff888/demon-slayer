@@ -144,14 +144,19 @@ func _steer() -> void:
 	var reason := _duck(wanted)
 	var target := library.level_db(preview_scene if not preview_track.is_empty() else wanted) + library.duck_db(reason)
 	var first := lead == null
-	var switching := not track.is_empty() and (first or lead.track != track or (restart and wanted == "battle"))
+	# Back from a match, select re-enters at its entry even when the fight ran on the same piece.
+	var reentry := wanted == "select" and scene in ["battle", "result"]
+	var switching := not track.is_empty() and (first or lead.track != track or (restart and wanted == "battle") or reentry)
 	var fades := _fades(wanted)
 	if switching:
 		restart = false
 		_enter(track, wanted, fades)
 	elif lead != null and not track.is_empty():
 		lead.scene = _cue_scene(track, wanted)
-	_closing_preview = false
+	if _closing_preview:
+		# Also when settings close on the interrupted track itself: the next preview records afresh.
+		held.clear()
+		_closing_preview = false
 	var wins: Array = app.combat.wins
 	if wanted == "battle" and not climax_done and app.combat.phase == "intro" and wins[0] == 1 and wins[1] == 1 and lead != null and lead.track == battle_track:
 		climax_done = true
@@ -268,8 +273,6 @@ func _enter(track: String, wanted: String, fades: Vector2) -> void:
 		from = float(cue.get("loop_start", 0.0))
 	if not preview_track.is_empty() and held.is_empty() and lead != null:
 		held = {"track": lead.track, "position": lead.position + fades.y}
-	elif preview_track.is_empty():
-		held.clear()
 	_switch(track, cue_scene, from, fades.x, fades.y)
 
 func _switch(track: String, cue_scene: String, from: float, fade_in: float, fade_out: float) -> void:
