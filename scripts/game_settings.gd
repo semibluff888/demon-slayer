@@ -1,14 +1,21 @@
 class_name GameSettings
 extends RefCounted
 const Router = preload("res://scripts/input_router.gd")
+const MusicLibrary = preload("res://scripts/music/library.gd")
 const KEYMAP_VERSION := 2
+const MUSIC_VOLUME := 0.7
 const LEGACY_KEYS := [
 	[KEY_A, KEY_D, KEY_S, KEY_W, KEY_T, KEY_Y, KEY_G, KEY_H],
 	[KEY_LEFT, KEY_RIGHT, KEY_DOWN, KEY_UP, KEY_KP_4, KEY_KP_5, KEY_KP_1, KEY_KP_2]]
 const RESERVED := [KEY_ESCAPE, KEY_F1, KEY_F2, KEY_F3, KEY_BACKSPACE, KEY_SHIFT, KEY_CTRL, KEY_ALT, KEY_META, KEY_CAPSLOCK, KEY_NUMLOCK, KEY_SCROLLLOCK, KEY_PRINT]
 var path: String = "user://settings.cfg"
 var muted: bool = false
+## Master volume; music and effects buses sit under it.
 var volume: float = 1.0
+var music_volume: float = MUSIC_VOLUME
+var sfx_volume: float = 1.0
+## Music choice per scene (title, select, battle): a track id, "random" or "follow_title".
+var music: Dictionary = MusicLibrary.new().defaults()
 var cinematic_enabled: bool = true
 var keymaps: Array = Router.KEYS.duplicate(true)
 var last_error: String = ""
@@ -16,6 +23,10 @@ var last_error: String = ""
 func load_config() -> void:
 	muted = false
 	volume = 1.0
+	music_volume = MUSIC_VOLUME
+	sfx_volume = 1.0
+	var library := MusicLibrary.new()
+	music = library.defaults()
 	cinematic_enabled = true
 	keymaps = Router.KEYS.duplicate(true)
 	var file := ConfigFile.new()
@@ -23,9 +34,11 @@ func load_config() -> void:
 	var saved_cinematic = file.get_value("presentation", "cinematic_enabled", true)
 	cinematic_enabled = saved_cinematic if saved_cinematic is bool else true
 	muted = bool(file.get_value("audio", "muted", false))
-	var saved_volume = file.get_value("audio", "volume", 1.0)
-	if saved_volume is float or saved_volume is int:
-		volume = clampf(float(saved_volume), 0, 1) if is_finite(float(saved_volume)) else 1.0
+	volume = _level(file.get_value("audio", "volume", 1.0), 1.0)
+	music_volume = _level(file.get_value("audio", "music_volume", MUSIC_VOLUME), MUSIC_VOLUME)
+	sfx_volume = _level(file.get_value("audio", "sfx_volume", 1.0), 1.0)
+	for scene: String in MusicLibrary.SCENES:
+		music[scene] = library.valid_choice(scene, str(file.get_value("music", scene, "")))
 	var candidate: Array = []
 	for player in range(2):
 		var keys = file.get_value("keyboard", "p%d" % [player+1], Router.KEYS[player])
@@ -35,6 +48,11 @@ func load_config() -> void:
 	if file.get_value("keyboard", "version", 1) == 1 and candidate == LEGACY_KEYS:
 		candidate = Router.KEYS.duplicate(true)
 	if _valid_maps(candidate): keymaps = candidate
+
+func _level(saved: Variant, fallback: float) -> float:
+	if (saved is float or saved is int) and is_finite(float(saved)):
+		return clampf(float(saved), 0, 1)
+	return fallback
 
 func _valid_maps(maps: Array) -> bool:
 	if maps.size() != 2: return false
@@ -74,6 +92,9 @@ func save_config() -> Error:
 	file.set_value("presentation", "cinematic_enabled", cinematic_enabled)
 	file.set_value("audio", "muted", muted)
 	file.set_value("audio", "volume", volume)
+	file.set_value("audio", "music_volume", music_volume)
+	file.set_value("audio", "sfx_volume", sfx_volume)
+	for scene: String in MusicLibrary.SCENES: file.set_value("music", scene, music.get(scene, ""))
 	file.set_value("keyboard", "version", KEYMAP_VERSION)
 	for player in range(2): file.set_value("keyboard", "p%d" % [player+1], keymaps[player])
 	var result := file.save(path)

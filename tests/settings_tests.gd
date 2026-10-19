@@ -61,19 +61,35 @@ func _run() -> void:
 	game.gui.actions.audio_volume.value=37
 	game.gui.actions.audio_mute.button_pressed=true
 	check(is_equal_approx(game.sound.volume,0.37) and game.sound.muted,"audio controls apply immediately")
+	check(AudioServer.is_bus_mute(0) and is_equal_approx(AudioServer.get_bus_volume_db(0),linear_to_db(0.37)),"master volume and mute drive the Master bus")
 	var loaded=Settings.new();loaded.path=config.path;loaded.load_config()
 	check(loaded.muted and is_equal_approx(loaded.volume,0.37),"audio settings persisted")
 	await _key(KEY_F2)
 	loaded.load_config()
 	check(not game.sound.muted and not game.gui.actions.audio_mute.button_pressed and not loaded.muted,"F2 updates audio checkbox and persistent mute")
+	check(not AudioServer.is_bus_mute(0),"F2 unmutes the Master bus")
 	game.sound.play("select",0.5)
 	var voice: AudioStreamPlayer=game.sound.voices[(game.sound.cursor-1)%game.sound.voices.size()]
-	check(is_equal_approx(voice.volume_db,-17.0+linear_to_db(0.5*0.37)),"cue gain and master volume combine")
+	check(is_equal_approx(voice.volume_db,game.sound.CUE_DB+linear_to_db(0.5)) and voice.bus==&"SFX","cues keep their own gain on the SFX bus")
 	game.gui.actions.audio_volume.value=20
-	check(is_equal_approx(voice.volume_db,-17.0+linear_to_db(0.5*0.2)),"master slider updates existing voices")
+	check(is_equal_approx(AudioServer.get_bus_volume_db(0),linear_to_db(0.2)),"master slider updates the Master bus")
 	game.gui.actions.audio_volume.value=0
-	check(voice.volume_db<=-100,"zero volume silences existing voice")
+	check(AudioServer.get_bus_volume_db(0)<=-100,"zero master volume silences every bus")
 	game.gui.actions.audio_volume.value=37
+	game.gui.actions.music_volume.value=55
+	game.gui.actions.sfx_volume.value=80
+	check(is_equal_approx(AudioServer.get_bus_volume_db(AudioServer.get_bus_index(&"Music")),linear_to_db(0.55)) and is_equal_approx(AudioServer.get_bus_volume_db(AudioServer.get_bus_index(&"SFX")),linear_to_db(0.8)),"music and effects sliders drive their buses")
+	var battle_music: OptionButton=game.gui.actions.music_battle
+	var pick:=-1
+	for i in range(battle_music.item_count):
+		if battle_music.get_item_metadata(i)=="rengoku_kyojuro":pick=i
+	battle_music.select(pick);battle_music.item_selected.emit(pick)
+	check(game.settings.music.battle=="rengoku_kyojuro" and game.music.preview_track=="rengoku_kyojuro","battle music choice applies and previews")
+	loaded.load_config()
+	check(is_equal_approx(loaded.music_volume,0.55) and is_equal_approx(loaded.sfx_volume,0.8) and loaded.music.battle=="rengoku_kyojuro","music settings persisted")
+	check(game.gui.actions.music_title.get_item_metadata(game.gui.actions.music_title.selected)=="homura_movie" and game.gui.actions.music_select.item_count==2,"music dropdowns show the defaults")
+	game.gui.actions.music_volume.value=70
+	game.gui.actions.sfx_volume.value=100
 	await _key(KEY_F2)
 	game.gui.actions.audio_volume.grab_focus()
 	await _key(KEY_D)
@@ -84,6 +100,13 @@ func _run() -> void:
 	check(game.gui.actions.audio_volume.has_focus(),"gamepad navigates to volume slider")
 	await _pad(JOY_BUTTON_DPAD_RIGHT)
 	check(game.settings.volume>0.37,"gamepad adjusts volume")
+	click("settings_tab_keys")
+	check(game.gui.actions.settings_tab_keys.selected and game.gui.actions.settings_tab_keys.has_focus() and not game.gui.actions.has("audio_volume"),"keys tab replaces the sound controls")
+	var muted_before: bool=game.settings.muted
+	await _key(KEY_F2)
+	check(game.settings.muted!=muted_before and AudioServer.is_bus_mute(0)==game.settings.muted,"F2 on the keys tab toggles mute")
+	await _key(KEY_F2)
+	check(game.settings.muted==muted_before,"F2 on the keys tab toggles back")
 	game.gui.actions.key_0_4.grab_focus()
 	await _pad(JOY_BUTTON_A)
 	check(game.gui.settings_panel.waiting_player==0,"gamepad opens remapping capture")
@@ -119,6 +142,7 @@ func _run() -> void:
 	click("settings")
 	for n in range(30):game._physics_process(1.0/60)
 	check(game.combat.snapshot()==before and game.paused,"settings preserves frozen combat")
+	check(game.gui.actions.has("defaults_p1"),"settings reopen on the last tab")
 	click("defaults_p1")
 	check(Router.current_keys(0)==Router.KEYS[0],"restore P1 defaults")
 	click("key_1_7");await _key(KEY_KP_1)
@@ -165,9 +189,10 @@ func _run() -> void:
 	file.save(OUT+"/invalid.cfg")
 	loaded.path=OUT+"/invalid.cfg";loaded.load_config()
 	check(loaded.keymaps==Router.KEYS,"invalid saved bindings fall back to complete defaults")
-	for screen_name: String in ["title","settings","setup","pause"]:
+	for screen_name: String in ["title","settings","settings_sound","setup","pause"]:
 		if screen_name=="title":game.show_title()
 		elif screen_name=="settings":game.show_settings()
+		elif screen_name=="settings_sound":click("settings_tab_sound")
 		elif screen_name=="setup":game.choose_mode("local")
 		else:game.start_match();game.set_paused(true)
 		await process_frame

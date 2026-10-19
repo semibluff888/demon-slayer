@@ -1,5 +1,10 @@
 extends Node
 ## Reproducible PCM cues shared by live playback and the engine capture mixer.
+## Cues play on the SFX bus; the main volume and mute live on Master (audio_buses.gd).
+const Buses = preload("res://scripts/audio_buses.gd")
+## Cue level before its gain. Raised from -17 dB when BGM arrived so hits sit above the
+## battle music (docs/music.md).
+const CUE_DB := -5.0
 var streams: Dictionary = {}
 var voices: Array[AudioStreamPlayer] = []
 var cursor := 0
@@ -10,8 +15,10 @@ const SAMPLE_RATE := 22050
 const KINDS := ["hit", "body_hit", "block", "swing", "body_swing", "select", "fight", "round_end", "throw", "clash", "water_slash", "water_wheel", "iai", "thunder", "super", "max", "roll", "meter_empty", "meter_spend", "throw_tech", "flame", "blood", "shockwave", "ui_move", "ui_back"]
 
 func _ready() -> void:
+	Buses.ensure()
 	for n in range(10):
 		var voice := AudioStreamPlayer.new()
+		voice.bus = Buses.SFX
 		add_child(voice)
 		voices.append(voice)
 	for kind: String in KINDS:
@@ -83,8 +90,7 @@ func play(kind: String, gain: float = 1.0) -> void:
 	var voice := voices[cursor % voices.size()]
 	cursor += 1
 	voice.stream = streams[kind]
-	voice.set_meta("cue_gain",gain)
-	voice.volume_db = -17.0 + linear_to_db(maxf(gain*volume,0.00001))
+	voice.volume_db = CUE_DB + linear_to_db(maxf(gain,0.00001))
 	voice.stream_paused = false
 	voice.play()
 
@@ -100,12 +106,13 @@ func reset_audio() -> void:
 	paused = false
 	cursor = 0
 
+## Mirrors the master settings: muting also cuts cues already sounding. The level itself
+## is applied on the Master bus.
 func set_levels(silent: bool, level: float) -> void:
 	muted = silent
 	volume = clampf(level,0,1)
-	for voice in voices:
-		voice.volume_db = -17.0 + linear_to_db(maxf(float(voice.get_meta("cue_gain",1.0))*volume,0.00001))
-		if muted: voice.stop()
+	if muted:
+		for voice in voices: voice.stop()
 
 func toggle() -> void:
 	set_levels(not muted,volume)

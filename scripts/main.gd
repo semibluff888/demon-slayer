@@ -5,6 +5,8 @@ const AI = preload("res://scripts/ai_controller.gd")
 const Practice = preload("res://scripts/practice_controller.gd")
 const World = preload("res://scripts/world_view.gd")
 const Sound = preload("res://scripts/audio.gd")
+const Buses = preload("res://scripts/audio_buses.gd")
+const Music = preload("res://scripts/music/director.gd")
 const Catalog = preload("res://scripts/presentation/visual_catalog.gd")
 const Selection = preload("res://scripts/ui/selection_controller.gd")
 const Menu = preload("res://scripts/ui/menu_view.gd")
@@ -20,6 +22,7 @@ var selection := Selection.new()
 var stage_id: String = "wisteria"
 var view: Node2D
 var sound: Node
+var music: Node
 var gui: Control
 var screen: String = "title"
 var mode: String = "cpu"
@@ -32,6 +35,7 @@ var start_button: Button
 var setup_options: Array[OptionButton] = []
 var pause_reason: String = ""
 var help_return: String = "title"
+var quit_requested: bool = false
 
 func _ready() -> void:
 	settings.load_config()
@@ -44,9 +48,14 @@ func _ready() -> void:
 	view.catalog = catalog
 	add_child(view)
 	view.cinematic.app = self
+	Buses.ensure()
+	Buses.apply(settings)
 	sound = Sound.new()
 	add_child(sound)
 	sound.set_levels(settings.muted,settings.volume)
+	music = Music.new()
+	music.app = self
+	add_child(music)
 	gui = Menu.new()
 	gui.z_index = 60
 	gui.app = self
@@ -132,6 +141,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 func _back_or_pause() -> void:
+	if gui.quit_dialog != null:
+		gui.close_quit_dialog()
+		return
 	if screen == "settings":
 		close_settings()
 		return
@@ -223,6 +235,7 @@ func start_match() -> void:
 		practice_controller.reset(combat)
 	view.reset_effects()
 	sound.reset_audio()
+	music.begin_match()
 	view.cpu = mode == "cpu"
 	view.hud.training = practice_controller if mode == "practice" else null
 	view.hud.input_device = devices[0]
@@ -258,9 +271,10 @@ func _menu_keyboard(event: InputEvent) -> bool:
 func toggle_audio() -> void:
 	sound.toggle()
 	settings.muted=sound.muted
-	view.cinematic.sync_audio()
+	Buses.apply(settings)
 	settings.save_config()
-	if screen=="settings":gui.actions.audio_mute.set_pressed_no_signal(settings.muted)
+	# Only the sound tab has the checkbox; the keys tab just takes the new state.
+	if screen=="settings" and gui.actions.has("audio_mute"):gui.actions.audio_mute.set_pressed_no_signal(settings.muted)
 
 func show_settings() -> void:
 	settings_return="battle" if screen=="battle" else "title"
@@ -268,7 +282,8 @@ func show_settings() -> void:
 		paused=true
 		_reset_inputs()
 	_change_screen("settings")
-	gui.settings()
+	# A lost controller is fixed on the keys tab, so open there.
+	gui.settings("" if _devices_ready() else "keys")
 
 func close_settings() -> void:
 	_reset_inputs()
@@ -299,6 +314,12 @@ func set_paused(value: bool, reason: String = "") -> void:
 		gui.battle()
 	else:
 		gui.pause(reason)
+
+## Scripted trees (tests, captures) only record the request instead of closing.
+func quit_game() -> void:
+	quit_requested = true
+	if get_tree().get_script() == null:
+		get_tree().quit()
 
 func show_result() -> void:
 	paused = false

@@ -158,11 +158,11 @@ func _run() -> void:
 	seed_frame(); game.view.cinematic._video_finished()
 	game.view.cinematic._process(0.2)
 	game.show_settings()
-	game.settings.muted = true
+	game.gui.actions.audio_mute.button_pressed = true
 	game.settings.cinematic_enabled = false
 	game.view.cinematic._process(0.4)
 	check(is_equal_approx(game.view.cinematic.ko_time, 0.2) and game.view.cinematic.phase == "ko_freeze", "settings pauses without cancelling current KO")
-	check(game.view.cinematic.movie.volume == 0 and game.gui.visible, "settings mute applied and menu accessible")
+	check(AudioServer.is_bus_mute(0) and game.view.cinematic.soundtrack.bus == &"SFX" and game.gui.visible, "settings mute applied and menu accessible")
 	game.close_settings(); game.set_paused(false)
 	game.view.cinematic._process(0.61)
 	check(game.view.cinematic.phase == "tail", "settings toggle only affects next cinematic")

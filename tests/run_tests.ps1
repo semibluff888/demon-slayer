@@ -80,6 +80,7 @@ Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script',
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/uppercut_polish_tests.gd') -Expected 'UPPERCUT POLISH: \d+ passed, 0 failed' | Out-Null
 
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/settings_tests.gd') -Expected 'SETTINGS TESTS: \d+ passed, 0 failed' | Out-Null
+Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/music_tests.gd') -Expected 'MUSIC TESTS: \d+ passed, 0 failed' | Out-Null
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/cinematic_tests.gd') -Expected 'CINEMATIC TESTS: \d+ passed, 0 failed' | Out-Null
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/cinematic_handoff_tests.gd') -Expected 'CINEMATIC HANDOFF: \d+ passed, 0 failed' | Out-Null
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/cinematic_ko_tests.gd') -Expected 'CINEMATIC KO: \d+ passed, 0 failed' | Out-Null
@@ -124,5 +125,7 @@ if (Test-Path -LiteralPath $artPython) {
     if ($LASTEXITCODE -ne 0) { throw 'Art v3 validation failed.' }
     & $artPython -X utf8 (Join-Path $projectRoot 'tests/select_video_tests.py')
     if ($LASTEXITCODE -ne 0) { throw 'Select video validation failed.' }
+    & $artPython -X utf8 (Join-Path $projectRoot 'tests/music_pipeline_tests.py')
+    if ($LASTEXITCODE -ne 0) { throw 'Music asset validation failed.' }
 }
 Write-Host 'All checks passed. Combat state is identical at 30 / 60 / 144 FPS.'

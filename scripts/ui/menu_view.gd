@@ -27,12 +27,16 @@ const RED := Kit.CRIMSON
 const STEPS := ["角色", "场景", "开战"]
 const MODE_NAMES := {"cpu": "单人对战 · VS CPU", "local": "双人对战", "practice": "自由练习"}
 const TITLE_ITEMS := [
-	["mode_cpu", "单人对战", "ARCADE · VS CPU", "与电脑对手一决胜负，先取两回合者获胜。"],
-	["mode_local", "双人对战", "VERSUS · LOCAL", "两名玩家同屏对战，可用键盘或手柄。"],
-	["mode_practice", "自由练习", "TRAINING", "木桩练习连段、必杀、超杀与觉醒。"],
-	["help", "帮助", "GUIDE · MOVE LIST", "按键、攻防规则与全角色招式表。"],
-	["settings", "游戏设置", "OPTIONS", "音量、按键、手柄与必杀动画演出。"]]
+	["mode_cpu", "单人对战", "ARCADE · VS CPU"],
+	["mode_local", "双人对战", "VERSUS · LOCAL"],
+	["mode_practice", "自由练习", "TRAINING"],
+	["help", "帮助", "GUIDE · MOVE LIST"],
+	["settings", "游戏设置", "OPTIONS"],
+	["quit", "退出游戏", "EXIT"]]
 var settings_panel: RefCounted
+## Exit confirmation over the title or pause menu; null while closed.
+var quit_dialog: Control
+var settings_page: String = "sound"
 var roster_scroll: ScrollContainer
 ## Character cells by id; `roster_cells` holds every grid cell in display order.
 var roster_cards: Dictionary = {}
@@ -115,6 +119,7 @@ func _process(delta: float) -> void:
 
 func clear() -> void:
 	settings_panel = null
+	quit_dialog = null
 	roster_cards.clear()
 	roster_cells.clear()
 	random_card = null
@@ -260,8 +265,8 @@ func title() -> void:
 	paint(Rect2(0, 0, 1280, 720), func(canvas: Control):
 		Kit.shade(canvas, Rect2(0, 368, 620, 352), Kit.INK_900, func(u: float, v: float) -> float:
 			return 0.72 * (1.0 - smoothstep(0.4, 1.0, u)) * smoothstep(0.0, 0.3, v))
-		# Footer band: full strength under the note and the key prompts, lighter over
-		# the mirrored floor in between.
+		# Footer band: full strength under the last menu rows and the key prompts,
+		# lighter over the mirrored floor in between.
 		Kit.shade(canvas, Rect2(0, 600, 1280, 120), Kit.INK_900, func(u: float, v: float) -> float:
 			var behind_text := maxf(1.0 - smoothstep(0.3, 0.6, u), smoothstep(0.76, 0.94, u))
 			return 0.8 * smoothstep(0.0, 1.0, v) * lerpf(0.35, 1.0, behind_text), 24))
@@ -271,19 +276,16 @@ func title() -> void:
 	motes.material = additive
 	motes.draw.connect(_draw_motes)
 	add_child(motes)
-	var captions := {}
 	var callbacks := {"mode_cpu": func(): app.choose_mode("cpu"), "mode_local": func(): app.choose_mode("local"),
-		"mode_practice": func(): app.choose_mode("practice"), "help": app.show_help, "settings": app.show_settings}
+		"mode_practice": func(): app.choose_mode("practice"), "help": app.show_help, "settings": app.show_settings,
+		"quit": confirm_quit}
 	for i in range(TITLE_ITEMS.size()):
 		var item: Array = TITLE_ITEMS[i]
 		# Same left margin as the poster's lettering; clear of Inosuke, who starts near x = 400.
-		var node := button(item[0], item[1], Rect2(56, 382 + i * 56, 320, 50), callbacks[item[0]], false, true, 24)
+		var node := button(item[0], item[1], Rect2(56, 374 + i * 52, 320, 50), callbacks[item[0]], false, true, 24)
 		node.kicker = Kit.numeral(i + 1)
 		node.subtitle = item[2]
-		captions[node] = item[3]
-	var bar := _footer(Rect2(56, 670, 1168, 32), "", "F2 静音", TITLE_ITEMS[0][3])
-	for node: Control in captions:
-		node.focus_entered.connect(func(): bar.note = captions[node])
+	_footer(Rect2(56, 670, 1168, 32), "", "F2 静音")
 	actions.mode_cpu.grab_focus()
 	reveal()
 
@@ -300,9 +302,17 @@ func _draw_motes() -> void:
 		motes.draw_circle(Vector2(x, y), 4.5 + (i % 3) * 1.2, Color(color, color.a * 0.22), true, -1, true)
 		motes.draw_circle(Vector2(x, y), 1.2 + (i % 3) * 0.45, color, true, -1, true)
 
-func settings() -> void:
+## Opens the settings on `page` (sound or keys), or on the tab used last this session.
+func settings(page: String = "") -> void:
+	if not page.is_empty():
+		settings_page = page
 	settings_panel=SettingsPanel.new()
-	settings_panel.build(self)
+	settings_panel.build(self, settings_page)
+
+func _settings_page(page: String) -> void:
+	clear()
+	settings(page)
+	actions["settings_tab_" + page].grab_focus()
 
 # --- Character select ------------------------------------------------------------------
 
@@ -595,14 +605,59 @@ func pause(reason: String) -> void:
 	if app.mode=="practice":
 		items.append(["practice_options","木桩与气槽设置","TRAINING",app.show_practice_options])
 	items.append(["setup","返回选人","CHARACTER SELECT",app.show_setup])
+	items.append(["main_menu","返回主菜单","MAIN MENU",app.show_title])
+	items.append(["quit","退出游戏","EXIT GAME",confirm_quit])
 	for i in range(items.size()):
-		var node := button(items[i][0],items[i][1],Rect2(48,322+i*56,410,50),items[i][3],false,true,19)
+		var node := button(items[i][0],items[i][1],Rect2(48,318+i*52,410,50),items[i][3],false,true,19)
 		node.subtitle = items[i][2]
 	label(reason,Rect2(56,206,410,40),14,Kit.GOLD_HI,false,HORIZONTAL_ALIGNMENT_LEFT)
 	_footer(Rect2(48, 666, 1184, 36), "继续")
 	if resume.disabled:actions.settings.grab_focus()
 	else:resume.grab_focus()
 	reveal()
+
+## Asks before closing the game; 取消 holds focus so a stray confirm press is harmless.
+## Esc / B close it (main._back_or_pause).
+func confirm_quit() -> void:
+	if quit_dialog != null:
+		return
+	var dialog := Control.new()
+	dialog.name = "QuitDialog"
+	dialog.size = Vector2(1280, 720)
+	dialog.mouse_filter = Control.MOUSE_FILTER_STOP
+	dialog.draw.connect(func():
+		dialog.draw_rect(Rect2(0, 0, 1280, 720), Color(Kit.INK_900, 0.72))
+		var card := Rect2(400, 246, 480, 228)
+		var shape := Kit.chamfer(card, 16, 5)
+		Kit.gradient_fill(dialog, shape, Color(Kit.INK_700, 0.97), Color(Kit.INK_900, 0.98))
+		Kit.frame(dialog, shape, Kit.GOLD, 0.9, 2.0, 1.0)
+		Kit.diamond(dialog, Vector2(card.position.x + 34, card.position.y + 40), 3.5, Kit.CRIMSON)
+		Kit.tracked(dialog, catalog.numeric_font, "EXIT GAME", Vector2(card.position.x + 46, card.position.y + 45), 12, Kit.GOLD, 3.0)
+		Kit.text(dialog, catalog.display_font, "退出游戏？", Vector2(card.position.x + 30, card.position.y + 100), 40, Kit.PAPER, 5))
+	add_child(dialog)
+	quit_dialog = dialog
+	# Neither is styled primary: the focus highlight alone shows which one a press will take.
+	var leave := button("quit_confirm", "退出", Rect2(432, 396, 200, 50), app.quit_game, false, false, 20)
+	var stay := button("quit_cancel", "取消", Rect2(648, 396, 200, 50), close_quit_dialog, false, false, 20)
+	for node: Button in [leave, stay]:
+		remove_child(node)
+		quit_dialog.add_child(node)
+	# Link only once both sit in the dialog; paths taken mid-move would point at the old spot.
+	for node: Button in [leave, stay]:
+		var other: Button = stay if node == leave else leave
+		for side in ["focus_neighbor_left", "focus_neighbor_right", "focus_neighbor_top", "focus_neighbor_bottom", "focus_next", "focus_previous"]:
+			node.set(side, node.get_path_to(other))
+	stay.grab_focus()
+
+func close_quit_dialog() -> void:
+	if quit_dialog == null:
+		return
+	actions.erase("quit_confirm")
+	actions.erase("quit_cancel")
+	quit_dialog.queue_free()
+	quit_dialog = null
+	if actions.has("quit"):
+		actions.quit.grab_focus()
 
 func _draw_pause_panel(canvas: Control) -> void:
 	var panel := PackedVector2Array([Vector2(0, 0), Vector2(520, 0), Vector2(470, 720), Vector2(0, 720)])

@@ -3,6 +3,7 @@ extends Node2D
 const KO_SECONDS := 0.8
 const KO_TRANSITION := 0.12
 const RoundBanner = preload("res://scripts/presentation/round_banner.gd")
+const Buses = preload("res://scripts/audio_buses.gd")
 const CATALOG := "res://resources/cinematics/catalog.json"
 var app: Node
 var world: Node2D
@@ -46,7 +47,9 @@ func _ready() -> void:
 	residual_effect.material = additive
 	add_child(residual_effect)
 	residual_effect.hide()
+	# Soundtracks are effects in the mix: SFX bus, under the master volume and mute.
 	soundtrack = AudioStreamPlayer.new()
+	soundtrack.bus = Buses.SFX
 	add_child(soundtrack)
 	backdrop = ColorRect.new()
 	backdrop.size = Vector2(1280, 720)
@@ -58,6 +61,7 @@ func _ready() -> void:
 	movie.expand = true
 	movie.size = Vector2(1280, 720)
 	movie.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	movie.bus = Buses.SFX
 	movie.finished.connect(_video_finished)
 	add_child(movie)
 	backdrop.hide()
@@ -140,7 +144,6 @@ func begin() -> void:
 		return
 	soundtrack.stream = audio_streams.get(profile_id)
 	soundtrack.stream_paused = false
-	sync_audio()
 	movie.paused = false
 	movie.show()
 	backdrop.show()
@@ -149,18 +152,12 @@ func begin() -> void:
 	world.hud.cinematic_mode = true
 	app.gui.visible = false
 
-func sync_audio() -> void:
-	if movie != null and app != null:
-		movie.volume = 0.0 if app.settings.muted else app.settings.volume
-		soundtrack.volume_db = linear_to_db(maxf(movie.volume, 0.00001))
-
 func _process(delta: float) -> void:
 	if not active or app == null:
 		return
 	var frozen: bool = app.paused or app.screen != "battle"
 	movie.paused = frozen or phase != "video"
 	soundtrack.stream_paused = frozen
-	sync_audio()
 	app.gui.visible = frozen or not is_video_visible()
 	if frozen:
 		return

@@ -136,6 +136,21 @@ func _check_screens() -> void:
 	await process_frame
 	check(game.gui.actions.mode_cpu.get_global_rect().has_point(Vector2(210, 400)), "title hit area is live during entry motion")
 	_decorations_ignore_mouse("title")
+	check(game.gui.actions.quit.text == "退出游戏" and game.gui.footer.note.is_empty(), "title offers 退出游戏 without per-item captions")
+	check(game.gui.actions.mode_cpu.get_rect().position.y >= 368 and game.gui.actions.quit.get_rect().end.y <= 690, "six title items sit between the lettering and the footer")
+	game.gui.actions.quit.pressed.emit()
+	check(game.gui.quit_dialog != null and game.gui.actions.quit_cancel.has_focus(), "exit asks first with 取消 focused")
+	var leave: Button = game.gui.actions.quit_confirm
+	var stay: Button = game.gui.actions.quit_cancel
+	for side: String in ["focus_neighbor_left", "focus_neighbor_right", "focus_neighbor_top", "focus_neighbor_bottom", "focus_next", "focus_previous"]:
+		check(leave.get_node_or_null(leave.get(side)) == stay and stay.get_node_or_null(stay.get(side)) == leave, "exit prompt %s links 退出 and 取消" % side)
+	game._back_or_pause()
+	check(game.gui.quit_dialog == null and game.gui.actions.quit.has_focus() and not game.quit_requested, "Esc / B closes the exit prompt")
+	game.gui.actions.quit.pressed.emit()
+	game.gui.actions.quit_confirm.pressed.emit()
+	check(game.quit_requested, "confirming requests the exit")
+	game.quit_requested = false
+	game.gui.close_quit_dialog()
 	var confirm := "%s 确认" % game.router.key_name(game.router.current_keys(0)[4])
 	check(game.gui.footer.text.begins_with(confirm), "title prompts start on the keyboard")
 	var pad := InputEventJoypadButton.new()
@@ -165,7 +180,15 @@ func _check_screens() -> void:
 	game.set_paused(true)
 	await process_frame
 	_decorations_ignore_mouse("pause")
+	check(game.gui.actions.has("main_menu") and game.gui.actions.has("quit") and game.gui.actions.quit.get_rect().end.y <= 700, "pause offers 返回主菜单 and 退出游戏")
+	game.gui.actions.quit.pressed.emit()
+	game._back_or_pause()
+	check(game.gui.quit_dialog == null and game.paused and game.screen == "battle", "closing the exit prompt keeps the match paused")
 	game.show_settings()
+	await process_frame
+	_decorations_ignore_mouse("settings")
+	check(game.gui.actions.settings_tab_sound.tab and game.gui.actions.music_battle is OptionButton, "settings open on the sound tab")
+	game.gui.actions.settings_tab_keys.pressed.emit()
 	await process_frame
 	_decorations_ignore_mouse("settings")
 	check(game.gui.actions.key_0_4.keycap and not game.gui.actions.settings_back.keycap, "key bindings render as keycaps")

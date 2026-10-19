@@ -56,7 +56,8 @@ def repertoire() -> str:
     text = ''.join(chr(i) for i in range(32, 127)) + EXTRA
     for directory in ('scripts', 'moves', 'resources'):
         for source in (ROOT / directory).rglob('*'):
-            if source.suffix in ('.gd', '.tres'):
+            # JSON tables carry display text too (music titles in resources/music/library.json).
+            if source.suffix in ('.gd', '.tres', '.json'):
                 text += source.read_text(encoding='utf-8-sig')
     return ''.join(sorted(set(text)))
 
