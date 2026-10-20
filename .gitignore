@@ -48,10 +48,6 @@ Desktop.ini
 # Intentionally tracked: art/, anime-v2/raw/, prompts/, records/, imports/,
 # calibration, job/asset manifests and source references for offline rebuilds.
 
-# Selected round animation derived previews and temporary atlas packing.
-/output/imagegen/round-selected/review/
-/output/imagegen/round-selected/packed/
-
 /output/imagegen/roster-v1/review/
 .venv-imagegen/
 
@@ -62,13 +58,10 @@ Desktop.ini
 !/output/super-resolution/runtime/
 !/output/super-resolution/distribution.json
 
-# Derived awakening comparison sheets; source art and registrations remain tracked.
-/output/imagegen/awakening-v1/review/
-
-/output/imagegen/awakening-v2/review/
-
 # Full downloaded video exceeds GitHub's file limit; retain locally for rebuilds.
 /output/ultimate-video-review/source/original.mp4
+# Preview MP4s that tools/prepare_cinematics.py cuts from it next to the game videos.
+/output/ultimate-video-review/trimmed/
 
 # Comparison sheets for every production revision are reproducible.
 /output/imagegen/*/review/

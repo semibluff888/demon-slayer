@@ -70,8 +70,6 @@ Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script',
 
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/round_polish_tests.gd') -Expected 'ROUND POLISH TESTS: \d+ passed, 0 failed' | Out-Null
 
-Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://demo/round-presentation/verify.gd') -Expected 'ROUND DEMO TESTS: \d+ passed, 0 failed' | Out-Null
-
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/roster_expansion_tests.gd') -Expected 'ROSTER EXPANSION: \d+ passed, 0 failed' | Out-Null
 Invoke-DuelCheck -EngineArgs @('--headless', '--path', $projectRoot, '--script', 'res://tests/select_screen_tests.gd') -Expected 'SELECT SCREEN TESTS: \d+ passed, 0 failed' | Out-Null
 

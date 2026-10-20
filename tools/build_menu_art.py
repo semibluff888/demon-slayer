@@ -7,8 +7,6 @@ ROOT=Path(__file__).resolve().parents[1]
 # generated art keeps one review record per image under records/.
 POSTERS=[
  ('user-assets/title-poster','nine-friends-sunrise'),
- ('imagegen/title-ensemble-v3','title-all-hashira-r2'),
- ('imagegen/title-ensemble-v3','title-all-hashira'),
  ('imagegen/menu-settings-v1','title-ensemble-v2'),
 ]
 

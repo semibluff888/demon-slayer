@@ -51,7 +51,7 @@ def main():
  mask=mask.filter(ImageFilter.GaussianBlur(1))
  patched=Image.composite(edit,base,mask);patched_path=OUT/'raw/nezuko-guard_low-patched.png';patched.save(patched_path)
  parts=source_parts(dict(out=patched_path.relative_to(ROOT).as_posix(),metadata=dict(count=6,columns=3)))
- old=read(ROOT/'output/imagegen/awakening-v7/imports/nezuko-guard_low.json');frames=[];records=[]
+ old=read(OUT/'baseline/nezuko-guard_low-import.json');frames=[];records=[]
  for i,((sprite,origin),entry) in enumerate(zip(parts,old['frames'])):
   scale=entry['scale'];size=tuple(entry['size']);offset=tuple(entry['offset'])
   # Hand correction cannot alter silhouette bounds, or reuse of registration is unsafe.

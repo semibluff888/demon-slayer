@@ -1,26 +1,13 @@
-# 祢豆子鬼化外观修订：已授权直接接入
+# 祢豆子鬼化头像（v6 留存）
 
-用户已明确要求：本轮修改完成后直接接入游戏，无需再次确认。
+v6 原本是祢豆子鬼化外观的第 6 版（39 组动作、306 帧和独立觉醒头像）。动作帧后来被 v7～v9 取代，现行图集来自 `../awakening-v9/`，其 `baseline/` 存有完整的早期图集。2026-10-20 清理时只留下仍在游戏中使用的觉醒头像来源：
 
-造型定稿：../awakening-v6-preview/raw/nezuko-idle-v6.png。取消肩顶撕裂，沿用下垂双手、单角、藤纹、长发、战损羽织及不对称裙摆；领口保留锁骨和上胸表现，胸前仍由衣料遮盖。
+- `raw/nezuko-portrait.png`：生成原图，对应 `art/characters/nezuko/awakening/portrait.png`（HUD 觉醒头像、MAX 头像特写）。
+- `static.json`、`prompts/`、`records/`、`authorization.json`：任务、提示词、生图记录和接入授权。
+- `imports/nezuko-static.json`：缩放方式和源图 / 成品的 SHA-256。
 
-生产内容：39 组动作、306 帧及独立觉醒头像。持续觉醒和 MAX 共用这套图集，回合演出继续遵循游戏已有还原规则。
+离线重建头像：
 
-- jobs.json：动作任务、逐帧原姿势边界及原始时序。
-- static.json：觉醒头像任务。
-- master.json：定稿与哈希。
-- authorization.json：直接接入授权范围。
-- preserved-runtime.json：普通形态、其他角色和现有特效的接入前哈希。
-- records/：已授权 CPA 服务的生图记录；调用安装的 imagegen CLI，gpt-image-2，high 质量。
-- imports/：离线抠图、缩放、锚点和来源记录。
-- review/：源图与逐帧对照（不入库，用下方 build_awakening_art.py 与 review_awakening_v2.py 重新生成）。
-
-离线重建：
-
-    .venv/Scripts/python.exe tools/build_awakening_art.py --source-dir output/imagegen/awakening-v6 --character nezuko
     .venv/Scripts/python.exe tools/build_nezuko_awakening_static.py
-    .venv/Scripts/python.exe tools/review_awakening_v2.py --source-dir output/imagegen/awakening-v6 --all-frames
 
-最终接入和验证状态以 acceptance.json 为准；生成中的图源不能视作已经通过验收。
-
-最终状态：已接入并验证。完整回归、30/60/144 FPS一致性、36项实机检查、发布版资源与64条连招检查、ZIP完整性均通过。汇总见 acceptance.json。
+v6 的动作源图、对照基线和验收记录可在 Git 历史中找回，见 `docs/cleanup-2026-10-20.md`。

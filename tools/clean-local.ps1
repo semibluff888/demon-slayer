@@ -24,9 +24,7 @@ function Assert-LocalPath([string]$path) {
 # after every UI text change (it only re-downloads with --fetch).
 $targets = @('artifacts', 'tmp', 'output/pip-cache',
     'output/imagegen/anime-v2/review', 'output/imagegen/roster-v1/review',
-    'output/imagegen/round-selected/review', 'output/imagegen/round-selected/packed',
-    'output/vfx-reference/frames',
-    'demo/round-presentation/previews/frames', 'demo/round-presentation/previews/audio')
+    'output/vfx-reference/frames')
 # Comparison sheets are derived from retained raw sources and registrations.
 $imagegen = Join-Path $root 'output/imagegen'
 if (Test-Path -LiteralPath $imagegen) {
@@ -71,9 +69,9 @@ if (-not $RetainRecent -and (Test-Path -LiteralPath $releaseRoot)) {
         Get-ChildItem -LiteralPath $backup -File -Filter 'DemonSlayer-*.zip' | ForEach-Object { $files.Add($_) }
     }
 }
-# Keep every imported resource still referenced by the game or historical demo.
+# Keep every imported resource still referenced by the game.
 $keep = [Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
-foreach ($relative in $(if ($RetainRecent) { @() } else { @('art', 'demo') })) {
+foreach ($relative in $(if ($RetainRecent) { @() } else { @('art') })) {
     Get-ChildItem -LiteralPath (Join-Path $root $relative) -Filter '*.import' -Recurse -File | ForEach-Object {
         foreach ($match in [regex]::Matches((Get-Content -LiteralPath $_.FullName -Raw), 'res://\.godot/imported/([^"\r\n]+)')) {
             $name = $match.Groups[1].Value

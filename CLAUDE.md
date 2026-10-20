@@ -56,4 +56,4 @@ Visual review tools (`tools/capture_*.gd`) must run **with a window** and a fixe
 
 - Godot creates a `.uid` file next to every new script or shader; commit it along with the source file.
 - GDScript cannot infer types for `:=` declarations whose value comes from untyped references (for example `vfx.` or `move.` inside the technique scripts), so give those variables explicit types.
-- `artifacts/` and `tmp/` hold regenerable local output and are not source. `output/` holds generation sources and provenance. `demo/` holds historical candidate showcases (one demo verifier, `demo/round-presentation/verify.gd`, is part of the regression suite).
+- `artifacts/` and `tmp/` hold regenerable local output and are not source. `output/` holds generation sources and provenance for the art that currently ships; superseded versions and the old `demo/` showcases were removed on 2026-10-20 and can be restored from Git history (`docs/cleanup-2026-10-20.md`).

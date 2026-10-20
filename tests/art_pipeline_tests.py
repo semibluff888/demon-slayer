@@ -83,11 +83,7 @@ class ArtworkTests(unittest.TestCase):
                 self.assertIsNone(ImageChops.multiply(residual,opaque).getbbox(), 'Opaque chroma-key residue')
                 page.close()
 
-    def test_selected_round_assets_have_production_paths_and_shared_ruler(self):
-        source_root = ROOT/'output/imagegen/round-selected'
-        manifest = json.loads((source_root/'manifest.json').read_text(encoding='utf-8'))
-        for item in manifest['clips']:
-            self.assertEqual(hashlib.sha256((ROOT/item['source']).read_bytes()).hexdigest(),item['sha256'])
+    def test_round_assets_share_the_combat_ruler(self):
         for character in ('tanjiro','zenitsu'):
             folder = ROOT/'art/characters'/character
             base = json.loads((folder/'atlas.json').read_text(encoding='utf-8'))
@@ -119,9 +115,7 @@ class ArtworkTests(unittest.TestCase):
 
     def test_combat_polish_sources_and_separate_water_textures(self):
         manifest = json.loads((ROOT/'output/imagegen/combat-polish-manifest.json').read_text(encoding='utf-8'))
-        wheel = manifest['wheel']
-        self.assertEqual(wheel['frames'], 12)
-        self.assertEqual(hashlib.sha256((ROOT/wheel['source']).read_bytes()).hexdigest(), wheel['source_sha256'])
+        self.assertEqual(manifest['wheel']['frames'], 12)
         atlas = json.loads((ROOT/'art/characters/tanjiro/atlas.json').read_text(encoding='utf-8'))
         self.assertEqual(atlas['clips']['water_wheel']['phase_breaks'], [3, 8])
         self.assertEqual(atlas['clips']['water_wheel']['anchor_mode'], 'pelvis')
@@ -144,16 +138,6 @@ class ArtworkTests(unittest.TestCase):
                 self.assertEqual(portrait.getchannel('A').getextrema(), (0,255))
             with Image.open(path / 'avatar.png') as avatar:
                 self.assertEqual(avatar.size, (192,192))
-            for clip in ([] if v3(character) else clip_counts(character)):
-                # Later targeted replacements are represented by their real imports.
-                candidates = list((ROOT/'output/imagegen/anime-v2/imports').glob(character+'-'+clip+'*.json'))
-                self.assertTrue(candidates, character+'/'+clip)
-                for spec in candidates:
-                    data = json.loads(spec.read_text(encoding='utf-8'))
-                    scales = {f['scale'] for f in data['frames']}
-                    self.assertEqual(len(scales),1,'A clip must use a single physical scale')
-                    for frame in data['frames']:
-                        self.assertTrue((ROOT/frame['source']).is_file())
         stage = json.loads((ROOT/'art/stages/wisteria/stage.json').read_text(encoding='utf-8'))
         self.assertEqual(stage['layers'], ['panorama'])
         self.assertEqual(stage['parallax'], [1.0])
@@ -184,24 +168,6 @@ class ArtworkTests(unittest.TestCase):
         for effect in ('water-slash','water-wheel','thunder','impact'):
             self.assertTrue((ROOT/'art/effects'/(effect+'.png')).is_file())
 
-
-    def test_throw_landings_keep_ground_contact_after_source_registration(self):
-        for character in ('tanjiro', 'zenitsu'):
-            for suffix in ('thrown-movement-v3', 'thrown_forward-phase2-v1'):
-                record = json.loads((ROOT/'output/imagegen/anime-v2/imports'/(character+'-'+suffix+'.json')).read_text())
-                for frame in record['frames'][8:]:
-                    self.assertLessEqual(abs(frame['normalized_bounds'][3] - record['feet_anchor'][1]), 2,
-                                         'Landing drawing must stay on the shared ground plane')
-                    correction = frame['drawing_registration']
-                    self.assertTrue(correction['reference'] and correction['reason'])
-                    # The accepted 2026-10-06 back-throw revision shrinks Zenitsu
-                    # to 90%; other landing corrections still enlarge the source.
-                    expected_scale = (0.9 if character == 'zenitsu' and suffix == 'thrown-movement-v3'
-                                      else 1.14 if character == 'zenitsu' else 1.12)
-                    self.assertAlmostEqual(correction['scale'], expected_scale)
-                    self.assertAlmostEqual(frame['effective_scale'], frame['scale'] * correction['scale'])
-                for frame in record['frames'][:4]:
-                    self.assertNotIn('drawing_registration', frame, 'Already-correct grab anatomy is preserved')
 
     def test_user_super_title_assets(self):
         manifest = json.loads((ROOT/'output/user-assets/battle-ui/manifest.json').read_text(encoding='utf-8'))
