@@ -1,0 +1,518 @@
+{
+  "date": "2026-10-20",
+  "status": "archived",
+  "scope": "Only superseded drafts, v1 renders, obsolete delivery package, temporary inspection images and obsolete draft-only scripts in this directory.",
+  "preserve": "Selected original and canonical copy; final v2 frames, atlas, previews and package; offline rebuild scripts, rig and reference art; compact historical prompts and records.",
+  "baseline_bytes": 194059478,
+  "targets": [
+    "idle-animation-v1",
+    "raw",
+    "imports",
+    "processed",
+    "__pycache__",
+    "idle-animation-v2/__pycache__",
+    "idle-animation-v2/nezuko-awakened-idle-v2.zip",
+    "assemble_expression_revision.py",
+    "build_idle_review.py",
+    "build_revision_comparison.py",
+    "prepare_color_reference.py",
+    "prepare_idle_review.py",
+    "refine_idle_palette.py",
+    "review-annotations.json",
+    "references/approved-body-r7.png",
+    "references/nezuko-awakened-idle-r8-expression-mask.png",
+    "references/nezuko-awakened-idle-r8-face-edit-target.png",
+    "review/approved-master-background-components.png",
+    "review/lower-leg-coordinate-grid.png",
+    "review/nezuko-awakened-idle-r1-comparison.png",
+    "review/nezuko-awakened-idle-r1-preview.png",
+    "review/nezuko-awakened-idle-r4-comparison.png",
+    "review/nezuko-awakened-idle-r4-details.png",
+    "review/nezuko-awakened-idle-r4-preview.png",
+    "review/nezuko-awakened-idle-r5-collar-inspection.png",
+    "review/nezuko-awakened-idle-r6-comparison.png",
+    "review/nezuko-awakened-idle-r6-details.png",
+    "review/nezuko-awakened-idle-r6-preview.png",
+    "review/nezuko-awakened-idle-r7-comparison.png",
+    "review/nezuko-awakened-idle-r7-details.png",
+    "review/nezuko-awakened-idle-r7-preview.png",
+    "review/nezuko-awakened-idle-r7-revision-comparison.png",
+    "review/nezuko-awakened-idle-r8-comparison.png",
+    "review/nezuko-awakened-idle-r8-details.png",
+    "review/nezuko-awakened-idle-r8-expression-comparison.png",
+    "review/nezuko-awakened-idle-r8-preview.png",
+    "review/obi-color-crop.png",
+    "review/runtime-color-grid.png"
+  ],
+  "files": [
+    {
+      "path": "idle-animation-v1/animation.json",
+      "bytes": 7653,
+      "sha256": "d963944057ff9459e02e83ff76351e3ad73417ea2c4e4db7a436ffc4d4931abd"
+    },
+    {
+      "path": "idle-animation-v1/approved-master-transparent.png",
+      "bytes": 1478820,
+      "sha256": "cea174c52b7d659fb84e8f0eee4e4d98d4e23929a10b5c9ad04f1088f8cf53cc"
+    },
+    {
+      "path": "idle-animation-v1/build_animation.py",
+      "bytes": 13367,
+      "sha256": "00515be8be1828ae68505fab1be591f1da601bf0769a5f3d79a9cfe58bbf9008"
+    },
+    {
+      "path": "idle-animation-v1/frames/frame-00.png",
+      "bytes": 1487758,
+      "sha256": "79c53136aacf64becfe83ba0fa90365ad677ca409572fe76403625fffc5845b0"
+    },
+    {
+      "path": "idle-animation-v1/frames/frame-01.png",
+      "bytes": 1436809,
+      "sha256": "2a1502d7c8ac88a50e3d5fed9fd1ac70701a788b853acba55f42f368f5c0f255"
+    },
+    {
+      "path": "idle-animation-v1/frames/frame-02.png",
+      "bytes": 1443070,
+      "sha256": "ad4fecae2c87cbf999c3ea6e12643e91268ca44303228540e31dbec69b490f35"
+    },
+    {
+      "path": "idle-animation-v1/frames/frame-03.png",
+      "bytes": 1454225,
+      "sha256": "47fc0d665cb15d787de8e82d6935054b72f993e2640ebb4e7b731043b06a5943"
+    },
+    {
+      "path": "idle-animation-v1/frames/frame-04.png",
+      "bytes": 1459920,
+      "sha256": "df62dccce7c77397301df888f7e6291144ff7ba41e21a749ad2e700642cf40ea"
+    },
+    {
+      "path": "idle-animation-v1/frames/frame-05.png",
+      "bytes": 1458444,
+      "sha256": "185ffce0acdc0fac8408623d7777d8909acc3ff455a664a7d3b0258c0b66f985"
+    },
+    {
+      "path": "idle-animation-v1/frames/frame-06.png",
+      "bytes": 1464179,
+      "sha256": "a29d61baf7c9084b1f3fe55a014121101f4c505dbbff3d74b5bf6468b96a48d7"
+    },
+    {
+      "path": "idle-animation-v1/frames/frame-07.png",
+      "bytes": 1444322,
+      "sha256": "412892f0ccfe15369b480e6e8066b56a78655ea8c0959652a287c2bf737027a2"
+    },
+    {
+      "path": "idle-animation-v1/frames/frame-08.png",
+      "bytes": 1440641,
+      "sha256": "e17a6507b5e8a7fba5f27cf256d2ee7d24590ff8022b4aea3e073f35753a4a9a"
+    },
+    {
+      "path": "idle-animation-v1/frames/frame-09.png",
+      "bytes": 1429203,
+      "sha256": "c8c3da774f166b06fa3f5d30021a5a46034297b760b6b5592ccd42b7bcaceaaa"
+    },
+    {
+      "path": "idle-animation-v1/frames/frame-10.png",
+      "bytes": 1427729,
+      "sha256": "cf7b99ad8ea30ceec2ed57d913639ff36de46b98d60735582bbf5bc2fc6698d9"
+    },
+    {
+      "path": "idle-animation-v1/frames/frame-11.png",
+      "bytes": 1426801,
+      "sha256": "0f4fd02556eadf9878e0655ccc61fffb5cfe6655440537e3a7392be6be0c1d71"
+    },
+    {
+      "path": "idle-animation-v1/game-frames/frame-00.png",
+      "bytes": 138318,
+      "sha256": "53b55e240c30e4fab66916474faae9770e030daf9c631dfcadf976e668726399"
+    },
+    {
+      "path": "idle-animation-v1/game-frames/frame-01.png",
+      "bytes": 138287,
+      "sha256": "5a01d453c1d6f0da6b16bc9b5bd97afedcee225c6d31f25f501c5e374dbb8bf0"
+    },
+    {
+      "path": "idle-animation-v1/game-frames/frame-02.png",
+      "bytes": 139199,
+      "sha256": "3d118962c2b579539d9402380e27cfcb01590578cd2f9f64d5994777cb660978"
+    },
+    {
+      "path": "idle-animation-v1/game-frames/frame-03.png",
+      "bytes": 140193,
+      "sha256": "be06c4bc5553e30c3cfe4b5991b5be948de0436d85a9f654bb472e198d3fe974"
+    },
+    {
+      "path": "idle-animation-v1/game-frames/frame-04.png",
+      "bytes": 140449,
+      "sha256": "23ace2097f780ad75e102b4eadc03b6b1dd1b3273fcfb08cf2c2be09eb871228"
+    },
+    {
+      "path": "idle-animation-v1/game-frames/frame-05.png",
+      "bytes": 140249,
+      "sha256": "02247d04bd94b5dfb1fd15cbc13608325a71d47269b52e7fffe63aa0d6b12ff1"
+    },
+    {
+      "path": "idle-animation-v1/game-frames/frame-06.png",
+      "bytes": 140211,
+      "sha256": "5e0ba8624055128c4e08d64ef70e07ef0c888bc2b01cfd810018ca533cec31b1"
+    },
+    {
+      "path": "idle-animation-v1/game-frames/frame-07.png",
+      "bytes": 139344,
+      "sha256": "8ea1f86ea02ae736d1977a5613f1b447dab0d2529b9bf5dff3e13cb66a05186f"
+    },
+    {
+      "path": "idle-animation-v1/game-frames/frame-08.png",
+      "bytes": 138605,
+      "sha256": "3d4d2c8f62f1b4a84a19c233166f94a6ddf2c73f918bae114d69fa8d14258712"
+    },
+    {
+      "path": "idle-animation-v1/game-frames/frame-09.png",
+      "bytes": 137761,
+      "sha256": "4eb14465678fea19817f6ea3a4d63c081c2c731d8167242ee5c30fa23a7df129"
+    },
+    {
+      "path": "idle-animation-v1/game-frames/frame-10.png",
+      "bytes": 137478,
+      "sha256": "5edc8d64b4ec8678e175e762f3dfd5c69ac46892691a74acac5b0b19379aab46"
+    },
+    {
+      "path": "idle-animation-v1/game-frames/frame-11.png",
+      "bytes": 137396,
+      "sha256": "1e19263509e56bd4e70e15b62fe81507f42d501d7c1b58b819fe3a06de1a41ed"
+    },
+    {
+      "path": "idle-animation-v1/idle-atlas.json",
+      "bytes": 3358,
+      "sha256": "4614bb73daa4afd81dbb20a48d674c41fc66c3867c93ca7692087e5af87f0d92"
+    },
+    {
+      "path": "idle-animation-v1/idle-atlas.png",
+      "bytes": 1444955,
+      "sha256": "286b2b7dc9a4baf0db368b074ead8ac82f667474bacd1652cdbd751fc5c14e50"
+    },
+    {
+      "path": "idle-animation-v1/idle-key.png",
+      "bytes": 1487758,
+      "sha256": "79c53136aacf64becfe83ba0fa90365ad677ca409572fe76403625fffc5845b0"
+    },
+    {
+      "path": "idle-animation-v1/master.json",
+      "bytes": 1150,
+      "sha256": "bede8a8fa7bfc520a1a546ae20e1ae064694c186df9a5dff6e239f1efd3364e6"
+    },
+    {
+      "path": "idle-animation-v1/nezuko-awakened-idle-v1.zip",
+      "bytes": 23367384,
+      "sha256": "8535cb5162f86775b7126e25965b9f0b28718d9f79623680a2769685cdde330b"
+    },
+    {
+      "path": "idle-animation-v1/prepare_master.py",
+      "bytes": 4496,
+      "sha256": "e86c5d4c6cbf896374ad04bf4e1a9816dffa1ee9ed488b04b465eff46484de85"
+    },
+    {
+      "path": "idle-animation-v1/README.md",
+      "bytes": 3009,
+      "sha256": "50ccebacbf59259f9513933ebceffa3dcb60b26021d04e6bdb3f6711e4b6bcf4"
+    },
+    {
+      "path": "idle-animation-v1/review/idle-contact-sheet.png",
+      "bytes": 1878749,
+      "sha256": "3d982a1b87b4d12ca306063e1ec0adeb5fec5d710cfcadddf956e1c85fd02aa0"
+    },
+    {
+      "path": "idle-animation-v1/review/idle-preview.gif",
+      "bytes": 1877932,
+      "sha256": "c693efc6e54e7105ca8ce854e283333618198049e29acc4cb6a782c8724602ba"
+    },
+    {
+      "path": "idle-animation-v1/review/idle-preview.mp4",
+      "bytes": 812856,
+      "sha256": "b7913efc85791542a00ca25ea1e16a6bd2f6a53a53a0a066cf6ebc70b6ba0ab9"
+    },
+    {
+      "path": "idle-animation-v1/review/idle-preview.webp",
+      "bytes": 4725402,
+      "sha256": "21119c17b13a920e7d9560b30320992916c08d3de4045885daf2c33c85224664"
+    },
+    {
+      "path": "idle-animation-v1/rig.json",
+      "bytes": 4643,
+      "sha256": "4bc3fabc1f1bda68914dd891ab8d6e1cdb986666352cf868c5f2591dbc7abd92"
+    },
+    {
+      "path": "raw/nezuko-awakened-idle-r1.png",
+      "bytes": 1715801,
+      "sha256": "671ce342ffcfcf65c08682c6af24628eb8798435f94043f441f77d86d6ef6e68"
+    },
+    {
+      "path": "raw/nezuko-awakened-idle-r2.png",
+      "bytes": 1678792,
+      "sha256": "9086ecd03add9039fd79a395ea5ec260e5f4088d1fabf4e8d84b5ed014c6631e"
+    },
+    {
+      "path": "raw/nezuko-awakened-idle-r3.png",
+      "bytes": 1667310,
+      "sha256": "75c0090c67e63cc777ecddc7e116bf90ebd6c7b18f56e801f07b7d46a62fc016"
+    },
+    {
+      "path": "raw/nezuko-awakened-idle-r4.png",
+      "bytes": 1701713,
+      "sha256": "e643ed31b0b80245dc34ef53a67741f8078be16bd8e45b844205449ea122f478"
+    },
+    {
+      "path": "raw/nezuko-awakened-idle-r5.png",
+      "bytes": 1683382,
+      "sha256": "a12833c0284e5d7b0ba33cf2b90b743d96cb863195b4e55aa2b675b7bb4fc99f"
+    },
+    {
+      "path": "raw/nezuko-awakened-idle-r6.png",
+      "bytes": 1777260,
+      "sha256": "c6f7f36a2b5f29997ae0692c8010d9b344abdfc121299426e3bc785a4cf75f41"
+    },
+    {
+      "path": "raw/nezuko-awakened-idle-r7.png",
+      "bytes": 1709831,
+      "sha256": "8f3bcfc1610eeb22f9de7b9d7ce97998ea7a7db3d655aceaf107ab0150b4f096"
+    },
+    {
+      "path": "raw/nezuko-awakened-idle-r8-face.png",
+      "bytes": 1521074,
+      "sha256": "a0c922fd81c755fe66752e728b763993221a7548955acaa5a16029667afd7b79"
+    },
+    {
+      "path": "imports/nezuko-awakened-idle-r1-transparent.png",
+      "bytes": 1264355,
+      "sha256": "d032d19426be6b5b394b523d5c337d2417f5d145640e6ef09d98e537afdef3ca"
+    },
+    {
+      "path": "imports/nezuko-awakened-idle-r1.json",
+      "bytes": 1016,
+      "sha256": "6e998c5c6d8a426e0c157f2ebf7ff6e4413edf3afc438613b73e0cb9b6008eec"
+    },
+    {
+      "path": "imports/nezuko-awakened-idle-r4-transparent.png",
+      "bytes": 1206134,
+      "sha256": "f2711c67ccdfb315a5d35727065acb9d70b00955f4313926ab322d10043845cc"
+    },
+    {
+      "path": "imports/nezuko-awakened-idle-r4.json",
+      "bytes": 1380,
+      "sha256": "2923a2f4af72c7ca816b79335c19d3bb97a008e78848b08b0a32a2a598cb67f4"
+    },
+    {
+      "path": "imports/nezuko-awakened-idle-r6-transparent.png",
+      "bytes": 1177321,
+      "sha256": "c50c197b793213518670ae4d2233707038dda5da2df5277eae7e3bf1cca97a7e"
+    },
+    {
+      "path": "imports/nezuko-awakened-idle-r6.json",
+      "bytes": 1380,
+      "sha256": "17a6f211cca49e21c6c99f03f8f9eddc73d50ec2a3a09c1c7433895f9a9910eb"
+    },
+    {
+      "path": "imports/nezuko-awakened-idle-r7-transparent.png",
+      "bytes": 1157093,
+      "sha256": "b4155f07a47bffd57fb7f65de82641c40f9668c6a2492acaa826dad8b57c9641"
+    },
+    {
+      "path": "imports/nezuko-awakened-idle-r7.json",
+      "bytes": 1719,
+      "sha256": "c1292bcc8b1ba90f6c441ad5372f81aee0bbe619687a6aea7a27361275f80068"
+    },
+    {
+      "path": "imports/nezuko-awakened-idle-r8-transparent.png",
+      "bytes": 1157204,
+      "sha256": "0bb9b14c0eb19943b0a01e2169e33d09a2af61c34dacc4927ba9b5eda0ca0010"
+    },
+    {
+      "path": "imports/nezuko-awakened-idle-r8.json",
+      "bytes": 1811,
+      "sha256": "d57c0f950ee9d71ac5fee215d57bc8231330392415f543d0376bc0b27eb6fc14"
+    },
+    {
+      "path": "processed/nezuko-awakened-idle-r7.png",
+      "bytes": 1790276,
+      "sha256": "d0fe4a15dedaeaef14baa56c47504a4750861d062ac22ab599e62312f54d2e00"
+    },
+    {
+      "path": "processed/nezuko-awakened-idle-r8.png",
+      "bytes": 1790156,
+      "sha256": "75fa158edb2ddef9546310b9c6406103341d3473ea0760c069ab00c882b0acda"
+    },
+    {
+      "path": "__pycache__/build_idle_review.cpython-38.pyc",
+      "bytes": 7233,
+      "sha256": "76eb6826cfe85b6b6b025f42bf376f468ebc4424b3d31c64d14c4e5d14dbbd8f"
+    },
+    {
+      "path": "idle-animation-v2/__pycache__/build_leg_comparison.cpython-38.pyc",
+      "bytes": 2907,
+      "sha256": "3e199742ee492c19e8db29ad23daad5d454fa37db5aac3c1b68e2e74e1c5db28"
+    },
+    {
+      "path": "idle-animation-v2/nezuko-awakened-idle-v2.zip",
+      "bytes": 23396203,
+      "sha256": "3743aa909d8eebae533713cb11d97e8e7a3bd7b5feeef973248e16f83880e1fd"
+    },
+    {
+      "path": "assemble_expression_revision.py",
+      "bytes": 4367,
+      "sha256": "892ba1b9c931b95110d7f220ed8cd73c1ebf3487aa1f02586836b13dce59b615"
+    },
+    {
+      "path": "build_idle_review.py",
+      "bytes": 7709,
+      "sha256": "64e90d7f44d54a9a7806d8d0f67b96bbe19770aff0ca9abf2e131ac3384326f5"
+    },
+    {
+      "path": "build_revision_comparison.py",
+      "bytes": 2315,
+      "sha256": "a0b2de4057c4df068c8bcc3cb4b2d1f7797b001dd1b424971f1c307bf99c071d"
+    },
+    {
+      "path": "prepare_color_reference.py",
+      "bytes": 3992,
+      "sha256": "af224ea1c3bd6f38ca774883a54ef66ac478b0753f23c81b8d69278f4a0b463b"
+    },
+    {
+      "path": "prepare_idle_review.py",
+      "bytes": 4685,
+      "sha256": "7bb265117d30649a5fd1d561a9ca687209dcb54447a1f254c5bd0c68b146a495"
+    },
+    {
+      "path": "refine_idle_palette.py",
+      "bytes": 4129,
+      "sha256": "3f41d7eb8032dbd59d88f47a0a0689b1f4aae71deecc4972f98777da144ddb37"
+    },
+    {
+      "path": "review-annotations.json",
+      "bytes": 2548,
+      "sha256": "ae628ec2f4e3c05782120308906e7274687c6a27146eea924df3a5a6a0b709f5"
+    },
+    {
+      "path": "references/approved-body-r7.png",
+      "bytes": 1790276,
+      "sha256": "d0fe4a15dedaeaef14baa56c47504a4750861d062ac22ab599e62312f54d2e00"
+    },
+    {
+      "path": "references/nezuko-awakened-idle-r8-expression-mask.png",
+      "bytes": 4037,
+      "sha256": "7c0dea6dfa72f03a6ead320761932a883bb135c3ad14d1cf6f9d92c8844c2ac0"
+    },
+    {
+      "path": "references/nezuko-awakened-idle-r8-face-edit-target.png",
+      "bytes": 744885,
+      "sha256": "a36f4e9c5a2dd226501ccc7fd4900cd582dfe39e896e15070ff69e380f23fb08"
+    },
+    {
+      "path": "review/approved-master-background-components.png",
+      "bytes": 1116187,
+      "sha256": "3140e090979ab5f2f3e1de4a77eebe6a0fc7b524557c5ce0ca69b80df98ebcb1"
+    },
+    {
+      "path": "review/lower-leg-coordinate-grid.png",
+      "bytes": 382167,
+      "sha256": "0352030c686c7eedb43cbe683c101b2cf50a9398a4b7dcd9c60d095a641b105b"
+    },
+    {
+      "path": "review/nezuko-awakened-idle-r1-comparison.png",
+      "bytes": 909304,
+      "sha256": "206cd418f62ebe0619cfcf7d7ae921dcb1b549bf4e67574b5258d6043be21128"
+    },
+    {
+      "path": "review/nezuko-awakened-idle-r1-preview.png",
+      "bytes": 1116369,
+      "sha256": "c7e5529d6df032167cf7b0b06a95aa274d9fa48b4a7e4ef2733359c126f7a037"
+    },
+    {
+      "path": "review/nezuko-awakened-idle-r4-comparison.png",
+      "bytes": 912032,
+      "sha256": "16d02d5186947af024133b336ad3f08ff95725943540b8ef0a413658d075b32f"
+    },
+    {
+      "path": "review/nezuko-awakened-idle-r4-details.png",
+      "bytes": 945019,
+      "sha256": "f4ef3cc8429b27ab492ee26487aca8093f153fb234cafa457bbd307acb656c3a"
+    },
+    {
+      "path": "review/nezuko-awakened-idle-r4-preview.png",
+      "bytes": 1117024,
+      "sha256": "427a4175ba5af8c0f8c76eb46d3fd6c11df78a7d597fa191c529744896540b69"
+    },
+    {
+      "path": "review/nezuko-awakened-idle-r5-collar-inspection.png",
+      "bytes": 504007,
+      "sha256": "03f82a5b3cb126eb6e939d3683faa53b91260574437e5f91cc0e3ad8faea775c"
+    },
+    {
+      "path": "review/nezuko-awakened-idle-r6-comparison.png",
+      "bytes": 907234,
+      "sha256": "fc39b1614d2d3aa71f5e20caf58e69225da5085741b31de4f55999e443b77726"
+    },
+    {
+      "path": "review/nezuko-awakened-idle-r6-details.png",
+      "bytes": 928496,
+      "sha256": "bf0dbdd26d5b83559e02b5015d3c116ad25db3ccd7e071cdc3a4dc55847e6578"
+    },
+    {
+      "path": "review/nezuko-awakened-idle-r6-preview.png",
+      "bytes": 1091206,
+      "sha256": "c2955299fb07d372c270e7c3aa50f460041e6fd904c6242260c8972a3fda4627"
+    },
+    {
+      "path": "review/nezuko-awakened-idle-r7-comparison.png",
+      "bytes": 904372,
+      "sha256": "90acc2dadc570ed6beee6433213e7dce58ee41b98d0d41402b53295cb64057b0"
+    },
+    {
+      "path": "review/nezuko-awakened-idle-r7-details.png",
+      "bytes": 941753,
+      "sha256": "4fa714d11c40a072103338a8ceb78f492a96b3cf593616b0044d743d34b2f994"
+    },
+    {
+      "path": "review/nezuko-awakened-idle-r7-preview.png",
+      "bytes": 1075741,
+      "sha256": "a0a62962486d2c4f6037a459010fb4b40a5fb3d102d39ebf6765e3611e4e133c"
+    },
+    {
+      "path": "review/nezuko-awakened-idle-r7-revision-comparison.png",
+      "bytes": 1294440,
+      "sha256": "bc286bcd9be0af112463a21543b6eaa1dab99c4f70ebb108675dc3b2fc731e07"
+    },
+    {
+      "path": "review/nezuko-awakened-idle-r8-comparison.png",
+      "bytes": 904360,
+      "sha256": "e0d24c60a4ad4012c7d19c4e0f58839846ac275296c06441bbe4bdf430a76d9e"
+    },
+    {
+      "path": "review/nezuko-awakened-idle-r8-details.png",
+      "bytes": 941973,
+      "sha256": "5845b03dc6d82d62fcb9346beb28f8534ececb374006c06ac928aa91931e5a10"
+    },
+    {
+      "path": "review/nezuko-awakened-idle-r8-expression-comparison.png",
+      "bytes": 420618,
+      "sha256": "a851ef9c79081aba5f1b436f1b6805c8c7dcffcf9898f74b90a2897bd3f22a96"
+    },
+    {
+      "path": "review/nezuko-awakened-idle-r8-preview.png",
+      "bytes": 1075825,
+      "sha256": "b9d786a8a8df32b8577d9e54636dc2c7b6c7969824caa1a174740256a6636ae3"
+    },
+    {
+      "path": "review/obi-color-crop.png",
+      "bytes": 224044,
+      "sha256": "bb0e79739b03653bc6562dea5bf5db1324cc2ee4aa566ef9f4cfea99e82c472b"
+    },
+    {
+      "path": "review/runtime-color-grid.png",
+      "bytes": 219213,
+      "sha256": "cc26d4d0179ffcf4cc207121ea905558bb98cdba7cd4c8c1e6d07863facdbef8"
+    }
+  ],
+  "archive": ".archive/2026-10-20/",
+  "note": "Permanent deletion was rejected by automatic review because the list included old source art and scripts. All listed files were moved intact into a local Git-ignored archive instead; no source files were deleted.",
+  "archived_bytes": 123063801,
+  "archived_file_count": 93
+}

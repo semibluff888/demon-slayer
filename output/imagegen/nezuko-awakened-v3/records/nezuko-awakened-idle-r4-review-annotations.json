@@ -1,0 +1,32 @@
+{
+  "candidate": "nezuko-awakened-idle-r4",
+  "measurements": {
+    "method": "Manual crown, chin and sole landmarks on the 1024x1536 generated image; horn excluded from head length.",
+    "crown_y": 53,
+    "chin_y": 258,
+    "sole_y": 1475,
+    "head_length_px": 205,
+    "crown_to_sole_px": 1422,
+    "heads_tall_approx": 6.94,
+    "landmark_tolerance_px": 3,
+    "approved": false
+  },
+  "details": [
+    {"label": "头脸、单角与面部裂纹", "box": [500, 35, 765, 285]},
+    {"label": "撑裂外领与颈部藤蔓纹", "box": [415, 230, 760, 480]},
+    {"label": "腰带、和服纹样与衣摆", "box": [465, 425, 760, 780]},
+    {"label": "前臂藤蔓纹与爪指", "box": [265, 445, 465, 860]},
+    {"label": "另一侧手臂与爪指", "box": [695, 540, 875, 845]},
+    {"label": "绑腿、白色系带与鞋", "box": [220, 1090, 940, 1495]}
+  ],
+  "visual_qa": {
+    "one_complete_character": true,
+    "right_facing_upright_lowered_hands": true,
+    "leg_wraps_and_shoes_retained": true,
+    "high_closed_white_collar_removed": true,
+    "burst_outer_collar_and_neck_vines_visible": true,
+    "chest_cloth_coverage_retained": true,
+    "no_vfx_or_poster_text": true,
+    "user_approval_pending": true
+  }
+}

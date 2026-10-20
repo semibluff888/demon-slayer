@@ -1,0 +1,164 @@
+[
+  {
+    "id": "nezuko-awakened-idle-r1",
+    "group": "static-idle-review",
+    "model": "gpt-image-2",
+    "prompt": "output/imagegen/nezuko-awakened-v3/prompts/nezuko-awakened-idle-r1.txt",
+    "out": "output/imagegen/nezuko-awakened-v3/raw/nezuko-awakened-idle-r1.png",
+    "size": "1024x1536",
+    "references": [
+      "output/imagegen/nezuko-awakened-v3/references/user-design-reference.png",
+      "output/imagegen/nezuko-awakened-v3/references/leg-wraps-and-shoes.png",
+      "output/imagegen/nezuko-awakened-v3/references/normal-style-reference.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "form": "awakened",
+      "stage": "static-idle-review",
+      "requires_user_approval_before_animation": true
+    }
+  },
+  {
+    "id": "nezuko-awakened-idle-r2",
+    "group": "static-idle-review",
+    "model": "gpt-image-2",
+    "prompt": "output/imagegen/nezuko-awakened-v3/prompts/nezuko-awakened-idle-r2.txt",
+    "out": "output/imagegen/nezuko-awakened-v3/raw/nezuko-awakened-idle-r2.png",
+    "size": "1024x1536",
+    "references": [
+      "output/imagegen/nezuko-awakened-v3/raw/nezuko-awakened-idle-r1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "form": "awakened",
+      "stage": "static-idle-review",
+      "requires_user_approval_before_animation": true,
+      "revision_reason": "Reduce the head about ten percent while preserving body, costume and pose."
+    }
+  },
+  {
+    "id": "nezuko-awakened-idle-r3",
+    "group": "static-idle-review",
+    "model": "gpt-image-2",
+    "prompt": "output/imagegen/nezuko-awakened-v3/prompts/nezuko-awakened-idle-r3.txt",
+    "out": "output/imagegen/nezuko-awakened-v3/raw/nezuko-awakened-idle-r3.png",
+    "size": "1024x1536",
+    "references": [
+      "output/imagegen/nezuko-awakened-v3/raw/nezuko-awakened-idle-r2.png",
+      "output/imagegen/nezuko-awakened-v3/raw/nezuko-awakened-idle-r1.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "form": "awakened",
+      "stage": "static-idle-review",
+      "requires_user_approval_before_animation": true,
+      "revision_reason": "Bring the head between r1 and the over-reduced r2, targeting seven to 7.2 heads."
+    }
+  },
+  {
+    "id": "nezuko-awakened-idle-r4",
+    "group": "static-idle-review",
+    "model": "gpt-image-2",
+    "prompt": "output/imagegen/nezuko-awakened-v3/prompts/nezuko-awakened-idle-r4.txt",
+    "out": "output/imagegen/nezuko-awakened-v3/raw/nezuko-awakened-idle-r4.png",
+    "size": "1024x1536",
+    "references": [
+      "output/imagegen/nezuko-awakened-v3/raw/nezuko-awakened-idle-r3.png",
+      "output/imagegen/nezuko-awakened-v3/references/user-design-reference.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "form": "awakened",
+      "stage": "static-idle-review",
+      "requires_user_approval_before_animation": true,
+      "revision_reason": "User rejected the closed normal-form collar: torn outward collar, neck/clavicle vines and a stronger demon-form shoulder line; covered chest."
+    }
+  },
+  {
+    "id": "nezuko-awakened-idle-r5",
+    "group": "static-idle-review",
+    "model": "gpt-image-2",
+    "prompt": "output/imagegen/nezuko-awakened-v3/prompts/nezuko-awakened-idle-r5.txt",
+    "out": "output/imagegen/nezuko-awakened-v3/raw/nezuko-awakened-idle-r5.png",
+    "size": "1024x1536",
+    "references": [
+      "output/imagegen/nezuko-awakened-v3/raw/nezuko-awakened-idle-r4.png",
+      "C:/Users/Bo/Downloads/646eb84d7f5b4682b2a66d66126125cb.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "form": "awakened",
+      "stage": "static-idle-review",
+      "requires_user_approval_before_animation": true,
+      "revision_reason": "User correction: collar is intact and stretched open, not torn. Remove shoulder shreds and horizontal chest panel; continuous white-edged overlapping kimono lapels.",
+      "user_reference_sha256": "70e88cc56e847bfc3fe674e819dd85a897813a50fc9a38b378c8e1e5071959e2"
+    }
+  },
+  {
+    "id": "nezuko-awakened-idle-r6",
+    "group": "static-idle-review",
+    "model": "gpt-image-2",
+    "prompt": "output/imagegen/nezuko-awakened-v3/prompts/nezuko-awakened-idle-r6.txt",
+    "out": "output/imagegen/nezuko-awakened-v3/raw/nezuko-awakened-idle-r6.png",
+    "size": "1024x1536",
+    "references": [
+      "output/imagegen/nezuko-awakened-v3/raw/nezuko-awakened-idle-r5.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "form": "awakened",
+      "stage": "static-idle-review",
+      "requires_user_approval_before_animation": true,
+      "revision_reason": "Retain the intact open collar; adjust its overlap at the upper sternum, remove anatomical chest emphasis, no separate chest panel."
+    }
+  },
+  {
+    "id": "nezuko-awakened-idle-r7",
+    "group": "static-idle-review",
+    "model": "gpt-image-2",
+    "prompt": "output/imagegen/nezuko-awakened-v3/prompts/nezuko-awakened-idle-r7.txt",
+    "out": "output/imagegen/nezuko-awakened-v3/raw/nezuko-awakened-idle-r7.png",
+    "size": "1024x1536",
+    "references": [
+      "output/imagegen/nezuko-awakened-v3/raw/nezuko-awakened-idle-r6.png",
+      "output/imagegen/nezuko-awakened-v3/references/current-game-color-board.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "form": "awakened",
+      "stage": "static-idle-review",
+      "requires_user_approval_before_animation": true,
+      "revision_reason": "User requested revised expression, narrower foot spacing and actual shipped game material colors.",
+      "expression_assumption": "Cold controlled intimidation; optional clarification unanswered.",
+      "expression_preference_confirmed": true,
+      "expression_confirmation_note": "User subsequently selected cold controlled intimidation: sharp eyes, lips nearly closed. Whole-candidate review remains pending."
+    }
+  },
+  {
+    "id": "nezuko-awakened-idle-r8-face",
+    "group": "static-idle-expression-review",
+    "model": "gpt-image-2",
+    "prompt": "output/imagegen/nezuko-awakened-v3/prompts/nezuko-awakened-idle-r8.txt",
+    "out": "output/imagegen/nezuko-awakened-v3/raw/nezuko-awakened-idle-r8-face.png",
+    "size": "1024x1024",
+    "references": [
+      "output/imagegen/nezuko-awakened-v3/references/nezuko-awakened-idle-r8-face-edit-target.png"
+    ],
+    "metadata": {
+      "character": "nezuko",
+      "form": "awakened",
+      "stage": "expression-only-review",
+      "requires_user_approval_before_animation": true,
+      "revision_reason": "All other appearance approved by user. Redesign expression only; latest clarification: lips slightly open with clenched teeth.",
+      "base": "references/approved-body-r7.png",
+      "crop": [
+        500,
+        36,
+        756,
+        292
+      ],
+      "crop_enlargement": 4,
+      "final_compositing": "Only eye/brow and mouth regions may change. All exterior pixels remain identical to the approved r7 base."
+    }
+  }
+]

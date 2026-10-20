@@ -1,0 +1,297 @@
+{
+  "source": "art/characters/nezuko/awakening/atlas.json",
+  "revision": "awakening-v9",
+  "frame": {
+    "texture": "atlas-1.png",
+    "region": [
+      514,
+      364,
+      247,
+      356
+    ],
+    "offset": [
+      318,
+      213
+    ]
+  },
+  "texture_sha256": "c7f295359d4fcbf03994f828c15352d26f9a5ab7dc6a38a5b4ca27c11b79a409",
+  "method": "Median RGB of manually selected interior patches; preserve shading separately.",
+  "materials": {
+    "skin_light": {
+      "label": "Skin / light",
+      "boxes": [
+        [
+          110,
+          190,
+          120,
+          204
+        ],
+        [
+          165,
+          43,
+          172,
+          50
+        ]
+      ],
+      "median_rgb": [
+        253,
+        222,
+        201
+      ],
+      "hex": "#fddec9",
+      "pixels": 189
+    },
+    "skin_shadow": {
+      "label": "Skin / shadow",
+      "boxes": [
+        [
+          145,
+          55,
+          150,
+          61
+        ]
+      ],
+      "median_rgb": [
+        233,
+        154,
+        130
+      ],
+      "hex": "#e99a82",
+      "pixels": 30
+    },
+    "hair": {
+      "label": "Hair / dark",
+      "boxes": [
+        [
+          140,
+          8,
+          152,
+          15
+        ],
+        [
+          114,
+          35,
+          122,
+          42
+        ]
+      ],
+      "median_rgb": [
+        53,
+        40,
+        37
+      ],
+      "hex": "#352825",
+      "pixels": 140
+    },
+    "hair_tip": {
+      "label": "Hair ends / orange",
+      "boxes": [
+        [
+          44,
+          116,
+          53,
+          125
+        ],
+        [
+          33,
+          105,
+          39,
+          112
+        ]
+      ],
+      "median_rgb": [
+        227,
+        90,
+        41
+      ],
+      "hex": "#e35a29",
+      "pixels": 123
+    },
+    "haori": {
+      "label": "Haori / plum brown",
+      "boxes": [
+        [
+          111,
+          83,
+          119,
+          100
+        ],
+        [
+          108,
+          114,
+          117,
+          128
+        ]
+      ],
+      "median_rgb": [
+        86,
+        47,
+        48
+      ],
+      "hex": "#562f30",
+      "pixels": 262
+    },
+    "haori_shadow": {
+      "label": "Haori / shadow",
+      "boxes": [
+        [
+          119,
+          103,
+          122,
+          120
+        ]
+      ],
+      "median_rgb": [
+        44,
+        25,
+        24
+      ],
+      "hex": "#2c1918",
+      "pixels": 51
+    },
+    "kimono": {
+      "label": "Kimono / pink",
+      "boxes": [
+        [
+          163,
+          172,
+          174,
+          182
+        ],
+        [
+          156,
+          150,
+          164,
+          159
+        ]
+      ],
+      "median_rgb": [
+        249,
+        162,
+        169
+      ],
+      "hex": "#f9a2a9",
+      "pixels": 182
+    },
+    "kimono_shadow": {
+      "label": "Kimono / shadow",
+      "boxes": [
+        [
+          145,
+          229,
+          151,
+          238
+        ]
+      ],
+      "median_rgb": [
+        188,
+        122,
+        136
+      ],
+      "hex": "#bc7a88",
+      "pixels": 54
+    },
+    "white": {
+      "label": "Lining / warm white",
+      "boxes": [
+        [
+          163,
+          203,
+          170,
+          209
+        ],
+        [
+          75,
+          332,
+          80,
+          336
+        ]
+      ],
+      "median_rgb": [
+        253,
+        241,
+        238
+      ],
+      "hex": "#fdf1ee",
+      "pixels": 62
+    },
+    "obi_red": {
+      "label": "Obi / crimson checks",
+      "boxes": [
+        [
+          149,
+          112,
+          157,
+          117
+        ]
+      ],
+      "median_rgb": [
+        166,
+        28,
+        44
+      ],
+      "hex": "#a61c2c",
+      "pixels": 40
+    },
+    "obi_green": {
+      "label": "Obi / green band",
+      "boxes": [
+        [
+          149,
+          106,
+          160,
+          108
+        ]
+      ],
+      "median_rgb": [
+        147,
+        168,
+        84
+      ],
+      "hex": "#93a854",
+      "pixels": 22
+    },
+    "cord": {
+      "label": "Obi / orange cord",
+      "boxes": [
+        [
+          145,
+          122,
+          154,
+          124
+        ]
+      ],
+      "median_rgb": [
+        218,
+        136,
+        50
+      ],
+      "hex": "#da8832",
+      "pixels": 18
+    },
+    "wraps": {
+      "label": "Calf wraps / brown",
+      "boxes": [
+        [
+          78,
+          305,
+          89,
+          310
+        ],
+        [
+          181,
+          300,
+          190,
+          305
+        ]
+      ],
+      "median_rgb": [
+        76,
+        46,
+        45
+      ],
+      "hex": "#4c2e2d",
+      "pixels": 100
+    }
+  }
+}

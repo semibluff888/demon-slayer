@@ -1,0 +1,354 @@
+{
+  "source": "references/approved-idle-master.png",
+  "source_sha256": "62f7fc549a7f92e67e8f3bc5b34b24b74b019aced33cfcb5d6c5560a7ca9c96f",
+  "source_user_approved": true,
+  "method": "Same v1 MLS motion outside anatomical leg masks; lower legs use width-preserving mapping and at most 0.16 px vertical drift, blending into the thighs. Shoes stay pinned.",
+  "frame_count": 12,
+  "fps": 10,
+  "duration_seconds": 1.2,
+  "canvas_size": [
+    1120,
+    1664
+  ],
+  "frame_zero_matches_master": true,
+  "cycle_endpoint_matches_frame_zero": true,
+  "unique_frames": 12,
+  "all_foot_pixels_fixed": true,
+  "rigid_head_scale_change": 0.0,
+  "minimum_inverse_map_jacobian": 0.4719,
+  "adjacent_frame_mean_rgb_differences": [
+    2.561389446258545,
+    2.432323932647705,
+    1.7386033535003662,
+    1.3665841817855835,
+    1.6821359395980835,
+    2.0006866455078125,
+    2.5240156650543213,
+    2.4248948097229004,
+    1.7110464572906494,
+    1.3503800630569458,
+    1.6613686084747314,
+    2.006505012512207
+  ],
+  "loop_seam_to_median_step_ratio": 1.073201069210689,
+  "foreground_height_range": [
+    1513,
+    1526
+  ],
+  "game_scale": 0.23436471362738645,
+  "game_frame_offset": [
+    290,
+    197
+  ],
+  "game_feet_anchor": [
+    448,
+    568
+  ],
+  "target_idle_height_atlas_px": 356,
+  "target_idle_height_world_units": 71.645,
+  "runtime_files_verified": 70,
+  "runtime_files_unchanged": true,
+  "animation_user_approved": false,
+  "approved_motion_outside_leg_masks_pixel_identical_to_v1": true,
+  "lower_leg_horizontal_strain_before_max": 0.1031494140625,
+  "lower_leg_horizontal_strain_after_max": 0,
+  "lower_leg_vertical_strain_after_max": 0.00244140625,
+  "frames": [
+    {
+      "phase": 0.0,
+      "head_translation_px": [
+        0.0,
+        0.0
+      ],
+      "head_control_scale_change": 0.0,
+      "minimum_inverse_map_jacobian": 1.0,
+      "rigid_head_mapping_error_px": 0.0,
+      "changed_pixels_outside_leg_mask": 0,
+      "index": 0,
+      "source": "frames/frame-00.png",
+      "sha256": "79c53136aacf64becfe83ba0fa90365ad677ca409572fe76403625fffc5845b0",
+      "bounds": [
+        102,
+        65,
+        1037,
+        1584
+      ],
+      "foot_pixels_changed": 0
+    },
+    {
+      "phase": 0.08333333333333333,
+      "head_translation_px": [
+        0.6,
+        -3.1
+      ],
+      "head_control_scale_change": 0.0,
+      "lower_leg_horizontal_strain_before": 0.01495361328125,
+      "lower_leg_horizontal_strain_after": 0.0,
+      "lower_leg_vertical_strain_after": 0.001220703125,
+      "lower_leg_vertical_drift_px": 0.08,
+      "minimum_inverse_map_jacobian": 0.92153,
+      "rigid_head_mapping_error_px": 2.44e-05,
+      "changed_pixels_outside_leg_mask": 0,
+      "index": 1,
+      "source": "frames/frame-01.png",
+      "sha256": "d90e5c3bceeb1b0cd2a2aa9e4a86234c6b98bfd608aa91147ffff3b80c5b7751",
+      "bounds": [
+        99,
+        62,
+        1039,
+        1584
+      ],
+      "foot_pixels_changed": 0
+    },
+    {
+      "phase": 0.16666666666666666,
+      "head_translation_px": [
+        1.03923,
+        -5.36936
+      ],
+      "head_control_scale_change": 0.0,
+      "lower_leg_horizontal_strain_before": 0.036651611328125,
+      "lower_leg_horizontal_strain_after": 0.0,
+      "lower_leg_vertical_strain_after": 0.0020751953125,
+      "lower_leg_vertical_drift_px": 0.13856,
+      "minimum_inverse_map_jacobian": 0.81449,
+      "rigid_head_mapping_error_px": 1.51e-05,
+      "changed_pixels_outside_leg_mask": 0,
+      "index": 2,
+      "source": "frames/frame-02.png",
+      "sha256": "b2018743c1eaed654c439ffdabe0ff0c0d81fba4b4a9c0f2394f320ca6944ec7",
+      "bounds": [
+        94,
+        59,
+        1041,
+        1584
+      ],
+      "foot_pixels_changed": 0
+    },
+    {
+      "phase": 0.25,
+      "head_translation_px": [
+        1.2,
+        -6.2
+      ],
+      "head_control_scale_change": 0.0,
+      "lower_leg_horizontal_strain_before": 0.064300537109375,
+      "lower_leg_horizontal_strain_after": 0.0,
+      "lower_leg_vertical_strain_after": 0.00244140625,
+      "lower_leg_vertical_drift_px": 0.16,
+      "minimum_inverse_map_jacobian": 0.6876,
+      "rigid_head_mapping_error_px": 1.24e-05,
+      "changed_pixels_outside_leg_mask": 0,
+      "index": 3,
+      "source": "frames/frame-03.png",
+      "sha256": "389ece7f63443a119e103d40600275429738adf211318ea6912c06f6112651cb",
+      "bounds": [
+        90,
+        58,
+        1044,
+        1584
+      ],
+      "foot_pixels_changed": 0
+    },
+    {
+      "phase": 0.3333333333333333,
+      "head_translation_px": [
+        1.03923,
+        -5.36936
+      ],
+      "head_control_scale_change": 0.0,
+      "lower_leg_horizontal_strain_before": 0.08905029296875,
+      "lower_leg_horizontal_strain_after": 0.0,
+      "lower_leg_vertical_strain_after": 0.0020751953125,
+      "lower_leg_vertical_drift_px": 0.13856,
+      "minimum_inverse_map_jacobian": 0.56578,
+      "rigid_head_mapping_error_px": 1.51e-05,
+      "changed_pixels_outside_leg_mask": 0,
+      "index": 4,
+      "source": "frames/frame-04.png",
+      "sha256": "822dcabab8edc5ae60233f8db874041d81da604b3ebc29b14432d1b3e85a0d2a",
+      "bounds": [
+        87,
+        59,
+        1047,
+        1584
+      ],
+      "foot_pixels_changed": 0
+    },
+    {
+      "phase": 0.4166666666666667,
+      "head_translation_px": [
+        0.6,
+        -3.1
+      ],
+      "head_control_scale_change": 0.0,
+      "lower_leg_horizontal_strain_before": 0.1031494140625,
+      "lower_leg_horizontal_strain_after": 0.0,
+      "lower_leg_vertical_strain_after": 0.001220703125,
+      "lower_leg_vertical_drift_px": 0.08,
+      "minimum_inverse_map_jacobian": 0.48843,
+      "rigid_head_mapping_error_px": 2.44e-05,
+      "changed_pixels_outside_leg_mask": 0,
+      "index": 5,
+      "source": "frames/frame-05.png",
+      "sha256": "b788dac0b50390b0ba7f1e0d8ae11040a104fa0e959e630d68aa189902e4c89b",
+      "bounds": [
+        87,
+        62,
+        1049,
+        1584
+      ],
+      "foot_pixels_changed": 0
+    },
+    {
+      "phase": 0.5,
+      "head_translation_px": [
+        0.0,
+        0.0
+      ],
+      "head_control_scale_change": 0.0,
+      "lower_leg_horizontal_strain_before": 0.1016845703125,
+      "lower_leg_horizontal_strain_after": 0.0,
+      "lower_leg_vertical_strain_after": 0.0,
+      "lower_leg_vertical_drift_px": 0.0,
+      "minimum_inverse_map_jacobian": 0.4719,
+      "rigid_head_mapping_error_px": 0.0,
+      "changed_pixels_outside_leg_mask": 0,
+      "index": 6,
+      "source": "frames/frame-06.png",
+      "sha256": "736abb34289374fe8b5d27e09a1668483ed21499e507b1102a9d17a9a51abde3",
+      "bounds": [
+        88,
+        65,
+        1049,
+        1584
+      ],
+      "foot_pixels_changed": 0
+    },
+    {
+      "phase": 0.5833333333333334,
+      "head_translation_px": [
+        -0.6,
+        3.1
+      ],
+      "head_control_scale_change": 0.0,
+      "lower_leg_horizontal_strain_before": 0.085205078125,
+      "lower_leg_horizontal_strain_after": 0.0,
+      "lower_leg_vertical_strain_after": 0.001220703125,
+      "lower_leg_vertical_drift_px": -0.08,
+      "minimum_inverse_map_jacobian": 0.51975,
+      "rigid_head_mapping_error_px": 2.44e-05,
+      "changed_pixels_outside_leg_mask": 0,
+      "index": 7,
+      "source": "frames/frame-07.png",
+      "sha256": "9376c6d0414b4ff99d5a5b687fe218375ba4dbe7bbe0b04556b3a3818a6d47af",
+      "bounds": [
+        91,
+        68,
+        1047,
+        1584
+      ],
+      "foot_pixels_changed": 0
+    },
+    {
+      "phase": 0.6666666666666666,
+      "head_translation_px": [
+        -1.03923,
+        5.36936
+      ],
+      "head_control_scale_change": 0.0,
+      "lower_leg_horizontal_strain_before": 0.0634765625,
+      "lower_leg_horizontal_strain_after": 0.0,
+      "lower_leg_vertical_strain_after": 0.0020751953125,
+      "lower_leg_vertical_drift_px": -0.13856,
+      "minimum_inverse_map_jacobian": 0.62299,
+      "rigid_head_mapping_error_px": 1.51e-05,
+      "changed_pixels_outside_leg_mask": 0,
+      "index": 8,
+      "source": "frames/frame-08.png",
+      "sha256": "6a46d312e6c35a4a8f85a907a3361a62960f0abbad3b9ea3e5bb0cf937cadc8b",
+      "bounds": [
+        95,
+        70,
+        1044,
+        1584
+      ],
+      "foot_pixels_changed": 0
+    },
+    {
+      "phase": 0.75,
+      "head_translation_px": [
+        -1.2,
+        6.2
+      ],
+      "head_control_scale_change": 0.0,
+      "lower_leg_horizontal_strain_before": 0.04034423828125,
+      "lower_leg_horizontal_strain_after": 0.0,
+      "lower_leg_vertical_strain_after": 0.00244140625,
+      "lower_leg_vertical_drift_px": -0.16,
+      "minimum_inverse_map_jacobian": 0.75859,
+      "rigid_head_mapping_error_px": 1.24e-05,
+      "changed_pixels_outside_leg_mask": 0,
+      "index": 9,
+      "source": "frames/frame-09.png",
+      "sha256": "08cc7f150c6a644fc89a665945b600f04c12cfac37c324c7b161ad66dea752c5",
+      "bounds": [
+        99,
+        71,
+        1041,
+        1584
+      ],
+      "foot_pixels_changed": 0
+    },
+    {
+      "phase": 0.8333333333333334,
+      "head_translation_px": [
+        -1.03923,
+        5.36936
+      ],
+      "head_control_scale_change": 0.0,
+      "lower_leg_horizontal_strain_before": 0.017730712890625,
+      "lower_leg_horizontal_strain_after": 0.0,
+      "lower_leg_vertical_strain_after": 0.0020751953125,
+      "lower_leg_vertical_drift_px": -0.13856,
+      "minimum_inverse_map_jacobian": 0.89129,
+      "rigid_head_mapping_error_px": 1.51e-05,
+      "changed_pixels_outside_leg_mask": 0,
+      "index": 10,
+      "source": "frames/frame-10.png",
+      "sha256": "192005d0bfd35bd95c354444ce88ce8c0f171678e073b5e1f51d36c64de03453",
+      "bounds": [
+        102,
+        70,
+        1039,
+        1584
+      ],
+      "foot_pixels_changed": 0
+    },
+    {
+      "phase": 0.9166666666666666,
+      "head_translation_px": [
+        -0.6,
+        3.1
+      ],
+      "head_control_scale_change": 0.0,
+      "lower_leg_horizontal_strain_before": 0.008148193359375,
+      "lower_leg_horizontal_strain_after": 0.0,
+      "lower_leg_vertical_strain_after": 0.001220703125,
+      "lower_leg_vertical_drift_px": -0.08,
+      "minimum_inverse_map_jacobian": 0.92908,
+      "rigid_head_mapping_error_px": 2.44e-05,
+      "changed_pixels_outside_leg_mask": 0,
+      "index": 11,
+      "source": "frames/frame-11.png",
+      "sha256": "6d8484094b1f66b96b43ed3327eee27e8da3c4e9b34224d0dae6b8397f751d8f",
+      "bounds": [
+        103,
+        68,
+        1037,
+        1584
+      ],
+      "foot_pixels_changed": 0
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "candidate": "nezuko-awakened-idle-r7",
+  "source": "raw/nezuko-awakened-idle-r7.png",
+  "output": "processed/nezuko-awakened-idle-r7.png",
+  "method": "Soft HSV material selection with small sampled RGB offsets; no geometry edits.",
+  "source_sha256": "8f3bcfc1610eeb22f9de7b9d7ce97998ea7a7db3d655aceaf107ab0150b4f096",
+  "output_sha256": "d0fe4a15dedaeaef14baa56c47504a4750861d062ac22ab599e62312f54d2e00",
+  "palette": "references/current-game-palette.json",
+  "materials": {
+    "skin": {
+      "sample_box": [
+        652,
+        213,
+        664,
+        224
+      ],
+      "before_rgb": [
+        253.0,
+        216.0,
+        190.0
+      ],
+      "target_rgb": [
+        253,
+        222,
+        201
+      ],
+      "delta_rgb": [
+        0.0,
+        6.0,
+        11.0
+      ],
+      "full_weight_pixels": 87770,
+      "after_rgb": [
+        253.0,
+        222.0,
+        201.0
+      ]
+    },
+    "hair": {
+      "sample_box": [
+        560,
+        100,
+        595,
+        120
+      ],
+      "before_rgb": [
+        65.0,
+        40.0,
+        31.0
+      ],
+      "target_rgb": [
+        53,
+        40,
+        37
+      ],
+      "delta_rgb": [
+        -12.0,
+        0.0,
+        6.0
+      ],
+      "full_weight_pixels": 61422,
+      "after_rgb": [
+        54.0,
+        40.0,
+        36.0
+      ]
+    },
+    "haori": {
+      "sample_box": [
+        452,
+        317,
+        474,
+        356
+      ],
+      "before_rgb": [
+        95.0,
+        42.0,
+        49.0
+      ],
+      "target_rgb": [
+        86,
+        47,
+        48
+      ],
+      "delta_rgb": [
+        -9.0,
+        5.0,
+        -1.0
+      ],
+      "full_weight_pixels": 143453,
+      "after_rgb": [
+        86.0,
+        47.0,
+        48.0
+      ]
+    },
+    "kimono": {
+      "sample_box": [
+        580,
+        362,
+        600,
+        380
+      ],
+      "before_rgb": [
+        251.0,
+        165.0,
+        164.0
+      ],
+      "target_rgb": [
+        249,
+        162,
+        169
+      ],
+      "delta_rgb": [
+        -2.0,
+        -3.0,
+        5.0
+      ],
+      "full_weight_pixels": 143672,
+      "after_rgb": [
+        250.0,
+        162.0,
+        169.0
+      ]
+    }
+  },
+  "alpha_unchanged": true,
+  "pure_blue_background_unchanged": true,
+  "max_channel_change": 12,
+  "user_approved": false
+}

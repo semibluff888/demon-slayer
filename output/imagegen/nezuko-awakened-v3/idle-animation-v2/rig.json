@@ -1,0 +1,785 @@
+{
+  "frames": 12,
+  "fps": 10,
+  "grid": 8,
+  "alpha": 1.4,
+  "source_origin": [
+    55,
+    48
+  ],
+  "coordinates": "All points use original 1009x1558 master coordinates, before padding.",
+  "first_frame_is_master": true,
+  "ground_anchor": [
+    620,
+    1536
+  ],
+  "head_ruler": {
+    "crown_y": 24,
+    "chin_y": 233,
+    "sole_y": 1536,
+    "head_length_px": 209,
+    "heads_tall_approx": 7.23
+  },
+  "foot_lock": {
+    "fade_start_y": 1330,
+    "fully_fixed_y": 1400
+  },
+  "rigid_head_polygon": [
+    [
+      515,
+      -20
+    ],
+    [
+      800,
+      -20
+    ],
+    [
+      800,
+      250
+    ],
+    [
+      740,
+      280
+    ],
+    [
+      580,
+      264
+    ],
+    [
+      500,
+      180
+    ]
+  ],
+  "head_points": [
+    "crown",
+    "horn",
+    "head",
+    "chin",
+    "ribbon",
+    "ear",
+    "face_front",
+    "hair_face"
+  ],
+  "points": {
+    "crown": [
+      638,
+      28
+    ],
+    "horn": [
+      699,
+      18
+    ],
+    "head": [
+      665,
+      132
+    ],
+    "chin": [
+      687,
+      231
+    ],
+    "ribbon": [
+      751,
+      91
+    ],
+    "ear": [
+      590,
+      149
+    ],
+    "face_front": [
+      711,
+      183
+    ],
+    "hair_face": [
+      741,
+      170
+    ],
+    "neck": [
+      627,
+      253
+    ],
+    "collar": [
+      619,
+      300
+    ],
+    "chest": [
+      650,
+      356
+    ],
+    "shoulder_back": [
+      506,
+      279
+    ],
+    "shoulder_front": [
+      714,
+      312
+    ],
+    "obi": [
+      649,
+      477
+    ],
+    "waist": [
+      646,
+      542
+    ],
+    "pelvis": [
+      640,
+      616
+    ],
+    "hip_back": [
+      573,
+      737
+    ],
+    "hip_front": [
+      677,
+      829
+    ],
+    "knee_back": [
+      496,
+      1007
+    ],
+    "knee_front": [
+      719,
+      1066
+    ],
+    "calf_back": [
+      451,
+      1256
+    ],
+    "calf_front": [
+      733,
+      1264
+    ],
+    "ankle_back": [
+      433,
+      1403
+    ],
+    "ankle_front": [
+      748,
+      1404
+    ],
+    "heel_back": [
+      371,
+      1507
+    ],
+    "sole_back": [
+      449,
+      1533
+    ],
+    "toe_back": [
+      527,
+      1527
+    ],
+    "heel_front": [
+      699,
+      1480
+    ],
+    "sole_front": [
+      789,
+      1494
+    ],
+    "toe_front": [
+      874,
+      1485
+    ],
+    "upper_arm_back": [
+      451,
+      506
+    ],
+    "elbow_back": [
+      405,
+      625
+    ],
+    "wrist_back": [
+      368,
+      727
+    ],
+    "hand_back": [
+      375,
+      777
+    ],
+    "upper_arm_front": [
+      789,
+      603
+    ],
+    "elbow_front": [
+      819,
+      699
+    ],
+    "wrist_front": [
+      850,
+      760
+    ],
+    "hand_front": [
+      865,
+      792
+    ],
+    "hair_root_back": [
+      433,
+      207
+    ],
+    "hair_mid_back": [
+      337,
+      275
+    ],
+    "hair_stream_back": [
+      250,
+      357
+    ],
+    "hair_top_tip": [
+      201,
+      280
+    ],
+    "hair_tip_outer": [
+      65,
+      581
+    ],
+    "hair_tip_middle": [
+      112,
+      430
+    ],
+    "hair_tip_lower": [
+      200,
+      681
+    ],
+    "hair_low_back": [
+      271,
+      581
+    ],
+    "hair_mid_front": [
+      817,
+      414
+    ],
+    "hair_tip_front": [
+      904,
+      596
+    ],
+    "hair_tip_front_low": [
+      947,
+      669
+    ],
+    "sleeve_back": [
+      470,
+      447
+    ],
+    "sleeve_front": [
+      781,
+      549
+    ],
+    "haori_left_mid": [
+      249,
+      812
+    ],
+    "haori_left_tip": [
+      110,
+      897
+    ],
+    "haori_lower_left": [
+      190,
+      1047
+    ],
+    "haori_left_low": [
+      302,
+      1169
+    ],
+    "haori_right_mid": [
+      902,
+      881
+    ],
+    "haori_right_tip": [
+      962,
+      1062
+    ],
+    "haori_right_low": [
+      947,
+      1126
+    ],
+    "kimono_center": [
+      633,
+      966
+    ],
+    "kimono_low": [
+      592,
+      1232
+    ],
+    "lining_right": [
+      859,
+      1153
+    ],
+    "lining_right_tip": [
+      895,
+      1300
+    ],
+    "kimono_left_tip": [
+      231,
+      1134
+    ]
+  },
+  "motions": [
+    {
+      "name": "breathing_and_weight",
+      "phase": 0.0,
+      "points": {
+        "crown": [
+          1.2,
+          -6.2
+        ],
+        "horn": [
+          1.2,
+          -6.2
+        ],
+        "head": [
+          1.2,
+          -6.2
+        ],
+        "chin": [
+          1.2,
+          -6.2
+        ],
+        "ribbon": [
+          1.2,
+          -6.2
+        ],
+        "ear": [
+          1.2,
+          -6.2
+        ],
+        "face_front": [
+          1.2,
+          -6.2
+        ],
+        "hair_face": [
+          1.2,
+          -6.2
+        ],
+        "neck": [
+          1.2,
+          -6.2
+        ],
+        "collar": [
+          1.2,
+          -7.0
+        ],
+        "chest": [
+          1.2,
+          -7.8
+        ],
+        "shoulder_back": [
+          0.2,
+          -7.2
+        ],
+        "shoulder_front": [
+          2.0,
+          -7.2
+        ],
+        "obi": [
+          1.5,
+          -4.5
+        ],
+        "waist": [
+          1.8,
+          -3.5
+        ],
+        "pelvis": [
+          2.0,
+          -2.5
+        ],
+        "hip_back": [
+          1.6,
+          -2.0
+        ],
+        "hip_front": [
+          1.5,
+          -2.0
+        ],
+        "knee_back": [
+          1.0,
+          -1.0
+        ],
+        "knee_front": [
+          -0.8,
+          -1.0
+        ],
+        "calf_back": [
+          0.3,
+          -0.3
+        ],
+        "calf_front": [
+          -0.2,
+          -0.3
+        ],
+        "upper_arm_back": [
+          0.5,
+          -5.5
+        ],
+        "elbow_back": [
+          0.5,
+          -4.4
+        ],
+        "wrist_back": [
+          0.8,
+          -3.8
+        ],
+        "hand_back": [
+          0.8,
+          -3.8
+        ],
+        "upper_arm_front": [
+          1.2,
+          -5.0
+        ],
+        "elbow_front": [
+          1.3,
+          -4.1
+        ],
+        "wrist_front": [
+          1.3,
+          -3.5
+        ],
+        "hand_front": [
+          1.3,
+          -3.5
+        ],
+        "hair_root_back": [
+          1.0,
+          -5.5
+        ],
+        "hair_mid_back": [
+          0.8,
+          -4.4
+        ],
+        "hair_stream_back": [
+          0.5,
+          -3.0
+        ],
+        "hair_mid_front": [
+          1.0,
+          -4.0
+        ],
+        "sleeve_back": [
+          0.5,
+          -5.5
+        ],
+        "sleeve_front": [
+          1.2,
+          -4.0
+        ],
+        "kimono_center": [
+          0.8,
+          -1.5
+        ]
+      }
+    },
+    {
+      "name": "claw_settle",
+      "phase": -0.1,
+      "points": {
+        "wrist_back": [
+          -1.1,
+          0.5
+        ],
+        "hand_back": [
+          -2.2,
+          0.8
+        ],
+        "wrist_front": [
+          0.9,
+          0.4
+        ],
+        "hand_front": [
+          1.8,
+          0.8
+        ]
+      }
+    },
+    {
+      "name": "long_hair_follow_through",
+      "phase": -0.16,
+      "points": {
+        "hair_mid_back": [
+          -2.5,
+          0.4
+        ],
+        "hair_stream_back": [
+          -5.0,
+          0.8
+        ],
+        "hair_top_tip": [
+          -7.0,
+          -0.8
+        ],
+        "hair_tip_outer": [
+          -9.0,
+          2.0
+        ],
+        "hair_tip_middle": [
+          -8.5,
+          1.4
+        ],
+        "hair_tip_lower": [
+          -7.0,
+          2.0
+        ],
+        "hair_low_back": [
+          -5.0,
+          1.0
+        ],
+        "hair_mid_front": [
+          2.0,
+          0.4
+        ],
+        "hair_tip_front": [
+          6.5,
+          1.8
+        ],
+        "hair_tip_front_low": [
+          7.0,
+          2.0
+        ]
+      }
+    },
+    {
+      "name": "cloth_follow_through",
+      "phase": -0.21,
+      "points": {
+        "sleeve_back": [
+          -1.5,
+          0.3
+        ],
+        "sleeve_front": [
+          1.5,
+          0.3
+        ],
+        "haori_left_mid": [
+          -3.5,
+          0.7
+        ],
+        "haori_left_tip": [
+          -6.0,
+          1.0
+        ],
+        "haori_lower_left": [
+          -6.5,
+          1.0
+        ],
+        "haori_left_low": [
+          -4.5,
+          0.8
+        ],
+        "haori_right_mid": [
+          3.0,
+          0.5
+        ],
+        "haori_right_tip": [
+          6.0,
+          1.0
+        ],
+        "haori_right_low": [
+          5.0,
+          0.8
+        ],
+        "kimono_center": [
+          1.0,
+          0.3
+        ],
+        "kimono_low": [
+          3.5,
+          0.6
+        ],
+        "lining_right": [
+          3.5,
+          0.5
+        ],
+        "lining_right_tip": [
+          6.5,
+          0.7
+        ],
+        "kimono_left_tip": [
+          -4.0,
+          0.6
+        ]
+      }
+    }
+  ],
+  "lower_leg_stability": {
+    "reason": "User approved the rest of v1 and requested restrained knee/calf breathing to remove apparent size changes.",
+    "vertical_translation_px": 0.16,
+    "translation_fade_y": [
+      1300,
+      1400
+    ],
+    "outline_padding_px": 7,
+    "outer_feather_px": 9,
+    "regions": [
+      {
+        "name": "back_leg",
+        "blend_y": [
+          890,
+          990
+        ],
+        "polygon": [
+          [
+            497,
+            880
+          ],
+          [
+            630,
+            880
+          ],
+          [
+            611,
+            945
+          ],
+          [
+            589,
+            1000
+          ],
+          [
+            564,
+            1040
+          ],
+          [
+            547,
+            1090
+          ],
+          [
+            529,
+            1135
+          ],
+          [
+            518,
+            1190
+          ],
+          [
+            519,
+            1230
+          ],
+          [
+            495,
+            1290
+          ],
+          [
+            479,
+            1340
+          ],
+          [
+            477,
+            1410
+          ],
+          [
+            360,
+            1410
+          ],
+          [
+            366,
+            1350
+          ],
+          [
+            376,
+            1290
+          ],
+          [
+            381,
+            1240
+          ],
+          [
+            387,
+            1190
+          ],
+          [
+            396,
+            1140
+          ],
+          [
+            410,
+            1090
+          ],
+          [
+            430,
+            1040
+          ],
+          [
+            464,
+            985
+          ],
+          [
+            488,
+            930
+          ]
+        ]
+      },
+      {
+        "name": "front_leg",
+        "blend_y": [
+          920,
+          1020
+        ],
+        "polygon": [
+          [
+            633,
+            908
+          ],
+          [
+            758,
+            908
+          ],
+          [
+            756,
+            1000
+          ],
+          [
+            764,
+            1060
+          ],
+          [
+            771,
+            1160
+          ],
+          [
+            779,
+            1220
+          ],
+          [
+            791,
+            1300
+          ],
+          [
+            798,
+            1410
+          ],
+          [
+            689,
+            1410
+          ],
+          [
+            675,
+            1340
+          ],
+          [
+            669,
+            1270
+          ],
+          [
+            661,
+            1210
+          ],
+          [
+            645,
+            1160
+          ],
+          [
+            637,
+            1110
+          ],
+          [
+            642,
+            1040
+          ],
+          [
+            641,
+            985
+          ]
+        ]
+      }
+    ]
+  }
+}

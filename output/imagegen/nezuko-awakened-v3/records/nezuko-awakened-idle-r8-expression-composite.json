@@ -1,0 +1,120 @@
+{
+  "candidate": "nezuko-awakened-idle-r8",
+  "base": "references/approved-body-r7.png",
+  "base_sha256": "d0fe4a15dedaeaef14baa56c47504a4750861d062ac22ab599e62312f54d2e00",
+  "generated_expression": "raw/nezuko-awakened-idle-r8-face.png",
+  "generated_expression_sha256": "a0c922fd81c755fe66752e728b763993221a7548955acaa5a16029667afd7b79",
+  "generation_size": [
+    1254,
+    1254
+  ],
+  "crop": [
+    500,
+    36,
+    756,
+    292
+  ],
+  "mask": "references/nezuko-awakened-idle-r8-expression-mask.png",
+  "mask_regions_on_4x_crop": [
+    [
+      [
+        502,
+        420
+      ],
+      [
+        600,
+        430
+      ],
+      [
+        713,
+        523
+      ],
+      [
+        743,
+        581
+      ],
+      [
+        715,
+        684
+      ],
+      [
+        606,
+        704
+      ],
+      [
+        510,
+        638
+      ],
+      [
+        484,
+        540
+      ]
+    ],
+    [
+      [
+        749,
+        542
+      ],
+      [
+        784,
+        522
+      ],
+      [
+        788,
+        589
+      ],
+      [
+        771,
+        639
+      ],
+      [
+        729,
+        687
+      ],
+      [
+        713,
+        627
+      ]
+    ],
+    [
+      [
+        597,
+        746
+      ],
+      [
+        664,
+        747
+      ],
+      [
+        704,
+        775
+      ],
+      [
+        686,
+        824
+      ],
+      [
+        625,
+        828
+      ],
+      [
+        588,
+        800
+      ]
+    ]
+  ],
+  "method": "Locally composite generated eyes/brows and mouth with inward feathering; all other pixels retain the approved base.",
+  "output": "processed/nezuko-awakened-idle-r8.png",
+  "output_sha256": "75fa158edb2ddef9546310b9c6406103341d3473ea0760c069ab00c882b0acda",
+  "changed_pixels": 4151,
+  "changed_bounds": [
+    621,
+    141,
+    698,
+    243
+  ],
+  "changed_pixels_outside_expression_mask": 0,
+  "alpha_unchanged": true,
+  "user_approved_appearance_except_expression": true,
+  "user_approved_expression": false
+}
